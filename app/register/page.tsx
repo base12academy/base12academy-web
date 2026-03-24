@@ -1,54 +1,77 @@
 "use client";
 
-import { useState } from "react"
-import { supabase } from "@/lib/supabaseClient"
+import { useState } from "react";
+import { supabase } from "../../lib/supabaseClient";
 
-export default function Register() {
+export default function RegisterPage() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [message, setMessage] = useState("")
+  const handleRegister = async () => {
+    setMessage("");
 
-  async function register() {
+    const response = await supabase.auth.signUp({
+      email,
+      password,
+    });
 
-    const { error } = await supabase.auth.signUp({
-      email: email,
-      password: password
-    })
+    if (response.error) {
+      setMessage("Error auth: " + response.error.message);
+      return;
+    }
+
+    const user = response.data?.user;
+
+    if (!user) {
+      setMessage("Error: no se ha creado user en Auth");
+      return;
+    }
+
+    const referralCode =
+      "B12-" + Math.random().toString(36).substring(2, 8).toUpperCase();
+
+    const { data, error } = await supabase.from("perfiles").upsert([
+      {
+        id: user.id,
+        email: user.email,
+        referral_code: referralCode,
+      },
+    ]);
 
     if (error) {
-      setMessage(error.message)
-    } else {
-      setMessage("Cuenta creada correctamente ✅")
+      setMessage("Error DB: " + error.message);
+      return;
     }
-  }
+
+    setMessage("Usuario registrado correctamente ✅");
+  };
 
   return (
-    <div style={{padding:40}}>
-      <h1>Registro Base12 Academy</h1>
+    <div style={{ padding: "32px" }}>
+      <h1>Registro</h1>
 
       <input
         type="email"
         placeholder="Email"
-        onChange={(e)=>setEmail(e.target.value)}
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        style={{ display: "block", marginBottom: "10px", padding: "8px" }}
       />
-
-      <br/><br/>
 
       <input
         type="password"
-        placeholder="Password"
-        onChange={(e)=>setPassword(e.target.value)}
+        placeholder="Contraseña"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        style={{ display: "block", marginBottom: "10px", padding: "8px" }}
       />
 
-      <br/><br/>
-
-      <button onClick={register}>
-        Crear cuenta
+      <button onClick={handleRegister}>
+        Registrarse
       </button>
 
-      <p>{message}</p>
-
+      <p style={{ marginTop: "10px" }}>{message}</p>
     </div>
-  )
+  );
 }

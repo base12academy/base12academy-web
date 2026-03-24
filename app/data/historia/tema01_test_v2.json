@@ -1,0 +1,66 @@
+{
+  "topicId": "tema-01",
+  "title": "La Prehistoria en la Península Ibérica",
+  "questions": [
+    {
+      "id": "t1_q1",
+      "question": "¿Qué periodo de la Prehistoria es el más antiguo?",
+      "options": [
+        "Neolítico",
+        "Paleolítico",
+        "Edad del Bronce",
+        "Edad del Hierro"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "easy"
+    },
+    {
+      "id": "t1_q2",
+      "question": "¿Cuál era la principal actividad económica durante el Paleolítico?",
+      "options": [
+        "Agricultura",
+        "Ganadería",
+        "Caza y recolección",
+        "Comercio"
+      ],
+      "correctAnswer": 2,
+      "difficulty": "easy"
+    },
+    {
+      "id": "t1_q3",
+      "question": "¿Qué tipo de vida llevaban los grupos humanos del Paleolítico?",
+      "options": [
+        "Sedentaria",
+        "Nómada",
+        "Urbana",
+        "Industrial"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "easy"
+    },
+    {
+      "id": "t1_q4",
+      "question": "¿En qué periodo aparece la agricultura?",
+      "options": [
+        "Paleolítico",
+        "Neolítico",
+        "Edad del Hierro",
+        "Edad Media"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "easy"
+    },
+    {
+      "id": "t1_q5",
+      "question": "¿Qué innovación caracteriza al Neolítico?",
+      "options": [
+        "Aparición de la escritura",
+        "Uso del hierro",
+        "Agricultura y ganadería",
+        "Construcción de castillos"
+      ],
+      "correctAnswer": 2,
+      "difficulty": "easy"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "topicId": "tema-01",
+  "title": "Preguntas cortas - Tema 1",
+  "questions": [
+    {
+      "id": "tc1",
+      "question": "Define Paleolítico.",
+      "answerGuide": "Periodo más antiguo de la Prehistoria, caracterizado por la vida nómada, la caza y recolección y el uso de piedra tallada."
+    },
+    {
+      "id": "tc2",
+      "question": "¿Qué cambio fundamental introduce el Neolítico?",
+      "answerGuide": "La aparición de la agricultura y la ganadería, junto con la sedentarización."
+    },
+    {
+      "id": "tc3",
+      "question": "¿Qué es el megalitismo?",
+      "answerGuide": "Fenómeno caracterizado por construcciones con grandes bloques de piedra, muchas veces con función funeraria."
+    }
+  ]
+}

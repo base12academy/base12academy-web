@@ -1,0 +1,12 @@
+{
+  "topicId": "tema-01",
+  "title": "Comentario de texto - Tema 1",
+  "text": "La aparición de la agricultura y la ganadería supuso una transformación fundamental en la vida de las sociedades humanas, que pasaron de ser nómadas a sedentarias.",
+  "questions": [
+    {
+      "id": "tx1",
+      "question": "Explica la importancia de la revolución neolítica.",
+      "answerGuide": "Debe mencionar el paso a la agricultura, la sedentarización y el cambio en la organización social."
+    }
+  ]
+}
