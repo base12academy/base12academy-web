@@ -2,7 +2,10 @@
 
 import { useState } from "react";
 
-import data from "../../../data/historia/tema01_imagen.json";
+const data = {
+  imageUrl: "/images/tema01-imagen.jpg",
+  question: "Describe y analiza la imagen relacionándola con el Tema 1.",
+};
 
 export default function ImagenTema1Page() {
   const [answer, setAnswer] = useState("");
@@ -18,51 +21,29 @@ export default function ImagenTema1Page() {
         style={{ maxWidth: "100%", marginBottom: "20px" }}
       />
 
-      <p><strong>{data.question}</strong></p>
+      <p>
+        <strong>{data.question}</strong>
+      </p>
 
       <textarea
         rows={5}
-        style={{ width: "100%", padding: "8px" }}
+        style={{ width: "100%", padding: "8px", marginTop: "12px" }}
         value={answer}
-        disabled={submitted}
         onChange={(e) => setAnswer(e.target.value)}
+        disabled={submitted}
       />
 
       {!submitted && (
         <button
-          onClick={() => {
-            const aprobado = answer.trim().length > 50;
-
-            const result = {
-              approved: aprobado,
-              answer,
-            };
-
-            localStorage.setItem(
-              "tema-01-imagen",
-              JSON.stringify(result)
-            );
-
-            setSubmitted(true);
-          }}
-          style={{ marginTop: "10px" }}
+          onClick={() => setSubmitted(true)}
+          style={{ marginTop: "12px", padding: "10px 14px", cursor: "pointer" }}
         >
-          Enviar respuesta
+          Enviar
         </button>
       )}
 
       {submitted && (
-        <>
-          <p>
-            {answer.length > 50
-              ? "✅ Imagen superada"
-              : "❌ Respuesta insuficiente"}
-          </p>
-
-          <p style={{ color: "#6b7280" }}>
-            💡 {data.answerGuide}
-          </p>
-        </>
+        <p style={{ marginTop: "16px" }}>✅ Respuesta guardada</p>
       )}
     </div>
   );
