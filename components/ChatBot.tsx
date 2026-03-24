@@ -192,7 +192,7 @@ Resumen
 Explicación
 </button>
 <button
-  onClick={() => enviarMensaje()}")}
+  onClick={() => enviarMensaje()}
   style={{
     padding: "8px 12px",
     borderRadius: "999px",
