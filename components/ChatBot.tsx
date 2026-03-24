@@ -160,7 +160,7 @@ useEffect(() => {
   }}
 >
 <button
-  onClick={() => enviarMensaje("Hazme un resumen del tema")}
+  onClick={() => enviarMensaje()}
   style={{
     padding: "8px 12px",
     borderRadius: "999px",
