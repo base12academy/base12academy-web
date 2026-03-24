@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { awardBadge } from "../../../lib/badges-storage";
 import { BADGES } from "../../../lib/badges";
 
-const data = require("../../../data/historia/tema01_cortas.json");
+const data = require("../../data/historia/tema01_cortas.json");
 
 export default function CortasTema1Page() {
   const questions = data.questions || data;

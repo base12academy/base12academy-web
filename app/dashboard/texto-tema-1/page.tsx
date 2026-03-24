@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const data = require("../../../data/historia/tema01_texto.json");
+const data = require("../../data/historia/tema01_texto.json");
 
 export default function TextoTema1Page() {
   const [answer, setAnswer] = useState("");
