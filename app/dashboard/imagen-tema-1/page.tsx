@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const data = require("../../../data/historia/tema01_imagen.json");
+import data from "../../../data/historia/tema01_imagen.json";
 
 export default function ImagenTema1Page() {
   const [answer, setAnswer] = useState("");
