@@ -176,7 +176,7 @@ useEffect(() => {
 Resumen
 </button>
 <button
-  onClick={() => enviarMensaje("Explícame este tema de forma sencilla")}
+  onClick={() => enviarMensaje()}
   style={{
     padding: "8px 12px",
     borderRadius: "999px",
@@ -192,7 +192,7 @@ Resumen
 Explicación
 </button>
 <button
-  onClick={() => enviarMensaje("Hazme 5 preguntas tipo test sobre este tema")}
+  onClick={() => enviarMensaje()}")}
   style={{
     padding: "8px 12px",
     borderRadius: "999px",
