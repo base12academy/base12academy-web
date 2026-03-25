@@ -62,16 +62,19 @@ export async function POST() {
   const order = generateOrder();
 
   const params = {
-    Ds_Merchant_Amount: "1000",
-    Ds_Merchant_Order: order,
-    Ds_Merchant_MerchantCode: merchantCode,
-    Ds_Merchant_Currency: "978",
-    Ds_Merchant_TransactionType: "0",
-    Ds_Merchant_Terminal: terminal,
-    Ds_Merchant_MerchantURL: "https://base12academy-web-3k98-poqq1twyq-base12academys-projects.vercel.app/api/redsys/notify",
-    Ds_Merchant_UrlOK: "https://base12academy-web-3k98-poqq1twyq-base12academys-projects.vercel.app/dashboard",
-    Ds_Merchant_UrlKO: "https://base12academy-web-3k98-poqq1twyq-base12academys-projects.vercel.app/dashboard",
-  };
+  Ds_Merchant_Amount: "1000",
+  Ds_Merchant_Order: order,
+  Ds_Merchant_MerchantCode: merchantCode,
+  Ds_Merchant_Currency: "978",
+  Ds_Merchant_TransactionType: "0",
+  Ds_Merchant_Terminal: terminal,
+  Ds_Merchant_MerchantURL: 
+    "https://base12academy-web-3k98-poqq1twyq-base12academys-projects.vercel.app/api/redsys/notify",
+  Ds_Merchant_UrlOK:
+    "https://base12academy-web-3k98-poqq1twyq-base12academys-projects.vercel.app/dashboard",
+  Ds_Merchant_UrlKO:
+    "https://base12academy-web-3k98-poqq1twyq-base12academys-projects.vercel.app/dashboard",
+};
 
   const dsMerchantParameters = toBase64(JSON.stringify(params));
   const signature = createMerchantSignature(
