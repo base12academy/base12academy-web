@@ -70,7 +70,7 @@ export async function POST() {
     Ds_Merchant_Terminal: terminal,
     Ds_Merchant_MerchantURL: "https://base12academy-web-3k98-poqq1twyq-base12academys-projects.vercel.app/api/redsys/notify",
     Ds_Merchant_UrlOK: "https://base12academy-web-3k98-poqq1twyq-base12academys-projects.vercel.app/dashboard",
-    Ds_Merchant_UrlKO: "https://base12academy-web-3k98-poqq1twyq-base12academys-projects.vercel.app/pago-error",
+    Ds_Merchant_UrlKO: "https://base12academy-web-3k98-poqq1twyq-base12academys-projects.vercel.app/dashboard",
   };
 
   const dsMerchantParameters = toBase64(JSON.stringify(params));
