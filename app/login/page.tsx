@@ -19,12 +19,13 @@ export default function LoginPage() {
       return;
     }
 
-    setMessage("Login correcto ✅");
+    alert("login ok");
+    window.location.assign("/dashboard");
   };
 
   return (
     <div style={{ padding: "32px" }}>
-      <h1>Login</h1>
+      <h1>LOGIN PRUEBA 123</h1>
 
       <input
         type="email"

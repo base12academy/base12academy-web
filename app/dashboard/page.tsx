@@ -45,20 +45,37 @@ const cursos = [
 export default function HomePage() {
   const [earnedBadges, setEarnedBadges] = useState<BadgeId[]>([]);
   const [loadingBadges, setLoadingBadges] = useState(true);
+  const [hasAccess, setHasAccess] = useState(false);
+  const [loadingAccess, setLoadingAccess] = useState(true);
 
   const userBadges = earnedBadges as string[];
 
   useEffect(() => {
-    const loadBadges = async () => {
+    const loadData = async () => {
       const { data: userData } = await supabase.auth.getUser();
       const user = userData?.user;
 
       if (!user) {
+        setLoadingAccess(false);
         setEarnedBadges([]);
         setLoadingBadges(false);
         return;
       }
 
+      // 🔐 comprobar acceso
+      const { data: perfil } = await supabase
+        .from("perfiles")
+        .select("acceso")
+        .eq("user_id", user.id)
+        .single();
+
+      if (perfil?.acceso) {
+        setHasAccess(true);
+      }
+
+      setLoadingAccess(false);
+
+      // 🎖️ cargar insignias
       const { data, error } = await supabase
         .from("user_badges")
         .select("badge_id")
@@ -78,8 +95,54 @@ export default function HomePage() {
       setLoadingBadges(false);
     };
 
-    loadBadges();
+    loadData();
   }, []);
+
+  // ⏳ mientras carga
+  if (loadingAccess) {
+    return <p style={{ padding: "40px" }}>Comprobando acceso...</p>;
+  }
+
+  // 🔒 si no tiene acceso
+  if (!hasAccess) {
+    return (
+      <>
+        <main
+          style={{
+            minHeight: "100vh",
+            background: "#f8fafc",
+            color: "#111827",
+            padding: "64px 24px",
+          }}
+        >
+          <section
+            style={{
+              maxWidth: "800px",
+              margin: "0 auto",
+              background: "white",
+              border: "1px solid #e5e7eb",
+              borderRadius: "18px",
+              padding: "32px",
+              textAlign: "center",
+            }}
+          >
+            <h1 style={{ fontSize: "36px", fontWeight: "bold" }}>
+              Acceso bloqueado
+            </h1>
+
+            <p style={{ marginTop: "16px" }}>
+              Debes iniciar sesión y tener acceso activo.
+            </p>
+
+            <Link href="/login" style={{ marginTop: "20px", display: "inline-block" }}>
+              Ir a login →
+            </Link>
+          </section>
+        </main>
+        <LeadChatBot />
+      </>
+    );
+  }
 
   return (
     <>
@@ -97,394 +160,63 @@ export default function HomePage() {
             padding: "64px 24px 32px",
           }}
         >
-          <p
-            style={{
-              color: "#2563eb",
-              fontWeight: "bold",
-              marginBottom: "12px",
-            }}
-          >
+          <h1 style={{ fontSize: "48px", fontWeight: "bold" }}>
             Base12 Academy
-          </p>
-
-          <h1
-            style={{
-              fontSize: "56px",
-              lineHeight: "1.1",
-              fontWeight: "bold",
-              maxWidth: "900px",
-              marginBottom: "20px",
-            }}
-          >
-            Tu dashboard de estudio
           </h1>
 
-          <p
-            style={{
-              fontSize: "20px",
-              lineHeight: "1.7",
-              maxWidth: "800px",
-              color: "#4b5563",
-              marginBottom: "28px",
-            }}
-          >
-            Accede a tus pruebas, revisa tu progreso y consulta las insignias que
-            ya has conseguido.
-          </p>
-
-          <section
-            style={{
-              background: "white",
-              border: "1px solid #e5e7eb",
-              borderRadius: "18px",
-              padding: "24px",
-              boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
-              marginBottom: "32px",
-            }}
-          >
-            <h2
-              style={{
-                fontSize: "28px",
-                fontWeight: "bold",
-                marginBottom: "16px",
-              }}
-            >
-              Vídeos de introducción
-            </h2>
-
-            <div
-              style={{
-                display: "grid",
-                gap: "20px",
-                gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-              }}
-            >
+          {/* VIDEOS */}
+          <section style={{ marginTop: "40px" }}>
+            <h2>Vídeos de introducción</h2>
+            <div style={{ display: "grid", gap: "24px", marginTop: "20px" }}>
               {introVideos.map((video) => (
-                <article
-                  key={video.slug}
-                  style={{
-                    border: "1px solid #e5e7eb",
-                    borderRadius: "16px",
-                    padding: "16px",
-                    background: "#ffffff",
-                  }}
-                >
-                  <h3
-                    style={{
-                      fontSize: "20px",
-                      fontWeight: "bold",
-                      marginBottom: "12px",
-                    }}
-                  >
-                    {video.titulo}
-                  </h3>
-
+                <div key={video.slug}>
+                  <h3>{video.titulo}</h3>
                   <iframe
                     width="100%"
                     height="220"
                     src={video.videoUrl}
                     title={video.titulo}
-                    style={{ border: "none", borderRadius: "12px" }}
                     allowFullScreen
                   />
-                </article>
+                </div>
               ))}
             </div>
           </section>
 
-          <section
-            style={{
-              background: "white",
-              border: "1px solid #e5e7eb",
-              borderRadius: "18px",
-              padding: "24px",
-              boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
-              marginBottom: "32px",
-            }}
-          >
-            <h2
-              style={{
-                fontSize: "28px",
-                fontWeight: "bold",
-                marginBottom: "16px",
-              }}
-            >
-              Tus insignias
-            </h2>
+          {/* TEMARIO */}
+          <section style={{ marginTop: "40px" }}>
+            <h2>Temario de Historia</h2>
 
-            {loadingBadges ? (
-              <p style={{ color: "#6b7280" }}>Cargando insignias...</p>
-            ) : earnedBadges.length === 0 ? (
-              <p style={{ color: "#6b7280" }}>
-                Todavía no has conseguido insignias.
-              </p>
-            ) : (
-              <div
-                style={{
-                  display: "grid",
-                  gap: "12px",
-                  gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-                }}
-              >
-                {earnedBadges.map((badgeId) => (
-                  <div
-                    key={badgeId}
-                    style={{
-                      border: "1px solid #dbeafe",
-                      background: "#eff6ff",
-                      borderRadius: "14px",
-                      padding: "16px",
-                    }}
-                  >
-                    <p style={{ fontWeight: "bold", color: "#1d4ed8" }}>
-                      {BADGES[badgeId]?.title}
-                    </p>
-                    <p style={{ fontSize: "14px" }}>
-                      {BADGES[badgeId]?.description}
-                    </p>
-                  </div>
-                ))}
+            {temasHistoria.map((tema) => {
+              const access = getTopicLockState(tema.slug, userBadges);
+
+              return (
+                <div key={tema.slug} style={{ marginBottom: "16px" }}>
+                  <h3>{tema.titulo}</h3>
+
+                  {access.accessible ? (
+                    <Link href={`/dashboard/tema/${tema.slug}`}>
+                      Ver tema →
+                    </Link>
+                  ) : (
+                    <p>🔒 {access.reason}</p>
+                  )}
+                </div>
+              );
+            })}
+          </section>
+
+          {/* CURSOS */}
+          <section id="cursos" style={{ marginTop: "40px" }}>
+            <h2>Cursos</h2>
+
+            {cursos.map((curso) => (
+              <div key={curso.titulo} style={{ marginBottom: "20px" }}>
+                <h3>{curso.titulo}</h3>
+                <p>{curso.descripcion}</p>
+                <p>{curso.precio}</p>
               </div>
-            )}
-          </section>
-
-          <section
-            style={{
-              background: "white",
-              border: "1px solid #e5e7eb",
-              borderRadius: "18px",
-              padding: "24px",
-              boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
-              marginBottom: "40px",
-            }}
-          >
-            <h2
-              style={{
-                fontSize: "28px",
-                fontWeight: "bold",
-                marginBottom: "16px",
-              }}
-            >
-              Temario de Historia
-            </h2>
-
-            <div
-              style={{
-                display: "grid",
-                gap: "16px",
-              }}
-            >
-              {temasHistoria.map((tema) => {
-                const access = getTopicLockState(tema.slug, userBadges);
-
-                return (
-                  <div
-                    key={tema.slug}
-                    style={{
-                      border: "1px solid #e5e7eb",
-                      borderRadius: "14px",
-                      padding: "16px",
-                      background:
-                        tema.estado === "completado"
-                          ? "#ecfdf5"
-                          : tema.estado === "en-progreso"
-                          ? "#eff6ff"
-                          : "#f9fafb",
-                      opacity: access.accessible ? 1 : 0.6,
-                    }}
-                  >
-                    <h3 style={{ fontWeight: "bold", marginBottom: "6px" }}>
-                      {tema.titulo}
-                    </h3>
-
-                    <p style={{ fontSize: "14px", marginBottom: "10px" }}>
-                      {tema.descripcion}
-                    </p>
-
-                    {access.accessible ? (
-                      <Link
-                        href={`/dashboard/tema/${tema.slug}`}
-                        style={{
-                          fontSize: "14px",
-                          color: "#2563eb",
-                          fontWeight: "bold",
-                          textDecoration: "none",
-                        }}
-                      >
-                        Ver tema →
-                      </Link>
-                    ) : (
-                      <p
-                        style={{
-                          fontSize: "14px",
-                          color: "#9ca3af",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        🔒 {access.reason}
-                      </p>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-          </section>
-
-          <section
-            style={{
-              background: "white",
-              border: "1px solid #e5e7eb",
-              borderRadius: "18px",
-              padding: "24px",
-              boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
-              marginBottom: "40px",
-            }}
-          >
-            <h2
-              style={{
-                fontSize: "28px",
-                fontWeight: "bold",
-                marginBottom: "16px",
-              }}
-            >
-              Accesos rápidos
-            </h2>
-
-            <div
-              style={{
-                display: "grid",
-                gap: "16px",
-                gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-              }}
-            >
-              <Link
-                href="/dashboard/test"
-                style={{
-                  display: "block",
-                  background: "#111827",
-                  color: "white",
-                  borderRadius: "16px",
-                  padding: "20px",
-                  textDecoration: "none",
-                }}
-              >
-                <p
-                  style={{
-                    fontSize: "22px",
-                    fontWeight: "bold",
-                    marginBottom: "8px",
-                  }}
-                >
-                  Test Tema 1
-                </p>
-                <p style={{ opacity: 0.9 }}>
-                  Haz el test y consigue tus primeras insignias.
-                </p>
-              </Link>
-
-              <Link
-                href="/dashboard/cortas"
-                style={{
-                  display: "block",
-                  background: "#2563eb",
-                  color: "white",
-                  borderRadius: "16px",
-                  padding: "20px",
-                  textDecoration: "none",
-                }}
-              >
-                <p
-                  style={{
-                    fontSize: "22px",
-                    fontWeight: "bold",
-                    marginBottom: "8px",
-                  }}
-                >
-                  Cortas Tema 1
-                </p>
-                <p style={{ opacity: 0.9 }}>
-                  Accede a las preguntas cortas cuando estén preparadas.
-                </p>
-              </Link>
-            </div>
-          </section>
-
-          <section id="cursos">
-            <h2
-              style={{
-                fontSize: "36px",
-                fontWeight: "bold",
-                marginBottom: "20px",
-              }}
-            >
-              Cursos destacados
-            </h2>
-
-            <div
-              style={{
-                display: "grid",
-                gap: "20px",
-                gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-              }}
-            >
-              {cursos.map((curso) => (
-                <article
-                  key={curso.titulo}
-                  style={{
-                    background: "white",
-                    border: "1px solid #e5e7eb",
-                    borderRadius: "18px",
-                    padding: "24px",
-                    boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
-                  }}
-                >
-                  <h3
-                    style={{
-                      fontSize: "24px",
-                      fontWeight: "bold",
-                      marginBottom: "10px",
-                    }}
-                  >
-                    {curso.titulo}
-                  </h3>
-
-                  <p
-                    style={{
-                      color: "#4b5563",
-                      lineHeight: "1.6",
-                      marginBottom: "18px",
-                    }}
-                  >
-                    {curso.descripcion}
-                  </p>
-
-                  <p
-                    style={{
-                      fontSize: "24px",
-                      fontWeight: "bold",
-                      color: "#2563eb",
-                      marginBottom: "18px",
-                    }}
-                  >
-                    {curso.precio}
-                  </p>
-
-                  <button
-                    style={{
-                      padding: "12px 18px",
-                      border: "none",
-                      borderRadius: "12px",
-                      background: "#2563eb",
-                      color: "white",
-                      fontWeight: "bold",
-                      cursor: "pointer",
-                    }}
-                  >
-                    Más información
-                  </button>
-                </article>
-              ))}
-            </div>
+            ))}
           </section>
         </section>
       </main>
