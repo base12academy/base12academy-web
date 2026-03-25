@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { BADGES, type BadgeId } from "../../lib/badges";
-import { supabase } from "../../lib/supabaseClient";
-import LeadChatBot from "@/components/LeadChatBot";
 import Link from "next/link";
+import LeadChatBot from "@/components/LeadChatBot";
+import { supabase } from "../../lib/supabaseClient";
+import { BADGES, type BadgeId } from "../../lib/badges";
 import { getTopicLockState } from "@/lib/topic-access";
+import { temasHistoria } from "@/lib/temas";
+import { introVideos } from "@/lib/intro-videos";
 
 const cursos = [
   {
@@ -39,17 +41,18 @@ const cursos = [
       "Mejora tu organización, productividad y planificación diaria.",
   },
 ];
-import { temasHistoria } from "../../lib/temas";
+
 export default function HomePage() {
   const [earnedBadges, setEarnedBadges] = useState<BadgeId[]>([]);
   const [loadingBadges, setLoadingBadges] = useState(true);
-  
+
   const userBadges = earnedBadges as string[];
 
   useEffect(() => {
     const loadBadges = async () => {
       const { data: userData } = await supabase.auth.getUser();
       const user = userData?.user;
+
       if (!user) {
         setEarnedBadges([]);
         setLoadingBadges(false);
@@ -146,6 +149,66 @@ export default function HomePage() {
                 marginBottom: "16px",
               }}
             >
+              Vídeos de introducción
+            </h2>
+
+            <div
+              style={{
+                display: "grid",
+                gap: "20px",
+                gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+              }}
+            >
+              {introVideos.map((video) => (
+                <article
+                  key={video.slug}
+                  style={{
+                    border: "1px solid #e5e7eb",
+                    borderRadius: "16px",
+                    padding: "16px",
+                    background: "#ffffff",
+                  }}
+                >
+                  <h3
+                    style={{
+                      fontSize: "20px",
+                      fontWeight: "bold",
+                      marginBottom: "12px",
+                    }}
+                  >
+                    {video.titulo}
+                  </h3>
+
+                  <iframe
+                    width="100%"
+                    height="220"
+                    src={video.videoUrl}
+                    title={video.titulo}
+                    style={{ border: "none", borderRadius: "12px" }}
+                    allowFullScreen
+                  />
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section
+            style={{
+              background: "white",
+              border: "1px solid #e5e7eb",
+              borderRadius: "18px",
+              padding: "24px",
+              boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
+              marginBottom: "32px",
+            }}
+          >
+            <h2
+              style={{
+                fontSize: "28px",
+                fontWeight: "bold",
+                marginBottom: "16px",
+              }}
+            >
               Tus insignias
             </h2>
 
@@ -184,87 +247,89 @@ export default function HomePage() {
               </div>
             )}
           </section>
-<section
-  style={{
-    background: "white",
-    border: "1px solid #e5e7eb",
-    borderRadius: "18px",
-    padding: "24px",
-    boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
-    marginBottom: "40px",
-  }}
->
-  <h2
-    style={{
-      fontSize: "28px",
-      fontWeight: "bold",
-      marginBottom: "16px",
-    }}
-  >
-    Temario de Historia
-  </h2>
 
-  <div
-    style={{
-      display: "grid",
-      gap: "16px",
-    }}
-  >
-    {temasHistoria.map((tema) => {
-  const access = getTopicLockState(tema.slug, userBadges);
+          <section
+            style={{
+              background: "white",
+              border: "1px solid #e5e7eb",
+              borderRadius: "18px",
+              padding: "24px",
+              boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
+              marginBottom: "40px",
+            }}
+          >
+            <h2
+              style={{
+                fontSize: "28px",
+                fontWeight: "bold",
+                marginBottom: "16px",
+              }}
+            >
+              Temario de Historia
+            </h2>
 
-  return (
-    <div
-      key={tema.slug}
-      style={{
-        border: "1px solid #e5e7eb",
-        borderRadius: "14px",
-        padding: "16px",
-        background:
-          tema.estado === "completado"
-            ? "#ecfdf5"
-            : tema.estado === "en-progreso"
-            ? "#eff6ff"
-            : "#f9fafb",
-        opacity: access.accessible ? 1 : 0.6,
-      }}
-    >
-      <h3 style={{ fontWeight: "bold", marginBottom: "6px" }}>
-        {tema.titulo}
-      </h3>
+            <div
+              style={{
+                display: "grid",
+                gap: "16px",
+              }}
+            >
+              {temasHistoria.map((tema) => {
+                const access = getTopicLockState(tema.slug, userBadges);
 
-      <p style={{ fontSize: "14px", marginBottom: "10px" }}>
-        {tema.descripcion}
-      </p>
+                return (
+                  <div
+                    key={tema.slug}
+                    style={{
+                      border: "1px solid #e5e7eb",
+                      borderRadius: "14px",
+                      padding: "16px",
+                      background:
+                        tema.estado === "completado"
+                          ? "#ecfdf5"
+                          : tema.estado === "en-progreso"
+                          ? "#eff6ff"
+                          : "#f9fafb",
+                      opacity: access.accessible ? 1 : 0.6,
+                    }}
+                  >
+                    <h3 style={{ fontWeight: "bold", marginBottom: "6px" }}>
+                      {tema.titulo}
+                    </h3>
 
-      {access.accessible ? (
-        <Link
-          href={`/dashboard/tema/${tema.slug}`}
-          style={{
-            fontSize: "14px",
-            color: "#2563eb",
-            fontWeight: "bold",
-            textDecoration: "none",
-          }}
-        >
-          Ver tema →
-        </Link>
-      ) : (
-        <p
-          style={{
-            fontSize: "14px",
-            color: "#9ca3af",
-            fontWeight: "bold",
-          }}
-        >
-          🔒 {access.reason}
-        </p>
-      )}
-    </div>
-  );
-})}
-  </div>
-</section>
+                    <p style={{ fontSize: "14px", marginBottom: "10px" }}>
+                      {tema.descripcion}
+                    </p>
+
+                    {access.accessible ? (
+                      <Link
+                        href={`/dashboard/tema/${tema.slug}`}
+                        style={{
+                          fontSize: "14px",
+                          color: "#2563eb",
+                          fontWeight: "bold",
+                          textDecoration: "none",
+                        }}
+                      >
+                        Ver tema →
+                      </Link>
+                    ) : (
+                      <p
+                        style={{
+                          fontSize: "14px",
+                          color: "#9ca3af",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        🔒 {access.reason}
+                      </p>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+
           <section
             style={{
               background: "white",
@@ -424,7 +489,7 @@ export default function HomePage() {
         </section>
       </main>
 
-<LeadChatBot />
-</>
-);
+      <LeadChatBot />
+    </>
+  );
 }
