@@ -17,6 +17,22 @@ const cursos = [
 ];
 
 export default function HomePage() {
+  const videosInicio = [
+    {
+      titulo: "Introducción a Base12 Academy",
+      url: "https://www.youtube.com/embed/KqeL09fa4AI",
+    },
+    {
+      titulo: "El Método Base12",
+      url: "https://www.youtube.com/embed/yjl-bICtTMk",
+    },
+    {
+      titulo: "Guía de Estudio Plataforma Base12",
+      url: "https://www.youtube.com/embed/DO7qaRuR9T4",
+    },
+  ];
+
+  
   return (
     <>
       <main
@@ -33,6 +49,7 @@ export default function HomePage() {
             padding: "64px 24px 32px",
           }}
         >
+         
           <h1 style={{ fontSize: "48px", fontWeight: "bold" }}>
             Base12 Academy
           </h1>
@@ -53,6 +70,27 @@ export default function HomePage() {
           >
             Ir al dashboard
           </Link>
+          
+           <div style={{ marginTop: "40px" }}>
+  <h2>Empieza por aquí</h2>
+
+  <div style={{ display: "grid", gap: "24px", marginTop: "20px" }}>
+    {videosInicio.map((video, index) => (
+      <div key={index}>
+        <h3>{video.titulo}</h3>
+        <iframe
+          width="100%"
+          height="400"
+          src={video.url}
+          title={video.titulo}
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      </div>
+    ))}
+  </div>
+</div>
         </section>
       </main>
 
