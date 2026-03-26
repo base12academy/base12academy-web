@@ -188,7 +188,7 @@ export default function HomePage() {
             <h2>Temario de Historia</h2>
 
             {temasHistoria.map((tema) => {
-              const access = getTopicLockState(tema.slug, userBadges);
+              const access = { accessible: hasAccess, reason: "Necesitas comprar el curso" };
 
               return (
                 <div key={tema.slug} style={{ marginBottom: "16px" }}>
