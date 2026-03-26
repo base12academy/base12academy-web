@@ -24,24 +24,8 @@ export function canAccessTopic(slug: string, userBadges: string[]) {
 }
 
 export function getTopicLockState(slug: string, userBadges: string[]) {
-  const rule = TOPIC_ACCESS[slug as TopicSlug];
-
-  if (!rule) {
-    return { accessible: false, reason: "Tema no encontrado" };
-  }
-
-  if (rule.type === "public") {
-    return { accessible: true, reason: null };
-  }
-
-  const ok = userBadges.includes(rule.badgeCode);
-
   return {
-    accessible: ok,
-    reason: ok
-      ? null
-      : rule.badgeCode === "test_tema1_80"
-      ? "Necesitas aprobar el test del Tema 1"
-      : "Necesitas aprobar el test del Tema 2",
+    accessible: true,
+    reason: "",
   };
 }
