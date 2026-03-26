@@ -1,9 +1,9 @@
-""use client";
+"use client";
 
 import { useEffect, useState } from "react";
-import { supabase } from "../../../../lib/supabaseClient";
+import { supabase } from "../../../lib/supabaseClient";
 
-export default function TestTema2() {
+export default function TestTema2Page() {
   const [allowed, setAllowed] = useState(false);
   const [loading, setLoading] = useState(true);
 
