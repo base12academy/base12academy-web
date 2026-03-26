@@ -14,38 +14,27 @@ export default function TestPage() {
   const [allowed, setAllowed] = useState(true);
   const [loading, setLoading] = useState(true);
 
-  // 🔒 BLOQUEO DE ACCESO (como los temas)
-  useEffect(() => {
-    const checkAccess = async () => {
-      const { data: userData } = await supabase.auth.getUser();
-      const user = userData?.user;
+useEffect(() => {
+  const checkAccess = async () => {
+    const { data: userData } = await supabase.auth.getUser();
+    const user = userData?.user;
 
-      const { data } = user
-        ? await supabase
-            .from("user_badges")
-            .select("badge_id")
-            .eq("user_id", user.id)
-        : { data: [] as { badge_id: string }[] };
+    const { data: perfil } = user
+      ? await supabase
+          .from("perfiles")
+          .select("acceso")
+          .eq("user_id", user.id)
+          .maybeSingle()
+      : { data: null };
 
-      const userBadges = data?.map((b) => b.badge_id) ?? [];
+    const canAccess = perfil?.acceso === true;
 
-      // 👇 aquí decides qué test corresponde
-      const { data: perfil } = user
-        ? await supabase
-            .from("perfiles")
-            .select("acceso")
-            .eq("user_id", user.id)
-            .maybeSingle()
-        : { data: null };
+    setAllowed(canAccess);
+    setLoading(false);
+  };
 
-      const canAccess = perfil?.acceso === true;
-
-      setAllowed(canAccess);
-      setLoading(false);
-    };
-
-    checkAccess();
-  }, []);
+  checkAccess();
+}, []);
 
   if (loading) {
     return <div style={{ padding: "32px" }}>Cargando...</div>;
