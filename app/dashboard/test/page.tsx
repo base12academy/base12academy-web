@@ -11,7 +11,7 @@ export default function TestPage() {
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [score, setScore] = useState<any>(null);
   const [showResults, setShowResults] = useState(false);
-  const [allowed, setAllowed] = useState(true);
+  const [allowed, setAllowed] = useState(false);
   const [loading, setLoading] = useState(true);
 
 useEffect(() => {
