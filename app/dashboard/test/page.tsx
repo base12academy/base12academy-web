@@ -30,7 +30,15 @@ export default function TestPage() {
       const userBadges = data?.map((b) => b.badge_id) ?? [];
 
       // 👇 aquí decides qué test corresponde
-      const canAccess = canAccessTopic("tema-1", userBadges);
+      const { data: perfil } = user
+        ? await supabase
+            .from("perfiles")
+            .select("acceso")
+            .eq("user_id", user.id)
+            .maybeSingle()
+        : { data: null };
+
+      const canAccess = perfil?.acceso === true;
 
       setAllowed(canAccess);
       setLoading(false);
