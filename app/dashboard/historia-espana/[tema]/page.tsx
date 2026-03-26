@@ -21,7 +21,7 @@ export default function TemaPage() {
 
       {indiceActual === 0 && (
         <div style={{ marginTop: "20px" }}>
-          <Link href="/dashboard/test">
+          <Link href="/dashboard/test/test-tema-2">
             Ir al test del Tema 1 →
           </Link>
         </div>
@@ -54,9 +54,9 @@ export default function TemaPage() {
       {indiceActual === 1 && (
         <div style={{ marginTop: "20px" }}>
           {hasAccess ? (
-  <Link href="/dashboard/test">
-    Ir al test del Tema 2 →
-  </Link>
+  <Link href="/dashboard/test-tema-2">
+  Ir al test del Tema 2 →
+</Link>
 ) : (
   <p>🔒 Necesitas acceso para hacer el test</p>
 )}
