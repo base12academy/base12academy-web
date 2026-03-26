@@ -67,7 +67,7 @@ export default function HomePage() {
         .from("perfiles")
         .select("acceso")
         .eq("user_id", user.id)
-        .single();
+        .maybeSingle();
 
       if (perfil?.acceso) {
         setHasAccess(true);
