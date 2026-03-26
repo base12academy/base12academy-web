@@ -1,232 +1,92 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useParams, useRouter } from "next/navigation";
-import { temasHistoria } from "../../../../lib/temas";
-import { canAccessTopic, getTopicLockState } from "@/lib/topic-access";
-import { supabase } from "@/lib/supabaseClient";
+import { useParams } from "next/navigation";
+import { temasHistoria } from "@/lib/temas";
 
 export default function TemaPage() {
   const params = useParams();
-  const router = useRouter();
-  const slug = params?.slug as string;
+  const slug = params.slug as string;
 
-  const [loading, setLoading] = useState(true);
-  const [allowed, setAllowed] = useState(false);
-  const [reason, setReason] = useState<string | null>(null);
+  const indiceActual = temasHistoria.findIndex((t) => t.slug === slug);
+  const temaData = temasHistoria[indiceActual];
 
-  const tema = temasHistoria.find((t) => t.slug === slug);
-
-  useEffect(() => {
-    const checkAccess = async () => {
-      const { data: userData } = await supabase.auth.getUser();
-      const user = userData?.user;
-
-      const { data } = user
-        ? await supabase
-            .from("user_badges")
-            .select("badge_id")
-            .eq("user_id", user.id)
-        : { data: [] as { badge_id: string }[] };
-
-      const userBadges = data?.map((item) => item.badge_id) ?? [];
-      const canAccess = canAccessTopic(slug, userBadges);
-      const access = getTopicLockState(slug, userBadges);
-
-      setAllowed(canAccess);
-      setReason(access.reason);
-      setLoading(false);
-    };
-
-    if (slug) {
-      checkAccess();
-    }
-  }, [slug]);
-
-  useEffect(() => {
-    if (!loading && !tema) {
-      router.replace("/dashboard");
-    }
-  }, [loading, tema, router]);
-
-  if (!tema) {
-    return null;
-  }
-
-  if (loading) {
-    return (
-      <main
-        style={{
-          minHeight: "100vh",
-          background: "#f8fafc",
-          color: "#111827",
-          padding: "40px 24px",
-        }}
-      >
-        <section
-          style={{
-            maxWidth: "900px",
-            margin: "0 auto",
-            background: "white",
-            border: "1px solid #e5e7eb",
-            borderRadius: "18px",
-            padding: "32px",
-            boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
-          }}
-        >
-          <p>Cargando...</p>
-        </section>
-      </main>
-    );
-  }
-
-  if (!allowed) {
-    return (
-      <main
-        style={{
-          minHeight: "100vh",
-          background: "#f8fafc",
-          color: "#111827",
-          padding: "40px 24px",
-        }}
-      >
-        <section
-          style={{
-            maxWidth: "900px",
-            margin: "0 auto",
-            background: "white",
-            border: "1px solid #e5e7eb",
-            borderRadius: "18px",
-            padding: "32px",
-            boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
-          }}
-        >
-          <Link
-            href="/dashboard"
-            style={{
-              display: "inline-block",
-              marginBottom: "20px",
-              color: "#2563eb",
-              textDecoration: "none",
-              fontWeight: "bold",
-            }}
-          >
-            ← Volver al dashboard
-          </Link>
-
-          <h1
-            style={{
-              fontSize: "36px",
-              fontWeight: "bold",
-              marginBottom: "12px",
-            }}
-          >
-            🔒 Tema bloqueado
-          </h1>
-
-          <p style={{ color: "#4b5563", marginBottom: "24px" }}>
-            {reason || "No puedes acceder todavía a este tema."}
-          </p>
-
-          <Link
-            href="/dashboard/test"
-            style={{
-              display: "inline-block",
-              padding: "12px 18px",
-              borderRadius: "12px",
-              background: "#111827",
-              color: "white",
-              textDecoration: "none",
-              fontWeight: "bold",
-            }}
-          >
-            Ir al test
-          </Link>
-        </section>
-      </main>
-    );
+  if (!temaData) {
+    return <div style={{ padding: "32px" }}>Tema no encontrado</div>;
   }
 
   return (
-    <main
-      style={{
-        minHeight: "100vh",
-        background: "#f8fafc",
-        color: "#111827",
-        padding: "40px 24px",
-      }}
-    >
-      <section
-        style={{
-          maxWidth: "900px",
-          margin: "0 auto",
-          background: "white",
-          border: "1px solid #e5e7eb",
-          borderRadius: "18px",
-          padding: "32px",
-          boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
-        }}
-      >
-        <Link
-          href="/dashboard"
+    <main style={{ padding: "32px", maxWidth: "900px", margin: "0 auto" }}>
+      <div style={{ marginBottom: "24px" }}>
+        <Link href="/dashboard">← Volver al dashboard</Link>
+      </div>
+
+      <h1 style={{ fontSize: "48px", fontWeight: "bold", marginBottom: "16px" }}>
+        {temaData.titulo}
+      </h1>
+
+      <p style={{ fontSize: "18px", marginBottom: "24px" }}>
+        {temaData.descripcion}
+      </p>
+
+      <div style={{ marginBottom: "32px" }}>
+        <iframe
+          width="100%"
+          height="400"
+          src={temaData.videoUrl}
+          title={temaData.titulo}
+          style={{ border: "none", borderRadius: "16px" }}
+          allowFullScreen
+        />
+      </div>
+
+      <section style={{ marginBottom: "32px" }}>
+        <h2 style={{ fontSize: "28px", fontWeight: "bold", marginBottom: "16px" }}>
+          Temario
+        </h2>
+
+        <div
           style={{
-            display: "inline-block",
-            marginBottom: "20px",
-            color: "#2563eb",
-            textDecoration: "none",
-            fontWeight: "bold",
+            whiteSpace: "pre-line",
+            lineHeight: "1.8",
+            background: "white",
+            border: "1px solid #e5e7eb",
+            borderRadius: "16px",
+            padding: "24px",
           }}
         >
-          ← Volver al dashboard
-        </Link>
-
-        <h1
-          style={{
-            fontSize: "36px",
-            fontWeight: "bold",
-            marginBottom: "12px",
-          }}
-        >
-          {tema.titulo}
-        </h1>
-
-        <p style={{ color: "#4b5563", marginBottom: "24px" }}>
-          {tema.descripcion}
-        </p>
-
-        <div style={{ marginBottom: "24px" }}>
-          <iframe
-            width="100%"
-            height="400"
-            src={tema.videoUrl || "https://www.youtube.com/embed/dQw4w9WgXcQ"}
-            title={tema.titulo}
-            style={{ border: "none", borderRadius: "12px" }}
-            allowFullScreen
-          />
+          {temaData.contenido}
         </div>
-
-        <article style={{ lineHeight: "1.8", marginBottom: "24px" }}>
-          {tema.contenido}
-        </article>
-
-        {tema.slug === "tema-1" && (
-          <Link
-            href="/dashboard/test"
-            style={{
-              display: "inline-block",
-              padding: "12px 18px",
-              borderRadius: "12px",
-              background: "#111827",
-              color: "white",
-              textDecoration: "none",
-              fontWeight: "bold",
-            }}
-          >
-            Hacer test del Tema 1
-          </Link>
-        )}
       </section>
+
+      {slug === "tema-1" && (
+        <section style={{ marginBottom: "32px" }}>
+          <h2 style={{ fontSize: "28px", fontWeight: "bold", marginBottom: "16px" }}>
+            Pruebas del Tema 1
+          </h2>
+
+          <div style={{ display: "grid", gap: "12px" }}>
+            <Link href="/dashboard/test">Hacer test del Tema 1</Link>
+            <Link href="/dashboard/cortas-tema-1">Preguntas cortas del Tema 1</Link>
+            <Link href="/dashboard/texto-tema-1">Prueba de texto del Tema 1</Link>
+            <Link href="/dashboard/imagen-tema-1">Prueba de imagen del Tema 1</Link>
+          </div>
+        </section>
+      )}
+
+      {indiceActual === 3 && (
+        <section style={{ marginBottom: "32px" }}>
+          <h2 style={{ fontSize: "28px", fontWeight: "bold", marginBottom: "16px" }}>
+            Prueba de bloque
+          </h2>
+
+          <div style={{ display: "grid", gap: "12px" }}>
+            <Link href="/dashboard/temario-largo-bloque-1">
+              Prueba de temario largo del Bloque 1
+            </Link>
+          </div>
+        </section>
+      )}
     </main>
   );
 }

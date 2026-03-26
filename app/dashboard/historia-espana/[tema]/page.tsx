@@ -2,11 +2,34 @@
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabaseClient";
 import { temasHistoria } from "@/lib/temas";
 
 export default function TemaPage() {
   const params = useParams();
   const tema = params.tema as string;
+
+  const [hasAccess, setHasAccess] = useState(false);
+
+  useEffect(() => {
+    const checkAccess = async () => {
+      const { data: userData } = await supabase.auth.getUser();
+      const user = userData?.user;
+
+      const { data: perfil } = user
+        ? await supabase
+            .from("perfiles")
+            .select("acceso")
+            .eq("user_id", user.id)
+            .maybeSingle()
+        : { data: null };
+
+      setHasAccess(perfil?.acceso === true);
+    };
+
+    checkAccess();
+  }, []);
 
   const indiceActual = temasHistoria.findIndex((t) => t.slug === tema);
   const temaData = temasHistoria[indiceActual];
@@ -21,7 +44,7 @@ export default function TemaPage() {
 
       {indiceActual === 0 && (
         <div style={{ marginTop: "20px" }}>
-          <Link href="/dashboard/test/test-tema-2">
+          <Link href="/dashboard/test">
             Ir al test del Tema 1 →
           </Link>
         </div>
@@ -54,12 +77,12 @@ export default function TemaPage() {
       {indiceActual === 1 && (
         <div style={{ marginTop: "20px" }}>
           {hasAccess ? (
-  <Link href="/dashboard/test-tema-2">
-  Ir al test del Tema 2 →
-</Link>
-) : (
-  <p>🔒 Necesitas acceso para hacer el test</p>
-)}
+            <Link href="/dashboard/test-tema-2">
+              Ir al test del Tema 2 →
+            </Link>
+          ) : (
+            <p>🔒 Necesitas acceso para hacer el test</p>
+          )}
         </div>
       )}
     </main>

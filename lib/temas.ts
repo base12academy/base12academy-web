@@ -12,7 +12,44 @@ export const temasHistoria: Tema[] = [
     slug: "tema-1",
     titulo: "Tema 1: LA PREHISTORIA EN LA PENÍNSULA IBÉRICA",
     descripcion: "Primeros pobladores, Paleolítico, Neolítico y Edad de los Metales.",
-    contenido: "Contenido del tema 1.",
+    contenido: `TEMA 1: LA PREHISTORIA EN LA PENÍNSULA IBÉRICA
+
+I. EL PALEOLÍTICO EN LA PENÍNSULA (1.300.000 – 10.000 a.C.)
+Contexto histórico y Desarrollo: La Península Ibérica fue un escenario clave en el proceso de hominización en Europa. Según los hallazgos en la Sierra de Atapuerca (Burgos), el poblamiento comenzó hace aproximadamente 1,2 millones de años con el Homo antecessor. Le siguieron el Homo heidelbergensis (250.000 años), el Homo neanderthalensis (Paleolítico Medio) y, finalmente, el Homo sapiens (Paleolítico Superior, hace unos 35.000 años).
+
+Organización social y Economía:
+• Economía: Se basaba en un modelo depredador. La supervivencia dependía de la caza de grandes herbívoros, la pesca y la recolección de frutos silvestres.
+• Sociedad: Eran grupos nómadas organizados en pequeñas bandas o hordas que se desplazaban siguiendo a las manadas de animales o buscando refugios climáticos.
+
+Cultura e Ideología: Aparecen las primeras manifestaciones espirituales. El Neandertal ya practicaba enterramientos, como se observa en la Cueva de Morín (Cantabria).
+
+II. ARTE RUPESTRE Y FORMAS DE VIDA
+
+• Escuela Franco-Cantábrica: Altamira. Realismo, policromía y función mágica.
+• Escuela Levantina: Escenas humanas, monocroma y esquemática.
+
+III. EL NEOLÍTICO (6.000 – 3.000 a.C.)
+
+• Agricultura y ganadería
+• Sedentarismo
+• Excedentes y jerarquía social
+• Cerámica cardial
+
+IV. EDAD DE LOS METALES (3.000 – 800 a.C.)
+
+• Cobre: Los Millares
+• Bronce: El Argar
+• Comercio de metales
+• Aumento de desigualdad social
+
+V. CULTURAS PROTOHISTÓRICAS
+
+• Tartessos
+• Íberos y celtas
+• Introducción de la moneda y escritura
+• Dama de Elche
+
+Consecuencia: Fin de la Prehistoria y base para la romanización.`,
     estado: "completado",
     videoUrl: "https://www.youtube.com/embed/Q4B2Cpf453k",
   },
