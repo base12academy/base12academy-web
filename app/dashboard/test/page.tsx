@@ -52,7 +52,7 @@ useEffect(() => {
   return (
     <div style={{ padding: "32px" }}>
       <h1>Test Tema 1</h1>
-
+<p>Ruta actual: {typeof window !== "undefined" && window.location.pathname}</p>
       {data.questions.map((q: any) => (
         <div key={q.id} style={{ marginBottom: "20px" }}>
           <p>{q.question}</p>
