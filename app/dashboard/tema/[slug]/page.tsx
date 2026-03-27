@@ -2,11 +2,23 @@
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { temasHistoria } from "@/lib/temas";
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabaseClient";
+import {
+  temasHistoria,
+  IMAGENES_BLOQUES,
+  TEXTOS_BLOQUES,
+} from "@/lib/temas";
 
 export default function TemaPage() {
   const params = useParams();
   const slug = params.slug as string;
+  const [hasAccess, setHasAccess] = useState(false);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+  setHasAccess(true);
+}, []);
 
   const indiceActual = temasHistoria.findIndex((t) => t.slug === slug);
   const temaData = temasHistoria[indiceActual];
@@ -14,6 +26,12 @@ export default function TemaPage() {
   if (!temaData) {
     return <div style={{ padding: "32px" }}>Tema no encontrado</div>;
   }
+
+  const bloque = `bloque-${Math.floor(indiceActual / 4) + 1}`;
+  const imagenes =
+    IMAGENES_BLOQUES[bloque as keyof typeof IMAGENES_BLOQUES] || [];
+  const textos =
+    TEXTOS_BLOQUES[bloque as keyof typeof TEXTOS_BLOQUES] || [];
 
   return (
     <main style={{ padding: "32px", maxWidth: "900px", margin: "0 auto" }}>
@@ -42,21 +60,65 @@ export default function TemaPage() {
 
       <section style={{ marginBottom: "32px" }}>
         <h2 style={{ fontSize: "28px", fontWeight: "bold", marginBottom: "16px" }}>
-          Temario
+          Índice del tema
         </h2>
 
         <div
           style={{
             whiteSpace: "pre-line",
             lineHeight: "1.8",
-            background: "white",
+            background: "#f9fafb",
             border: "1px solid #e5e7eb",
             borderRadius: "16px",
             padding: "24px",
+            userSelect: "none",
           }}
         >
-          {temaData.contenido}
+          {temaData.indice}
         </div>
+      </section>
+
+      <section style={{ marginBottom: "32px" }}>
+        <h2 style={{ fontSize: "28px", fontWeight: "bold", marginBottom: "16px" }}>
+          Temario
+        </h2>
+
+        {hasAccess ? (
+          <div
+            style={{
+              whiteSpace: "pre-line",
+              lineHeight: "1.8",
+              background: "white",
+              border: "1px solid #e5e7eb",
+              borderRadius: "16px",
+              padding: "24px",
+              userSelect: "none",
+            }}
+          >
+            {temaData.contenido}
+          </div>
+        ) : (
+          <div
+            style={{
+              background: "#f3f4f6",
+              padding: "24px",
+              borderRadius: "16px",
+              textAlign: "center",
+            }}
+          >
+            <p style={{ fontSize: "18px", fontWeight: "bold", marginBottom: "12px" }}>
+              🔒 Contenido premium bloqueado
+            </p>
+
+            <p style={{ marginBottom: "16px" }}>
+              Accede al desarrollo completo del tema, esquemas y preparación tipo EBAU.
+            </p>
+
+            <Link href="/comprar" style={{ fontWeight: "bold" }}>
+              Activar acceso →
+            </Link>
+          </div>
+        )}
       </section>
 
       {slug === "tema-1" && (
@@ -87,6 +149,121 @@ export default function TemaPage() {
           </div>
         </section>
       )}
+
+      <section style={{ marginTop: "40px" }}>
+        <h2 style={{ fontSize: "28px", fontWeight: "bold", marginBottom: "16px" }}>
+          Imágenes del bloque
+        </h2>
+
+        <div style={{ display: "grid", gap: "12px" }}>
+          {imagenes.map((img, i) => (
+            <div
+              key={i}
+              style={{
+                padding: "16px",
+                border: "1px solid #e5e7eb",
+                borderRadius: "12px",
+                background: "#ffffff",
+              }}
+            >
+              <p style={{ fontWeight: "bold", marginBottom: "8px" }}>{img.titulo}</p>
+                {"imagen" in img && img.imagen ? (
+  <img
+  src={img.imagen}
+  alt={img.titulo}
+  style={{
+    width: "300px",
+    display: "block",
+    margin: "0 auto 12px auto",
+    borderRadius: "12px",
+  }}
+/>
+) : null}
+
+              <p style={{ fontSize: "14px", marginBottom: "12px", color: "#374151" }}>
+                {img.descripcion}
+              </p>
+
+              {"explicacion" in img && img.explicacion ? (
+  <>
+    <button
+      onClick={() => setOpenIndex(openIndex === i ? null : i)}
+      style={{
+        marginBottom: "12px",
+        fontSize: "14px",
+        color: "#2563eb",
+        background: "none",
+        border: "none",
+        cursor: "pointer",
+        padding: 0,
+      }}
+    >
+      {openIndex === i ? "Ocultar explicación ↑" : "Ver explicación ↓"}
+    </button>
+
+    {openIndex === i ? (
+      <div
+        style={{
+          whiteSpace: "pre-line",
+          lineHeight: "1.8",
+          background: "#f9fafb",
+          border: "1px solid #e5e7eb",
+          borderRadius: "12px",
+          padding: "16px",
+          fontSize: "15px",
+        }}
+      >
+        {img.explicacion}
+      </div>
+    ) : null}
+  </>
+) : null}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section style={{ marginTop: "40px" }}>
+        <h2 style={{ fontSize: "28px", fontWeight: "bold", marginBottom: "16px" }}>
+          Textos históricos del bloque
+        </h2>
+
+        <div style={{ display: "grid", gap: "12px" }}>
+          {textos.map((txt, i) => (
+            <div
+              key={i}
+              style={{
+                padding: "16px",
+                border: "1px solid #e5e7eb",
+                borderRadius: "12px",
+                background: "#ffffff",
+              }}
+            >
+              <p style={{ fontWeight: "bold", marginBottom: "8px" }}>{txt.titulo}</p>
+
+              <p style={{ fontSize: "14px", marginBottom: "12px", color: "#374151" }}>
+                {txt.descripcion}
+              </p>
+
+              {"explicacion" in txt && txt.explicacion ? (
+                <div
+                  style={{
+                    whiteSpace: "pre-line",
+                    lineHeight: "1.8",
+                    background: "#f9fafb",
+                    border: "1px solid #e5e7eb",
+                    borderRadius: "12px",
+                    padding: "16px",
+                    fontSize: "15px",
+                  }}
+                >
+                  {txt.explicacion}
+                </div>
+              ) : null}
+            </div>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }

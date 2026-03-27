@@ -1,5 +1,3 @@
-throw new Error("TEST TEMA 2 DEBUG");
-
 "use client";
 
 import { useEffect, useState } from "react";

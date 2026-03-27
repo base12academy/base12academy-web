@@ -101,7 +101,7 @@ export default function HistoriaEspanaPage() {
                 </div>
               ) : (
                 <Link
-                  href={`/dashboard/historia-espana/${tema.slug}`}
+                  href={`/dashboard/tema/${tema.slug}`}
                   style={{
                     display: "block",
                     padding: "24px",

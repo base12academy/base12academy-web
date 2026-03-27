@@ -1,90 +1,18 @@
 "use client";
 
-import Link from "next/link";
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import { supabase } from "@/lib/supabaseClient";
-import { temasHistoria } from "@/lib/temas";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
-export default function TemaPage() {
+export default function RedirectTema() {
   const params = useParams();
-  const tema = params.tema as string;
+  const router = useRouter();
 
-  const [hasAccess, setHasAccess] = useState(false);
+  const slug = params.tema as string;
 
   useEffect(() => {
-    const checkAccess = async () => {
-      const { data: userData } = await supabase.auth.getUser();
-      const user = userData?.user;
+    router.replace(`/dashboard/tema/${slug}`);
+  }, [slug, router]);
 
-      const { data: perfil } = user
-        ? await supabase
-            .from("perfiles")
-            .select("acceso")
-            .eq("user_id", user.id)
-            .maybeSingle()
-        : { data: null };
-
-      setHasAccess(perfil?.acceso === true);
-    };
-
-    checkAccess();
-  }, []);
-
-  const indiceActual = temasHistoria.findIndex((t) => t.slug === tema);
-  const temaData = temasHistoria[indiceActual];
-
-  if (!temaData) {
-    return <div>Tema no encontrado</div>;
-  }
-
-  return (
-    <main style={{ padding: "32px" }}>
-      <h1>{temaData.titulo}</h1>
-
-      {indiceActual === 0 && (
-        <div style={{ marginTop: "20px" }}>
-          <Link href="/dashboard/test">
-            Ir al test del Tema 1 →
-          </Link>
-        </div>
-      )}
-
-      {indiceActual === 0 && (
-        <div style={{ marginTop: "12px" }}>
-          <Link href="/dashboard/cortas-tema-1">
-            Ir a preguntas cortas del Tema 1 →
-          </Link>
-        </div>
-      )}
-
-      {indiceActual === 0 && (
-        <div style={{ marginTop: "12px" }}>
-          <Link href="/dashboard/texto-tema-1">
-            Ir al comentario de texto del Tema 1 →
-          </Link>
-        </div>
-      )}
-
-      {indiceActual === 0 && (
-        <div style={{ marginTop: "12px" }}>
-          <Link href="/dashboard/imagen-tema-1">
-            Ir al comentario de imagen del Tema 1 →
-          </Link>
-        </div>
-      )}
-
-      {indiceActual === 1 && (
-        <div style={{ marginTop: "20px" }}>
-          {hasAccess ? (
-            <Link href="/dashboard/test-tema-2">
-              Ir al test del Tema 2 →
-            </Link>
-          ) : (
-            <p>🔒 Necesitas acceso para hacer el test</p>
-          )}
-        </div>
-      )}
-    </main>
-  );
+  return <p style={{ padding: "32px" }}>Redirigiendo...</p>;
 }

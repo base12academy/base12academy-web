@@ -16,7 +16,6 @@ function padOrder(order: string) {
 }
 
 function generateOrder() {
-  // 12 posiciones y 4 primeras numéricas
   return Date.now().toString().slice(-12);
 }
 
@@ -46,7 +45,7 @@ function createMerchantSignature(
     .digest("base64");
 }
 
-export async function POST() {
+export async function POST(req: Request) {
   const merchantCode = process.env.REDSYS_MERCHANT_CODE;
   const terminal = process.env.REDSYS_TERMINAL || "001";
   const secretKey = process.env.REDSYS_SECRET_KEY;
@@ -59,22 +58,28 @@ export async function POST() {
     );
   }
 
+  const body = await req.json().catch(() => ({}));
+  const userId = body?.userId || "TEMPORAL";
+
   const order = generateOrder();
 
   const params = {
-  Ds_Merchant_Amount: "1000",
-  Ds_Merchant_Order: order,
-  Ds_Merchant_MerchantCode: merchantCode,
-  Ds_Merchant_Currency: "978",
-  Ds_Merchant_TransactionType: "0",
-  Ds_Merchant_Terminal: terminal,
-  Ds_Merchant_MerchantURL:
-  "https://base12academy-web-3k98.vercel.app/api/redsys/notify",
-Ds_Merchant_UrlOK:
-  "https://base12academy-web-3k98.vercel.app/pago-ok",
-Ds_Merchant_UrlKO:
-  "https://base12academy-web-3k98.vercel.app/pago-error",
-};
+    Ds_Merchant_Amount: "2900",
+    Ds_Merchant_Order: order,
+    Ds_Merchant_MerchantCode: merchantCode,
+    Ds_Merchant_Currency: "978",
+    Ds_Merchant_TransactionType: "0",
+    Ds_Merchant_Terminal: terminal,
+    Ds_Merchant_MerchantData: Buffer.from(
+      JSON.stringify({ userId })
+    ).toString("base64"),
+    Ds_Merchant_MerchantURL:
+      "https://base12academy-web-3k98.vercel.app/api/redsys/notify",
+    Ds_Merchant_UrlOK:
+      "https://base12academy-web-3k98.vercel.app/pago-ok",
+    Ds_Merchant_UrlKO:
+      "https://base12academy-web-3k98.vercel.app/pago-error",
+  };
 
   const dsMerchantParameters = toBase64(JSON.stringify(params));
   const signature = createMerchantSignature(
