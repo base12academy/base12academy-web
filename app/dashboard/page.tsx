@@ -165,25 +165,57 @@ export default function HomePage() {
           </h1>
 
           {/* VIDEOS */}
-          <section style={{ marginTop: "40px" }}>
-            <h2>Vídeos de introducción</h2>
-            <div style={{ display: "grid", gap: "24px", marginTop: "20px" }}>
-              {introVideos.map((video) => (
-                <div key={video.slug}>
-                  <h3>{video.titulo}</h3>
-                  <iframe
-                    width="100%"
-                    height="220"
-                    src={video.videoUrl}
-                    title={video.titulo}
-                    allowFullScreen
-                  />
-                </div>
-              ))}
-            </div>
-          </section>
+<section style={{ marginTop: "40px" }}>
+  <h2>Vídeos de introducción</h2>
 
-          {/* TEMARIO */}
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: "repeat(3, 1fr)",
+      gap: "20px",
+      marginTop: "20px",
+      alignItems: "start",
+    }}
+  >
+    {introVideos.map((video) => (
+      <div
+        key={video.slug}
+        style={{
+          background: "white",
+          border: "1px solid #e5e7eb",
+          borderRadius: "16px",
+          padding: "16px",
+        }}
+      >
+        <h3 style={{ fontSize: "18px", marginBottom: "12px" }}>{video.titulo}</h3>
+
+        <iframe
+          width="100%"
+          height="180"
+          src={video.videoUrl}
+          title={video.titulo}
+          style={{ border: "none", borderRadius: "12px" }}
+          allowFullScreen
+        />
+      </div>
+    ))}
+  </div>
+</section>
+
+                  {/* CURSOS */}
+<section id="cursos" style={{ marginTop: "40px" }}>
+  <h2>Cursos</h2>
+
+  {cursos.map((curso) => (
+    <div key={curso.titulo} style={{ marginBottom: "20px" }}>
+      <h3>{curso.titulo}</h3>
+      <p>{curso.descripcion}</p>
+      <p style={{ color: "#6b7280", fontSize: "14px" }}>{curso.precio}</p>
+    </div>
+  ))}
+</section>
+
+  {/* TEMARIO */}
           <section style={{ marginTop: "40px" }}>
             <h2>Temario de Historia</h2>
 
@@ -206,22 +238,47 @@ export default function HomePage() {
             })}
           </section>
 
-          {/* CURSOS */}
-          <section id="cursos" style={{ marginTop: "40px" }}>
-            <h2>Cursos</h2>
-
-            {cursos.map((curso) => (
-              <div key={curso.titulo} style={{ marginBottom: "20px" }}>
-                <h3>{curso.titulo}</h3>
-                <p>{curso.descripcion}</p>
-                <p>{curso.precio}</p>
-              </div>
-            ))}
-          </section>
         </section>
       </main>
+<footer
+  style={{
+    marginTop: "64px",
+    padding: "40px 24px",
+    background: "#ffffff",
+    borderTop: "1px solid #e5e7eb",
+  }}
+>
+  <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+    <p style={{ marginBottom: "16px", fontWeight: "bold" }}>
+      Base12 Academy
+    </p>
 
-      <LeadChatBot />
-    </>
-  );
+    <p style={{ marginBottom: "8px", color: "#6b7280" }}>
+      Imagen Digital Ménace, S. L. U.
+    </p>
+    <p style={{ marginBottom: "8px", color: "#6b7280" }}>
+      CIF: B21746086
+    </p>
+    <p style={{ marginBottom: "8px", color: "#6b7280" }}>
+      Calle Lanuza, 8 · 29009 Málaga
+    </p>
+    <p style={{ marginBottom: "16px", color: "#6b7280" }}>
+      Contacto técnico: base12academy@gmail.com
+    </p>
+
+    <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+      <Link href="/aviso-legal">Aviso legal</Link>
+      <Link href="/privacidad">Política de privacidad</Link>
+      <Link href="/cookies">Política de cookies</Link>
+      <Link href="/terminos-contratacion">Términos de contratación</Link>
+    </div>
+
+    <p style={{ marginTop: "16px", fontSize: "14px", color: "#9ca3af" }}>
+      © 2026 Base12 Academy. Todos los derechos reservados.
+    </p>
+  </div>
+</footer>
+      <LeadChatBot /> 
+    </> 
+  ); 
 }

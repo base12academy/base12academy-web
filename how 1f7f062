@@ -1,0 +1,37 @@
+[33me6d292d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m fix build error test tema 2
+[33m1f7f062[m tema 1 contenido real
+[33mf58463d[m debug ruta real test
+[33mbcbf3c4[m bloquear test tema 2
+[33m309ceab[m debug ruta test
+[33m30deed2[m fix ruta test tema 2
+[33m1469d18[m bloqueo test tema 2 definitivo
+[33m262a3ae[m fix allowed default false
+[33mdda690a[m bloquear acceso test tema 2
+[33mc3dcc33[m bloqueo test correcto
+[33m69e1096[m bloquear test por acceso
+[33mce43425[m bloqueo por acceso
+[33m06edff6[m desbloquear temas
+[33m711928a[m fix acceso perfil
+[33mb709e66[m fix login redirect
+[33m038e6b7[m Añado vídeos de inicio en la home
+[33m7f34774[m integrar temario completo y videos
+[33ma5eb7c6[m add redsys notify endpoint
+[33m4d21e94[m fix redsys stable return urls
+[33m4c7aba7[m restaurar paginas pago
+[33mb60dc63[m fix urls relativas redsys
+[33me983ec5[m fix redsys urlok duplicada
+[33m4d970ba[m fix redsys urlko
+[33ma2e22aa[m fix api redsys route
+[33m37e33c2[m fix api redsys route
+[33m4367dfc[m fix comilla extra ChatBot
+[33mad15727[m fix ChatBot explicacion
+[33mdbacb5d[m fix ChatBot enviarMensaje
+[33m678c821[m fix eliminar json imagen
+[33m8b47308[m fix definitivo json imagen
+[33m14c804c[m fix ruta imagen
+[33m86a9589[m Force redeploy
+[33m0d07994[m fix rutas json
+[33md929aaa[m TPV Comprar
+[33m3247935[m Add supabase-js dependency
+[33md94881e[m Update supabaseClient.ts
+[33m40b6c34[m Initial commit
