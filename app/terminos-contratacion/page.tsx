@@ -11,7 +11,7 @@ export default function TerminosContratacionPage() {
       </p>
 
       <p style={{ marginBottom: "16px" }}>
-        <strong>Producto:</strong> cursos online de preparación para la EBAU / PAU,
+        <strong>Producto:</strong> cursos online de preparación para la PAU,
         oposiciones y cursos online especializados.
       </p>
 
@@ -20,8 +20,8 @@ export default function TerminosContratacionPage() {
       </p>
 
       <ul style={{ marginBottom: "16px", paddingLeft: "24px", lineHeight: "1.8" }}>
-        <li>Preparación EBAU / PAU: 17 € al mes (suscripción mensual).</li>
-        <li>Plan intensivo EBAU / PAU: 29 € (acceso durante 2 meses).</li>
+        <li>Preparación PAU: 17 € al mes (suscripción mensual).</li>
+        <li>Plan intensivo PAU: 29 € (acceso durante 2 meses).</li>
         <li>Oposiciones: 19 € al mes (suscripción mensual).</li>
         <li>Cursos online especializados: entre 35 € y 39 € según el curso.</li>
       </ul>

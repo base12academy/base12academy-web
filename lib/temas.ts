@@ -49,9 +49,7 @@ Es uno de los principales símbolos de la cultura ibérica en la Península.`,
     titulo: "Arte rupestre de Altamira",
     descripcion: "Pinturas paleolíticas de bisontes en la cueva de Altamira (Cantabria).",
     imagen: "/images/altamira.jpg",
-    explicacion: `Análisis del Arte Rupestre de Altamira (Modelo EBAU/PAU)
-El análisis de las pinturas de la Cueva de Altamira es un contenido recurrente en la EBAU para explicar el origen del pensamiento simbólico y las primeras manifestaciones artísticas de la humanidad en la Península Ibérica. Representa la cumbre del realismo y la complejidad técnica del Paleolítico Superior.
-1. Definición, autoría y cronología
+    explicacion: `1. Definición, autoría y cronología
 •	Tipo de obra: Pintura rupestre (paredes de cuevas).
 •	Cronología: Pertenecen al periodo Paleolítico Superior, específicamente a la cultura Magdaleniense (aprox. hace 15.000 - 12.000 años).
 •	Autor: Grupos de cazadores-recolectores (Homo sapiens). El artista es anónimo, aunque se observa una gran especialización técnica que sugiere la existencia de "maestros" dentro de la tribu.
@@ -78,9 +76,7 @@ Altamira es conocida como la "Capilla Sixtina del Arte Cuaternario". Representa 
     { titulo: "Acueducto de Segovia", 
       descripcion: "Obra de ingeniería civil romana del siglo II d.C.", 
       imagen: "/images/dama-elche.jpg",
-      explicacion: `El Acueducto de Segovia es, junto con el de Mérida o Tarragona, una de las obras de ingeniería civil más importantes y mejor conservadas del Imperio Romano en el mundo. Representa el poder de la romanización y la capacidad técnica de Roma para transformar el territorio y dotar de infraestructuras a sus ciudades.
-Análisis del Acueducto de Segovia (Modelo EBAU/PAU)
-1. Definición, autoría y técnica
+      explicacion: `1. Definición, autoría y técnica
 •	Tipo de obra: Arquitectura civil e ingeniería hidráulica. Es un puente-acueducto destinado a transportar agua desde la sierra hasta la ciudad de Segovia.
 •	Autor: Anónimo. Es una obra del Estado romano, ejecutada por arquitectos y operarios militares o civiles bajo mando imperial.
 •	Cronología: Su datación ha sido debatida, pero las investigaciones más recientes lo sitúan en la época de los Flavios (segunda mitad del siglo I d.C.) o principios del reinado de Trajano (siglo II d.C.).
@@ -102,9 +98,7 @@ Representa la pervivencia del legado romano en España. Ha estado en uso prácti
     { titulo: "Teatro Romano de Mérida", 
       descripcion: "Construcción para espectáculos del siglo I a.C.", 
       imagen: "teatro-romano-merida.jpg",
-      explicacion: `El Teatro Romano de Mérida es el edificio más emblemático de la antigua Augusta Emerita y uno de los monumentos romanos más espectaculares de la Península Ibérica. Representa la culminación del ocio y la propaganda política en las provincias del Imperio.
-Análisis del Teatro Romano de Mérida (Modelo EBAU/PAU)
-1. Definición, autoría y cronología
+      explicacion: `1. Definición, autoría y cronología
 •	Tipo de obra: Arquitectura civil destinada al espectáculo (teatro).
 •	Autor: Anónimo (arquitectos y constructores del Estado). El promotor fue Marco Vipsanio Agripa, yerno del emperador Augusto.
 •	Cronología: Fue inaugurado entre los años 16 y 15 a. C. Posteriormente, sufrió remodelaciones importantes a finales del siglo I (época de Trajano) y en el siglo II (época de Adriano), que es cuando se levantó el actual frente de escena.
@@ -129,9 +123,7 @@ Representa la supervivencia de la cultura clásica en España. Tras siglos de ab
     { titulo: "Planta de la Mezquita de Córdoba", 
       descripcion: "Diagrama arquitectónico del edificio Omeya (siglos VIII-X)", 
       imagen: "mezquita-cordoba.jpg",
-      explicacion: `El análisis de la planta de la Mezquita de Córdoba es un ejercicio fundamental en los exámenes de Historia de España, ya que permite explicar la evolución política y religiosa de al-Ándalus, desde el Emirato hasta el Califato, y su posterior transformación tras la Reconquista.
-Análisis de la Planta de la Mezquita de Córdoba (Modelo EBAU/PAU)
-1. Definición y tipología
+      explicacion: `1. Definición y tipología
 •	Tipo de obra: Arquitectura religiosa islámica (Mezquita aljama o principal).
 •	Autor: Es una obra colectiva impulsada por diferentes emires y califas de la dinastía Omeya.
 •	Cronología: Siglos VIII al X (etapa islámica) y siglo XVI (catedral cristiana).
@@ -157,9 +149,7 @@ Representa el apogeo del arte emiral y califal y es el símbolo del poder de la 
     { titulo: "Mapa de la expansión de los reinos cristianos", 
       descripcion: "Cartografía de la Península Ibérica entre los siglos VIII y XV.", 
       imagen: "conquista-cristianas.jpg",
-      explicacion: `El mapa de la expansión de los reinos cristianos (o de la Reconquista) es un recurso iconográfico esencial en la EBAU para explicar la formación de los reinos peninsulares y el desplazamiento de la frontera entre la Cristiandad y Al-Ándalus entre los siglos VIII y XV.
-Análisis del Mapa de la Reconquista (Modelo EBAU/PAU)
-1. Definición y tipología
+      explicacion: `1. Definición y tipología
 •	Tipo de obra: Mapa histórico-político de carácter evolutivo.
 •	Contenido: Representa las distintas etapas de avance de los núcleos cristianos del norte hacia el sur peninsular, divididas generalmente por siglos o hitos militares.
 •	Autor: Cartografía histórica moderna (reconstrucción científica basada en crónicas y tratados de límites).
@@ -317,7 +307,7 @@ o	A la derecha (españoles): Aparecen las lanzas en posición vertical, ordenada
 o	A la izquierda (holandeses): Las alabardas están desordenadas y el humo de la ciudad incendiada al fondo sugiere la derrota, aunque sus rostros mantienen la dignidad.
 •	La perspectiva aérea: El fondo del cuadro muestra el paisaje de Breda inundado y humeante, utilizando una técnica de degradación de colores (azules y grises) que crea una sensación de profundidad y atmósfera real.
 5. Significado histórico
-Representa el ideal del caballero español y la propaganda de una monarquía que, aunque empezaba a mostrar signos de agotamiento económico, quería proyectar una imagen de superioridad moral y militar. En la EBAU, esta obra es fundamental para explicar el siglo XVII (los Austrias Menores), el papel de los validos en la política exterior y el uso del arte como herramienta de Estado para ocultar la incipiente decadencia del Imperio.`,
+Representa el ideal del caballero español y la propaganda de una monarquía que, aunque empezaba a mostrar signos de agotamiento económico, quería proyectar una imagen de superioridad moral y militar. En la PAU, esta obra es fundamental para explicar el siglo XVII (los Austrias Menores), el papel de los validos en la política exterior y el uso del arte como herramienta de Estado para ocultar la incipiente decadencia del Imperio.`,
    
     },
     { titulo: "Mapa Decretos de Nueva Planta", 
@@ -637,7 +627,7 @@ La escena tiene lugar en la Puerta del Sol de Madrid, frente al edificio de la C
 •	Las Elecciones Municipales del 12 de abril: Convocadas como un plebiscito sobre la Corona, los partidos republicano-socialistas triunfaron en las grandes ciudades.
 •	La caída de Alfonso XIII: Ante la falta de apoyo militar y el empuje popular en las calles, el rey decidió abandonar España hacia el exilio para evitar una guerra civil. La República fue proclamada primero en Éibar y Sahagún, y horas después en Madrid.
 4. Qué representa y contenido (Elementos clave)
-La fotografía ilustra varios conceptos fundamentales que se exigen en la EBAU:
+La fotografía ilustra varios conceptos fundamentales que se exigen en la PAU:
 •	La Soberanía Popular: La masa compacta de ciudadanos de todas las clases sociales representa el apoyo civil al nuevo régimen.
 •	La Bandera Tricolor: Es el elemento visual más potente. La incorporación de la franja morada (en alusión a los Comuneros de Castilla) simbolizaba la ruptura con la bandera roja y gualda de la monarquía borbónica.
 •	El Ministerio de la Gobernación: Desde sus balcones, los miembros del Comité Revolucionario (convertido en Gobierno Provisional), liderados por Niceto Alcalá-Zamora, se asomaron para dirigirse a la multitud, asumiendo el poder de forma legítima pero revolucionaria.
@@ -686,7 +676,7 @@ El mapa abarca toda la Península Ibérica, las Islas Baleares, Canarias y las p
 •	El golpe de Estado (julio de 1936): Tras el fracaso parcial del pronunciamiento militar contra la Segunda República, el país quedó dividido. El paso del Ejército de África a través del Estrecho (con ayuda alemana e italiana) fue decisivo para el avance inicial hacia Madrid.
 •	Ayuda Internacional: El mapa refleja indirectamente la intervención extranjera (Comité de No Intervención vs. Legión Cóndor, CTV italiano y las Brigadas Internacionales).
 4. Fases de la Guerra representadas
-Un análisis completo de EBAU debe desglosar las etapas que suelen marcarse con distintos colores o flechas en el mapa:
+Un análisis completo de PAU debe desglosar las etapas que suelen marcarse con distintos colores o flechas en el mapa:
 1.	Guerra de Columnas y Marcha sobre Madrid (1936): El avance desde el sur (Yagüe) y el norte (Mola). El fracaso en la toma de Madrid tras las batallas del Jarama y Guadalajara convierte la guerra de movimientos en una guerra de desgaste.
 2.	La Campaña del Norte (1937): Los sublevados concentran su esfuerzo en la franja cantábrica (bombardeo de Guernica, caída de Bilbao y Santander). La República pierde sus recursos mineros e industriales del norte.
 3.	La llegada al Mediterráneo (1938): Tras la Batalla de Teruel, las tropas de Franco llegan a Vinaroz (Castellón), cortando el territorio republicano en dos y aislando a Cataluña del resto de la zona fiel a la República.
@@ -778,7 +768,7 @@ La obra original se encuentra en el Museo Nacional Centro de Arte Reina Sofía, 
 •	El uso del color: Predominan los tonos grises, ocres y apagados, propios de la estética de la época, pero el dinamismo de las figuras sugiere una explosión de energía y alivio contenida durante décadas.
 •	El simbolismo: Las figuras parecen estar en un espacio vacío, lo que enfatiza el acto del encuentro humano por encima de cualquier escenario político específico. Es la imagen de la "paz sin victoria" que buscaba superar la herida de la Guerra Civil.
 5. Significado histórico
-Representa el espíritu del consenso. En el ámbito de la EBAU, esta obra explica visualmente la voluntad de los españoles de "perdonar y olvidar" el enfrentamiento fratricida para construir un sistema democrático basado en el diálogo. Fue el cartel más difundido de la época (se imprimieron 500.000 copias que fueron incautadas por la policía en su momento) y hoy es el símbolo del éxito de la Transición y de la Constitución de 1978.`,
+Representa el espíritu del consenso. En el ámbito de la PAU, esta obra explica visualmente la voluntad de los españoles de "perdonar y olvidar" el enfrentamiento fratricida para construir un sistema democrático basado en el diálogo. Fue el cartel más difundido de la época (se imprimieron 500.000 copias que fueron incautadas por la policía en su momento) y hoy es el símbolo del éxito de la Transición y de la Constitución de 1978.`,
     },
     { titulo: "28.	Fotografía de la firma de la Constitución de 1978", 
       descripcion: "El rey Juan Carlos I sancionando la Carta Magna ante las Cortes",

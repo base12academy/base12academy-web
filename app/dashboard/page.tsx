@@ -338,7 +338,7 @@ if (hasAccess && temasActivos.length === 0) {
           </section>
 
           <p style={{ marginTop: "12px", fontSize: "18px", color: "#4b5563" }}>
-            Avanza por fases: comprende, fija en memoria y aplica como en la EBAU / PAU.
+            Avanza por fases: comprende, fija en memoria y aplica como en la PAU.
           </p>
 
 <div
@@ -488,7 +488,7 @@ if (hasAccess && temasActivos.length === 0) {
             >
               <p style={{ marginBottom: "16px" }}>
                 Este curso está diseñado en tres fases para maximizar el aprendizaje y
-                preparar la EBAU / PAU de forma eficaz:
+                preparar la PAU de forma eficaz:
               </p>
 
               <p>
@@ -506,7 +506,7 @@ if (hasAccess && temasActivos.length === 0) {
               <p>
                 <strong>Fase 3 — Dominio</strong>
                 <br />
-                Supera las preguntas cortas y las pruebas tipo EBAU / PAU.
+                Supera las preguntas cortas y las pruebas tipo PAU.
               </p>
             </div>
           </section>
@@ -516,7 +516,7 @@ if (hasAccess && temasActivos.length === 0) {
 
             <p style={{ marginBottom: "16px", color: "#4b5563" }}>
               Accede al curso completo y desbloquea todos los temas, pruebas y preparación
-              progresiva para la EBAU / PAU.
+              progresiva para la PAU.
             </p>
 
             {cursos.map((curso) => (

@@ -79,7 +79,7 @@ export default function Bloque1Page() {
   return (
     <main style={{ padding: "32px", maxWidth: "900px", margin: "0 auto" }}>
       <h1 style={{ fontSize: "32px", marginBottom: "24px" }}>
-        Prueba EBAU — Bloque 1
+        Prueba PAU — Bloque 1
       </h1>
 
       <section style={{ marginBottom: "32px" }}>

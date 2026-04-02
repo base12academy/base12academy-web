@@ -12,7 +12,7 @@ export default function FilosofiaPage() {
 
       <p style={{ marginBottom: "24px", fontSize: "18px", color: "#4b5563" }}>
         Curso estructurado por temas, con material de apoyo y preparación práctica
-        orientada a EBAU / PAU.
+        orientada a PAU.
       </p>
 
       <section

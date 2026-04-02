@@ -31,7 +31,7 @@ export default function CursoHistoriaEspanaPage() {
           }}
         >
           <h1 style={{ fontSize: "42px", fontWeight: "bold", marginBottom: "12px" }}>
-            Historia de España para la EBAU / PAU
+            Historia de España para la PAU
           </h1>
 
           <div
@@ -96,7 +96,7 @@ export default function CursoHistoriaEspanaPage() {
 
           <p style={{ color: COLORS.muted, lineHeight: "1.7" }}>
             El curso incluye temario estructurado por temas, vídeos explicativos,
-            test y práctica guiada, junto con imágenes comentadas tipo EBAU / PAU.
+            test y práctica guiada, junto con imágenes comentadas tipo PAU.
           </p>
         </section>
 

@@ -16,7 +16,7 @@ export default function AvisoLegal() {
       <p><strong>Email:</strong> base12academy@gmail.com</p>
 
       <p style={{ marginTop: "24px", marginBottom: "16px" }}>
-        <strong>Actividad:</strong> Plataforma online de formación para la preparación de pruebas de acceso a la universidad (EBA / PAU), oposiciones y cursos online.
+        <strong>Actividad:</strong> Plataforma online de formación para la preparación de pruebas de acceso a la universidad (PAU), oposiciones y cursos online.
       </p>
 
       <p style={{ marginBottom: "16px" }}>

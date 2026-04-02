@@ -17,11 +17,11 @@ const COLORS = {
   primary: "#2563eb",
 };
 
-const ebauCursos = [
+const pauCursos = [
   {
     titulo: "Historia de España",
     precio: "17 € / mes",
-    descripcion: "Preparación completa para la EBAU / PAU con temario, apoyo al estudio, test y vídeos.",
+    descripcion: "Preparación completa para la PAU con temario, apoyo al estudio, test y vídeos.",
   },
   {
     titulo: "Historia de la Filosofía",
@@ -148,7 +148,7 @@ export default function HomePage() {
                 marginBottom: "20px",
               }}
             >
-              Saca nota alta en la EBAU / PAU y avanza en tu preparación
+              Saca nota alta en la PAU y avanza en tu preparación
             </h1>
 <div
   style={{
@@ -171,7 +171,7 @@ export default function HomePage() {
               }}
             >
               Estudia con un método claro, test interactivos y seguimiento real para
-  mejorar tu rendimiento en la EBAU / PAU, oposiciones y cursos profesionales.
+  mejorar tu rendimiento en la PAU, oposiciones y cursos profesionales.
             </p>
 
            
@@ -179,7 +179,7 @@ export default function HomePage() {
 
           <section style={{ marginBottom: "56px" }}>
             <h2 style={{ fontSize: "32px", marginBottom: "20px" }}>
-              Preparación para la EBAU / PAU
+              Preparación para la PAU
             </h2>
 
             <div
@@ -189,7 +189,7 @@ export default function HomePage() {
                 gap: "20px",
               }}
             >
-             {ebauCursos.map((curso) => (
+             {pauCursos.map((curso) => (
   <div
     key={curso.titulo}
     style={{

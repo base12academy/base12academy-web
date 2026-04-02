@@ -98,7 +98,7 @@ export default function ComprarPage() {
               marginBottom: "16px",
             }}
           >
-            Prepara Historia de España para la EBAU sin perder tiempo
+            Prepara Historia de España para la PAU sin perder tiempo
           </h1>
 
           <p
@@ -117,7 +117,7 @@ export default function ComprarPage() {
           <div style={{ marginBottom: "20px", fontSize: "15px" }}>
             <p>✓ Acceso inmediato tras el pago</p>
             <p>✓ Todo el contenido de Historia de España listo</p>
-            <p>✓ Enfocado a aprobar la EBAU / PAU</p>
+            <p>✓ Enfocado a aprobar la PAU</p>
           </div>
 
           {/* PRECIO */}

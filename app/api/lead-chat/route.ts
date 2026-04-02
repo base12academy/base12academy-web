@@ -14,14 +14,14 @@ const cursos: CursoInfo[] = [
     nombre: "Historia de España",
     precio: "29 € pago único",
     descripcion:
-      "Preparación completa para la EBAU / PAU con temario por temas, apoyo al estudio, test, preguntas cortas, imágenes y textos históricos.",
+      "Preparación completa para la PAU con temario por temas, apoyo al estudio, test, preguntas cortas, imágenes y textos históricos.",
     incluye: [
       "Temario estructurado por temas",
       "Índices de estudio",
       "Test por tema",
       "Preguntas cortas",
       "Imágenes y textos históricos por bloques",
-      "Preparación orientada a EBAU / PAU",
+      "Preparación orientada a PAU",
       "Acceso online",
       "Estrategia adaptada a la comunidad autónoma",
     ],
@@ -233,7 +233,7 @@ Si quieres empezar ya:
 • Test por tema
 • Preguntas cortas
 • Imágenes y textos históricos
-• Preparación orientada a EBAU / PAU
+• Preparación orientada a PAU
 • Estrategia según comunidad autónoma
 • Acceso online
 
@@ -354,7 +354,7 @@ Acceso:
       "historia de la filosofia",
     ])
   ) {
-    return `Historia de la Filosofía está en actualización. Ahora mismo, si buscas una opción ya operativa para preparar la EBAU / PAU, la referencia principal es Historia de España.
+    return `Historia de la Filosofía está en actualización. Ahora mismo, si buscas una opción ya operativa para preparar la PAU, la referencia principal es Historia de España.
 
 Acceso disponible:
 👉 /comprar`;
@@ -370,7 +370,7 @@ Acceso disponible:
       "oferta",
     ])
   ) {
-    return `Ahora mismo las dos líneas principales para EBAU / PAU son:
+    return `Ahora mismo las dos líneas principales para PAU son:
 
 • Historia de España
 • Historia de la Filosofía

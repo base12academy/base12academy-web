@@ -219,7 +219,7 @@ export default function ComprarPage({ params }: Props) {
             }}
           >
             Temario estructurado, índices de estudio, pruebas por tema,
-            imágenes, textos históricos y preparación enfocada a EBAU / PAU.
+            imágenes, textos históricos y preparación enfocada a PAU.
           </p>
 
           <div
@@ -273,7 +273,7 @@ export default function ComprarPage({ params }: Props) {
             </p>
 
             <p style={{ lineHeight: "1.7" }}>
-              Quedan pocas semanas para la EBAU / PAU. Este acceso está pensado
+              Quedan pocas semanas para la PAU. Este acceso está pensado
               para aprovechar al máximo el tramo final de preparación.
             </p>
           </div>

@@ -7,7 +7,7 @@ export default function LeadChatBot() {
   const [mensaje, setMensaje] = useState("");
   const [comunidad, setComunidad] = useState("");
   const [chat, setChat] = useState<string[]>([
-    "Asistente Base12: Hola 👋\n\nTe ayudo a preparar la EBAU / PAU paso a paso.\n\nPuedo orientarte sobre:\n• Historia de España\n• Cómo funciona el curso\n• Precio y acceso\n• Estrategia según tu comunidad\n\nSi quieres, selecciona tu comunidad y empieza por una opción 👇",
+    "Asistente Base12: Hola 👋\n\nTe ayudo a preparar la PAU paso a paso.\n\nPuedo orientarte sobre:\n• Historia de España\n• Cómo funciona el curso\n• Precio y acceso\n• Estrategia según tu comunidad\n\nSi quieres, selecciona tu comunidad y empieza por una opción 👇",
   ]);
 
   const chatRef = useRef<HTMLDivElement>(null);
