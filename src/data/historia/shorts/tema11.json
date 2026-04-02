@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc11_1",
+    "question": "¿De qué dependió el avance de los reinos cristianos hacia el sur?",
+    "answerGuide": "Dependió de la fuerza militar cristiana y de la fragmentación política de Al-Ándalus, especialmente durante el periodo de taifas.",
+    "keywords": ["fuerza militar", "fragmentación política", "Al-Ándalus", "taifas", "avance cristiano"]
+  },
+  {
+    "id": "tc11_2",
+    "question": "Resume las tres fases cronológicas de la expansión cristiana.",
+    "answerGuide": "Primero la consolidación hasta el Duero entre los siglos VIII y X; después la conquista de los valles del Tajo y Ebro en los siglos XI y XII; y finalmente la gran expansión del siglo XIII tras las Navas de Tolosa.",
+    "keywords": ["Duero", "Tajo", "Ebro", "siglos VIII-X", "siglos XI-XII", "siglo XIII", "Navas de Tolosa"]
+  },
+  {
+    "id": "tc11_3",
+    "question": "¿Qué importancia tuvieron Toledo, Zaragoza y las Navas de Tolosa en la expansión cristiana?",
+    "answerGuide": "Toledo fue conquistada en 1085, Zaragoza en 1118, y la victoria de las Navas de Tolosa en 1212 abrió la gran expansión cristiana del siglo XIII.",
+    "keywords": ["Toledo", "1085", "Zaragoza", "1118", "Navas de Tolosa", "1212"]
+  },
+  {
+    "id": "tc11_4",
+    "question": "¿Qué territorios conquistaron Fernando III y Jaime I en el siglo XIII?",
+    "answerGuide": "Fernando III conquistó el valle del Guadalquivir, especialmente Córdoba y Sevilla, y Jaime I ocupó Valencia y las islas Baleares.",
+    "keywords": ["Fernando III", "Guadalquivir", "Córdoba", "Sevilla", "Jaime I", "Valencia", "Baleares"]
+  },
+  {
+    "id": "tc11_5",
+    "question": "¿Qué era la repoblación y para qué servía?",
+    "answerGuide": "Era el asentamiento de población en los territorios conquistados para asegurar el control efectivo de las tierras.",
+    "keywords": ["repoblación", "asentamiento", "control efectivo", "tierras conquistadas"]
+  },
+  {
+    "id": "tc11_6",
+    "question": "¿En qué consistía la presura o aprisio?",
+    "answerGuide": "Consistía en la ocupación de tierras yermas por campesinos y hombres libres, generando una estructura de pequeña propiedad.",
+    "keywords": ["presura", "aprisio", "tierras yermas", "campesinos", "hombres libres", "pequeña propiedad"]
+  },
+  {
+    "id": "tc11_7",
+    "question": "Explica la repoblación concejil.",
+    "answerGuide": "Se aplicó entre el Duero y el Tajo; el territorio se organizaba en alfoces gestionados por un concejo y se atraía a pobladores con fueros o cartas pueblas.",
+    "keywords": ["repoblación concejil", "Duero", "Tajo", "alfoces", "concejo", "fueros", "cartas pueblas"]
+  },
+  {
+    "id": "tc11_8",
+    "question": "¿Qué papel desempeñaron las órdenes militares en la repoblación?",
+    "answerGuide": "Recibieron grandes latifundios en zonas peligrosas como La Mancha o Extremadura para defender la frontera y fomentar la ganadería.",
+    "keywords": ["órdenes militares", "latifundios", "La Mancha", "Extremadura", "defensa", "ganadería"]
+  },
+  {
+    "id": "tc11_9",
+    "question": "¿Qué fueron los repartimientos?",
+    "answerGuide": "Fueron distribuciones de casas y tierras en Andalucía y Murcia entre quienes participaron en la conquista, según su rango social.",
+    "keywords": ["repartimientos", "Andalucía", "Murcia", "casas", "tierras", "rango social"]
+  },
+  {
+    "id": "tc11_10",
+    "question": "¿Cómo era la monarquía medieval cristiana?",
+    "answerGuide": "No era absoluta; estaba limitada por nobleza y clero mediante el vasallaje, y el rey se consideraba monarca por la gracia de Dios.",
+    "keywords": ["monarquía medieval", "no absoluta", "nobleza", "clero", "vasallaje", "gracia de Dios"]
+  },
+  {
+    "id": "tc11_11",
+    "question": "¿Qué diferencias existían entre el modelo político de Castilla y el de Aragón?",
+    "answerGuide": "Castilla tenía un modelo más autoritario, mientras Aragón era pactista y el rey debía respetar fueros y pactar con los estamentos.",
+    "keywords": ["Castilla", "autoritario", "Aragón", "pactista", "fueros", "estamentos"]
+  },
+  {
+    "id": "tc11_12",
+    "question": "¿Qué función tenía el Justicia de Aragón?",
+    "answerGuide": "Proteger los derechos de los estamentos frente a posibles abusos del rey.",
+    "keywords": ["Justicia de Aragón", "derechos", "abusos del rey", "protección"]
+  },
+  {
+    "id": "tc11_13",
+    "question": "¿Qué fueron las Cortes medievales y qué importancia tuvieron las de León de 1188?",
+    "answerGuide": "Fueron asambleas convocadas por el rey con nobleza, clero y burguesía; las de León de 1188 son el primer testimonio de parlamentarismo europeo.",
+    "keywords": ["Cortes", "rey", "nobleza", "clero", "burguesía", "León", "1188", "parlamentarismo"]
+  },
+  {
+    "id": "tc11_14",
+    "question": "¿Cómo se dividía la sociedad estamental medieval?",
+    "answerGuide": "En privilegiados, como nobleza y clero, y no privilegiados, como campesinos y artesanos, que sostenían el sistema con su trabajo.",
+    "keywords": ["privilegiados", "nobleza", "clero", "no privilegiados", "campesinos", "artesanos"]
+  },
+  {
+    "id": "tc11_15",
+    "question": "¿Qué conflictos sociales reflejan la crisis del sistema feudal al final de la Edad Media?",
+    "answerGuide": "Las revueltas de los Irmandiños en Galicia y de los Remensas en Cataluña.",
+    "keywords": ["Irmandiños", "Galicia", "Remensas", "Cataluña", "crisis feudal", "revueltas"]
+  }
+]

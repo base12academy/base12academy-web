@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t7_q1",
+    "question": "¿Cuál era el principal problema político del reino visigodo a comienzos del siglo VIII?",
+    "options": ["La falta de ejército", "La monarquía electiva", "La ausencia de religión oficial", "La división provincial romana"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t7_q2",
+    "question": "¿Qué provocaba la monarquía electiva visigoda?",
+    "options": ["Estabilidad institucional", "Prosperidad comercial", "Inestabilidad política crónica", "Unidad religiosa"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t7_q3",
+    "question": "¿Qué hecho desencadenó la ruptura definitiva en el reino visigodo?",
+    "options": ["La batalla de Covadonga", "La muerte de Witiza", "La conquista del Magreb", "El Pacto de Teodomiro"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t7_q4",
+    "question": "¿Cómo se llamaba el grupo partidario de los hijos de Witiza?",
+    "options": ["Rodriguistas", "Mozárabes", "Witicianos", "Muladíes"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t7_q5",
+    "question": "¿Qué figura aparece vinculada al bando witiciano?",
+    "options": ["Tarik", "Muza", "Agila II", "Don Pelayo"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t7_q6",
+    "question": "¿Qué hizo el bando witiciano para recuperar el trono?",
+    "options": ["Pidió ayuda a Roma", "Solicitó ayuda militar musulmana", "Se alió con los francos", "Aceptó a Rodrigo como rey"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t7_q7",
+    "question": "¿Quién representaba la facción opuesta a los witicianos?",
+    "options": ["Recaredo", "Rodrigo", "Teodomiro", "Pelayo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t7_q8",
+    "question": "¿Cómo presenta el tema a Rodrigo?",
+    "options": ["Como heredero legítimo indiscutible", "Como noble que había usurpado el trono", "Como gobernador musulmán", "Como obispo de Toledo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t7_q9",
+    "question": "¿Qué consecuencia tuvo la guerra civil visigoda sobre las fronteras del reino?",
+    "options": ["Se reforzaron", "Quedaron totalmente vulnerables", "Pasaron a control franco", "Se expandieron hacia el norte"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t7_q10",
+    "question": "¿En qué fase socioeconómica se encontraba la sociedad visigoda a inicios del siglo VIII?",
+    "options": ["Industrialización", "Prefeudalización", "Urbanización", "Romanización"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t7_q11",
+    "question": "¿Cómo era fundamentalmente la economía visigoda en este momento?",
+    "options": ["Comercial y monetaria", "Marítima y minera", "Agraria y de subsistencia", "Artesanal y urbana"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t7_q12",
+    "question": "¿Qué actitud mostró gran parte de la población ante los cambios de gobierno?",
+    "options": ["Apoyo entusiasta al rey", "Notable indiferencia", "Resistencia unánime", "Alianza con los francos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t7_q13",
+    "question": "¿Qué factores facilitaron la transición hacia el dominio musulmán?",
+    "options": ["La expansión de la moneda", "La presión fiscal y el descontento social", "La unidad nobiliaria", "La fortaleza militar visigoda"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t7_q14",
+    "question": "¿Bajo qué califato se expandía el Islam en el momento de la invasión?",
+    "options": ["Califato abasí de Bagdad", "Califato omeya de Damasco", "Califato fatimí", "Califato de Córdoba"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t7_q15",
+    "question": "¿Qué territorio habían conquistado los musulmanes en 707?",
+    "options": ["La Galia", "Sicilia", "El Magreb", "Italia"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t7_q16",
+    "question": "¿Quién vio en la crisis visigoda una oportunidad para expandirse hacia Europa?",
+    "options": ["Tarik", "Muza", "Rodrigo", "Teodomiro"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t7_q17",
+    "question": "¿En qué año se produjo la invasión musulmana decisiva de la Península?",
+    "options": ["707", "711", "713", "722"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t7_q18",
+    "question": "¿Quién dirigió el ejército que cruzó el Estrecho de Gibraltar en 711?",
+    "options": ["Muza", "Agila II", "Tarik", "Don Pelayo"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t7_q19",
+    "question": "¿De qué composición era mayoritariamente el ejército invasor de 711?",
+    "options": ["Árabe", "Bereber", "Visigodo", "Franco"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t7_q20",
+    "question": "¿Qué batalla decidió el hundimiento del reino visigodo?",
+    "options": ["Vouillé", "Guadalete", "Covadonga", "Poitiers"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t7_q21",
+    "question": "¿Qué ocurrió con Rodrigo en la batalla de Guadalete?",
+    "options": ["Fue capturado y exiliado", "Venció a los musulmanes", "Perdió la vida en combate", "Se convirtió al Islam"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t7_q22",
+    "question": "¿Qué provocó de forma inmediata la muerte de Rodrigo?",
+    "options": ["La restauración del poder romano", "El colapso de la administración visigoda", "La unión con los francos", "La retirada musulmana"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t7_q23",
+    "question": "¿Qué entidad política nació tras el hundimiento visigodo?",
+    "options": ["El reino de Asturias", "Al-Ándalus", "El Califato de Bagdad", "La Marca Hispánica"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t7_q24",
+    "question": "¿Entre qué años se ocupó casi todo el territorio peninsular según el tema?",
+    "options": ["711-718", "711-756", "718-722", "707-711"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t7_q25",
+    "question": "¿Qué ocurría en la rendición incondicional?",
+    "options": ["Se respetaban tierras y religión", "Se imponía solo un impuesto personal", "Había pérdida total de bienes y derechos", "Se firmaba un pacto de autonomía"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t7_q26",
+    "question": "¿Cuál fue la fórmula de sumisión más extendida?",
+    "options": ["La guerra de desgaste", "La rendición incondicional", "La rendición pactada o capitulaciones", "La colonización agrícola"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t7_q27",
+    "question": "¿Qué permitía la rendición pactada a los nobles visigodos?",
+    "options": ["Conservar tierras y religión a cambio de tributos", "Mantener el trono visigodo", "Expulsar a los bereberes", "Evitar cualquier impuesto"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t7_q28",
+    "question": "¿Qué noble protagonizó un pacto importante con los musulmanes en 713?",
+    "options": ["Rodrigo", "Teodomiro", "Witiza", "Recaredo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t7_q29",
+    "question": "¿Qué zonas conservó Teodomiro mediante su pacto?",
+    "options": ["Galicia y Asturias", "Murcia y Alicante", "Sevilla y Córdoba", "Tarragona y Barcelona"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t7_q30",
+    "question": "¿Qué grupos eran considerados 'pueblos del libro' en Al-Ándalus?",
+    "options": ["Musulmanes y bereberes", "Cristianos y judíos", "Árabes y mozárabes", "Muladíes y árabes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t7_q31",
+    "question": "¿Quiénes eran los muladíes?",
+    "options": ["Cristianos que mantuvieron su fe", "Judíos conversos al cristianismo", "Cristianos convertidos al Islam", "Árabes instalados en el valle del Ebro"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t7_q32",
+    "question": "¿Quiénes eran los mozárabes?",
+    "options": ["Cristianos que vivían en territorio musulmán manteniendo su fe", "Musulmanes convertidos al cristianismo", "Bereberes del norte de África", "Nobles visigodos exiliados"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t7_q33",
+    "question": "¿Qué impuesto personal se menciona en el tema?",
+    "options": ["Jarach", "Yizia", "Diezmo", "Capitación romana"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t7_q34",
+    "question": "¿Qué impuesto territorial aparece citado?",
+    "options": ["Yizia", "Jarach", "Peaje", "Tributum"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t7_q35",
+    "question": "¿Qué fue políticamente Al-Ándalus entre 711 y 756?",
+    "options": ["Un reino independiente", "Una provincia del Califato Omeya", "Una república militar", "Una marca franca"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t7_q36",
+    "question": "¿Cuál fue el centro de poder de Al-Ándalus en sus primeras décadas?",
+    "options": ["Toledo", "Sevilla", "Granada", "Córdoba"],
+    "correctAnswer": 3
+  },
+  {
+    "id": "t7_q37",
+    "question": "¿Cómo se llamaba el gobernador de Al-Ándalus durante el emirato dependiente?",
+    "options": ["Califa", "Walí", "Conde", "Visir"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t7_q38",
+    "question": "¿Qué grupo se reservó las tierras más ricas de Al-Ándalus?",
+    "options": ["Mozárabes", "Bereberes", "Árabes", "Muladíes"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t7_q39",
+    "question": "¿Dónde se asentó mayoritariamente la población bereber?",
+    "options": ["Valles del Guadalquivir y del Ebro", "Zonas serranas y menos productivas", "Las principales ciudades costeras", "La cornisa cantábrica"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t7_q40",
+    "question": "¿Qué hecho marcó el inicio del núcleo de resistencia astur según el tema?",
+    "options": ["La batalla de Guadalete", "La elección de Don Pelayo en 718", "El Pacto de Teodomiro", "La caída de Toledo en 711"],
+    "correctAnswer": 1
+  }
+]

@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t16_q1",
+    "question": "¿Qué caracteriza al siglo XVII español según el tema?",
+    "options": ["La expansión constante del Imperio", "El declive ligado a la debilidad de los Austrias menores", "La desaparición de la nobleza", "La industrialización de Castilla"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t16_q2",
+    "question": "¿Qué figura política surgió ante la incapacidad o desinterés de los reyes por gobernar?",
+    "options": ["El corregidor", "El valido", "El virrey", "El inquisidor general"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t16_q3",
+    "question": "¿Qué otro nombre recibe el valido en el tema?",
+    "options": ["Justicia", "Privado o favorito", "Regente", "Consejero territorial"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t16_q4",
+    "question": "¿Cómo actuaba el valido dentro de la monarquía?",
+    "options": ["Como un obispo consejero", "Como un primer ministro sin cargo oficial", "Como representante de las Cortes", "Como jefe militar autónomo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t16_q5",
+    "question": "¿Qué efecto tuvo el valimiento sobre los órganos tradicionales de gobierno?",
+    "options": ["Los reforzó plenamente", "Operó frecuentemente al margen de ellos", "Los sustituyó por parlamentos", "Eliminó los Consejos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t16_q6",
+    "question": "¿Qué problemas generó el sistema de validos?",
+    "options": ["Pacificación social y menos impuestos", "Corrupción y clientelismo", "Industrialización y crecimiento", "Desaparición de la nobleza"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t16_q7",
+    "question": "¿Qué reinado marca el inicio formal de la delegación del poder real en el siglo XVII?",
+    "options": ["Felipe II", "Felipe III", "Felipe IV", "Carlos II"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t16_q8",
+    "question": "¿Entre qué años reinó Felipe III?",
+    "options": ["1556-1598", "1598-1621", "1621-1665", "1665-1700"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t16_q9",
+    "question": "¿Qué rasgo define la política exterior del reinado de Felipe III según el tema?",
+    "options": ["Expansionismo militar", "Pacifismo exterior forzado", "Conquista de Francia", "Dominio del Mediterráneo oriental"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t16_q10",
+    "question": "¿Quién fue el principal valido de Felipe III al inicio de su reinado?",
+    "options": ["Conde-Duque de Olivares", "Duque de Lerma", "Juan José de Austria", "Nithardt"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t16_q11",
+    "question": "¿Qué práctica destacó en la gestión del duque de Lerma?",
+    "options": ["La creación de erarios estatales", "La venta de cargos y títulos", "La abolición de los juros", "La unificación de leyes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t16_q12",
+    "question": "¿Quién sustituyó al duque de Lerma en el favor real?",
+    "options": ["Duque de Uceda", "Olivares", "Valenzuela", "Lanuza"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t16_q13",
+    "question": "¿Qué medida interior fue el hito más traumático del reinado de Felipe III?",
+    "options": ["La Paz de Westfalia", "La expulsión de los moriscos", "La Unión de Armas", "La rebelión de Cataluña"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t16_q14",
+    "question": "¿En qué año se decretó la expulsión de los moriscos?",
+    "options": ["1604", "1609", "1621", "1640"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t16_q15",
+    "question": "¿Cuántos moriscos aproximadamente fueron expulsados según el tema?",
+    "options": ["100.000", "200.000", "300.000", "500.000"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t16_q16",
+    "question": "¿Qué territorios se vieron especialmente afectados por la expulsión de los moriscos?",
+    "options": ["Castilla y Navarra", "Valencia y Aragón", "Galicia y León", "Portugal y Cataluña"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t16_q17",
+    "question": "¿Qué paz se firmó con Inglaterra durante el reinado de Felipe III?",
+    "options": ["Paz de los Pirineos", "Paz de Westfalia", "Paz de 1604", "Paz de Nimega"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t16_q18",
+    "question": "¿Qué acuerdo se alcanzó con Holanda en 1609?",
+    "options": ["La Paz de Augsburgo", "La Tregua de los Doce Años", "La Paz de Cateau-Cambrésis", "La Unión de Utrecht"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t16_q19",
+    "question": "¿Cómo define el tema la estructura social del reinado de Felipe III?",
+    "options": ["Industrial y burguesa", "Sociedad de rentistas", "Campesina e igualitaria", "Mercantil y urbana"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t16_q20",
+    "question": "¿En qué invertían las clases altas de esa sociedad de rentistas?",
+    "options": ["Fábricas textiles", "Juros y títulos nobiliarios", "Pequeña propiedad agraria", "Rutas comerciales atlánticas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t16_q21",
+    "question": "¿Entre qué años reinó Felipe IV?",
+    "options": ["1598-1621", "1621-1665", "1640-1680", "1665-1700"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t16_q22",
+    "question": "¿Qué valido impulsó el gran proyecto reformista bajo Felipe IV?",
+    "options": ["Duque de Lerma", "Duque de Uceda", "Conde-Duque de Olivares", "Valenzuela"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t16_q23",
+    "question": "¿Qué pretendían los erarios estatales en el proyecto de Olivares?",
+    "options": ["Expandir el comercio con América", "Sanear las cuentas públicas", "Eliminar la nobleza", "Reducir la moneda de vellón"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t16_q24",
+    "question": "¿Qué buscaba la unificación jurídica de Olivares?",
+    "options": ["Imponer las leyes de Castilla al resto de territorios", "Restaurar el Fuero Juzgo", "Extender las leyes portuguesas", "Eliminar la Inquisición"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t16_q25",
+    "question": "¿Qué era la Unión de Armas?",
+    "options": ["Una alianza con Francia", "Un ejército nacional costeado por todos los reinos", "Una leva exclusiva castellana", "Un pacto con Portugal"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t16_q26",
+    "question": "¿Qué gran conflicto europeo agravó la situación financiera bajo Felipe IV?",
+    "options": ["La Guerra de Sucesión", "La Guerra de los Treinta Años", "La Guerra de Granada", "La guerra de las Comunidades"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t16_q27",
+    "question": "¿Qué moneda se devaluó sustituyendo plata por cobre?",
+    "options": ["El ducado", "La moneda de vellón", "El dinar", "El real de a ocho"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t16_q28",
+    "question": "¿Qué pintor simboliza el Siglo de Oro durante el reinado de Felipe IV?",
+    "options": ["El Greco", "Murillo", "Velázquez", "Zurbarán"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t16_q29",
+    "question": "¿Qué conflictos estallaron en 1640?",
+    "options": ["Navarra y Granada", "Portugal y Cataluña", "Valencia y Aragón", "Sevilla y Galicia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t16_q30",
+    "question": "¿Qué nombre recibe la rebelión catalana de 1640 mencionada en el tema?",
+    "options": ["Germanías", "Corpus de Sangre", "Irmandiños", "Remensas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t16_q31",
+    "question": "¿Qué paz de 1648 marcó el retroceso de la hegemonía española en Europa?",
+    "options": ["Paz de Nimega", "Paz de Westfalia", "Paz de los Pirineos", "Paz de Augsburgo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t16_q32",
+    "question": "¿Qué otro tratado confirmó la pérdida de hegemonía en 1659?",
+    "options": ["Tratado de Tordesillas", "Paz de los Pirineos", "Tratado de Alcaçovas", "Compromiso de Caspe"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t16_q33",
+    "question": "¿Entre qué años reinó Carlos II?",
+    "options": ["1621-1665", "1659-1700", "1665-1700", "1678-1700"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t16_q34",
+    "question": "¿Quién ejerció la regencia al inicio del reinado de Carlos II?",
+    "options": ["Mariana de Austria", "Isabel de Borbón", "María Luisa de Orleans", "Ana de Austria"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t16_q35",
+    "question": "¿Cuál de estos nombres aparece como valido o figura influyente en tiempos de Carlos II?",
+    "options": ["Padilla", "Nithardt", "Olivares", "Lerma"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t16_q36",
+    "question": "¿Qué monarca francés arrebató territorios a España durante el reinado de Carlos II?",
+    "options": ["Francisco I", "Enrique IV", "Luis XIV", "Luis XVI"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t16_q37",
+    "question": "¿Qué territorio perdió España en la Paz de Nimega (1678)?",
+    "options": ["Navarra", "Franco Condado", "Cataluña", "Cerdeña"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t16_q38",
+    "question": "¿Qué epidemias menciona el tema como parte de la crisis demográfica del reinado de Carlos II?",
+    "options": ["Cólera, tifus y tuberculosis", "Peste, gripe y viruela", "Malaria, sarampión y cólera", "Viruela, lepra y difteria"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t16_q39",
+    "question": "¿Hacia qué fenómenos sociales derivó el campesinado empobrecido?",
+    "options": ["Industrialización y comercio", "Bandolerismo y mendicidad", "Emigración a América masiva", "Organización parlamentaria"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t16_q40",
+    "question": "¿Qué hecho selló el fin de los Austrias en España?",
+    "options": ["La Paz de Westfalia", "La muerte sin descendencia de Carlos II en 1700", "La expulsión de los moriscos", "La Unión de Armas"],
+    "correctAnswer": 1
+  }
+]

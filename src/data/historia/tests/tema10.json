@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t10_q1",
+    "question": "¿Qué hecho histórico provocó el refugio de nobles visigodos y tribus locales en el norte peninsular?",
+    "options": ["La batalla de Poitiers", "El colapso del reino visigodo en 711", "La caída de Toledo en 1085", "La batalla de las Navas de Tolosa"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t10_q2",
+    "question": "¿Qué pueblos locales se refugiaron en el norte junto a nobles visigodos?",
+    "options": ["Íberos y celtas", "Astures y cántabros", "Bereberes y árabes", "Mozárabes y judíos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t10_q3",
+    "question": "¿Qué factor geográfico favoreció el nacimiento de un nuevo poder cristiano en el norte?",
+    "options": ["La fertilidad del valle del Guadalquivir", "El relieve escarpado y de difícil acceso", "La proximidad a las rutas transaharianas", "La abundancia de ciudades romanas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t10_q4",
+    "question": "¿Qué victoria sentó las bases del Reino de Asturias?",
+    "options": ["Guadalete", "Covadonga", "Poitiers", "Alarcos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t10_q5",
+    "question": "¿Quién sentó las bases del Reino de Asturias?",
+    "options": ["Alfonso III", "Fernando I", "Don Pelayo", "Sancho III el Mayor"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t10_q6",
+    "question": "¿En qué año se sitúa la batalla de Covadonga según el tema?",
+    "options": ["711", "718", "722", "910"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t10_q7",
+    "question": "¿Hasta qué río llegó la frontera cristiana bajo Alfonso III?",
+    "options": ["Ebro", "Tajo", "Duero", "Guadalquivir"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t10_q8",
+    "question": "¿Qué hecho oficializó el nacimiento del Reino de León?",
+    "options": ["La muerte de Don Pelayo", "El traslado de la capital a León en 910", "La unión con Castilla", "La independencia de Aragón"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t10_q9",
+    "question": "¿Cómo se define la sociedad del núcleo astur-leonés en el tema?",
+    "options": ["Urbana y mercantil", "Comunidad de hombres libres y pequeña nobleza guerrera", "Feudal y dominada por una alta burguesía", "Basada en esclavos y comerciantes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t10_q10",
+    "question": "¿Qué era la presura?",
+    "options": ["Un impuesto sobre la tierra", "Un sistema de colonización por ocupación de tierras yermas", "Un cargo militar leonés", "Una ruta comercial del norte"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t10_q11",
+    "question": "¿Cómo era principalmente la economía del norte cristiano en sus inicios?",
+    "options": ["Industrial y urbana", "Ganadera y de subsistencia", "Marítima y comercial", "Basada en el cultivo del arroz"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t10_q12",
+    "question": "¿Qué ideología reclamaba la herencia de la tradición visigoda?",
+    "options": ["Mudéjar", "Neogoticismo", "Humanismo", "Califalismo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t10_q13",
+    "question": "¿Qué descubrimiento reforzó el sentimiento de Reconquista en el siglo IX?",
+    "options": ["El tesoro de Guarrazar", "El sepulcro del apóstol Santiago", "La tumba de Don Pelayo", "Las reliquias de San Isidoro"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t10_q14",
+    "question": "¿Qué era la Marca Hispánica?",
+    "options": ["Una provincia musulmana", "Una franja tapón creada por el Imperio Carolingio", "Una ruta de peregrinación", "Una unión entre Castilla y León"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t10_q15",
+    "question": "¿Qué emperador impulsó la Marca Hispánica?",
+    "options": ["Augusto", "Carlomagno", "Abderramán III", "Fernando I"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t10_q16",
+    "question": "¿Qué finalidad tenía la Marca Hispánica?",
+    "options": ["Expandir el comercio mediterráneo", "Proteger a los francos de las incursiones musulmanas", "Romanizar el noreste peninsular", "Controlar el valle del Duero"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t10_q17",
+    "question": "¿Cómo se organizó la Marca Hispánica?",
+    "options": ["En taifas", "En condados dependientes de los francos", "En obispados autónomos", "En califatos menores"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t10_q18",
+    "question": "¿Qué ocurrió con los cargos condales al debilitarse los sucesores de Carlomagno?",
+    "options": ["Desaparecieron", "Pasaron a ser hereditarios", "Fueron elegidos por los campesinos", "Se integraron en León"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t10_q19",
+    "question": "¿Qué rasgo cultural diferenciaba a los núcleos orientales respecto a León?",
+    "options": ["Seguían el rito romano en vez del mozárabe", "Usaban solo derecho islámico", "No tenían estructura feudal", "Rechazaban el cristianismo"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t10_q20",
+    "question": "¿Qué territorios dependieron inicialmente de los francos o de Pamplona en los Pirineos centrales?",
+    "options": ["Navarra, León y Galicia", "Aragón, Sobrarbe y Ribagorza", "Castilla, León y Toledo", "Barcelona, Valencia y Tortosa"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t10_q21",
+    "question": "¿Qué valle y localidad centraban el primitivo Condado de Aragón?",
+    "options": ["Valle del Ebro y Zaragoza", "Valle del Duero y Burgos", "Valle del río Aragón y Jaca", "Valle del Guadalquivir y Córdoba"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t10_q22",
+    "question": "¿Bajo qué dinastía se independizó el Condado de Aragón en el siglo IX?",
+    "options": ["Dinastía Trastámara", "Dinastía de Aznar Galíndez", "Dinastía Omeya", "Dinastía Jimena"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t10_q23",
+    "question": "¿En torno a qué centros de poder se organizaba la sociedad aragonesa primitiva?",
+    "options": ["Puertos y zocos", "Castillos y monasterios defensivos", "Curias urbanas", "Palacios califales"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t10_q24",
+    "question": "¿Qué monasterio defensivo menciona el tema como ejemplo en Aragón?",
+    "options": ["San Millán de la Cogolla", "Santo Domingo de Silos", "San Juan de la Peña", "Ripoll"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t10_q25",
+    "question": "¿En qué se basaba la economía de los núcleos aragoneses?",
+    "options": ["Minería de plata", "Ganadería trashumante", "Pesca atlántica", "Cultivo intensivo de arroz"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t10_q26",
+    "question": "¿Por qué recibió Castilla ese nombre?",
+    "options": ["Por la abundancia de castillos defensivos", "Por su tradición ganadera", "Por la presencia de monasterios", "Por su dependencia de Navarra"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t10_q27",
+    "question": "¿Dónde surgió Castilla originalmente?",
+    "options": ["En la frontera oriental del Reino de León", "En la costa catalana", "En el valle del Guadalquivir", "En la Marca Hispánica"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t10_q28",
+    "question": "¿Qué conde unificó los condados castellanos y logró una autonomía de facto de León?",
+    "options": ["Ramiro I", "Wifredo el Velloso", "Fernán González", "Alfonso III"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t10_q29",
+    "question": "¿Con qué monarca alcanzó Castilla la categoría de reino?",
+    "options": ["Fernando I", "Don Pelayo", "Sancho III el Mayor", "Ramón Berenguer IV"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t10_q30",
+    "question": "¿Qué grupo social surgió en Castilla para atraer pobladores a una frontera peligrosa?",
+    "options": ["Mozárabes", "Caballeros villanos", "Muladíes", "Dimmíes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t10_q31",
+    "question": "¿Qué personaje simboliza el espíritu épico y combativo castellano?",
+    "options": ["Don Pelayo", "El Cid Campeador", "Averroes", "Teodomiro"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t10_q32",
+    "question": "¿Por qué tipo de derecho se regía Castilla según el tema?",
+    "options": ["Por el derecho romano", "Por el Liber Iudiciorum exclusivamente", "Por costumbres y fazañas", "Por el derecho islámico"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t10_q33",
+    "question": "¿Qué eran las fazañas en el derecho castellano?",
+    "options": ["Impuestos regios", "Sentencias judiciales", "Pactos con musulmanes", "Tierras de frontera"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t10_q34",
+    "question": "¿En qué se basó la economía castellana inicial?",
+    "options": ["Ganadería y botín de guerra", "Minería y artesanía de lujo", "Comercio marítimo y seda", "Regadío y cítricos"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t10_q35",
+    "question": "¿Qué rey llevó al Reino de Navarra a su apogeo en el siglo XI?",
+    "options": ["Fernando I", "Sancho III el Mayor", "Alfonso III", "Ramiro I"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t10_q36",
+    "question": "¿Qué ocurrió tras la muerte de Sancho III el Mayor?",
+    "options": ["Navarra pasó a ser taifa", "Su hijo Ramiro I fue el primer rey de Aragón", "Castilla desapareció", "Barcelona se unió a León"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t10_q37",
+    "question": "¿Quién inició la unificación de los Condados Catalanes?",
+    "options": ["Wifredo el Velloso", "Ramiro I", "Fernán González", "Petronila"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t10_q38",
+    "question": "¿Cuándo lograron los Condados Catalanes la independencia total de los francos?",
+    "options": ["A finales del siglo X", "En el siglo VIII", "En 711", "En el siglo XII"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t10_q39",
+    "question": "¿Qué función desempeñó el Camino de Santiago según el tema?",
+    "options": ["Solo religiosa", "Arteria vital cultural, económica y política", "Exclusivamente militar", "Únicamente fiscal"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t10_q40",
+    "question": "¿Qué unión creó la Corona de Aragón en el siglo XII?",
+    "options": ["La de Navarra y León", "La de Petronila de Aragón y Ramón Berenguer IV", "La de Castilla y León", "La de Aragón y Portugal"],
+    "correctAnswer": 1
+  }
+]

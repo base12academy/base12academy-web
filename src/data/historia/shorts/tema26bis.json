@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc26bis_1",
+    "question": "¿Qué antecedentes explican el estallido de la guerra de Cuba de 1895?",
+    "answerGuide": "La Guerra de los Diez Años, la Paz de Zanjón y el incumplimiento de las promesas de autonomía y reformas por parte de España.",
+    "keywords": ["Guerra de los Diez Años", "Paz de Zanjón", "autonomía", "reformas incumplidas", "1895"]
+  },
+  {
+    "id": "tc26bis_2",
+    "question": "¿Quién fue José Martí y qué papel desempeñó?",
+    "answerGuide": "Fue el fundador del Partido Revolucionario Cubano en 1892 y logró unificar a los grupos independentistas bajo un proyecto soberanista con ideales democráticos y sociales.",
+    "keywords": ["José Martí", "1892", "Partido Revolucionario Cubano", "independentistas", "soberanía", "democráticos", "sociales"]
+  },
+  {
+    "id": "tc26bis_3",
+    "question": "¿Cómo estaba dividida socialmente Cuba según el tema?",
+    "answerGuide": "Entre los españoles peninsulares, que controlaban administración y comercio, y los cubanos, especialmente criollos y clases populares, que aspiraban a la soberanía.",
+    "keywords": ["peninsulares", "criollos", "clases populares", "administración", "comercio", "soberanía"]
+  },
+  {
+    "id": "tc26bis_4",
+    "question": "¿Qué causas económicas favorecieron la insurrección cubana?",
+    "answerGuide": "Los aranceles proteccionistas españoles perjudicaban el comercio con Estados Unidos, principal cliente de la isla para el tabaco y el azúcar.",
+    "keywords": ["aranceles", "proteccionismo", "Estados Unidos", "tabaco", "azúcar", "comercio"]
+  },
+  {
+    "id": "tc26bis_5",
+    "question": "¿Qué importancia tuvo el rechazo de la Ley Maura de 1893?",
+    "answerGuide": "Convenció a muchos cubanos de que la autonomía no llegaría por vía institucional y que la independencia solo podía lograrse por las armas.",
+    "keywords": ["Ley Maura", "1893", "autonomía", "vía institucional", "independencia", "armas"]
+  },
+  {
+    "id": "tc26bis_6",
+    "question": "¿Qué fue el Grito de Baire?",
+    "answerGuide": "Fue el inicio formal de la guerra de Cuba en febrero de 1895.",
+    "keywords": ["Grito de Baire", "febrero", "1895", "inicio", "guerra de Cuba"]
+  },
+  {
+    "id": "tc26bis_7",
+    "question": "¿Qué estrategias siguió España entre 1895 y 1897?",
+    "answerGuide": "Primero intentó negociar con Martínez Campos, y después aplicó la represión de Weyler; finalmente llegó una autonomía tardía en 1897 que los rebeldes rechazaron.",
+    "keywords": ["Martínez Campos", "negociación", "Weyler", "represión", "autonomía tardía", "1897"]
+  },
+  {
+    "id": "tc26bis_8",
+    "question": "¿Quiénes eran los mambises y qué tipo de guerra practicaban?",
+    "answerGuide": "Eran los insurrectos cubanos que desarrollaron una guerra de guerrillas contra el ejército español.",
+    "keywords": ["mambises", "insurrectos", "guerra de guerrillas", "Cuba"]
+  },
+  {
+    "id": "tc26bis_9",
+    "question": "¿Qué fue la reconcentración de Weyler y qué efectos tuvo?",
+    "answerGuide": "Fue la política de concentrar campesinos en poblados controlados para aislar a los rebeldes, causando miles de muertes por hambre y enfermedades.",
+    "keywords": ["reconcentración", "Weyler", "campesinos", "aislar rebeldes", "hambre", "enfermedades", "muertes"]
+  },
+  {
+    "id": "tc26bis_10",
+    "question": "¿Por qué intervino Estados Unidos en la guerra de Cuba?",
+    "answerGuide": "Por intereses estratégicos y económicos, apoyados en el Destino Manifiesto y la Doctrina Monroe, y por una fuerte campaña de prensa sensacionalista.",
+    "keywords": ["Estados Unidos", "Destino Manifiesto", "Doctrina Monroe", "intereses económicos", "prensa sensacionalista"]
+  },
+  {
+    "id": "tc26bis_11",
+    "question": "¿Qué papel tuvo el Maine en el conflicto?",
+    "answerGuide": "La explosión del acorazado Maine en La Habana en febrero de 1898 fue el casus belli que justificó la intervención estadounidense.",
+    "keywords": ["Maine", "La Habana", "febrero 1898", "casus belli", "intervención estadounidense"]
+  },
+  {
+    "id": "tc26bis_12",
+    "question": "¿Qué derrotas militares sufrió España en 1898?",
+    "answerGuide": "La destrucción de la escuadra de Cervera en Santiago de Cuba y de la flota de Montojo en Cavite, Filipinas.",
+    "keywords": ["Santiago de Cuba", "Cervera", "Cavite", "Montojo", "1898", "derrotas navales"]
+  },
+  {
+    "id": "tc26bis_13",
+    "question": "¿Qué estableció el Tratado de París de 1898?",
+    "answerGuide": "España cedió Puerto Rico, Filipinas y Guam a Estados Unidos, mientras Cuba quedó bajo ocupación militar estadounidense.",
+    "keywords": ["Tratado de París", "1898", "Puerto Rico", "Filipinas", "Guam", "ocupación militar", "Cuba"]
+  },
+  {
+    "id": "tc26bis_14",
+    "question": "¿Qué consecuencias políticas e intelectuales tuvo el Desastre del 98 en España?",
+    "answerGuide": "Provocó una pérdida de legitimidad del sistema de la Restauración y dio impulso al regeneracionismo y a la Generación del 98.",
+    "keywords": ["Desastre del 98", "Restauración", "pérdida de legitimidad", "regeneracionismo", "Generación del 98"]
+  },
+  {
+    "id": "tc26bis_15",
+    "question": "¿Qué consecuencias económicas y estratégicas tuvo el desastre colonial?",
+    "answerGuide": "La repatriación de capitales ayudó a modernizar bancos e industria, y España orientó después sus ambiciones hacia Marruecos para recuperar prestigio.",
+    "keywords": ["repatriación de capitales", "bancos", "industria", "Marruecos", "prestigio", "estrategia"]
+  }
+]

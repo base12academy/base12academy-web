@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc23_1",
+    "question": "¿Qué ocurrió al regreso de Fernando VII en 1814?",
+    "answerGuide": "Regresó reconocido por el Tratado de Valençay y restauró el absolutismo, anulando la obra de Cádiz.",
+    "keywords": ["Fernando VII", "1814", "Valençay", "absolutismo", "Cádiz"]
+  },
+  {
+    "id": "tc23_2",
+    "question": "¿Qué fue el Manifiesto de los Persas?",
+    "answerGuide": "Un documento de diputados absolutistas que animó a Fernando VII a dar un giro autoritario y restaurar el absolutismo.",
+    "keywords": ["Manifiesto de los Persas", "diputados absolutistas", "absolutismo", "giro autoritario"]
+  },
+  {
+    "id": "tc23_3",
+    "question": "¿Qué estableció el Decreto de Valencia de 1814?",
+    "answerGuide": "Anuló la obra de las Cortes de Cádiz, restauró el absolutismo y las viejas instituciones, incluida la Inquisición.",
+    "keywords": ["Decreto de Valencia", "1814", "Cortes de Cádiz", "absolutismo", "Inquisición"]
+  },
+  {
+    "id": "tc23_4",
+    "question": "¿Cuál era la situación económica y social en la primera etapa absolutista?",
+    "answerGuide": "El país estaba arruinado, con agricultura e industria destruidas, Hacienda en quiebra y fuerte censura contra las ideas liberales.",
+    "keywords": ["agricultura", "industria", "Hacienda", "quiebra", "censura", "liberales"]
+  },
+  {
+    "id": "tc23_5",
+    "question": "¿Qué hecho inició el Trienio Liberal en 1820?",
+    "answerGuide": "La sublevación de Rafael del Riego en Cabezas de San Juan, que obligó al rey a jurar la Constitución de 1812.",
+    "keywords": ["Rafael del Riego", "Cabezas de San Juan", "1820", "Constitución de 1812", "Trienio Liberal"]
+  },
+  {
+    "id": "tc23_6",
+    "question": "¿Qué dos corrientes liberales coexistieron durante el Trienio Liberal?",
+    "answerGuide": "Los moderados o doceañistas y los exaltados o veinteañistas.",
+    "keywords": ["moderados", "doceañistas", "exaltados", "veinteañistas", "Trienio Liberal"]
+  },
+  {
+    "id": "tc23_7",
+    "question": "¿Qué reformas intentó aplicar el Trienio Liberal?",
+    "answerGuide": "La supresión de señoríos y gremios, la expulsión de jesuitas, la desvinculación de mayorazgos, la desamortización y la reforma fiscal.",
+    "keywords": ["señoríos", "gremios", "jesuitas", "mayorazgos", "desamortización", "reforma fiscal"]
+  },
+  {
+    "id": "tc23_8",
+    "question": "¿Por qué encontró oposición campesina la reforma fiscal del Trienio Liberal?",
+    "answerGuide": "Porque exigía el pago de impuestos en moneda, lo que perjudicaba al campesinado.",
+    "keywords": ["campesinado", "reforma fiscal", "moneda", "oposición"]
+  },
+  {
+    "id": "tc23_9",
+    "question": "¿Cómo terminó el Trienio Liberal?",
+    "answerGuide": "Terminó con la intervención de los Cien Mil Hijos de San Luis en 1823, que restauró el absolutismo.",
+    "keywords": ["Cien Mil Hijos de San Luis", "1823", "absolutismo", "fin del Trienio"]
+  },
+  {
+    "id": "tc23_10",
+    "question": "¿Qué caracterizó a la Década Ominosa?",
+    "answerGuide": "Una represión más feroz que la de 1814, con Juntas de Fe, ejecuciones, depuración de funcionarios y exilio liberal.",
+    "keywords": ["Década Ominosa", "represión", "Juntas de Fe", "ejecuciones", "exilio liberal"]
+  },
+  {
+    "id": "tc23_11",
+    "question": "¿Qué figuras liberales simbolizan la represión de la Década Ominosa?",
+    "answerGuide": "Rafael del Riego, Mariana Pineda y el general Torrijos.",
+    "keywords": ["Riego", "Mariana Pineda", "Torrijos", "represión"]
+  },
+  {
+    "id": "tc23_12",
+    "question": "¿Qué reformas administrativas se introdujeron durante la Década Ominosa?",
+    "answerGuide": "La creación del Consejo de Ministros, el presupuesto general del Estado y el Código de Comercio.",
+    "keywords": ["Consejo de Ministros", "presupuesto general", "Código de Comercio", "Década Ominosa"]
+  },
+  {
+    "id": "tc23_13",
+    "question": "¿Quiénes eran los apostólicos?",
+    "answerGuide": "Absolutistas ultras que rechazaban cualquier reforma y se agruparon en torno a Carlos María Isidro.",
+    "keywords": ["apostólicos", "absolutistas ultras", "Carlos María Isidro", "reformas"]
+  },
+  {
+    "id": "tc23_14",
+    "question": "¿Qué fue la Pragmática Sanción y qué efecto tuvo?",
+    "answerGuide": "Fue la norma que anuló la Ley Sálica para permitir que Isabel heredara el trono, apartando a Carlos María Isidro.",
+    "keywords": ["Pragmática Sanción", "Ley Sálica", "Isabel", "Carlos María Isidro", "sucesión"]
+  },
+  {
+    "id": "tc23_15",
+    "question": "¿Qué dos bandos se enfrentaron tras la muerte de Fernando VII?",
+    "answerGuide": "Carlistas, defensores del absolutismo y la tradición, e isabelinos o cristinos, apoyados por liberales moderados.",
+    "keywords": ["carlistas", "isabelinos", "cristinos", "absolutismo", "tradición", "liberales moderados"]
+  }
+]

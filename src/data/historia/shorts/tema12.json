@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc12_1",
+    "question": "¿Por qué entró en crisis el sistema feudal peninsular en el siglo XIV?",
+    "answerGuide": "Porque alcanzó un límite de saturación y se rompió el equilibrio entre población y recursos tras siglos de expansión.",
+    "keywords": ["crisis", "siglo XIV", "saturación", "equilibrio", "población", "recursos"]
+  },
+  {
+    "id": "tc12_2",
+    "question": "¿Qué factores explican la crisis de subsistencia de la Baja Edad Media?",
+    "answerGuide": "La Pequeña Edad de Hielo, las malas cosechas, el agotamiento de los suelos, la inflación alimentaria y la debilidad biológica de la población.",
+    "keywords": ["Pequeña Edad de Hielo", "malas cosechas", "agotamiento de los suelos", "inflación alimentaria", "desnutrición"]
+  },
+  {
+    "id": "tc12_3",
+    "question": "¿Qué fue la Peste Negra y cuándo llegó a la península?",
+    "answerGuide": "Fue una gran pandemia procedente de Oriente que llegó a la península en 1348 a través de las rutas comerciales.",
+    "keywords": ["Peste Negra", "1348", "Oriente", "rutas comerciales", "pandemia"]
+  },
+  {
+    "id": "tc12_4",
+    "question": "¿Qué consecuencias demográficas tuvo la Peste Negra?",
+    "answerGuide": "Provocó una mortalidad masiva, de entre el 30% y el 50% en algunas zonas, afectando especialmente a las ciudades.",
+    "keywords": ["mortalidad", "30%", "50%", "ciudades", "demografía"]
+  },
+  {
+    "id": "tc12_5",
+    "question": "¿Qué efectos económicos provocó la peste?",
+    "answerGuide": "Falta de mano de obra, abandono de campos o despoblados, parálisis del comercio urbano, subida de salarios e inflación incontrolable.",
+    "keywords": ["mano de obra", "despoblados", "comercio urbano", "salarios", "inflación"]
+  },
+  {
+    "id": "tc12_6",
+    "question": "¿Cómo interpretó la sociedad medieval la peste?",
+    "answerGuide": "Como un castigo divino, lo que favoreció el auge de los flagelantes y del fanatismo religioso.",
+    "keywords": ["castigo divino", "flagelantes", "fanatismo religioso"]
+  },
+  {
+    "id": "tc12_7",
+    "question": "¿Qué papel tuvieron las comunidades judías durante la crisis?",
+    "answerGuide": "Fueron señaladas con frecuencia como chivos expiatorios, lo que alimentó la violencia antijudía.",
+    "keywords": ["judías", "chivos expiatorios", "violencia", "antijudía"]
+  },
+  {
+    "id": "tc12_8",
+    "question": "¿Qué fue la revuelta de los Irmandiños?",
+    "answerGuide": "Un levantamiento campesino armado en Galicia contra los abusos de la nobleza local.",
+    "keywords": ["Irmandiños", "Galicia", "levantamiento campesino", "abusos", "nobleza"]
+  },
+  {
+    "id": "tc12_9",
+    "question": "¿Qué fue la guerra de los Remensas?",
+    "answerGuide": "Una lucha campesina en Cataluña contra los malos usos señoriales que limitaban su libertad y economía.",
+    "keywords": ["Remensas", "Cataluña", "malos usos", "campesinos", "libertad"]
+  },
+  {
+    "id": "tc12_10",
+    "question": "¿Qué enfrentamiento social se produjo en Barcelona?",
+    "answerGuide": "Un conflicto por el poder municipal entre la Biga, alta burguesía, y la Busca, formada por artesanos y pequeños comerciantes.",
+    "keywords": ["Barcelona", "Biga", "Busca", "alta burguesía", "artesanos", "pequeños comerciantes"]
+  },
+  {
+    "id": "tc12_11",
+    "question": "¿Qué fueron los pogromos de 1391?",
+    "answerGuide": "Estallidos de violencia extrema contra las juderías, impulsados por la tensión social y el fanatismo.",
+    "keywords": ["pogromos", "1391", "violencia", "juderías", "fanatismo"]
+  },
+  {
+    "id": "tc12_12",
+    "question": "¿Qué efecto político general tuvieron los conflictos de la Baja Edad Media?",
+    "answerGuide": "Debilitaron el régimen señorial y reforzaron a la monarquía como árbitro entre los estamentos.",
+    "keywords": ["régimen señorial", "monarquía", "árbitro", "estamentos"]
+  },
+  {
+    "id": "tc12_13",
+    "question": "¿Qué supuso la guerra civil entre Pedro I y Enrique de Trastámara?",
+    "answerGuide": "La victoria de Enrique instauró la dinastía Trastámara en Castilla y aumentó el poder de la nobleza mediante las Mercedes enriqueñas.",
+    "keywords": ["Pedro I", "Enrique de Trastámara", "dinastía Trastámara", "Mercedes enriqueñas", "nobleza"]
+  },
+  {
+    "id": "tc12_14",
+    "question": "¿Qué fue el Compromiso de Caspe de 1412?",
+    "answerGuide": "La solución sucesoria tras la muerte de Martín el Humano, por la que se eligió rey de Aragón a Fernando I de la casa Trastámara.",
+    "keywords": ["Compromiso de Caspe", "1412", "Martín el Humano", "Fernando I", "Trastámara", "Aragón"]
+  },
+  {
+    "id": "tc12_15",
+    "question": "¿Cómo se avanzó hacia el Estado Moderno según el tema?",
+    "answerGuide": "Con el fortalecimiento del derecho romano, el ideal de monarquía autoritaria, la unión dinástica de los Trastámara y la toma de Granada en 1492.",
+    "keywords": ["Estado Moderno", "derecho romano", "monarquía autoritaria", "unión dinástica", "Trastámara", "Granada", "1492"]
+  }
+]

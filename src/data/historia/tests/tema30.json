@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t30_q1",
+    "question": "¿Qué hecho abrió el periodo de la Transición en España?",
+    "options": ["La aprobación de la Constitución de 1978", "La muerte de Francisco Franco el 20 de noviembre de 1975", "La entrada en la CEE", "El golpe del 23-F"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q2",
+    "question": "¿Qué principio resumía la estrategia política de la Transición?",
+    "options": ["Todo para el pueblo", "De la ley a la ley", "Orden y progreso", "Ruptura total con el pasado"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q3",
+    "question": "¿Qué buscaba la fórmula 'de la ley a la ley'?",
+    "options": ["Mantener intacto el franquismo", "Cambiar las instituciones sin ruptura violenta", "Imponer una república inmediata", "Evitar elecciones democráticas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q4",
+    "question": "¿Qué institución actuó como motor fundamental del cambio democrático según el tema?",
+    "options": ["El ejército", "La monarquía con Juan Carlos I", "La Iglesia", "El Senado franquista"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q5",
+    "question": "¿Quién fue nombrado presidente del Gobierno y aceleró las reformas democráticas?",
+    "options": ["Felipe González", "Leopoldo Calvo-Sotelo", "Adolfo Suárez", "José María Aznar"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t30_q6",
+    "question": "¿Qué ley de 1976 permitió pasar del sistema franquista a uno democrático?",
+    "options": ["Ley de Cortes", "Ley para la Reforma Política", "Ley del Movimiento Nacional", "Ley de Amnistía"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q7",
+    "question": "¿Qué partido se destaca en el tema por su legalización durante la Transición?",
+    "options": ["PSOE", "PCE", "PP", "UCD"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q8",
+    "question": "¿Cuándo se celebraron las primeras elecciones democráticas de la Transición?",
+    "options": ["20 de noviembre de 1975", "15 de junio de 1977", "6 de diciembre de 1978", "23 de febrero de 1981"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q9",
+    "question": "¿Qué expresión utiliza el tema para referirse a la ciudadanía movilizada durante la Transición?",
+    "options": ["Las masas honestas", "La calle", "Los voluntarios", "La nación legal"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q10",
+    "question": "¿Qué reclamaba la ciudadanía movilizada en la Transición?",
+    "options": ["Más poder militar", "Libertad y amnistía", "Restauración del franquismo", "Abolición de la monarquía inmediata"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q11",
+    "question": "¿Qué organizaciones violentas aparecen citadas como amenaza durante la Transición?",
+    "options": ["CNT y UGT", "ETA, GRAPO y extrema derecha", "PCE y PSOE", "OTAN y CEE"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q12",
+    "question": "¿Qué pactos de 1977 fueron fundamentales para estabilizar el país?",
+    "options": ["Pactos del Pardo", "Pactos de la Moncloa", "Pactos de Ostende", "Pactos de Vergara"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q13",
+    "question": "¿Qué problema económico arrastraba España cuando se firmaron los Pactos de la Moncloa?",
+    "options": ["Deflación y pleno empleo", "Consecuencias de la crisis del petróleo de 1973", "Auge del sector inmobiliario", "Superávit público"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q14",
+    "question": "¿Qué dato de inflación ofrece el tema al hablar de los Pactos de la Moncloa?",
+    "options": ["10%", "15%", "Más del 26%", "40%"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t30_q15",
+    "question": "¿Qué permitieron políticamente los Pactos de la Moncloa?",
+    "options": ["La vuelta al Movimiento Nacional", "La reconciliación entre antiguos franquistas y oposición democrática", "La abolición del Parlamento", "La supresión de los sindicatos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q16",
+    "question": "¿Qué texto legal se convirtió en el marco de convivencia de la nueva democracia?",
+    "options": ["La Constitución de 1931", "La Constitución de 1978", "La Ley para la Reforma Política", "El Estatuto de Bayona"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q17",
+    "question": "¿Cómo define la Constitución de 1978 la forma política del Estado?",
+    "options": ["República federal", "Monarquía parlamentaria", "Monarquía absoluta", "República presidencialista"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q18",
+    "question": "¿Cómo define la Constitución de 1978 la naturaleza del Estado español?",
+    "options": ["Estado confesional y unitario", "Estado social y democrático de derecho", "Estado corporativo", "Estado sindical"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q19",
+    "question": "¿Qué sistema parlamentario establece la Constitución de 1978?",
+    "options": ["Unicameral", "Bicameral con Congreso y Senado", "Federal con tres cámaras", "Solo Senado"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q20",
+    "question": "¿Qué rasgo ideológico de la Constitución de 1978 supuso una ruptura con etapas anteriores?",
+    "options": ["Estado militar", "Estado no confesional", "Estado totalitario", "Estado falangista"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q21",
+    "question": "¿Qué título constitucional respondió a las demandas históricas de autogobierno?",
+    "options": ["Título I", "Título VIII", "Título X", "Título Preliminar"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q22",
+    "question": "¿Qué territorios aparecen citados como principales demandantes históricos de autogobierno?",
+    "options": ["Andalucía, Valencia y Murcia", "Cataluña, País Vasco y Galicia", "Navarra, Aragón y Castilla", "Canarias, Baleares y Extremadura"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q23",
+    "question": "¿Qué modelo económico reconoce la Constitución de 1978?",
+    "options": ["Economía socialista planificada", "Libertad de empresa en economía de mercado", "Autarquía nacional", "Colectivización agrícola"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q24",
+    "question": "¿Cuándo fue ratificada en referéndum la Constitución de 1978?",
+    "options": ["15 de junio de 1977", "6 de diciembre de 1978", "23 de febrero de 1981", "1 de enero de 1986"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q25",
+    "question": "¿Qué hecho de 1981 puso a prueba la estabilidad de la democracia española?",
+    "options": ["La entrada en la OTAN", "El 23-F", "La adhesión al euro", "La crisis del COVID-19"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q26",
+    "question": "¿Qué efecto tuvo el fracaso del 23-F según el tema?",
+    "options": ["Debilitó definitivamente la democracia", "Fortaleció la democracia", "Restauró el franquismo", "Provocó una guerra civil"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q27",
+    "question": "¿Qué partido ganó las elecciones de 1982, consolidando la alternancia democrática?",
+    "options": ["PP", "PSOE", "PCE", "UCD"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q28",
+    "question": "¿Qué líder aparece asociado al PSOE en el tema?",
+    "options": ["José María Aznar", "Felipe González", "Rajoy", "Sánchez"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q29",
+    "question": "¿Qué partido protagonizó la alternancia hacia la derecha en 1996?",
+    "options": ["Ciudadanos", "PP", "Vox", "PCE"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q30",
+    "question": "¿Qué líder aparece vinculado en el tema a esa alternancia de 1996?",
+    "options": ["Aznar", "Zapatero", "Suárez", "Calvo-Sotelo"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t30_q31",
+    "question": "¿En qué año entró España en la Comunidad Económica Europea?",
+    "options": ["1978", "1981", "1986", "1992"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t30_q32",
+    "question": "¿Qué otra organización internacional se menciona en el proceso de integración exterior?",
+    "options": ["ONU", "OTAN", "Mercosur", "Commonwealth"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q33",
+    "question": "¿Qué efectos sociales de modernización cita el tema para la etapa democrática?",
+    "options": ["Vuelta al racionamiento", "Universalización de sanidad y educación", "Supresión del sufragio", "Restauración del Estado confesional"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q34",
+    "question": "¿Qué fenómeno cultural simbolizó la explosión de libertad en la nueva democracia?",
+    "options": ["La Generación del 98", "La Movida Madrileña", "El krausismo", "El regeneracionismo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q35",
+    "question": "¿Qué proceso económico fue necesario para superar el atraso técnico?",
+    "options": ["Autarquía", "Reconversión industrial", "Desamortización", "Colectivización"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q36",
+    "question": "¿Qué rasgo define el mapa político del siglo XXI según el tema?",
+    "options": ["Dominio exclusivo de un solo partido", "Fin del bipartidismo", "Restauración del turnismo", "Desaparición de nuevos partidos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q37",
+    "question": "¿Qué nuevos partidos cita el tema como ejemplo del fin del bipartidismo?",
+    "options": ["CEDA, Falange y UGT", "Podemos, Ciudadanos y Vox", "PCE, CNT y UCD", "ERC, PNV y Bildu"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q38",
+    "question": "¿Qué hecho de convivencia se señala en 2011?",
+    "options": ["La entrada en el euro", "El final del terrorismo de ETA", "La proclamación de la república", "La Constitución europea"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q39",
+    "question": "¿Qué gran tensión territorial se cita en 2017?",
+    "options": ["La Marcha Verde", "El proceso independentista en Cataluña", "La crisis del petróleo", "La anexión de Navarra"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t30_q40",
+    "question": "¿Qué moneda adoptó España en 2002 según el tema?",
+    "options": ["La peseta renovada", "El euro", "El franco europeo", "El ECU"],
+    "correctAnswer": 1
+  }
+]

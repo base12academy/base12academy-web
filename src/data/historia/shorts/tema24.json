@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc24_1",
+    "question": "¿Qué originó la Primera Guerra Carlista?",
+    "answerGuide": "La disputa sucesoria tras la muerte de Fernando VII, cuando Carlos María Isidro reclamó el trono frente a Isabel II invocando la Ley Sálica.",
+    "keywords": ["Primera Guerra Carlista", "Carlos María Isidro", "Isabel II", "Ley Sálica", "sucesión"]
+  },
+  {
+    "id": "tc24_2",
+    "question": "¿Cuáles fueron las fases principales de la Primera Guerra Carlista?",
+    "answerGuide": "Una fase de estabilización bajo Zumalacárregui, otra de expediciones como la Expedición Real y una final marcada por la división carlista y el Convenio de Vergara.",
+    "keywords": ["Zumalacárregui", "expediciones", "Expedición Real", "Convenio de Vergara", "fases"]
+  },
+  {
+    "id": "tc24_3",
+    "question": "¿Qué fue el Convenio de Vergara?",
+    "answerGuide": "El acuerdo de 1839 que puso fin al conflicto principal de la Primera Guerra Carlista, culminado en 1840.",
+    "keywords": ["Convenio de Vergara", "1839", "fin", "Primera Guerra Carlista"]
+  },
+  {
+    "id": "tc24_4",
+    "question": "¿Qué grupos sociales apoyaban a isabelinos y carlistas?",
+    "answerGuide": "Los isabelinos contaban con alta nobleza, burguesía, clases medias urbanas y ejército; los carlistas con pequeña nobleza rural, bajo clero y campesinado del norte.",
+    "keywords": ["isabelinos", "alta nobleza", "burguesía", "ejército", "carlistas", "bajo clero", "campesinado"]
+  },
+  {
+    "id": "tc24_5",
+    "question": "¿Qué defendía el carlismo bajo el lema 'Dios, Patria, Fueros y Rey'?",
+    "answerGuide": "Defendía el absolutismo y los fueros territoriales frente al centralismo liberal.",
+    "keywords": ["carlismo", "Dios", "Patria", "Fueros", "Rey", "absolutismo", "fueros territoriales"]
+  },
+  {
+    "id": "tc24_6",
+    "question": "¿Qué fueron los espadones y por qué surgieron?",
+    "answerGuide": "Fueron militares convertidos en árbitros de la vida política, favorecidos por la intensidad de la guerra civil y la inestabilidad del régimen.",
+    "keywords": ["espadones", "militares", "árbitros políticos", "inestabilidad", "guerra civil"]
+  },
+  {
+    "id": "tc24_7",
+    "question": "¿Qué buscaban las desamortizaciones de Mendizábal y Madoz?",
+    "answerGuide": "Financiar la guerra y la deuda, modernizar la economía y desarticular las propiedades en manos muertas.",
+    "keywords": ["Mendizábal", "Madoz", "deuda", "guerra", "modernización", "manos muertas"]
+  },
+  {
+    "id": "tc24_8",
+    "question": "¿Qué diferencias hubo entre la desamortización de Mendizábal y la de Madoz?",
+    "answerGuide": "La de Mendizábal afectó al clero regular y secular; la de Madoz afectó además a los bienes propios y comunes de los municipios.",
+    "keywords": ["Mendizábal", "clero regular", "clero secular", "Madoz", "bienes propios", "comunes"]
+  },
+  {
+    "id": "tc24_9",
+    "question": "¿Qué efectos sociales tuvieron las desamortizaciones?",
+    "answerGuide": "Perjudicaron al campesinado al privarle de comunales y beneficiaron a burguesía y aristocracia, que compraron las tierras.",
+    "keywords": ["campesinado", "comunales", "burguesía", "aristocracia", "tierras"]
+  },
+  {
+    "id": "tc24_10",
+    "question": "¿Qué fue el Concordato de 1851?",
+    "answerGuide": "El acuerdo que suavizó la ruptura con la Iglesia al comprometerse el Estado a sostener el culto y el clero.",
+    "keywords": ["Concordato", "1851", "Iglesia", "culto", "clero"]
+  },
+  {
+    "id": "tc24_11",
+    "question": "¿Cómo era el sistema político durante el reinado de Isabel II?",
+    "answerGuide": "Era un sistema liberal restringido, con fraude electoral, sufragio censitario y fuerte intervención militar mediante pronunciamientos.",
+    "keywords": ["Isabel II", "fraude electoral", "sufragio censitario", "pronunciamientos", "liberal restringido"]
+  },
+  {
+    "id": "tc24_12",
+    "question": "¿Qué diferencias existían entre moderados y progresistas?",
+    "answerGuide": "Los moderados defendían soberanía compartida, orden público y Estado confesional; los progresistas, soberanía nacional, mayores libertades y apoyo en la Milicia Nacional.",
+    "keywords": ["moderados", "soberanía compartida", "Estado confesional", "progresistas", "soberanía nacional", "Milicia Nacional"]
+  },
+  {
+    "id": "tc24_13",
+    "question": "¿Qué avances administrativos y económicos se impulsaron en este periodo?",
+    "answerGuide": "La reforma fiscal Mon-Santillán, el sistema métrico decimal y la Ley de Ferrocarriles de 1855.",
+    "keywords": ["Mon-Santillán", "sistema métrico decimal", "Ley de Ferrocarriles", "1855"]
+  },
+  {
+    "id": "tc24_14",
+    "question": "¿Cómo cambió la sociedad durante la construcción del Estado liberal?",
+    "answerGuide": "Se pasó de una sociedad estamental a una sociedad de clases basada en la riqueza, con una élite de burguesía y aristocracia terrateniente y clases populares campesinas y obreras.",
+    "keywords": ["sociedad estamental", "sociedad de clases", "riqueza", "burguesía", "aristocracia terrateniente", "proletariado"]
+  },
+  {
+    "id": "tc24_15",
+    "question": "¿Qué provocó el colapso final del régimen isabelino?",
+    "answerGuide": "El autoritarismo de la reina, el agotamiento del sistema, el Pacto de Ostende y la Revolución de 1868, que llevó al exilio de Isabel II.",
+    "keywords": ["autoritarismo", "Pacto de Ostende", "Revolución de 1868", "Isabel II", "exilio"]
+  }
+]

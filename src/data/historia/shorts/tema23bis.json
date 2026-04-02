@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc23bis_1",
+    "question": "¿Cómo fue la revolución industrial en España según el tema?",
+    "answerGuide": "Fue un proceso tardío, incompleto y muy desequilibrado regionalmente, lejos del modelo uniforme de otros países europeos.",
+    "keywords": ["tardía", "incompleta", "desequilibrada", "regional", "industrialización"]
+  },
+  {
+    "id": "tc23bis_2",
+    "question": "¿Qué factores iniciales retrasaron la industrialización española?",
+    "answerGuide": "La destrucción económica causada por la Guerra de Independencia y la pérdida de las colonias americanas, que privó al país de ingresos y capitales.",
+    "keywords": ["Guerra de Independencia", "destrucción", "colonias americanas", "capitales", "retraso"]
+  },
+  {
+    "id": "tc23bis_3",
+    "question": "¿Qué obstáculos estructurales y políticos frenaron el desarrollo industrial?",
+    "answerGuide": "La inestabilidad política, el fracaso de las reformas agrarias, la mentalidad rentista de la oligarquía y la debilidad del mercado interior.",
+    "keywords": ["inestabilidad política", "reformas agrarias", "mentalidad rentista", "mercado interior"]
+  },
+  {
+    "id": "tc23bis_4",
+    "question": "¿Qué efecto tuvieron las desamortizaciones de Mendizábal y Madoz según el tema?",
+    "answerGuide": "No crearon una clase media agraria, sino que reforzaron el latifundismo tradicional.",
+    "keywords": ["desamortizaciones", "Mendizábal", "Madoz", "clase media", "latifundismo"]
+  },
+  {
+    "id": "tc23bis_5",
+    "question": "¿Por qué se dice que la industrialización española fue una suma de 'manchas de aceite'?",
+    "answerGuide": "Porque no cubrió el territorio de forma uniforme, sino que se concentró en focos aislados de modernidad rodeados de un país mayoritariamente agrario.",
+    "keywords": ["manchas de aceite", "focos aislados", "modernidad", "agrario"]
+  },
+  {
+    "id": "tc23bis_6",
+    "question": "¿Qué papel tuvo Cataluña en la industrialización española?",
+    "answerGuide": "Fue el gran foco textil algodonero, impulsado por una burguesía industrial que exigía protección arancelaria frente a Inglaterra.",
+    "keywords": ["Cataluña", "textil algodonero", "burguesía industrial", "aranceles", "Inglaterra"]
+  },
+  {
+    "id": "tc23bis_7",
+    "question": "¿Qué eran las colonias industriales catalanas?",
+    "answerGuide": "Eran establecimientos fabriles situados junto a ríos para aprovechar la energía hidráulica y organizar el trabajo obrero.",
+    "keywords": ["colonias industriales", "ríos", "energía hidráulica", "trabajo obrero"]
+  },
+  {
+    "id": "tc23bis_8",
+    "question": "¿Cómo se consolidó la siderurgia del País Vasco?",
+    "answerGuide": "Exportando hierro de sus minas a cambio del carbón de alta calidad de Gales.",
+    "keywords": ["País Vasco", "siderurgia", "hierro", "carbón", "Gales"]
+  },
+  {
+    "id": "tc23bis_9",
+    "question": "¿Qué relación tuvo el desarrollo industrial periférico con el nacionalismo?",
+    "answerGuide": "Contribuyó al surgimiento del catalanismo y del nacionalismo vasco para defender intereses económicos frente a un Estado central agrario.",
+    "keywords": ["catalanismo", "nacionalismo vasco", "intereses económicos", "Estado central"]
+  },
+  {
+    "id": "tc23bis_10",
+    "question": "¿Qué consecuencias tuvo la Ley de Minas de 1868?",
+    "answerGuide": "Permitió la explotación extranjera de yacimientos como Riotinto o Almadén, reforzando una economía dependiente basada en exportar materias primas.",
+    "keywords": ["Ley de Minas", "1868", "Riotinto", "Almadén", "economía dependiente", "materias primas"]
+  },
+  {
+    "id": "tc23bis_11",
+    "question": "¿Cuál fue el principal problema energético de la industrialización española?",
+    "answerGuide": "La baja calidad y el alto coste del carbón nacional, especialmente el asturiano, lo que obligó a importar combustible.",
+    "keywords": ["carbón nacional", "Asturias", "alta extracción", "importaciones", "energía"]
+  },
+  {
+    "id": "tc23bis_12",
+    "question": "¿Qué importancia tuvo el ferrocarril en la España industrial?",
+    "answerGuide": "Abarató el transporte de trigo y minerales, facilitó migraciones internas y articuló el mercado, aunque con una red radial centrada en Madrid y un ancho de vía distinto al europeo.",
+    "keywords": ["ferrocarril", "trigo", "minerales", "migraciones", "red radial", "Madrid", "ancho de vía"]
+  },
+  {
+    "id": "tc23bis_13",
+    "question": "¿Cómo transformó la industrialización la sociedad urbana?",
+    "answerGuide": "Generó un fuerte contraste entre ensanches burgueses y barrios obreros degradados, con chabolismo, falta de higiene y explotación laboral.",
+    "keywords": ["ensanches burgueses", "barrios obreros", "chabolismo", "higiene", "explotación laboral"]
+  },
+  {
+    "id": "tc23bis_14",
+    "question": "¿Qué organizaciones obreras e ideologías aparecen en el tema?",
+    "answerGuide": "La FTRE de orientación anarquista y, a finales de siglo, el PSOE y la UGT de inspiración marxista.",
+    "keywords": ["FTRE", "anarquista", "PSOE", "UGT", "marxista"]
+  },
+  {
+    "id": "tc23bis_15",
+    "question": "¿Qué autores literarios reflejaron la cuestión social en la España industrial?",
+    "answerGuide": "Benito Pérez Galdós y Emilia Pardo Bazán, dentro del realismo y el naturalismo.",
+    "keywords": ["Benito Pérez Galdós", "Emilia Pardo Bazán", "realismo", "naturalismo", "cuestión social"]
+  }
+]

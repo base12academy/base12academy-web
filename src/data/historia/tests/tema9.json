@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t9_q1",
+    "question": "¿Qué transformación social experimentó la península bajo Al-Ándalus?",
+    "options": ["El paso a una sociedad feudal industrial", "El paso de una sociedad estamental germánica a una estructura urbana étnico-religiosa", "La desaparición de toda jerarquía social", "La implantación de una sociedad exclusivamente tribal"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t9_q2",
+    "question": "¿Qué criterio definía principalmente la estratificación social en Al-Ándalus?",
+    "options": ["La edad", "La riqueza minera", "Los criterios étnico-religiosos", "La pertenencia militar exclusiva"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t9_q3",
+    "question": "¿Qué grupo ocupaba la cúspide de la pirámide social andalusí?",
+    "options": ["Los mozárabes", "Los judíos", "Los musulmanes", "Los dimmíes"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t9_q4",
+    "question": "¿Quiénes poseían las tierras más fértiles y el principal poder político en Al-Ándalus?",
+    "options": ["Los bereberes", "Los muladíes", "La aristocracia árabe", "Los mozárabes"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t9_q5",
+    "question": "¿De dónde procedían los bereberes?",
+    "options": ["Del Próximo Oriente", "Del norte de África", "De la península itálica", "De la Galia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t9_q6",
+    "question": "¿Qué caracterizaba la posición de los bereberes en Al-Ándalus?",
+    "options": ["Controlaban las ciudades principales", "Tenían más poder político que los árabes", "Ocupaban tierras menos productivas y tenían menor influencia política", "Estaban exentos de impuestos"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t9_q7",
+    "question": "¿Quiénes eran los muladíes?",
+    "options": ["Judíos comerciantes", "Cristianos convertidos al Islam", "Musulmanes árabes de origen oriental", "Cristianos que conservaban su religión"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t9_q8",
+    "question": "¿Cómo se llamaba a los no musulmanes protegidos legalmente en Al-Ándalus?",
+    "options": ["Mozárabes", "Muladíes", "Dimmíes", "Almotacenes"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t9_q9",
+    "question": "¿Quiénes eran los mozárabes?",
+    "options": ["Cristianos que mantenían su religión y leyes en territorio musulmán", "Musulmanes convertidos al cristianismo", "Árabes instalados en ciudades", "Judíos de origen bereber"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t9_q10",
+    "question": "¿Qué grupo no musulmán destacó por su libertad administrativa y comercial?",
+    "options": ["Mozárabes", "Muladíes", "Judíos", "Bereberes"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t9_q11",
+    "question": "¿Qué tensiones internas contribuyeron a las crisis del Emirato y el Califato?",
+    "options": ["La rivalidad entre mozárabes y judíos", "Las tensiones entre árabes y bereberes y el descontento muladí", "La desaparición del comercio", "La falta de ciudades"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t9_q12",
+    "question": "¿Qué denunciaban los muladíes según el tema?",
+    "options": ["La prohibición del comercio", "La discriminación fiscal", "La falta de regadío", "La desaparición del dinar"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t9_q13",
+    "question": "¿Qué fue la agricultura en Al-Ándalus?",
+    "options": ["Una actividad secundaria", "El pilar fundamental del Estado", "Un sector en decadencia", "Una actividad limitada al valle del Ebro"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t9_q14",
+    "question": "¿Qué combinó Al-Ándalus para revitalizar el campo peninsular?",
+    "options": ["Solo innovaciones propias", "El legado romano y la sabiduría agronómica oriental", "La agricultura cristiana y la minería", "Únicamente técnicas bereberes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t9_q15",
+    "question": "¿Qué infraestructuras hidráulicas introdujeron los musulmanes?",
+    "options": ["Acueductos y puentes", "Acequias, aljibes y norias", "Canteras y murallas", "Termas y anfiteatros"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t9_q16",
+    "question": "¿Bajo qué marco se regulaba la gestión del agua?",
+    "options": ["El derecho romano", "El derecho islámico", "El Fuero Juzgo", "La ley visigoda"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t9_q17",
+    "question": "¿Qué institución se menciona como encargada del reparto del agua?",
+    "options": ["Los concilios", "Los zocos", "Los tribunales de riego", "Las curias"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t9_q18",
+    "question": "¿Cuál de estos cultivos necesitaba riego constante y fue introducido en Al-Ándalus?",
+    "options": ["Trigo", "Arroz", "Vid", "Olivo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t9_q19",
+    "question": "¿Qué cultivo textil se incorporó a la agricultura andalusí?",
+    "options": ["Lino", "Algodón", "Esparto", "Cáñamo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t9_q20",
+    "question": "¿Qué cultivo de alto valor comercial menciona el tema?",
+    "options": ["Azafrán", "Cebada", "Centeno", "Girasol"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t9_q21",
+    "question": "¿Qué cítricos se introdujeron en Al-Ándalus según el texto?",
+    "options": ["Manzanas y peras", "Naranjas y limones", "Granadas y uvas", "Higos y dátiles"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t9_q22",
+    "question": "¿En qué circuitos comerciales se integró con éxito Al-Ándalus?",
+    "options": ["Atlántico y báltico", "Mediterráneo y rutas transaharianas", "Solo comercio interior", "Mar Negro y Asia oriental"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t9_q23",
+    "question": "¿Qué función tenía el zoco en la economía andalusí?",
+    "options": ["Era un tribunal religioso", "Era el mercado", "Era una fortaleza militar", "Era una escuela científica"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t9_q24",
+    "question": "¿Quién supervisaba el cumplimiento de pesos y medidas en los mercados?",
+    "options": ["El walí", "El almotacén", "El emir", "El cadí"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t9_q25",
+    "question": "¿Qué manufactura de lujo destaca en la producción andalusí?",
+    "options": ["Tejidos de seda y lino", "Armas de hierro", "Cerámica cardial", "Campanas de bronce"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t9_q26",
+    "question": "¿Cómo se llamaba el cuero trabajado de prestigio producido en Al-Ándalus?",
+    "options": ["Mocárabes", "Cordobanes", "Atauriques", "Dirhemes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t9_q27",
+    "question": "¿Qué otro producto artesanal de lujo se menciona en el tema?",
+    "options": ["Cerámica vidriada", "Ánforas béticas", "Verracos", "Tapices flamencos"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t9_q28",
+    "question": "¿Qué monedas fuertes facilitaban el intercambio en Al-Ándalus?",
+    "options": ["Dinar de oro y dirhem de plata", "Denario y sestercio", "Maravedí y ducado", "Real y escudo"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t9_q29",
+    "question": "¿Qué permitió financiar esta riqueza económica?",
+    "options": ["La caída del Califato", "El poder militar y el esplendor de las cortes", "La desaparición de los impuestos", "Solo la agricultura de secano"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t9_q30",
+    "question": "¿Entre qué siglos fue Al-Ándalus un gran foco cultural europeo según el tema?",
+    "options": ["V al VII", "VIII al X", "IX al XI", "XII al XV"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t9_q31",
+    "question": "¿Qué labor cultural asumió Al-Ándalus durante esos siglos?",
+    "options": ["Destruir el saber clásico", "Preservar y traducir el saber clásico griego y romano", "Sustituir el árabe por el latín", "Eliminar la filosofía"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t9_q32",
+    "question": "¿Qué lengua se consolidó como lengua de la ciencia?",
+    "options": ["Latín", "Hebreo", "Árabe", "Griego"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t9_q33",
+    "question": "¿Qué innovación matemática se menciona como introducida en Al-Ándalus?",
+    "options": ["Los números romanos", "La numeración arábiga y el cero", "La geometría euclidiana exclusivamente", "La álgebra moderna completa"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t9_q34",
+    "question": "¿En qué campos médicos destacó Al-Ándalus?",
+    "options": ["Veterinaria y navegación", "Cirugía y farmacopea", "Arquitectura y botánica", "Solo anatomía descriptiva"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t9_q35",
+    "question": "¿Qué pensadores buscaron reconciliar la fe con la razón aristotélica?",
+    "options": ["Abderramán III y Almanzor", "Averroes y Maimónides", "Tarik y Muza", "Boabdil y Mohamed I"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t9_q36",
+    "question": "¿Qué ciudad fue fundamental en la transmisión del saber hacia el norte?",
+    "options": ["Sevilla", "Granada", "Toledo", "Zaragoza"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t9_q37",
+    "question": "¿Qué elementos integró el arte andalusí?",
+    "options": ["Solo modelos orientales", "Elementos romanos y visigodos en un estilo oriental", "Exclusivamente rasgos germánicos", "Solo arte romano clásico"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t9_q38",
+    "question": "¿Cuál es la obra cumbre de la etapa omeya o califal?",
+    "options": ["La Alhambra", "La Giralda", "La Mezquita de Córdoba", "La Torre del Oro"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t9_q39",
+    "question": "¿Qué rasgo define la etapa nazarí según el tema?",
+    "options": ["La austeridad militar", "El culmen estético con la Alhambra y el Generalife", "La desaparición de la decoración", "La hegemonía del arco apuntado gótico"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t9_q40",
+    "question": "¿Qué consecuencia posterior tuvo el legado artístico andalusí en territorio cristiano?",
+    "options": ["El nacimiento del estilo barroco", "El surgimiento del estilo mudéjar", "La desaparición de los alarifes", "La sustitución de la caligrafía por escultura humana"],
+    "correctAnswer": 1
+  }
+]

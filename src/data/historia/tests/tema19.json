@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t19_q1",
+    "question": "¿Qué cambio político supuso la llegada de Felipe V tras la Guerra de Sucesión?",
+    "options": ["La restauración del pactismo", "La implantación del absolutismo monárquico francés", "La creación de una república", "La división de España en varios reinos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q2",
+    "question": "¿Qué modelo político rompieron los Borbones según el tema?",
+    "options": ["El modelo republicano", "El modelo pactista de los Austrias", "El sistema feudal aragonés", "La monarquía autoritaria castellana"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q3",
+    "question": "¿Qué objetivo tenía la nueva organización del Estado borbónico?",
+    "options": ["Mantener la soberanía compartida", "Convertir el Estado en una maquinaria centralizada y eficiente", "Eliminar toda administración local", "Desaparecer los tribunales"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q4",
+    "question": "¿Qué instrumento jurídico fue clave en la centralización del poder borbónico?",
+    "options": ["Las Partidas", "Los Decretos de Nueva Planta", "El Fuero Juzgo", "Las Leyes de Indias"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q5",
+    "question": "¿Qué supusieron los Decretos de Nueva Planta?",
+    "options": ["La creación de nuevos virreinatos", "La abolición de los fueros e instituciones de la Corona de Aragón", "La restauración de las Cortes medievales", "La unificación con Portugal"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q6",
+    "question": "¿Por qué se aplicaron los Decretos de Nueva Planta a la Corona de Aragón?",
+    "options": ["Por razones religiosas", "Como castigo por su rebelión", "Por petición de las Cortes", "Para favorecer a Francia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q7",
+    "question": "¿Qué territorios conservaron sus derechos históricos por apoyar al bando borbónico?",
+    "options": ["Cataluña y Aragón", "Navarra y provincias vascas", "Valencia y Mallorca", "Andalucía y Murcia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q8",
+    "question": "¿Qué institución sustituyó al antiguo sistema de Consejos?",
+    "options": ["Las Audiencias", "Las Secretarías de Despacho", "Las Chancillerías", "Los Corregidores"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q9",
+    "question": "¿Cuántas Secretarías de Despacho se establecieron?",
+    "options": ["Tres", "Cuatro", "Cinco", "Seis"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t19_q10",
+    "question": "¿Cuál de estas áreas pertenecía a las Secretarías de Despacho?",
+    "options": ["Agricultura", "Estado", "Industria", "Educación"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q11",
+    "question": "¿Qué institución creada a finales de siglo coordinaba a los secretarios?",
+    "options": ["Consejo Real", "Junta Suprema de Estado", "Casa de Contratación", "Santa Hermandad"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q12",
+    "question": "¿Qué órgano actual tiene como antecedente la Junta Suprema de Estado?",
+    "options": ["Tribunal Supremo", "Consejo de Ministros", "Cortes Generales", "Banco de España"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q13",
+    "question": "¿Qué lengua se impuso como oficial en la administración borbónica?",
+    "options": ["Catalán", "Latín", "Castellano", "Aragonés"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t19_q14",
+    "question": "¿Qué doctrina buscaba someter la Iglesia al poder real?",
+    "options": ["Jansenismo", "Regalismo", "Mercantilismo", "Fisiocracia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q15",
+    "question": "¿Qué corriente ideológica inspiró buena parte de las reformas económicas borbónicas?",
+    "options": ["Romanticismo", "Ilustración", "Feudalismo", "Humanismo medieval"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q16",
+    "question": "¿Qué forma de gobierno se asocia en el tema a las reformas del siglo XVIII?",
+    "options": ["Monarquía electiva", "Despotismo Ilustrado", "República federal", "Teocracia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q17",
+    "question": "¿Qué impuesto se introdujo en Cataluña para igualar la carga tributaria con Castilla?",
+    "options": ["Alcabala", "Catastro", "Diezmo", "Juro"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q18",
+    "question": "¿Qué pretendía el Catastro de Ensenada?",
+    "options": ["Aumentar el comercio con América", "Crear un impuesto único proporcional a la riqueza", "Eliminar la Hacienda real", "Favorecer solo a la nobleza"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q19",
+    "question": "¿Qué plan de infraestructuras impulsaron los Borbones?",
+    "options": ["Canales marítimos", "Trazado radial de caminos", "Red de castillos defensivos", "Ferrocarriles tempranos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q20",
+    "question": "¿Qué buscaba el trazado radial de caminos?",
+    "options": ["Conectar América con la península", "Conectar la periferia con el centro y fomentar el comercio interior", "Favorecer solo a Castilla", "Sustituir las rutas marítimas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q21",
+    "question": "¿Qué eran las Reales Fábricas?",
+    "options": ["Tribunales comerciales", "Instalaciones estatales para producir bienes de lujo y reducir importaciones", "Puertos americanos", "Compañías coloniales privadas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q22",
+    "question": "¿Qué institución se fundó para gestionar la deuda pública?",
+    "options": ["Banco de San Carlos", "Casa de Contratación", "Consejo de Hacienda", "Junta Suprema"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t19_q23",
+    "question": "¿Qué documento proponía una profunda reforma agraria en España?",
+    "options": ["Ley Agraria de Jovellanos", "Decretos de Nueva Planta", "Paz de Utrecht", "Catastro de Ensenada"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t19_q24",
+    "question": "¿Qué cambió en la estrategia militar española tras el Tratado de Utrecht?",
+    "options": ["Se centró en Europa central", "Se orientó a proteger el imperio americano", "Abandonó la marina", "Renunció a toda expansión"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q25",
+    "question": "¿Qué novedad militar introdujeron los Borbones en la península?",
+    "options": ["Milicias feudales", "Ejército permanente con cuotas para el servicio obligatorio", "Ejército exclusivamente nobiliario", "Supresión del reclutamiento"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q26",
+    "question": "¿Qué objetivo tenía la recuperación de la Marina de Guerra?",
+    "options": ["Expandirse por Asia", "Garantizar el comercio transatlántico frente a la piratería británica", "Eliminar las Audiencias", "Conquistar Portugal"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q27",
+    "question": "¿Qué cambio social provocó en América la creación de un ejército regular?",
+    "options": ["El ascenso de los esclavos africanos", "El acceso de criollos a puestos de mando", "La desaparición de los virreyes", "La abolición de las castas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q28",
+    "question": "¿Qué conflicto internacional apoyó España con éxito en el siglo XVIII?",
+    "options": ["La independencia de las trece colonias", "La Revolución Francesa", "La unificación de Italia", "La independencia de Portugal"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t19_q29",
+    "question": "¿Qué territorios recuperó España gracias a ese fortalecimiento bélico?",
+    "options": ["Gibraltar y Sicilia", "Menorca y Florida", "Milán y Nápoles", "Rosellón y Cerdaña"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q30",
+    "question": "¿Qué institución se encargaba de los asuntos judiciales en el sistema territorial borbónico?",
+    "options": ["Capitán General", "Audiencia", "Intendente", "Corregidor"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q31",
+    "question": "¿Quién era la máxima autoridad militar en la provincia?",
+    "options": ["Audiencia", "Corregidor", "Capitán General", "Virrey"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t19_q32",
+    "question": "¿Qué función tenía el intendente?",
+    "options": ["Dirigir las Cortes", "Gestionar los asuntos civiles y económicos", "Controlar la Inquisición", "Presidir las Audiencias"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q33",
+    "question": "¿Qué funcionario gobernaba los ayuntamientos más importantes en nombre de la Corona?",
+    "options": ["Virrey", "Corregidor", "Secretario de Despacho", "Obispo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q34",
+    "question": "¿Qué dos nuevos virreinatos se crearon en América durante el siglo XVIII?",
+    "options": ["Nueva España y Perú", "Nueva Granada y Río de la Plata", "Florida y Luisiana", "Quito y Chile"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q35",
+    "question": "¿Qué medida comercial eliminó el monopolio de Cádiz?",
+    "options": ["Catastro de Ensenada", "Decreto de Libre Comercio", "Nueva Planta", "Regalismo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q36",
+    "question": "¿Cuántos puertos españoles fueron autorizados para comerciar directamente con América?",
+    "options": ["Cinco", "Ocho", "Trece", "Veinte"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t19_q37",
+    "question": "¿Qué región española se benefició especialmente del Decreto de Libre Comercio?",
+    "options": ["Galicia", "Cataluña", "Navarra", "Extremadura"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q38",
+    "question": "¿Qué objetivo tenía la repoblación de Sierra Morena?",
+    "options": ["Crear nuevos virreinatos", "Fomentar la agricultura y combatir el bandolerismo", "Expandir la ganadería trashumante", "Fundar universidades"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q39",
+    "question": "¿Con qué tipo de población se pensó repoblar Sierra Morena?",
+    "options": ["Moriscos dispersos", "Colonos europeos", "Esclavos africanos", "Militares retirados"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t19_q40",
+    "question": "¿Qué caracterizó en conjunto a las reformas borbónicas del siglo XVIII?",
+    "options": ["La defensa del pactismo tradicional", "La centralización, racionalización y modernización del Estado", "La eliminación total del comercio americano", "La autonomía completa de los territorios"],
+    "correctAnswer": 1
+  }
+]

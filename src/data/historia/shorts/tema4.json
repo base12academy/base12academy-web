@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc4_1",
+    "question": "¿Por qué se convirtió la Península Ibérica en un objetivo estratégico para Cartago tras la Primera Guerra Púnica?",
+    "answerGuide": "Porque Cartago buscaba una base para recuperar su poder, obtener recursos y financiar su ejército y los tributos exigidos por Roma.",
+    "keywords": ["Cartago", "base", "recursos", "ejército", "tributos", "Roma"]
+  },
+  {
+    "id": "tc4_2",
+    "question": "¿Qué papel desempeñó la familia de los Bárcidas en Hispania?",
+    "answerGuide": "Dirigió la estrategia cartaginesa en la Península, explotando recursos y utilizando Hispania como motor económico y militar.",
+    "keywords": ["Bárcidas", "Cartago", "estrategia", "Hispania", "recursos"]
+  },
+  {
+    "id": "tc4_3",
+    "question": "¿Qué importancia tuvieron las minas de Cartagena en el conflicto entre Roma y Cartago?",
+    "answerGuide": "Fueron explotadas por Cartago, especialmente por su plata, para financiar su ejército y su política militar.",
+    "keywords": ["Cartagena", "minas", "plata", "financiar", "ejército"]
+  },
+  {
+    "id": "tc4_4",
+    "question": "¿Qué hecho desencadenó la Segunda Guerra Púnica en Hispania?",
+    "answerGuide": "La ruptura del Tratado del Ebro tras el ataque de Aníbal a Sagunto, aliada de Roma.",
+    "keywords": ["Tratado del Ebro", "Aníbal", "Sagunto", "Segunda Guerra Púnica"]
+  },
+  {
+    "id": "tc4_5",
+    "question": "¿Cuál fue el objetivo inicial de Roma al desembarcar en Ampurias?",
+    "answerGuide": "Cortar los suministros y refuerzos que recibía Aníbal desde Hispania hacia Italia.",
+    "keywords": ["Ampurias", "Roma", "suministros", "Aníbal", "Italia"]
+  },
+  {
+    "id": "tc4_6",
+    "question": "¿Cuáles fueron las tres fases de la conquista romana de Hispania?",
+    "answerGuide": "Primera: costa mediterránea y valles del Guadalquivir y Ebro; segunda: avance por la Meseta; tercera: sometimiento del norte peninsular.",
+    "keywords": ["tres fases", "costa mediterránea", "Guadalquivir", "Ebro", "Meseta", "norte"]
+  },
+  {
+    "id": "tc4_7",
+    "question": "¿Qué pueblos ofrecieron la mayor resistencia durante la segunda fase de la conquista?",
+    "answerGuide": "Los celtíberos y los lusitanos.",
+    "keywords": ["celtíberos", "lusitanos", "resistencia"]
+  },
+  {
+    "id": "tc4_8",
+    "question": "¿Qué elementos introdujo Roma en las zonas ya pacificadas durante la conquista?",
+    "answerGuide": "Colonias como Itálica, además del latín y el derecho romano.",
+    "keywords": ["Itálica", "latín", "derecho romano", "colonias"]
+  },
+  {
+    "id": "tc4_9",
+    "question": "¿Quién fue Viriato y por qué es importante?",
+    "answerGuide": "Fue el líder de los lusitanos y símbolo de resistencia por emplear la guerra de guerrillas contra Roma.",
+    "keywords": ["Viriato", "lusitanos", "resistencia", "guerra de guerrillas"]
+  },
+  {
+    "id": "tc4_10",
+    "question": "¿Qué ocurrió en Numancia en el año 133 a.C.?",
+    "answerGuide": "La ciudad resistió el asedio de Escipión Emiliano y sus habitantes prefirieron el suicidio colectivo antes que rendirse.",
+    "keywords": ["Numancia", "133 a.C.", "Escipión Emiliano", "suicidio colectivo", "resistencia"]
+  },
+  {
+    "id": "tc4_11",
+    "question": "¿Qué significa la devotio en la resistencia indígena?",
+    "answerGuide": "Un juramento de lealtad absoluta y fidelidad hasta la muerte hacia el jefe.",
+    "keywords": ["devotio", "juramento", "lealtad", "muerte", "jefe"]
+  },
+  {
+    "id": "tc4_12",
+    "question": "¿Qué efecto tuvo la resistencia indígena sobre el ejército romano?",
+    "answerGuide": "Obligó a mantener un gran contingente militar y aceleró la profesionalización del ejército romano.",
+    "keywords": ["resistencia indígena", "contingente militar", "profesionalización", "ejército romano"]
+  },
+  {
+    "id": "tc4_13",
+    "question": "¿Qué fueron las Guerras Cántabras?",
+    "answerGuide": "La campaña final, dirigida por Octavio Augusto, para someter a cántabros y astures entre 29 y 19 a.C.",
+    "keywords": ["Guerras Cántabras", "Octavio Augusto", "cántabros", "astures", "29", "19 a.C."]
+  },
+  {
+    "id": "tc4_14",
+    "question": "¿Qué importancia tuvo Las Médulas tras la conquista del norte?",
+    "answerGuide": "Fue un enclave clave por sus minas de oro, aseguradas por Roma tras la victoria final.",
+    "keywords": ["Las Médulas", "oro", "minas", "Roma", "noroeste"]
+  },
+  {
+    "id": "tc4_15",
+    "question": "Resume el legado de la romanización en Hispania.",
+    "answerGuide": "Supuso la adopción del latín, el derecho, el urbanismo romano y el cristianismo, además de convertir Hispania en una provincia próspera exportadora de aceite, trigo y metales.",
+    "keywords": ["romanización", "latín", "derecho", "urbanismo", "cristianismo", "aceite", "trigo", "metales"]
+  }
+]

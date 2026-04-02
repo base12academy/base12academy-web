@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t26ter_q1",
+    "question": "¿Qué supuso el Tratado de París de 1898 según el tema?",
+    "options": ["La restauración del imperio", "El acta de defunción oficial del Imperio español", "La unión con Estados Unidos", "La proclamación de la República"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q2",
+    "question": "¿Qué territorios se perdieron definitivamente tras el Tratado de París?",
+    "options": ["Cuba, Puerto Rico y Filipinas", "Cuba, Guam y Canarias", "Puerto Rico, Marruecos y Filipinas", "Cuba, México y Filipinas"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t26ter_q3",
+    "question": "¿Qué reacción inicial provocó el Desastre del 98 en la sociedad española?",
+    "options": ["Entusiasmo y esperanza", "Indignación y apatía que derivaron en crítica feroz", "Alegría por la paz", "Apoyo total a los partidos dinásticos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q4",
+    "question": "¿Qué ocurrió con el gobierno liberal de Sagasta tras el desastre?",
+    "options": ["Se fortaleció", "Cayó por el peso del fracaso", "Se convirtió en dictadura", "Convocó una asamblea constituyente"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q5",
+    "question": "¿De qué se acusó a los partidos dinásticos tras 1898?",
+    "options": ["De impulsar la industrialización", "De llevar al país a una guerra suicida por un concepto trasnochado del honor", "De apoyar a los mambises", "De implantar el sufragio universal"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q6",
+    "question": "¿Cómo reaccionó el ejército al sentirse chivo expiatorio tras el desastre?",
+    "options": ["Se volvió pacifista", "Desarrolló un carácter corporativista y autoritario", "Apoyó la república federal", "Desapareció de la política"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q7",
+    "question": "¿Qué problema social generaba el sistema de quintas?",
+    "options": ["Favorecía a los pobres", "Permitía a las familias acomodadas evitar el frente mediante pago", "Aumentaba la natalidad", "Reducía la deuda pública"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q8",
+    "question": "¿Qué efecto económico positivo menciona el tema tras el desastre colonial?",
+    "options": ["La desaparición de los bancos", "La repatriación de capitales", "La abolición de impuestos", "El fin del proteccionismo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q9",
+    "question": "¿Qué entidad bancaria se cita como ejemplo del impulso financiero posterior al desastre?",
+    "options": ["Banco de San Carlos", "Banco Hispano Americano", "Banco de España", "Caja de Ahorros de Madrid"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q10",
+    "question": "¿Qué sistema empezó a resquebrajarse tras el 98?",
+    "options": ["El Sexenio Democrático", "La Restauración", "El Trienio Liberal", "La Dictadura de Primo de Rivera"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q11",
+    "question": "¿Qué dos muertes debilitaron decisivamente el turno pacífico?",
+    "options": ["Prim y Serrano", "Cánovas y Sagasta", "Maura y Canalejas", "Costa y Unamuno"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q12",
+    "question": "¿En qué años murieron Cánovas y Sagasta según el tema?",
+    "options": ["1897 y 1903", "1898 y 1902", "1902 y 1912", "1895 y 1898"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t26ter_q13",
+    "question": "¿Qué coincidió con la llegada al trono de Alfonso XIII en 1902?",
+    "options": ["La consolidación de la República", "Un sistema en fase terminal", "La desaparición del caciquismo", "La estabilización del turno"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q14",
+    "question": "¿Qué elemento fue identificado unánimemente como la raíz de los males del sistema?",
+    "options": ["El sufragio universal", "El caciquismo", "La libertad de imprenta", "La descentralización"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q15",
+    "question": "¿Qué problema económico limitaba la inversión en infraestructuras y servicios públicos?",
+    "options": ["La deuda bélica", "La falta de ferrocarriles", "El exceso de exportaciones", "La desaparición de la banca"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t26ter_q16",
+    "question": "¿Qué fuerza nacionalista destacó en Cataluña dentro de las nuevas oposiciones?",
+    "options": ["CNT", "Lliga Regionalista", "UGT", "CEDA"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q17",
+    "question": "¿Qué dos organizaciones obreras aparecen citadas en el tema?",
+    "options": ["PSOE y UGT", "UGT y FAI", "CNT y PCE", "CEDA y PSOE"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t26ter_q18",
+    "question": "¿Qué corriente intelectual surgió como respuesta al desastre?",
+    "options": ["El romanticismo", "El regeneracionismo", "El barroco", "El carlismo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q19",
+    "question": "¿Quién fue el principal referente del regeneracionismo?",
+    "options": ["Azorín", "Joaquín Costa", "Sagasta", "Martínez Campos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q20",
+    "question": "¿Qué proponía Costa con la idea del 'cirujano de hierro'?",
+    "options": ["Un médico militar para el ejército", "Un líder fuerte que extirpara los males del sistema", "Un rey absoluto", "Una dictadura clerical"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q21",
+    "question": "¿A quiénes llamaba Joaquín Costa 'clases neutras'?",
+    "options": ["A los campesinos sin tierra", "A la burguesía y a los profesionales liberales", "A la nobleza y al clero", "A los militares peninsulares"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q22",
+    "question": "¿Qué programa resumía Costa con la expresión 'Escuela y Despensa'?",
+    "options": ["Militarismo y orden público", "Educación modernizadora y reformas agrarias e hidráulicas", "Centralismo y censura", "Proteccionismo y colonialismo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q23",
+    "question": "¿Qué defendía el regeneracionismo frente a la nostalgia imperial?",
+    "options": ["La reconquista de Cuba", "La europeización y el pragmatismo centrado en problemas internos", "La expansión africana", "La vuelta al absolutismo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q24",
+    "question": "¿Qué grupo de escritores ofreció una respuesta cultural a la crisis nacional?",
+    "options": ["La Generación del 27", "La Generación del 98", "Los novecentistas", "Los modernistas latinoamericanos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q25",
+    "question": "¿Cuál de estos autores pertenece a la Generación del 98 según el tema?",
+    "options": ["Velázquez", "Unamuno", "Jovellanos", "Canalejas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q26",
+    "question": "¿Qué concepto creó Unamuno para buscar la esencia nacional en la vida cotidiana?",
+    "options": ["Regeneración", "Intrahistoria", "Turnismo", "Europeización"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q27",
+    "question": "¿Qué paisaje se convirtió en símbolo de la búsqueda de la esencia de España?",
+    "options": ["Andalucía", "Castilla", "Cataluña", "Galicia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q28",
+    "question": "¿Cómo evolucionaron ideológicamente muchos autores del 98 según el tema?",
+    "options": ["Hacia el federalismo republicano", "Desde radicalismos juveniles hacia el pesimismo existencial o el conservadurismo espiritual", "Hacia el marxismo", "Hacia el anarquismo sindical"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q29",
+    "question": "¿Qué político conservador intentó una reforma 'desde arriba' para atraer a las masas honestas?",
+    "options": ["Canalejas", "Maura", "Costa", "Serrano"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q30",
+    "question": "¿Qué reforma administrativa impulsó Antonio Maura?",
+    "options": ["Ley del Candado", "Reforma de la administración local", "Constitución de 1869", "Pragmática Sanción"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q31",
+    "question": "¿Qué político liberal apostó por la democratización y la protección social?",
+    "options": ["Sagasta", "Canalejas", "Cánovas", "Alfonso XIII"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q32",
+    "question": "¿Qué ley promovió Canalejas para limitar el poder eclesiástico?",
+    "options": ["Ley de Ferrocarriles", "Ley del Candado", "Ley Sálica", "Ley de Minas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q33",
+    "question": "¿Qué tipo de reformas también impulsó Canalejas según el tema?",
+    "options": ["Militares y coloniales", "Leyes de colonización agrícola y reformas fiscales", "Federales y cantonalistas", "Anarquistas y sindicales"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q34",
+    "question": "¿Qué suceso de 1909 profundizó la desconexión entre élite y ciudadanía?",
+    "options": ["El desastre de Annual", "La Semana Trágica de Barcelona", "El golpe de Primo de Rivera", "La proclamación de Alfonso XIII"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q35",
+    "question": "¿Qué consecuencia tuvo la Semana Trágica sobre el sistema?",
+    "options": ["Impulsó la democratización", "Aumentó la represión", "Acabó con el caciquismo", "Fortaleció al parlamento"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q36",
+    "question": "¿Qué hecho de 1912 truncó los procesos reformistas desde dentro del sistema?",
+    "options": ["La muerte de Costa", "El asesinato de Canalejas", "La caída de Sagasta", "La guerra de Cuba"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q37",
+    "question": "¿Qué dejó el asesinato de Canalejas según el tema?",
+    "options": ["Un sistema consolidado", "Vía libre a soluciones fuera del parlamento", "La proclamación republicana inmediata", "El fin de la oposición obrera"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q38",
+    "question": "¿Qué cita resume el dolor intelectual de la Generación del 98 según el texto?",
+    "options": ["España ha muerto para siempre", "No es el desastre lo que nos duele, sino la conciencia de nuestra propia decadencia", "Todo para el pueblo pero sin el pueblo", "Escuela y despensa"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q39",
+    "question": "¿Qué dos Españas diferenciaban con amargura los autores del 98?",
+    "options": ["La España urbana y la rural", "La España oficial y la España real", "La España liberal y la carlista", "La España católica y la protestante"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26ter_q40",
+    "question": "¿A qué desembocó finalmente el fracaso de las reformas regeneradoras según el tema?",
+    "options": ["A la Revolución Gloriosa", "Al golpe de Estado de 1923", "A la Constitución de 1812", "A la paz con Cuba"],
+    "correctAnswer": 1
+  }
+]

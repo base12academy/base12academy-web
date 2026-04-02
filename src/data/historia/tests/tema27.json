@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t27_q1",
+    "question": "¿En qué fecha se instauró la Segunda República en España?",
+    "options": ["12 de abril de 1931", "14 de abril de 1931", "17 de julio de 1936", "1 de mayo de 1931"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q2",
+    "question": "¿Qué tarea asumió la Segunda República según el tema?",
+    "options": ["Restaurar la monarquía", "Modernizar el país de manera radical", "Expandir el imperio colonial", "Implantar una dictadura militar"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q3",
+    "question": "¿Qué contexto internacional acompañó el nacimiento de la Segunda República?",
+    "options": ["La expansión del liberalismo clásico", "El auge de los totalitarismos", "La estabilidad europea", "La desaparición del fascismo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q4",
+    "question": "¿Qué factor previo había desprestigiado gravemente a la monarquía antes de 1931?",
+    "options": ["La guerra de Cuba", "La Dictadura de Primo de Rivera", "La Constitución de 1876", "La Sanjurjada"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q5",
+    "question": "¿Qué acuerdo unió a las fuerzas de oposición antes de la proclamación republicana?",
+    "options": ["Pacto del Pardo", "Pacto de San Sebastián", "Convenio de Vergara", "Pacto de Ostende"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q6",
+    "question": "¿Qué elecciones se convirtieron en un plebiscito sobre la monarquía?",
+    "options": ["Las generales de 1933", "Las municipales del 12 de abril de 1931", "Las constituyentes de 1931", "Las de febrero de 1936"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q7",
+    "question": "¿Qué candidaturas triunfaron en las principales ciudades en abril de 1931?",
+    "options": ["Carlistas", "Republicano-socialistas", "Monárquicas conservadoras", "Falange y CEDA"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q8",
+    "question": "¿Qué consecuencia tuvo el resultado electoral de abril de 1931 para Alfonso XIII?",
+    "options": ["Abdicó formalmente", "Marchó al exilio", "Fue encarcelado", "Convocó nuevas Cortes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q9",
+    "question": "¿Quién presidió el Gobierno Provisional de la Segunda República?",
+    "options": ["Manuel Azaña", "Alejandro Lerroux", "Niceto Alcalá-Zamora", "Gil-Robles"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t27_q10",
+    "question": "¿Qué hizo inmediatamente el Gobierno Provisional?",
+    "options": ["Disolvió el ejército", "Convocó elecciones a Cortes Constituyentes", "Aprobó el Estatuto catalán", "Nacionalizó la banca"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q11",
+    "question": "¿Cómo fue apodada la República en sus inicios?",
+    "options": ["La Gloriosa", "La Pepa", "La niña bonita", "La roja"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t27_q12",
+    "question": "¿Qué crisis internacional afectó económicamente al nuevo régimen?",
+    "options": ["La crisis de 1917", "La crisis de 1929", "La crisis del petróleo", "La crisis de 1898"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q13",
+    "question": "¿Qué reacción económica de las élites aparece en el tema al comenzar la República?",
+    "options": ["Inversión masiva industrial", "Fuga de capitales", "Reforma agraria voluntaria", "Apoyo fiscal al gobierno"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q14",
+    "question": "¿Cómo define el tema la Constitución de 1931?",
+    "options": ["Tradicional y confesional", "Avanzada, laica y profundamente democrática", "Autoritaria y centralista", "Monárquica y censitaria"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q15",
+    "question": "¿Cómo definía la Constitución de 1931 a España?",
+    "options": ["Una nación católica", "Una república federal", "Una República de trabajadores", "Una monarquía parlamentaria"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t27_q16",
+    "question": "¿Qué derecho político femenino reconoció por primera vez la Constitución de 1931?",
+    "options": ["El acceso a cargos militares", "El sufragio femenino", "La presidencia automática de ayuntamientos", "La exención fiscal"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q17",
+    "question": "¿Qué derecho civil nuevo aparece citado en la Constitución de 1931?",
+    "options": ["Derecho a la huelga general", "Derecho al divorcio", "Derecho a la independencia regional", "Derecho a la nobleza"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q18",
+    "question": "¿Qué rasgo de la Constitución de 1931 provocó una fuerte ruptura con la tradición?",
+    "options": ["Su carácter monárquico", "Su marcado carácter laico", "Su defensa del latifundio", "Su apoyo al carlismo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q19",
+    "question": "¿Quién lideró el Bienio Reformista?",
+    "options": ["Lerroux", "Azaña", "Gil-Robles", "Alcalá-Zamora"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q20",
+    "question": "¿Qué estatuto de autonomía fue aprobado en 1932?",
+    "options": ["El del País Vasco", "El de Galicia", "El de Cataluña", "El de Navarra"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t27_q21",
+    "question": "¿Qué organismo impulsó la reforma agraria durante el Bienio Reformista?",
+    "options": ["La UGT", "El IRA", "La CEDA", "La Falange"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q22",
+    "question": "¿Qué significan las siglas IRA en el tema?",
+    "options": ["Instituto de Reforma Agraria", "Instituto Republicano Autónomo", "Inspección de Riego Agrícola", "Intervención Rural Agraria"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t27_q23",
+    "question": "¿Qué pretendía la reforma agraria republicana?",
+    "options": ["Mantener intactos los latifundios", "Expropiar grandes latifundios", "Eliminar toda propiedad privada", "Reforzar los mayorazgos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q24",
+    "question": "¿Cómo resultó la reforma agraria según el tema?",
+    "options": ["Rápida y eficaz", "Lenta y burocrática", "Inexistente", "Aceptada por todos los sectores"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q25",
+    "question": "¿Qué buscaba la Ley Azaña en el terreno militar?",
+    "options": ["Expandir el ejército colonial", "Profesionalizar el ejército y asegurar su lealtad al poder civil", "Restaurar los privilegios militares", "Crear una milicia obrera"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q26",
+    "question": "¿Qué instituciones laborales impulsó el Bienio Reformista?",
+    "options": ["Sindicatos verticales", "Jurados mixtos de trabajo", "Cortes obreras", "Gremios restaurados"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q27",
+    "question": "¿Qué iniciativa educativa llevó cultura al mundo rural?",
+    "options": ["Las Misiones Pedagógicas", "La Institución Libre de Enseñanza", "Las Mancomunidades", "La Unión Patriótica"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t27_q28",
+    "question": "¿Qué orden religiosa fue disuelta, aumentando el conflicto con la Iglesia?",
+    "options": ["Franciscanos", "Jesuitas", "Dominicos", "Agustinos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q29",
+    "question": "¿Qué golpe fallido de 1932 mostró la oposición militar a las reformas?",
+    "options": ["El golpe de Pavía", "La Sanjurjada", "El motín de Aranjuez", "La intentona de Annual"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q30",
+    "question": "¿Qué resultado electoral se produjo en 1933?",
+    "options": ["Victoria de la izquierda del Frente Popular", "Triunfo de la derecha y el centro", "Mayoría carlista absoluta", "Desaparición del Partido Radical"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q31",
+    "question": "¿Qué dos fuerzas sostuvieron el gobierno del Bienio Radical-Cedista?",
+    "options": ["PSOE y CNT", "CEDA y Partido Radical", "ERC y PNV", "Falange y carlistas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q32",
+    "question": "¿Qué hizo el Bienio Radical-Cedista con la obra reformista anterior?",
+    "options": ["La profundizó", "La rectificó y paralizó", "La federalizó", "La militarizó completamente"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q33",
+    "question": "¿Qué organización fascista surgió en este periodo según el tema?",
+    "options": ["UGT", "Falange Española", "AIT", "Lliga Regionalista"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q34",
+    "question": "¿Qué detonó la Revolución de Octubre de 1934?",
+    "options": ["La aprobación del sufragio femenino", "La entrada de la CEDA en el gobierno", "La disolución del ejército", "La victoria del Frente Popular"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q35",
+    "question": "¿Dónde fue especialmente violenta la insurrección de octubre de 1934?",
+    "options": ["Sevilla", "Asturias", "Madrid", "Valencia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q36",
+    "question": "¿Qué efecto tuvo la represión de octubre de 1934 según el tema?",
+    "options": ["Reconcilió a los bandos", "Rompió los puentes de diálogo", "Fortaleció el consenso constitucional", "Eliminó el conflicto religioso"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q37",
+    "question": "¿Qué coalición venció en febrero de 1936?",
+    "options": ["CEDA", "Frente Popular", "Partido Radical", "Bloque Nacional"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q38",
+    "question": "¿Qué cargo pasó a ocupar Manuel Azaña en 1936?",
+    "options": ["Presidencia de la República", "Jefatura del ejército", "Ministerio de Guerra", "Presidencia de la Falange"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t27_q39",
+    "question": "¿Qué dos asesinatos cruzados aparecen como detonante final de la guerra?",
+    "options": ["Canalejas y Maura", "Castillo y Calvo Sotelo", "Azaña y Gil-Robles", "Prim y Topete"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t27_q40",
+    "question": "¿Dónde comenzó la sublevación militar del 17 de julio de 1936?",
+    "options": ["Madrid", "Cataluña", "Protectorado de Marruecos", "Asturias"],
+    "correctAnswer": 2
+  }
+]

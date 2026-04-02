@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t15_q1",
+    "question": "¿Qué recibió Felipe II tras las abdicaciones de Carlos I?",
+    "options": ["Solo Castilla y Aragón", "Los reinos peninsulares, posesiones italianas, Países Bajos, Franco Condado e Imperio Americano", "Solo el Sacro Imperio", "Portugal y Navarra exclusivamente"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q2",
+    "question": "¿Qué rasgo diferencia a Felipe II de su padre Carlos I en el modo de gobernar?",
+    "options": ["Fue un rey itinerante", "Fue un rey burócrata y sedentario", "Gobernó desde Flandes", "Delegó todo en la nobleza"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q3",
+    "question": "¿En qué año estableció Felipe II la capital en Madrid?",
+    "options": ["1556", "1561", "1571", "1580"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q4",
+    "question": "¿Por qué eligió Felipe II la ciudad de Madrid como capital?",
+    "options": ["Por su importancia comercial marítima", "Por su posición geográfica central", "Por su cercanía a Portugal", "Por ser sede tradicional de las Cortes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q5",
+    "question": "¿Qué edificio mandó construir Felipe II como centro del poder?",
+    "options": ["La Alhambra", "El Escorial", "La Casa de Contratación", "La Giralda"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q6",
+    "question": "¿Qué función tuvo San Lorenzo de El Escorial?",
+    "options": ["Solo monasterio religioso", "Centro neurálgico del imperio y sede administrativa", "Puerto comercial", "Sede de las Cortes de Aragón"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q7",
+    "question": "¿Cómo dirigía Felipe II la administración desde El Escorial?",
+    "options": ["Solo mediante viajes", "A través de una gran cantidad de documentos o papeles", "Delegando en virreyes", "Por medio de concilios eclesiásticos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q8",
+    "question": "¿Qué sistema administrativo se consolidó con Felipe II?",
+    "options": ["Feudal", "Polisinodial", "Parlamentario", "Federal"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q9",
+    "question": "¿Qué era la Monarquía Hispánica según el tema?",
+    "options": ["Un estado federal", "Un sistema donde el soberano era el brazo armado de la Contrarreforma católica", "Una república urbana", "Una monarquía electiva"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q10",
+    "question": "¿Qué concilio marcó la base ideológica del reinado de Felipe II?",
+    "options": ["Nicea", "Trento", "Toledo", "Constanza"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q11",
+    "question": "¿Qué tipo de Consejos trataban asuntos de Castilla, Aragón, Indias, Italia o Flandes?",
+    "options": ["Consejos temáticos", "Consejos territoriales", "Consejos municipales", "Consejos nobiliarios"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q12",
+    "question": "¿Qué territorio se añadió al sistema de Consejos tras 1580?",
+    "options": ["Navarra", "Portugal", "Francia", "Granada"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q13",
+    "question": "¿Cuál de estos es un Consejo temático?",
+    "options": ["Castilla", "Aragón", "Estado", "Flandes"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t15_q14",
+    "question": "¿Qué buscaba Felipe II en el interior de sus reinos?",
+    "options": ["La tolerancia religiosa amplia", "La unidad religiosa y política absoluta", "La autonomía municipal total", "El fin de la Inquisición"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q15",
+    "question": "¿Entre qué años tuvo lugar la rebelión de las Alpujarras?",
+    "options": ["1556-1558", "1568-1571", "1571-1580", "1588-1591"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q16",
+    "question": "¿Quiénes protagonizaron la rebelión de las Alpujarras?",
+    "options": ["Judíos castellanos", "Moriscos granadinos", "Nobles aragoneses", "Mercaderes sevillanos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q17",
+    "question": "¿Contra qué se sublevaron los moriscos en las Alpujarras?",
+    "options": ["Contra la presión para abandonar sus costumbres", "Contra los impuestos americanos", "Contra los turcos", "Contra la Mesta"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t15_q18",
+    "question": "¿Quién sofocó la rebelión de las Alpujarras?",
+    "options": ["El duque de Alba", "Juan de Austria", "Antonio Pérez", "Lanuza"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q19",
+    "question": "¿Qué consecuencia tuvo la derrota de los moriscos granadinos?",
+    "options": ["Su expulsión inmediata de España", "Su dispersión forzosa por Castilla", "La creación de un reino autónomo", "Su integración privilegiada"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q20",
+    "question": "¿Qué personaje huyó a Aragón en 1591 tras ser acusado de asesinato?",
+    "options": ["Juan de Austria", "Antonio Pérez", "El Greco", "Cervantes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q21",
+    "question": "¿Qué provocó el caso de Antonio Pérez en Aragón?",
+    "options": ["Una guerra con Portugal", "Una crisis por el refugio en los fueros aragoneses", "La expulsión de los moriscos", "La pérdida de Flandes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q22",
+    "question": "¿Qué Justicia Mayor de Aragón fue ejecutado tras esa crisis?",
+    "options": ["Padilla", "Lanuza", "Bravo", "Utrecht"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q23",
+    "question": "¿Qué ocurrió con los privilegios de Aragón tras el caso Antonio Pérez?",
+    "options": ["Se ampliaron", "Se limitaron", "Desaparecieron las Cortes", "Se unificaron con Castilla"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q24",
+    "question": "¿Qué institución actuó con dureza contra focos protestantes en Valladolid y Sevilla?",
+    "options": ["La Santa Hermandad", "La Inquisición", "La Casa de Contratación", "El Consejo de Hacienda"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q25",
+    "question": "¿Qué requisito se impuso para acceder a cargos públicos, marginando a descendientes de judíos y moros?",
+    "options": ["La hidalguía", "La limpieza de sangre", "El vasallaje", "La encomienda"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q26",
+    "question": "¿Qué hecho de 1580 amplió enormemente los dominios de Felipe II?",
+    "options": ["La anexión de Navarra", "La Unión Ibérica", "La paz con Inglaterra", "La conquista de Flandes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q27",
+    "question": "¿Qué se incorporó a la monarquía con la Unión Ibérica?",
+    "options": ["Solo Lisboa", "Las costas de Brasil, África y Asia", "El Sacro Imperio", "Francia y Borgoña"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q28",
+    "question": "¿Qué expresión resume la máxima expansión del imperio de Felipe II?",
+    "options": ["La restauración de España", "El imperio donde nunca se ponía el sol", "La monarquía universal protestante", "La Europa de los reyes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q29",
+    "question": "¿Qué batalla de 1571 frenó la expansión otomana en el Mediterráneo?",
+    "options": ["Pavía", "Lepanto", "Mühlberg", "San Quintín"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q30",
+    "question": "¿Qué problema combinó la rebelión de Flandes según el tema?",
+    "options": ["Piratería y hambre", "Deseo de independencia y avance del calvinismo", "Invasión otomana y peste", "Crisis de sucesión y hidalguía"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q31",
+    "question": "¿Qué potencia apoyaba a los rebeldes flamencos y practicaba la piratería contra la monarquía hispánica?",
+    "options": ["Francia", "Portugal", "Inglaterra", "Austria"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t15_q32",
+    "question": "¿Qué ocurrió en 1588?",
+    "options": ["La victoria de Lepanto", "El desastre de la Armada Invencible", "La unión con Aragón", "La revuelta de las Alpujarras"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q33",
+    "question": "¿Qué minas americanas se citan como fuente de metales preciosos?",
+    "options": ["Zacatecas y Potosí", "Taxco y Veracruz", "Cuzco y Lima", "Puebla y Quito"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t15_q34",
+    "question": "¿Qué caracterizaba a la Hacienda real pese a la llegada de metales americanos?",
+    "options": ["Superávit constante", "Equilibrio presupuestario", "Déficit", "Ausencia de deuda"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t15_q35",
+    "question": "¿Qué acontecimiento económico de 1557 se menciona en el tema?",
+    "options": ["La creación de la Mesta", "La primera bancarrota del reinado", "La conquista de Portugal", "La abolición de impuestos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q36",
+    "question": "¿Qué efecto produjo la entrada de plata americana?",
+    "options": ["Deflación", "Revolución de los precios", "Caída del comercio", "Desaparición de la nobleza"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q37",
+    "question": "¿Qué institución monopolizaba el comercio colonial desde Sevilla?",
+    "options": ["Consejo de Estado", "Casa de Contratación", "Consejo de Castilla", "Santa Hermandad"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q38",
+    "question": "¿Qué sistema protegía el tráfico comercial entre España y América?",
+    "options": ["Repartimientos", "Flotas y Galeones", "Mita", "Cabotaje libre"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q39",
+    "question": "¿Qué norma organizaba la vida colonial según el tema?",
+    "options": ["Las Partidas", "Las Leyes de Indias", "El Fuero Juzgo", "La Nueva Recopilación"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t15_q40",
+    "question": "¿Qué artistas y escritores aparecen como ejemplo del Siglo de Oro en tiempos de Felipe II?",
+    "options": ["Velázquez y Lope de Vega", "El Greco y un joven Cervantes", "Quevedo y Góngora", "Murillo y Calderón"],
+    "correctAnswer": 1
+  }
+]

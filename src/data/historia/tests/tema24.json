@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t24_q1",
+    "question": "¿Qué hecho desencadenó la fractura nacional al inicio del periodo 1833-1868?",
+    "options": ["La Revolución de 1868", "La muerte de Fernando VII", "La firma del Concordato", "La Ley de Ferrocarriles"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24_q2",
+    "question": "¿Qué dos modelos de Estado chocaron tras la muerte de Fernando VII?",
+    "options": ["Federalismo y republicanismo", "Absolutismo y liberalismo", "Socialismo y capitalismo", "Carlismo y afrancesamiento"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24_q3",
+    "question": "¿Quién reclamó el trono frente a Isabel II al iniciarse la Primera Guerra Carlista?",
+    "options": ["Espartero", "Narváez", "Carlos María Isidro", "Zumalacárregui"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t24_q4",
+    "question": "¿Qué ley invocó Carlos María Isidro para justificar su pretensión al trono?",
+    "options": ["Constitución de 1812", "Ley de Ferrocarriles", "Ley Sálica", "Pragmática de 1836"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t24_q5",
+    "question": "¿Entre qué años se desarrolló la Primera Guerra Carlista según el tema?",
+    "options": ["1820-1823", "1833-1840", "1846-1849", "1855-1868"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24_q6",
+    "question": "¿Quién consolidó inicialmente los focos insurgentes carlistas?",
+    "options": ["Madoz", "Espartero", "Zumalacárregui", "O'Donnell"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t24_q7",
+    "question": "¿Cómo se denomina la segunda etapa de la Primera Guerra Carlista en el tema?",
+    "options": ["Fase constitucional", "Fase de expediciones", "Fase de desamortización", "Fase democrática"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24_q8",
+    "question": "¿Qué expedición carlista destaca el tema como la más relevante?",
+    "options": ["Expedición Real", "Expedición de Cataluña", "Expedición de Vergara", "Expedición de Ostende"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t24_q9",
+    "question": "¿Qué acuerdo puso fin al conflicto principal de la Primera Guerra Carlista?",
+    "options": ["Pacto de Ostende", "Concordato de 1851", "Convenio de Vergara", "Tratado de Utrecht"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t24_q10",
+    "question": "¿En qué año se firmó el Convenio de Vergara?",
+    "options": ["1833", "1836", "1839", "1844"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t24_q11",
+    "question": "¿Dónde se centró la segunda guerra carlista de 1846-1849?",
+    "options": ["Navarra", "Andalucía", "Cataluña", "País Vasco"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t24_q12",
+    "question": "¿Qué provocó la segunda guerra carlista según el tema?",
+    "options": ["La abolición de la Milicia Nacional", "El fracaso del proyecto matrimonial entre Isabel II y el pretendiente carlista", "La desamortización de Madoz", "La creación de la Guardia Civil"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24_q13",
+    "question": "¿Qué grupo social formaba parte del bando isabelino?",
+    "options": ["Bajo clero rural", "Pequeña nobleza del norte", "Alta nobleza, burguesía, clases medias urbanas y ejército", "Campesinado vasco y navarro"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t24_q14",
+    "question": "¿Qué grupo apoyó principalmente al carlismo?",
+    "options": ["Gran burguesía financiera", "Pequeña nobleza rural, bajo clero y campesinado del norte", "Militares liberales y abogados", "Comerciantes catalanes proteccionistas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24_q15",
+    "question": "¿Qué territorios del norte aparecen asociados al apoyo carlista?",
+    "options": ["País Vasco, Navarra, Cataluña y Aragón", "Galicia, Asturias, León y Castilla", "Andalucía, Murcia y Valencia", "Extremadura, La Mancha y Madrid"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t24_q16",
+    "question": "¿Qué lema resume la ideología carlista según el tema?",
+    "options": ["Libertad, Igualdad, Nación y Ley", "Dios, Patria, Fueros y Rey", "Orden, Progreso, Constitución y Reina", "Pueblo, Cortes, Justicia y Nación"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24_q17",
+    "question": "¿Qué defendían los carlistas además del absolutismo?",
+    "options": ["El sufragio universal", "Los fueros territoriales", "La separación Iglesia-Estado", "La libertad de imprenta plena"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24_q18",
+    "question": "¿Qué consecuencia política tuvo la intensidad de la guerra carlista?",
+    "options": ["La desaparición del ejército", "El surgimiento de los espadones como árbitros políticos", "La abolición del sufragio censitario", "La independencia de Cataluña"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24_q19",
+    "question": "¿Qué fueron los espadones?",
+    "options": ["Funcionarios de Hacienda", "Militares convertidos en árbitros de la vida política", "Nobles terratenientes", "Diputados carlistas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24_q20",
+    "question": "¿Qué buscaban las desamortizaciones del Estado liberal?",
+    "options": ["Mantener las manos muertas", "Desarticular las tierras inmovilizadas y financiar la guerra y la modernización", "Restaurar el señorío jurisdiccional", "Proteger exclusivamente a la Iglesia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24_q21",
+    "question": "¿Qué desamortización se dirigió contra los bienes del clero regular y secular?",
+    "options": ["La de Madoz", "La de Mendizábal", "La de Godoy", "La de Jovellanos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24_q22",
+    "question": "¿En qué año sitúa el tema la desamortización de Mendizábal?",
+    "options": ["1833", "1836", "1845", "1855"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24_q23",
+    "question": "¿Qué afectó especialmente la desamortización general de Madoz?",
+    "options": ["Solo los monasterios", "Los bienes propios y comunes de los municipios", "Exclusivamente la nobleza", "Los fueros vascos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24_q24",
+    "question": "¿En qué año se sitúa la desamortización de Madoz?",
+    "options": ["1840", "1844", "1851", "1855"],
+    "correctAnswer": 3
+  },
+  {
+    "id": "t24_q25",
+    "question": "¿Qué financiación permitieron en parte las desamortizaciones según el tema?",
+    "options": ["La construcción de monasterios", "Infraestructuras como el ferrocarril", "La restauración de la Inquisición", "La expansión colonial en Asia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24_q26",
+    "question": "¿Qué efecto negativo tuvieron las desamortizaciones sobre el campesinado?",
+    "options": ["Ganó acceso a más comunales", "Perdió el uso de tierras comunales", "Recibió salarios estatales", "Se convirtió en clase media propietaria"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24_q27",
+    "question": "¿Quién compró principalmente las tierras desamortizadas?",
+    "options": ["El campesinado pobre", "La burguesía y la aristocracia", "Los jornaleros andaluces", "Los militares carlistas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24_q28",
+    "question": "¿Qué acuerdo suavizó la ruptura entre el Estado liberal y la Iglesia?",
+    "options": ["Convenio de Vergara", "Concordato de 1851", "Pacto de Ostende", "Constitución de 1845"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24_q29",
+    "question": "¿A qué se comprometió el Estado en el Concordato de 1851?",
+    "options": ["A devolver todas las tierras vendidas", "A sostener el culto y el clero", "A abolir la Guardia Civil", "A implantar el sufragio universal"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24_q30",
+    "question": "¿Qué tipo de sufragio caracterizó al reinado de Isabel II según el tema?",
+    "options": ["Universal masculino", "Universal directo", "Censitario muy restringido", "Femenino indirecto"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t24_q31",
+    "question": "¿Qué porcentaje aproximado de la población podía votar según el tema?",
+    "options": ["Entre el 20% y el 30%", "Entre el 10% y el 15%", "Entre el 0,15% y el 5%", "Más del 50%"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t24_q32",
+    "question": "¿Cuál de estos periodos NO aparece en la división política del reinado de Isabel II?",
+    "options": ["Década Moderada", "Bienio Progresista", "Unión Liberal", "Trienio Liberal"],
+    "correctAnswer": 3
+  },
+  {
+    "id": "t24_q33",
+    "question": "¿Qué principio político defendía el modelo moderado?",
+    "options": ["Soberanía nacional exclusiva", "Soberanía compartida entre rey y Cortes", "República federal", "Poder legislativo único de las Cortes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24_q34",
+    "question": "¿Qué institución se creó en 1844 dentro del modelo moderado?",
+    "options": ["Milicia Nacional", "Guardia Civil", "Consejo de Ministros", "Junta Suprema Central"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24_q35",
+    "question": "¿Qué principio político defendía el modelo progresista?",
+    "options": ["Soberanía nacional", "Soberanía del rey por derecho divino", "Estado confesional rígido", "Restauración foral carlista"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t24_q36",
+    "question": "¿En qué fuerza se apoyaba el modelo progresista?",
+    "options": ["La Guardia Civil", "La Milicia Nacional", "El bajo clero", "Los apostólicos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24_q37",
+    "question": "¿Qué reforma fiscal de 1845 aparece citada como avance del Estado liberal?",
+    "options": ["Catastro de Ensenada", "Mon-Santillán", "Ley Moyano", "Código de Comercio"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24_q38",
+    "question": "¿Qué ley de 1855 se menciona como un gran avance material?",
+    "options": ["Ley Agraria", "Ley de Ferrocarriles", "Ley Sálica", "Ley de Minas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24_q39",
+    "question": "¿Qué impuesto impopular generó tensiones entre las clases populares?",
+    "options": ["El diezmo", "Los consumos", "La alcabala", "El catastro"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24_q40",
+    "question": "¿Qué acontecimiento puso fin al reinado de Isabel II e inició el Sexenio Democrático?",
+    "options": ["Convenio de Vergara", "Revolución de 1868", "Concordato de 1851", "Primera Guerra Carlista"],
+    "correctAnswer": 1
+  }
+]

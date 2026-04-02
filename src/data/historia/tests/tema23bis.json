@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t23bis_q1",
+    "question": "¿Cómo se caracteriza el proceso de industrialización española en el siglo XIX?",
+    "options": ["Rápido y uniforme", "Tardío, incompleto y desequilibrado regionalmente", "Precoz y plenamente capitalista", "Similar al británico"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q2",
+    "question": "¿Qué rasgo NO define la industrialización española según el tema?",
+    "options": ["Retraso", "Desequilibrio regional", "Uniformidad territorial", "Escasez de capitales"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t23bis_q3",
+    "question": "¿Qué debilidad del mercado interior dificultó la industrialización española?",
+    "options": ["Su gran tamaño", "Su fortaleza financiera", "Su raquitismo", "Su exceso de conexiones ferroviarias"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t23bis_q4",
+    "question": "¿Qué guerra dejó la economía española literalmente destruida a comienzos del siglo XIX?",
+    "options": ["Primera Guerra Carlista", "Guerra de Sucesión", "Guerra de Independencia", "Guerra de África"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t23bis_q5",
+    "question": "¿Qué consecuencia económica tuvo la pérdida de las colonias americanas?",
+    "options": ["Incrementó la inversión industrial", "Eliminó ingresos y capital inicial para la industria", "Creó un mercado nacional fuerte", "Favoreció el carbón nacional"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q6",
+    "question": "¿Qué conflictos políticos sembraron desconfianza entre los inversores?",
+    "options": ["Las guerras napoleónicas y Lepanto", "Las Guerras Carlistas y los pronunciamientos militares", "La Guerra Civil y la Restauración", "Las Germanías y las Comunidades"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q7",
+    "question": "¿Qué desamortizaciones se mencionan como incapaces de crear una clase media agraria?",
+    "options": ["Las de Godoy y Esquilache", "Las de Mendizábal y Madoz", "Las de Jovellanos y Campomanes", "Las de Lerma y Olivares"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q8",
+    "question": "¿Qué efecto tuvieron las desamortizaciones sobre la propiedad agraria según el tema?",
+    "options": ["Crearon un campesinado propietario amplio", "Reforzaron el latifundismo tradicional", "Eliminaron la gran propiedad", "Industrializaron el campo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q9",
+    "question": "¿Qué mentalidad predominaba en la oligarquía terrateniente?",
+    "options": ["Empresarial e innovadora", "Rentista y reacia al riesgo industrial", "Colectivista", "Obrera"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q10",
+    "question": "¿Qué favorecía la mentalidad rentista de la élite?",
+    "options": ["La inversión fabril", "La seguridad de la tierra frente al riesgo empresarial", "La organización obrera", "La expansión del mercado interior"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q11",
+    "question": "¿Qué dos grandes limitaciones tenía el mercado nacional español?",
+    "options": ["Exceso de puertos y de capital", "Orografía difícil y falta de transportes", "Ausencia de agricultura y de minas", "Superávit comercial y salarios altos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q12",
+    "question": "¿Qué debate económico alimentó la debilidad del mercado nacional?",
+    "options": ["Absolutismo contra liberalismo", "Proteccionismo contra librecambismo", "Federalismo contra centralismo", "Catolicismo contra laicismo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q13",
+    "question": "¿Con qué metáfora describe el tema la industrialización española?",
+    "options": ["Una red cerrada", "Un manto uniforme", "Manchas de aceite", "Una pirámide estable"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t23bis_q14",
+    "question": "¿Dónde se concentró principalmente la modernización industrial?",
+    "options": ["En la Meseta central", "En los márgenes geográficos del país", "En el sur agrario", "En Extremadura y Castilla-La Mancha"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q15",
+    "question": "¿Qué dos focos periféricos lideraron la modernización industrial?",
+    "options": ["Galicia y Navarra", "Cataluña y el País Vasco", "Andalucía y Murcia", "Asturias y Aragón"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q16",
+    "question": "¿Qué sector industrial destacó en Cataluña?",
+    "options": ["Siderurgia", "Textil algodonero", "Naval", "Minería de cobre"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q17",
+    "question": "¿Qué exigía la burguesía industrial catalana al gobierno?",
+    "options": ["Librecambio total", "Aranceles proteccionistas", "Abolición de fábricas", "El fin del ferrocarril"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q18",
+    "question": "¿Frente a qué competencia pedía protección la industria textil catalana?",
+    "options": ["La alemana", "La francesa", "La inglesa", "La portuguesa"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t23bis_q19",
+    "question": "¿Qué eran las colonias industriales catalanas?",
+    "options": ["Colonias americanas de comercio", "Establecimientos fabriles junto a ríos para usar energía hidráulica", "Asentamientos militares", "Puertos libres mediterráneos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q20",
+    "question": "¿Qué grupo social moderno apareció asociado a las colonias industriales?",
+    "options": ["La nobleza financiera", "El proletariado moderno", "Los mayorazgos", "Los gremios medievales"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q21",
+    "question": "¿En qué se especializó el País Vasco durante la industrialización?",
+    "options": ["Textil lanero", "Siderurgia", "Agricultura cerealista", "Industria del tabaco"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q22",
+    "question": "¿Qué intercambio permitió consolidar la siderurgia vasca?",
+    "options": ["Hierro vasco por carbón galés", "Trigo castellano por hierro asturiano", "Lana aragonesa por cobre andaluz", "Vino riojano por petróleo inglés"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t23bis_q23",
+    "question": "¿Qué movimientos ideológicos alimentó el dinamismo de Cataluña y el País Vasco?",
+    "options": ["Carlismo y republicanismo federal", "Catalanismo y nacionalismo vasco", "Absolutismo y servilismo", "Socialismo utópico y anarquismo rural"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q24",
+    "question": "¿Qué ley de 1868 afectó decisivamente a la explotación del subsuelo?",
+    "options": ["Ley Agraria", "Ley de Minas", "Ley de Ferrocarriles", "Ley de Imprenta"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q25",
+    "question": "¿Por qué cedió el Estado la explotación minera a compañías extranjeras?",
+    "options": ["Por exceso de capital nacional", "Por la deuda pública", "Por falta de minerales", "Por decisión de los obreros"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q26",
+    "question": "¿Qué yacimientos cita el tema como ejemplo de explotación extranjera?",
+    "options": ["Bilbao y Barcelona", "Riotinto y Almadén", "Potosí y Zacatecas", "Cartagena y Málaga"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q27",
+    "question": "¿Qué tipo de economía generó esa cesión minera?",
+    "options": ["Autárquica", "Dependiente, exportadora de materias primas e importadora de manufacturas", "Socialista", "Puramente agrícola"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q28",
+    "question": "¿Qué consecuencia social tuvo la explotación minera?",
+    "options": ["Mejora general de las condiciones de vida", "Condiciones infrahumanas y primeras protestas obreras", "Fin del trabajo asalariado", "Desaparición del conflicto social"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q29",
+    "question": "¿Qué problema energético frenó la industrialización española?",
+    "options": ["Ausencia total de carbón", "Baja calidad y alto coste del carbón nacional", "Exceso de electricidad", "Escasez de hierro vasco"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q30",
+    "question": "¿De qué zona procedía principalmente el carbón nacional citado en el tema?",
+    "options": ["Cataluña", "Asturias", "Andalucía", "Navarra"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q31",
+    "question": "¿Qué ley abrió la entrada de capital extranjero al ferrocarril?",
+    "options": ["Ley de Minas de 1868", "Ley de Ferrocarriles de 1855", "Decreto de Libre Comercio", "Pragmática Sanción"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q32",
+    "question": "¿Qué financieros extranjeros aparecen citados en la expansión ferroviaria?",
+    "options": ["Fugger y Médici", "Péreire y Rothschild", "Braganza y Nariño", "Ensenada y Jovellanos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q33",
+    "question": "¿Cómo se diseñó la red ferroviaria española según el tema?",
+    "options": ["Circular con centro en Barcelona", "Radial con centro en Madrid", "Lineal cantábrica", "Federal por regiones industriales"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q34",
+    "question": "¿Qué problema técnico dificultó la conexión ferroviaria con Europa?",
+    "options": ["La falta de locomotoras", "Un ancho de vía distinto al europeo", "La ausencia de estaciones", "La falta de puentes metálicos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q35",
+    "question": "¿Qué efecto económico positivo tuvo el ferrocarril?",
+    "options": ["Eliminó la agricultura", "Abarató el transporte de trigo y minerales", "Acabó con las migraciones", "Sustituyó a toda la industria"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q36",
+    "question": "¿Qué facilitó también el ferrocarril según el texto?",
+    "options": ["La desaparición del mercado nacional", "Las migraciones internas", "La vuelta al feudalismo", "La abolición de la burguesía"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q37",
+    "question": "¿Qué contraste urbano destaca el tema?",
+    "options": ["Castillos y catedrales", "Ensanches burgueses frente a barrios obreros degradados", "Puertos y aldeas", "Campos y monasterios"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q38",
+    "question": "¿Qué rasgo laboral se considera normal en la época según el tema?",
+    "options": ["Jornada de ocho horas", "Trabajo infantil y femenino con salarios inferiores", "Vacaciones obreras pagadas", "Igualdad salarial plena"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23bis_q39",
+    "question": "¿Qué organización obrera de corte anarquista se menciona?",
+    "options": ["UGT", "PSOE", "FTRE", "CNT"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t23bis_q40",
+    "question": "¿Qué autores literarios aparecen como reflejo cultural de la miseria social?",
+    "options": ["Bécquer y Larra", "Benito Pérez Galdós y Emilia Pardo Bazán", "Quevedo y Góngora", "Cervantes y Lope"],
+    "correctAnswer": 1
+  }
+]

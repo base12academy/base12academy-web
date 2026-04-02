@@ -1,360 +1,420 @@
-import LeadChatBot from "@/components/LeadChatBot";
-import Link from "next/link";
+"use client";
 
-const cursos = [
+import Link from "next/link";
+import LeadChatBot from "@/components/LeadChatBot";
+import { introVideos } from "@/lib/intro-videos";
+
+const COLORS = {
+  bg: "#f8fafc",
+  card: "#ffffff",
+  border: "#e5e7eb",
+  text: "#1f2937",
+  muted: "#6b7280",
+  primary: "#2563eb",
+};
+
+const ebauCursos = [
   {
     titulo: "Historia de España",
-    precio: "29 €",
-    descripcion:
-      "Temario, apoyo al estudio, test y preparación académica.",
+    precio: "17 € / mes",
+    descripcion: "Preparación completa para la EBAU / PAU con temario, apoyo al estudio, test y vídeos.",
   },
   {
     titulo: "Historia de la Filosofía",
-    precio: "29 €",
-    descripcion:
-      "Curso estructurado por temas para repaso y comprensión de autores.",
+    precio: "17 € / mes",
+    descripcion: "Curso estructurado por temas para repaso, comprensión de autores y preparación de examen.",
+  },
+];
+
+const oposicionesCursos = [
+  {
+    titulo: "Auxiliar Administrativo del Estado",
+    descripcion: "Preparación estructurada para avanzar con claridad, práctica y seguimiento.",
+  },
+  {
+    titulo: "Administrativo del Estado",
+    descripcion: "Temario, apoyo al estudio y práctica guiada para consolidar resultados.",
+  },
+  {
+    titulo: "Otra oposición",
+    descripcion: "Preparación guiada con estructura clara y recursos de apoyo.",
+  },
+];
+
+const onlineCursos = [
+  {
+    titulo: "Protocolo Institucional",
+    precio: "39 €",
+    descripcion: "Curso completo estructurado por temas con vídeos explicativos.",
+  },
+  {
+    titulo: "Protocolo Social y Empresarial",
+    precio: "39 €",
+    descripcion: "Formación práctica para entornos profesionales y empresariales.",
+  },
+  {
+    titulo: "Gestión eficaz del tiempo",
+    precio: "35 €",
+    descripcion: "Técnicas prácticas para organizar el estudio y mejorar el rendimiento.",
   },
 ];
 
 export default function HomePage() {
-  const videosInicio = [
-    {
-      titulo: "Introducción a Base12 Academy",
-      url: "https://www.youtube.com/embed/KqeL09fa4AI",
-    },
-    {
-      titulo: "El Método Base12",
-      url: "https://www.youtube.com/embed/yjl-bICtTMk",
-    },
-    {
-      titulo: "Guía de Estudio Plataforma Base12",
-      url: "https://www.youtube.com/embed/DO7qaRuR9T4",
-    },
-  ];
-
-  
   return (
-  <>
-    <main
-      style={{
-        minHeight: "100vh",
-        background: "#f8fafc",
-        color: "#1f2937",
-      }}
-    >
-      <div
-  style={{
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    gap: "16px",
-    flexWrap: "wrap",
-    marginBottom: "40px",
-  }}
->
-  <div
-  style={{
-    fontSize: "28px",
-    fontWeight: "bold",
-    color: "#2563eb",
-  }}
->
-  Base12 Academy
-</div>
-
-  <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
-    <Link href="/aviso-legal" style={{ color: "#1f2937", textDecoration: "none" }}>
-      Aviso legal
-    </Link>
-    <Link href="/privacidad" style={{ color: "#1f2937", textDecoration: "none" }}>
-      Privacidad
-    </Link>
-    <Link href="/cookies" style={{ color: "#1f2937", textDecoration: "none" }}>
-      Cookies
-    </Link>
-    <Link href="/contacto" style={{ color: "#1f2937", textDecoration: "none" }}>
-      Contacto
-    </Link>
-  </div>
-</div>
-      <section
+    <>
+      <main
         style={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-          padding: "64px 24px",
+          minHeight: "100vh",
+          background: COLORS.bg,
+          color: COLORS.text,
         }}
       >
-        <h1 style={{ fontSize: "48px", fontWeight: "bold" }}>
-          Base12 Academy
-        </h1>
-
-        <p style={{ marginTop: "16px", marginBottom: "32px", fontSize: "18px" }}>
-          Plataforma para preparar la EBAU y oposiciones con método, claridad y enfoque a nota alta.
-        </p>
-
-        <div style={{ display: "flex", gap: "16px", marginBottom: "48px" }}>
-          <Link
-            href="/register"
+        <section
+          style={{
+            maxWidth: "1200px",
+            margin: "0 auto",
+            padding: "32px 24px 48px",
+          }}
+        >
+          <header
             style={{
-              padding: "12px 20px",
-              background: "#2563eb",
-              color: "white",
-              borderRadius: "10px",
-              textDecoration: "none",
-              fontWeight: "600",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              gap: "24px",
+              flexWrap: "wrap",
+              marginBottom: "64px",
             }}
           >
-            Empezar ahora
-          </Link>
-
-          <Link
-            href="/login"
-            style={{
-              padding: "12px 20px",
-              border: "1px solid #2563eb",
-              color: "#2563eb",
-              borderRadius: "10px",
-              textDecoration: "none",
-              fontWeight: "600",
-            }}
-          >
-            Ya tengo cuenta
-          </Link>
-        </div>
-
-        <h2 style={{ fontSize: "32px", marginBottom: "16px" }}>
-          Preparación para la EBAU / PAU
-        </h2>
-        <h2 style={{ fontSize: "32px", marginBottom: "16px" }}>
-          Preparación de oposiciones
-</h2>
-
-<div style={{ display: "grid", gap: "20px", marginBottom: "48px" }}>
-  <div
-    style={{
-      padding: "20px",
-      background: "white",
-      border: "1px solid #e5e7eb",
-      borderRadius: "16px",
-    }}
-  >
-    <h3 style={{ fontSize: "22px", fontWeight: "bold" }}>
-      Auxiliar Administrativo del Estado
-    </h3>
-    <p style={{ margin: "8px 0 16px 0" }}>
-      Preparación estructurada para avanzar con claridad, práctica y seguimiento.
-    </p>
-    <Link
-      href="/register"
-      style={{
-        padding: "10px 16px",
-        background: "#2563eb",
-        color: "white",
-        borderRadius: "8px",
-        textDecoration: "none",
-      }}
-    >
-      Ver preparación
-    </Link>
-  </div>
-
-  <div
-    style={{
-      padding: "20px",
-      background: "white",
-      border: "1px solid #e5e7eb",
-      borderRadius: "16px",
-    }}
-  >
-    <h3 style={{ fontSize: "22px", fontWeight: "bold" }}>
-      Administrativo del Estado
-    </h3>
-    <p style={{ margin: "8px 0 16px 0" }}>
-      Temario, apoyo al estudio y práctica guiada para consolidar resultados.
-    </p>
-    <Link
-      href="/register"
-      style={{
-        padding: "10px 16px",
-        background: "#2563eb",
-        color: "white",
-        borderRadius: "8px",
-        textDecoration: "none",
-      }}
-    >
-      Ver preparación
-    </Link>
-  </div>
-
-  <div
-    style={{
-      padding: "20px",
-      background: "white",
-      border: "1px solid #e5e7eb",
-      borderRadius: "16px",
-    }}
-  >
-    <h3 style={{ fontSize: "22px", fontWeight: "bold" }}>
-      Otra oposición
-    </h3>
-    <p style={{ margin: "8px 0 16px 0" }}>
-      Preparación guiada con estructura clara y recursos de apoyo.
-    </p>
-    <Link
-      href="/register"
-      style={{
-        padding: "10px 16px",
-        background: "#2563eb",
-        color: "white",
-        borderRadius: "8px",
-        textDecoration: "none",
-      }}
-    >
-      Ver preparación
-    </Link>
-  </div>
-</div>
-        <div style={{ display: "grid", gap: "20px", marginBottom: "48px" }}>
-          {cursos.map((curso, i) => (
-            <div
-              key={i}
+            <img
+              src="/images/base12-logo.png"
+              alt="Base12 Academy"
               style={{
-                padding: "20px",
-                background: "white",
-                border: "1px solid #e5e7eb",
-                borderRadius: "16px",
+                height: "220px",
+                objectFit: "contain",
+              }}
+            />
+
+            <nav
+  style={{
+    display: "flex",
+    gap: "12px",
+    alignItems: "center",
+    flexWrap: "wrap",
+  }}
+>
+  <Link
+    href="/login"
+    style={{
+      padding: "10px 16px",
+      border: `1px solid ${COLORS.border}`,
+      borderRadius: "10px",
+      textDecoration: "none",
+      color: COLORS.text,
+      fontWeight: "500",
+    }}
+  >
+    Acceso
+  </Link>
+
+   <div style={{ display: "flex", gap: "12px", marginLeft: "8px" }}>
+    <Link href="/aviso-legal" style={{ color: COLORS.muted, fontSize: "14px" }}>
+      Aviso legal
+    </Link>
+    <Link href="/privacidad" style={{ color: COLORS.muted, fontSize: "14px" }}>
+      Privacidad
+    </Link>
+    <Link href="/cookies" style={{ color: COLORS.muted, fontSize: "14px" }}>
+      Cookies
+    </Link>
+    <Link href="/terminos-contratacion" style={{ color: COLORS.muted, fontSize: "14px" }}>
+      Términos
+    </Link>
+  </div>
+</nav>
+              
+          </header>
+
+          <section style={{ marginBottom: "56px" }}>
+            <h1
+              style={{
+                fontSize: "56px",
+                fontWeight: "bold",
+                lineHeight: "1.1",
+                marginBottom: "20px",
               }}
             >
-              <h3 style={{ fontSize: "22px", fontWeight: "bold" }}>
-                {curso.titulo}
-              </h3>
-
-              <p style={{ margin: "8px 0", color: "#2563eb", fontWeight: "600" }}>
-                {curso.precio}
-              </p>
-
-              <p style={{ marginBottom: "16px" }}>{curso.descripcion}</p>
-
-              <Link
-                href="/comprar"
-                style={{
-                  padding: "10px 16px",
-                  background: "#2563eb",
-                  color: "white",
-                  borderRadius: "8px",
-                  textDecoration: "none",
-                }}
-              >
-                Ver acceso
-              </Link>
-            </div>
-          ))}
-        </div>
-
-<h2 style={{ fontSize: "32px", marginBottom: "16px" }}>
-  Cursos online
-</h2>
-
-<div style={{ display: "grid", gap: "20px", marginBottom: "48px" }}>
-  <div
-    style={{
-      padding: "20px",
-      background: "white",
-      border: "1px solid #e5e7eb",
-      borderRadius: "16px",
-    }}
-  >
-    <h3 style={{ fontSize: "22px", fontWeight: "bold" }}>
-      Protocolo Institucional
-    </h3>
-    <p style={{ margin: "8px 0 16px 0" }}>
-      Curso completo estructurado por temas con vídeos explicativos.
-    </p>
-    <Link href="/register" style={{
-      padding: "10px 16px",
-      background: "#2563eb",
-      color: "white",
-      borderRadius: "8px",
-      textDecoration: "none",
-    }}>
-      Ver curso
-    </Link>
-  </div>
-
-  <div
-    style={{
-      padding: "20px",
-      background: "white",
-      border: "1px solid #e5e7eb",
-      borderRadius: "16px",
-    }}
-  >
-    <h3 style={{ fontSize: "22px", fontWeight: "bold" }}>
-      Protocolo Social y Empresarial
-    </h3>
-    <p style={{ margin: "8px 0 16px 0" }}>
-      Formación práctica para entornos profesionales y empresariales.
-    </p>
-    <Link href="/register" style={{
-      padding: "10px 16px",
-      background: "#2563eb",
-      color: "white",
-      borderRadius: "8px",
-      textDecoration: "none",
-    }}>
-      Ver curso
-    </Link>
-  </div>
-
-  <div
-    style={{
-      padding: "20px",
-      background: "white",
-      border: "1px solid #e5e7eb",
-      borderRadius: "16px",
-    }}
-  >
-    <h3 style={{ fontSize: "22px", fontWeight: "bold" }}>
-      Gestión eficaz del tiempo
-    </h3>
-    <p style={{ margin: "8px 0 16px 0" }}>
-      Técnicas prácticas para organizar el estudio y mejorar el rendimiento.
-    </p>
-    <Link href="/register" style={{
-      padding: "10px 16px",
-      background: "#2563eb",
-      color: "white",
-      borderRadius: "8px",
-      textDecoration: "none",
-    }}>
-      Ver curso
-    </Link>
-  </div>
+              Saca nota alta en la EBAU / PAU y avanza en tu preparación
+            </h1>
+<div
+  style={{
+    fontSize: "18px",
+    fontWeight: "600",
+    color: COLORS.primary,
+    marginBottom: "16px",
+    letterSpacing: "0.5px",
+  }}
+>
+  Construye · Comprende · Domina
 </div>
+            <p
+              style={{
+                fontSize: "22px",
+                lineHeight: "1.6",
+                color: COLORS.muted,
+                marginBottom: "24px",
+                maxWidth: "820px",
+              }}
+            >
+              Estudia con un método claro, test interactivos y seguimiento real para
+  mejorar tu rendimiento en la EBAU / PAU, oposiciones y cursos profesionales.
+            </p>
 
-        <h2 style={{ fontSize: "32px", marginBottom: "16px" }}>
-          Empieza por aquí
-        </h2>
+           
+          </section>
 
-        <div style={{ display: "grid", gap: "24px" }}>
-          {videosInicio.map((video, index) => (
-            <div key={index}>
-              <h3>{video.titulo}</h3>
-              <iframe
-                width="100%"
-                height="400"
-                src={video.url}
-                title={video.titulo}
-                frameBorder="0"
-                allowFullScreen
-              />
-            </div>
-          ))}
-        </div>
-      </section>
-    </main>
+          <section style={{ marginBottom: "56px" }}>
+            <h2 style={{ fontSize: "32px", marginBottom: "20px" }}>
+              Preparación para la EBAU / PAU
+            </h2>
 
-    <LeadChatBot />
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+                gap: "20px",
+              }}
+            >
+             {ebauCursos.map((curso) => (
+  <div
+    key={curso.titulo}
+    style={{
+      padding: "24px",
+      background: COLORS.card,
+      border: `1px solid ${COLORS.border}`,
+      borderRadius: "16px",
+      minHeight: "220px",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+    }}
+  >
+    <div>
+      <h3 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "12px" }}>
+        {curso.titulo}
+      </h3>
+
+      <p style={{ fontSize: "14px", color: COLORS.muted, marginTop: "8px" }}>
+        {curso.titulo === "Historia de España"
+          ? "Acceso online completo"
+          : "Temario en actualización"}
+      </p>
+
+<p style={{ fontSize: "14px", color: COLORS.muted, marginTop: "8px" }}>
+  {curso.titulo === "Historia de España"
+    ? "Acceso online completo"
+    : "Temario en actualización"}
+</p>
+
+{curso.titulo === "Historia de España" ? (
+  <Link href="/comprar/historia-espana">
+    🔓 Activar acceso completo
+  </Link>
+) : null}
+
+      <p style={{ fontSize: "16px", fontWeight: "600", marginTop: "4px" }}>
+        Desde {curso.precio}
+      </p>
+
+      {curso.titulo === "Historia de la Filosofía" ? (
+  <>
+    <Link href="/dashboard/filosofia">Ver curso →</Link>
+    <p style={{ marginTop: "8px", fontSize: "14px", color: "#6b7280" }}>
+      Curso estructurado. Pruebas comparativas en desarrollo.
+    </p>
   </>
-);
+) : null}
+
+    </div>
+
+    {curso.titulo === "Historia de España" && (
+      <Link
+        href="/dashboard/comprar/historia-espana"
+        style={{
+          marginTop: "16px",
+          display: "inline-block",
+          padding: "10px 16px",
+          background: COLORS.primary,
+          color: "white",
+          borderRadius: "10px",
+          textDecoration: "none",
+          fontWeight: "600",
+        }}
+      >
+        Ver curso
+      </Link>
+    )}
+  </div>
+))}
+            </div>
+          </section>
+
+          <section style={{ marginBottom: "56px" }}>
+            <h2 style={{ fontSize: "32px", marginBottom: "20px" }}>
+              Preparación de oposiciones
+            </h2>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+                gap: "20px",
+              }}
+            >
+              {oposicionesCursos.map((curso) => (
+                <div
+                  key={curso.titulo}
+                  style={{
+                    padding: "24px",
+                    background: COLORS.card,
+                    border: `1px solid ${COLORS.border}`,
+                    borderRadius: "16px",
+                  }}
+                >
+                  <h3 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "12px" }}>
+                    {curso.titulo}
+                  </h3>
+                  <p style={{ marginBottom: "12px", lineHeight: "1.6" }}>{curso.descripcion}</p>
+                  <p style={{ fontSize: "14px", color: COLORS.muted, marginTop: "8px" }}>
+                    Temario en actualización
+                  </p>
+                  <p style={{ fontSize: "16px", fontWeight: "600", marginTop: "4px" }}>
+                    Desde 19 € / mes
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section style={{ marginBottom: "56px" }}>
+            <h2 style={{ fontSize: "32px", marginBottom: "20px" }}>
+              Cursos online
+            </h2>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+                gap: "20px",
+              }}
+            >
+              {onlineCursos.map((curso) => (
+                <div
+                  key={curso.titulo}
+                  style={{
+                    padding: "24px",
+                    background: COLORS.card,
+                    border: `1px solid ${COLORS.border}`,
+                    borderRadius: "16px",
+                  }}
+                >
+                  <h3 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "12px" }}>
+                    {curso.titulo}
+                  </h3>
+                  <p style={{ marginBottom: "12px", lineHeight: "1.6" }}>{curso.descripcion}</p>
+                  <p style={{ fontSize: "14px", color: COLORS.muted, marginTop: "8px" }}>
+                    Temario en actualización
+                  </p>
+                  <p style={{ fontSize: "16px", fontWeight: "600", marginTop: "4px" }}>
+                    Desde {curso.precio}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section style={{ marginTop: "40px" }}>
+            <h2 style={{ fontSize: "32px", marginBottom: "20px" }}>
+              Empieza por aquí
+            </h2>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+                gap: "20px",
+                alignItems: "start",
+              }}
+            >
+              {introVideos.map((video) => (
+                <div
+                  key={video.slug}
+                  style={{
+                    background: COLORS.card,
+                    border: `1px solid ${COLORS.border}`,
+                    borderRadius: "16px",
+                    padding: "16px",
+                  }}
+                >
+                  <h3 style={{ fontSize: "18px", marginBottom: "12px" }}>{video.titulo}</h3>
+
+                  <iframe
+                    width="100%"
+                    height="180"
+                    src={video.videoUrl}
+                    title={video.titulo}
+                    style={{ border: "none", borderRadius: "12px" }}
+                    allowFullScreen
+                  />
+                </div>
+              ))}
+            </div>
+          </section>
+        </section>
+      </main>
+
+            <footer
+        style={{
+          marginTop: "64px",
+          padding: "40px 24px",
+          background: "#ffffff",
+          borderTop: "1px solid #e5e7eb",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1200px",
+            margin: "0 auto",
+            fontSize: "14px",
+            color: "#6b7280",
+            lineHeight: "1.6",
+          }}
+        >
+          <p style={{ marginBottom: "16px", fontWeight: "bold", color: "#1f2937" }}>
+            Base12 Academy
+          </p>
+
+          <div style={{ marginBottom: "8px" }}>
+            <p style={{ margin: 0 }}>Imagen Digital Ménace, S. L. U.</p>
+            <p style={{ margin: 0 }}>CIF: B21746086</p>
+            <p style={{ margin: 0 }}>Calle Lanuza, 8 · 29009 Málaga</p>
+            <p style={{ margin: 0 }}>Contacto técnico: base12academy@gmail.com</p>
+          </div>
+
+          <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", marginTop: "12px" }}>
+            <Link href="/aviso-legal">Aviso legal</Link>
+            <Link href="/privacidad">Política de privacidad</Link>
+            <Link href="/cookies">Política de cookies</Link>
+            <Link href="/terminos-contratacion">Términos de contratación</Link>
+          </div>
+
+          <p style={{ marginTop: "16px", fontSize: "14px", color: "#9ca3af" }}>
+            © 2026 Base12 Academy. Todos los derechos reservados.
+          </p>
+        </div>
+      </footer>
+
+      <LeadChatBot />
+    </>
+  );
 }

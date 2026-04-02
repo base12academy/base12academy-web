@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc20_1",
+    "question": "¿Qué fue la Ilustración y qué objetivo tenía?",
+    "answerGuide": "Fue una corriente intelectual que buscaba sacar a la sociedad de las tinieblas mediante el uso de la razón.",
+    "keywords": ["Ilustración", "razón", "luces", "tinieblas"]
+  },
+  {
+    "id": "tc20_2",
+    "question": "¿Qué papel tenía la razón en la Ilustración?",
+    "answerGuide": "Se consideraba el motor absoluto frente a la superstición.",
+    "keywords": ["razón", "motor", "superstición"]
+  },
+  {
+    "id": "tc20_3",
+    "question": "¿Qué características tenía la Ilustración española?",
+    "answerGuide": "Era moderada, protegida por la monarquía y compatible con la religión católica.",
+    "keywords": ["moderada", "monarquía", "religiosa", "catolicismo"]
+  },
+  {
+    "id": "tc20_4",
+    "question": "¿Qué es el Despotismo Ilustrado?",
+    "answerGuide": "Sistema político basado en reformas para el pueblo sin participación de este.",
+    "keywords": ["Despotismo Ilustrado", "reformas", "sin participación", "pueblo"]
+  },
+  {
+    "id": "tc20_5",
+    "question": "¿Qué lema resume el Despotismo Ilustrado?",
+    "answerGuide": "«Todo para el pueblo, pero sin el pueblo».",
+    "keywords": ["lema", "pueblo", "Despotismo Ilustrado"]
+  },
+  {
+    "id": "tc20_6",
+    "question": "¿Qué monarca representa el Despotismo Ilustrado en España?",
+    "answerGuide": "Carlos III.",
+    "keywords": ["Carlos III", "Despotismo Ilustrado"]
+  },
+  {
+    "id": "tc20_7",
+    "question": "¿Qué fue el regalismo?",
+    "answerGuide": "Una política que afirmaba la autoridad del rey sobre la Iglesia.",
+    "keywords": ["regalismo", "Iglesia", "rey", "autoridad"]
+  },
+  {
+    "id": "tc20_8",
+    "question": "¿Por qué fueron expulsados los jesuitas en 1767?",
+    "answerGuide": "Por ser acusados de instigar revueltas y obedecer al Papa antes que al rey.",
+    "keywords": ["jesuitas", "expulsión", "1767", "revuelta", "Papa"]
+  },
+  {
+    "id": "tc20_9",
+    "question": "¿Qué medidas económicas destacaron en la Ilustración?",
+    "answerGuide": "La liberalización comercial y la creación de Reales Fábricas.",
+    "keywords": ["liberalización", "comercio", "Reales Fábricas"]
+  },
+  {
+    "id": "tc20_10",
+    "question": "¿Qué problema frenó las reformas agrarias?",
+    "answerGuide": "La oposición de la nobleza y el clero y la concentración de la tierra en sus manos.",
+    "keywords": ["nobleza", "clero", "tierra", "oposición"]
+  },
+  {
+    "id": "tc20_11",
+    "question": "¿Qué era el Motín de Esquilache?",
+    "answerGuide": "Una revuelta provocada por hambre y rechazo a medidas reformistas como cambios en la vestimenta.",
+    "keywords": ["Motín de Esquilache", "hambre", "reformas", "vestimenta"]
+  },
+  {
+    "id": "tc20_12",
+    "question": "¿Qué medidas sociales impulsó Carlos III?",
+    "answerGuide": "Dignificó el trabajo manual y promovió la repoblación de Sierra Morena.",
+    "keywords": ["trabajo manual", "dignificación", "Sierra Morena", "repoblación"]
+  },
+  {
+    "id": "tc20_13",
+    "question": "¿Qué papel tenía la educación en la Ilustración?",
+    "answerGuide": "Era el instrumento clave para transformar la sociedad y mejorar la economía.",
+    "keywords": ["educación", "cambio", "economía", "Ilustración"]
+  },
+  {
+    "id": "tc20_14",
+    "question": "¿Qué instituciones difundieron el conocimiento ilustrado?",
+    "answerGuide": "Las Reales Academias y las Sociedades Económicas de Amigos del País.",
+    "keywords": ["Academias", "Sociedades Económicas", "conocimiento"]
+  },
+  {
+    "id": "tc20_15",
+    "question": "¿Qué hecho frenó el desarrollo de la Ilustración en España?",
+    "answerGuide": "La Revolución Francesa y el establecimiento del cordón sanitario.",
+    "keywords": ["Revolución Francesa", "cordón sanitario", "Ilustración"]
+  }
+]

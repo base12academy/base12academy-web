@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc22_1",
+    "question": "¿Qué provocó la convocatoria de las Cortes de Cádiz?",
+    "answerGuide": "El vacío de poder tras las abdicaciones de Bayona y la incapacidad de las instituciones del Antiguo Régimen para dirigir la resistencia.",
+    "keywords": ["vacío de poder", "Bayona", "Antiguo Régimen", "Cortes de Cádiz"]
+  },
+  {
+    "id": "tc22_2",
+    "question": "¿Cómo evolucionó la autoridad entre 1808 y 1810?",
+    "answerGuide": "Pasó de las juntas locales y provinciales a la Junta Suprema Central y luego a la Regencia, que convocó elecciones.",
+    "keywords": ["juntas", "Junta Suprema Central", "Regencia", "1808", "1810"]
+  },
+  {
+    "id": "tc22_3",
+    "question": "¿Qué novedad presentó el modelo de Cortes reunido en Cádiz?",
+    "answerGuide": "No se organizó por estamentos, sino como una asamblea única en la que cada diputado tenía un voto.",
+    "keywords": ["asamblea única", "no estamental", "diputado", "voto"]
+  },
+  {
+    "id": "tc22_4",
+    "question": "¿Qué grupos sociales predominaron en las Cortes de Cádiz?",
+    "answerGuide": "La burguesía y las clases medias ilustradas, como eclesiásticos, abogados, militares, funcionarios e intelectuales.",
+    "keywords": ["burguesía", "clases medias", "eclesiásticos", "abogados", "militares", "intelectuales"]
+  },
+  {
+    "id": "tc22_5",
+    "question": "¿Qué corrientes ideológicas coexistieron en las Cortes?",
+    "answerGuide": "Liberales, absolutistas o serviles y jovellanistas.",
+    "keywords": ["liberales", "serviles", "jovellanistas", "Cortes"]
+  },
+  {
+    "id": "tc22_6",
+    "question": "¿Qué proclamaron las Cortes en septiembre de 1810?",
+    "answerGuide": "Que la soberanía residía en la nación y no en el monarca.",
+    "keywords": ["septiembre 1810", "soberanía nacional", "nación", "monarca"]
+  },
+  {
+    "id": "tc22_7",
+    "question": "¿Cuáles eran los principios básicos del liberalismo de Cádiz?",
+    "answerGuide": "La soberanía nacional, la división de poderes y la igualdad jurídica ante la ley.",
+    "keywords": ["soberanía nacional", "división de poderes", "igualdad jurídica", "liberalismo"]
+  },
+  {
+    "id": "tc22_8",
+    "question": "¿Cómo se organizaban los poderes en el modelo gaditano?",
+    "answerGuide": "El legislativo residía en Cortes y rey, el ejecutivo en el rey y el judicial en tribunales independientes.",
+    "keywords": ["legislativo", "ejecutivo", "judicial", "Cortes", "rey", "tribunales"]
+  },
+  {
+    "id": "tc22_9",
+    "question": "¿Qué cambios sociales y económicos defendieron los liberales de Cádiz?",
+    "answerGuide": "La eliminación de privilegios estamentales, la defensa de la propiedad privada, la libertad de empresa y la supresión de trabas feudales.",
+    "keywords": ["privilegios estamentales", "propiedad privada", "libertad de empresa", "trabas feudales"]
+  },
+  {
+    "id": "tc22_10",
+    "question": "¿Qué fue la Constitución de 1812?",
+    "answerGuide": "Una constitución liberal promulgada el 19 de marzo de 1812, conocida como La Pepa, que estableció una monarquía hereditaria y parlamentaria.",
+    "keywords": ["Constitución de 1812", "La Pepa", "19 de marzo", "monarquía parlamentaria"]
+  },
+  {
+    "id": "tc22_11",
+    "question": "¿Qué características políticas tuvo la Constitución de 1812?",
+    "answerGuide": "Limitó al rey, estableció sufragio universal masculino indirecto y reconoció la soberanía nacional y la unidad de los españoles de ambos hemisferios.",
+    "keywords": ["rey limitado", "sufragio universal masculino indirecto", "soberanía nacional", "ambos hemisferios"]
+  },
+  {
+    "id": "tc22_12",
+    "question": "¿Qué aspectos conservadores mantuvo la Constitución de 1812?",
+    "answerGuide": "Mantuvo la confesionalidad católica del Estado y prohibió cualquier otra religión.",
+    "keywords": ["confesionalidad católica", "Estado", "prohibición", "religión"]
+  },
+  {
+    "id": "tc22_13",
+    "question": "¿Qué medidas rompedoras aprobaron las Cortes de Cádiz?",
+    "answerGuide": "El fin de la Inquisición y de los señoríos jurisdiccionales, la apertura del acceso al empleo público y el impulso de la educación primaria pública.",
+    "keywords": ["Inquisición", "señoríos jurisdiccionales", "empleo público", "educación primaria pública"]
+  },
+  {
+    "id": "tc22_14",
+    "question": "¿Qué hizo Fernando VII al volver en 1814?",
+    "answerGuide": "Mediante el Decreto de Valencia anuló la Constitución y los decretos de Cádiz y restauró el absolutismo.",
+    "keywords": ["Fernando VII", "1814", "Decreto de Valencia", "anulación", "absolutismo"]
+  },
+  {
+    "id": "tc22_15",
+    "question": "¿Cuál fue el legado histórico de las Cortes de Cádiz?",
+    "answerGuide": "Abrieron el camino del constitucionalismo liberal en España y sirvieron de referencia durante el Trienio Liberal e incluso en la independencia americana.",
+    "keywords": ["legado", "constitucionalismo", "Trienio Liberal", "independencia americana", "Cádiz"]
+  }
+]

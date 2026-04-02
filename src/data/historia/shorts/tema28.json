@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc28_1",
+    "question": "¿Por qué se considera la Guerra Civil española un conflicto de relevancia internacional?",
+    "answerGuide": "Porque fue un preludio y campo de pruebas de la Segunda Guerra Mundial, además de atraer la intervención y atención de potencias y voluntarios extranjeros.",
+    "keywords": ["preludio", "campo de pruebas", "Segunda Guerra Mundial", "potencias extranjeras", "voluntarios"]
+  },
+  {
+    "id": "tc28_2",
+    "question": "¿Cómo comenzó la Guerra Civil y por qué el golpe derivó en guerra?",
+    "answerGuide": "Comenzó con el pronunciamiento militar del 17 y 18 de julio de 1936. Al fracasar el control rápido de grandes ciudades como Madrid, Barcelona y Bilbao, el golpe se transformó en una guerra de desgaste.",
+    "keywords": ["17 y 18 de julio de 1936", "pronunciamiento", "Madrid", "Barcelona", "Bilbao", "guerra de desgaste"]
+  },
+  {
+    "id": "tc28_3",
+    "question": "¿Qué causas profundas explican la Guerra Civil según el tema?",
+    "answerGuide": "La desigualdad agraria, la oposición de Iglesia, Ejército y terratenientes a perder privilegios, la radicalización obrera y el choque entre laicismo republicano y nacional-catolicismo.",
+    "keywords": ["desigualdad agraria", "Iglesia", "Ejército", "terratenientes", "radicalización obrera", "laicismo", "nacional-catolicismo"]
+  },
+  {
+    "id": "tc28_4",
+    "question": "¿Cómo se organizó políticamente la zona republicana durante la guerra?",
+    "answerGuide": "Vivió una fuerte atomización del poder en comités obreros y pasó por gobiernos como los de Largo Caballero y Juan Negrín, que defendió la resistencia con el lema 'resistir es vencer'.",
+    "keywords": ["zona republicana", "comités obreros", "Largo Caballero", "Juan Negrín", "resistir es vencer"]
+  },
+  {
+    "id": "tc28_5",
+    "question": "¿Qué cambios sociales y económicos se produjeron en la zona republicana?",
+    "answerGuide": "Hubo colectivizaciones y una revolución inicial, pero la pérdida de trigo y carbón provocó una inflación muy fuerte y debilitó la economía de guerra.",
+    "keywords": ["colectivizaciones", "revolución", "trigo", "carbón", "inflación", "economía de guerra"]
+  },
+  {
+    "id": "tc28_6",
+    "question": "¿Cómo se organizó la zona sublevada o nacional?",
+    "answerGuide": "Se basó en el mando militar jerárquico, la unificación política de 1937 y la concentración del poder en Franco, dando lugar a un Estado totalitario.",
+    "keywords": ["zona nacional", "mando militar", "Decreto de Unificación", "1937", "Franco", "Estado totalitario"]
+  },
+  {
+    "id": "tc28_7",
+    "question": "¿Qué rasgos definieron la retaguardia sublevada?",
+    "answerGuide": "La militarización absoluta, la represión sistemática, el respaldo financiero de la banca y un abastecimiento más regular.",
+    "keywords": ["militarización", "represión", "banca", "suministros", "retaguardia"]
+  },
+  {
+    "id": "tc28_8",
+    "question": "¿Qué mensajes propagandísticos utilizaron ambos bandos?",
+    "answerGuide": "La República defendía la 'libertad contra el fascismo' y los sublevados presentaban la guerra como una 'cruzada contra el comunismo'.",
+    "keywords": ["libertad contra el fascismo", "cruzada contra el comunismo", "propaganda"]
+  },
+  {
+    "id": "tc28_9",
+    "question": "¿Qué fue el Pacto de No Intervención y a quién perjudicó más?",
+    "answerGuide": "Fue un acuerdo para evitar la implicación extranjera en la guerra, pero su neutralidad efectiva perjudicó sobre todo a la República.",
+    "keywords": ["Pacto de No Intervención", "neutralidad", "República", "potencias extranjeras"]
+  },
+  {
+    "id": "tc28_10",
+    "question": "¿Qué apoyos internacionales recibió cada bando?",
+    "answerGuide": "La República recibió apoyo de la URSS, México y las Brigadas Internacionales; el bando nacional, de la Alemania nazi y la Italia fascista.",
+    "keywords": ["URSS", "México", "Brigadas Internacionales", "Alemania nazi", "Italia fascista", "bando nacional", "República"]
+  },
+  {
+    "id": "tc28_11",
+    "question": "¿Qué importancia tuvieron la Legión Cóndor y el CTV?",
+    "answerGuide": "Fueron apoyos militares clave de Alemania e Italia al bando nacional, aportando medios técnicos, armamento y superioridad estratégica.",
+    "keywords": ["Legión Cóndor", "CTV", "Alemania", "Italia", "apoyo militar", "armamento"]
+  },
+  {
+    "id": "tc28_12",
+    "question": "¿Qué batallas y avances marcaron el desenlace de la guerra?",
+    "answerGuide": "La toma de Teruel, la Batalla del Ebro en 1938 y la caída de Cataluña fueron decisivas antes de la victoria final de Franco.",
+    "keywords": ["Teruel", "Batalla del Ebro", "1938", "Cataluña", "Franco"]
+  },
+  {
+    "id": "tc28_13",
+    "question": "¿Cómo y cuándo terminó oficialmente la Guerra Civil?",
+    "answerGuide": "Terminó el 1 de abril de 1939, cuando Franco firmó el último parte de guerra proclamando su victoria.",
+    "keywords": ["1 de abril de 1939", "Franco", "último parte de guerra", "victoria"]
+  },
+  {
+    "id": "tc28_14",
+    "question": "¿Qué consecuencias políticas y sociales inmediatas tuvo la victoria franquista?",
+    "answerGuide": "Se suprimieron libertades, partidos, sindicatos y estatutos de autonomía, y comenzó una fuerte represión con exilio masivo y desastre demográfico.",
+    "keywords": ["supresión de libertades", "partidos", "sindicatos", "estatutos de autonomía", "represión", "exilio", "desastre demográfico"]
+  },
+  {
+    "id": "tc28_15",
+    "question": "¿Qué consecuencias económicas, culturales e internacionales dejó la guerra?",
+    "answerGuide": "Dejó ruina económica, autarquía y años del hambre, un gran exilio intelectual y el aislamiento internacional de España, fuera de la reconstrucción europea y del Plan Marshall.",
+    "keywords": ["ruina económica", "autarquía", "años del hambre", "exilio intelectual", "aislamiento internacional", "Plan Marshall"]
+  }
+]

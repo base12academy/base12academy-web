@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t4_q1",
+    "question": "¿Qué potencias se enfrentaron por el control del Mediterráneo occidental a finales del siglo III a.C.?",
+    "options": ["Roma y Grecia", "Roma y Cartago", "Cartago y Macedonia", "Roma y Tartessos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t4_q2",
+    "question": "¿Qué buscó Cartago en la Península Ibérica tras la Primera Guerra Púnica?",
+    "options": ["Expandir el cristianismo", "Una base para recuperar su poder", "Aliarse con los celtas del norte", "Fundar colonias griegas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t4_q3",
+    "question": "¿Qué familia dirigió la estrategia cartaginesa en la Península?",
+    "options": ["Los Escipiones", "Los Bárcidas", "Los Antoninos", "Los Flavios"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t4_q4",
+    "question": "¿Qué objetivo tenía Cartago al explotar los recursos peninsulares?",
+    "options": ["Difundir su cultura", "Financiar su ejército y pagar tributos a Roma", "Fundar ciudades-estado", "Controlar el norte de África"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t4_q5",
+    "question": "¿Qué recurso explotaron especialmente los cartagineses en Cartagena?",
+    "options": ["Trigo", "Hierro", "Plata", "Sal"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t4_q6",
+    "question": "¿Qué papel desempeñaron muchos pueblos íberos en el conflicto entre Roma y Cartago?",
+    "options": ["Se mantuvieron neutrales siempre", "Actuaron como mercenarios o aliados", "Fundaron colonias romanas", "Combatieron solo con Roma"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t4_q7",
+    "question": "¿Qué guerra marcó el inicio de la presencia romana en Hispania?",
+    "options": ["Primera Guerra Púnica", "Segunda Guerra Púnica", "Guerras Cántabras", "Guerra Social"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t4_q8",
+    "question": "¿En qué año comenzó el conflicto decisivo para Hispania mencionado en el tema?",
+    "options": ["197 a.C.", "133 a.C.", "218 a.C.", "29 a.C."],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t4_q9",
+    "question": "¿Qué tratado rompió Aníbal con su ataque a Sagunto?",
+    "options": ["Tratado de Numancia", "Tratado del Ebro", "Tratado de Ampurias", "Tratado de Itálica"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t4_q10",
+    "question": "¿Qué ciudad atacó Aníbal y desencadenó la reacción romana?",
+    "options": ["Cartagena", "Sagunto", "Numancia", "Itálica"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t4_q11",
+    "question": "¿Qué relación tenía Sagunto con Roma?",
+    "options": ["Era una colonia romana", "Era aliada de los romanos", "Era capital de Hispania", "Era una ciudad cartaginesa"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t4_q12",
+    "question": "¿Dónde desembarcaron inicialmente los romanos en Hispania?",
+    "options": ["Gadir", "Cartagena", "Ampurias", "Tarraco"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t4_q13",
+    "question": "¿Cuál era el objetivo inicial de Roma al intervenir en Hispania?",
+    "options": ["Conquistar toda la Península", "Implantar el latín", "Cortar los suministros de Aníbal", "Someter a los lusitanos"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t4_q14",
+    "question": "¿Qué consecuencia histórica tuvo la intervención romana en Hispania?",
+    "options": ["Una presencia de siete siglos", "La rápida independencia íbera", "La creación de Tartessos", "La desaparición del latín"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t4_q15",
+    "question": "¿Cuánto tiempo aproximadamente duró la conquista romana de Hispania?",
+    "options": ["50 años", "100 años", "200 años", "500 años"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t4_q16",
+    "question": "¿Entre qué fechas se desarrolló la conquista romana de Hispania?",
+    "options": ["218 a.C. - 19 a.C.", "197 a.C. - 29 a.C.", "133 a.C. - 19 a.C.", "29 a.C. - 19 d.C."],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t4_q17",
+    "question": "¿Qué territorios fueron ocupados rápidamente en la primera fase?",
+    "options": ["La Meseta y el norte", "La costa mediterránea y los valles del Guadalquivir y del Ebro", "Solo el noroeste minero", "Exclusivamente Lusitania"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t4_q18",
+    "question": "¿Entre qué años se desarrolló la primera fase de la conquista?",
+    "options": ["218 - 197 a.C.", "197 - 29 a.C.", "29 - 19 a.C.", "133 - 29 a.C."],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t4_q19",
+    "question": "¿Cuál fue la zona principal de avance en la segunda fase?",
+    "options": ["Las islas Baleares", "La Meseta interior", "La costa levantina", "El valle del Guadalquivir únicamente"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t4_q20",
+    "question": "¿Qué pueblos protagonizaron la resistencia más dura en la segunda fase?",
+    "options": ["Fenicios y griegos", "Celtas e íberos costeros", "Celtíberos y lusitanos", "Cartagineses y tartesios"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t4_q21",
+    "question": "¿Qué colonia se fundó en zonas pacificadas durante la segunda fase?",
+    "options": ["Emporion", "Itálica", "Numancia", "Sagunto"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t4_q22",
+    "question": "¿Qué elementos introdujo Roma en las zonas pacificadas según el tema?",
+    "options": ["El griego y la democracia", "El latín y el derecho romano", "La escritura fenicia y la moneda", "La devotio y los castros"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t4_q23",
+    "question": "¿En qué se centró la tercera fase de la conquista?",
+    "options": ["En la ocupación de la costa mediterránea", "En el sometimiento del norte peninsular", "En la derrota de Cartago en África", "En la conquista de Sicilia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t4_q24",
+    "question": "¿Entre qué fechas tuvo lugar la tercera fase?",
+    "options": ["218 - 197 a.C.", "197 - 29 a.C.", "29 - 19 a.C.", "133 - 19 a.C."],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t4_q25",
+    "question": "¿Qué líder destacó en la resistencia lusitana?",
+    "options": ["Argantonio", "Viriato", "Aníbal", "Trajano"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t4_q26",
+    "question": "¿Qué táctica utilizó Viriato contra Roma?",
+    "options": ["Batallas navales", "Guerra de guerrillas", "Asedios prolongados", "Defensa en murallas romanas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t4_q27",
+    "question": "¿Cómo murió Viriato según el tema?",
+    "options": ["En combate abierto", "Víctima de una traición", "Por enfermedad", "Ejecutado en Roma"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t4_q28",
+    "question": "¿Qué ciudad se convirtió en símbolo de la resistencia celtíbera?",
+    "options": ["Sagunto", "Cartagena", "Numancia", "Itálica"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t4_q29",
+    "question": "¿Quién dirigió el asedio de Numancia?",
+    "options": ["Aníbal", "Escipión Emiliano", "Octavio Augusto", "Asdrúbal"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t4_q30",
+    "question": "¿Qué ocurrió en Numancia en 133 a.C.?",
+    "options": ["Se firmó la paz con Roma", "Sus habitantes se rindieron", "Sus habitantes optaron por el suicidio colectivo", "Se convirtió en colonia griega"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t4_q31",
+    "question": "¿Qué era la devotio?",
+    "options": ["Un impuesto romano", "Un juramento de lealtad hasta la muerte al jefe", "Una ley minera", "Una táctica militar romana"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t4_q32",
+    "question": "¿Qué efecto tuvo la resistencia indígena sobre Roma?",
+    "options": ["Provocó la retirada definitiva", "Aceleró la profesionalización del ejército romano", "Impidió la expansión del latín", "Eliminó el uso de mercenarios"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t4_q33",
+    "question": "¿Qué emperador dirigió el final de la conquista?",
+    "options": ["Trajano", "Octavio Augusto", "Adriano", "Julio César"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t4_q34",
+    "question": "¿Qué guerras cerraron la conquista del norte peninsular?",
+    "options": ["Guerras Lusitanas", "Guerras Celtíberas", "Guerras Cántabras", "Guerras Púnicas"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t4_q35",
+    "question": "¿Qué pueblos fueron sometidos en las Guerras Cántabras?",
+    "options": ["Íberos y celtíberos", "Cántabros y astures", "Lusitanos y vacceos", "Fenicios y griegos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t4_q36",
+    "question": "¿Qué importante zona minera aseguró Roma tras su victoria final?",
+    "options": ["Las minas de plata de Sagunto", "Las minas de cobre de Tartessos", "Las minas de oro del noroeste", "Las minas de hierro del Ebro"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t4_q37",
+    "question": "¿Qué enclave minero destaca el tema?",
+    "options": ["Los Millares", "Las Médulas", "Altamira", "El Carambolo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t4_q38",
+    "question": "¿Qué ocurrió con los rebeldes tras la victoria de Augusto?",
+    "options": ["Fueron expulsados de Hispania", "Fueron trasladados a los llanos para su vigilancia", "Se les concedió la ciudadanía romana inmediatamente", "Pasaron a gobernar Roma"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t4_q39",
+    "question": "¿Qué exportaba masivamente Hispania tras la romanización?",
+    "options": ["Solo sal", "Aceite, trigo y metales", "Vidrio y púrpura", "Únicamente oro"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t4_q40",
+    "question": "¿Qué emperadores nacidos en Hispania menciona el tema como legado de la romanización?",
+    "options": ["Nerón y Calígula", "Trajano y Adriano", "Augusto y Tiberio", "Vespasiano y Tito"],
+    "correctAnswer": 1
+  }
+]

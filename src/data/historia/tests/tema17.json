@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t17_q1",
+    "question": "¿Cómo se caracteriza el siglo XVII en España según el tema?",
+    "options": ["Etapa de expansión económica", "Profunda depresión económica y demográfica", "Periodo de industrialización", "Etapa de estabilidad política"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t17_q2",
+    "question": "¿Cuál fue uno de los principales problemas del Estado durante el siglo XVII?",
+    "options": ["Falta de población", "Endeudamiento crónico por las guerras", "Exceso de producción agrícola", "Desaparición del comercio"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t17_q3",
+    "question": "¿Desde qué reinado se arrastraban las bancarrotas?",
+    "options": ["Felipe III", "Felipe IV", "Felipe II", "Carlos II"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t17_q4",
+    "question": "¿Qué medida monetaria se adoptó para afrontar la crisis financiera?",
+    "options": ["Acuñación de oro puro", "Moneda de vellón", "Eliminación del dinero", "Creación del dinar"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t17_q5",
+    "question": "¿En qué consistía la moneda de vellón?",
+    "options": ["Sustituir oro por plata", "Sustituir plata por cobre", "Aumentar el valor de la moneda", "Eliminar impuestos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t17_q6",
+    "question": "¿Qué consecuencia tuvo la moneda de vellón?",
+    "options": ["Deflación", "Inflación galopante", "Estabilidad económica", "Aumento del comercio"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t17_q7",
+    "question": "¿Cómo afectó la crisis a la agricultura y ganadería?",
+    "options": ["Aumentó la producción", "Se mantuvo estable", "Sufrió una fuerte decadencia", "Se industrializó"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t17_q8",
+    "question": "¿Qué ocurrió con la industria textil castellana?",
+    "options": ["Se expandió", "Se modernizó", "No pudo competir con los Países Bajos y entró en crisis", "Se trasladó a América"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t17_q9",
+    "question": "¿Qué problema afectó al comercio con América?",
+    "options": ["Falta de rutas", "Desvío de recursos hacia guerras europeas", "Falta de productos", "Cierre de puertos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t17_q10",
+    "question": "¿Qué fenómenos acompañaron al comercio americano en este periodo?",
+    "options": ["Innovación tecnológica", "Contrabando y corrupción", "Industrialización", "Aumento de impuestos locales"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t17_q11",
+    "question": "¿Qué ocurrió con el campesinado durante la crisis?",
+    "options": ["Se enriqueció", "Vendió tierras y emigró", "Se convirtió en nobleza", "Se industrializó"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t17_q12",
+    "question": "¿Qué fenómenos sociales crecieron como consecuencia de la crisis?",
+    "options": ["Urbanización e industria", "Bandolerismo y mendicidad", "Comercio y navegación", "Educación y universidades"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t17_q13",
+    "question": "¿Qué caracterizó a las clases altas en este periodo?",
+    "options": ["Industrialización", "Mentalidad rentista", "Participación agrícola", "Reducción de privilegios"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t17_q14",
+    "question": "¿En qué invertían las clases altas?",
+    "options": ["Industria textil", "Juros", "Agricultura intensiva", "Comercio atlántico"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t17_q15",
+    "question": "¿Qué valido impulsó las políticas centralistas en el siglo XVII?",
+    "options": ["Duque de Lerma", "Conde-Duque de Olivares", "Valenzuela", "Nithardt"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t17_q16",
+    "question": "¿Qué ocurrió en Cataluña en 1640?",
+    "options": ["Independencia total", "El Corpus de Sangre", "La Paz de Nimega", "La Tregua de los Doce Años"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t17_q17",
+    "question": "¿Qué provocó el motín del Corpus de Sangre?",
+    "options": ["Falta de comercio", "Malestar por impuestos y abusos militares", "Crisis religiosa", "Conflicto con Portugal"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t17_q18",
+    "question": "¿Qué ocurrió con Cataluña tras la rebelión?",
+    "options": ["Se independizó definitivamente", "Se integró en Francia", "Se reintegró en la monarquía en 1652 manteniendo fueros", "Se convirtió en república"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t17_q19",
+    "question": "¿Qué territorio logró independizarse definitivamente en el siglo XVII?",
+    "options": ["Navarra", "Cataluña", "Portugal", "Valencia"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t17_q20",
+    "question": "¿Qué dinastía gobernó Portugal tras su independencia?",
+    "options": ["Habsburgo", "Borbón", "Braganza", "Trastámara"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t17_q21",
+    "question": "¿En qué año se reconoció la independencia de Portugal?",
+    "options": ["1640", "1659", "1668", "1678"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t17_q22",
+    "question": "¿Qué gran guerra europea marcó el siglo XVII?",
+    "options": ["Guerra de Sucesión", "Guerra de los Treinta Años", "Guerra de Granada", "Guerra de las Comunidades"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t17_q23",
+    "question": "¿Qué países intervinieron decisivamente contra España en la Guerra de los Treinta Años?",
+    "options": ["Portugal y Inglaterra", "Francia y Holanda", "Italia y Austria", "Navarra y Aragón"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t17_q24",
+    "question": "¿Qué tratado de 1648 reconoció la independencia de Holanda?",
+    "options": ["Paz de Nimega", "Paz de Westfalia", "Paz de los Pirineos", "Tratado de Tordesillas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t17_q25",
+    "question": "¿Qué territorios cedió España a Francia en la Paz de los Pirineos?",
+    "options": ["Navarra y Aragón", "Rosellón y Cerdaña", "Flandes y Milán", "Valencia y Murcia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t17_q26",
+    "question": "¿Qué territorio se cedió en la Paz de Nimega (1678)?",
+    "options": ["Cataluña", "Franco Condado", "Portugal", "Baleares"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t17_q27",
+    "question": "¿Qué batalla se menciona como derrota en la crisis de hegemonía?",
+    "options": ["Pavía", "Las Dunas", "Lepanto", "Villalar"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t17_q28",
+    "question": "¿Qué estilo artístico caracteriza el siglo XVII español?",
+    "options": ["Renacimiento", "Barroco", "Románico", "Gótico"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t17_q29",
+    "question": "¿Qué función tenía el arte barroco según el tema?",
+    "options": ["Industrial", "Ideológica y religiosa", "Militar", "Administrativa"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t17_q30",
+    "question": "¿Qué buscaba el Barroco en la población?",
+    "options": ["Educar científicamente", "Conmover mediante dramatismo", "Fomentar el comercio", "Reducir impuestos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t17_q31",
+    "question": "¿Qué factores causaron el descenso demográfico?",
+    "options": ["Industrialización", "Guerras, hambrunas y epidemias", "Exceso de población", "Migración a América"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t17_q32",
+    "question": "¿Qué epidemias se mencionan en el tema?",
+    "options": ["Cólera y malaria", "Peste, gripe y viruela", "Tuberculosis y sarampión", "Fiebre amarilla y tifus"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t17_q33",
+    "question": "¿Qué medida demográfica agravó la crisis en 1609?",
+    "options": ["Expulsión de los judíos", "Expulsión de los moriscos", "Colonización de América", "Reformas agrarias"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t17_q34",
+    "question": "¿Cuántos habitantes aproximadamente se perdieron con la expulsión de los moriscos?",
+    "options": ["100.000", "200.000", "300.000", "500.000"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t17_q35",
+    "question": "¿Qué efecto tuvo la expulsión de los moriscos en la economía?",
+    "options": ["Mejoró la producción", "No tuvo impacto", "Provocó una pérdida económica importante", "Industrializó el campo"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t17_q36",
+    "question": "¿Qué rey protagonizó el final del siglo XVII?",
+    "options": ["Felipe III", "Felipe IV", "Carlos II", "Carlos I"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t17_q37",
+    "question": "¿Qué problema marcó el reinado de Carlos II?",
+    "options": ["Expansión territorial", "Falta de descendencia", "Industrialización", "Reforma religiosa"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t17_q38",
+    "question": "¿Qué consecuencia tuvo la muerte de Carlos II?",
+    "options": ["Unión con Francia", "Crisis sucesoria", "Fin de la Reconquista", "Independencia de Cataluña"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t17_q39",
+    "question": "¿Qué dinastía terminó con Carlos II?",
+    "options": ["Borbones", "Trastámara", "Austrias", "Carolingios"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t17_q40",
+    "question": "¿Qué proceso histórico se inicia tras la muerte de Carlos II?",
+    "options": ["Reconquista", "Guerra por el trono español", "Reforma protestante", "Colonización americana"],
+    "correctAnswer": 1
+  }
+]

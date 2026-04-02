@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc26ter_1",
+    "question": "¿Qué significado tuvo el Tratado de París de 1898 para España?",
+    "answerGuide": "Supuso el fin oficial del Imperio español al certificarse la pérdida de Cuba, Puerto Rico y Filipinas.",
+    "keywords": ["Tratado de París", "1898", "fin del Imperio", "Cuba", "Puerto Rico", "Filipinas"]
+  },
+  {
+    "id": "tc26ter_2",
+    "question": "¿Qué consecuencias políticas inmediatas tuvo el Desastre del 98?",
+    "answerGuide": "Cayó el gobierno de Sagasta, se desprestigiaron los partidos dinásticos y el ejército adoptó una actitud corporativista y autoritaria.",
+    "keywords": ["Sagasta", "partidos dinásticos", "ejército", "corporativista", "autoritario", "Desastre del 98"]
+  },
+  {
+    "id": "tc26ter_3",
+    "question": "¿Qué malestar social generaba el sistema de quintas?",
+    "answerGuide": "Provocaba resentimiento porque los ricos podían evitar el frente mediante la redención en metálico, mientras las clases populares cargaban con la guerra.",
+    "keywords": ["quintas", "redención en metálico", "ricos", "clases populares", "resentimiento"]
+  },
+  {
+    "id": "tc26ter_4",
+    "question": "¿Qué efecto económico tuvo la repatriación de capitales tras 1898?",
+    "answerGuide": "Ayudó a impulsar la modernización industrial y la creación de entidades financieras como el Banco Hispano Americano.",
+    "keywords": ["repatriación de capitales", "modernización industrial", "Banco Hispano Americano", "1898"]
+  },
+  {
+    "id": "tc26ter_5",
+    "question": "¿Por qué entró en crisis el sistema de la Restauración tras el 98?",
+    "answerGuide": "Porque se agravaron sus vicios estructurales, como el caciquismo y la deuda bélica, y desaparecieron figuras clave como Cánovas y Sagasta.",
+    "keywords": ["Restauración", "caciquismo", "deuda bélica", "Cánovas", "Sagasta", "crisis"]
+  },
+  {
+    "id": "tc26ter_6",
+    "question": "¿Qué nuevas fuerzas de oposición crecieron a comienzos del siglo XX?",
+    "answerGuide": "Republicanos, nacionalistas como la Lliga Regionalista y el movimiento obrero del PSOE, UGT y anarquismo.",
+    "keywords": ["republicanos", "Lliga Regionalista", "PSOE", "UGT", "anarquismo", "oposición"]
+  },
+  {
+    "id": "tc26ter_7",
+    "question": "¿Qué fue el regeneracionismo y quién lo encabezó intelectualmente?",
+    "answerGuide": "Fue una corriente de reforma profunda del país encabezada intelectualmente por Joaquín Costa.",
+    "keywords": ["regeneracionismo", "reforma", "Joaquín Costa", "intelectual"]
+  },
+  {
+    "id": "tc26ter_8",
+    "question": "¿Qué significaba la propuesta del 'cirujano de hierro' de Joaquín Costa?",
+    "answerGuide": "La necesidad de un líder fuerte capaz de extirpar los males del sistema político y del parlamentarismo ficticio.",
+    "keywords": ["cirujano de hierro", "Joaquín Costa", "líder fuerte", "males del sistema", "parlamentarismo ficticio"]
+  },
+  {
+    "id": "tc26ter_9",
+    "question": "¿Qué quería decir Costa con 'Escuela y Despensa'?",
+    "answerGuide": "Que España necesitaba educación modernizadora y mejoras materiales como reformas agrarias e hidráulicas para regenerarse.",
+    "keywords": ["Escuela y Despensa", "educación", "reformas agrarias", "hidráulicas", "regeneración"]
+  },
+  {
+    "id": "tc26ter_10",
+    "question": "¿Qué defendía el regeneracionismo frente a la nostalgia imperial?",
+    "answerGuide": "La europeización y un enfoque pragmático centrado en los problemas internos del país.",
+    "keywords": ["europeización", "pragmatismo", "problemas internos", "nostalgia imperial"]
+  },
+  {
+    "id": "tc26ter_11",
+    "question": "¿Qué fue la Generación del 98?",
+    "answerGuide": "Un grupo de escritores e intelectuales como Unamuno, Machado, Azorín, Baroja y Maeztu que reflexionaron sobre la decadencia de España.",
+    "keywords": ["Generación del 98", "Unamuno", "Machado", "Azorín", "Baroja", "Maeztu", "decadencia"]
+  },
+  {
+    "id": "tc26ter_12",
+    "question": "¿Qué es la intrahistoria según Unamuno?",
+    "answerGuide": "La búsqueda de la esencia nacional en la vida cotidiana de la gente común.",
+    "keywords": ["intrahistoria", "Unamuno", "esencia nacional", "vida cotidiana"]
+  },
+  {
+    "id": "tc26ter_13",
+    "question": "¿Qué paisaje simbolizó la búsqueda de la esencia de España para la Generación del 98?",
+    "answerGuide": "Castilla, convertida en símbolo de la identidad española.",
+    "keywords": ["Castilla", "esencia de España", "identidad", "Generación del 98"]
+  },
+  {
+    "id": "tc26ter_14",
+    "question": "¿Qué intentaron hacer Maura y Canalejas desde dentro del sistema?",
+    "answerGuide": "Intentaron regenerar la Restauración con reformas como la administración local, la democratización, la protección social y la limitación del poder eclesiástico.",
+    "keywords": ["Maura", "Canalejas", "Restauración", "administración local", "democratización", "protección social", "poder eclesiástico"]
+  },
+  {
+    "id": "tc26ter_15",
+    "question": "¿Por qué fracasó la vía reformista de la Restauración?",
+    "answerGuide": "Porque la Semana Trágica aumentó la represión y el asesinato de Canalejas en 1912 dejó abierto el camino a soluciones fuera del parlamento, culminando en el golpe de 1923.",
+    "keywords": ["Semana Trágica", "represión", "Canalejas", "1912", "golpe de 1923", "fracaso reformista"]
+  }
+]

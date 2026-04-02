@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc7_1",
+    "question": "¿Cuál era el principal problema político del reino visigodo a comienzos del siglo VIII?",
+    "answerGuide": "La monarquía electiva, que provocaba una inestabilidad política crónica por las luchas de poder entre facciones nobiliarias.",
+    "keywords": ["monarquía electiva", "inestabilidad política", "nobleza", "facciones"]
+  },
+  {
+    "id": "tc7_2",
+    "question": "¿Qué consecuencias tuvo la muerte de Witiza?",
+    "answerGuide": "Desencadenó una guerra civil entre los witicianos, partidarios de sus hijos, y Rodrigo, dejando al reino visigodo dividido y vulnerable.",
+    "keywords": ["Witiza", "guerra civil", "witicianos", "Rodrigo", "división"]
+  },
+  {
+    "id": "tc7_3",
+    "question": "¿Quiénes eran los witicianos?",
+    "answerGuide": "Los partidarios de los hijos de Witiza, vinculados a figuras como Agila II o Egila, que llegaron a pedir ayuda militar musulmana.",
+    "keywords": ["witicianos", "hijos de Witiza", "Agila II", "Egila", "ayuda musulmana"]
+  },
+  {
+    "id": "tc7_4",
+    "question": "¿Cómo describe el tema la situación socioeconómica del reino visigodo antes de la invasión?",
+    "answerGuide": "Como una sociedad prefeudalizada, con economía agraria y de subsistencia, fuerte jerarquización, presión fiscal y descontento social.",
+    "keywords": ["prefeudalización", "economía agraria", "subsistencia", "jerarquización", "presión fiscal", "descontento"]
+  },
+  {
+    "id": "tc7_5",
+    "question": "¿Qué contexto internacional favoreció la invasión musulmana?",
+    "answerGuide": "La rápida expansión del Islam bajo el Califato Omeya de Damasco y la conquista del Magreb en 707.",
+    "keywords": ["Islam", "Califato Omeya", "Damasco", "Magreb", "707"]
+  },
+  {
+    "id": "tc7_6",
+    "question": "¿Quién dirigió la expansión musulmana hacia la Península desde el norte de África?",
+    "answerGuide": "Muza o Musa ibn Nusair, gobernador musulmán del norte de África.",
+    "keywords": ["Muza", "Musa ibn Nusair", "gobernador", "norte de África"]
+  },
+  {
+    "id": "tc7_7",
+    "question": "¿Qué ocurrió en 711?",
+    "answerGuide": "Un ejército mayoritariamente bereber dirigido por Tarik cruzó el Estrecho de Gibraltar e inició la invasión musulmana de la Península.",
+    "keywords": ["711", "Tarik", "bereberes", "Estrecho de Gibraltar", "invasión"]
+  },
+  {
+    "id": "tc7_8",
+    "question": "¿Qué importancia tuvo la batalla de Guadalete?",
+    "answerGuide": "Supuso la derrota de Rodrigo, la muerte del monarca y el colapso inmediato de la administración visigoda.",
+    "keywords": ["Guadalete", "Rodrigo", "derrota", "muerte", "colapso visigodo"]
+  },
+  {
+    "id": "tc7_9",
+    "question": "Explica los dos modelos de conquista aplicados por los musulmanes entre 711 y 718.",
+    "answerGuide": "La rendición incondicional para quienes resistían, con pérdida de bienes y derechos, y la rendición pactada o capitulaciones, que permitía conservar tierras y religión a cambio de tributos.",
+    "keywords": ["rendición incondicional", "rendición pactada", "capitulaciones", "bienes", "derechos", "tributos"]
+  },
+  {
+    "id": "tc7_10",
+    "question": "¿Qué fue el Pacto de Teodomiro?",
+    "answerGuide": "Un acuerdo firmado en 713 que permitió a Teodomiro conservar su poder en las zonas de Murcia y Alicante a cambio de someterse y pagar tributos.",
+    "keywords": ["Pacto de Teodomiro", "713", "Murcia", "Alicante", "tributos"]
+  },
+  {
+    "id": "tc7_11",
+    "question": "¿Quiénes eran los muladíes y los mozárabes?",
+    "answerGuide": "Los muladíes eran cristianos convertidos al Islam y los mozárabes cristianos que mantuvieron su fe viviendo en territorio musulmán.",
+    "keywords": ["muladíes", "conversión", "Islam", "mozárabes", "cristianos", "territorio musulmán"]
+  },
+  {
+    "id": "tc7_12",
+    "question": "¿Qué impuestos sostenían la fiscalidad andalusí mencionada en el tema?",
+    "answerGuide": "La yizia, como impuesto personal, y el jarach, como impuesto territorial.",
+    "keywords": ["yizia", "impuesto personal", "jarach", "impuesto territorial", "fiscalidad"]
+  },
+  {
+    "id": "tc7_13",
+    "question": "¿Qué fue el emirato dependiente de Al-Ándalus?",
+    "answerGuide": "La etapa entre 711 y 756 en la que Al-Ándalus fue una provincia del Califato Omeya, gobernada por un walí desde Córdoba.",
+    "keywords": ["emirato dependiente", "711", "756", "provincia", "Califato Omeya", "walí", "Córdoba"]
+  },
+  {
+    "id": "tc7_14",
+    "question": "¿Qué diferencias sociales existieron entre árabes y bereberes en Al-Ándalus?",
+    "answerGuide": "La minoría árabe concentró el poder político y las tierras más ricas, mientras la mayoría bereber fue asentada en zonas serranas y menos productivas.",
+    "keywords": ["árabes", "bereberes", "poder político", "tierras ricas", "zonas serranas"]
+  },
+  {
+    "id": "tc7_15",
+    "question": "¿Qué importancia tuvieron Don Pelayo y Covadonga?",
+    "answerGuide": "Don Pelayo fue elegido líder en Asturias en 718 y la escaramuza de Covadonga en 722 marcó el inicio del núcleo de resistencia cristiana en el norte.",
+    "keywords": ["Don Pelayo", "718", "Covadonga", "722", "resistencia", "Asturias"]
+  }
+]

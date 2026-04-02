@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc10_1",
+    "question": "¿Cómo surgió el núcleo astur-leonés tras 711?",
+    "answerGuide": "Surgió en el norte peninsular, donde el relieve escarpado sirvió de refugio a nobles visigodos y a pueblos como astures y cántabros.",
+    "keywords": ["711", "norte", "relieve escarpado", "nobles visigodos", "astures", "cántabros"]
+  },
+  {
+    "id": "tc10_2",
+    "question": "¿Qué importancia tuvieron Don Pelayo y Covadonga?",
+    "answerGuide": "La victoria de Don Pelayo en Covadonga en 722 sentó las bases del Reino de Asturias.",
+    "keywords": ["Don Pelayo", "Covadonga", "722", "Reino de Asturias"]
+  },
+  {
+    "id": "tc10_3",
+    "question": "¿Qué cambios se produjeron bajo Alfonso III y en 910?",
+    "answerGuide": "Con Alfonso III la frontera llegó al Duero, y en 910 el traslado de la capital a León oficializó el Reino de León.",
+    "keywords": ["Alfonso III", "Duero", "910", "León", "capital"]
+  },
+  {
+    "id": "tc10_4",
+    "question": "¿Qué era la presura?",
+    "answerGuide": "Era un sistema de colonización basado en la ocupación y puesta en explotación de tierras yermas.",
+    "keywords": ["presura", "colonización", "ocupación", "tierras yermas"]
+  },
+  {
+    "id": "tc10_5",
+    "question": "¿Cómo eran la economía y la ideología del núcleo astur-leonés?",
+    "answerGuide": "La economía era ganadera y de subsistencia, y la ideología se basaba en el neogoticismo y la Reconquista, reforzados por el descubrimiento del sepulcro de Santiago.",
+    "keywords": ["ganadera", "subsistencia", "neogoticismo", "Reconquista", "sepulcro de Santiago"]
+  },
+  {
+    "id": "tc10_6",
+    "question": "¿Qué fue la Marca Hispánica?",
+    "answerGuide": "Fue una franja defensiva creada por el Imperio Carolingio para protegerse de las incursiones musulmanas tras Poitiers.",
+    "keywords": ["Marca Hispánica", "franja defensiva", "Imperio Carolingio", "Poitiers", "incursiones musulmanas"]
+  },
+  {
+    "id": "tc10_7",
+    "question": "¿Cómo evolucionaron los condados de la Marca Hispánica?",
+    "answerGuide": "Pasaron de ser condados dependientes de los francos a convertir los cargos condales en hereditarios y avanzar hacia la independencia.",
+    "keywords": ["condados", "francos", "hereditarios", "independencia"]
+  },
+  {
+    "id": "tc10_8",
+    "question": "¿Qué rasgos diferenciaban a los núcleos pirenaicos orientales de León?",
+    "answerGuide": "Tenían una estructura feudal clásica, economía agraria de montaña y seguían el rito romano, a diferencia del rito mozárabe leonés.",
+    "keywords": ["estructura feudal", "economía agraria de montaña", "rito romano", "rito mozárabe", "León"]
+  },
+  {
+    "id": "tc10_9",
+    "question": "¿Cómo nació Aragón como entidad política?",
+    "answerGuide": "El Condado de Aragón se independizó en el siglo IX en torno al valle del río Aragón y Jaca, bajo la dinastía de Aznar Galíndez.",
+    "keywords": ["Aragón", "siglo IX", "valle del río Aragón", "Jaca", "Aznar Galíndez"]
+  },
+  {
+    "id": "tc10_10",
+    "question": "¿Qué papel tenían castillos, monasterios y ganadería en Aragón?",
+    "answerGuide": "La sociedad giraba en torno a castillos y monasterios defensivos como San Juan de la Peña, y su economía se basaba en la ganadería trashumante.",
+    "keywords": ["castillos", "monasterios", "San Juan de la Peña", "ganadería trashumante"]
+  },
+  {
+    "id": "tc10_11",
+    "question": "¿Cómo surgió y se consolidó Castilla?",
+    "answerGuide": "Surgió como frontera oriental de León, se unificó con Fernán González y alcanzó categoría de reino con Fernando I.",
+    "keywords": ["Castilla", "frontera oriental", "León", "Fernán González", "Fernando I", "reino"]
+  },
+  {
+    "id": "tc10_12",
+    "question": "¿Qué rasgos sociales y jurídicos caracterizaron a Castilla?",
+    "answerGuide": "Para atraer pobladores surgieron libertades y figuras como los caballeros villanos; jurídicamente se regía por costumbres y fazañas.",
+    "keywords": ["caballeros villanos", "libertades", "costumbres", "fazañas", "derecho consuetudinario"]
+  },
+  {
+    "id": "tc10_13",
+    "question": "¿Qué representa El Cid Campeador en el tema?",
+    "answerGuide": "Representa el espíritu épico y combativo de Castilla.",
+    "keywords": ["Cid Campeador", "espíritu épico", "combativo", "Castilla"]
+  },
+  {
+    "id": "tc10_14",
+    "question": "¿Qué importancia tuvieron Sancho III el Mayor y Wifredo el Velloso?",
+    "answerGuide": "Sancho III llevó a Navarra a su apogeo y su hijo Ramiro I fue primer rey de Aragón; Wifredo inició la unificación de los Condados Catalanes.",
+    "keywords": ["Sancho III el Mayor", "Navarra", "Ramiro I", "Aragón", "Wifredo el Velloso", "Condados Catalanes"]
+  },
+  {
+    "id": "tc10_15",
+    "question": "¿Qué papel desempeñaron el Camino de Santiago y la unión de Petronila con Ramón Berenguer IV?",
+    "answerGuide": "El Camino de Santiago actuó como eje cultural, económico y político, y la unión de Petronila de Aragón con Ramón Berenguer IV creó la Corona de Aragón en el siglo XII.",
+    "keywords": ["Camino de Santiago", "arte románico", "comercio", "Petronila", "Ramón Berenguer IV", "Corona de Aragón", "siglo XII"]
+  }
+]

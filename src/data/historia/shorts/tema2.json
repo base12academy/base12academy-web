@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc2_1",
+    "question": "¿Qué fue Tartessos?",
+    "answerGuide": "Primera civilización organizada del suroeste peninsular.",
+    "keywords": ["Tartessos", "civilización", "estado"]
+  },
+  {
+    "id": "tc2_2",
+    "question": "¿Cuál era la base económica de Tartessos?",
+    "answerGuide": "Minería de oro, plata y cobre.",
+    "keywords": ["minería", "oro", "plata", "cobre"]
+  },
+  {
+    "id": "tc2_3",
+    "question": "¿Quién fue Argantonio?",
+    "answerGuide": "Rey de Tartessos asociado a riqueza y longevidad.",
+    "keywords": ["Argantonio", "rey", "Tartessos"]
+  },
+  {
+    "id": "tc2_4",
+    "question": "¿Qué influencia recibieron los tartesios?",
+    "answerGuide": "Influencia fenicia en técnica, religión y cultura.",
+    "keywords": ["fenicios", "influencia"]
+  },
+  {
+    "id": "tc2_5",
+    "question": "¿Cómo se organizaban los íberos?",
+    "answerGuide": "En ciudades-estado independientes.",
+    "keywords": ["íberos", "ciudades", "estado"]
+  },
+  {
+    "id": "tc2_6",
+    "question": "¿Qué caracteriza la economía íbera?",
+    "answerGuide": "Agricultura, metalurgia y comercio con moneda.",
+    "keywords": ["agricultura", "comercio", "moneda"]
+  },
+  {
+    "id": "tc2_7",
+    "question": "¿Qué obra representa el arte íbero?",
+    "answerGuide": "La Dama de Elche o la Dama de Baza.",
+    "keywords": ["Dama de Elche", "escultura"]
+  },
+  {
+    "id": "tc2_8",
+    "question": "¿Qué rito funerario practicaban los íberos?",
+    "answerGuide": "La incineración.",
+    "keywords": ["incineración"]
+  },
+  {
+    "id": "tc2_9",
+    "question": "¿Dónde se ubicaban los celtas?",
+    "answerGuide": "En el norte y oeste peninsular.",
+    "keywords": ["celtas", "norte", "oeste"]
+  },
+  {
+    "id": "tc2_10",
+    "question": "¿Qué eran los castros?",
+    "answerGuide": "Poblados fortificados en altura.",
+    "keywords": ["castros", "poblados"]
+  },
+  {
+    "id": "tc2_11",
+    "question": "¿Cuál era la base económica celta?",
+    "answerGuide": "Ganadería principalmente.",
+    "keywords": ["ganadería"]
+  },
+  {
+    "id": "tc2_12",
+    "question": "¿Qué eran los celtíberos?",
+    "answerGuide": "Pueblos que mezclaban elementos celtas e íberos.",
+    "keywords": ["celtíberos", "mezcla"]
+  },
+  {
+    "id": "tc2_13",
+    "question": "¿Qué representa Numancia?",
+    "answerGuide": "Símbolo de resistencia frente a Roma.",
+    "keywords": ["Numancia", "resistencia"]
+  },
+  {
+    "id": "tc2_14",
+    "question": "¿Qué son los verracos?",
+    "answerGuide": "Esculturas de piedra de animales con función protectora o funeraria.",
+    "keywords": ["verracos", "escultura"]
+  },
+  {
+    "id": "tc2_15",
+    "question": "¿Qué aportaron los colonizadores mediterráneos?",
+    "answerGuide": "Moneda, torno, cultivos y técnicas.",
+    "keywords": ["moneda", "torno", "cultivos"]
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc14_1",
+    "question": "¿Qué territorios heredó Carlos I de sus abuelos maternos?",
+    "answerGuide": "Heredó las Coronas de Castilla y Aragón, Navarra, las posesiones italianas de Nápoles, Sicilia y Cerdeña, y las tierras americanas.",
+    "keywords": ["Castilla", "Aragón", "Navarra", "Nápoles", "Sicilia", "Cerdeña", "América"]
+  },
+  {
+    "id": "tc14_2",
+    "question": "¿Qué territorios heredó Carlos I de sus abuelos paternos?",
+    "answerGuide": "Austria, los Países Bajos, el Franco Condado y el derecho a ser elegido emperador del Sacro Imperio.",
+    "keywords": ["Austria", "Países Bajos", "Franco Condado", "emperador", "Sacro Imperio"]
+  },
+  {
+    "id": "tc14_3",
+    "question": "¿Por qué generó rechazo inicial la llegada de Carlos I a España?",
+    "answerGuide": "Porque llegó con una corte de consejeros flamencos, como Adriano de Utrecht, que desplazaron a la nobleza local.",
+    "keywords": ["rechazo", "flamencos", "Adriano de Utrecht", "nobleza local"]
+  },
+  {
+    "id": "tc14_4",
+    "question": "¿Qué era la Universitas Christiana?",
+    "answerGuide": "Era el proyecto ideológico de Carlos I para una Europa unida bajo el catolicismo y su liderazgo político.",
+    "keywords": ["Universitas Christiana", "Europa", "catolicismo", "liderazgo político"]
+  },
+  {
+    "id": "tc14_5",
+    "question": "¿Cuáles eran los dos grandes objetivos del proyecto imperial de Carlos I?",
+    "answerGuide": "Frenar el avance del Imperio otomano y combatir la reforma protestante.",
+    "keywords": ["Imperio otomano", "reforma protestante", "objetivos"]
+  },
+  {
+    "id": "tc14_6",
+    "question": "¿Qué peso tuvo Castilla en la financiación del Imperio?",
+    "answerGuide": "Soportó de manera desproporcionada los impuestos que financiaban los intereses dinásticos de los Habsburgo.",
+    "keywords": ["Castilla", "impuestos", "financiación", "Habsburgo"]
+  },
+  {
+    "id": "tc14_7",
+    "question": "¿Qué fueron las Comunidades de Castilla?",
+    "answerGuide": "Una revuelta política de ciudades como Toledo, Segovia y Salamanca que pedían la residencia del rey en España y limitar el poder flamenco.",
+    "keywords": ["Comunidades", "Toledo", "Segovia", "Salamanca", "rey en España", "poder flamenco"]
+  },
+  {
+    "id": "tc14_8",
+    "question": "¿Quiénes fueron los principales líderes comuneros y cómo terminó la revuelta?",
+    "answerGuide": "Padilla, Bravo y Zapata; la revuelta fue derrotada en la batalla de Villalar en 1521.",
+    "keywords": ["Padilla", "Bravo", "Zapata", "Villalar", "1521"]
+  },
+  {
+    "id": "tc14_9",
+    "question": "¿Qué fueron las Germanías?",
+    "answerGuide": "Una revuelta social y antiseñorial de artesanos y pequeña burguesía en Valencia y Mallorca contra la nobleza local.",
+    "keywords": ["Germanías", "social", "antiseñorial", "artesanos", "pequeña burguesía", "Valencia", "Mallorca"]
+  },
+  {
+    "id": "tc14_10",
+    "question": "¿Qué consecuencias tuvieron las derrotas de Comunidades y Germanías?",
+    "answerGuide": "Consolidaron el autoritarismo real, afianzaron a la nobleza como aliada de la Corona y convirtieron a Castilla en el pulmón financiero del Imperio.",
+    "keywords": ["autoritarismo real", "nobleza", "Corona", "Castilla", "pulmón financiero"]
+  },
+  {
+    "id": "tc14_11",
+    "question": "Resume los tres grandes desafíos de la política exterior de Carlos I.",
+    "answerGuide": "La rivalidad con Francia por Italia y Borgoña, la amenaza otomana en el Mediterráneo y Viena, y la lucha contra el protestantismo.",
+    "keywords": ["Francia", "Italia", "Borgoña", "otomanos", "Mediterráneo", "Viena", "protestantismo"]
+  },
+  {
+    "id": "tc14_12",
+    "question": "¿Qué importancia tuvieron Pavía, Mühlberg y la Paz de Augsburgo?",
+    "answerGuide": "Pavía en 1525 aseguró el Milanesado, Mühlberg en 1547 fue una victoria sobre los protestantes, y Augsburgo en 1555 obligó a aceptar la fragmentación religiosa.",
+    "keywords": ["Pavía", "1525", "Mühlberg", "1547", "Augsburgo", "1555", "fragmentación religiosa"]
+  },
+  {
+    "id": "tc14_13",
+    "question": "¿Qué papel tuvieron los Fugger en el reinado de Carlos I?",
+    "answerGuide": "Financiaron a la monarquía mediante préstamos, reflejando la dependencia del crédito exterior.",
+    "keywords": ["Fugger", "préstamos", "financiación", "crédito exterior"]
+  },
+  {
+    "id": "tc14_14",
+    "question": "¿Qué efectos económicos tuvo la llegada de metales americanos?",
+    "answerGuide": "Provocó la Revolución de los Precios, inflación, empobrecimiento de las clases bajas y pérdida de competitividad industrial.",
+    "keywords": ["metales americanos", "Revolución de los Precios", "inflación", "clases bajas", "industria"]
+  },
+  {
+    "id": "tc14_15",
+    "question": "¿Cuáles fueron las debilidades estructurales de la economía imperial de Carlos I?",
+    "answerGuide": "Fue una economía extractiva y militarista, dependiente de América, sin burguesía productiva, con mentalidad rentista y endeudamiento crónico mediante juros.",
+    "keywords": ["extractiva", "militarista", "América", "burguesía productiva", "rentista", "endeudamiento", "juros"]
+  }
+]

@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t8_q1",
+    "question": "¿Qué etapa política se desarrolló en Al-Ándalus entre 711 y 756?",
+    "options": ["Califato de Córdoba", "Emirato Independiente", "Emirato Dependiente", "Reinos de Taifas"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t8_q2",
+    "question": "¿De qué entidad política dependía Al-Ándalus durante el Emirato Dependiente?",
+    "options": ["Del Califato Omeya de Damasco", "Del Imperio Abbasí de Bagdad", "Del reino de Toledo", "Del Imperio Almohade"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t8_q3",
+    "question": "¿Quién gobernaba Al-Ándalus en nombre del califa durante el Emirato Dependiente?",
+    "options": ["El emir", "El califa", "El walí", "El visir"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t8_q4",
+    "question": "¿Desde dónde era nombrado el walí?",
+    "options": ["Desde Córdoba exclusivamente", "Desde Toledo", "Desde Damasco o Kairuán", "Desde Bagdad o Sevilla"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t8_q5",
+    "question": "¿Qué caracterizó políticamente al Emirato Dependiente?",
+    "options": ["Gran estabilidad interna", "Profunda inestabilidad interna", "Unificación religiosa completa", "Desaparición de conflictos étnicos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t8_q6",
+    "question": "¿Qué grupo ostentaba el poder político en la sociedad andalusí inicial?",
+    "options": ["Los bereberes", "Los mozárabes", "Los árabes", "Los muladíes"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t8_q7",
+    "question": "¿Dónde fueron desplazados mayoritariamente los bereberes?",
+    "options": ["A las ciudades principales", "A las zonas montañosas", "A los valles más fértiles", "A los puertos mediterráneos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t8_q8",
+    "question": "¿En qué se sustentó inicialmente la economía del Emirato Dependiente?",
+    "options": ["En la industria textil", "En el botín de guerra y los impuestos", "En la minería de oro", "En las parias"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t8_q9",
+    "question": "¿Qué era la yizia?",
+    "options": ["Un impuesto territorial", "Un impuesto personal", "Una moneda andalusí", "Un tributo militar"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t8_q10",
+    "question": "¿Qué era el jarach?",
+    "options": ["Un impuesto territorial", "Un impuesto eclesiástico", "Una revuelta urbana", "Una capitulación pactada"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t8_q11",
+    "question": "¿Qué estatus tenían cristianos y judíos en el Emirato Dependiente?",
+    "options": ["Esclavos", "Dimmíes o protegidos", "Muladíes", "Mozárabes musulmanes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t8_q12",
+    "question": "¿Qué batalla frenó la expansión musulmana hacia el resto de Europa?",
+    "options": ["Covadonga", "Poitiers", "Guadalete", "Las Navas de Tolosa"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t8_q13",
+    "question": "¿En qué año tuvo lugar la batalla de Poitiers?",
+    "options": ["711", "722", "732", "756"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t8_q14",
+    "question": "¿Qué suceso del norte peninsular se menciona como origen de la resistencia cristiana?",
+    "options": ["Guadalete", "Poitiers", "Covadonga", "Toledo"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t8_q15",
+    "question": "¿Qué etapa se inició en 756 con Abderramán I?",
+    "options": ["Los reinos de taifas", "El Emirato Independiente", "El Califato de Córdoba", "El reino nazarí"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t8_q16",
+    "question": "¿Qué provocó la huida de Abderramán I a la Península?",
+    "options": ["La derrota en Poitiers", "La caída de los omeyas ante los abasíes", "La guerra de Granada", "La conquista de Toledo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t8_q17",
+    "question": "¿Qué independencia estableció Abderramán I en 756?",
+    "options": ["Militar respecto a los bereberes", "Política respecto a Bagdad", "Religiosa respecto a La Meca", "Territorial respecto a Córdoba"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t8_q18",
+    "question": "¿Qué mantuvo el Emirato Independiente pese a su autonomía política?",
+    "options": ["La dependencia militar cristiana", "La subordinación religiosa", "La obediencia a Toledo", "La dependencia económica de Castilla"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t8_q19",
+    "question": "¿Qué tipo de Estado consolidó Abderramán I?",
+    "options": ["Un Estado tribal descentralizado", "Un Estado con administración centralizada y ejército profesional", "Una federación de taifas", "Una monarquía electiva"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t8_q20",
+    "question": "¿Quiénes eran los muladíes?",
+    "options": ["Judíos protegidos", "Cristianos conversos al Islam", "Árabes del norte de África", "Bereberes del Magreb"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t8_q21",
+    "question": "¿Qué denunciaban los muladíes en sus rebeliones?",
+    "options": ["La caída del comercio", "La discriminación frente a la élite árabe", "La falta de tierras en Granada", "La desaparición del califato"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t8_q22",
+    "question": "¿Qué revuelta urbana destaca el tema en Córdoba?",
+    "options": ["La fitna", "La revuelta del Arrabal", "La rebelión de Toledo", "La sublevación de Granada"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t8_q23",
+    "question": "¿Qué favoreció el despegue agrícola del Emirato Independiente?",
+    "options": ["Las parias", "Las nuevas técnicas de regadío", "La expansión de los castros", "La desaparición de impuestos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t8_q24",
+    "question": "¿Qué gran monumento comenzó a construirse en este periodo?",
+    "options": ["La Alhambra", "La Giralda", "La Mezquita de Córdoba", "Medina Azahara"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t8_q25",
+    "question": "¿Qué gran rebelión interna puso en peligro al emirato?",
+    "options": ["La de Almanzor", "La de Umar ibn Hafsun", "La de Teodomiro", "La de Boabdil"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t8_q26",
+    "question": "¿En qué año se proclamó el Califato de Córdoba?",
+    "options": ["756", "929", "1031", "1085"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t8_q27",
+    "question": "¿Quién asumió el título de califa en 929?",
+    "options": ["Abderramán I", "Almanzor", "Abderramán III", "Mohamed I"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t8_q28",
+    "question": "¿Qué supuso la proclamación califal de Abderramán III?",
+    "options": ["La dependencia religiosa de Bagdad", "La ruptura definitiva de la dependencia religiosa", "La desaparición de Córdoba", "La creación de las taifas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t8_q29",
+    "question": "¿Cómo quedaron los núcleos cristianos del norte durante el Califato de Córdoba?",
+    "options": ["Desaparecieron", "Se convirtieron en vasallos que pagaban tributos", "Conquistaron Córdoba", "Se aliaron con Almanzor"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t8_q30",
+    "question": "¿Qué ciudad se convirtió en la principal de Europa durante el Califato?",
+    "options": ["Sevilla", "Granada", "Toledo", "Córdoba"],
+    "correctAnswer": 3
+  },
+  {
+    "id": "t8_q31",
+    "question": "¿Qué ciudad palatina simboliza el esplendor del Califato?",
+    "options": ["Generalife", "Medina Azahara", "Aljafería", "Madinat Ilbira"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t8_q32",
+    "question": "¿En qué se basó la artesanía de lujo califal?",
+    "options": ["Hierro y sal", "Seda y marfil", "Lana y madera", "Bronce y vino"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t8_q33",
+    "question": "¿Quién ejerció el poder efectivo a finales del siglo X?",
+    "options": ["Boabdil", "Alfonso VI", "Almanzor", "Abderramán I"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t8_q34",
+    "question": "¿Qué conflicto provocó la desintegración del Califato en 1031?",
+    "options": ["Las parias", "La fitna o guerra civil", "La guerra de Granada", "Las Navas de Tolosa"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t8_q35",
+    "question": "¿Qué surgió tras la desaparición del Califato de Córdoba?",
+    "options": ["El Emirato Dependiente", "Los reinos de taifas", "El reino nazarí", "El Emirato Independiente"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t8_q36",
+    "question": "¿Qué eran las parias?",
+    "options": ["Impuestos religiosos", "Tributos pagados por las taifas a los reinos cristianos", "Monedas de oro", "Pactos de capitulación"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t8_q37",
+    "question": "¿Qué conquista cristiana en 1085 marcó un punto de inflexión?",
+    "options": ["Sevilla", "Granada", "Toledo", "Zaragoza"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t8_q38",
+    "question": "¿Qué imperio norteafricano dominó primero Al-Ándalus entre 1086 y 1145?",
+    "options": ["Almohades", "Almorávides", "Omeyas", "Abasíes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t8_q39",
+    "question": "¿Qué ciudad fue la capital almohade en Al-Ándalus?",
+    "options": ["Córdoba", "Granada", "Toledo", "Sevilla"],
+    "correctAnswer": 3
+  },
+  {
+    "id": "t8_q40",
+    "question": "¿Qué hecho puso fin a Al-Ándalus en 1492?",
+    "options": ["La muerte de Almanzor", "La rendición de Boabdil", "La batalla de Poitiers", "La proclamación del Califato"],
+    "correctAnswer": 1
+  }
+]

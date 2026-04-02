@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc18bis_1",
+    "question": "¿Qué caracterizó a la América Hispana del siglo XVIII bajo los Borbones?",
+    "answerGuide": "Una reorganización administrativa y económica basada en la centralización y racionalización del imperio.",
+    "keywords": ["América Hispana", "siglo XVIII", "Borbones", "centralización", "racionalización"]
+  },
+  {
+    "id": "tc18bis_2",
+    "question": "¿Por qué se crearon los virreinatos de Nueva Granada y del Río de la Plata?",
+    "answerGuide": "Para fragmentar el enorme Virreinato del Perú, mejorar la administración, reforzar la defensa y controlar mejor el comercio.",
+    "keywords": ["Nueva Granada", "Río de la Plata", "Virreinato del Perú", "administración", "defensa", "comercio"]
+  },
+  {
+    "id": "tc18bis_3",
+    "question": "¿Qué eran las intendencias y qué pretendían?",
+    "answerGuide": "Eran instituciones de origen francés destinadas a limitar el poder de los virreyes y combatir la corrupción local.",
+    "keywords": ["intendencias", "origen francés", "virreyes", "corrupción"]
+  },
+  {
+    "id": "tc18bis_4",
+    "question": "¿Por qué se considera el reformismo de Carlos III una 'segunda conquista'?",
+    "answerGuide": "Porque reforzó el control fiscal, militar y administrativo de la metrópoli sobre América de forma muy intensa.",
+    "keywords": ["Carlos III", "segunda conquista", "control fiscal", "militar", "administrativo"]
+  },
+  {
+    "id": "tc18bis_5",
+    "question": "¿Qué papel desempeñaron los visitadores generales en América?",
+    "answerGuide": "Vigilaban el cumplimiento estricto de las leyes y reforzaban la autoridad de la Corona, como hizo José de Gálvez en Nueva España.",
+    "keywords": ["visitadores generales", "José de Gálvez", "Nueva España", "leyes", "Corona"]
+  },
+  {
+    "id": "tc18bis_6",
+    "question": "¿Qué cambios militares introdujeron las reformas borbónicas?",
+    "answerGuide": "Se reforzó el ejército colonial y se crearon milicias locales y guarniciones fijas en las fronteras.",
+    "keywords": ["ejército colonial", "milicias locales", "guarniciones", "fronteras"]
+  },
+  {
+    "id": "tc18bis_7",
+    "question": "¿Qué significó el regalismo y qué ocurrió con los jesuitas en 1767?",
+    "answerGuide": "El regalismo afirmaba la autoridad suprema de la Corona sobre la Iglesia y en 1767 se expulsó a los jesuitas, afectando a la educación y a las misiones.",
+    "keywords": ["regalismo", "Corona", "Iglesia", "1767", "jesuitas", "educación", "misiones"]
+  },
+  {
+    "id": "tc18bis_8",
+    "question": "¿Qué cambios comerciales introdujo el Decreto de Libertad de Comercio de 1778?",
+    "answerGuide": "Permitió a varios puertos españoles comerciar directamente con América, debilitando el antiguo monopolio de Sevilla y Cádiz.",
+    "keywords": ["1778", "Decreto de Libertad de Comercio", "puertos españoles", "América", "monopolio"]
+  },
+  {
+    "id": "tc18bis_9",
+    "question": "¿Qué productos y espacios económicos destacaron en la economía americana del siglo XVIII?",
+    "answerGuide": "Siguieron siendo clave la plata de Potosí y Zacatecas, y crecieron las plantaciones de azúcar, cacao y tabaco, con puertos como Buenos Aires y La Habana.",
+    "keywords": ["Potosí", "Zacatecas", "azúcar", "cacao", "tabaco", "Buenos Aires", "La Habana"]
+  },
+  {
+    "id": "tc18bis_10",
+    "question": "¿Cómo era la estructura social de la América colonial del siglo XVIII?",
+    "answerGuide": "Era una rígida sociedad de castas con peninsulares en la cúspide, criollos con poder económico pero no político, y una base formada por indígenas y esclavos africanos.",
+    "keywords": ["sociedad de castas", "peninsulares", "criollos", "indígenas", "esclavos africanos"]
+  },
+  {
+    "id": "tc18bis_11",
+    "question": "¿Qué era la conciencia americanista de los criollos?",
+    "answerGuide": "Era el sentimiento de exclusión política de los criollos, pese a su poder económico, que favoreció la identidad propia americana.",
+    "keywords": ["criollos", "conciencia americanista", "exclusión política", "identidad"]
+  },
+  {
+    "id": "tc18bis_12",
+    "question": "¿Qué influencia tuvo la Ilustración en América?",
+    "answerGuide": "Se difundió mediante expediciones científicas, figuras como Mutis o Malaspina y las Sociedades de Amigos del País.",
+    "keywords": ["Ilustración", "Mutis", "Malaspina", "Sociedades de Amigos del País", "expediciones científicas"]
+  },
+  {
+    "id": "tc18bis_13",
+    "question": "¿Qué ejemplos de rebelión y protesta se citan antes de la independencia?",
+    "answerGuide": "La independencia de las trece colonias como modelo, los Comuneros de Socorro en Nueva Granada y la rebelión de Túpac Amaru II en Perú.",
+    "keywords": ["trece colonias", "Comuneros de Socorro", "Nueva Granada", "Túpac Amaru II", "Perú"]
+  },
+  {
+    "id": "tc18bis_14",
+    "question": "¿Contra qué se rebeló Túpac Amaru II en 1780?",
+    "answerGuide": "Contra los abusos de los corregidores y el sistema colonial opresivo en el Perú.",
+    "keywords": ["Túpac Amaru II", "1780", "corregidores", "Perú", "abusos"]
+  },
+  {
+    "id": "tc18bis_15",
+    "question": "¿Qué factores ideológicos y políticos prepararon la emancipación americana?",
+    "answerGuide": "La influencia de la Revolución Francesa, los Derechos del Hombre difundidos por Antonio Nariño y, finalmente, la invasión napoleónica de España en 1808.",
+    "keywords": ["Revolución Francesa", "Derechos del Hombre", "Antonio Nariño", "1808", "invasión napoleónica", "emancipación"]
+  }
+]

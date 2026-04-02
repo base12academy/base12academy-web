@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { awardBadge } from "../../../lib/badges-storage";
-import { BADGES } from "../../../lib/badges";
 
 const data = require("../../data/historia/tema01_cortas.json");
 
@@ -76,21 +74,8 @@ export default function CortasTema1Page() {
             setSubmitted(true);
             localStorage.setItem("tema-01-cortas", JSON.stringify(result));
 
-            if (correct === 5) {
-              const gained: string[] = [];
-
-              if (awardBadge("cortas_tema1_5_5")) {
-                gained.push(BADGES["cortas_tema1_5_5"].title);
-              }
-
-              if (gained.length > 0) {
-                setTimeout(() => {
-                  alert(`🎉 Has conseguido: ${gained.join(", ")}`);
-                }, 100);
-              }
-            }
-          }}
-        >
+               
+          }}>
           Enviar respuestas
         </button>
       )}

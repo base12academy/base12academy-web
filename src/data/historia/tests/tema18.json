@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t18_q1",
+    "question": "¿Qué hecho desencadenó la crisis sucesoria de 1700 en España?",
+    "options": ["La derrota de Rocroi", "La muerte de Carlos II sin descendencia", "La Paz de Utrecht", "La llegada de Felipe V a Madrid"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18_q2",
+    "question": "¿Qué dinastía terminó con la muerte de Carlos II?",
+    "options": ["Borbones", "Trastámara", "Austrias", "Habsburgo austríacos"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t18_q3",
+    "question": "¿Quién era Felipe de Anjou?",
+    "options": ["Hijo de Carlos II", "Nieto del rey de Francia y candidato borbónico", "Emperador del Sacro Imperio", "Virrey de Aragón"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18_q4",
+    "question": "¿Qué modelo político representaba Felipe de Anjou?",
+    "options": ["Pactismo foral", "Absolutismo francés", "Federalismo urbano", "Modelo republicano"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18_q5",
+    "question": "¿Quién fue el candidato de la Casa de Austria al trono español?",
+    "options": ["Felipe V", "Luis XIV", "Archiduque Carlos", "Fernando VI"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t18_q6",
+    "question": "¿Qué defendía el modelo político del archiduque Carlos?",
+    "options": ["La centralización absoluta", "El respeto a fueros y administraciones particulares", "La supresión de leyes territoriales", "La unificación de Cortes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18_q7",
+    "question": "¿Entre qué años se desarrolló la Guerra de Sucesión según el tema?",
+    "options": ["1700-1711", "1701-1714", "1702-1715", "1711-1714"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18_q8",
+    "question": "¿En qué año comenzó formalmente el conflicto armado?",
+    "options": ["1700", "1701", "1702", "1711"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t18_q9",
+    "question": "¿Qué doble carácter tuvo la Guerra de Sucesión?",
+    "options": ["Religioso y colonial", "Internacional y guerra civil en España", "Feudal y urbana", "Fiscal y comercial"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18_q10",
+    "question": "¿Qué alianza internacional se formó en 1701 contra el peligro de hegemonía franco-española?",
+    "options": ["Santa Liga", "Liga Hanseática", "Gran Alianza o Alianza de la Haya", "Triple Entente"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t18_q11",
+    "question": "¿Qué potencias fueron los principales impulsores de la Gran Alianza?",
+    "options": ["Francia, Saboya y Portugal", "Sacro Imperio, Inglaterra y Holanda", "Castilla, Aragón y Navarra", "Austria, Rusia y Prusia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18_q12",
+    "question": "¿Qué dos reinos se unieron a la coalición para evitar el dominio francés?",
+    "options": ["Navarra y Aragón", "Portugal y Saboya", "Castilla y Mallorca", "Nápoles y Sicilia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18_q13",
+    "question": "¿Qué corona apoyó mayoritariamente a Felipe V dentro de España?",
+    "options": ["Corona de Aragón", "Corona de Castilla", "Corona de Navarra", "Corona de Portugal"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18_q14",
+    "question": "¿Por qué apoyó Castilla a Felipe V según el tema?",
+    "options": ["Para conservar sus fueros", "Porque veía en él una oportunidad de renovación", "Por presión de Inglaterra", "Para unirse a Francia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18_q15",
+    "question": "¿Qué territorios integraban la Corona de Aragón mencionada en el tema?",
+    "options": ["Aragón, Cataluña, Valencia y Mallorca", "Aragón, Navarra, Valencia y Murcia", "Cataluña, Castilla, Valencia y Mallorca", "Aragón, León, Cataluña y Valencia"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t18_q16",
+    "question": "¿A qué candidato apoyó mayoritariamente la Corona de Aragón?",
+    "options": ["Felipe de Anjou", "Luis XIV", "Archiduque Carlos", "Fernando el Católico"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t18_q17",
+    "question": "¿Por qué se inclinó la Corona de Aragón por el archiduque Carlos?",
+    "options": ["Por afinidad con Francia", "Para proteger sus fueros frente al absolutismo", "Por intereses comerciales con Holanda", "Para recuperar Gibraltar"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18_q18",
+    "question": "¿Qué territorios apoyaron firmemente a Felipe V y conservaron sus privilegios?",
+    "options": ["Cataluña y Valencia", "Portugal y Saboya", "Provincias Vascas y Navarra", "Aragón y Mallorca"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t18_q19",
+    "question": "¿Qué hecho de 1711 cambió el rumbo de la guerra?",
+    "options": ["La muerte de Felipe V", "La muerte del hermano del archiduque Carlos", "La caída de Barcelona", "La firma de la Nueva Planta"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18_q20",
+    "question": "¿Qué ocurrió con el archiduque Carlos en 1711?",
+    "options": ["Se exilió en Inglaterra", "Se convirtió en Emperador de Alemania", "Renunció al trono español", "Fue derrotado en Castilla"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18_q21",
+    "question": "¿Qué potencia forzó una paz negociada al temer un excesivo poder de los Habsburgo?",
+    "options": ["Francia", "Portugal", "Inglaterra", "Saboya"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t18_q22",
+    "question": "¿Qué tratados pusieron fin al conflicto internacional?",
+    "options": ["Westfalia y Nimega", "Utrecht y Rastatt", "Pirineos y Utrecht", "Caspe y Utrecht"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18_q23",
+    "question": "¿Qué territorios recibió Austria según los tratados?",
+    "options": ["Sicilia, Menorca y Gibraltar", "Nápoles, Milán y Cerdeña", "Cataluña, Valencia y Aragón", "Portugal, Brasil y Sicilia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18_q24",
+    "question": "¿Qué territorio obtuvo Saboya?",
+    "options": ["Cerdeña", "Sicilia", "Menorca", "Milán"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18_q25",
+    "question": "¿Qué potencia fue la gran beneficiada de Utrecht según el tema?",
+    "options": ["Austria", "Francia", "Inglaterra", "Holanda"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t18_q26",
+    "question": "¿Qué territorios obtuvo Inglaterra?",
+    "options": ["Rosellón y Cerdaña", "Gibraltar y Menorca", "Milán y Cerdeña", "Sicilia y Nápoles"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18_q27",
+    "question": "¿Qué hizo Felipe V para ser reconocido rey de España?",
+    "options": ["Renunció a Aragón", "Renunció a sus derechos al trono francés", "Aceptó los fueros catalanes", "Cedió Gibraltar a Inglaterra"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18_q28",
+    "question": "¿Qué supuso el reconocimiento de Felipe V?",
+    "options": ["La restauración de los Austrias", "La consolidación de una nueva dinastía", "La división de España en dos reinos", "La independencia de Cataluña"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18_q29",
+    "question": "¿Qué principio justificó la reorganización de los territorios rebeldes tras la guerra?",
+    "options": ["Derecho romano", "Derecho de conquista", "Pactismo medieval", "Soberanía municipal"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18_q30",
+    "question": "¿Qué objetivo político perseguía el nuevo Estado borbónico?",
+    "options": ["Mantener la pluralidad foral", "Absolutismo y centralización", "Crear una monarquía parlamentaria", "Restaurar el sistema de Consejos medievales"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18_q31",
+    "question": "¿Cómo se llamaron las medidas que transformaron la estructura del Estado en la Corona de Aragón?",
+    "options": ["Capitulaciones de Utrecht", "Decretos de Nueva Planta", "Ordenanzas de Castilla", "Leyes de Indias"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18_q32",
+    "question": "¿Qué ocurrió con las leyes propias de los reinos aragoneses?",
+    "options": ["Se reforzaron", "Se mantuvieron junto a Castilla", "Se eliminaron", "Se trasladaron a Navarra"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t18_q33",
+    "question": "¿Qué se estableció en lugar de las antiguas instituciones de la Corona de Aragón?",
+    "options": ["Consejos locales autónomos", "Un solo derecho y unas Cortes únicas", "Virreinatos americanos", "Capitanías francesas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18_q34",
+    "question": "¿En qué se dividió el reino según la nueva administración territorial borbónica?",
+    "options": ["Condados", "Merindades", "Provincias", "Alfoces"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t18_q35",
+    "question": "¿Qué institución judicial y administrativa aparece en la nueva organización territorial?",
+    "options": ["Concejos", "Audiencias", "Virreinatos", "Cabildos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18_q36",
+    "question": "¿Qué figura militar aseguraba la ejecución de la voluntad real en las provincias?",
+    "options": ["Corregidor", "Justicia Mayor", "Capitán General", "Adelantado"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t18_q37",
+    "question": "¿Qué funcionario se encargaba especialmente de la administración y hacienda en el nuevo sistema?",
+    "options": ["Valido", "Intendente", "Almotacén", "Virrey"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18_q38",
+    "question": "¿Qué reforma económica acompañó a la Nueva Planta?",
+    "options": ["Restauración de las aduanas interiores", "Unificación de la Hacienda", "Supresión del comercio castellano", "Creación de una moneda aragonesa"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18_q39",
+    "question": "¿Qué ocurrió con las fronteras interiores en el nuevo modelo borbónico?",
+    "options": ["Se reforzaron", "Se suprimieron", "Se trasladaron a Navarra", "Solo se mantuvieron en Cataluña"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18_q40",
+    "question": "¿Qué impuesto o registro se implantó en Cataluña para equilibrar la contribución tributaria con Castilla?",
+    "options": ["Diezmo", "Catastro", "Alcabala", "Servicio de millones"],
+    "correctAnswer": 1
+  }
+]

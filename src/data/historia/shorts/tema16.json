@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc16_1",
+    "question": "¿Qué fue el valimiento en la España del siglo XVII?",
+    "answerGuide": "Fue la práctica por la que el rey delegaba el gobierno en un valido o favorito, que actuaba como un primer ministro sin cargo oficial.",
+    "keywords": ["valimiento", "valido", "favorito", "delegación", "primer ministro"]
+  },
+  {
+    "id": "tc16_2",
+    "question": "¿Qué consecuencias administrativas y sociales tuvo el sistema de validos?",
+    "answerGuide": "Alteró el funcionamiento del Estado al actuar al margen de los órganos tradicionales y favoreció la corrupción, el clientelismo y el enriquecimiento de allegados.",
+    "keywords": ["órganos tradicionales", "corrupción", "clientelismo", "enriquecimiento", "allegados"]
+  },
+  {
+    "id": "tc16_3",
+    "question": "¿Qué validos destacaron durante el reinado de Felipe III?",
+    "answerGuide": "Destacaron el duque de Lerma, Francisco de Sandoval y Rojas, y después su hijo, el duque de Uceda.",
+    "keywords": ["Felipe III", "duque de Lerma", "Francisco de Sandoval y Rojas", "duque de Uceda"]
+  },
+  {
+    "id": "tc16_4",
+    "question": "¿Qué importancia tuvo la expulsión de los moriscos de 1609?",
+    "answerGuide": "Supuso la salida de casi 300.000 personas y provocó una crisis demográfica y económica, especialmente en Valencia y Aragón.",
+    "keywords": ["1609", "expulsión de los moriscos", "300.000", "crisis demográfica", "Valencia", "Aragón"]
+  },
+  {
+    "id": "tc16_5",
+    "question": "¿Qué rasgos tuvo la política exterior de Felipe III?",
+    "answerGuide": "Fue una política pacifista, con la paz con Inglaterra en 1604 y la Tregua de los Doce Años con Holanda en 1609.",
+    "keywords": ["pacifismo exterior", "Inglaterra", "1604", "Tregua de los Doce Años", "Holanda", "1609"]
+  },
+  {
+    "id": "tc16_6",
+    "question": "¿Cómo era la sociedad del reinado de Felipe III según el tema?",
+    "answerGuide": "Era una sociedad de rentistas, en la que las clases altas preferían invertir en juros y comprar títulos nobiliarios en lugar de fomentar la producción.",
+    "keywords": ["sociedad de rentistas", "juros", "títulos nobiliarios", "producción"]
+  },
+  {
+    "id": "tc16_7",
+    "question": "¿Qué reformas impulsó el Conde-Duque de Olivares?",
+    "answerGuide": "Impulsó la creación de erarios estatales, la unificación jurídica y la Unión de Armas.",
+    "keywords": ["Olivares", "erarios", "unificación jurídica", "Unión de Armas"]
+  },
+  {
+    "id": "tc16_8",
+    "question": "¿Qué pretendía la Unión de Armas?",
+    "answerGuide": "Crear un ejército nacional financiado proporcionalmente por todos los reinos de la monarquía.",
+    "keywords": ["Unión de Armas", "ejército nacional", "todos los reinos", "financiación proporcional"]
+  },
+  {
+    "id": "tc16_9",
+    "question": "¿Qué problemas económicos marcaron el reinado de Felipe IV?",
+    "answerGuide": "Las bancarrotas provocadas por la Guerra de los Treinta Años y la devaluación monetaria mediante la moneda de vellón.",
+    "keywords": ["bancarrotas", "Guerra de los Treinta Años", "moneda de vellón", "devaluación"]
+  },
+  {
+    "id": "tc16_10",
+    "question": "¿Qué conflictos estallaron en 1640 y por qué fueron importantes?",
+    "answerGuide": "Estallaron las rebeliones de Portugal y Cataluña, que mostraron el fracaso del centralismo de Olivares y fracturaron la monarquía.",
+    "keywords": ["1640", "Portugal", "Cataluña", "centralismo", "Olivares", "fractura"]
+  },
+  {
+    "id": "tc16_11",
+    "question": "¿Qué tratados marcaron la pérdida de hegemonía española en Europa?",
+    "answerGuide": "La Paz de Westfalia de 1648 y la Paz de los Pirineos de 1659.",
+    "keywords": ["Westfalia", "1648", "Paz de los Pirineos", "1659", "hegemonía"]
+  },
+  {
+    "id": "tc16_12",
+    "question": "¿Cómo fue el reinado de Carlos II en términos políticos?",
+    "answerGuide": "Fue un reinado de gran inestabilidad, iniciado bajo la regencia de Mariana de Austria y dependiente de validos como Nithardt, Valenzuela y Juan José de Austria.",
+    "keywords": ["Carlos II", "inestabilidad", "Mariana de Austria", "Nithardt", "Valenzuela", "Juan José de Austria"]
+  },
+  {
+    "id": "tc16_13",
+    "question": "¿Qué pérdidas territoriales y qué potencia marcaron la debilidad exterior de Carlos II?",
+    "answerGuide": "Francia, bajo Luis XIV, arrebató a España el Franco Condado en la Paz de Nimega de 1678.",
+    "keywords": ["Francia", "Luis XIV", "Franco Condado", "Paz de Nimega", "1678"]
+  },
+  {
+    "id": "tc16_14",
+    "question": "¿Qué problemas sociales afectaron a la población durante el reinado de Carlos II?",
+    "answerGuide": "Epidemias de peste, gripe y viruela, malas cosechas, impuestos excesivos y el auge del bandolerismo y la mendicidad.",
+    "keywords": ["peste", "gripe", "viruela", "malas cosechas", "impuestos", "bandolerismo", "mendicidad"]
+  },
+  {
+    "id": "tc16_15",
+    "question": "¿Qué hecho puso fin a la dinastía de los Austrias en España?",
+    "answerGuide": "La muerte sin descendencia de Carlos II en 1700, que abrió una crisis sucesoria y una guerra por el trono.",
+    "keywords": ["Carlos II", "1700", "sin descendencia", "crisis sucesoria", "guerra por el trono"]
+  }
+]

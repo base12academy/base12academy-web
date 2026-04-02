@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t20_q1",
+    "question": "¿Cómo se denomina el siglo XVIII en relación con la Ilustración?",
+    "options": ["Siglo de Oro", "Siglo de las Luces", "Siglo de la Razón Oscura", "Siglo Medieval"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q2",
+    "question": "¿Cuál era el objetivo principal de la Ilustración?",
+    "options": ["Expandir territorios", "Sacar a la sociedad de las tinieblas mediante la razón", "Fortalecer la religión exclusivamente", "Eliminar la monarquía"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q3",
+    "question": "¿Qué monarcas impulsaron especialmente la Ilustración en España?",
+    "options": ["Felipe II y Carlos I", "Fernando VI y Carlos III", "Felipe V y Carlos II", "Carlos IV y Fernando VII"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q4",
+    "question": "¿Qué principio se convirtió en el motor absoluto de la Ilustración?",
+    "options": ["La fe", "La tradición", "La razón", "La guerra"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t20_q5",
+    "question": "Según la Ilustración, ¿cuál era la finalidad del ser humano?",
+    "options": ["La riqueza", "La felicidad", "El poder político", "La religión"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q6",
+    "question": "¿Cómo se caracterizó la Ilustración española frente a la francesa?",
+    "options": ["Radical y anticlerical", "Moderada y religiosa", "Militarista", "Anarquista"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q7",
+    "question": "¿Qué rasgo definía a la Ilustración española respecto a la religión?",
+    "options": ["La rechazaba completamente", "Buscaba compatibilidad con el catolicismo", "La eliminaba del Estado", "Imponía el protestantismo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q8",
+    "question": "¿Quiénes formaban la minoría reformista ilustrada?",
+    "options": ["Campesinos", "Nobleza tradicional", "Intelectuales como Jovellanos y Feijoo", "Militares"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t20_q9",
+    "question": "¿Qué sistema político ejecutó las reformas ilustradas?",
+    "options": ["Feudalismo", "Despotismo Ilustrado", "República liberal", "Teocracia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q10",
+    "question": "¿Qué significa el lema «Todo para el pueblo, pero sin el pueblo»?",
+    "options": ["Participación democrática", "Reformas sin participación popular", "Gobierno militar", "Igualdad social total"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q11",
+    "question": "¿Quién fue el principal monarca del Despotismo Ilustrado en España?",
+    "options": ["Felipe V", "Carlos III", "Fernando VII", "Carlos II"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q12",
+    "question": "¿Qué ministros destacaron durante el reinado de Carlos III?",
+    "options": ["Olivares y Lerma", "Esquilache, Campomanes y Floridablanca", "Godoy y Aranda", "Velázquez y Quevedo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q13",
+    "question": "¿Qué política reafirmaba la autoridad del rey sobre la Iglesia?",
+    "options": ["Humanismo", "Regalismo", "Mercantilismo", "Feudalismo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q14",
+    "question": "¿Qué grupo fue expulsado en 1767?",
+    "options": ["Judíos", "Jesuitas", "Moriscos", "Protestantes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q15",
+    "question": "¿Qué medida rompió el monopolio comercial con América?",
+    "options": ["Decretos de Nueva Planta", "Liberalización comercial de 1778", "Catastro de Ensenada", "Tratado de Utrecht"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q16",
+    "question": "¿Qué región se benefició especialmente de la liberalización comercial?",
+    "options": ["Galicia", "Cataluña", "Navarra", "Castilla"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q17",
+    "question": "¿Qué objetivo tenían las Reales Fábricas?",
+    "options": ["Exportar materias primas", "Reducir importaciones y producir bienes de lujo", "Crear ejércitos", "Controlar la Iglesia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q18",
+    "question": "¿Qué problema frenó las reformas agrarias?",
+    "options": ["Falta de tecnología", "Oposición de nobleza y clero", "Escasez de trabajadores", "Guerras constantes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q19",
+    "question": "¿En manos de quién estaba mayoritariamente la tierra?",
+    "options": ["Campesinos", "Burguesía", "Nobleza y clero", "Estado"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t20_q20",
+    "question": "¿Cómo se denomina la propiedad inmovilizada en manos de estamentos privilegiados?",
+    "options": ["Mayorazgo", "Manos muertas", "Latifundio libre", "Propiedad comunal"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q21",
+    "question": "¿Qué problema afectaba al pueblo llano en el siglo XVIII?",
+    "options": ["Falta de comercio", "Subida del precio del trigo", "Exceso de producción", "Abundancia de recursos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q22",
+    "question": "¿Qué medida tomó Carlos III respecto al trabajo manual?",
+    "options": ["Lo prohibió", "Lo declaró deshonroso", "Lo dignificó como honesto", "Lo reservó a campesinos"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t20_q23",
+    "question": "¿Qué objetivo tenía la repoblación de Sierra Morena?",
+    "options": ["Crear universidades", "Fomentar agricultura y asegurar caminos", "Expandir la nobleza", "Reducir impuestos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q24",
+    "question": "¿Qué provocó el Motín de Esquilache?",
+    "options": ["Una guerra exterior", "Hambre y rechazo a reformas", "Problemas religiosos", "Conflictos militares"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q25",
+    "question": "¿Qué medidas concretas causaron rechazo en el Motín de Esquilache?",
+    "options": ["Subida de impuestos", "Prohibición de capas largas y sombreros", "Expulsión de judíos", "Reformas agrarias"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q26",
+    "question": "¿Qué consecuencia tuvo el Motín de Esquilache?",
+    "options": ["Caída del rey", "Destitución de Esquilache", "Guerra civil", "Revolución liberal"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q27",
+    "question": "¿Qué papel tenía la educación según los ilustrados?",
+    "options": ["Secundario", "Instrumento clave de cambio", "Solo religioso", "Innecesario"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q28",
+    "question": "¿Qué expedición científica destacó en este periodo?",
+    "options": ["Colón", "Magallanes", "Malaspina", "Elcano"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t20_q29",
+    "question": "¿Qué instituciones se fundaron para difundir el conocimiento?",
+    "options": ["Virreinatos", "Reales Academias", "Consejos de Guerra", "Órdenes militares"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q30",
+    "question": "¿Qué áreas cubrían las Reales Academias?",
+    "options": ["Guerra y política", "Lengua, Historia y Bellas Artes", "Agricultura y comercio", "Religión exclusivamente"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q31",
+    "question": "¿Qué eran las Sociedades Económicas de Amigos del País?",
+    "options": ["Ejércitos locales", "Grupos que proponían mejoras económicas y técnicas", "Tribunales", "Órdenes religiosas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q32",
+    "question": "¿Qué buscaba la reforma universitaria?",
+    "options": ["Mantener el control eclesiástico", "Orientarse hacia ciencias útiles", "Eliminar universidades", "Reducir la educación"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q33",
+    "question": "¿Qué disciplinas se querían potenciar en la universidad?",
+    "options": ["Teología exclusivamente", "Matemáticas, física y náutica", "Arte medieval", "Derecho feudal"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q34",
+    "question": "¿Qué evento frenó las reformas ilustradas?",
+    "options": ["Guerra de Sucesión", "Revolución Francesa", "Descubrimiento de América", "Guerra de Independencia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q35",
+    "question": "¿Qué medida tomó España ante el temor revolucionario?",
+    "options": ["Expandir reformas", "Abrir fronteras", "Cordón sanitario", "Crear nuevas colonias"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t20_q36",
+    "question": "¿Qué caracterizaba a la sociedad del siglo XVIII?",
+    "options": ["Igualdad social", "División entre mayoría analfabeta y élite ilustrada", "Ausencia de clases", "Predominio burgués"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q37",
+    "question": "¿Qué criticaban los ilustrados de la nobleza y el clero?",
+    "options": ["Su poder militar", "Su ociosidad y acumulación de tierras", "Su falta de riqueza", "Su debilidad política"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q38",
+    "question": "¿Qué tipo de sociedad predominaba en el siglo XVIII?",
+    "options": ["Capitalista moderna", "Estamental", "Industrial", "Democrática"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q39",
+    "question": "¿Qué relación tenía la Ilustración con la monarquía española?",
+    "options": ["Era perseguida", "Fue protegida por la monarquía", "No existía relación", "Era opuesta totalmente"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t20_q40",
+    "question": "¿Qué define globalmente la Ilustración en España?",
+    "options": ["Movimiento radical anticatólico", "Proceso moderado, reformista y apoyado por la monarquía", "Revolución popular", "Sistema militar"],
+    "correctAnswer": 1
+  }
+]

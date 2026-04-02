@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t6_q1",
+    "question": "¿A partir de qué siglo comenzó la crisis profunda del Imperio Romano en Hispania?",
+    "options": ["Siglo I d.C.", "Siglo II d.C.", "Siglo III d.C.", "Siglo V a.C."],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t6_q2",
+    "question": "¿En qué se tradujo en Hispania la crisis del Imperio Romano?",
+    "options": ["En una expansión urbana", "En la incapacidad de las legiones para asegurar fronteras y control administrativo", "En el fortalecimiento del comercio mediterráneo", "En la desaparición del cristianismo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t6_q3",
+    "question": "¿Qué ocurrió en el año 409 d.C.?",
+    "options": ["La caída de Toledo", "La ruptura de las fronteras romanas", "La conversión de Recaredo", "La batalla de Vouillé"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t6_q4",
+    "question": "¿Qué pueblos germánicos penetraron en la Península en 409 d.C.?",
+    "options": ["Francos, lombardos y sajones", "Suevos, vándalos y alanos", "Visigodos, ostrogodos y francos", "Bizantinos, suevos y hunos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t6_q5",
+    "question": "¿Qué fueron los foedus?",
+    "options": ["Impuestos militares", "Tratados firmados por Roma para gestionar la crisis", "Leyes visigodas", "Asambleas religiosas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t6_q6",
+    "question": "¿A qué pueblo llamó Roma para restaurar el orden en Hispania?",
+    "options": ["Suevos", "Francos", "Visigodos", "Alanos"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t6_q7",
+    "question": "¿Qué papel desempeñaron los visigodos inicialmente en Hispania?",
+    "options": ["Actuaron como brazo armado de Roma", "Fundaron colonias griegas", "Implantaron la democracia", "Expulsaron a los romanos del norte de África"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t6_q8",
+    "question": "¿Qué proceso económico y social provocó la inseguridad constante en Hispania?",
+    "options": ["Industrialización", "Ruralización", "Urbanización", "Feudalización inmediata"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t6_q9",
+    "question": "¿Qué hicieron las élites urbanas ante la inseguridad?",
+    "options": ["Se trasladaron a Roma", "Abandonaron sus cargos y se refugiaron en villas rurales", "Crearon nuevas ciudades", "Organizaron ejércitos mercenarios"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t6_q10",
+    "question": "¿Qué ocurrió con el comercio mediterráneo durante la crisis?",
+    "options": ["Se intensificó", "Se paralizó", "Se trasladó al interior", "Pasó a manos griegas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t6_q11",
+    "question": "¿Qué sistema entró en una crisis terminal durante este periodo?",
+    "options": ["Sistema monetario", "Sistema esclavista", "Sistema feudal", "Sistema senatorial"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t6_q12",
+    "question": "¿En qué se convirtió la economía peninsular durante la ruralización?",
+    "options": ["Economía monetaria", "Economía de subsistencia", "Economía industrial", "Economía comercial expansiva"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t6_q13",
+    "question": "¿Qué unidad productiva fue el motor principal de la economía ruralizada?",
+    "options": ["Los puertos", "Las grandes villas agrícolas", "Las ciudades amuralladas", "Los monasterios"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t6_q14",
+    "question": "¿Qué ocurrió en el año 476 d.C.?",
+    "options": ["La conversión de Recaredo", "La desaparición definitiva de las estructuras estatales de Roma", "La promulgación del Fuero Juzgo", "La batalla de Guadalete"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t6_q15",
+    "question": "¿Qué ocupó el vacío de poder tras la desaparición de Roma?",
+    "options": ["Las polis griegas", "Las monarquías germánicas", "Los cartagineses", "Las legiones bizantinas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t6_q16",
+    "question": "¿Qué edicto permitió al cristianismo salir de la clandestinidad en 313?",
+    "options": ["Edicto de Tesalónica", "Edicto de Milán", "Edicto de Toledo", "Edicto de Augusto"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t6_q17",
+    "question": "¿Qué edicto convirtió al cristianismo en pilar de la sociedad en 380?",
+    "options": ["Edicto de Milán", "Edicto de Tesalónica", "Fuero Juzgo", "Foedus"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t6_q18",
+    "question": "¿Qué rey visigodo se convirtió al catolicismo en 589?",
+    "options": ["Leovigildo", "Rodrigo", "Recesvinto", "Recaredo"],
+    "correctAnswer": 3
+  },
+  {
+    "id": "t6_q19",
+    "question": "¿En qué asamblea se produjo la conversión de Recaredo?",
+    "options": ["Concilio de Nicea", "III Concilio de Toledo", "Aula Regia", "Officium Palatinum"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t6_q20",
+    "question": "¿Qué religión abandonó Recaredo al convertirse?",
+    "options": ["Paganismo", "Arrianismo", "Islam", "Judaísmo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t6_q21",
+    "question": "¿Qué objetivo político tenía la conversión de Recaredo?",
+    "options": ["Romper con la Iglesia", "Unificar religiosamente a visigodos e hispanorromanos", "Expandirse por la Galia", "Eliminar a la nobleza"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t6_q22",
+    "question": "¿Qué funciones asumieron los obispos tras la conversión al catolicismo?",
+    "options": ["Solo militares", "Funciones civiles, moral pública y asistencia social", "Solo fiscales", "Exclusivamente judiciales"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t6_q23",
+    "question": "¿Qué figura destacó en la preservación cultural mediante las Etimologías?",
+    "options": ["San Isidoro de Sevilla", "Recaredo", "Leovigildo", "Rodrigo"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t6_q24",
+    "question": "¿Qué batalla obligó a los visigodos a asentarse definitivamente en la Península?",
+    "options": ["Guadalete", "Vouillé", "Numancia", "Las Navas de Tolosa"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t6_q25",
+    "question": "¿En qué año tuvo lugar la batalla de Vouillé?",
+    "options": ["409", "476", "507", "589"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t6_q26",
+    "question": "¿Cuál fue la capital del reino visigodo en la Península?",
+    "options": ["Sevilla", "Mérida", "Toledo", "Tarraco"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t6_q27",
+    "question": "¿Qué rey sometió al reino suevo del noroeste?",
+    "options": ["Recaredo", "Leovigildo", "Rodrigo", "Recesvinto"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t6_q28",
+    "question": "¿Qué otro enemigo contuvo Leovigildo en el sur?",
+    "options": ["Francos", "Bizantinos", "Vándalos", "Cartagineses"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t6_q29",
+    "question": "¿Qué medida favoreció la fusión entre visigodos e hispanorromanos?",
+    "options": ["La expulsión de los romanos", "La abolición de la prohibición de matrimonios mixtos", "La militarización de las ciudades", "La supresión del clero"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t6_q30",
+    "question": "¿En qué se basaba fundamentalmente la economía visigoda?",
+    "options": ["Comercio marítimo", "Economía agraria basada en la tierra", "Minería intensiva", "Artesanía urbana"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t6_q31",
+    "question": "¿Qué era el Aula Regia?",
+    "options": ["Un tribunal religioso", "Un consejo asesor del rey", "Una escuela monástica", "Una unidad militar"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t6_q32",
+    "question": "¿Qué institución se encargaba de la gestión de palacio?",
+    "options": ["Curia", "Officium Palatinum", "Concilio de Toledo", "Foedus"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t6_q33",
+    "question": "¿Qué cargo del Officium Palatinum era responsable del tesoro?",
+    "options": ["Duces", "Gardingos", "Comes", "Obispos"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t6_q34",
+    "question": "¿Qué cargo ejercía como gobernador provincial?",
+    "options": ["Comes", "Duces", "Gardingos", "Procónsul"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t6_q35",
+    "question": "¿Quiénes eran los gardingos?",
+    "options": ["Campesinos libres", "Jefes militares de confianza", "Jueces religiosos", "Comerciantes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t6_q36",
+    "question": "¿Qué eran los Concilios de Toledo?",
+    "options": ["Mercados regionales", "Asambleas político-religiosas", "Tribunales militares", "Colonias agrícolas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t6_q37",
+    "question": "¿Qué código unificó jurídicamente a godos y romanos?",
+    "options": ["Edicto de Milán", "Fuero Juzgo", "Código Teodosiano", "Lex Romana"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t6_q38",
+    "question": "¿Qué rey promulgó el Fuero Juzgo?",
+    "options": ["Rodrigo", "Leovigildo", "Recesvinto", "Recaredo"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t6_q39",
+    "question": "¿Qué pieza de orfebrería visigoda destaca el tema?",
+    "options": ["La Dama de Elche", "Las coronas votivas del Tesoro de Guarrazar", "Los torques celtas", "El Tesoro del Carambolo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t6_q40",
+    "question": "¿Qué hecho puso fin al reino visigodo en 711?",
+    "options": ["La batalla de Vouillé", "La batalla de Guadalete", "La caída de Numancia", "Las Guerras Cántabras"],
+    "correctAnswer": 1
+  }
+]

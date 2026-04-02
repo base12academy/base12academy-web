@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc25_1",
+    "question": "¿Qué hecho marca el inicio de la Restauración?",
+    "answerGuide": "El pronunciamiento de Martínez Campos en Sagunto en 1874, proclamando a Alfonso XII.",
+    "keywords": ["Sagunto", "1874", "Martínez Campos", "Alfonso XII"]
+  },
+  {
+    "id": "tc25_2",
+    "question": "¿Quién fue el principal ideólogo del sistema de la Restauración?",
+    "answerGuide": "Antonio Cánovas del Castillo, arquitecto del sistema político.",
+    "keywords": ["Cánovas", "Restauración", "ideólogo"]
+  },
+  {
+    "id": "tc25_3",
+    "question": "¿Qué es la Constitución interna según Cánovas?",
+    "answerGuide": "La idea de que la soberanía reside en la monarquía y las Cortes como instituciones históricas.",
+    "keywords": ["Constitución interna", "monarquía", "Cortes", "soberanía"]
+  },
+  {
+    "id": "tc25_4",
+    "question": "¿En qué consistía el turno de partidos?",
+    "answerGuide": "La alternancia pactada entre conservadores y liberales para garantizar estabilidad.",
+    "keywords": ["turno", "alternancia", "conservadores", "liberales"]
+  },
+  {
+    "id": "tc25_5",
+    "question": "¿Qué partidos protagonizaban el sistema?",
+    "answerGuide": "El Partido Conservador (Cánovas) y el Partido Liberal (Sagasta).",
+    "keywords": ["Conservador", "Liberal", "Cánovas", "Sagasta"]
+  },
+  {
+    "id": "tc25_6",
+    "question": "¿Qué era el caciquismo?",
+    "answerGuide": "Sistema de control político local basado en el poder de los caciques sobre los votantes.",
+    "keywords": ["caciquismo", "control local", "voto"]
+  },
+  {
+    "id": "tc25_7",
+    "question": "¿Qué era el encasillado?",
+    "answerGuide": "El reparto previo de escaños antes de las elecciones.",
+    "keywords": ["encasillado", "escaños", "fraude"]
+  },
+  {
+    "id": "tc25_8",
+    "question": "¿Qué era el pucherazo?",
+    "answerGuide": "La manipulación directa de votos o resultados electorales.",
+    "keywords": ["pucherazo", "fraude", "votos"]
+  },
+  {
+    "id": "tc25_9",
+    "question": "¿Qué establecía la Constitución de 1876?",
+    "answerGuide": "Una monarquía con soberanía compartida, bicameralismo y defensa de la propiedad privada.",
+    "keywords": ["1876", "soberanía compartida", "bicameral", "propiedad"]
+  },
+  {
+    "id": "tc25_10",
+    "question": "¿Cómo se organizaban las Cortes en la Restauración?",
+    "answerGuide": "En dos cámaras: Congreso de los Diputados y Senado.",
+    "keywords": ["Congreso", "Senado", "bicameral"]
+  },
+  {
+    "id": "tc25_11",
+    "question": "¿Qué papel tenía la religión en el sistema?",
+    "answerGuide": "El catolicismo era oficial, aunque se toleraba la práctica privada de otras religiones.",
+    "keywords": ["catolicismo", "oficial", "tolerancia"]
+  },
+  {
+    "id": "tc25_12",
+    "question": "¿Qué grupos formaban la oposición al sistema?",
+    "answerGuide": "Carlistas, republicanos y movimiento obrero (anarquistas y socialistas).",
+    "keywords": ["carlistas", "republicanos", "anarquistas", "socialistas"]
+  },
+  {
+    "id": "tc25_13",
+    "question": "¿Qué fue el regeneracionismo?",
+    "answerGuide": "Movimiento crítico que denunciaba la corrupción del sistema y el caciquismo.",
+    "keywords": ["regeneracionismo", "caciquismo", "crítica"]
+  },
+  {
+    "id": "tc25_14",
+    "question": "¿Quién fue Joaquín Costa?",
+    "answerGuide": "Uno de los principales pensadores regeneracionistas que criticó el sistema.",
+    "keywords": ["Joaquín Costa", "regeneracionismo"]
+  },
+  {
+    "id": "tc25_15",
+    "question": "¿Qué supuso el desastre de 1898?",
+    "answerGuide": "La pérdida de las colonias y el descrédito del sistema de la Restauración.",
+    "keywords": ["1898", "colonias", "crisis", "Restauración"]
+  }
+]

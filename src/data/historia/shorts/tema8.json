@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc8_1",
+    "question": "¿Qué fue el Emirato Dependiente de Al-Ándalus?",
+    "answerGuide": "Fue la etapa entre 711 y 756 en la que Al-Ándalus funcionó como una provincia periférica del Califato Omeya de Damasco, gobernada por un walí.",
+    "keywords": ["Emirato Dependiente", "711", "756", "provincia", "Califato Omeya", "walí", "Damasco"]
+  },
+  {
+    "id": "tc8_2",
+    "question": "¿Cómo era la organización social del Emirato Dependiente?",
+    "answerGuide": "Existía una jerarquía rígida donde los árabes concentraban el poder político y las tierras fértiles, mientras los bereberes eran desplazados a zonas montañosas.",
+    "keywords": ["árabes", "bereberes", "jerarquía", "tierras fértiles", "zonas montañosas"]
+  },
+  {
+    "id": "tc8_3",
+    "question": "¿En qué se sustentó la economía inicial de Al-Ándalus?",
+    "answerGuide": "En el botín de guerra y en la recaudación de impuestos como la yizia y el jarach.",
+    "keywords": ["botín de guerra", "yizia", "jarach", "impuestos"]
+  },
+  {
+    "id": "tc8_4",
+    "question": "¿Qué ocurrió en Poitiers y Covadonga dentro de esta primera etapa?",
+    "answerGuide": "Poitiers en 732 frenó la expansión musulmana en Europa, mientras Covadonga en 722 marcó el surgimiento de la resistencia cristiana en el norte.",
+    "keywords": ["Poitiers", "732", "Covadonga", "722", "expansión", "resistencia cristiana"]
+  },
+  {
+    "id": "tc8_5",
+    "question": "¿Cómo nació el Emirato Independiente?",
+    "answerGuide": "Surgió en 756 cuando Abderramán I, tras huir de la caída omeya ante los abasíes, se proclamó emir y estableció la independencia política respecto a Bagdad.",
+    "keywords": ["Emirato Independiente", "756", "Abderramán I", "abasíes", "Bagdad", "independencia política"]
+  },
+  {
+    "id": "tc8_6",
+    "question": "¿Qué rasgos políticos tuvo el Emirato Independiente?",
+    "answerGuide": "Contó con una administración centralizada y un ejército profesional, aunque mantuvo la subordinación religiosa.",
+    "keywords": ["administración centralizada", "ejército profesional", "subordinación religiosa"]
+  },
+  {
+    "id": "tc8_7",
+    "question": "¿Quiénes eran los muladíes y qué problema protagonizaron?",
+    "answerGuide": "Eran cristianos conversos al Islam y protagonizaron rebeliones al denunciar discriminación frente a la élite árabe.",
+    "keywords": ["muladíes", "cristianos conversos", "Islam", "rebeliones", "discriminación", "élite árabe"]
+  },
+  {
+    "id": "tc8_8",
+    "question": "¿Qué avances económicos y culturales se produjeron durante el Emirato Independiente?",
+    "answerGuide": "Hubo un despegue agrícola por nuevas técnicas de regadío, se consolidó la moneda andalusí y comenzó la construcción de la Mezquita de Córdoba.",
+    "keywords": ["regadío", "moneda andalusí", "Mezquita de Córdoba", "despegue agrícola"]
+  },
+  {
+    "id": "tc8_9",
+    "question": "¿Qué fue el Califato de Córdoba y cuándo comenzó?",
+    "answerGuide": "Fue la etapa de máximo poder andalusí iniciada en 929, cuando Abderramán III se proclamó califa y rompió también la dependencia religiosa.",
+    "keywords": ["Califato de Córdoba", "929", "Abderramán III", "califa", "máximo poder", "dependencia religiosa"]
+  },
+  {
+    "id": "tc8_10",
+    "question": "¿Por qué Córdoba fue llamada la 'Perla de Occidente'?",
+    "answerGuide": "Porque se convirtió en la principal ciudad de Europa, con una burocracia eficiente, gran sofisticación urbana y obras como Medina Azahara.",
+    "keywords": ["Córdoba", "Perla de Occidente", "principal ciudad de Europa", "burocracia", "Medina Azahara"]
+  },
+  {
+    "id": "tc8_11",
+    "question": "¿En qué se basó la prosperidad económica del Califato?",
+    "answerGuide": "En el control de las rutas comerciales transaharianas y en una artesanía de lujo basada en la seda y el marfil.",
+    "keywords": ["rutas transaharianas", "seda", "marfil", "prosperidad económica"]
+  },
+  {
+    "id": "tc8_12",
+    "question": "¿Quién fue Almanzor y qué papel desempeñó?",
+    "answerGuide": "Fue el dirigente que concentró el poder efectivo a finales del siglo X, imponiendo una dictadura militar de gran agresividad exterior.",
+    "keywords": ["Almanzor", "poder efectivo", "dictadura militar", "siglo X"]
+  },
+  {
+    "id": "tc8_13",
+    "question": "¿Qué fueron los reinos de taifas?",
+    "answerGuide": "Fueron pequeños estados independientes surgidos tras la desintegración del Califato en 1031, como Sevilla, Toledo, Zaragoza o Granada.",
+    "keywords": ["taifas", "1031", "estados independientes", "Sevilla", "Toledo", "Zaragoza", "Granada"]
+  },
+  {
+    "id": "tc8_14",
+    "question": "¿Qué caracterizó el dominio de almorávides y almohades en Al-Ándalus?",
+    "answerGuide": "Impusieron una fuerte unificación política y religiosa; los almohades destacaron además por su capital en Sevilla y por monumentos como la Giralda y la Torre del Oro.",
+    "keywords": ["almorávides", "almohades", "unificación", "Sevilla", "Giralda", "Torre del Oro"]
+  },
+  {
+    "id": "tc8_15",
+    "question": "¿Qué fue el reino nazarí de Granada y cómo terminó?",
+    "answerGuide": "Fue el último estado islámico peninsular, fundado en 1238 por Mohamed I, que sobrevivió por vasallaje y tributos hasta la rendición de Boabdil en 1492.",
+    "keywords": ["reino nazarí", "Granada", "1238", "Mohamed I", "vasallaje", "Boabdil", "1492"]
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc18_1",
+    "question": "¿Qué provocó la crisis sucesoria de 1700?",
+    "answerGuide": "La muerte de Carlos II, último Austria español, sin dejar descendencia.",
+    "keywords": ["Carlos II", "1700", "sin descendencia", "crisis sucesoria"]
+  },
+  {
+    "id": "tc18_2",
+    "question": "¿Qué dos candidatos se disputaron el trono español y qué representaban?",
+    "answerGuide": "Felipe de Anjou representaba el absolutismo francés y el archiduque Carlos el modelo pactista de los Habsburgo.",
+    "keywords": ["Felipe de Anjou", "archiduque Carlos", "absolutismo", "pactismo", "Habsburgo"]
+  },
+  {
+    "id": "tc18_3",
+    "question": "¿Qué doble carácter tuvo la Guerra de Sucesión?",
+    "answerGuide": "Fue una guerra internacional por el equilibrio europeo y una guerra civil dentro de España.",
+    "keywords": ["guerra internacional", "guerra civil", "equilibrio europeo", "España"]
+  },
+  {
+    "id": "tc18_4",
+    "question": "¿Qué fue la Gran Alianza o Alianza de la Haya?",
+    "answerGuide": "La coalición formada en 1701 por el Sacro Imperio, Inglaterra, Holanda, Portugal y Saboya para frenar a los Borbones.",
+    "keywords": ["Gran Alianza", "Alianza de la Haya", "1701", "Sacro Imperio", "Inglaterra", "Holanda", "Portugal", "Saboya"]
+  },
+  {
+    "id": "tc18_5",
+    "question": "¿Cómo se dividieron los apoyos dentro de España durante la guerra?",
+    "answerGuide": "Castilla apoyó mayoritariamente a Felipe V, mientras la Corona de Aragón apoyó al archiduque Carlos; Navarra y las Provincias Vascas se mantuvieron con Felipe V.",
+    "keywords": ["Castilla", "Felipe V", "Corona de Aragón", "archiduque Carlos", "Navarra", "Provincias Vascas"]
+  },
+  {
+    "id": "tc18_6",
+    "question": "¿Por qué apoyó la Corona de Aragón al archiduque Carlos?",
+    "answerGuide": "Porque quería proteger sus fueros y leyes frente al absolutismo borbónico.",
+    "keywords": ["Corona de Aragón", "fueros", "leyes", "absolutismo borbónico"]
+  },
+  {
+    "id": "tc18_7",
+    "question": "¿Qué cambio geopolítico se produjo en 1711?",
+    "answerGuide": "La muerte del hermano del archiduque Carlos lo convirtió en Emperador de Alemania, alterando el equilibrio internacional.",
+    "keywords": ["1711", "hermano", "archiduque Carlos", "Emperador de Alemania", "equilibrio internacional"]
+  },
+  {
+    "id": "tc18_8",
+    "question": "¿Qué tratados pusieron fin a la guerra y qué establecieron?",
+    "answerGuide": "Los tratados de Utrecht y Rastatt, que reconocieron a Felipe V como rey de España a cambio de importantes cesiones territoriales europeas.",
+    "keywords": ["Utrecht", "Rastatt", "Felipe V", "cesiones territoriales"]
+  },
+  {
+    "id": "tc18_9",
+    "question": "¿Qué territorios recibió Austria tras la paz?",
+    "answerGuide": "Austria recibió Nápoles, Milán y Cerdeña.",
+    "keywords": ["Austria", "Nápoles", "Milán", "Cerdeña"]
+  },
+  {
+    "id": "tc18_10",
+    "question": "¿Qué obtuvo Inglaterra en los acuerdos de paz?",
+    "answerGuide": "Menorca, Gibraltar y ventajas comerciales estratégicas en el Mediterráneo.",
+    "keywords": ["Inglaterra", "Menorca", "Gibraltar", "Mediterráneo", "ventajas comerciales"]
+  },
+  {
+    "id": "tc18_11",
+    "question": "¿Qué condición aceptó Felipe V para ser reconocido rey de España?",
+    "answerGuide": "Renunció a sus derechos al trono francés.",
+    "keywords": ["Felipe V", "renuncia", "trono francés", "reconocimiento"]
+  },
+  {
+    "id": "tc18_12",
+    "question": "¿Qué fueron los Decretos de Nueva Planta?",
+    "answerGuide": "Fueron medidas borbónicas que eliminaron las instituciones y leyes propias de la Corona de Aragón para imponer un modelo centralizado.",
+    "keywords": ["Decretos de Nueva Planta", "Corona de Aragón", "instituciones", "leyes", "centralización"]
+  },
+  {
+    "id": "tc18_13",
+    "question": "¿Qué cambios administrativos introdujo la Nueva Planta?",
+    "answerGuide": "Se dividió el territorio en provincias dirigidas por Audiencias, Capitanes Generales e Intendentes.",
+    "keywords": ["provincias", "Audiencias", "Capitanes Generales", "Intendentes", "administración"]
+  },
+  {
+    "id": "tc18_14",
+    "question": "¿Qué reformas económicas acompañaron al nuevo Estado borbónico?",
+    "answerGuide": "La unificación de la Hacienda, la supresión de fronteras interiores y la implantación del catastro en Cataluña.",
+    "keywords": ["Hacienda", "fronteras interiores", "catastro", "Cataluña", "reformas económicas"]
+  },
+  {
+    "id": "tc18_15",
+    "question": "¿Qué cambio histórico supuso la Guerra de Sucesión para España?",
+    "answerGuide": "El fin de los Austrias, la llegada de los Borbones y la implantación de un modelo absolutista y centralizador.",
+    "keywords": ["fin de los Austrias", "Borbones", "absolutismo", "centralización", "cambio dinástico"]
+  }
+]

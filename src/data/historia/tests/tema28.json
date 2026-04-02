@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t28_q1",
+    "question": "¿Entre qué años se desarrolló la Guerra Civil española según el tema?",
+    "options": ["1931-1936", "1936-1939", "1933-1938", "1939-1945"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q2",
+    "question": "¿Cómo define el tema la Guerra Civil española en relación con la Segunda Guerra Mundial?",
+    "options": ["Como una guerra aislada sin proyección exterior", "Como un preludio y campo de pruebas de la Segunda Guerra Mundial", "Como una guerra colonial tardía", "Como un conflicto puramente económico"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q3",
+    "question": "¿Qué originó el inicio inmediato del conflicto?",
+    "options": ["La proclamación de la Segunda República", "El pronunciamiento militar de los días 17 y 18 de julio de 1936", "La Batalla del Ebro", "La entrada de las Brigadas Internacionales"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q4",
+    "question": "¿Qué pretendían inicialmente los sublevados en julio de 1936?",
+    "options": ["Una guerra larga de desgaste", "Un golpe de Estado rápido", "La instauración inmediata de una república federal", "La intervención extranjera directa"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q5",
+    "question": "¿Qué ciudades no lograron controlar rápidamente los sublevados?",
+    "options": ["Sevilla, Valencia y Málaga", "Madrid, Barcelona y Bilbao", "Zaragoza, Burgos y Salamanca", "Cádiz, Vigo y Oviedo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q6",
+    "question": "¿En qué se transformó el golpe fallido de 1936?",
+    "options": ["En una transición pacífica", "En una guerra de desgaste", "En una dictadura parlamentaria", "En una revolución obrera internacional"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q7",
+    "question": "¿Qué hecho político previo agravó la polarización antes de la guerra?",
+    "options": ["La caída de Primo de Rivera", "La victoria del Frente Popular en febrero de 1936", "La Constitución de 1931", "La Sanjurjada"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q8",
+    "question": "¿Qué asesinato actuó como detonante final del conflicto según el tema?",
+    "options": ["El de José Antonio Primo de Rivera", "El de Calvo Sotelo", "El de Castillo en solitario", "El de Azaña"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q9",
+    "question": "¿Qué problema estructural del campo aparece como una de las raíces de la guerra?",
+    "options": ["La industrialización excesiva", "La desigualdad estructural agraria", "La falta de comercio exterior", "El exceso de mecanización"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q10",
+    "question": "¿Qué sectores tradicionales se opusieron ferozmente a perder sus privilegios?",
+    "options": ["Los estudiantes y los intelectuales", "La Iglesia, el Ejército y los grandes terratenientes", "Los obreros industriales y los campesinos pobres", "Los republicanos federales y los anarquistas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q11",
+    "question": "¿Qué sindicatos aparecen citados como protagonistas de la radicalización obrera?",
+    "options": ["CNT y UGT", "UGT y CEDA", "CNT y Falange", "PSOE y CTV"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t28_q12",
+    "question": "¿Qué temor generó la radicalización obrera en las clases medias?",
+    "options": ["El regreso del absolutismo", "Una revolución de corte soviético", "La pérdida de las colonias", "La anexión a Francia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q13",
+    "question": "¿Qué dos modelos ideológicos chocaron frontalmente durante la guerra?",
+    "options": ["Federalismo y centralismo técnico", "Laicismo reformista republicano y nacional-catolicismo", "Monarquismo liberal y socialismo democrático", "Anarquismo y republicanismo moderado"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q14",
+    "question": "¿Cómo se caracteriza la zona republicana en el tema?",
+    "options": ["Por una autoridad militar única", "Por una lucha interna por el poder y una crisis de autoridad", "Por la estabilidad institucional", "Por la desaparición de los comités obreros"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q15",
+    "question": "¿Qué ocurrió con el poder en la zona republicana al inicio de la guerra?",
+    "options": ["Se concentró en Franco", "Se atomizó en comités obreros", "Pasó a manos del Senado", "Fue asumido por la banca"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q16",
+    "question": "¿Qué dos jefes de gobierno republicanos menciona el tema durante la guerra?",
+    "options": ["Azaña y Alcalá-Zamora", "Largo Caballero y Juan Negrín", "Lerroux y Gil-Robles", "Casares Quiroga y Martínez Barrio únicamente"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q17",
+    "question": "¿Qué lema impulsó Juan Negrín durante la guerra?",
+    "options": ["Ni un paso atrás", "Resistir es vencer", "Todo por la patria", "Paz, piedad y perdón"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q18",
+    "question": "¿Qué proceso económico-social vivió inicialmente la zona republicana?",
+    "options": ["Privatizaciones masivas", "Colectivizaciones", "Restauración de los señoríos", "Colonización agrícola estatal"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q19",
+    "question": "¿Qué recursos estratégicos perdió la zona republicana, agravando su situación económica?",
+    "options": ["Petróleo y gas", "Trigo y carbón", "Oro y plata", "Vino y aceite"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q20",
+    "question": "¿Qué efecto económico sufrió la zona republicana por esa pérdida?",
+    "options": ["Deflación sostenida", "Inflación galopante", "Equilibrio presupuestario", "Prosperidad agraria"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q21",
+    "question": "¿Cómo se caracteriza la zona sublevada o 'nacional'?",
+    "options": ["Por la descentralización política", "Por el mando militar jerárquico", "Por el pluralismo sindical", "Por el poder de los comités obreros"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q22",
+    "question": "¿Qué decreto de 1937 unificó políticamente la zona sublevada?",
+    "options": ["Decreto de Valencia", "Decreto de Unificación", "Ley Azaña", "Estatuto de Bayona"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q23",
+    "question": "¿En qué figura se centró el poder en la zona nacional tras 1937?",
+    "options": ["Mola", "Franco", "Sanjurjo", "Queipo de Llano"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q24",
+    "question": "¿Qué tipo de Estado dio paso la unificación política en la zona sublevada según el tema?",
+    "options": ["Un Estado federal", "Un Estado totalitario", "Una democracia parlamentaria", "Una república social"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q25",
+    "question": "¿Qué rasgos sociales y económicos se atribuyen a la zona sublevada?",
+    "options": ["Autogestión obrera y descentralización", "Militarización absoluta, represión y apoyo financiero de la banca", "Reforma agraria y libertad sindical", "Neutralidad económica y pacifismo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q26",
+    "question": "¿Qué mensaje propagandístico defendía la República?",
+    "options": ["Cruzada contra el comunismo", "Libertad contra el fascismo", "Dios, Patria y Rey", "Orden y tradición"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q27",
+    "question": "¿Cómo presentaban los sublevados su guerra en el terreno propagandístico?",
+    "options": ["Como una revolución obrera", "Como una cruzada contra el comunismo", "Como una guerra por el federalismo", "Como una defensa del sufragio femenino"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q28",
+    "question": "¿Qué acuerdo internacional intentó evitar la implicación extranjera en la guerra?",
+    "options": ["El Pacto de San Sebastián", "El Pacto de No Intervención", "El Tratado de París", "La Entente Cordiale"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q29",
+    "question": "¿Qué democracias se mantuvieron neutrales por miedo a una guerra europea generalizada?",
+    "options": ["Italia y Alemania", "Francia y Gran Bretaña", "Portugal y Bélgica", "Estados Unidos y México"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q30",
+    "question": "¿A qué bando perjudicó más la política de no intervención?",
+    "options": ["Al bando nacional", "A la República", "A ambos por igual", "Solo a las Brigadas Internacionales"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q31",
+    "question": "¿Qué potencia apoyó a la República con armamento pagado con el oro del Banco de España?",
+    "options": ["Francia", "México", "Unión Soviética", "Gran Bretaña"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t28_q32",
+    "question": "¿Qué país apoyó diplomática y materialmente a la República según el tema?",
+    "options": ["Portugal", "México", "Italia", "Alemania"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q33",
+    "question": "¿Qué nombre recibieron los voluntarios antifascistas extranjeros que lucharon con la República?",
+    "options": ["Legión Cóndor", "CTV", "Brigadas Internacionales", "Voluntarios de la Libertad"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t28_q34",
+    "question": "¿Qué unidad alemana apoyó al bando nacional?",
+    "options": ["Brigada Azul", "Legión Cóndor", "Guardia de Hierro", "Camisas Pardas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q35",
+    "question": "¿Qué fuerza italiana apoyó al bando nacional?",
+    "options": ["CTV", "UGT", "AIT", "CNT"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t28_q36",
+    "question": "¿Qué batalla de 1938 se presenta como decisiva en el tema?",
+    "options": ["Bailén", "Teruel", "Ebro", "Guadalajara"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t28_q37",
+    "question": "¿Qué territorio cayó antes del final de la guerra según el tema?",
+    "options": ["Galicia", "Cataluña", "País Vasco francés", "Navarra"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q38",
+    "question": "¿En qué fecha firmó Franco el último parte de guerra?",
+    "options": ["17 de julio de 1936", "1 de abril de 1939", "18 de julio de 1936", "14 de abril de 1931"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q39",
+    "question": "¿Qué consecuencia política inmediata tuvo la victoria franquista?",
+    "options": ["La restauración de la República", "La supresión de libertades, partidos, sindicatos y estatutos de autonomía", "La entrada en el Plan Marshall", "La legalización del pluralismo político"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t28_q40",
+    "question": "¿Qué política económica caracteriza la posguerra franquista según el tema?",
+    "options": ["Librecambismo", "Autarquía", "Colectivización", "Federalismo económico"],
+    "correctAnswer": 1
+  }
+]

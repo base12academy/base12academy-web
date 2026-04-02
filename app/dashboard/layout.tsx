@@ -12,6 +12,10 @@ export default function DashboardLayout({
 }) {
   const pathname = usePathname();
 
+  const isHistoria =
+    pathname === "/dashboard/historia-espana" ||
+    pathname.startsWith("/dashboard/tema/");
+
   const linkStyle = (path: string) => ({
     color: pathname === path ? "white" : "#9ca3af",
     textDecoration: "none",
@@ -19,90 +23,68 @@ export default function DashboardLayout({
   });
 
   return (
-        <div style={{ display: "flex", minHeight: "100vh" }}>
-      <aside
-        style={{
-          width: "250px",
-          background: "#111827",
-          color: "white",
-          padding: "20px",
-        }}
-      >
-        <h2 style={{ marginBottom: "20px" }}>Base12 Academy</h2>
-
-        <nav
+    <div style={{ display: "flex", minHeight: "100vh" }}>
+      {isHistoria ? (
+        <aside
           style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-start",
-            gap: "12px",
+            width: "250px",
+            background: "#111827",
+            color: "white",
+            padding: "20px",
           }}
         >
-          <Link href="/dashboard" style={linkStyle("/dashboard")}>
-            Dashboard
-          </Link>
+          <h2 style={{ marginBottom: "20px" }}>Base12 Academy</h2>
 
-          <Link
-            href="/dashboard/historia-espana"
-            style={linkStyle("/dashboard/historia-espana")}
-          >
-            Historia de España
-          </Link>
-
-          <div
+          <nav
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: "8px",
-              marginLeft: "12px",
+              alignItems: "flex-start",
+              gap: "12px",
             }}
           >
-           {temasHistoria.map((tema) => {
-  const icono =
-    tema.estado === "completado"
-      ? "✓"
-      : tema.estado === "en-progreso"
-      ? "⏳"
-      : "🔒";
+            <Link href="/dashboard" style={linkStyle("/dashboard")}>
+              Área de estudio
+            </Link>
 
-  const texto = `Tema ${tema.slug.split("-")[1]} ${icono}`;
+            <Link
+              href="/dashboard/historia-espana"
+              style={linkStyle("/dashboard/historia-espana")}
+            >
+              Historia de España
+            </Link>
 
-  if (tema.estado === "bloqueado") {
-    return (
-      <span
-        key={tema.slug}
-        style={{
-          color: "#6b7280",
-          marginLeft: "12px",
-          cursor: "not-allowed",
-        }}
-      >
-        {texto}
-      </span>
-    );
-  }
-
-  return (
-    <Link
-      key={tema.slug}
-      href={`/dashboard/historia-espana/${tema.slug}`}
-      style={{
-        ...linkStyle(`/dashboard/historia-espana/${tema.slug}`),
-        marginLeft: "12px",
-      }}
-    >
-      {texto}
-    </Link>
-  );
-})}
-          </div>
-        </nav>
-      </aside>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "8px",
+                marginLeft: "12px",
+              }}
+            >
+              {temasHistoria.map((tema) => (
+                <Link
+                  key={tema.slug}
+                  href={`/dashboard/tema/${tema.slug}`}
+                  style={{
+                    color: pathname === `/dashboard/tema/${tema.slug}` ? "white" : "#9ca3af",
+                    textDecoration: "none",
+                    fontWeight:
+                      pathname === `/dashboard/tema/${tema.slug}` ? "bold" : "normal",
+                  }}
+                >
+                  {tema.titulo}
+                </Link>
+              ))}
+            </div>
+          </nav>
+        </aside>
+      ) : null}
 
       <main style={{ flex: 1, padding: "40px" }}>
-  {children}
-  <ChatBot />
-</main>
+        {children}
+        <ChatBot />
+      </main>
     </div>
-    );
+  );
 }

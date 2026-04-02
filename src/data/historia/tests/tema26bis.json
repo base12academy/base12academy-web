@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t26bis_q1",
+    "question": "¿Qué periodo concentra la fase más intensa de la guerra de Cuba según el tema?",
+    "options": ["1868-1878", "1895-1898", "1902-1930", "1874-1898"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26bis_q2",
+    "question": "¿Cómo define el tema la guerra de Cuba?",
+    "options": ["Como una guerra exclusivamente comercial", "Como una guerra colonial que evidenció las carencias de la Restauración y favoreció a EE. UU.", "Como una guerra civil peninsular", "Como una simple revuelta local sin impacto internacional"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26bis_q3",
+    "question": "¿Qué conflicto anterior sirve de antecedente directo a la guerra de 1895?",
+    "options": ["La Guerra de Independencia", "La Guerra de los Diez Años", "La Primera Guerra Carlista", "La Semana Trágica"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26bis_q4",
+    "question": "¿Qué acuerdo puso fin al conflicto anterior sin resolver plenamente el problema cubano?",
+    "options": ["Convenio de Vergara", "Paz de Zanjón", "Tratado de París", "Pacto de Ostende"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26bis_q5",
+    "question": "¿Qué ocurrió con las promesas de autonomía tras la Paz de Zanjón?",
+    "options": ["Se aplicaron de inmediato", "Se cumplieron parcialmente y consolidaron la paz", "No se cumplieron plenamente", "Fueron sustituidas por una independencia pactada"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t26bis_q6",
+    "question": "¿Qué dirigente fundó en 1892 el Partido Revolucionario Cubano?",
+    "options": ["Weyler", "Martínez Campos", "José Martí", "McKinley"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t26bis_q7",
+    "question": "¿Qué función tuvo el Partido Revolucionario Cubano según el tema?",
+    "options": ["Defender la unión con España", "Unificar a los grupos independentistas", "Apoyar la autonomía de Maura", "Negociar con Cánovas la paz"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26bis_q8",
+    "question": "¿Cómo se dividía socialmente la población cubana según el tema?",
+    "options": ["Entre militares y civiles", "Entre españoles peninsulares y cubanos criollos y clases populares", "Entre liberales y carlistas", "Entre esclavos y aristócratas únicamente"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26bis_q9",
+    "question": "¿Qué grupo controlaba principalmente la administración y el comercio de la isla?",
+    "options": ["Los mambises", "Los cubanos", "Los españoles peninsulares", "Los estadounidenses"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t26bis_q10",
+    "question": "¿Qué hecho social previo aparece mencionado en relación con el deseo de soberanía cubano?",
+    "options": ["La abolición de la esclavitud en 1886", "La Constitución de 1869", "La caída de Isabel II", "La Ley de Ferrocarriles"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t26bis_q11",
+    "question": "¿Cómo era la política económica española hacia Cuba?",
+    "options": ["Librecambista", "Proteccionista y basada en aranceles altos", "Federal", "Sin control comercial"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26bis_q12",
+    "question": "¿Qué país era el principal comprador natural del tabaco y el azúcar cubanos?",
+    "options": ["Francia", "Portugal", "Estados Unidos", "Alemania"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t26bis_q13",
+    "question": "¿Qué combinó José Martí en su pensamiento político según el tema?",
+    "options": ["Absolutismo y clericalismo", "Soberanía con ideales democráticos y sociales", "Carlismo y fuerismo", "Monarquismo y proteccionismo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26bis_q14",
+    "question": "¿Qué propuesta fue rechazada por las Cortes en 1893, empujando a muchos cubanos hacia la vía armada?",
+    "options": ["La Constitución de 1876", "La Ley Maura de autonomía", "La Enmienda Platt", "La Paz de Zanjón"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26bis_q15",
+    "question": "¿Con qué hecho comenzó formalmente la guerra en 1895?",
+    "options": ["El Grito de Yara", "El Grito de Baire", "La explosión del Maine", "La batalla de Santiago"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26bis_q16",
+    "question": "¿Qué general español intentó primero una vía negociadora?",
+    "options": ["Weyler", "Cervera", "Martínez Campos", "Montojo"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t26bis_q17",
+    "question": "¿Qué valoración hace el tema de la estrategia negociadora de Martínez Campos?",
+    "options": ["Fue un gran éxito", "Terminó en fracaso", "Logró la independencia pactada", "Impuso la autonomía definitiva"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26bis_q18",
+    "question": "¿Qué general aplicó la política de mano dura tras el fracaso negociador?",
+    "options": ["Prim", "Weyler", "Topete", "Berenguer"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26bis_q19",
+    "question": "¿Qué medida concedió el gobierno liberal en 1897?",
+    "options": ["La independencia", "Una autonomía tardía", "La anexión a EE. UU.", "La abolición del ejército colonial"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26bis_q20",
+    "question": "¿Por qué no fue aceptada la autonomía de 1897 por los rebeldes?",
+    "options": ["Porque ya era demasiado tarde", "Porque la aprobó José Martí", "Porque beneficiaba a Weyler", "Porque eliminaba el comercio con EE. UU."],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t26bis_q21",
+    "question": "¿Cómo se llamaba a los insurrectos cubanos que practicaban la guerrilla?",
+    "options": ["Apostólicos", "Mambises", "Voluntarios de la Libertad", "Caciques"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26bis_q22",
+    "question": "¿En qué consistió la reconcentración de Weyler?",
+    "options": ["En militarizar La Habana", "En encerrar a campesinos en poblados controlados", "En deportar a peninsulares a España", "En abolir el comercio exterior"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26bis_q23",
+    "question": "¿Qué consecuencias humanas tuvo la reconcentración?",
+    "options": ["Prosperidad agrícola", "Miles de muertes por hambre y enfermedades", "Fin inmediato de la guerra", "Apoyo masivo a España"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26bis_q24",
+    "question": "¿Qué impacto económico tuvo la guerra en Cuba según el tema?",
+    "options": ["Aumentó la producción azucarera", "Arruinó las plantaciones y generó una deuda pública enorme", "Fortaleció la Hacienda española", "Eliminó las quintas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26bis_q25",
+    "question": "¿Qué expresión usa el tema para referirse al coste humano que suponían las quintas para las clases populares?",
+    "options": ["Tributo nacional", "Impuesto de sangre", "Contribución patriótica", "Servicio cívico"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26bis_q26",
+    "question": "¿Qué dos ideas justificaban ideológicamente la expansión estadounidense según el tema?",
+    "options": ["Panslavismo y colonialismo francés", "Destino Manifiesto y Doctrina Monroe", "Fuerismo y regeneracionismo", "Krausismo y federalismo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26bis_q27",
+    "question": "¿Qué objetivo económico buscaba Estados Unidos en Cuba?",
+    "options": ["Eliminar el azúcar del mercado", "Dominar el mercado del azúcar", "Imponer la monarquía", "Sostener a España financieramente"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26bis_q28",
+    "question": "¿Qué tipo de prensa ayudó a crear la histeria bélica en Estados Unidos?",
+    "options": ["Prensa obrera", "Prensa sensacionalista", "Prensa universitaria", "Prensa clerical"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26bis_q29",
+    "question": "¿Qué nombres aparecen asociados a esa prensa sensacionalista?",
+    "options": ["Costa y Unamuno", "Pulitzer y Hearst", "Cervera y Montojo", "Sagasta y Maura"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26bis_q30",
+    "question": "¿Qué hecho sirvió de casus belli definitivo para la intervención estadounidense?",
+    "options": ["El Grito de Baire", "La explosión del Maine en La Habana", "La Paz de Zanjón", "La batalla de Cavite"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26bis_q31",
+    "question": "¿Qué presidente estadounidense lanzó el ultimátum a España?",
+    "options": ["Roosevelt", "Wilson", "McKinley", "Lincoln"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t26bis_q32",
+    "question": "¿Qué exigía el ultimátum de McKinley?",
+    "options": ["La venta de Cuba", "La retirada española", "La anexión de Filipinas a España", "La restauración de Weyler"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26bis_q33",
+    "question": "¿Por qué rechazó España el ultimátum según el tema?",
+    "options": ["Porque esperaba ganar con facilidad", "Por un malentendido concepto del honor", "Porque Cuba ya era independiente", "Porque contaba con apoyo francés"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26bis_q34",
+    "question": "¿Qué ocurrió en la batalla de Santiago de Cuba?",
+    "options": ["La victoria de Cervera", "La destrucción total de la escuadra de Cervera", "La firma del armisticio", "La rendición de Weyler"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26bis_q35",
+    "question": "¿Qué batalla en Filipinas destruyó la flota de Montojo?",
+    "options": ["Cavite", "Alcolea", "Baire", "Valençay"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t26bis_q36",
+    "question": "¿Qué tratado puso fin a la guerra en diciembre de 1898?",
+    "options": ["Tratado de Utrecht", "Tratado de París", "Paz de Zanjón", "Convenio de Vergara"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26bis_q37",
+    "question": "¿Qué territorios cedió España a Estados Unidos en el Tratado de París?",
+    "options": ["Cuba, México y Puerto Rico", "Puerto Rico, Filipinas y Guam", "Puerto Rico, Florida y Guam", "Filipinas, Cuba y Canarias"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26bis_q38",
+    "question": "¿Qué situación quedó para Cuba tras el tratado?",
+    "options": ["Independencia plena inmediata", "Ocupación militar estadounidense", "Reincorporación a España con autonomía", "Anexión total a Filipinas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26bis_q39",
+    "question": "¿Qué movimiento intelectual cobró fuerza en España tras el desastre?",
+    "options": ["Carlismo", "Regeneracionismo", "Cantonalismo", "Neocatolicismo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26bis_q40",
+    "question": "¿Qué consecuencia económica paradójica tuvo el desastre del 98 según el tema?",
+    "options": ["La ruina total del sistema bancario", "La repatriación de capitales que ayudó a modernizar bancos e industria", "La desaparición de la inversión privada", "La abolición de los aranceles españoles"],
+    "correctAnswer": 1
+  }
+]

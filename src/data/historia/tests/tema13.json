@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t13_q1",
+    "question": "¿Cuántas entidades soberanas existían en la Península Ibérica a mediados del siglo XV?",
+    "options": ["Tres", "Cuatro", "Cinco", "Seis"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t13_q2",
+    "question": "¿Qué reinos componían la península según el tema?",
+    "options": ["Castilla, Aragón, Portugal, Navarra y Granada", "Castilla, León, Aragón y Navarra", "Portugal, Aragón y Francia", "Castilla, Granada y Roma"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t13_q3",
+    "question": "¿Qué conflicto sucesorio se produjo en Castilla bajo Enrique IV?",
+    "options": ["Entre Isabel y Fernando", "Entre Juana la Beltraneja e Isabel", "Entre Portugal y Aragón", "Entre Navarra y Castilla"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t13_q4",
+    "question": "¿Dónde se celebró el matrimonio entre Isabel y Fernando en 1469?",
+    "options": ["Toledo", "Sevilla", "Valladolid", "Granada"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t13_q5",
+    "question": "¿Cómo fue el matrimonio de Isabel y Fernando según el tema?",
+    "options": ["Público y oficial", "Secreto", "Impuesto por el Papa", "Organizado por Portugal"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t13_q6",
+    "question": "¿Qué guerra tuvo lugar entre 1474 y 1479?",
+    "options": ["Guerra de Granada", "Guerra Civil Castellana", "Guerra de los Remensas", "Guerra de Sucesión Aragonesa"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t13_q7",
+    "question": "¿Quién apoyó a Isabel en la guerra civil castellana?",
+    "options": ["Portugal", "Francia", "Corona de Aragón", "Navarra"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t13_q8",
+    "question": "¿Quién apoyó a Juana la Beltraneja?",
+    "options": ["Castilla", "Aragón", "Portugal", "Granada"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t13_q9",
+    "question": "¿Qué tratado puso fin a la guerra civil castellana?",
+    "options": ["Tratado de Tordesillas", "Tratado de Alcaçovas", "Tratado de Utrecht", "Capitulaciones de Santa Fe"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t13_q10",
+    "question": "¿Qué reconocía el Tratado de Alcaçovas?",
+    "options": ["La independencia de Aragón", "A Isabel como reina de Castilla", "La unión de Castilla y Portugal", "La conquista de Granada"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t13_q11",
+    "question": "¿Qué tipo de unión crearon los Reyes Católicos?",
+    "options": ["Institucional", "Federal", "Personal o dinástica", "Territorial absoluta"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t13_q12",
+    "question": "¿Qué dinastía gobernaba con los Reyes Católicos?",
+    "options": ["Austria", "Borbón", "Trastámara", "Omeya"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t13_q13",
+    "question": "¿Qué consigna ideológica justificaba la unión?",
+    "options": ["La expansión atlántica", "La restauración de España", "La cruzada europea", "El feudalismo clásico"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t13_q14",
+    "question": "¿Qué mantuvieron los distintos reinos tras la unión?",
+    "options": ["Un único sistema legal", "Sus propias leyes, fueros y monedas", "Una moneda común", "Un único idioma"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t13_q15",
+    "question": "¿Cómo eran considerados los habitantes de un reino respecto a otro?",
+    "options": ["Ciudadanos comunes", "Aliados permanentes", "Extranjeros", "Vasallos directos"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t13_q16",
+    "question": "¿Qué impedía la existencia de un mercado único en la unión?",
+    "options": ["Las guerras internas", "Las aduanas interiores", "La falta de moneda", "La escasez de comercio"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t13_q17",
+    "question": "¿Qué institución ganadera se impulsó en Castilla?",
+    "options": ["La Mesta", "El Concejo", "La Hermandad", "La Curia"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t13_q18",
+    "question": "¿Qué tipo de monarquía implantaron los Reyes Católicos?",
+    "options": ["Feudal", "Absoluta", "Autoritaria", "Democrática"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t13_q19",
+    "question": "¿Qué institución se creó en 1476 para mantener el orden público?",
+    "options": ["La Inquisición", "La Santa Hermandad", "El Consejo Real", "Las Cortes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t13_q20",
+    "question": "¿Qué institución fue profesionalizada con letrados para restar poder a la nobleza?",
+    "options": ["Cortes", "Consejo Real", "Chancillería", "Inquisición"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t13_q21",
+    "question": "¿Qué eran los corregidores?",
+    "options": ["Jueces eclesiásticos", "Representantes del rey en los municipios", "Militares fronterizos", "Mercaderes urbanos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t13_q22",
+    "question": "¿Dónde se establecieron las principales chancillerías?",
+    "options": ["Toledo y Sevilla", "Valladolid y Granada", "Barcelona y Valencia", "Madrid y Burgos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t13_q23",
+    "question": "¿Qué objetivo tenía la reforma de la Hacienda Real?",
+    "options": ["Reducir impuestos", "Recuperar rentas y financiar el Estado", "Eliminar la nobleza", "Controlar la Iglesia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t13_q24",
+    "question": "¿Cuándo se desarrolló la Guerra de Granada?",
+    "options": ["1469-1479", "1478-1488", "1482-1492", "1492-1502"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t13_q25",
+    "question": "¿Qué estrategia se utilizó en la Guerra de Granada?",
+    "options": ["Batallas navales", "Asedios y aprovechamiento de conflictos internos", "Guerrillas campesinas", "Alianzas con Francia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t13_q26",
+    "question": "¿Qué personaje musulmán aparece vinculado a las disputas internas en Granada?",
+    "options": ["Tarik", "Boabdil", "Abderramán III", "Almanzor"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t13_q27",
+    "question": "¿Qué ocurrió el 2 de enero de 1492?",
+    "options": ["Descubrimiento de América", "Rendición de Granada", "Firma del Tratado de Tordesillas", "Expulsión de los judíos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t13_q28",
+    "question": "¿Cómo se llamó a la población musulmana tras la conquista de Granada?",
+    "options": ["Moriscos", "Mozárabes", "Mudéjares", "Muladíes"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t13_q29",
+    "question": "¿Qué permitió la conquista de Granada en términos territoriales?",
+    "options": ["Control del norte", "Control de la Vega de Granada y las costas", "Expansión hacia Francia", "Dominio del Ebro"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t13_q30",
+    "question": "¿Cómo se interpretó ideológicamente la toma de Granada?",
+    "options": ["Como un pacto económico", "Como una cruzada religiosa", "Como una reforma administrativa", "Como una guerra civil"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t13_q31",
+    "question": "¿Qué institución se creó en 1478 para perseguir la herejía?",
+    "options": ["Consejo Real", "Inquisición", "Cortes", "Chancillería"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t13_q32",
+    "question": "¿Qué ocurrió con los judíos en 1492?",
+    "options": ["Se integraron plenamente", "Fueron expulsados si no se convertían", "Obtuvieron privilegios", "Se trasladaron a América"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t13_q33",
+    "question": "¿Qué consecuencia tuvo la expulsión de los judíos?",
+    "options": ["Aumento de la población", "Pérdida de capital humano cualificado", "Expansión agrícola", "Reducción de impuestos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t13_q34",
+    "question": "¿Qué establecía el decreto de 1502?",
+    "options": ["Expulsión de los cristianos", "Conversión obligatoria o expulsión de los musulmanes", "Fin de la Inquisición", "Unión con Portugal"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t13_q35",
+    "question": "¿Cómo se llamó a los musulmanes convertidos tras 1502?",
+    "options": ["Mudéjares", "Moriscos", "Mozárabes", "Muladíes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t13_q36",
+    "question": "¿Qué tratado obligó a buscar rutas hacia el oeste?",
+    "options": ["Tordesillas", "Alcaçovas", "Utrecht", "Caspe"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t13_q37",
+    "question": "¿Qué archipiélago fue conquistado completamente en 1496?",
+    "options": ["Baleares", "Canarias", "Azores", "Madeira"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t13_q38",
+    "question": "¿Qué acuerdo permitió el viaje de Colón?",
+    "options": ["Tratado de Tordesillas", "Capitulaciones de Santa Fe", "Tratado de Alcaçovas", "Paz de Granada"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t13_q39",
+    "question": "¿Qué tratado repartió las zonas de influencia en el Atlántico en 1494?",
+    "options": ["Alcaçovas", "Tordesillas", "Caspe", "Utrecht"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t13_q40",
+    "question": "¿Qué institución se creó en Sevilla para controlar el comercio americano?",
+    "options": ["Consejo Real", "Casa de Contratación", "Santa Hermandad", "Mesta"],
+    "correctAnswer": 1
+  }
+]

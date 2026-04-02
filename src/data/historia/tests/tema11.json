@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t11_q1",
+    "question": "¿Qué proceso definió la configuración de la península en los siglos medievales según el tema?",
+    "options": ["La romanización", "La expansión de los reinos cristianos hacia el sur", "La invasión visigoda", "La crisis del Califato de Córdoba"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t11_q2",
+    "question": "¿Cómo fue el avance cristiano durante la Edad Media?",
+    "options": ["Lineal y constante", "Rápido y sin resistencias", "No lineal y dependiente de la fuerza militar y la fragmentación de Al-Ándalus", "Exclusivamente diplomático"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t11_q3",
+    "question": "¿Qué factor andalusí favoreció especialmente el avance cristiano?",
+    "options": ["La unidad del Califato", "La fragmentación política de Al-Ándalus", "La expansión almohade", "La desaparición de las ciudades"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t11_q4",
+    "question": "¿Qué reinos protagonizaron el avance hasta la línea del Duero entre los siglos VIII y X?",
+    "options": ["Castilla y Aragón", "Asturias y León", "Navarra y Aragón", "Portugal y Castilla"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t11_q5",
+    "question": "¿Hasta qué río avanzaron los núcleos cristianos entre los siglos VIII y X?",
+    "options": ["Tajo", "Ebro", "Duero", "Guadalquivir"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t11_q6",
+    "question": "¿Cómo se caracterizó la primera etapa de expansión en el norte?",
+    "options": ["Por la ocupación de tierras prácticamente despobladas", "Por los repartimientos", "Por la acción de las órdenes militares", "Por la conquista de las Baleares"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t11_q7",
+    "question": "¿Qué valles fueron conquistados por los cristianos en los siglos XI y XII?",
+    "options": ["Duero y Guadalquivir", "Tajo y Ebro", "Miño y Tajo", "Segura y Júcar"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t11_q8",
+    "question": "¿Qué gran ciudad fue conquistada en 1085?",
+    "options": ["Zaragoza", "Sevilla", "Toledo", "Valencia"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t11_q9",
+    "question": "¿Qué ciudad fue tomada por los cristianos en 1118?",
+    "options": ["Córdoba", "Toledo", "Zaragoza", "Murcia"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t11_q10",
+    "question": "¿Qué imperios norteafricanos opusieron una fuerte resistencia al avance cristiano en los siglos XI y XII?",
+    "options": ["Omeyas y abasíes", "Almorávides y almohades", "Fatimíes y mamelucos", "Bereberes y muladíes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t11_q11",
+    "question": "¿Qué batalla de 1212 cambió decisivamente el escenario peninsular?",
+    "options": ["Guadalete", "Poitiers", "Las Navas de Tolosa", "Covadonga"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t11_q12",
+    "question": "¿Quién conquistó el valle del Guadalquivir en el siglo XIII?",
+    "options": ["Jaime I", "Alfonso IX", "Fernando III el Santo", "Ramón Berenguer IV"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t11_q13",
+    "question": "¿Qué ciudades del valle del Guadalquivir cita el tema como conquistadas por Fernando III?",
+    "options": ["Toledo y Zaragoza", "Córdoba y Sevilla", "Murcia y Alicante", "Burgos y León"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t11_q14",
+    "question": "¿Qué territorios ocupó Jaime I de Aragón en el siglo XIII?",
+    "options": ["Córdoba y Jaén", "Valencia y las islas Baleares", "Toledo y Murcia", "Galicia y León"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t11_q15",
+    "question": "¿A qué quedó reducido finalmente el dominio musulmán tras la gran expansión del siglo XIII?",
+    "options": ["Al Califato de Córdoba", "Al Reino Nazarí de Granada", "A la taifa de Sevilla", "A Zaragoza"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t11_q16",
+    "question": "¿Qué objetivo principal tenía la repoblación?",
+    "options": ["Expandir el comercio mediterráneo", "Asegurar el control efectivo de las tierras mediante el asentamiento de población", "Imponer el rito romano", "Construir castillos en la costa"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t11_q17",
+    "question": "¿Qué sistema de repoblación se aplicó entre los siglos VIII y X en el norte y el valle del Duero?",
+    "options": ["Repartimientos", "Repoblación concejil", "Presura o aprisio", "Órdenes militares"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t11_q18",
+    "question": "¿Quiénes ocupaban tierras yermas en la presura?",
+    "options": ["Solo nobles", "Campesinos y hombres libres", "Órdenes militares", "Monjes exclusivamente"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t11_q19",
+    "question": "¿Qué tipo de propiedad generó la presura?",
+    "options": ["Grandes latifundios", "Pequeña propiedad", "Propiedad comunal obligatoria", "Señoríos eclesiásticos únicamente"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t11_q20",
+    "question": "¿Qué modelo de repoblación predominó entre los siglos XI y XII entre el Duero y el Tajo?",
+    "options": ["Presura", "Repartimientos", "Repoblación concejil", "Encomiendas militares"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t11_q21",
+    "question": "¿Qué era un alfoz en la repoblación concejil?",
+    "options": ["Un impuesto de guerra", "La ciudad y su entorno rural", "Un monasterio fortificado", "Una milicia urbana"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t11_q22",
+    "question": "¿Qué instrumentos se utilizaban para atraer pobladores en la repoblación concejil?",
+    "options": ["Parias y diezmos", "Fueros o cartas pueblas", "Foedus y capitulaciones", "Corveas y censos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t11_q23",
+    "question": "¿Qué modelo de repoblación se aplicó en zonas peligrosas como La Mancha o Extremadura en el siglo XIII?",
+    "options": ["Presura", "Repartimientos", "Órdenes militares", "Repoblación concejil"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t11_q24",
+    "question": "¿Qué órdenes militares menciona el tema?",
+    "options": ["Temple y Hospital", "Santiago y Calatrava", "Alcántara y Montesa", "Cluny y Císter"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t11_q25",
+    "question": "¿Qué tipo de propiedad consolidó la acción de las órdenes militares?",
+    "options": ["Minifundios", "Grandes latifundios", "Propiedad urbana burguesa", "Propiedad comunal concejil"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t11_q26",
+    "question": "¿Qué sistema de repoblación se aplicó en Andalucía y Murcia en el siglo XIII?",
+    "options": ["Presura", "Repartimientos", "Aprisio", "Fueros concejiles"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t11_q27",
+    "question": "¿Cómo se distribuían las tierras y casas en los repartimientos?",
+    "options": ["Por sorteo entre campesinos", "Según el rango social de los participantes en la campaña militar", "Solo entre clérigos", "Exclusivamente entre órdenes militares"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t11_q28",
+    "question": "¿Qué estructura agraria consolidaron los repartimientos en el sur?",
+    "options": ["Pequeña propiedad campesina", "Grandes latifundios", "Propiedad comunal", "Parcelas urbanas mercantiles"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t11_q29",
+    "question": "¿Cómo era la monarquía medieval según el tema?",
+    "options": ["Absoluta e ilimitada", "Limitada por nobleza y clero mediante el vasallaje", "Democrática", "Controlada por las ciudades"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t11_q30",
+    "question": "¿Qué idea legitimaba ideológicamente al rey medieval?",
+    "options": ["Elegido por el pueblo", "Rey por la gracia de Dios", "Representante de las Cortes", "Delegado del papa en exclusiva"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t11_q31",
+    "question": "¿Qué misión tenía el monarca medieval según el tema?",
+    "options": ["Expandir el comercio marítimo", "Defender la fe y administrar justicia", "Dirigir personalmente todas las ciudades", "Eliminar los fueros"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t11_q32",
+    "question": "¿Qué rasgo definía el modelo político castellano?",
+    "options": ["Pactismo estricto", "Mayor autoritarismo regio", "Dependencia de las Cortes", "Primacía del Justicia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t11_q33",
+    "question": "¿Qué debía respetar siempre el monarca castellano según el tema?",
+    "options": ["Las capitulaciones musulmanas", "Los fueros locales", "La ley romana", "Los privilegios de las órdenes militares únicamente"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t11_q34",
+    "question": "¿Qué rasgo definía el modelo político aragonés?",
+    "options": ["Autoritarismo regio", "Pactismo", "Centralismo absoluto", "Ausencia de fueros"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t11_q35",
+    "question": "¿Qué figura protegía los derechos ante posibles abusos del rey en Aragón?",
+    "options": ["El condestable", "El Justicia de Aragón", "El almotacén", "El valido"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t11_q36",
+    "question": "¿Entre qué siglos nacieron las Cortes medievales?",
+    "options": ["VIII y IX", "X y XI", "XII y XIII", "XIV y XV"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t11_q37",
+    "question": "¿Qué grupos participaban en las Cortes?",
+    "options": ["Solo nobleza y clero", "Nobleza, clero y burguesía", "Solo campesinos", "Solo el rey y los jueces"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t11_q38",
+    "question": "¿Qué acontecimiento de 1188 se considera el primer testimonio de parlamentarismo en Europa?",
+    "options": ["Las Cortes de Castilla", "Las Cortes de Aragón", "Las Cortes de León", "Las Cortes de Navarra"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t11_q39",
+    "question": "¿Qué votaban las Cortes para financiar las guerras?",
+    "options": ["Diezmos", "Servicios", "Parias", "Fazañas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t11_q40",
+    "question": "¿Qué revueltas se citan como ejemplo de conflictividad al final de la Edad Media?",
+    "options": ["Germanías y Comuneros", "Irmandiños y Remensas", "Mudéjares y moriscos", "Foráneos y unionistas"],
+    "correctAnswer": 1
+  }
+]

@@ -1,0 +1,182 @@
+[
+  {
+    "id": "t15_c1",
+    "question": "¿Qué territorios heredó Felipe II tras las abdicaciones de Bruselas?",
+    "answerGuide": "Recibió los reinos peninsulares, las posesiones italianas, los Países Bajos, el Franco Condado y el Imperio Americano.",
+    "keywords": ["reinos peninsulares", "Italia", "Países Bajos", "Franco Condado", "Imperio Americano"]
+  },
+  {
+    "id": "t15_c2",
+    "question": "¿Qué diferencia principal hubo entre Carlos I y Felipe II en su forma de gobernar?",
+    "answerGuide": "Carlos I fue un monarca itinerante, mientras que Felipe II gobernó de forma sedentaria y burocrática desde un centro fijo.",
+    "keywords": ["itinerante", "sedentaria", "burocrática", "centro fijo"]
+  },
+  {
+    "id": "t15_c3",
+    "question": "¿Por qué eligió Felipe II Madrid como capital en 1561?",
+    "answerGuide": "La eligió por su posición geográfica central en la península.",
+    "keywords": ["Madrid", "1561", "capital", "posición central"]
+  },
+  {
+    "id": "t15_c4",
+    "question": "¿Qué función tuvo San Lorenzo de El Escorial durante el reinado de Felipe II?",
+    "answerGuide": "Fue monasterio-palacio y centro neurálgico del imperio, desde donde el rey dirigía la administración.",
+    "keywords": ["El Escorial", "monasterio-palacio", "centro neurálgico", "administración"]
+  },
+  {
+    "id": "t15_c5",
+    "question": "¿Qué era el sistema polisinodial?",
+    "answerGuide": "Era un sistema de Consejos que ayudaban al rey a gobernar los distintos territorios y asuntos de la monarquía.",
+    "keywords": ["polisinodial", "Consejos", "gobierno", "territorios"]
+  },
+  {
+    "id": "t15_c6",
+    "question": "¿Qué se entiende por Monarquía Hispánica en tiempos de Felipe II?",
+    "answerGuide": "Es la idea de una monarquía compuesta por diversos reinos bajo un mismo soberano, defensor del catolicismo y de la Contrarreforma.",
+    "keywords": ["Monarquía Hispánica", "diversos reinos", "catolicismo", "Contrarreforma"]
+  },
+  {
+    "id": "t15_c7",
+    "question": "¿Qué eran los Consejos territoriales? Pon ejemplos.",
+    "answerGuide": "Eran órganos dedicados a territorios concretos, como Castilla, Aragón, Indias, Italia, Flandes y Portugal tras 1580.",
+    "keywords": ["Consejos territoriales", "Castilla", "Aragón", "Indias", "Italia", "Flandes", "Portugal"]
+  },
+  {
+    "id": "t15_c8",
+    "question": "¿Qué función tenían los Consejos temáticos?",
+    "answerGuide": "Trataban asuntos comunes a toda la monarquía, como Estado, Hacienda o Inquisición.",
+    "keywords": ["Consejos temáticos", "Estado", "Hacienda", "Inquisición"]
+  },
+  {
+    "id": "t15_c9",
+    "question": "¿Qué fue la rebelión de las Alpujarras?",
+    "answerGuide": "Fue la sublevación de los moriscos granadinos entre 1568 y 1571 contra la presión para abandonar sus costumbres.",
+    "keywords": ["Alpujarras", "moriscos", "1568", "1571", "sublevación"]
+  },
+  {
+    "id": "t15_c10",
+    "question": "¿Quién sofocó la rebelión de las Alpujarras y cuál fue una de sus consecuencias?",
+    "answerGuide": "La sofocó Juan de Austria y una consecuencia fue la dispersión de los moriscos por Castilla.",
+    "keywords": ["Juan de Austria", "moriscos", "dispersión", "Castilla"]
+  },
+  {
+    "id": "t15_c11",
+    "question": "¿Qué ocurrió en el caso de Antonio Pérez en 1591?",
+    "answerGuide": "Antonio Pérez huyó a Aragón amparándose en sus fueros, lo que provocó una crisis que acabó con la ejecución de Lanuza y la limitación de los privilegios aragoneses.",
+    "keywords": ["Antonio Pérez", "1591", "Aragón", "fueros", "Lanuza"]
+  },
+  {
+    "id": "t15_c12",
+    "question": "¿Qué papel tuvo la Inquisición durante el reinado de Felipe II?",
+    "answerGuide": "Actuó como instrumento de control religioso y social, persiguiendo focos protestantes y celebrando autos de fe.",
+    "keywords": ["Inquisición", "control social", "protestantes", "autos de fe"]
+  },
+  {
+    "id": "t15_c13",
+    "question": "¿Qué significaba la limpieza de sangre?",
+    "answerGuide": "Era un requisito para acceder a cargos públicos que excluía a descendientes de judíos y moros.",
+    "keywords": ["limpieza de sangre", "cargos públicos", "judíos", "moros"]
+  },
+  {
+    "id": "t15_c14",
+    "question": "¿Qué fue la Unión Ibérica de 1580?",
+    "answerGuide": "Fue la incorporación de Portugal a la monarquía de Felipe II al hacer valer sus derechos sucesorios.",
+    "keywords": ["Unión Ibérica", "1580", "Portugal", "derechos sucesorios"]
+  },
+  {
+    "id": "t15_c15",
+    "question": "¿Por qué se decía que con Felipe II era el imperio donde nunca se ponía el sol?",
+    "answerGuide": "Porque con la incorporación de Portugal y su imperio, la monarquía abarcaba territorios en Europa, América, África y Asia.",
+    "keywords": ["nunca se ponía el sol", "Portugal", "América", "África", "Asia"]
+  },
+  {
+    "id": "t15_c16",
+    "question": "¿Qué importancia tuvo la batalla de Lepanto en 1571?",
+    "answerGuide": "Supuso la victoria de la Santa Liga y frenó la expansión del Imperio otomano en el Mediterráneo.",
+    "keywords": ["Lepanto", "1571", "Santa Liga", "Imperio otomano", "Mediterráneo"]
+  },
+  {
+    "id": "t15_c17",
+    "question": "¿Cuáles fueron las causas de la rebelión de Flandes?",
+    "answerGuide": "El deseo de independencia de los territorios flamencos y el avance del calvinismo.",
+    "keywords": ["Flandes", "independencia", "calvinismo", "rebelión"]
+  },
+  {
+    "id": "t15_c18",
+    "question": "¿Qué fue la Armada Invencible y qué ocurrió con ella?",
+    "answerGuide": "Fue la gran flota enviada contra Inglaterra en 1588 y terminó en un desastre naval.",
+    "keywords": ["Armada Invencible", "1588", "Inglaterra", "desastre naval"]
+  },
+  {
+    "id": "t15_c19",
+    "question": "¿Por qué la Hacienda de Felipe II era deficitaria pese a la llegada de metales americanos?",
+    "answerGuide": "Porque los gastos militares, las deudas heredadas y el mantenimiento de los Tercios superaban los ingresos.",
+    "keywords": ["Hacienda", "metales americanos", "deudas", "Tercios", "gastos militares"]
+  },
+  {
+    "id": "t15_c20",
+    "question": "¿Qué fue la bancarrota de 1557?",
+    "answerGuide": "Fue la primera declaración de insolvencia de la Hacienda real durante el reinado de Felipe II.",
+    "keywords": ["bancarrota", "1557", "insolvencia", "Hacienda real"]
+  },
+  {
+    "id": "t15_c21",
+    "question": "¿Qué fue la revolución de los precios?",
+    "answerGuide": "Fue la fuerte inflación provocada por la llegada masiva de plata americana, que dañó la producción local.",
+    "keywords": ["revolución de los precios", "inflación", "plata americana", "producción local"]
+  },
+  {
+    "id": "t15_c22",
+    "question": "¿Qué virreinatos se consolidaron bajo Felipe II?",
+    "answerGuide": "Se consolidaron los Virreinatos de Nueva España y del Perú.",
+    "keywords": ["virreinatos", "Nueva España", "Perú"]
+  },
+  {
+    "id": "t15_c23",
+    "question": "¿Qué papel tuvo la Casa de Contratación de Sevilla?",
+    "answerGuide": "Monopolizó y controló el comercio con América mediante el sistema de Flotas y Galeones.",
+    "keywords": ["Casa de Contratación", "Sevilla", "comercio", "Flotas y Galeones"]
+  },
+  {
+    "id": "t15_c24",
+    "question": "¿Qué eran las Leyes de Indias?",
+    "answerGuide": "Eran el conjunto de normas que organizaban la vida política, social y administrativa en las colonias americanas.",
+    "keywords": ["Leyes de Indias", "normas", "colonias", "administración"]
+  },
+  {
+    "id": "t15_c25",
+    "question": "¿Cómo era la sociedad peninsular en tiempos de Felipe II?",
+    "answerGuide": "Estaba dominada por nobleza y clero, con fuerte obsesión por la hidalguía y desprecio por el trabajo manual.",
+    "keywords": ["nobleza", "clero", "hidalguía", "trabajo manual"]
+  },
+  {
+    "id": "t15_c26",
+    "question": "¿Cómo se organizaba la sociedad de castas en las Indias?",
+    "answerGuide": "La dirigían peninsulares y criollos, sobre una base de población indígena sometida y esclavos africanos.",
+    "keywords": ["castas", "peninsulares", "criollos", "indígenas", "esclavos africanos"]
+  },
+  {
+    "id": "t15_c27",
+    "question": "¿Qué era la mita?",
+    "answerGuide": "Era un sistema de trabajo obligatorio impuesto a la población indígena en las colonias.",
+    "keywords": ["mita", "trabajo obligatorio", "indígenas"]
+  },
+  {
+    "id": "t15_c28",
+    "question": "¿Qué contradicción cultural se dio durante el reinado de Felipe II?",
+    "answerGuide": "Pese al fuerte dogmatismo religioso, hubo un gran auge artístico y literario dentro del Siglo de Oro.",
+    "keywords": ["dogmatismo", "Siglo de Oro", "auge artístico", "auge literario"]
+  },
+  {
+    "id": "t15_c29",
+    "question": "Cita dos figuras culturales destacadas del reinado de Felipe II.",
+    "answerGuide": "El Greco y un joven Cervantes.",
+    "keywords": ["El Greco", "Cervantes"]
+  },
+  {
+    "id": "t15_c30",
+    "question": "¿En qué año terminó el reinado de Felipe II?",
+    "answerGuide": "Terminó en 1598.",
+    "keywords": ["1598", "final del reinado"]
+  }
+]

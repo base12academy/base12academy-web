@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc13_1",
+    "question": "¿Cuál era la situación política de la Península Ibérica a mediados del siglo XV?",
+    "answerGuide": "Estaba dividida en cinco entidades: Castilla, Aragón, Portugal, Navarra y el Reino Nazarí de Granada.",
+    "keywords": ["cinco reinos", "Castilla", "Aragón", "Portugal", "Navarra", "Granada"]
+  },
+  {
+    "id": "tc13_2",
+    "question": "¿Qué conflicto sucesorio se produjo en Castilla bajo Enrique IV?",
+    "answerGuide": "Enfrentó a Juana la Beltraneja con Isabel, generando una guerra civil.",
+    "keywords": ["Enrique IV", "Juana la Beltraneja", "Isabel", "conflicto sucesorio"]
+  },
+  {
+    "id": "tc13_3",
+    "question": "¿Qué importancia tuvo el matrimonio de Isabel y Fernando en 1469?",
+    "answerGuide": "Sentó las bases de la unión dinástica entre Castilla y Aragón.",
+    "keywords": ["1469", "matrimonio", "Isabel", "Fernando", "unión dinástica"]
+  },
+  {
+    "id": "tc13_4",
+    "question": "¿Qué estableció el Tratado de Alcaçovas?",
+    "answerGuide": "Puso fin a la guerra civil y reconoció a Isabel como reina de Castilla.",
+    "keywords": ["Tratado de Alcaçovas", "1479", "Isabel", "reina de Castilla"]
+  },
+  {
+    "id": "tc13_5",
+    "question": "¿Qué tipo de unión formaron los Reyes Católicos?",
+    "answerGuide": "Una unión dinástica o personal, no institucional, manteniendo la independencia de cada reino.",
+    "keywords": ["unión dinástica", "personal", "no institucional", "independencia de reinos"]
+  },
+  {
+    "id": "tc13_6",
+    "question": "¿Qué características mantuvieron los distintos reinos tras la unión?",
+    "answerGuide": "Mantuvieron sus leyes, fueros, monedas, lenguas y aduanas interiores.",
+    "keywords": ["leyes", "fueros", "monedas", "lenguas", "aduanas"]
+  },
+  {
+    "id": "tc13_7",
+    "question": "¿Qué medidas adoptaron los Reyes Católicos para reforzar el poder real?",
+    "answerGuide": "Crearon la Santa Hermandad, reforzaron el Consejo Real, nombraron corregidores, establecieron chancillerías y reorganizaron la Hacienda.",
+    "keywords": ["Santa Hermandad", "Consejo Real", "corregidores", "chancillerías", "Hacienda"]
+  },
+  {
+    "id": "tc13_8",
+    "question": "¿Qué fue la Guerra de Granada y cuándo ocurrió?",
+    "answerGuide": "Fue la campaña final contra el Reino Nazarí de Granada entre 1482 y 1492.",
+    "keywords": ["Guerra de Granada", "1482-1492", "Reino Nazarí"]
+  },
+  {
+    "id": "tc13_9",
+    "question": "¿Qué ocurrió el 2 de enero de 1492?",
+    "answerGuide": "La rendición de Granada, que puso fin a la Reconquista.",
+    "keywords": ["1492", "rendición de Granada", "fin de la Reconquista"]
+  },
+  {
+    "id": "tc13_10",
+    "question": "¿Qué consecuencias tuvo la conquista de Granada?",
+    "answerGuide": "Incorporación territorial, control de las costas y proyección hacia el Atlántico y África.",
+    "keywords": ["incorporación", "costas", "Atlántico", "África"]
+  },
+  {
+    "id": "tc13_11",
+    "question": "¿Qué instrumentos se usaron para imponer la uniformidad religiosa?",
+    "answerGuide": "La Inquisición, la expulsión de los judíos en 1492 y la conversión forzosa de musulmanes en 1502.",
+    "keywords": ["Inquisición", "1492", "judíos", "1502", "musulmanes", "conversión"]
+  },
+  {
+    "id": "tc13_12",
+    "question": "¿Qué consecuencias tuvo la expulsión de los judíos?",
+    "answerGuide": "La pérdida de capital humano cualificado como médicos, banqueros y artesanos.",
+    "keywords": ["expulsión", "judíos", "capital humano", "médicos", "banqueros", "artesanos"]
+  },
+  {
+    "id": "tc13_13",
+    "question": "¿Qué provocó el Tratado de Alcaçovas en la política exterior?",
+    "answerGuide": "Limitó rutas atlánticas y obligó a buscar nuevas vías hacia las Indias por el oeste.",
+    "keywords": ["Alcaçovas", "rutas atlánticas", "Indias", "oeste"]
+  },
+  {
+    "id": "tc13_14",
+    "question": "¿Qué acuerdos y tratados impulsaron la expansión atlántica?",
+    "answerGuide": "Las Capitulaciones de Santa Fe con Colón y el Tratado de Tordesillas con Portugal.",
+    "keywords": ["Capitulaciones de Santa Fe", "Colón", "Tratado de Tordesillas", "Portugal"]
+  },
+  {
+    "id": "tc13_15",
+    "question": "¿Cómo se organizó la administración colonial según el tema?",
+    "answerGuide": "Mediante virreinatos como Nueva España y Perú, sistemas como encomienda y mita, y la Casa de Contratación en Sevilla.",
+    "keywords": ["virreinatos", "Nueva España", "Perú", "encomienda", "mita", "Casa de Contratación"]
+  }
+]

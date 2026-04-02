@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc9_1",
+    "question": "¿Cómo era la estructura social de Al-Ándalus?",
+    "answerGuide": "Era una sociedad de base urbana, estratificada según criterios étnico-religiosos, con los musulmanes en la cúspide.",
+    "keywords": ["estructura social", "urbana", "estratificación", "étnico-religiosa", "musulmanes"]
+  },
+  {
+    "id": "tc9_2",
+    "question": "¿Qué diferencias existían entre árabes, bereberes y muladíes?",
+    "answerGuide": "Los árabes concentraban el poder político y las mejores tierras; los bereberes tenían menor influencia y tierras menos productivas; los muladíes eran cristianos convertidos al Islam.",
+    "keywords": ["árabes", "bereberes", "muladíes", "poder político", "tierras fértiles", "conversión"]
+  },
+  {
+    "id": "tc9_3",
+    "question": "¿Quiénes eran los dimmíes en Al-Ándalus?",
+    "answerGuide": "Los no musulmanes protegidos legalmente, especialmente mozárabes y judíos, que conservaban su fe a cambio del pago de tributos.",
+    "keywords": ["dimmíes", "protegidos", "mozárabes", "judíos", "tributos"]
+  },
+  {
+    "id": "tc9_4",
+    "question": "¿Qué tensiones sociales contribuyeron a la inestabilidad política de Al-Ándalus?",
+    "answerGuide": "Las tensiones entre árabes y bereberes y el descontento de los muladíes por la discriminación fiscal.",
+    "keywords": ["árabes", "bereberes", "muladíes", "discriminación fiscal", "inestabilidad"]
+  },
+  {
+    "id": "tc9_5",
+    "question": "¿En qué consistió la revolución agraria de Al-Ándalus?",
+    "answerGuide": "En la modernización del campo mediante técnicas de regadío y la introducción de nuevos cultivos, fusionando tradición romana y saber agronómico oriental.",
+    "keywords": ["revolución agraria", "regadío", "nuevos cultivos", "legado romano", "oriente"]
+  },
+  {
+    "id": "tc9_6",
+    "question": "¿Qué infraestructuras hidráulicas introdujeron los musulmanes?",
+    "answerGuide": "Acequias, aljibes y norias, reguladas por el derecho islámico y por tribunales de riego.",
+    "keywords": ["acequias", "aljibes", "norias", "derecho islámico", "tribunales de riego"]
+  },
+  {
+    "id": "tc9_7",
+    "question": "¿Qué nuevos cultivos transformaron el paisaje agrícola andalusí?",
+    "answerGuide": "Arroz, algodón, caña de azúcar, cítricos como naranjas y limones, y azafrán.",
+    "keywords": ["arroz", "algodón", "caña de azúcar", "cítricos", "naranjas", "limones", "azafrán"]
+  },
+  {
+    "id": "tc9_8",
+    "question": "¿Cómo se organizaba el mercado en Al-Ándalus?",
+    "answerGuide": "En zocos supervisados por el almotacén, que controlaba pesos y medidas.",
+    "keywords": ["zocos", "almotacén", "pesos", "medidas", "mercado"]
+  },
+  {
+    "id": "tc9_9",
+    "question": "¿Qué manufacturas de lujo destacaron en Al-Ándalus?",
+    "answerGuide": "Los textiles de seda y lino, los cordobanes, la cerámica vidriada y la orfebrería en marfil.",
+    "keywords": ["seda", "lino", "cordobanes", "cerámica vidriada", "marfil", "manufacturas"]
+  },
+  {
+    "id": "tc9_10",
+    "question": "¿Qué sistema monetario utilizó Al-Ándalus?",
+    "answerGuide": "Se basó en monedas fuertes como el dinar de oro y el dirhem de plata.",
+    "keywords": ["dinar", "oro", "dirhem", "plata", "sistema monetario"]
+  },
+  {
+    "id": "tc9_11",
+    "question": "¿Por qué fue Al-Ándalus un faro cultural de Europa entre los siglos IX y XI?",
+    "answerGuide": "Porque preservó y tradujo el saber clásico griego y romano, consolidando el árabe como lengua de la ciencia.",
+    "keywords": ["faro cultural", "siglos IX-XI", "saber clásico", "griego", "romano", "árabe", "ciencia"]
+  },
+  {
+    "id": "tc9_12",
+    "question": "¿Qué aportaciones científicas se mencionan en el tema?",
+    "answerGuide": "La numeración arábiga y el cero en matemáticas, avances en cirugía y farmacopea, y la reflexión filosófica de Averroes y Maimónides.",
+    "keywords": ["numeración arábiga", "cero", "cirugía", "farmacopea", "Averroes", "Maimónides"]
+  },
+  {
+    "id": "tc9_13",
+    "question": "¿Qué papel desempeñó Toledo en la cultura andalusí?",
+    "answerGuide": "Fue un centro fundamental para la transmisión del conocimiento hacia el norte cristiano.",
+    "keywords": ["Toledo", "transmisión", "conocimiento", "norte"]
+  },
+  {
+    "id": "tc9_14",
+    "question": "Resume las principales etapas de la arquitectura andalusí.",
+    "answerGuide": "La etapa omeya o califal con la Mezquita de Córdoba y Medina Azahara; la almohade con la Giralda y la Torre del Oro; y la nazarí con la Alhambra y el Generalife.",
+    "keywords": ["omeya", "califal", "Mezquita de Córdoba", "Medina Azahara", "almohade", "Giralda", "Torre del Oro", "nazarí", "Alhambra", "Generalife"]
+  },
+  {
+    "id": "tc9_15",
+    "question": "¿Qué características decorativas definen el arte andalusí?",
+    "answerGuide": "El aniconismo favoreció la geometría, la caligrafía y el ataurique, influyendo después en el estilo mudéjar.",
+    "keywords": ["aniconismo", "geometría", "caligrafía", "ataurique", "mudéjar"]
+  }
+]

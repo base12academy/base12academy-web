@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc30_1",
+    "question": "¿Qué significa que la Transición se hiciera 'de la ley a la ley'?",
+    "answerGuide": "Significa que el cambio democrático se realizó mediante una reforma legal del sistema franquista desde dentro, evitando una ruptura violenta con el pasado.",
+    "keywords": ["de la ley a la ley", "reforma legal", "franquismo", "sin ruptura violenta", "democracia"]
+  },
+  {
+    "id": "tc30_2",
+    "question": "¿Qué papel desempeñaron Juan Carlos I y Adolfo Suárez en la Transición?",
+    "answerGuide": "Juan Carlos I actuó como motor político del cambio y Adolfo Suárez aceleró las reformas que desmontaron el sistema franquista y abrieron paso a la democracia.",
+    "keywords": ["Juan Carlos I", "Adolfo Suárez", "motor del cambio", "reformas", "democracia"]
+  },
+  {
+    "id": "tc30_3",
+    "question": "¿Qué importancia tuvo la Ley para la Reforma Política de 1976?",
+    "answerGuide": "Fue la norma clave que permitió legalizar los partidos, incluido el PCE, y convocar las primeras elecciones democráticas de 1977.",
+    "keywords": ["Ley para la Reforma Política", "1976", "partidos", "PCE", "elecciones de 1977"]
+  },
+  {
+    "id": "tc30_4",
+    "question": "¿Qué características sociales tuvo la Transición en la calle?",
+    "answerGuide": "Hubo una fuerte movilización ciudadana en favor de la libertad y la amnistía, al mismo tiempo que persistía la violencia de ETA, el GRAPO y grupos de extrema derecha.",
+    "keywords": ["movilización", "libertad", "amnistía", "ETA", "GRAPO", "extrema derecha"]
+  },
+  {
+    "id": "tc30_5",
+    "question": "¿Qué fueron los Pactos de la Moncloa y por qué fueron importantes?",
+    "answerGuide": "Fueron acuerdos de 1977 entre partidos y sindicatos para frenar la inflación, estabilizar la economía y facilitar la reconciliación política durante la Transición.",
+    "keywords": ["Pactos de la Moncloa", "1977", "inflación", "economía", "partidos", "sindicatos", "reconciliación"]
+  },
+  {
+    "id": "tc30_6",
+    "question": "¿Qué problemas económicos afrontaba España en 1977?",
+    "answerGuide": "Sufría las consecuencias de la crisis del petróleo de 1973, con una inflación superior al 26% y un paro en aumento.",
+    "keywords": ["crisis del petróleo", "1973", "inflación", "26%", "paro"]
+  },
+  {
+    "id": "tc30_7",
+    "question": "¿Qué define políticamente la Constitución de 1978?",
+    "answerGuide": "Define a España como una monarquía parlamentaria y un Estado social y democrático de derecho.",
+    "keywords": ["Constitución de 1978", "monarquía parlamentaria", "Estado social", "Estado democrático de derecho"]
+  },
+  {
+    "id": "tc30_8",
+    "question": "¿Qué rasgos institucionales y territoriales establece la Constitución de 1978?",
+    "answerGuide": "Establece la separación de poderes, el bicameralismo y el Estado de las Autonomías a través del Título VIII.",
+    "keywords": ["separación de poderes", "bicameralismo", "Estado de las Autonomías", "Título VIII"]
+  },
+  {
+    "id": "tc30_9",
+    "question": "¿Qué relación fija la Constitución de 1978 entre el Estado y la religión?",
+    "answerGuide": "Declara a España como un Estado no confesional, aunque mantiene una mención expresa a la Iglesia Católica.",
+    "keywords": ["Estado no confesional", "Iglesia Católica", "Constitución de 1978", "religión"]
+  },
+  {
+    "id": "tc30_10",
+    "question": "¿Qué importancia tuvo el referéndum del 6 de diciembre de 1978?",
+    "answerGuide": "Ratificó la Constitución y convirtió ese texto en el marco de convivencia más duradero de la historia de España.",
+    "keywords": ["6 de diciembre de 1978", "referéndum", "Constitución", "marco de convivencia"]
+  },
+  {
+    "id": "tc30_11",
+    "question": "¿Qué supuso el 23-F para la democracia española?",
+    "answerGuide": "Fue un intento de golpe de Estado en 1981 que, al fracasar, reforzó la legitimidad y solidez del sistema democrático.",
+    "keywords": ["23-F", "1981", "golpe de Estado", "democracia", "reforzó"]
+  },
+  {
+    "id": "tc30_12",
+    "question": "¿Cómo se consolidó políticamente la democracia entre 1982 y 1996?",
+    "answerGuide": "Con la alternancia pacífica entre el PSOE de Felipe González y posteriormente el PP de José María Aznar.",
+    "keywords": ["alternancia pacífica", "PSOE", "Felipe González", "PP", "José María Aznar"]
+  },
+  {
+    "id": "tc30_13",
+    "question": "¿Qué hitos internacionales y sociales marcaron la consolidación democrática?",
+    "answerGuide": "La entrada en la CEE en 1986, la integración en la OTAN, la universalización de sanidad y educación y reformas sociales como la despenalización del aborto.",
+    "keywords": ["CEE", "1986", "OTAN", "sanidad", "educación", "aborto", "integración internacional"]
+  },
+  {
+    "id": "tc30_14",
+    "question": "¿Qué cambios recientes han transformado la vida política y social en España?",
+    "answerGuide": "El fin del bipartidismo con la aparición de Podemos, Ciudadanos y Vox, el final de ETA, el proceso independentista catalán y nuevos derechos como el matrimonio igualitario.",
+    "keywords": ["fin del bipartidismo", "Podemos", "Ciudadanos", "Vox", "ETA", "Cataluña", "matrimonio igualitario"]
+  },
+  {
+    "id": "tc30_15",
+    "question": "¿Qué retos estructurales actuales destaca el tema?",
+    "answerGuide": "El envejecimiento de la población, la deuda pública, la vertebración territorial y los efectos de crisis como la de 2008 y la del COVID-19.",
+    "keywords": ["envejecimiento", "deuda pública", "vertebración territorial", "crisis de 2008", "COVID-19"]
+  }
+]

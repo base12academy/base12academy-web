@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc24bis_1",
+    "question": "¿Qué factores provocaron el colapso del régimen de Isabel II?",
+    "answerGuide": "El autoritarismo de los últimos gobiernos moderados, la crisis económica de 1866 y el Pacto de Ostende firmado por la oposición.",
+    "keywords": ["autoritarismo", "crisis de 1866", "Pacto de Ostende", "Isabel II"]
+  },
+  {
+    "id": "tc24bis_2",
+    "question": "¿Qué fue 'La Gloriosa' de 1868?",
+    "answerGuide": "La revolución iniciada en Cádiz por Topete, apoyado por Prim y Serrano, que acabó con la derrota isabelina en Alcolea y el exilio de la reina.",
+    "keywords": ["La Gloriosa", "Cádiz", "Topete", "Prim", "Serrano", "Alcolea", "exilio"]
+  },
+  {
+    "id": "tc24bis_3",
+    "question": "¿Qué papel tuvieron las Juntas Revolucionarias y los Voluntarios de la Libertad?",
+    "answerGuide": "Las juntas asumieron el poder revolucionario en muchos lugares y los Voluntarios de la Libertad canalizaron la participación popular urbana.",
+    "keywords": ["Juntas Revolucionarias", "Voluntarios de la Libertad", "participación popular", "poder revolucionario"]
+  },
+  {
+    "id": "tc24bis_4",
+    "question": "¿Cómo se formó el Gobierno Provisional tras la revolución?",
+    "answerGuide": "Fue presidido por Serrano, con Prim al frente del Ministerio de la Guerra, y se apoyó en el liberalismo democrático, la soberanía nacional y el sufragio universal masculino.",
+    "keywords": ["Gobierno Provisional", "Serrano", "Prim", "soberanía nacional", "sufragio universal masculino"]
+  },
+  {
+    "id": "tc24bis_5",
+    "question": "¿Por qué fue importante la Constitución de 1869?",
+    "answerGuide": "Porque fue la primera constitución democrática española, estableciendo una monarquía parlamentaria y amplios derechos civiles.",
+    "keywords": ["Constitución de 1869", "democrática", "monarquía parlamentaria", "derechos civiles"]
+  },
+  {
+    "id": "tc24bis_6",
+    "question": "¿Qué derechos nuevos destacaron en la Constitución de 1869?",
+    "answerGuide": "La libertad de cultos, la libertad de enseñanza y la libertad de asociación.",
+    "keywords": ["libertad de cultos", "libertad de enseñanza", "libertad de asociación"]
+  },
+  {
+    "id": "tc24bis_7",
+    "question": "¿Qué reformas económicas impulsó Figuerola?",
+    "answerGuide": "Creó la peseta en 1868 y promovió un arancel aperturista para reducir el proteccionismo y modernizar la Hacienda.",
+    "keywords": ["Figuerola", "peseta", "1868", "arancel", "aperturismo", "Hacienda"]
+  },
+  {
+    "id": "tc24bis_8",
+    "question": "¿Qué corrientes intelectuales y políticas ganaron fuerza en el Sexenio?",
+    "answerGuide": "El krausismo, que defendía la libertad de cátedra, y el republicanismo federal.",
+    "keywords": ["krausismo", "libertad de cátedra", "republicanismo federal"]
+  },
+  {
+    "id": "tc24bis_9",
+    "question": "¿Qué caracterizó el reinado de Amadeo I de Saboya?",
+    "answerGuide": "Una gran inestabilidad, agravada por el asesinato de Prim y la oposición de alfonsinos, carlistas, Iglesia y republicanos.",
+    "keywords": ["Amadeo I", "inestabilidad", "asesinato de Prim", "alfonsinos", "carlistas", "Iglesia", "republicanos"]
+  },
+  {
+    "id": "tc24bis_10",
+    "question": "¿Qué conflictos bélicos y sociales afrontó Amadeo I?",
+    "answerGuide": "La Tercera Guerra Carlista, la Guerra de los Diez Años en Cuba y una grave inestabilidad presupuestaria.",
+    "keywords": ["Tercera Guerra Carlista", "Guerra de los Diez Años", "Cuba", "inestabilidad presupuestaria"]
+  },
+  {
+    "id": "tc24bis_11",
+    "question": "¿Cómo nació la Primera República y qué problema tuvo desde el inicio?",
+    "answerGuide": "Nació tras la abdicación de Amadeo I con poco apoyo real y quedó debilitada por la división entre federalistas y unitarios.",
+    "keywords": ["Primera República", "abdicación", "poco apoyo", "federalistas", "unitarios"]
+  },
+  {
+    "id": "tc24bis_12",
+    "question": "¿Quiénes fueron los cuatro presidentes de la Primera República?",
+    "answerGuide": "Figueras, Pi y Margall, Salmerón y Castelar.",
+    "keywords": ["Figueras", "Pi y Margall", "Salmerón", "Castelar"]
+  },
+  {
+    "id": "tc24bis_13",
+    "question": "¿Qué impidió que saliera adelante la Constitución republicana de 1873?",
+    "answerGuide": "La Revolución Cantonal, las demandas populares de tierras y fin de las quintas, y el colapso hacendístico del Estado.",
+    "keywords": ["Constitución de 1873", "Revolución Cantonal", "tierras", "quintas", "colapso hacendístico"]
+  },
+  {
+    "id": "tc24bis_14",
+    "question": "¿Qué fue el golpe de Pavía y qué ocurrió después?",
+    "answerGuide": "Fue la irrupción militar en las Cortes en enero de 1874; tras ella se abrió una dictadura de Serrano para intentar restaurar el orden.",
+    "keywords": ["golpe de Pavía", "enero de 1874", "Cortes", "dictadura de Serrano", "orden"]
+  },
+  {
+    "id": "tc24bis_15",
+    "question": "¿Cómo terminó el Sexenio Democrático?",
+    "answerGuide": "Terminó con el pronunciamiento de Martínez Campos en Sagunto en diciembre de 1874, que proclamó a Alfonso XII e inició la Restauración.",
+    "keywords": ["Sagunto", "Martínez Campos", "diciembre de 1874", "Alfonso XII", "Restauración"]
+  }
+]

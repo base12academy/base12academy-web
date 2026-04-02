@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import crypto from "crypto";
+import { courses, type CourseSlug } from "@/lib/courses";
 
 function toBase64(value: string) {
   return Buffer.from(value, "utf8").toString("base64");
@@ -60,19 +61,31 @@ export async function POST(req: Request) {
 
   const body = await req.json().catch(() => ({}));
   const userId = body?.userId || "TEMPORAL";
+  const courseSlug = (body?.courseSlug || "historia-espana") as CourseSlug;
+  const course = courses[courseSlug];
+
+  if (!course) {
+  return NextResponse.json(
+    { error: "Curso no válido" },
+    { status: 400 }
+  );
+}
 
   const order = generateOrder();
 
   const params = {
-    Ds_Merchant_Amount: "2900",
+    Ds_Merchant_Amount: String(course.priceInCents),
     Ds_Merchant_Order: order,
     Ds_Merchant_MerchantCode: merchantCode,
     Ds_Merchant_Currency: "978",
     Ds_Merchant_TransactionType: "0",
     Ds_Merchant_Terminal: terminal,
     Ds_Merchant_MerchantData: Buffer.from(
-      JSON.stringify({ userId })
-    ).toString("base64"),
+  JSON.stringify({
+  userId,
+  courseSlug,
+})
+).toString("base64"),
     Ds_Merchant_MerchantURL:
       "https://base12academy-web-3k98.vercel.app/api/redsys/notify",
     Ds_Merchant_UrlOK:

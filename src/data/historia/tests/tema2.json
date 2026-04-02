@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t2_q1",
+    "question": "¿Dónde se localizaba la civilización de Tartessos?",
+    "options": ["Norte peninsular", "Valle del Guadalquivir y Guadiana", "Meseta central", "Costa cantábrica"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t2_q2",
+    "question": "¿En qué siglos alcanzó su apogeo Tartessos?",
+    "options": ["X-XI a.C.", "VIII-VI a.C.", "VI-IV a.C.", "IV-II a.C."],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t2_q3",
+    "question": "¿Qué pueblo colonizador influyó directamente en Tartessos?",
+    "options": ["Griegos", "Romanos", "Fenicios", "Celtas"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t2_q4",
+    "question": "¿Qué tipo de organización política tenía Tartessos?",
+    "options": ["Tribus", "Estado organizado", "Imperio", "Ciudad-estado"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t2_q5",
+    "question": "¿Qué rey destaca en Tartessos?",
+    "options": ["Aníbal", "Argantonio", "Viriato", "Asdrúbal"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t2_q6",
+    "question": "¿Cuál era la base económica de Tartessos?",
+    "options": ["Agricultura", "Minería", "Pesca", "Comercio interior"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t2_q7",
+    "question": "¿Qué metales explotaban los tartesios?",
+    "options": ["Hierro y estaño", "Oro, plata y cobre", "Bronce", "Aluminio"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t2_q8",
+    "question": "¿Desde qué ciudad comerciaban los fenicios con Tartessos?",
+    "options": ["Cartago", "Gadir", "Emporion", "Tiro"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t2_q9",
+    "question": "¿Cómo era la sociedad tartesia?",
+    "options": ["Igualitaria", "Tribal", "Estratificada", "Nómada"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t2_q10",
+    "question": "¿Qué innovación técnica introdujeron los fenicios en Tartessos?",
+    "options": ["Arado", "Torno de alfarero", "Molino", "Rueda"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t2_q11",
+    "question": "¿Qué famoso hallazgo pertenece a Tartessos?",
+    "options": ["Dama de Elche", "Tesoro del Carambolo", "Toros de Guisando", "Altamira"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t2_q12",
+    "question": "¿Qué divinidad semítica adoraban los tartesios?",
+    "options": ["Zeus", "Astarté", "Marte", "Hera"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t2_q13",
+    "question": "¿Qué pudo provocar la desaparición de Tartessos?",
+    "options": ["Invasión romana", "Agotamiento de minas", "Guerras civiles", "Cambio climático"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t2_q14",
+    "question": "¿Dónde se asentaban los íberos?",
+    "options": ["Norte", "Centro", "Sur y este", "Oeste"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t2_q15",
+    "question": "¿Cómo se organizaban políticamente los íberos?",
+    "options": ["Imperio", "Tribus", "Ciudades-estado", "Reino único"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t2_q16",
+    "question": "¿Qué caracteriza la economía íbera?",
+    "options": ["Solo ganadería", "Diversificada", "Nómada", "Industrial"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t2_q17",
+    "question": "¿En qué se basaba la agricultura íbera?",
+    "options": ["Maíz", "Tríada mediterránea", "Arroz", "Patata"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t2_q18",
+    "question": "¿Qué uso económico introdujeron los íberos?",
+    "options": ["Trueque", "Moneda", "Esclavitud", "Tributos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t2_q19",
+    "question": "¿Quién lideraba la sociedad íbera?",
+    "options": ["Reyes absolutos", "Aristocracia", "Campesinos", "Sacerdotes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t2_q20",
+    "question": "¿Cómo se llamaban los jefes íberos?",
+    "options": ["Cónsules", "Régulos", "Senadores", "Druidas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t2_q21",
+    "question": "¿Qué obra representa el arte íbero?",
+    "options": ["Altamira", "Dama de Elche", "Verracos", "Dolmen"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t2_q22",
+    "question": "¿Qué tipo de escritura tenían los íberos?",
+    "options": ["Latina", "Griega", "Propia no descifrada", "Fenicia"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t2_q23",
+    "question": "¿Qué rito funerario practicaban los íberos?",
+    "options": ["Enterramiento", "Incineración", "Momificación", "Exposición"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t2_q24",
+    "question": "¿Dónde se ubicaban los pueblos celtas?",
+    "options": ["Sur", "Este", "Centro", "Norte y oeste"],
+    "correctAnswer": 3
+  },
+  {
+    "id": "t2_q25",
+    "question": "¿Cuál era la organización política celta?",
+    "options": ["Estado centralizado", "Imperio", "Tribus", "Monarquía absoluta"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t2_q26",
+    "question": "¿Dónde vivían los celtas?",
+    "options": ["Ciudades", "Castros", "Cuevas", "Villas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t2_q27",
+    "question": "¿Cuál era la base económica celta?",
+    "options": ["Agricultura", "Ganadería", "Comercio", "Pesca"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t2_q28",
+    "question": "¿Qué metal trabajaban los celtas?",
+    "options": ["Cobre", "Hierro", "Oro", "Bronce"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t2_q29",
+    "question": "¿Qué objeto caracteriza la orfebrería celta?",
+    "options": ["Espadas", "Torques", "Monedas", "Cerámica"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t2_q30",
+    "question": "¿Qué desconocían los celtas?",
+    "options": ["Metalurgia", "Escritura y moneda", "Ganadería", "Agricultura"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t2_q31",
+    "question": "¿Qué pueblos mezclan elementos celtas e íberos?",
+    "options": ["Íberos", "Tartesios", "Celtíberos", "Fenicios"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t2_q32",
+    "question": "¿Dónde vivían los celtíberos?",
+    "options": ["Costa", "Meseta", "Islas", "Sur"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t2_q33",
+    "question": "¿Qué ciudad simboliza la resistencia celtíbera?",
+    "options": ["Gadir", "Numancia", "Cartago", "Sagunto"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t2_q34",
+    "question": "¿Qué eran los verracos?",
+    "options": ["Armas", "Esculturas de piedra", "Monedas", "Templos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t2_q35",
+    "question": "¿Qué representaban los verracos?",
+    "options": ["Guerreros", "Toros o cerdos", "Dioses", "Reyes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t2_q36",
+    "question": "¿Qué función tenían los verracos?",
+    "options": ["Decorativa", "Funeraria o protectora", "Militar", "Religiosa exclusivamente"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t2_q37",
+    "question": "¿Qué introdujeron los colonizadores mediterráneos?",
+    "options": ["Hierro", "Moneda y torno", "Esclavitud", "Ganadería"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t2_q38",
+    "question": "¿Cómo era la sociedad del sur y este?",
+    "options": ["Igualitaria", "Rudimentaria", "Jerarquizada", "Nómada"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t2_q39",
+    "question": "¿Cómo era la sociedad del centro y norte?",
+    "options": ["Jerarquizada", "Comunitaria", "Industrial", "Urbana"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t2_q40",
+    "question": "¿Por qué fue difícil la conquista romana?",
+    "options": ["Falta de recursos", "Diversidad de pueblos", "Clima", "Tecnología romana"],
+    "correctAnswer": 1
+  }
+]

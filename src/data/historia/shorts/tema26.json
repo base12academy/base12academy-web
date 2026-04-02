@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc26_1",
+    "question": "¿Qué contexto marcó el inicio del reinado de Alfonso XIII en 1902?",
+    "answerGuide": "El reinado comenzó en un clima de crisis nacional tras el Desastre del 98, con una fuerte sensación de decadencia e intento de reforma del sistema para evitar una revolución social.",
+    "keywords": ["Alfonso XIII", "1902", "Desastre del 98", "crisis nacional", "reforma", "revolución social"]
+  },
+  {
+    "id": "tc26_2",
+    "question": "¿Qué fue el regeneracionismo y qué objetivos tenía?",
+    "answerGuide": "Fue una corriente intelectual y política que buscaba modernizar España mediante una 'revolución desde arriba', influida por Joaquín Costa y la Generación del 98.",
+    "keywords": ["regeneracionismo", "revolución desde arriba", "modernización", "Joaquín Costa", "Generación del 98"]
+  },
+  {
+    "id": "tc26_3",
+    "question": "¿Qué reformas intentaron Maura y Canalejas dentro del sistema de la Restauración?",
+    "answerGuide": "Maura impulsó la Ley de Administración Local y Canalejas promovió la Ley del Candado y la Ley de Mancomunidades, aunque el sistema siguió bloqueado por el caciquismo y el fraude electoral.",
+    "keywords": ["Maura", "Ley de Administración Local", "Canalejas", "Ley del Candado", "Ley de Mancomunidades", "caciquismo", "fraude electoral"]
+  },
+  {
+    "id": "tc26_4",
+    "question": "¿Por qué fracasó la renovación de los partidos dinásticos?",
+    "answerGuide": "Porque persistieron el caciquismo y el fraude electoral, y además el asesinato de Canalejas en 1912 dejó al sistema sin líderes renovadores sólidos.",
+    "keywords": ["fracaso", "partidos dinásticos", "caciquismo", "fraude electoral", "Canalejas", "1912"]
+  },
+  {
+    "id": "tc26_5",
+    "question": "¿Qué efectos tuvo la neutralidad española en la Primera Guerra Mundial?",
+    "answerGuide": "Benefició enormemente a la burguesía exportadora, pero provocó inflación y una grave crisis de subsistencia para las clases trabajadoras.",
+    "keywords": ["neutralidad", "Primera Guerra Mundial", "burguesía", "inflación", "crisis de subsistencia", "clases trabajadoras"]
+  },
+  {
+    "id": "tc26_6",
+    "question": "¿Qué fue la crisis de 1917?",
+    "answerGuide": "Fue un triple desafío al Estado compuesto por un conflicto militar con las Juntas de Defensa, un conflicto político con la Asamblea de Parlamentarios y una Huelga General de carácter social.",
+    "keywords": ["crisis de 1917", "Juntas de Defensa", "Asamblea de Parlamentarios", "Huelga General", "conflicto militar", "político", "social"]
+  },
+  {
+    "id": "tc26_7",
+    "question": "¿Cómo afectó la Revolución Rusa de 1917 a España?",
+    "answerGuide": "Radicalizó las posiciones del marxismo y del anarquismo, intensificando la conflictividad social y política.",
+    "keywords": ["Revolución Rusa", "1917", "marxismo", "anarquismo", "radicalización", "conflictividad"]
+  },
+  {
+    "id": "tc26_8",
+    "question": "¿Qué fueron el pistolerismo y el Trienio Bolchevique?",
+    "answerGuide": "El pistolerismo fue la guerra de sicarios entre patronal y anarcosindicalistas en Barcelona, y el Trienio Bolchevique fue una etapa de intensa agitación campesina en Andalucía entre 1918 y 1920.",
+    "keywords": ["pistolerismo", "Barcelona", "patronal", "anarcosindicalistas", "Trienio Bolchevique", "Andalucía", "1918-1920"]
+  },
+  {
+    "id": "tc26_9",
+    "question": "¿Por qué Marruecos se convirtió en un problema central para la monarquía?",
+    "answerGuide": "Porque la guerra del Rif era rechazada por las clases populares, dividía al ejército entre africanistas y peninsulares y culminó en el desastre de Annual, que desacreditó gravemente al régimen.",
+    "keywords": ["Marruecos", "Rif", "clases populares", "africanistas", "peninsulares", "Annual", "desacreditó"]
+  },
+  {
+    "id": "tc26_10",
+    "question": "¿Qué relación existe entre la Semana Trágica y el problema marroquí?",
+    "answerGuide": "La Semana Trágica de Barcelona en 1909 estalló por el rechazo popular a la guerra de Marruecos, agravado por el desastre del Barranco del Lobo.",
+    "keywords": ["Semana Trágica", "Barcelona", "1909", "Marruecos", "Barranco del Lobo", "rechazo popular"]
+  },
+  {
+    "id": "tc26_11",
+    "question": "¿Qué importancia tuvo el desastre de Annual de 1921?",
+    "answerGuide": "Fue una derrota militar con más de 10.000 muertos que provocó el Expediente Picasso y puso en peligro el prestigio de Alfonso XIII.",
+    "keywords": ["Annual", "1921", "10.000 muertos", "Expediente Picasso", "Alfonso XIII", "prestigio"]
+  },
+  {
+    "id": "tc26_12",
+    "question": "¿Cómo se desarrolló la dictadura de Primo de Rivera?",
+    "answerGuide": "Tuvo una primera fase de Directorio Militar, que suspendió la Constitución y logró el desembarco de Alhucemas, y una segunda de Directorio Civil, que intentó institucionalizar el régimen con la Unión Patriótica.",
+    "keywords": ["Primo de Rivera", "Directorio Militar", "Constitución", "Alhucemas", "Directorio Civil", "Unión Patriótica"]
+  },
+  {
+    "id": "tc26_13",
+    "question": "¿Qué medidas económicas impulsó la dictadura de Primo de Rivera?",
+    "answerGuide": "Aprovechó los felices años 20 para crear monopolios estatales como CAMPSA y Telefónica y desarrollar obras públicas como embalses y carreteras.",
+    "keywords": ["dictadura", "felices años 20", "CAMPSA", "Telefónica", "embalses", "carreteras", "obras públicas"]
+  },
+  {
+    "id": "tc26_14",
+    "question": "¿Qué oposición creció contra la dictadura?",
+    "answerGuide": "Aumentó la oposición de intelectuales como Unamuno, estudiantes y republicanos, a la vez que el régimen perdía apoyos.",
+    "keywords": ["oposición", "Unamuno", "estudiantes", "republicanos", "dictadura"]
+  },
+  {
+    "id": "tc26_15",
+    "question": "¿Cómo se llegó del final de la dictadura a la caída de la monarquía?",
+    "answerGuide": "Tras la dimisión de Primo de Rivera en 1930, la Dictablanda de Berenguer no logró restaurar el prestigio de la Corona, ya identificada con la dictadura, lo que facilitó la proclamación de la Segunda República en 1931.",
+    "keywords": ["dimisión", "1930", "Dictablanda", "Berenguer", "Corona", "dictadura", "Segunda República", "1931"]
+  }
+]

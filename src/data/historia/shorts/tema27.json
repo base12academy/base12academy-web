@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc27_1",
+    "question": "¿Cómo nació la Segunda República en 1931?",
+    "answerGuide": "Nació el 14 de abril de 1931 tras el desprestigio de la monarquía, el Pacto de San Sebastián y el triunfo republicano-socialista en las elecciones municipales.",
+    "keywords": ["14 de abril de 1931", "Pacto de San Sebastián", "monarquía", "elecciones municipales", "republicano-socialista"]
+  },
+  {
+    "id": "tc27_2",
+    "question": "¿Por qué las elecciones municipales del 12 de abril de 1931 fueron decisivas?",
+    "answerGuide": "Porque actuaron como un plebiscito sobre la continuidad de la monarquía y el triunfo republicano en las ciudades precipitó el exilio de Alfonso XIII.",
+    "keywords": ["12 de abril de 1931", "plebiscito", "monarquía", "Alfonso XIII", "ciudades"]
+  },
+  {
+    "id": "tc27_3",
+    "question": "¿Qué problemas económicos heredó la Segunda República?",
+    "answerGuide": "La crisis de 1929, que afectó con retraso a España, y la fuga de capitales provocada por el miedo de las élites.",
+    "keywords": ["crisis de 1929", "fuga de capitales", "élites", "problemas económicos"]
+  },
+  {
+    "id": "tc27_4",
+    "question": "¿Qué rasgos fundamentales tuvo la Constitución de 1931?",
+    "answerGuide": "Fue una constitución laica, democrática y avanzada que definió a España como una República de trabajadores, reconoció el sufragio femenino y el divorcio.",
+    "keywords": ["Constitución de 1931", "laica", "democrática", "República de trabajadores", "sufragio femenino", "divorcio"]
+  },
+  {
+    "id": "tc27_5",
+    "question": "¿Qué significado tuvo el sufragio femenino en 1931?",
+    "answerGuide": "Supuso el reconocimiento por primera vez del derecho al voto de las mujeres en la historia de España.",
+    "keywords": ["sufragio femenino", "voto", "mujeres", "1931"]
+  },
+  {
+    "id": "tc27_6",
+    "question": "¿Qué grandes reformas impulsó el Bienio Reformista de Azaña?",
+    "answerGuide": "La reforma territorial con el Estatuto de Cataluña, la reforma agraria, la militar y la laboral.",
+    "keywords": ["Azaña", "Bienio Reformista", "Estatuto de Cataluña", "reforma agraria", "reforma militar", "reforma laboral"]
+  },
+  {
+    "id": "tc27_7",
+    "question": "¿Cómo fue la reforma agraria del bienio reformista?",
+    "answerGuide": "Fue impulsada por el Instituto de Reforma Agraria para expropiar latifundios, pero resultó lenta y burocrática, descontentando a campesinos y propietarios.",
+    "keywords": ["Instituto de Reforma Agraria", "latifundios", "lenta", "burocrática", "campesinos", "propietarios"]
+  },
+  {
+    "id": "tc27_8",
+    "question": "¿Qué pretendía la Ley Azaña?",
+    "answerGuide": "Profesionalizar el ejército y garantizar su lealtad al poder civil republicano.",
+    "keywords": ["Ley Azaña", "ejército", "profesionalizar", "poder civil"]
+  },
+  {
+    "id": "tc27_9",
+    "question": "¿Qué importancia tuvieron las Misiones Pedagógicas?",
+    "answerGuide": "Llevaron cultura y educación al mundo rural y acompañaron la creación de miles de escuelas.",
+    "keywords": ["Misiones Pedagógicas", "cultura", "educación", "mundo rural", "escuelas"]
+  },
+  {
+    "id": "tc27_10",
+    "question": "¿Qué conflicto religioso y militar marcó el Bienio Reformista?",
+    "answerGuide": "La disolución de la Compañía de Jesús radicalizó a la oposición conservadora y en 1932 la Sanjurjada mostró la resistencia militar al régimen.",
+    "keywords": ["Compañía de Jesús", "oposición conservadora", "Sanjurjada", "1932", "militares"]
+  },
+  {
+    "id": "tc27_11",
+    "question": "¿Qué caracterizó al Bienio Radical-Cedista o Bienio Negro?",
+    "answerGuide": "La paralización de las reformas anteriores, la amnistía a los golpistas de 1932 y el crecimiento de la derecha y del fascismo español.",
+    "keywords": ["Bienio Negro", "parálisis de reformas", "amnistía", "golpistas", "fascismo", "Falange"]
+  },
+  {
+    "id": "tc27_12",
+    "question": "¿Qué fue la Revolución de Octubre de 1934?",
+    "answerGuide": "Fue una insurrección de la izquierda ante la entrada de la CEDA en el gobierno, con especial violencia en Asturias y una represión muy dura.",
+    "keywords": ["Revolución de Octubre", "1934", "CEDA", "Asturias", "represión"]
+  },
+  {
+    "id": "tc27_13",
+    "question": "¿Qué ocurrió tras la victoria del Frente Popular en febrero de 1936?",
+    "answerGuide": "Se intensificó la radicalización social con ocupaciones de tierras, quema de iglesias, huelgas, enfrentamientos callejeros y avance autonómico.",
+    "keywords": ["Frente Popular", "1936", "ocupaciones de tierras", "quema de iglesias", "huelgas", "autonomía"]
+  },
+  {
+    "id": "tc27_14",
+    "question": "¿Qué asesinatos se consideran el detonante inmediato de la Guerra Civil?",
+    "answerGuide": "El asesinato del teniente Castillo y, como represalia inmediata, el de José Calvo Sotelo.",
+    "keywords": ["teniente Castillo", "José Calvo Sotelo", "detonante", "Guerra Civil"]
+  },
+  {
+    "id": "tc27_15",
+    "question": "¿Cómo terminó la experiencia republicana reformista de 1931-1936?",
+    "answerGuide": "Con la sublevación militar iniciada el 17 de julio de 1936 en el protectorado de Marruecos, que desencadenó la Guerra Civil.",
+    "keywords": ["17 de julio de 1936", "sublevación militar", "protectorado de Marruecos", "Guerra Civil"]
+  }
+]

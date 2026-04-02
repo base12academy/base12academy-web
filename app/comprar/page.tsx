@@ -3,42 +3,43 @@ import { useState } from "react";
 import Link from "next/link";
 
 export default function ComprarPage() {
-    const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-const handlePago = async () => {
-  setLoading(true);
+  const handlePago = async () => {
+    setLoading(true);
 
-  const res = await fetch("/api/redsys", {
-    method: "POST",
-  });
+    const res = await fetch("/api/redsys", {
+      method: "POST",
+    });
 
-  const data = await res.json();
+    const data = await res.json();
 
-  const form = document.createElement("form");
-  form.method = "POST";
-  form.action = data.redsysUrl;
+    const form = document.createElement("form");
+    form.method = "POST";
+    form.action = data.redsysUrl;
 
-  const version = document.createElement("input");
-  version.type = "hidden";
-  version.name = "Ds_SignatureVersion";
-  version.value = data.dsSignatureVersion;
-  form.appendChild(version);
+    const version = document.createElement("input");
+    version.type = "hidden";
+    version.name = "Ds_SignatureVersion";
+    version.value = data.dsSignatureVersion;
+    form.appendChild(version);
 
-  const params = document.createElement("input");
-  params.type = "hidden";
-  params.name = "Ds_MerchantParameters";
-  params.value = data.dsMerchantParameters;
-  form.appendChild(params);
+    const params = document.createElement("input");
+    params.type = "hidden";
+    params.name = "Ds_MerchantParameters";
+    params.value = data.dsMerchantParameters;
+    form.appendChild(params);
 
-  const signature = document.createElement("input");
-  signature.type = "hidden";
-  signature.name = "Ds_Signature";
-  signature.value = data.signature;
-  form.appendChild(signature);
+    const signature = document.createElement("input");
+    signature.type = "hidden";
+    signature.name = "Ds_Signature";
+    signature.value = data.signature;
+    form.appendChild(signature);
 
-  document.body.appendChild(form);
-  form.submit();
-};
+    document.body.appendChild(form);
+    form.submit();
+  };
+
   return (
     <main
       style={{
@@ -64,6 +65,21 @@ const handlePago = async () => {
             marginBottom: "24px",
           }}
         >
+          {/* URGENCIA */}
+          <div
+            style={{
+              marginBottom: "16px",
+              padding: "12px 16px",
+              borderRadius: "12px",
+              background: "#fef3c7",
+              border: "1px solid #fcd34d",
+              fontWeight: "bold",
+              fontSize: "14px",
+            }}
+          >
+            Acceso inmediato hasta tu examen · Últimas semanas de preparación
+          </div>
+
           <p
             style={{
               color: "#2563eb",
@@ -76,13 +92,13 @@ const handlePago = async () => {
 
           <h1
             style={{
-              fontSize: "42px",
-              lineHeight: "1.1",
+              fontSize: "38px",
+              lineHeight: "1.2",
               fontWeight: "bold",
               marginBottom: "16px",
             }}
           >
-            Accede ahora a la preparación completa de Historia de España
+            Prepara Historia de España para la EBAU sin perder tiempo
           </h1>
 
           <p
@@ -90,132 +106,67 @@ const handlePago = async () => {
               fontSize: "18px",
               lineHeight: "1.7",
               color: "#4b5563",
-              marginBottom: "24px",
+              marginBottom: "20px",
             }}
           >
-            Temario estructurado, índices de estudio, pruebas por tema,
-            imágenes, textos históricos y preparación enfocada a EBAU / PAU.
+            Temario completo, test, preguntas cortas y preparación directa para
+            examen.
           </p>
 
-          <div
-            style={{
-              display: "inline-block",
-              padding: "14px 22px",
-              borderRadius: "14px",
-              background: "#111827",
-              color: "white",
-              fontWeight: "bold",
-              fontSize: "22px",
-              marginBottom: "24px",
-            }}
-          >
-            29 €
+          {/* BULLETS */}
+          <div style={{ marginBottom: "20px", fontSize: "15px" }}>
+            <p>✓ Acceso inmediato tras el pago</p>
+            <p>✓ Todo el contenido de Historia de España listo</p>
+            <p>✓ Enfocado a aprobar la EBAU / PAU</p>
           </div>
 
+          {/* PRECIO */}
           <div
             style={{
-              background: "#eff6ff",
-              border: "1px solid #bfdbfe",
-              borderRadius: "16px",
-              padding: "20px",
               marginBottom: "24px",
             }}
           >
-            <p style={{ fontWeight: "bold", marginBottom: "10px" }}>
-              Qué incluye el acceso
+            <p style={{ fontSize: "14px", color: "#6b7280" }}>
+              Acceso completo
             </p>
-
-            <div style={{ display: "grid", gap: "10px" }}>
-              <p>✅ Acceso al contenido completo de los temas</p>
-              <p>✅ Índices y estructura de estudio</p>
-              <p>✅ Tests y pruebas por tema</p>
-              <p>✅ Imágenes y textos históricos por bloques</p>
-              <p>✅ Preparación orientada a examen</p>
+            <div
+              style={{
+                fontSize: "42px",
+                fontWeight: "bold",
+              }}
+            >
+              29 €
             </div>
           </div>
 
-          <div
-            style={{
-              background: "#fef3c7",
-              border: "1px solid #fcd34d",
-              borderRadius: "16px",
-              padding: "20px",
-              marginBottom: "24px",
-            }}
-          >
-            <p style={{ fontWeight: "bold", marginBottom: "8px" }}>
-              Importante
-            </p>
-
-            <p style={{ lineHeight: "1.7" }}>
-              Quedan pocas semanas para la EBAU / PAU. Este acceso está pensado
-              para aprovechar al máximo el tramo final de preparación.
-            </p>
-          </div>
-
-          <div
-            style={{
-              background: "#f9fafb",
-              border: "1px solid #e5e7eb",
-              borderRadius: "16px",
-              padding: "20px",
-              marginBottom: "24px",
-            }}
-          >
-            <p style={{ fontWeight: "bold", marginBottom: "12px" }}>
-              Cómo funciona
-            </p>
-
-            <div style={{ display: "grid", gap: "10px", lineHeight: "1.7" }}>
-              <p>1. Realiza el pago con tarjeta en el TPV virtual.</p>
-              <p>2. El sistema registra la compra.</p>
-              <p>3. Tu acceso queda activado.</p>
-              <p>4. Entra con tu usuario y empieza a estudiar.</p>
-            </div>
-          </div>
-
-          <div
-            style={{
-              background: "white",
-              border: "1px solid #e5e7eb",
-              borderRadius: "16px",
-              padding: "20px",
-              marginBottom: "24px",
-            }}
-          >
-            <p style={{ fontWeight: "bold", marginBottom: "12px" }}>
-              Pago y soporte
-            </p>
-
-            <div style={{ display: "grid", gap: "10px", lineHeight: "1.7" }}>
-              <p>
-                <strong>Pago:</strong> Tarjeta en TPV virtual
-              </p>
-              <p>
-                <strong>Email:</strong> base12academy@gmail.com
-              </p>
-              <p>
-                <strong>WhatsApp:</strong> 604 896 760
-              </p>
-            </div>
-          </div>
-
-          <div style={{ display: "grid", gap: "12px" }}>
+          {/* CTA */}
+          <div style={{ display: "grid", gap: "12px", marginBottom: "20px" }}>
             <button
-  onClick={handlePago}
-  disabled={loading}
-  style={{
-    padding: "14px 20px",
-    background: "#2563eb",
-    color: "white",
-    borderRadius: "14px",
-    fontWeight: "bold",
-    border: "none",
-    cursor: "pointer"
-  }}
->
-  {loading ? "Conectando con el banco..." : "Pagar ahora con tarjeta"}
-</button>
+              onClick={handlePago}
+              disabled={loading}
+              style={{
+                padding: "16px 20px",
+                background: "#2563eb",
+                color: "white",
+                borderRadius: "14px",
+                fontWeight: "bold",
+                border: "none",
+                cursor: "pointer",
+                fontSize: "16px",
+              }}
+            >
+              {loading ? "Conectando con el banco..." : "Acceder ahora"}
+            </button>
+
+            <p
+              style={{
+                fontSize: "12px",
+                color: "#6b7280",
+                textAlign: "center",
+              }}
+            >
+              Pago seguro con Redsys · Acceso automático tras el pago
+            </p>
 
             <Link
               href="/login"
@@ -233,10 +184,54 @@ const handlePago = async () => {
               Ya tengo acceso, entrar
             </Link>
           </div>
+
+          {/* QUÉ INCLUYE */}
+          <div
+            style={{
+              background: "#f9fafb",
+              border: "1px solid #e5e7eb",
+              borderRadius: "16px",
+              padding: "20px",
+              marginBottom: "24px",
+            }}
+          >
+            <p style={{ fontWeight: "bold", marginBottom: "10px" }}>
+              Qué incluye
+            </p>
+
+            <div style={{ display: "grid", gap: "8px", fontSize: "14px" }}>
+              <p>• Temas completos organizados</p>
+              <p>• Test y preguntas cortas</p>
+              <p>• Imágenes y textos históricos</p>
+              <p>• Preparación directa para examen</p>
+            </div>
+          </div>
+
+          {/* SOPORTE */}
+          <div
+            style={{
+              background: "#ffffff",
+              border: "1px solid #e5e7eb",
+              borderRadius: "16px",
+              padding: "20px",
+            }}
+          >
+            <p style={{ fontWeight: "bold", marginBottom: "10px" }}>
+              Soporte
+            </p>
+
+            <p style={{ fontSize: "14px" }}>
+              Email: base12academy@gmail.com
+            </p>
+            <p style={{ fontSize: "14px" }}>WhatsApp: 604 896 760</p>
+          </div>
         </div>
 
         <div style={{ textAlign: "center" }}>
-          <Link href="/dashboard" style={{ color: "#2563eb", fontWeight: "bold" }}>
+          <Link
+            href="/dashboard"
+            style={{ color: "#2563eb", fontWeight: "bold" }}
+          >
             ← Volver
           </Link>
         </div>

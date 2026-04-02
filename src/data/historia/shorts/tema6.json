@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc6_1",
+    "question": "¿Qué ocurrió en Hispania a partir del siglo III d.C.?",
+    "answerGuide": "Se inició una profunda crisis del Imperio Romano, con incapacidad de las legiones para asegurar fronteras y mantener el control administrativo.",
+    "keywords": ["siglo III", "crisis", "imperio romano", "fronteras", "legiones", "control administrativo"]
+  },
+  {
+    "id": "tc6_2",
+    "question": "¿Qué sucedió en el año 409 d.C.?",
+    "answerGuide": "Las fronteras fueron atravesadas por suevos, vándalos y alanos, marcando el colapso institucional romano en Hispania.",
+    "keywords": ["409", "suevos", "vándalos", "alanos", "fronteras", "colapso"]
+  },
+  {
+    "id": "tc6_3",
+    "question": "¿Qué eran los foedus y para qué se utilizaron?",
+    "answerGuide": "Eran pactos firmados por Roma para gestionar la crisis; mediante ellos llamó a los visigodos para restaurar el orden.",
+    "keywords": ["foedus", "pactos", "Roma", "visigodos", "restaurar el orden"]
+  },
+  {
+    "id": "tc6_4",
+    "question": "Explica el proceso de ruralización en Hispania.",
+    "answerGuide": "Las élites abandonaron las ciudades y se refugiaron en villas rurales; el comercio se paralizó y surgió una economía de subsistencia basada en la agricultura.",
+    "keywords": ["ruralización", "élites", "ciudades", "villas rurales", "comercio", "economía de subsistencia", "agricultura"]
+  },
+  {
+    "id": "tc6_5",
+    "question": "¿Qué consecuencias tuvo la crisis del comercio y de la esclavitud?",
+    "answerGuide": "Se paralizó el comercio mediterráneo, el sistema esclavista entró en crisis terminal y la economía se replegó hacia la autosuficiencia rural.",
+    "keywords": ["comercio mediterráneo", "esclavitud", "crisis terminal", "autosuficiencia", "rural"]
+  },
+  {
+    "id": "tc6_6",
+    "question": "¿Qué importancia tuvieron el Edicto de Milán y el Edicto de Tesalónica?",
+    "answerGuide": "Permitieron que el cristianismo pasara de la clandestinidad a convertirse en el eje vertebrador de la sociedad.",
+    "keywords": ["Edicto de Milán", "Edicto de Tesalónica", "cristianismo", "clandestinidad", "sociedad"]
+  },
+  {
+    "id": "tc6_7",
+    "question": "¿Qué ocurrió en el III Concilio de Toledo de 589?",
+    "answerGuide": "Recaredo abandonó el arrianismo y se convirtió al catolicismo para unificar religiosamente a visigodos e hispanorromanos.",
+    "keywords": ["III Concilio de Toledo", "589", "Recaredo", "arrianismo", "catolicismo", "unidad religiosa"]
+  },
+  {
+    "id": "tc6_8",
+    "question": "¿Qué funciones asumieron los obispos en el reino visigodo?",
+    "answerGuide": "Asumieron funciones civiles, además de gestionar la moral pública y la asistencia social.",
+    "keywords": ["obispos", "funciones civiles", "moral pública", "asistencia social"]
+  },
+  {
+    "id": "tc6_9",
+    "question": "¿Quién fue San Isidoro de Sevilla y por qué destaca?",
+    "answerGuide": "Fue un eclesiástico que preservó el saber clásico mediante sus Etimologías.",
+    "keywords": ["San Isidoro de Sevilla", "Etimologías", "saber clásico", "preservación cultural"]
+  },
+  {
+    "id": "tc6_10",
+    "question": "¿Qué importancia tuvo la batalla de Vouillé?",
+    "answerGuide": "Tras su derrota frente a los francos en 507, los visigodos se asentaron definitivamente en la Península y fijaron su capital en Toledo.",
+    "keywords": ["Vouillé", "507", "francos", "visigodos", "Península", "Toledo"]
+  },
+  {
+    "id": "tc6_11",
+    "question": "¿Qué logros políticos tuvo Leovigildo?",
+    "answerGuide": "Sometió al reino suevo del noroeste y contuvo a los bizantinos en el sur.",
+    "keywords": ["Leovigildo", "reino suevo", "noroeste", "bizantinos", "sur"]
+  },
+  {
+    "id": "tc6_12",
+    "question": "¿Cómo era la organización institucional del reino visigodo?",
+    "answerGuide": "Combinaba una monarquía electiva con una administración centralizada, con instituciones como el Aula Regia, el Officium Palatinum y los Concilios de Toledo.",
+    "keywords": ["monarquía electiva", "administración centralizada", "Aula Regia", "Officium Palatinum", "Concilios de Toledo"]
+  },
+  {
+    "id": "tc6_13",
+    "question": "¿Qué fue el Fuero Juzgo?",
+    "answerGuide": "El código legal promulgado por Recesvinto que unificó jurídicamente a godos y romanos.",
+    "keywords": ["Fuero Juzgo", "Recesvinto", "código legal", "godos", "romanos", "unificación jurídica"]
+  },
+  {
+    "id": "tc6_14",
+    "question": "Describe la estructura social del reino visigodo.",
+    "answerGuide": "En la cúspide estaban nobleza militar y alto clero; en la base, campesinos libres y siervos que trabajaban los latifundios.",
+    "keywords": ["nobleza militar", "alto clero", "campesinos libres", "siervos", "latifundios", "jerarquía social"]
+  },
+  {
+    "id": "tc6_15",
+    "question": "¿Cómo y cuándo terminó el reino visigodo?",
+    "answerGuide": "Terminó en 711, cuando tras la batalla de Guadalete las fuerzas del califato omeya derrotaron al rey Rodrigo y pusieron fin al reino de Toledo.",
+    "keywords": ["711", "Guadalete", "califato omeya", "Rodrigo", "reino de Toledo", "fin"]
+  }
+]

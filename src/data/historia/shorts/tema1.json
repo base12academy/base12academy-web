@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc1",
+    "question": "Define el proceso de hominización en la Península Ibérica.",
+    "answerGuide": "Proceso evolutivo de las especies humanas desde Homo antecessor hasta Homo sapiens.",
+    "keywords": ["hominización", "evolución", "homo", "antecessor", "sapiens"]
+  },
+  {
+    "id": "tc2",
+    "question": "Indica la cronología del Paleolítico en la Península Ibérica.",
+    "answerGuide": "Desde 1.300.000 hasta 10.000 a.C.",
+    "keywords": ["paleolítico", "cronología", "1.300.000", "10.000"]
+  },
+  {
+    "id": "tc3",
+    "question": "¿Qué importancia tiene Atapuerca?",
+    "answerGuide": "Contiene los restos humanos más antiguos de la Península Ibérica.",
+    "keywords": ["Atapuerca", "restos", "antiguos", "humanos"]
+  },
+  {
+    "id": "tc4",
+    "question": "Explica la economía del Paleolítico.",
+    "answerGuide": "Economía depredadora basada en caza, pesca y recolección.",
+    "keywords": ["caza", "pesca", "recolección", "depredadora"]
+  },
+  {
+    "id": "tc5",
+    "question": "Describe la organización social del Paleolítico.",
+    "answerGuide": "Grupos nómadas en bandas sin propiedad privada ni jerarquías complejas.",
+    "keywords": ["caza", "pesca", "recolección", "depredadora"]
+  },
+  {
+    "id": "tc6",
+    "question": "¿Qué indican los enterramientos neandertales?",
+    "answerGuide": "La existencia de creencias espirituales o trascendentes.",
+    "keywords": ["enterramientos", "neandertal", "espiritualidad"]
+  },
+  {
+    "id": "tc7",
+    "question": "Características de la escuela franco-cantábrica.",
+    "answerGuide": "Arte en cuevas profundas, realista y policromo, con animales aislados.",
+    "keywords": ["cuevas", "realismo", "policromía", "animales"]
+  },
+  {
+    "id": "tc8",
+    "question": "Características de la escuela levantina.",
+    "answerGuide": "Arte en abrigos al aire libre, monocromo y con figuras humanas en escenas.",
+    "keywords": ["aire libre", "monocromo", "figura humana"]
+  },
+  {
+    "id": "tc9",
+    "question": "¿Qué representa el arte rupestre?",
+    "answerGuide": "El origen del pensamiento simbólico y la cohesión social.",
+    "keywords": ["simbólico", "cohesión", "arte"]
+  },
+  {
+    "id": "tc10",
+    "question": "Explica la revolución neolítica.",
+    "answerGuide": "Paso de economía depredadora a productora con agricultura y ganadería.",
+    "keywords": ["neolítico", "agricultura", "ganadería", "productora"]
+  },
+  {
+    "id": "tc11",
+    "question": "¿Qué cambios sociales introduce el Neolítico?",
+    "answerGuide": "Sedentarismo, propiedad privada y jerarquización social.",
+    "keywords": ["sedentarismo", "propiedad", "jerarquía"]
+  },
+  {
+    "id": "tc12",
+    "question": "¿Qué es la cerámica cardial?",
+    "answerGuide": "Cerámica decorada con conchas típica del Neolítico.",
+    "keywords": ["cerámica", "cardial", "conchas"]
+  },
+  {
+    "id": "tc13",
+    "question": "Características de la Edad del Cobre.",
+    "answerGuide": "Uso del cobre, cultura de Los Millares y megalitismo.",
+    "keywords": ["cobre", "Los Millares", "megalitismo"]
+  },
+  {
+    "id": "tc14",
+    "question": "¿Qué caracteriza la cultura de El Argar?",
+    "answerGuide": "Sociedad jerarquizada y control político centralizado.",
+    "keywords": ["Argar", "jerarquía", "centralización"]
+  },
+  {
+    "id": "tc15",
+    "question": "¿Qué aportaron los colonizadores mediterráneos?",
+    "answerGuide": "Moneda, escritura, torno y nuevos cultivos.",
+    "keywords": ["moneda", "escritura", "torno", "cultivos"]
+  }
+]

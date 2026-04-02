@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t25_q1",
+    "question": "¿Qué hecho marca el inicio de la Restauración en 1874?",
+    "options": ["La Revolución de 1868", "El pronunciamiento de Martínez Campos en Sagunto", "El Pacto del Pardo", "La Constitución de 1876"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t25_q2",
+    "question": "¿Quién fue proclamado rey tras el pronunciamiento de Sagunto?",
+    "options": ["Amadeo I", "Alfonso XII", "Fernando VII", "Carlos VII"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t25_q3",
+    "question": "¿Quién fue el principal arquitecto del sistema de la Restauración?",
+    "options": ["Sagasta", "Martínez Campos", "Cánovas del Castillo", "Costa"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t25_q4",
+    "question": "¿Qué concepto define la soberanía compartida en el sistema canovista?",
+    "options": ["Turnismo", "Constitución interna", "Encasillado", "Pucherazo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t25_q5",
+    "question": "¿Qué instituciones eran depositarias de la soberanía según Cánovas?",
+    "options": ["El ejército y la Iglesia", "El Rey y las Cortes", "Los partidos políticos", "El Senado y el Congreso"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t25_q6",
+    "question": "¿Qué objetivo principal tenía el sistema de la Restauración?",
+    "options": ["Implantar el socialismo", "Establecer el federalismo", "Garantizar estabilidad y orden", "Eliminar la monarquía"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t25_q7",
+    "question": "¿Qué ideología defendía Cánovas del Castillo?",
+    "options": ["Socialismo", "Liberalismo doctrinario", "Anarquismo", "Republicanismo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t25_q8",
+    "question": "¿En qué documento se expone el pensamiento político de Cánovas?",
+    "options": ["Constitución de 1812", "Manifiesto de Sandhurst", "Tratado de Utrecht", "Pacto de Ostende"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t25_q9",
+    "question": "¿En qué modelo se inspiró el sistema del turno de partidos?",
+    "options": ["Francés", "Alemán", "Inglés", "Italiano"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t25_q10",
+    "question": "¿Cuáles eran los dos partidos del turno?",
+    "options": ["Carlistas y republicanos", "Moderados y progresistas", "Conservador y Liberal", "Socialistas y anarquistas"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t25_q11",
+    "question": "¿Quién lideraba el Partido Conservador?",
+    "options": ["Sagasta", "Cánovas", "Costa", "Riego"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t25_q12",
+    "question": "¿Quién lideraba el Partido Liberal?",
+    "options": ["Sagasta", "Cánovas", "Martínez Campos", "Costa"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t25_q13",
+    "question": "¿Quién nombraba al presidente del gobierno en el sistema de la Restauración?",
+    "options": ["El pueblo", "Las Cortes", "El Rey", "El Senado"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t25_q14",
+    "question": "¿Cómo se garantizaba la victoria electoral del partido en el poder?",
+    "options": ["Sufragio universal", "Fraude electoral", "Referéndum", "Voto secreto"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t25_q15",
+    "question": "¿Qué figura tenía gran poder local y controlaba el voto?",
+    "options": ["Diputado", "Ministro", "Cacique", "Alcalde"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t25_q16",
+    "question": "¿Qué era el encasillado?",
+    "options": ["Un sistema de impuestos", "Reparto previo de escaños", "Una ley electoral", "Una reforma administrativa"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t25_q17",
+    "question": "¿Qué era el pucherazo?",
+    "options": ["Sistema de votación", "Manipulación electoral", "Reforma agraria", "Tipo de impuesto"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t25_q18",
+    "question": "¿Entre qué años funcionó el sistema con estabilidad?",
+    "options": ["1833-1868", "1875-1902", "1902-1931", "1814-1833"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t25_q19",
+    "question": "¿Qué acuerdo aseguró la estabilidad tras la muerte de Alfonso XII?",
+    "options": ["Tratado de Utrecht", "Convenio de Vergara", "Pacto del Pardo", "Concordato"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t25_q20",
+    "question": "¿En qué año se firmó el Pacto del Pardo?",
+    "options": ["1874", "1885", "1898", "1902"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t25_q21",
+    "question": "¿Qué texto jurídico fue clave en la Restauración?",
+    "options": ["Constitución de 1812", "Constitución de 1845", "Constitución de 1876", "Constitución de 1931"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t25_q22",
+    "question": "¿Qué característica tenía la Constitución de 1876?",
+    "options": ["Duración corta", "Carácter federal", "Gran duración histórica", "República"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t25_q23",
+    "question": "¿Cómo se organizaban las Cortes?",
+    "options": ["Unicamerales", "Bicamerales", "Federales", "Municipales"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t25_q24",
+    "question": "¿Qué cámaras componían las Cortes?",
+    "options": ["Congreso y Senado", "Cortes y Rey", "Diputación y Senado", "Congreso y Consejo"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t25_q25",
+    "question": "¿Qué grupo social protegía especialmente la Constitución de 1876?",
+    "options": ["Campesinado", "Proletariado", "Minorías propietarias", "Clases medias"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t25_q26",
+    "question": "¿Qué principio económico se garantizaba?",
+    "options": ["Colectivismo", "Propiedad privada", "Nacionalización", "Autarquía"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t25_q27",
+    "question": "¿Qué religión era oficial?",
+    "options": ["Protestantismo", "Islam", "Catolicismo", "Judía"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t25_q28",
+    "question": "¿Se permitía la libertad religiosa?",
+    "options": ["No", "Solo pública", "Solo privada", "Totalmente"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t25_q29",
+    "question": "¿Qué grupo quedó excluido del sistema político?",
+    "options": ["Partidos dinásticos", "Aristocracia", "Amplios sectores sociales", "Ejército"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t25_q30",
+    "question": "¿Quién representaba la oposición carlista?",
+    "options": ["Alfonso XII", "Carlos VII", "Sagasta", "Costa"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t25_q31",
+    "question": "¿Qué ideología representaban los republicanos?",
+    "options": ["Monarquía absoluta", "República", "Feudalismo", "Imperialismo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t25_q32",
+    "question": "¿Qué corrientes componían el movimiento obrero?",
+    "options": ["Liberalismo y conservadurismo", "Anarquismo y socialismo", "Carlismo y republicanismo", "Federalismo y absolutismo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t25_q33",
+    "question": "¿Qué movimiento criticó el sistema de la Restauración?",
+    "options": ["Ilustración", "Regeneracionismo", "Romanticismo", "Positivismo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t25_q34",
+    "question": "¿Quién fue una figura destacada del regeneracionismo?",
+    "options": ["Sagasta", "Cánovas", "Joaquín Costa", "Riego"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t25_q35",
+    "question": "¿Qué denunciaba el regeneracionismo?",
+    "options": ["La monarquía", "El caciquismo", "La industrialización", "La Iglesia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t25_q36",
+    "question": "¿Qué problema social agravaba el sistema?",
+    "options": ["Exceso de democracia", "Altas condiciones de vida", "Pobreza obrera y campesina", "Industrialización masiva"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t25_q37",
+    "question": "¿Qué conflicto exterior debilitó el sistema?",
+    "options": ["Guerra de Sucesión", "Desastre de 1898", "Guerra Carlista", "Guerra de Independencia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t25_q38",
+    "question": "¿Qué colonias se perdieron en 1898?",
+    "options": ["México y Perú", "Cuba, Puerto Rico y Filipinas", "Argentina y Chile", "Brasil y Venezuela"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t25_q39",
+    "question": "¿Qué efecto tuvo el desastre de 1898?",
+    "options": ["Fortaleció el sistema", "Destruyó la monarquía", "Socavó la legitimidad del régimen", "Implantó la república"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t25_q40",
+    "question": "¿Qué etapa finalizó con el golpe de Primo de Rivera en 1923?",
+    "options": ["Sexenio Democrático", "Restauración", "Trienio Liberal", "Segunda República"],
+    "correctAnswer": 1
+  }
+]

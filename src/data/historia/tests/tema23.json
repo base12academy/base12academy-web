@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t23_q1",
+    "question": "¿Qué tratado reconoció a Fernando VII como monarca legítimo en 1813?",
+    "options": ["Tratado de Utrecht", "Tratado de Valençay", "Tratado de Fontainebleau", "Tratado de Bayona"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q2",
+    "question": "¿Entre qué dos opciones políticas se encontraba dividido el país en 1814?",
+    "options": ["Federalismo y republicanismo", "Constitucionalismo de Cádiz y Antiguo Régimen", "Liberalismo moderado y exaltado", "Carlismo e isabelinismo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q3",
+    "question": "¿Qué documento alentó a Fernando VII a restaurar el absolutismo en 1814?",
+    "options": ["Estatuto de Bayona", "Manifiesto de los Persas", "Constitución de 1812", "Código de Comercio"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q4",
+    "question": "¿Qué medida tomó Fernando VII el 4 de mayo de 1814?",
+    "options": ["Juró la Constitución", "Promulgó la Pragmática Sanción", "Firmó el Decreto de Valencia", "Convocó Cortes"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t23_q5",
+    "question": "¿Qué hizo el Decreto de Valencia de 1814?",
+    "options": ["Restableció el Trienio Liberal", "Anuló la obra de las Cortes de Cádiz", "Proclamó a Isabel II", "Expulsó a los jesuitas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q6",
+    "question": "¿Qué institución se restauró junto al absolutismo según el tema?",
+    "options": ["Las juntas locales", "La Inquisición", "Las Cortes liberales", "Las sociedades patrióticas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q7",
+    "question": "¿Qué caracterizó la política interior tras 1814?",
+    "options": ["Amnistía para los liberales", "Persecución sistemática contra los liberales", "Descentralización política", "Supresión del clero"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q8",
+    "question": "¿Cómo se encontraba la agricultura y la industria al inicio del reinado absolutista?",
+    "options": ["En expansión", "Arrasadas por la guerra", "Completamente industrializadas", "Sin cambios relevantes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q9",
+    "question": "¿Qué provocó la quiebra de la Hacienda Real en este periodo?",
+    "options": ["El exceso de comercio americano", "Los gastos bélicos y la pérdida del flujo de metales", "La abolición de impuestos", "La creación del Consejo de Ministros"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q10",
+    "question": "¿Qué ocurrió con la circulación de ideas durante el primer absolutismo?",
+    "options": ["Se permitió la libertad de imprenta", "Se impuso una censura férrea", "Se legalizaron las sociedades patrióticas", "Se eliminó toda vigilancia ideológica"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q11",
+    "question": "¿Quién protagonizó la sublevación de 1820 en Cabezas de San Juan?",
+    "options": ["Torrijos", "Rafael del Riego", "Mariana Pineda", "Carlos María Isidro"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q12",
+    "question": "¿Qué obligó a hacer a Fernando VII la sublevación de Riego?",
+    "options": ["Abdicar", "Jurar la Constitución de 1812", "Expulsar a los moderados", "Promulgar la Ley Sálica"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q13",
+    "question": "¿Qué periodo se abrió entre 1820 y 1823?",
+    "options": ["Década Ominosa", "Sexenio Democrático", "Trienio Liberal", "Regencia de María Cristina"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t23_q14",
+    "question": "¿Cómo se llamaba a los liberales moderados del Trienio?",
+    "options": ["Serviles", "Doceañistas", "Apostólicos", "Carlinos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q15",
+    "question": "¿Qué defendían los moderados o doceañistas?",
+    "options": ["La vuelta al absolutismo", "Reformas suaves y colaboración con la Corona", "La supresión de la Constitución", "La independencia de América"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q16",
+    "question": "¿Cómo se llamaba a los liberales más radicales del Trienio?",
+    "options": ["Veinteañistas o exaltados", "Serviles", "Persas", "Apostólicos"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t23_q17",
+    "question": "¿Qué defendían los exaltados?",
+    "options": ["Una aplicación rigurosa de la Constitución", "El retorno de la Inquisición", "La alianza con la Santa Alianza", "La restauración señorial"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t23_q18",
+    "question": "¿Qué se intentó desmontar durante el Trienio Liberal?",
+    "options": ["El sistema parlamentario", "El feudalismo", "La propiedad privada", "La libertad de imprenta"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q19",
+    "question": "¿Qué institución económica se suprimió durante el Trienio Liberal?",
+    "options": ["Las aduanas americanas", "Los gremios", "La Hacienda Real", "Los puertos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q20",
+    "question": "¿Qué medida buscaba dinamizar el mercado de tierras?",
+    "options": ["La restauración del mayorazgo", "La desvinculación de los mayorazgos", "La creación de más señoríos", "La abolición de la propiedad privada"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q21",
+    "question": "¿Qué grupo religioso fue expulsado de nuevo durante el Trienio?",
+    "options": ["Jesuitas", "Franciscanos", "Dominicos", "Agustinos"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t23_q22",
+    "question": "¿Qué efecto tuvo la reforma fiscal del Trienio al exigir pagos en moneda?",
+    "options": ["Apoyo del campesinado", "Oposición del campesinado", "Fin de la deuda pública", "Descenso de la conflictividad"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q23",
+    "question": "¿Con quién conspiró Fernando VII para acabar con el Trienio Liberal?",
+    "options": ["Con Inglaterra", "Con la Santa Alianza", "Con los afrancesados", "Con Portugal"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q24",
+    "question": "¿Qué ejército intervino en 1823 para restaurar el absolutismo?",
+    "options": ["La Grande Armée", "Los Cien Mil Hijos de San Luis", "Los Tercios", "La Santa Liga"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q25",
+    "question": "¿Cómo se denomina el periodo entre 1823 y 1833?",
+    "options": ["Trienio Liberal", "Década Ominosa", "Regencia Liberal", "Bienio Progresista"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q26",
+    "question": "¿Cómo fue la represión durante la Década Ominosa respecto a 1814?",
+    "options": ["Más suave", "Mucho más feroz", "Igual", "Inexistente"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q27",
+    "question": "¿Qué instituciones sustituyeron a la Inquisición en la vigilancia ideológica?",
+    "options": ["Las Audiencias", "Las Juntas de Fe", "Las Cortes", "Las Milicias Nacionales"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q28",
+    "question": "¿Qué liberal fue ejecutado tras la restauración absolutista?",
+    "options": ["Floridablanca", "Rafael del Riego", "Esquilache", "Jovellanos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q29",
+    "question": "¿Qué figura simbólica liberal fue ejecutada en Málaga en 1831?",
+    "options": ["Torrijos", "Lanuza", "Padilla", "Godoy"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t23_q30",
+    "question": "¿Hacia qué ciudades se dirigió principalmente el exilio liberal?",
+    "options": ["Roma y Viena", "Londres y París", "Lisboa y Bruselas", "Ámsterdam y Berlín"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q31",
+    "question": "¿Qué corriente cultural europea conocieron mejor los exiliados liberales?",
+    "options": ["Humanismo renacentista", "Romanticismo", "Barroco", "Escolástica"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q32",
+    "question": "¿Qué innovación administrativa surgió durante la Década Ominosa?",
+    "options": ["La Junta Suprema Central", "El Consejo de Ministros", "La Inquisición", "Las Juntas locales"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q33",
+    "question": "¿Qué documento económico se creó en este periodo?",
+    "options": ["La Constitución de 1812", "El presupuesto general del Estado", "El Catastro de Ensenada", "El Estatuto de Bayona"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q34",
+    "question": "¿Qué texto legal mercantil se menciona en la Década Ominosa?",
+    "options": ["Código de Comercio", "Fuero Juzgo", "Partidas", "Ley Agraria"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t23_q35",
+    "question": "¿Cómo se llamaba el grupo absolutista radical que rechazaba las reformas?",
+    "options": ["Serviles", "Apostólicos", "Doceañistas", "Afrancesados"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q36",
+    "question": "¿En torno a qué figura se agruparon los apostólicos?",
+    "options": ["Riego", "Carlos María Isidro", "Fernando VII", "María Cristina"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q37",
+    "question": "¿Qué batalla de 1824 simboliza la pérdida definitiva del imperio americano?",
+    "options": ["Bailén", "Ayacucho", "Trafalgar", "Valençay"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q38",
+    "question": "¿Qué medida permitió que Isabel pudiera heredar el trono?",
+    "options": ["Decreto de Valencia", "Pragmática Sanción", "Manifiesto de los Persas", "Ley de Mayorazgos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q39",
+    "question": "¿A quién dejó fuera de la sucesión la Pragmática Sanción?",
+    "options": ["Riego", "Carlos María Isidro", "Godoy", "Torrijos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t23_q40",
+    "question": "¿Qué conflicto estalló tras la muerte de Fernando VII en 1833?",
+    "options": ["Guerra de Sucesión", "Primera Guerra Carlista", "Guerra de Independencia", "Guerra de los Treinta Años"],
+    "correctAnswer": 1
+  }
+]

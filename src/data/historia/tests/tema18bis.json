@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t18bis_q1",
+    "question": "¿Cómo se caracteriza la América Hispana del siglo XVIII según el tema?",
+    "options": ["Como una etapa de decadencia total", "Como un periodo de transformación y reactivación bajo los Borbones", "Como una fase de independencia plena", "Como una época sin cambios administrativos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q2",
+    "question": "¿Qué principios aplicaron los Borbones en América durante el siglo XVIII?",
+    "options": ["Federalismo y autonomía local", "Centralización y racionalización", "Separación de poderes", "Feudalización del territorio"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q3",
+    "question": "¿Qué virreinato se fragmentó por su enorme extensión?",
+    "options": ["Virreinato de Nueva España", "Virreinato del Perú", "Virreinato de Nueva Granada", "Virreinato del Río de la Plata"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q4",
+    "question": "¿En qué año se creó el Virreinato de Nueva Granada?",
+    "options": ["1700", "1717", "1767", "1776"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q5",
+    "question": "¿Con qué finalidad se creó el Virreinato de Nueva Granada?",
+    "options": ["Expandir el protestantismo", "Fortalecer la gestión en el norte de Sudamérica", "Sustituir a Nueva España", "Eliminar las intendencias"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q6",
+    "question": "¿En qué año se creó el Virreinato del Río de la Plata?",
+    "options": ["1717", "1767", "1776", "1789"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t18bis_q7",
+    "question": "¿Qué buscaba el Virreinato del Río de la Plata?",
+    "options": ["Difundir la Ilustración", "Consolidar el control del cono sur y proteger intereses comerciales", "Aumentar el poder de los virreyes", "Fomentar la independencia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q8",
+    "question": "¿Qué eran las intendencias?",
+    "options": ["Tribunales religiosos", "Instituciones francesas para recortar el poder de los virreyes y combatir la corrupción", "Milicias locales", "Compañías mercantiles"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q9",
+    "question": "¿Bajo qué rey se impulsó con más fuerza la modernización administrativa y defensiva en América?",
+    "options": ["Felipe V", "Fernando VI", "Carlos III", "Carlos IV"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t18bis_q10",
+    "question": "¿Por qué se habla de 'segunda conquista' en tiempos de Carlos III?",
+    "options": ["Por una nueva invasión militar", "Por la fuerte presión fiscal y el control administrativo", "Por la abolición del comercio", "Por la llegada de nuevos virreyes franceses"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q11",
+    "question": "¿Qué funcionario destaca como visitador general en Nueva España?",
+    "options": ["Antonio Nariño", "José de Gálvez", "Mutis", "Malaspina"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q12",
+    "question": "¿Qué objetivo tenían los visitadores generales?",
+    "options": ["Promover la independencia", "Asegurar el cumplimiento estricto de las leyes", "Eliminar el ejército colonial", "Repartir tierras a los criollos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q13",
+    "question": "¿Qué novedad militar introdujeron las reformas borbónicas?",
+    "options": ["Desaparición del ejército colonial", "Creación de milicias locales y guarniciones fijas", "Supresión de fronteras", "Entrega de armas a los indígenas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q14",
+    "question": "¿Qué significa regalismo en el contexto del tema?",
+    "options": ["Defensa del poder papal", "Afirmación de la autoridad de la Corona sobre la Iglesia", "Privilegios de los criollos", "Libertad de culto"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q15",
+    "question": "¿Qué orden religiosa fue expulsada en 1767?",
+    "options": ["Franciscanos", "Dominicos", "Jesuitas", "Agustinos"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t18bis_q16",
+    "question": "¿Qué efecto tuvo la expulsión de los jesuitas?",
+    "options": ["Fortaleció la educación de las élites", "Desarticuló el sistema educativo de las élites y las misiones", "Eliminó los impuestos", "Impulsó el comercio libre"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q17",
+    "question": "¿Qué pretendía la metrópoli respecto a las manufacturas americanas?",
+    "options": ["Fomentarlas ampliamente", "Prohibir su desarrollo para evitar competencia con España", "Entregarlas a los criollos", "Usarlas como base de independencia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q18",
+    "question": "¿Qué corriente cultural penetró en América durante el siglo XVIII?",
+    "options": ["El feudalismo", "La Ilustración", "El goticismo", "El barroco exclusivamente"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q19",
+    "question": "¿Qué figuras se citan como líderes de expediciones científicas?",
+    "options": ["Nariño y Túpac Amaru", "Mutis y Malaspina", "Gálvez y Braganza", "Carlos III y Felipe V"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q20",
+    "question": "¿Qué eran las Sociedades de Amigos del País?",
+    "options": ["Milicias defensivas", "Instituciones para fomentar el desarrollo económico e intelectual", "Órdenes religiosas", "Tribunales coloniales"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q21",
+    "question": "¿Qué sistema comercial resultó insuficiente y favoreció el contrabando?",
+    "options": ["El comercio libre", "El sistema de flotas y galeones y el monopolio de Sevilla y Cádiz", "Las intendencias", "El sistema de castas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q22",
+    "question": "¿Qué potencias practicaban activamente el contrabando en América?",
+    "options": ["Francia y Austria", "Inglaterra y Holanda", "Portugal y Saboya", "Prusia y Rusia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q23",
+    "question": "¿Qué eran las compañías privilegiadas de comercio?",
+    "options": ["Tribunales económicos", "Empresas como la Guipuzcoana de Caracas para controlar zonas y combatir el comercio ilícito", "Milicias de criollos", "Órdenes religiosas mercantiles"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q24",
+    "question": "¿Qué decreto de 1778 modificó el sistema comercial colonial?",
+    "options": ["Decreto de Nueva Planta", "Decreto de Libertad de Comercio", "Decreto de Intendencias", "Edicto de Milán"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q25",
+    "question": "¿Qué permitió el Decreto de Libertad de Comercio?",
+    "options": ["La independencia de los puertos americanos", "Que puertos como Barcelona, Málaga y Valencia comerciaran directamente con América", "Eliminar la Casa de Contratación", "Abrir el comercio con Asia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q26",
+    "question": "¿Qué puertos americanos ganaron protagonismo en el siglo XVIII?",
+    "options": ["Lima y Veracruz", "Buenos Aires y La Habana", "Cartagena y Potosí", "Quito y Cuzco"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q27",
+    "question": "¿Qué actividad siguió siendo importante junto a las plantaciones?",
+    "options": ["Industria textil", "Minería de plata en Potosí y Zacatecas", "Ganadería trashumante", "Pesca atlántica"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q28",
+    "question": "¿Qué productos de plantación ganaron importancia?",
+    "options": ["Trigo, cebada y vid", "Azúcar, cacao y tabaco", "Aceite, vino y lana", "Algodón, lino y cáñamo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q29",
+    "question": "¿Qué corriente económica cuestionó el monopolio comercial español?",
+    "options": ["Mercantilismo puro", "Feudalismo", "Liberalismo incipiente y fisiocracia", "Proteccionismo artesanal"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t18bis_q30",
+    "question": "¿Cómo se define la sociedad colonial del siglo XVIII?",
+    "options": ["Igualitaria", "Rígida sociedad de castas", "Democrática", "Sin diferencias legales"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q31",
+    "question": "¿Qué dos repúblicas intentaba separar la ley colonial?",
+    "options": ["República de criollos y peninsulares", "República de españoles y de indios", "República urbana y rural", "República militar y comercial"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q32",
+    "question": "¿Qué grupo ocupaba la cúspide social y los altos cargos?",
+    "options": ["Criollos", "Mestizos", "Peninsulares", "Indígenas"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t18bis_q33",
+    "question": "¿Qué grupo tenía poder económico pero no poder político real?",
+    "options": ["Peninsulares", "Criollos", "Mestizos", "Esclavos africanos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q34",
+    "question": "¿Qué sentimiento nació entre los criollos según el tema?",
+    "options": ["Lealtad incondicional a Madrid", "Conciencia americanista", "Deseo de volver a Europa", "Federalismo indígena"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q35",
+    "question": "¿Qué grupos ocupaban la base de la pirámide social?",
+    "options": ["Virreyes y peninsulares", "Criollos y mestizos", "Indígenas y esclavos africanos", "Comerciantes y clero"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t18bis_q36",
+    "question": "¿Qué hecho de 1776 se presenta como primer modelo inspirador para la emancipación?",
+    "options": ["Revolución Francesa", "Independencia de las trece colonias", "Expulsión de los jesuitas", "Creación del Río de la Plata"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q37",
+    "question": "¿Qué rebelión antifiscal destaca en Nueva Granada?",
+    "options": ["La de Túpac Amaru II", "La de los Comuneros de Socorro", "La del Corpus de Sangre", "La de los Remensas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q38",
+    "question": "¿Contra qué se levantó Túpac Amaru II en 1780?",
+    "options": ["Contra los abusos de los corregidores", "Contra los criollos", "Contra los jesuitas", "Contra el comercio atlántico"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t18bis_q39",
+    "question": "¿Qué revolución de 1789 radicalizó a los intelectuales americanos?",
+    "options": ["La independencia de Estados Unidos", "La Revolución Francesa", "La Revolución Gloriosa", "La revolución inglesa de Cromwell"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t18bis_q40",
+    "question": "¿Qué hecho externo de 1808 actuó como catalizador final de las independencias?",
+    "options": ["La batalla de Trafalgar", "La invasión napoleónica de España", "La independencia de Portugal", "La creación de intendencias"],
+    "correctAnswer": 1
+  }
+]

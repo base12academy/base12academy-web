@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t14_q1",
+    "question": "¿Qué hecho marcó el inicio del reinado de Carlos I en 1516?",
+    "options": ["La muerte de Isabel la Católica", "La muerte de Fernando el Católico", "La conquista de Navarra", "La elección imperial de Carlos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t14_q2",
+    "question": "¿Quién era el padre de Carlos I?",
+    "options": ["Fernando el Católico", "Maximiliano de Austria", "Felipe el Hermoso", "Francisco I"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t14_q3",
+    "question": "¿Quién era la madre de Carlos I?",
+    "options": ["Juana I de Castilla", "Isabel I de Castilla", "María de Borgoña", "Catalina de Aragón"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t14_q4",
+    "question": "¿Qué territorios recibió Carlos I de los Reyes Católicos?",
+    "options": ["Austria y Países Bajos", "Castilla, Aragón, Italia, Navarra y América", "Franco Condado y Austria", "Alemania y Borgoña"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t14_q5",
+    "question": "¿Qué posesiones italianas heredó Carlos I?",
+    "options": ["Roma, Florencia y Venecia", "Nápoles, Sicilia y Cerdeña", "Milán, Génova y Pisa", "Córcega, Sicilia y Milán"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t14_q6",
+    "question": "¿Qué territorios heredó Carlos I de sus abuelos paternos?",
+    "options": ["Castilla y Aragón", "Austria, Países Bajos y Franco Condado", "Navarra y América", "Portugal y Borgoña"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t14_q7",
+    "question": "¿En qué año obtuvo Carlos el título de Emperador del Sacro Imperio?",
+    "options": ["1516", "1519", "1521", "1555"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t14_q8",
+    "question": "¿Con qué nombre imperial fue conocido Carlos I?",
+    "options": ["Carlos III", "Carlos IV", "Carlos V", "Carlos VI"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t14_q9",
+    "question": "¿Qué provocó rechazo inicial hacia Carlos I en España?",
+    "options": ["Su religión protestante", "Su entorno extranjero y consejeros flamencos", "Su alianza con Francia", "Su rechazo a Castilla"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t14_q10",
+    "question": "¿Qué consejero flamenco destacó en la corte de Carlos I?",
+    "options": ["Granvela", "Adriano de Utrecht", "Alba", "Padilla"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t14_q11",
+    "question": "¿Qué ideología impulsó Carlos I para Europa?",
+    "options": ["Mercantilismo atlántico", "Universitas Christiana", "Razón de Estado", "Humanismo laico"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t14_q12",
+    "question": "¿Qué buscaba la Universitas Christiana?",
+    "options": ["Unificar Europa bajo el protestantismo", "Unir Europa bajo el catolicismo y el liderazgo imperial", "Crear una federación comercial", "Separar religión y política"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t14_q13",
+    "question": "¿Qué dos objetivos principales tenía el proyecto imperial de Carlos I?",
+    "options": ["Conquistar Inglaterra y Portugal", "Frenar a los otomanos y combatir el protestantismo", "Reforzar la Mesta y la Inquisición", "Controlar América y Navarra"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t14_q14",
+    "question": "¿Qué territorio soportó principalmente la carga financiera del Imperio?",
+    "options": ["Aragón", "Navarra", "Castilla", "Nápoles"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t14_q15",
+    "question": "¿Para qué necesitaba Carlos I grandes sumas de dinero al inicio de su reinado imperial?",
+    "options": ["Para construir monasterios", "Para sobornar a los príncipes electores alemanes y mantener la corte itinerante", "Para repoblar Granada", "Para expulsar a los moriscos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t14_q16",
+    "question": "¿Entre qué años tuvieron lugar las Comunidades y las Germanías?",
+    "options": ["1516-1518", "1520-1522", "1525-1527", "1547-1555"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t14_q17",
+    "question": "¿Qué ciudades encabezaron las Comunidades de Castilla según el tema?",
+    "options": ["Madrid, Burgos y León", "Toledo, Segovia y Salamanca", "Sevilla, Córdoba y Granada", "Valencia, Murcia y Toledo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t14_q18",
+    "question": "¿Qué pedían los comuneros?",
+    "options": ["La independencia de Castilla", "La residencia del rey en España y limitar el poder flamenco", "La abolición de la nobleza", "La unificación con Portugal"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t14_q19",
+    "question": "¿Qué líder NO aparece citado entre los principales de las Comunidades en el tema?",
+    "options": ["Padilla", "Bravo", "Zapata", "Adriano"],
+    "correctAnswer": 3
+  },
+  {
+    "id": "t14_q20",
+    "question": "¿En qué batalla fueron derrotadas las Comunidades?",
+    "options": ["Pavía", "Villalar", "Mühlberg", "Augsburgo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t14_q21",
+    "question": "¿En qué año tuvo lugar la derrota de Villalar?",
+    "options": ["1519", "1520", "1521", "1525"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t14_q22",
+    "question": "¿Dónde se desarrollaron las Germanías?",
+    "options": ["Castilla y Navarra", "Valencia y Mallorca", "Aragón y Cataluña", "Granada y Sevilla"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t14_q23",
+    "question": "¿Qué carácter tuvieron las Germanías?",
+    "options": ["Político e imperial", "Social y antiseñorial", "Religioso y monástico", "Campesino antimusulmán"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t14_q24",
+    "question": "¿Quién protagonizó principalmente las Germanías?",
+    "options": ["Alta nobleza", "Artesanos y pequeña burguesía", "Clero regular", "Mercenarios alemanes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t14_q25",
+    "question": "¿A quién apoyó la alta nobleza durante las revueltas?",
+    "options": ["A los comuneros", "A los agermanados", "Al rey", "A Francia"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t14_q26",
+    "question": "¿Qué permitió la derrota de las revueltas internas?",
+    "options": ["El fin de la monarquía", "La consolidación del autoritarismo real", "La independencia de Aragón", "La supresión de impuestos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t14_q27",
+    "question": "¿Qué reino quedó convertido en pulmón financiero del Imperio?",
+    "options": ["Aragón", "Navarra", "Castilla", "Flandes"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t14_q28",
+    "question": "¿Con qué rey francés rivalizó Carlos I por Italia y Borgoña?",
+    "options": ["Luis XII", "Enrique II", "Francisco I", "Carlos VIII"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t14_q29",
+    "question": "¿Qué victoria aseguró el control del Milanesado?",
+    "options": ["Villalar", "Pavía", "Mühlberg", "Lepanto"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t14_q30",
+    "question": "¿En qué año tuvo lugar la batalla de Pavía?",
+    "options": ["1521", "1525", "1547", "1555"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t14_q31",
+    "question": "¿Qué dirigente otomano representa la amenaza oriental en el tema?",
+    "options": ["Mehmed II", "Selim I", "Solimán el Magnífico", "Bayaceto"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t14_q32",
+    "question": "¿Qué reformador inició el conflicto religioso europeo mencionado en el tema?",
+    "options": ["Calvino", "Erasmo", "Martín Lutero", "Zuinglio"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t14_q33",
+    "question": "¿Qué victoria obtuvo Carlos I frente a los protestantes en 1547?",
+    "options": ["Augsburgo", "Mühlberg", "Pavía", "Poitiers"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t14_q34",
+    "question": "¿Qué acuerdo de 1555 obligó a aceptar la fragmentación religiosa?",
+    "options": ["Tratado de Cateau-Cambrésis", "Paz de Augsburgo", "Concordia de Worms", "Edicto de Worms"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t14_q35",
+    "question": "¿De qué banqueros dependió financieramente la monarquía de Carlos I?",
+    "options": ["Médici y Strozzi", "Fugger e italianos", "Solo castellanos", "Banqueros portugueses"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t14_q36",
+    "question": "¿Qué hizo Carlos I en 1556?",
+    "options": ["Conquistó Portugal", "Abdicó", "Se proclamó rey de Francia", "Expulsó a los protestantes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t14_q37",
+    "question": "¿Entre quiénes dividió Carlos I su imperio al abdicar?",
+    "options": ["Entre Castilla y Aragón", "Entre Fernando y Felipe II", "Entre Austria y Francia", "Entre Portugal y España"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t14_q38",
+    "question": "¿Qué institución centralizaba el oro y la plata de América?",
+    "options": ["Consejo de Indias", "Casa de Contratación", "Santa Hermandad", "Mesta"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t14_q39",
+    "question": "¿Qué efecto económico provocó la llegada masiva de metales americanos?",
+    "options": ["Deflación", "Revolución de los Precios", "Desaparición del comercio", "Industrialización"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t14_q40",
+    "question": "¿Qué instrumento de deuda pública emitió la monarquía para financiarse?",
+    "options": ["Fueros", "Juros", "Parias", "Almojarifazgos"],
+    "correctAnswer": 1
+  }
+]

@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t12_q1",
+    "question": "¿Qué situación alcanzó el sistema feudal peninsular tras siglos de expansión entre los siglos XI y XIII?",
+    "options": ["Un equilibrio estable definitivo", "Un límite de saturación", "Una industrialización temprana", "Una recuperación demográfica"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t12_q2",
+    "question": "¿Qué siglo estuvo marcado por la gran crisis del sistema feudal peninsular?",
+    "options": ["Siglo XI", "Siglo XII", "Siglo XIII", "Siglo XIV"],
+    "correctAnswer": 3
+  },
+  {
+    "id": "t12_q3",
+    "question": "¿Qué rompió la crisis del siglo XIV según el tema?",
+    "options": ["La unidad religiosa", "El equilibrio entre población y recursos", "La autoridad papal", "El comercio atlántico"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t12_q4",
+    "question": "¿Qué fenómeno climático se cita como causa de la crisis?",
+    "options": ["Óptimo medieval", "Pequeña Edad de Hielo", "Calentamiento renacentista", "Monzones atlánticos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t12_q5",
+    "question": "¿Qué efecto tuvo la Pequeña Edad de Hielo sobre la agricultura?",
+    "options": ["Aumento constante de cosechas", "Sucesión de malas cosechas recurrentes", "Expansión del regadío", "Desaparición de los cereales"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t12_q6",
+    "question": "¿Por qué disminuyó la producción agraria según el tema?",
+    "options": ["Por falta de moneda", "Por el agotamiento de los suelos menos fértiles roturados antes", "Por la prohibición del comercio", "Por la desaparición de la nobleza"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t12_q7",
+    "question": "¿Qué alimento vio aumentar drásticamente su precio durante la crisis de subsistencia?",
+    "options": ["La carne", "El vino", "Los cereales", "El aceite"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t12_q8",
+    "question": "¿Qué provocó la escasez de alimentos en la población?",
+    "options": ["Mayor acceso a productos básicos", "Desnutrición prolongada y vulnerabilidad ante enfermedades", "Aumento del comercio urbano", "Estabilidad social"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t12_q9",
+    "question": "¿En qué año llegó la Peste Negra a la península?",
+    "options": ["1212", "1348", "1391", "1412"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t12_q10",
+    "question": "¿Desde dónde llegó la Peste Negra según el tema?",
+    "options": ["Desde el norte de Europa", "Desde Oriente a través de las rutas comerciales", "Desde África occidental", "Desde América"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t12_q11",
+    "question": "¿Cómo se propagó la Peste Negra por la península?",
+    "options": ["Desde el interior hacia la costa", "Desde las costas hacia el interior", "Solo por zonas rurales", "Únicamente por Castilla"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t12_q12",
+    "question": "¿Qué porcentaje de población se estima que murió en algunas zonas por la Peste Negra?",
+    "options": ["5%-10%", "10%-20%", "30%-50%", "60%-80%"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t12_q13",
+    "question": "¿Qué espacios se vieron más afectados por la peste debido a su alta densidad?",
+    "options": ["Los monasterios", "Las ciudades", "Los bosques", "Las montañas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t12_q14",
+    "question": "¿Qué provocó la falta de mano de obra en el campo?",
+    "options": ["La expansión del cultivo", "El abandono de campos o despoblados", "La mejora de los suelos", "La desaparición del regadío"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t12_q15",
+    "question": "¿Cómo denomina el tema a los campos abandonados por la crisis demográfica?",
+    "options": ["Latifundios", "Alfoces", "Despoblados", "Dehesas"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t12_q16",
+    "question": "¿Qué ocurrió con el comercio urbano tras la llegada de la peste?",
+    "options": ["Se intensificó", "Se paralizó", "Pasó a manos rurales", "Desapareció solo en Aragón"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t12_q17",
+    "question": "¿Qué sucedió con los salarios por la escasez de trabajadores?",
+    "options": ["Bajaron drásticamente", "Subieron", "Desaparecieron", "Se mantuvieron iguales"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t12_q18",
+    "question": "¿Qué ocurrió con la inflación durante la crisis?",
+    "options": ["Desapareció", "Se estabilizó", "Se volvió incontrolable", "Afectó solo al campo"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t12_q19",
+    "question": "¿Cómo interpretó la sociedad medieval la calamidad de la peste?",
+    "options": ["Como un cambio político", "Como un castigo divino", "Como una mejora social", "Como una victoria militar"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t12_q20",
+    "question": "¿Qué eran los movimientos de flagelantes?",
+    "options": ["Grupos mercenarios", "Grupos que buscaban redención mediante castigos físicos", "Asambleas urbanas", "Órdenes militares"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t12_q21",
+    "question": "¿Qué consecuencia ideológica produjo la peste según el tema?",
+    "options": ["Mayor tolerancia religiosa", "Aumento del fanatismo religioso", "Desaparición del clero", "Humanismo renacentista"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t12_q22",
+    "question": "¿Qué comunidades fueron señaladas con frecuencia como 'chivos expiatorios'?",
+    "options": ["Las musulmanas", "Las campesinas", "Las judías", "Las nobiliarias"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t12_q23",
+    "question": "¿Qué provocó el aumento de la presión fiscal de la nobleza?",
+    "options": ["Una paz duradera", "Violentos conflictos sociales", "La desaparición de los estamentos", "La unidad dinástica"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t12_q24",
+    "question": "¿Dónde tuvo lugar la revuelta de los Irmandiños?",
+    "options": ["Cataluña", "Castilla", "Galicia", "Valencia"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t12_q25",
+    "question": "¿Contra quién se dirigió la revuelta de los Irmandiños?",
+    "options": ["Contra la monarquía aragonesa", "Contra los abusos de la nobleza local", "Contra los judíos", "Contra las órdenes militares"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t12_q26",
+    "question": "¿Qué conflicto campesino se desarrolló en Cataluña?",
+    "options": ["La revuelta comunera", "La guerra de los Remensas", "La guerra de los Dos Pedros", "La fitna"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t12_q27",
+    "question": "¿Contra qué luchaban los remensas?",
+    "options": ["Contra los fueros", "Contra los malos usos señoriales", "Contra el comercio urbano", "Contra los concejos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t12_q28",
+    "question": "¿Qué grupos se enfrentaron en el conflicto de Barcelona?",
+    "options": ["Nobleza y clero", "Biga y Busca", "Irmandiños y remensas", "Árabes y bereberes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t12_q29",
+    "question": "¿Qué representaba la Biga en Barcelona?",
+    "options": ["La alta burguesía", "Los artesanos y pequeños comerciantes", "La nobleza rural", "El clero regular"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t12_q30",
+    "question": "¿Qué representaba la Busca en Barcelona?",
+    "options": ["La alta nobleza", "La alta burguesía", "Artesanos y pequeños comerciantes", "Órdenes militares"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t12_q31",
+    "question": "¿Qué fueron los pogromos de 1391?",
+    "options": ["Pactos nobiliarios", "Estallidos de violencia contra las juderías", "Guerras entre Castilla y Aragón", "Reformas fiscales"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t12_q32",
+    "question": "¿Qué efecto político general tuvieron estos conflictos sociales?",
+    "options": ["Fortalecieron exclusivamente a la nobleza", "Debilitaron el régimen señorial y fortalecieron a la monarquía", "Destruyeron las ciudades", "Acabaron con el feudalismo de inmediato"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t12_q33",
+    "question": "¿Qué enfrentamiento marcó la crisis política castellana en la Baja Edad Media?",
+    "options": ["Pedro I contra Alfonso IX", "Pedro I contra Enrique de Trastámara", "Fernando I contra Ramiro I", "Almanzor contra Abderramán III"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t12_q34",
+    "question": "¿Qué dinastía se instauró en Castilla tras la victoria de Enrique?",
+    "options": ["Omeya", "Jimena", "Trastámara", "Austria"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t12_q35",
+    "question": "¿Qué nombre reciben las concesiones que aumentaron el poder nobiliario tras la victoria de Enrique?",
+    "options": ["Pactos de Caspe", "Mercedes enriqueñas", "Cartas pueblas", "Malos usos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t12_q36",
+    "question": "¿Qué problema sucesorio originó el Compromiso de Caspe de 1412?",
+    "options": ["La muerte de Pedro I", "La muerte sin descendencia de Martín el Humano", "La peste de 1348", "La caída de Granada"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t12_q37",
+    "question": "¿Quién fue elegido rey de Aragón en el Compromiso de Caspe?",
+    "options": ["Fernando I", "Enrique de Trastámara", "Alfonso IX", "Juan II"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t12_q38",
+    "question": "¿Qué supuso la elección de Fernando I en Aragón?",
+    "options": ["La ruptura entre reinos", "La llegada de la casa Trastámara también a Aragón", "El fin de la nobleza", "La unificación inmediata de España"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t12_q39",
+    "question": "¿Qué corriente jurídica recuperó fuerza en este periodo frente a las viejas costumbres feudales?",
+    "options": ["Derecho islámico", "Derecho consuetudinario castellano", "Derecho romano", "Liber Iudiciorum"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t12_q40",
+    "question": "¿Qué hito de 1492 se menciona como inicio del Estado Moderno?",
+    "options": ["La batalla de Guadalete", "La toma de Granada", "El Compromiso de Caspe", "La peste de 1348"],
+    "correctAnswer": 1
+  }
+]

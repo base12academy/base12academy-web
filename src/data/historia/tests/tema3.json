@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t3_q1",
+    "question": "¿Qué pueblos fueron los primeros en llegar a la Península Ibérica dentro de las colonizaciones mediterráneas?",
+    "options": ["Griegos", "Cartagineses", "Fenicios", "Romanos"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t3_q2",
+    "question": "¿De qué zona procedían los fenicios?",
+    "options": ["Actual Líbano", "Actual Italia", "Actual Grecia", "Actual Egipto"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t3_q3",
+    "question": "¿Qué ciudades fenicias de origen menciona el tema?",
+    "options": ["Atenas y Esparta", "Tiro y Sidón", "Roma y Cartago", "Gadir y Malaka"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t3_q4",
+    "question": "¿Hacia qué siglo llegaron los fenicios a la Península Ibérica?",
+    "options": ["Siglo XII a.C.", "Siglo IX a.C.", "Siglo VI a.C.", "Siglo III a.C."],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t3_q5",
+    "question": "¿Qué interés principal motivó la llegada fenicia a la Península?",
+    "options": ["Expandir su religión", "Conquistar militarmente el interior", "Explotar la riqueza minera de plata y cobre", "Fundar un imperio agrícola"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t3_q6",
+    "question": "¿Qué modelo de asentamiento utilizaron principalmente los fenicios?",
+    "options": ["Campamentos militares", "Ciudades agrícolas del interior", "Factorías o colonias comerciales costeras", "Castros fortificados"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t3_q7",
+    "question": "¿Cuál fue el principal enclave fenicio en la Península?",
+    "options": ["Emporion", "Qart Hadasht", "Gadir", "Mainake"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t3_q8",
+    "question": "¿Qué ciudad actual corresponde a Gadir?",
+    "options": ["Málaga", "Cádiz", "Cartagena", "Girona"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t3_q9",
+    "question": "¿Qué característica tiene Gadir según el tema?",
+    "options": ["Fue una colonia griega", "Es la ciudad más antigua de Occidente", "Fue capital de Tartessos", "Es un castro celta"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t3_q10",
+    "question": "¿Cuál de estos enclaves fue también una colonia fenicia?",
+    "options": ["Numancia", "Malaka", "Sagunto", "Toletum"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t3_q11",
+    "question": "¿Qué intercambiaban los fenicios por metales peninsulares?",
+    "options": ["Armas de hierro", "Manufacturas de lujo", "Esclavos", "Trigo y cebada"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t3_q12",
+    "question": "¿Qué productos de lujo fenicios menciona el tema?",
+    "options": ["Aceite y vino", "Cerámica y hierro", "Telas de púrpura y vidrio", "Oro y plata"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t3_q13",
+    "question": "¿Qué innovación económica introdujeron los fenicios?",
+    "options": ["La moneda y el urbanismo", "Las salazones de pescado y el cultivo del olivo", "La incineración funeraria", "La devotio"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t3_q14",
+    "question": "¿Cómo era la organización social fenicia en las colonias?",
+    "options": ["Rural y tribal", "Urbana y liderada por comerciantes", "Militar y guerrera", "Igualitaria y comunal"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t3_q15",
+    "question": "¿Cómo convivían normalmente los fenicios con los indígenas?",
+    "options": ["Con dominio militar directo", "Pacíficamente y sin imponer control político", "Expulsándolos de la costa", "Con esclavización masiva"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t3_q16",
+    "question": "¿Cuál fue la aportación cultural más revolucionaria de los fenicios?",
+    "options": ["El teatro", "El alfabeto fenicio", "La filosofía", "La democracia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t3_q17",
+    "question": "¿Qué otra aportación técnica difundieron los fenicios?",
+    "options": ["El acueducto", "El torno de alfarero", "La pólvora", "La imprenta"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t3_q18",
+    "question": "¿Sobre qué pueblos influyó especialmente la presencia fenicia?",
+    "options": ["Solo sobre los celtas", "Sobre Tartessos y los íberos", "Solo sobre Roma", "Sobre los pueblos cántabros exclusivamente"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t3_q19",
+    "question": "¿Qué pueblo colonizador llegó después de los fenicios según el tema?",
+    "options": ["Romanos", "Cartagineses", "Griegos", "Visigodos"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t3_q20",
+    "question": "¿En qué siglo se sitúa la presencia griega en la Península?",
+    "options": ["Siglo IX a.C.", "Siglo VI a.C.", "Siglo III a.C.", "Siglo I a.C."],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t3_q21",
+    "question": "¿Qué griegos protagonizaron esta expansión colonial?",
+    "options": ["Espartanos", "Atenienses", "Foceos", "Dorios"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t3_q22",
+    "question": "¿En qué zonas se concentró principalmente la colonización griega?",
+    "options": ["Noroeste y cantábrico", "Noreste y levante peninsular", "Meseta y sur interior", "Valle del Guadalquivir exclusivamente"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t3_q23",
+    "question": "¿Cuál fue la colonia griega más importante en la Península?",
+    "options": ["Mainake", "Malaka", "Emporion", "Gadir"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t3_q24",
+    "question": "¿Dónde estaba situada Emporion?",
+    "options": ["Actual Cádiz", "Actual Cartagena", "Actual Girona", "Actual Almería"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t3_q25",
+    "question": "¿Qué otra fundación griega menciona el tema?",
+    "options": ["Sexi", "Abdera", "Mainake", "Qart Hadasht"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t3_q26",
+    "question": "¿Cómo estaban organizadas urbanísticamente las colonias griegas?",
+    "options": ["Como castros", "Como polis planificadas", "Como aldeas dispersas", "Como campamentos militares"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t3_q27",
+    "question": "¿Qué cultivo introdujeron los griegos según el tema?",
+    "options": ["Olivo", "Trigo", "Vid", "Cebada"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t3_q28",
+    "question": "¿Qué producto elaboraban a partir de ese cultivo?",
+    "options": ["Aceite", "Vino", "Harina", "Salazones"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t3_q29",
+    "question": "¿Cuál fue el hito más disruptivo introducido por los griegos?",
+    "options": ["El hierro", "La moneda", "La escritura latina", "La monarquía"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t3_q30",
+    "question": "¿Qué permitió la introducción de la moneda?",
+    "options": ["Eliminar el comercio", "La acumulación de riqueza", "La desaparición de las élites", "La unificación política peninsular"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t3_q31",
+    "question": "¿Qué objeto de lujo griego fue muy demandado por las élites indígenas?",
+    "options": ["Armas de bronce", "Cerámica griega", "Monedas cartaginesas", "Torques de hierro"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t3_q32",
+    "question": "¿Qué efecto social tuvo esa demanda de productos griegos?",
+    "options": ["Redujo la jerarquización", "Aceleró la jerarquización social indígena", "Eliminó el comercio local", "Favoreció la igualdad rural"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t3_q33",
+    "question": "¿De dónde procedían los cartagineses?",
+    "options": ["Del actual Líbano", "Del norte de África", "De Grecia continental", "De la Meseta peninsular"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t3_q34",
+    "question": "¿Qué eran originalmente los cartagineses?",
+    "options": ["Romanos exiliados", "Antiguos colonos fenicios independientes", "Pueblos celtas africanizados", "Mercenarios íberos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t3_q35",
+    "question": "¿Cuándo se intensificó la presencia cartaginesa en la Península?",
+    "options": ["Tras la caída de Tiro", "Tras la conquista romana", "Durante el Neolítico", "Después de las Guerras Cántabras"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t3_q36",
+    "question": "¿Qué familia dirigió la expansión cartaginesa?",
+    "options": ["Los Escipiones", "Los Antoninos", "Los Bárcidas", "Los Argéadas"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t3_q37",
+    "question": "¿Qué ciudad fundaron los cartagineses como colonia estratégica?",
+    "options": ["Emporion", "Qart Hadasht", "Gadir", "Numancia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t3_q38",
+    "question": "¿Con qué finalidad explotaron masivamente la plata de Cartagena?",
+    "options": ["Para enriquecer a Tartessos", "Para financiar sus guerras contra Roma", "Para comerciar con los celtas", "Para construir castros"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t3_q39",
+    "question": "¿Cómo utilizaron los cartagineses a íberos y celtíberos?",
+    "options": ["Como filósofos", "Como agricultores", "Como mercenarios", "Como sacerdotes"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t3_q40",
+    "question": "¿Qué conflicto convirtió a la Península en escenario del enfrentamiento entre Roma y Cartago?",
+    "options": ["Primera Guerra Médica", "Segunda Guerra Púnica", "Guerra del Peloponeso", "Guerras Cántabras"],
+    "correctAnswer": 1
+  }
+]

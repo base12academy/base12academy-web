@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc21_1",
+    "question": "¿Cómo afectó la Revolución Francesa al reinado de Carlos IV?",
+    "answerGuide": "Obligó a España a cambiar su política exterior pasando de la prevención al conflicto y posteriormente a la alianza con Francia.",
+    "keywords": ["Revolución Francesa", "Carlos IV", "política exterior", "prevención", "alianza"]
+  },
+  {
+    "id": "tc21_2",
+    "question": "¿Qué fases tuvo la política exterior española frente a Francia?",
+    "answerGuide": "Prevención con cierre de fronteras, confrontación bélica y finalmente alianza con Francia.",
+    "keywords": ["prevención", "confrontación", "alianza", "Francia"]
+  },
+  {
+    "id": "tc21_3",
+    "question": "¿Quién fue Manuel Godoy y qué importancia tuvo?",
+    "answerGuide": "Fue el valido de Carlos IV, concentrando el poder político y generando oposición de nobleza y clero.",
+    "keywords": ["Godoy", "valido", "Carlos IV", "oposición"]
+  },
+  {
+    "id": "tc21_4",
+    "question": "¿Qué fue el Motín de Aranjuez?",
+    "answerGuide": "Un levantamiento que destituyó a Godoy y provocó la abdicación de Carlos IV en Fernando VII.",
+    "keywords": ["Motín de Aranjuez", "Godoy", "abdicación", "Fernando VII"]
+  },
+  {
+    "id": "tc21_5",
+    "question": "¿Qué situación atravesaba la Hacienda Real?",
+    "answerGuide": "Estaba en quiebra debido a las guerras y la crisis del comercio americano.",
+    "keywords": ["Hacienda", "quiebra", "guerras", "comercio"]
+  },
+  {
+    "id": "tc21_6",
+    "question": "¿Qué fue el Tratado de Fontainebleau?",
+    "answerGuide": "Acuerdo que permitió el paso de tropas francesas por España para invadir Portugal.",
+    "keywords": ["Fontainebleau", "tropas francesas", "Portugal"]
+  },
+  {
+    "id": "tc21_7",
+    "question": "¿Qué fueron las Abdicaciones de Bayona?",
+    "answerGuide": "La renuncia al trono de Carlos IV y Fernando VII en favor de José I Bonaparte.",
+    "keywords": ["Bayona", "abdicaciones", "José I", "Napoleón"]
+  },
+  {
+    "id": "tc21_8",
+    "question": "¿Qué grupos sociales se enfrentaron durante la guerra?",
+    "answerGuide": "Afrancesados y patriotas.",
+    "keywords": ["afrancesados", "patriotas"]
+  },
+  {
+    "id": "tc21_9",
+    "question": "¿Qué fue el levantamiento del 2 de mayo de 1808?",
+    "answerGuide": "Una rebelión popular en Madrid contra la ocupación francesa que inició la guerra.",
+    "keywords": ["2 de mayo", "Madrid", "levantamiento", "guerra"]
+  },
+  {
+    "id": "tc21_10",
+    "question": "¿Qué formas de resistencia surgieron durante la guerra?",
+    "answerGuide": "Guerrillas, juntas locales y resistencia en ciudades sitiadas.",
+    "keywords": ["guerrilla", "juntas", "sitios", "resistencia"]
+  },
+  {
+    "id": "tc21_11",
+    "question": "¿Qué importancia tuvo la batalla de Bailén?",
+    "answerGuide": "Fue un éxito inicial español que frenó temporalmente a los franceses.",
+    "keywords": ["Bailén", "victoria", "franceses"]
+  },
+  {
+    "id": "tc21_12",
+    "question": "¿Qué papel jugaron las Cortes de Cádiz?",
+    "answerGuide": "Elaboraron la Constitución de 1812, base del liberalismo.",
+    "keywords": ["Cortes de Cádiz", "Constitución 1812", "liberalismo"]
+  },
+  {
+    "id": "tc21_13",
+    "question": "¿Qué fue la Constitución de 1812?",
+    "answerGuide": "Una constitución liberal conocida como «La Pepa».",
+    "keywords": ["Constitución 1812", "La Pepa", "liberal"]
+  },
+  {
+    "id": "tc21_14",
+    "question": "¿Qué consecuencias tuvo la Guerra de Independencia?",
+    "answerGuide": "Devastación económica, gran número de muertos y crisis política.",
+    "keywords": ["devastación", "muertes", "crisis"]
+  },
+  {
+    "id": "tc21_15",
+    "question": "¿Qué hizo Fernando VII al regresar en 1814?",
+    "answerGuide": "Restauró el absolutismo y persiguió el liberalismo.",
+    "keywords": ["Fernando VII", "absolutismo", "liberalismo"]
+  }
+]

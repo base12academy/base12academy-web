@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc19_1",
+    "question": "¿Qué cambio político introdujeron los Borbones tras la Guerra de Sucesión?",
+    "answerGuide": "Implantaron un modelo de absolutismo monárquico francés, centralizado, que rompía con el pactismo de los Austrias.",
+    "keywords": ["Borbones", "absolutismo", "centralización", "pactismo", "Austrias"]
+  },
+  {
+    "id": "tc19_2",
+    "question": "¿Qué fueron los Decretos de Nueva Planta?",
+    "answerGuide": "Fueron medidas que abolieron los fueros e instituciones de la Corona de Aragón, manteniéndose solo los privilegios de Navarra y las provincias vascas.",
+    "keywords": ["Nueva Planta", "fueros", "Corona de Aragón", "Navarra", "provincias vascas"]
+  },
+  {
+    "id": "tc19_3",
+    "question": "¿Qué eran las Secretarías de Despacho y qué importancia tuvieron?",
+    "answerGuide": "Sustituyeron al sistema de Consejos y actuaron como antecedente de los actuales ministerios.",
+    "keywords": ["Secretarías de Despacho", "Consejos", "ministerios"]
+  },
+  {
+    "id": "tc19_4",
+    "question": "¿Qué función tuvo la Junta Suprema de Estado?",
+    "answerGuide": "Coordinó a los secretarios y sentó las bases del actual Consejo de Ministros.",
+    "keywords": ["Junta Suprema de Estado", "secretarios", "Consejo de Ministros"]
+  },
+  {
+    "id": "tc19_5",
+    "question": "¿Qué pilares culturales e ideológicos apoyaron la centralización borbónica?",
+    "answerGuide": "La imposición del castellano como lengua oficial y el regalismo, que sometía la Iglesia al poder real.",
+    "keywords": ["castellano", "lengua oficial", "regalismo", "Iglesia", "poder real"]
+  },
+  {
+    "id": "tc19_6",
+    "question": "¿Qué buscaban el Catastro en Cataluña y el Catastro de Ensenada?",
+    "answerGuide": "Pretendían unificar la carga tributaria y avanzar hacia un impuesto proporcional a la riqueza.",
+    "keywords": ["Catastro", "Cataluña", "Ensenada", "carga tributaria", "impuesto proporcional"]
+  },
+  {
+    "id": "tc19_7",
+    "question": "¿Qué reformas económicas impulsó el Despotismo Ilustrado?",
+    "answerGuide": "Promovió la unificación fiscal, la mejora de infraestructuras, las Reales Fábricas, el Banco de San Carlos y propuestas agrarias como la de Jovellanos.",
+    "keywords": ["Despotismo Ilustrado", "unificación fiscal", "Reales Fábricas", "Banco de San Carlos", "Jovellanos"]
+  },
+  {
+    "id": "tc19_8",
+    "question": "¿Qué pretendía el trazado radial de caminos?",
+    "answerGuide": "Conectar la periferia con el centro peninsular para fomentar el comercio interior.",
+    "keywords": ["trazado radial", "caminos", "periferia", "centro", "comercio interior"]
+  },
+  {
+    "id": "tc19_9",
+    "question": "¿Qué papel tuvieron las Reales Fábricas y el Banco de San Carlos?",
+    "answerGuide": "Las Reales Fábricas buscaban producir bienes de lujo y reducir importaciones; el Banco de San Carlos se creó para gestionar la deuda pública.",
+    "keywords": ["Reales Fábricas", "bienes de lujo", "importaciones", "Banco de San Carlos", "deuda pública"]
+  },
+  {
+    "id": "tc19_10",
+    "question": "¿Cómo cambió la política militar española tras Utrecht?",
+    "answerGuide": "Se orientó a la defensa del imperio americano, con ejército permanente y recuperación de una marina eficaz.",
+    "keywords": ["Utrecht", "imperio americano", "ejército permanente", "marina"]
+  },
+  {
+    "id": "tc19_11",
+    "question": "¿Qué novedad social produjo el ejército regular en América?",
+    "answerGuide": "Permitió a los criollos acceder a puestos de mando, alterando el equilibrio social colonial.",
+    "keywords": ["ejército regular", "América", "criollos", "puestos de mando", "equilibrio social"]
+  },
+  {
+    "id": "tc19_12",
+    "question": "¿Qué éxitos internacionales logró España con su fortalecimiento militar?",
+    "answerGuide": "Apoyó la independencia de las trece colonias y recuperó Menorca y Florida.",
+    "keywords": ["trece colonias", "Menorca", "Florida", "fortalecimiento militar"]
+  },
+  {
+    "id": "tc19_13",
+    "question": "¿Cómo se organizó territorialmente el Estado borbónico?",
+    "answerGuide": "Mediante provincias e intendencias con Audiencias para justicia, Capitanes Generales para lo militar e Intendentes para lo civil y económico.",
+    "keywords": ["provincias", "intendencias", "Audiencia", "Capitán General", "Intendente"]
+  },
+  {
+    "id": "tc19_14",
+    "question": "¿Qué cambios se introdujeron en América con las reformas borbónicas?",
+    "answerGuide": "Se crearon los virreinatos de Nueva Granada y del Río de la Plata y se impulsó el libre comercio desde puertos españoles.",
+    "keywords": ["Nueva Granada", "Río de la Plata", "libre comercio", "puertos españoles", "América"]
+  },
+  {
+    "id": "tc19_15",
+    "question": "¿Qué fue la repoblación de Sierra Morena y qué objetivos tenía?",
+    "answerGuide": "Fue un proyecto para asentar colonos europeos en zonas despobladas con el fin de fomentar la agricultura y combatir el bandolerismo.",
+    "keywords": ["Sierra Morena", "colonos europeos", "agricultura", "bandolerismo", "repoblación"]
+  }
+]

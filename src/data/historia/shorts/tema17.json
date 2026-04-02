@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc17_1",
+    "question": "¿Cómo se define la crisis del siglo XVII en España?",
+    "answerGuide": "Se caracteriza por una profunda depresión económica y demográfica, con endeudamiento crónico y bancarrotas continuas.",
+    "keywords": ["depresión económica", "demográfica", "endeudamiento", "bancarrotas"]
+  },
+  {
+    "id": "tc17_2",
+    "question": "¿Qué fue la moneda de vellón y qué consecuencias tuvo?",
+    "answerGuide": "Fue la sustitución de la plata por cobre en la moneda, lo que provocó inflación galopante y desestabilización económica.",
+    "keywords": ["moneda de vellón", "cobre", "inflación", "desestabilización"]
+  },
+  {
+    "id": "tc17_3",
+    "question": "¿Cómo afectó la crisis a los sectores productivos?",
+    "answerGuide": "Provocó la decadencia de la agricultura y la ganadería y la crisis de la industria textil castellana.",
+    "keywords": ["agricultura", "ganadería", "decadencia", "industria textil"]
+  },
+  {
+    "id": "tc17_4",
+    "question": "¿Por qué el comercio americano no solucionó la crisis?",
+    "answerGuide": "Porque los recursos se destinaron a guerras europeas y se vieron afectados por la corrupción y el contrabando.",
+    "keywords": ["comercio americano", "guerras europeas", "corrupción", "contrabando"]
+  },
+  {
+    "id": "tc17_5",
+    "question": "¿Qué ocurrió con el campesinado durante la crisis?",
+    "answerGuide": "Fue asfixiado por impuestos y malas cosechas, lo que llevó a la venta de tierras y la emigración.",
+    "keywords": ["campesinado", "impuestos", "malas cosechas", "emigración"]
+  },
+  {
+    "id": "tc17_6",
+    "question": "¿Qué fenómenos sociales surgieron como consecuencia de la crisis?",
+    "answerGuide": "El aumento del bandolerismo y la mendicidad en ciudades y caminos.",
+    "keywords": ["bandolerismo", "mendicidad"]
+  },
+  {
+    "id": "tc17_7",
+    "question": "¿Qué caracterizó a las clases altas en el siglo XVII?",
+    "answerGuide": "Adoptaron una mentalidad rentista, invirtiendo en juros en lugar de producción.",
+    "keywords": ["clases altas", "rentistas", "juros"]
+  },
+  {
+    "id": "tc17_8",
+    "question": "¿Qué provocó la rebelión catalana de 1640?",
+    "answerGuide": "La presión fiscal y los abusos de los soldados castellanos durante la Guerra de los Treinta Años.",
+    "keywords": ["1640", "Cataluña", "presión fiscal", "soldados", "Guerra de los Treinta Años"]
+  },
+  {
+    "id": "tc17_9",
+    "question": "¿Qué fue el Corpus de Sangre?",
+    "answerGuide": "Un motín violento en Cataluña en 1640 que incluyó el asesinato del virrey.",
+    "keywords": ["Corpus de Sangre", "1640", "motín", "virrey"]
+  },
+  {
+    "id": "tc17_10",
+    "question": "¿Cómo se resolvió la rebelión de Cataluña?",
+    "answerGuide": "Cataluña se reintegró en la monarquía en 1652 manteniendo sus fueros.",
+    "keywords": ["Cataluña", "1652", "reintegración", "fueros"]
+  },
+  {
+    "id": "tc17_11",
+    "question": "¿Cómo y cuándo se independizó Portugal?",
+    "answerGuide": "Se proclamó rey al Duque de Braganza en 1640 y España reconoció su independencia en 1668.",
+    "keywords": ["Portugal", "1640", "Braganza", "1668", "independencia"]
+  },
+  {
+    "id": "tc17_12",
+    "question": "¿Qué tratados marcaron el declive de la hegemonía española?",
+    "answerGuide": "La Paz de Westfalia (1648), la Paz de los Pirineos (1659) y la Paz de Nimega (1678).",
+    "keywords": ["Westfalia", "Pirineos", "Nimega", "declive"]
+  },
+  {
+    "id": "tc17_13",
+    "question": "¿Qué papel tuvo el Barroco en el siglo XVII?",
+    "answerGuide": "Fue un instrumento ideológico de la Contrarreforma que buscaba conmover a la población mediante el dramatismo.",
+    "keywords": ["Barroco", "Contrarreforma", "dramatismo"]
+  },
+  {
+    "id": "tc17_14",
+    "question": "¿Qué factores provocaron la crisis demográfica?",
+    "answerGuide": "Guerras, hambrunas, epidemias como peste, gripe y viruela, y la expulsión de los moriscos.",
+    "keywords": ["guerras", "hambrunas", "epidemias", "peste", "moriscos"]
+  },
+  {
+    "id": "tc17_15",
+    "question": "¿Qué hecho puso fin a la etapa de los Austrias?",
+    "answerGuide": "La muerte sin descendencia de Carlos II provocó una crisis sucesoria y una guerra por el trono.",
+    "keywords": ["Carlos II", "sin descendencia", "crisis sucesoria", "guerra"]
+  }
+]

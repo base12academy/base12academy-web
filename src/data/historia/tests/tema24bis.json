@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t24bis_q1",
+    "question": "¿Entre qué dos etapas se sitúa el Sexenio Democrático según el tema?",
+    "options": ["Entre la Guerra de Sucesión y la Ilustración", "Entre el moderantismo isabelino y la Restauración borbónica", "Entre el Trienio Liberal y la Década Ominosa", "Entre la Primera Guerra Carlista y la Restauración fernandina"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24bis_q2",
+    "question": "¿Qué buscó el Sexenio Democrático más allá de un simple cambio de gobierno?",
+    "options": ["Una expansión colonial", "Una legitimidad basada en principios democráticos", "La restauración del absolutismo", "La unión con Portugal"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24bis_q3",
+    "question": "¿Qué factor político contribuyó al colapso del régimen de Isabel II?",
+    "options": ["El federalismo republicano", "El autoritarismo de los últimos gabinetes moderados", "La abolición de la monarquía", "La intervención de la AIT"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24bis_q4",
+    "question": "¿Qué crisis económica aparece como causa del derrumbe del régimen isabelino?",
+    "options": ["La de 1820", "La de 1848", "La de 1866", "La de 1873"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t24bis_q5",
+    "question": "¿Qué acuerdo selló la oposición para derrocar a Isabel II?",
+    "options": ["Convenio de Vergara", "Pacto de Ostende", "Pacto del Pardo", "Tratado de Utrecht"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24bis_q6",
+    "question": "¿Dónde comenzó la sublevación de 'La Gloriosa'?",
+    "options": ["Madrid", "Barcelona", "Cádiz", "Valencia"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t24bis_q7",
+    "question": "¿Qué militar protagonizó el pronunciamiento inicial de la revolución de 1868?",
+    "options": ["Serrano", "Prim", "Topete", "Martínez Campos"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t24bis_q8",
+    "question": "¿Qué generales se unieron a Topete en la revolución de 1868?",
+    "options": ["Espartero y Narváez", "Prim y Serrano", "Pavía y Castelar", "Figueras y Pi y Margall"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24bis_q9",
+    "question": "¿Qué batalla decidió el fin de la resistencia isabelina?",
+    "options": ["Bailén", "Alcolea", "Sagunto", "Cartagena"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24bis_q10",
+    "question": "¿Cuál fue la consecuencia inmediata para Isabel II tras la derrota?",
+    "options": ["Fue encarcelada", "Abdicó en Prim", "Se exilió en Francia", "Se refugió en Cádiz"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t24bis_q11",
+    "question": "¿Qué organismos surgieron por todo el país tras el triunfo revolucionario?",
+    "options": ["Consejos de Ministros", "Juntas Revolucionarias", "Virreinatos", "Audiencias"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24bis_q12",
+    "question": "¿Cómo se organizaron las clases populares urbanas durante la revolución?",
+    "options": ["En quintas", "En Voluntarios de la Libertad", "En tercios", "En milicias carlistas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24bis_q13",
+    "question": "¿Quién presidió el Gobierno Provisional tras la revolución?",
+    "options": ["Prim", "Serrano", "Figuerola", "Amadeo de Saboya"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24bis_q14",
+    "question": "¿Qué cargo ocupó Prim en el Gobierno Provisional?",
+    "options": ["Ministerio de Hacienda", "Ministerio de la Guerra", "Regencia", "Presidencia de las Cortes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24bis_q15",
+    "question": "¿Qué principios definían el ideario del Gobierno Provisional?",
+    "options": ["Absolutismo y fueros", "Liberalismo democrático, soberanía nacional y sufragio universal masculino", "Republicanismo unitario y censitario", "Monarquía tradicional y poder clerical"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24bis_q16",
+    "question": "¿Qué constitución se considera la primera carta magna democrática de España según el tema?",
+    "options": ["La de 1812", "La de 1845", "La de 1869", "La de 1873"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t24bis_q17",
+    "question": "¿Qué forma de Estado estableció la Constitución de 1869?",
+    "options": ["República federal", "Monarquía parlamentaria", "Absolutismo moderado", "Dictadura militar"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24bis_q18",
+    "question": "¿Qué idea resume la posición del rey en la Constitución de 1869?",
+    "options": ["El rey gobierna y reina", "El rey representa a Dios", "El rey reina pero no gobierna", "El rey legisla con el ejército"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t24bis_q19",
+    "question": "¿Qué libertades se reconocieron por primera vez en la Constitución de 1869 según el tema?",
+    "options": ["Solo la libertad económica", "La libertad de cultos y de enseñanza", "El sufragio femenino y la libertad sindical", "La autonomía regional y la abolición del ejército"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24bis_q20",
+    "question": "¿Qué permitió la libertad de asociación reconocida en el Sexenio?",
+    "options": ["La vuelta de los carlistas al poder", "La organización legal del movimiento obrero y la llegada de la AIT", "La desaparición de los partidos", "La unificación con Portugal"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24bis_q21",
+    "question": "¿Qué ministro impulsó importantes reformas económicas durante el Gobierno Provisional?",
+    "options": ["Figuerola", "Serrano", "Castelar", "Pavía"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t24bis_q22",
+    "question": "¿Qué moneda nacional se creó en 1868?",
+    "options": ["El real", "La peseta", "El escudo", "El maravedí"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24bis_q23",
+    "question": "¿Qué orientación económica se adoptó con el arancel impulsado por Figuerola?",
+    "options": ["Proteccionismo total", "Aperturismo económico", "Autarquía", "Colectivización agraria"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24bis_q24",
+    "question": "¿Qué corriente cultural se asocia al Sexenio por la defensa de la libertad de cátedra?",
+    "options": ["Positivismo", "Krausismo", "Escolástica", "Barroco"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24bis_q25",
+    "question": "¿Qué opción política también ganó fuerza en este clima intelectual?",
+    "options": ["Carlismo", "Republicanismo federal", "Absolutismo fernandino", "Tradicionalismo ultracatólico"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24bis_q26",
+    "question": "¿Quién fue elegido finalmente como rey tras la búsqueda en las cortes europeas?",
+    "options": ["Alfonso XII", "José Bonaparte", "Amadeo de Saboya", "Carlos VII"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t24bis_q27",
+    "question": "¿Qué hecho trágico precedió al desembarco de Amadeo I en 1871?",
+    "options": ["La muerte de Serrano", "El asesinato de Prim", "La caída de Cartagena", "La abdicación de Isabel II"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24bis_q28",
+    "question": "¿Cómo apodaba el tema a Amadeo I?",
+    "options": ["El Deseado", "El Rey Caballero", "El Pacificador", "El Saboyano Viejo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24bis_q29",
+    "question": "¿Qué grupo se opuso a Amadeo I por querer el regreso de los Borbones?",
+    "options": ["Los republicanos federales", "Los aristócratas alfonsinos", "Los Voluntarios de la Libertad", "Los krausistas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24bis_q30",
+    "question": "¿Qué conflicto reactivaron los carlistas durante el reinado de Amadeo?",
+    "options": ["La Primera Guerra Carlista", "La Tercera Guerra Carlista", "La Guerra de África", "La Guerra de la Independencia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24bis_q31",
+    "question": "¿Qué guerra colonial agravó la situación del reinado de Amadeo I?",
+    "options": ["La guerra de Filipinas", "La Guerra de los Diez Años en Cuba", "La guerra del Rif", "La guerra con Marruecos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24bis_q32",
+    "question": "¿Con qué hecho se inició la Guerra de los Diez Años en Cuba según el tema?",
+    "options": ["El Grito de Dolores", "El Grito de Yara", "El Motín de Aranjuez", "El Pacto de Zanjón"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24bis_q33",
+    "question": "¿Qué dijo Amadeo I al abdicar sobre los españoles?",
+    "options": ["Que eran leales a la monarquía", "Que eran ingobernables", "Que estaban preparados para la república", "Que defendían la unidad nacional"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24bis_q34",
+    "question": "¿Qué régimen se proclamó tras la abdicación de Amadeo I en 1873?",
+    "options": ["La Restauración", "La Primera República", "La monarquía de Alfonso XII", "La Regencia de Serrano"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24bis_q35",
+    "question": "¿Cómo nació la Primera República según el tema?",
+    "options": ["Por una revolución popular masiva", "Con amplio consenso social", "Con escaso apoyo real y votada por necesidad por muchos monárquicos", "Tras unas elecciones constituyentes estables"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t24bis_q36",
+    "question": "¿Qué dos corrientes dividieron internamente a la República?",
+    "options": ["Moderados y progresistas", "Federalistas y unitarios", "Carlistas y alfonsinos", "Anarquistas y socialistas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24bis_q37",
+    "question": "¿Quién NO fue presidente de la Primera República según el tema?",
+    "options": ["Figueras", "Pi y Margall", "Salmerón", "Serrano"],
+    "correctAnswer": 3
+  },
+  {
+    "id": "t24bis_q38",
+    "question": "¿Qué grave insurrección territorial destacó durante la República?",
+    "options": ["La rebelión morisca", "La Revolución Cantonal", "La sublevación de Riego", "La guerra de Marruecos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t24bis_q39",
+    "question": "¿Qué ciudad destacó especialmente en la Revolución Cantonal?",
+    "options": ["Sevilla", "Valencia", "Cartagena", "Bilbao"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t24bis_q40",
+    "question": "¿Qué hecho puso fin al Sexenio Democrático e inició la Restauración?",
+    "options": ["El golpe de Pavía", "El Manifiesto de Sandhurst", "El pronunciamiento de Sagunto", "La Constitución de 1869"],
+    "correctAnswer": 2
+  }
+]

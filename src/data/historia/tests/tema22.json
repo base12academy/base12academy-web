@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t22_q1",
+    "question": "¿Qué situación política se produjo en España tras las abdicaciones de Bayona?",
+    "options": ["Estabilidad institucional", "Vacío de poder", "Restauración del absolutismo", "Unión con Francia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q2",
+    "question": "¿Qué instituciones se mostraron incapaces de gestionar la ocupación francesa?",
+    "options": ["Las Cortes de Cádiz", "Las instituciones del Antiguo Régimen", "Las juntas provinciales", "Las audiencias americanas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q3",
+    "question": "¿Qué órganos asumieron primero la soberanía ante la ausencia del monarca?",
+    "options": ["Los virreinatos", "Las juntas locales y provinciales", "La Regencia", "Los consejos territoriales"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q4",
+    "question": "¿Qué organismo se creó en 1808 para unificar el mando de las juntas?",
+    "options": ["La Regencia", "La Junta Suprema Central", "El Consejo Real", "La Junta de Estado"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q5",
+    "question": "¿Con qué objetivo se creó la Junta Suprema Central?",
+    "options": ["Reformar la Hacienda", "Coordinar la guerra y el gobierno", "Negociar con Napoleón", "Convocar elecciones municipales"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q6",
+    "question": "¿Dónde se refugió la Junta Suprema Central ante el avance francés?",
+    "options": ["Sevilla", "Madrid", "Cádiz", "Valencia"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t22_q7",
+    "question": "¿Qué protegía a Cádiz durante la guerra?",
+    "options": ["Las murallas castellanas", "La flota británica", "El ejército portugués", "Las tropas francesas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q8",
+    "question": "¿Qué institución sustituyó a la Junta cuando esta se mostró incapaz de dirigir la guerra?",
+    "options": ["Las Cortes estamentales", "La Regencia", "La Inquisición", "El Consejo de Castilla"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q9",
+    "question": "¿Qué decisión tomó la Regencia?",
+    "options": ["Abolir la monarquía", "Convocar elecciones", "Firmar la paz con Napoleón", "Disolver las juntas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q10",
+    "question": "¿Qué novedad presentaron las Cortes reunidas en 1810 respecto al modelo tradicional?",
+    "options": ["Se organizaron por estamentos", "Fueron una asamblea única", "Excluyeron a la burguesía", "Tuvieron voto exclusivo del clero"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q11",
+    "question": "¿Qué significaba que cada diputado tuviera un voto en las Cortes de Cádiz?",
+    "options": ["El triunfo del absolutismo", "El triunfo de los intereses liberales", "La restauración foral", "La división estamental"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q12",
+    "question": "¿Cómo se describe a Cádiz durante este periodo?",
+    "options": ["Ciudad arruinada y aislada ideológicamente", "Enclave comercial próspero y laboratorio de ideas", "Capital del absolutismo", "Centro del tradicionalismo rural"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q13",
+    "question": "¿Qué grupo fue el motor del cambio en las Cortes de Cádiz?",
+    "options": ["La nobleza", "La burguesía", "El alto clero", "Los campesinos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q14",
+    "question": "¿Qué grupos abundaban en la composición de las Cortes?",
+    "options": ["Solo aristócratas", "Eclesiásticos, funcionarios, abogados, militares e intelectuales", "Exclusivamente campesinos", "Solo comerciantes americanos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q15",
+    "question": "¿Qué ocurrió con la representación de la nobleza y el alto clero en Cádiz?",
+    "options": ["Aumentó respecto al pasado", "Se mantuvo igual", "Quedó relegada", "Desapareció totalmente"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t22_q16",
+    "question": "¿Qué corriente defendía reformas radicales y un cambio estructural profundo?",
+    "options": ["Absolutistas", "Jovellanistas", "Liberales", "Afrancesados"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t22_q17",
+    "question": "¿Cómo se llamaba a los partidarios de mantener intacto el antiguo orden?",
+    "options": ["Liberales", "Serviles", "Progresistas", "Federalistas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q18",
+    "question": "¿Qué defendían los jovellanistas?",
+    "options": ["Una revolución radical", "Una reforma moderada inspirada en el modelo inglés", "La vuelta al feudalismo", "La unión con Francia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q19",
+    "question": "¿Qué proclamaron las Cortes al abrirse oficialmente en septiembre de 1810?",
+    "options": ["La soberanía del rey", "La soberanía nacional", "La confesionalidad protestante", "La supremacía del clero"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q20",
+    "question": "¿De qué fuentes se nutrió el liberalismo de Cádiz?",
+    "options": ["Del feudalismo y el barroco", "De la Ilustración y la Revolución Francesa", "Del absolutismo borbónico", "Del pacto medieval aragonés"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q21",
+    "question": "¿Qué transformación política básica produjo el liberalismo gaditano?",
+    "options": ["Convirtió a los ciudadanos en súbditos", "Transformó a los súbditos en ciudadanos legales", "Eliminó toda ley", "Restauró el Antiguo Régimen"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q22",
+    "question": "¿Qué significa la soberanía nacional según el texto?",
+    "options": ["Que el poder viene de Dios", "Que el poder emana del pueblo", "Que el rey concentra todo el poder", "Que el clero dirige la nación"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q23",
+    "question": "¿Dónde residía el poder legislativo según el modelo de Cádiz?",
+    "options": ["Solo en el rey", "En las Cortes junto con el rey", "En la Regencia", "En los tribunales"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q24",
+    "question": "¿A quién correspondía el poder ejecutivo?",
+    "options": ["A las Cortes", "Al rey", "A los jueces", "A las juntas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q25",
+    "question": "¿En manos de quién quedaba el poder judicial?",
+    "options": ["Del rey", "De las Cortes", "De tribunales independientes", "De la nobleza"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t22_q26",
+    "question": "¿Qué supuso la igualdad jurídica proclamada por las Cortes?",
+    "options": ["La ampliación de privilegios estamentales", "La eliminación de privilegios de nobleza y clero", "La restauración de señoríos", "La supremacía legal de la Iglesia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q27",
+    "question": "¿Qué defendía la liberalización económica?",
+    "options": ["La servidumbre campesina", "La propiedad privada y la libertad de empresa", "Los gremios obligatorios", "Las aduanas interiores"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q28",
+    "question": "¿Qué trabas feudales querían desmontar los liberales?",
+    "options": ["La moneda y la marina", "Los gremios, las aduanas interiores y el régimen señorial", "Las universidades y academias", "Las juntas provinciales"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q29",
+    "question": "¿Qué medida ideológica clave se aprobó en 1810?",
+    "options": ["Libertad religiosa", "Libertad de imprenta", "Sufragio femenino", "Abolición de impuestos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q30",
+    "question": "¿Qué límite mantuvo la libertad de imprenta aprobada en Cádiz?",
+    "options": ["No se podía escribir sobre economía", "Se mantenía censura en temas religiosos", "Solo afectaba a América", "Excluía a la burguesía"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q31",
+    "question": "¿Cuándo se promulgó la Constitución de 1812?",
+    "options": ["2 de mayo", "19 de marzo", "24 de septiembre", "14 de mayo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q32",
+    "question": "¿Cómo se conoce popularmente la Constitución de 1812?",
+    "options": ["La Gloriosa", "La Pepa", "La Fernandina", "La Cortesana"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q33",
+    "question": "¿Qué tipo de monarquía establecía la Constitución de 1812?",
+    "options": ["Absoluta", "Electiva", "Moderna, hereditaria y parlamentaria", "Federal"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t22_q34",
+    "question": "¿Qué ocurría con el rey en la Constitución de 1812?",
+    "options": ["Seguía siendo fuente absoluta de poder", "Quedaba limitado por las leyes", "Desaparecía la monarquía", "Solo controlaba el poder judicial"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q35",
+    "question": "¿Qué tipo de sufragio estableció la Constitución de 1812?",
+    "options": ["Censitario masculino", "Universal masculino indirecto", "Universal directo para ambos sexos", "Solo nobiliario"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q36",
+    "question": "¿Qué mayores de edad podían participar en ese sufragio según el texto?",
+    "options": ["Mayores de 18 años", "Mayores de 21 años", "Varones mayores de 25 años", "Todos los ciudadanos"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t22_q37",
+    "question": "¿Qué principio religioso mantuvo la Constitución de 1812?",
+    "options": ["Libertad total de cultos", "Confesionalidad católica exclusiva", "Separación Iglesia-Estado", "Predominio protestante"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q38",
+    "question": "¿Qué institución fue abolida por las Cortes de Cádiz?",
+    "options": ["La Marina", "La Inquisición", "Los ayuntamientos", "Las academias"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q39",
+    "question": "¿Qué hizo Fernando VII mediante el Decreto de Valencia en 1814?",
+    "options": ["Confirmó la Constitución", "Declaró nulos la Constitución y los decretos", "Amplió el sufragio", "Convocó nuevas Cortes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t22_q40",
+    "question": "¿Qué valor histórico se atribuye al legado de Cádiz?",
+    "options": ["Fue una reforma pasajera sin efectos", "Sembró el constitucionalismo del siglo XIX", "Restauró el feudalismo", "Eliminó la independencia americana"],
+    "correctAnswer": 1
+  }
+]

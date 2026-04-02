@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t21_q1",
+    "question": "¿Qué hecho marcó el reinado de Carlos IV?",
+    "options": ["La Guerra de Sucesión", "La Revolución Francesa", "La conquista de América", "La Guerra de los Treinta Años"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q2",
+    "question": "¿Entre qué años se desarrolló el reinado de Carlos IV?",
+    "options": ["1759-1788", "1788-1808", "1808-1833", "1760-1790"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q3",
+    "question": "¿Cuál fue la primera reacción de España ante la Revolución Francesa?",
+    "options": ["Declarar la guerra inmediatamente", "Aliarse con Francia", "Cerrar fronteras para evitar el contagio", "Firmar tratados comerciales"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t21_q4",
+    "question": "¿Qué fase siguió al cierre de fronteras en la política exterior española?",
+    "options": ["Alianza con Inglaterra", "Confrontación con Francia", "Neutralidad", "Colonización de América"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q5",
+    "question": "¿Contra qué país se alió España tras ser derrotada por Francia?",
+    "options": ["Portugal", "Inglaterra", "Francia", "Austria"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t21_q6",
+    "question": "¿Qué sistema político predominó durante el reinado de Carlos IV?",
+    "options": ["Democracia", "Valimiento", "República", "Feudalismo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q7",
+    "question": "¿Quién fue el principal valido de Carlos IV?",
+    "options": ["Floridablanca", "Aranda", "Manuel Godoy", "Esquilache"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t21_q8",
+    "question": "¿Qué provocó el ascenso de Godoy?",
+    "options": ["Apoyo popular general", "Rechazo de nobleza y clero", "Estabilidad política", "Alianza con Inglaterra"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q9",
+    "question": "¿Quién lideró la oposición a Godoy?",
+    "options": ["Carlos IV", "Napoleón", "Fernando VII", "Wellington"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t21_q10",
+    "question": "¿Qué fue el Motín de Aranjuez?",
+    "options": ["Una guerra internacional", "Un levantamiento que destituyó a Godoy y provocó la abdicación de Carlos IV", "Una reforma política", "Una alianza militar"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q11",
+    "question": "¿Qué consecuencia tuvo el Motín de Aranjuez?",
+    "options": ["Inicio de la guerra", "Abdicación de Carlos IV", "Victoria francesa", "Expulsión de Napoleón"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q12",
+    "question": "¿Cómo era la situación de la Hacienda Real?",
+    "options": ["Próspera", "Equilibrada", "En quiebra", "Sin deuda"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t21_q13",
+    "question": "¿Qué medida económica tomó Godoy ante la crisis?",
+    "options": ["Reducir impuestos", "Aumentar impuestos", "Eliminar comercio", "Crear moneda nueva"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q14",
+    "question": "¿Qué provocaron las desamortizaciones de Godoy?",
+    "options": ["Apoyo de la Iglesia", "Enemistad de la Iglesia", "Crecimiento económico", "Fin de la guerra"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q15",
+    "question": "¿Qué dos corrientes culturales coexistían en este periodo?",
+    "options": ["Renacimiento y Barroco", "Ilustración y tradicionalismo", "Romanticismo y Realismo", "Capitalismo y feudalismo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q16",
+    "question": "¿Qué artista reflejó esta crisis social?",
+    "options": ["Velázquez", "Goya", "El Greco", "Murillo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q17",
+    "question": "¿Qué tratado permitió la entrada de tropas francesas en España?",
+    "options": ["Utrecht", "Fontainebleau", "Tordesillas", "Valençay"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q18",
+    "question": "¿Qué objetivo tenía el Tratado de Fontainebleau?",
+    "options": ["Invadir Inglaterra", "Castigar a Portugal", "Reformar España", "Unificar Europa"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q19",
+    "question": "¿Qué fueron las Abdicaciones de Bayona?",
+    "options": ["Un tratado comercial", "La renuncia al trono de Carlos IV y Fernando VII", "Una batalla", "Una ley"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q20",
+    "question": "¿Quién fue nombrado rey tras las Abdicaciones de Bayona?",
+    "options": ["Fernando VII", "Carlos IV", "José I Bonaparte", "Napoleón"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t21_q21",
+    "question": "¿Qué era el Estatuto de Bayona?",
+    "options": ["Una constitución liberal", "Una carta otorgada reformista", "Un tratado militar", "Una ley medieval"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q22",
+    "question": "¿Cómo se denominaba popularmente a José I?",
+    "options": ["El Deseado", "El Intruso", "El Sabio", "El Grande"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q23",
+    "question": "¿Qué grupos sociales se enfrentaron durante la ocupación?",
+    "options": ["Nobleza y clero", "Afrancesados y patriotas", "Campesinos y burgueses", "Militares y civiles"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q24",
+    "question": "¿Qué provocó el levantamiento del 2 de mayo de 1808?",
+    "options": ["La paz con Francia", "El rechazo a la ocupación francesa", "Una crisis agrícola", "Un tratado internacional"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q25",
+    "question": "¿Qué concepto político surgió durante la guerra?",
+    "options": ["Absolutismo", "Soberanía nacional", "Feudalismo", "Monarquía divina"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q26",
+    "question": "¿Qué instituciones asumieron el poder ante el vacío político?",
+    "options": ["Consejos Reales", "Juntas locales y provinciales", "Virreinatos", "Audiencias"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q27",
+    "question": "¿Qué forma de lucha utilizaron civiles armados?",
+    "options": ["Ejército regular", "Guerrilla", "Caballería", "Artillería"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q28",
+    "question": "¿Qué ciudades destacaron por su resistencia en los sitios?",
+    "options": ["Madrid y Sevilla", "Zaragoza y Gerona", "Toledo y Valencia", "Barcelona y Cádiz"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q29",
+    "question": "¿Quién lideró el ejército británico aliado?",
+    "options": ["Napoleón", "Wellington", "Godoy", "Fernando VII"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q30",
+    "question": "¿Qué batalla supuso un éxito inicial español?",
+    "options": ["Trafalgar", "Bailén", "Austerlitz", "Waterloo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q31",
+    "question": "¿Qué ejército intervino directamente en España?",
+    "options": ["Ejército inglés", "Grande Armée", "Ejército portugués", "Ejército prusiano"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q32",
+    "question": "¿Qué hecho favoreció la ofensiva final contra Francia?",
+    "options": ["Derrota en Inglaterra", "Fracaso en Rusia", "Guerra con Portugal", "Crisis económica"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q33",
+    "question": "¿Qué tratado puso fin a la guerra?",
+    "options": ["Utrecht", "Valençay", "Tordesillas", "Westfalia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q34",
+    "question": "¿Qué institución elaboró la Constitución de 1812?",
+    "options": ["Consejo Real", "Cortes de Cádiz", "Junta Suprema", "Audiencia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q35",
+    "question": "¿Cómo se conoce popularmente la Constitución de 1812?",
+    "options": ["La Pepa", "La Carta Magna", "El Fuero Nuevo", "La Ley Fundamental"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t21_q36",
+    "question": "¿Cuándo regresó Fernando VII?",
+    "options": ["1808", "1812", "1814", "1820"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t21_q37",
+    "question": "¿Qué régimen restauró Fernando VII?",
+    "options": ["Liberalismo", "Absolutismo", "República", "Federalismo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q38",
+    "question": "¿Qué impacto tuvo la guerra en la población?",
+    "options": ["Crecimiento demográfico", "Cerca de medio millón de muertos", "Estabilidad social", "Aumento de riqueza"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q39",
+    "question": "¿Qué ocurrió con las colonias americanas tras la guerra?",
+    "options": ["Se fortalecieron", "Iniciaron su independencia", "Fueron reconquistadas", "Desaparecieron"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t21_q40",
+    "question": "¿Qué caracteriza el final de la Guerra de Independencia?",
+    "options": ["Estabilidad política", "Restauración del absolutismo y crisis profunda", "Inicio del feudalismo", "Unión con Francia"],
+    "correctAnswer": 1
+  }
+]

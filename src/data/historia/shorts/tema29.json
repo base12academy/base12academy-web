@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t29_q1",
+    "question": "¿Cómo se define el régimen franquista en el tema?",
+    "options": ["Democrático y federal", "Personalista, autoritario y nacional-católico", "Socialista y parlamentario", "Republicano y descentralizado"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q2",
+    "question": "¿Entre qué años se extendió la dictadura de Franco según el tema?",
+    "options": ["1936-1975", "1939-1975", "1942-1973", "1931-1975"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q3",
+    "question": "¿Qué evolución política experimentó el franquismo a lo largo del tiempo?",
+    "options": ["De república a monarquía", "De totalitarismo de posguerra a autoritarismo tecnocrático", "De liberalismo a comunismo", "De federalismo a centralismo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q4",
+    "question": "¿Qué nombre dio el régimen a su sistema político para legitimarse?",
+    "options": ["Democracia popular", "Democracia orgánica", "Monarquía parlamentaria", "República social"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q5",
+    "question": "¿Qué instrumento jurídico sustituyó a una constitución democrática en el franquismo?",
+    "options": ["Los Estatutos de Autonomía", "Las Leyes Fundamentales del Reino", "La Constitución de 1931", "Los decretos de urgencia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q6",
+    "question": "¿Qué regulaba el Fuero del Trabajo de 1938?",
+    "options": ["Las relaciones internacionales", "Las relaciones laborales desde una óptica corporativista", "La libertad sindical", "La reforma agraria"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q7",
+    "question": "¿Qué estableció la Ley de Cortes de 1942?",
+    "options": ["Un parlamento soberano elegido por sufragio universal", "Una asamblea consultiva sin soberanía popular real", "El Senado autonómico", "La abolición de la Falange"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q8",
+    "question": "¿Cuál de estos grupos NO aparece como una de las 'familias del régimen'?",
+    "options": ["La Falange", "El Ejército", "La Iglesia católica", "Los republicanos moderados"],
+    "correctAnswer": 3
+  },
+  {
+    "id": "t29_q9",
+    "question": "¿Qué papel tenía la Falange dentro del régimen?",
+    "options": ["Dirigir la oposición legal", "Aportar la ideología inicial y controlar masas y doctrina", "Gestionar la autonomía regional", "Negociar con los sindicatos libres"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q10",
+    "question": "¿Qué función desempeñaba el Ejército en el franquismo?",
+    "options": ["Representar el pluralismo político", "Garantizar el orden público y sostener el sistema", "Promover el sufragio universal", "Dirigir las universidades"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q11",
+    "question": "¿Qué papel tenía la Iglesia católica según el tema?",
+    "options": ["Promover el laicismo", "Legitimar moralmente al régimen y controlar la vida social", "Sostener a la oposición obrera", "Organizar elecciones libres"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q12",
+    "question": "¿Qué modelo económico impuso el franquismo en sus primeros años?",
+    "options": ["Liberalismo comercial", "Autarquía", "Colectivización soviética", "Federalismo fiscal"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q13",
+    "question": "¿Qué organismo estatal dirigió la producción durante la autarquía?",
+    "options": ["Banco de España", "Instituto Nacional de Industria (INI)", "Consejo de Estado", "TOP"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q14",
+    "question": "¿Cómo se conoció el periodo de escasez derivado del aislamiento económico?",
+    "options": ["Los felices años 20", "Los años del hambre", "El bienio negro", "La primavera trágica"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q15",
+    "question": "¿Qué instrumento se utilizó para distribuir productos básicos en la posguerra?",
+    "options": ["Bonos industriales", "Cartillas de racionamiento", "Vales sindicales", "Libretas de ahorro"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q16",
+    "question": "¿Qué rasgo ideológico y cultural se impuso con fuerza en la posguerra?",
+    "options": ["Pluralismo político", "Nacional-catolicismo y censura previa", "Federalismo educativo", "Libertad de prensa"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q17",
+    "question": "¿Qué ley de 1939 se destinó a depurar a quienes apoyaron a la República?",
+    "options": ["Ley de Amnistía", "Ley de Responsabilidades Políticas", "Ley de Orden Público", "Ley del Candado"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q18",
+    "question": "¿Qué otra ley represiva persiguió ideologías consideradas enemigas de la patria?",
+    "options": ["Ley de Bases", "Ley de Represión de la Masonería y el Comunismo", "Ley Electoral", "Ley de Asociaciones"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q19",
+    "question": "¿Qué coste humano y cultural tuvo la represión franquista en sus primeros años?",
+    "options": ["Amnistía general e integración cultural", "Miles de ejecuciones, encarcelamientos y exilio intelectual", "Apertura universitaria internacional", "Neutralidad ideológica en escuelas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q20",
+    "question": "¿Qué permitió al régimen empezar a salir del aislamiento en los años 50?",
+    "options": ["La derrota de Estados Unidos", "La Guerra Fría y su imagen de bastión anticomunista", "La caída de la Iglesia", "La legalización de partidos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q21",
+    "question": "¿Qué ocurrió en 1953 según el tema?",
+    "options": ["Se aprobó la Constitución democrática", "España firmó acuerdos con Estados Unidos a cambio de bases militares", "Se disolvió la Falange", "Se creó la Segunda República"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q22",
+    "question": "¿Qué guerrilla antifranquista aparece mencionada en el tema?",
+    "options": ["Los mambises", "El maquis", "Los voluntarios de la libertad", "Los cantonalistas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q23",
+    "question": "¿Qué tribunal creó el franquismo para perseguir la disidencia política en la etapa de apertura exterior?",
+    "options": ["Tribunal Supremo", "Tribunal de Orden Público (TOP)", "Consejo de Castilla", "Audiencia Nacional"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q24",
+    "question": "¿Qué plan de 1959 puso fin a la autarquía y abrió una nueva etapa económica?",
+    "options": ["Plan de Reconstrucción", "Plan de Estabilización", "Plan Marshall español", "Plan de Liberalización Agraria"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q25",
+    "question": "¿Qué grupo tomó protagonismo en la administración a partir de 1959?",
+    "options": ["Los falangistas puros", "Los tecnócratas vinculados al Opus Dei", "Los republicanos exiliados", "Los carlistas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q26",
+    "question": "¿Cómo denomina el tema al crecimiento económico posterior al Plan de Estabilización?",
+    "options": ["Revolución industrial", "Milagro económico o desarrollismo", "Trienio bolchevique", "Bienio reformista"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q27",
+    "question": "¿Cuál de estos factores ayudó al desarrollismo franquista?",
+    "options": ["La colectivización agraria", "El turismo de masas", "La autarquía cerrada", "La desaparición de la emigración"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q28",
+    "question": "¿Qué otro factor económico favoreció el crecimiento en los años 60?",
+    "options": ["Las remesas de emigrantes", "La pérdida del comercio exterior", "La supresión de la industria", "El cierre de fronteras"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t29_q29",
+    "question": "¿Qué efecto social provocó el gran éxodo rural?",
+    "options": ["Despoblación de Madrid y Barcelona", "Migración masiva hacia centros industriales y Europa", "Retorno al campo andaluz", "Estabilidad demográfica rural"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q30",
+    "question": "¿Qué ciudades españolas se citan como principales destinos del éxodo rural?",
+    "options": ["Sevilla, Cádiz y Valencia", "Madrid, Barcelona y Bilbao", "León, Burgos y Salamanca", "Murcia, Zaragoza y Vigo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q31",
+    "question": "¿Qué países europeos aparecen como destino de la emigración española?",
+    "options": ["Italia, Portugal y Bélgica", "Alemania, Francia y Suiza", "Reino Unido, Suecia y Noruega", "Austria, Hungría y Grecia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q32",
+    "question": "¿Qué problema urbano generó el desarrollismo según el tema?",
+    "options": ["Despoblación de las ciudades", "Urbanización rápida y sin planificación", "Desaparición de suburbios", "Fin del desequilibrio regional"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q33",
+    "question": "¿Qué desequilibrio regional señala el tema?",
+    "options": ["Entre norte minero y sur petrolero", "Entre periferia industrializada e interior agrícola deprimido", "Entre colonias y metrópoli", "Entre Castilla y Portugal"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q34",
+    "question": "¿Cómo se caracteriza el sistema educativo durante gran parte del franquismo?",
+    "options": ["Mixto y laico", "Rígidamente segregado por sexos", "Plenamente universitario y libre", "Autónomo de la Iglesia"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q35",
+    "question": "¿Qué atentado de 1973 debilitó gravemente la continuidad del régimen?",
+    "options": ["El de Calvo Sotelo", "El asesinato de Carrero Blanco", "La Sanjurjada", "La Marcha Verde"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q36",
+    "question": "¿Qué organización obrera aparece citada como parte de la oposición al franquismo en su fase final?",
+    "options": ["Falange", "Comisiones Obreras", "Lliga Regionalista", "CEDA"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q37",
+    "question": "¿Cómo se conoce el intento de apertura de Arias Navarro?",
+    "options": ["Espíritu de Sagunto", "Espíritu del 12 de febrero", "Pacto del Pardo", "Revolución desde arriba"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q38",
+    "question": "¿Qué crisis económica internacional afectó al final del régimen?",
+    "options": ["La crisis de 1898", "La crisis del petróleo de 1973", "El crack de 1929", "La devaluación de 1959"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q39",
+    "question": "¿Qué conflicto exterior supuso una humillación internacional en 1975?",
+    "options": ["La pérdida de Cuba", "La Marcha Verde sobre el Sáhara", "El desastre de Annual", "La invasión de Guinea"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t29_q40",
+    "question": "¿Qué hecho puso fin al franquismo e inició la Transición?",
+    "options": ["La dimisión de Arias Navarro", "La muerte de Franco el 20 de noviembre de 1975", "La aprobación del TOP", "La firma del Plan de Estabilización"],
+    "correctAnswer": 1
+  }
+]

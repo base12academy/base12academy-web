@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t26_q1",
+    "question": "¿Qué acontecimiento condicionó el inicio del siglo XX en España según el tema?",
+    "options": ["La Primera Guerra Mundial", "El Desastre del 98", "La Semana Trágica", "El desastre de Annual"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q2",
+    "question": "¿Qué supuso el Desastre del 98 para España?",
+    "options": ["La proclamación de la República", "La pérdida de las últimas colonias y una crisis de identidad", "La restauración del absolutismo", "El fin del caciquismo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q3",
+    "question": "¿En qué año inició Alfonso XIII su reinado efectivo al alcanzar la mayoría de edad?",
+    "options": ["1898", "1902", "1909", "1917"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q4",
+    "question": "¿Qué objetivo tenía reformar el sistema desde las instituciones al comienzo del reinado de Alfonso XIII?",
+    "options": ["Expandir el imperio colonial", "Evitar una revolución social", "Implantar el sufragio femenino", "Eliminar la monarquía"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q5",
+    "question": "¿Qué corriente surgió como respuesta intelectual y política a la crisis de fin de siglo?",
+    "options": ["El krausismo", "El regeneracionismo", "El carlismo", "El federalismo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q6",
+    "question": "¿Qué significaba la idea de 'Revolución desde arriba'?",
+    "options": ["Una insurrección popular", "Transformar el Estado desde el poder para evitar una revuelta social", "Un golpe militar inmediato", "La autonomía de las regiones"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q7",
+    "question": "¿Qué intelectual se asocia al lema 'Escuela y Despensa'?",
+    "options": ["Unamuno", "Joaquín Costa", "Canalejas", "Maura"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q8",
+    "question": "¿Qué grupo cultural expresó el deseo de europeizar España?",
+    "options": ["La Generación del 27", "La Generación del 98", "Los noventayochistas americanos", "Los krausistas exclusivamente"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q9",
+    "question": "¿Qué orientación económica impulsó el Estado en este periodo para combatir el atraso técnico?",
+    "options": ["Liberalismo absoluto", "Proteccionismo industrial y modernización de infraestructuras agrícolas", "Colectivización agraria", "Supresión de la industria"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q10",
+    "question": "¿Qué líder conservador promovió una Ley de Administración Local durante su 'gobierno largo'?",
+    "options": ["Sagasta", "Maura", "Canalejas", "Berenguer"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q11",
+    "question": "¿Qué político liberal impulsó la Ley del Candado?",
+    "options": ["Antonio Maura", "Primo de Rivera", "José Canalejas", "Alfonso XIII"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t26_q12",
+    "question": "¿Qué buscaba limitar la Ley del Candado?",
+    "options": ["La prensa obrera", "Las órdenes religiosas", "Los sindicatos", "Las mancomunidades"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q13",
+    "question": "¿Qué ley impulsó Canalejas para atender demandas territoriales?",
+    "options": ["Ley de Minas", "Ley de Mancomunidades", "Ley de Ferrocarriles", "Ley de Administración Local"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q14",
+    "question": "¿Qué problema siguió existiendo pese a los intentos reformistas de los partidos dinásticos?",
+    "options": ["La inexistencia del ejército", "El caciquismo y el fraude electoral", "La abolición del sufragio", "La caída de la monarquía en 1902"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q15",
+    "question": "¿Qué hecho golpeó decisivamente las posibilidades de renovación del sistema en 1912?",
+    "options": ["La muerte de Alfonso XIII", "El asesinato de Canalejas", "El desastre de Annual", "La creación de la CNT"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q16",
+    "question": "¿Qué organizaciones obreras aparecen mencionadas en el tema como fuerzas en crecimiento?",
+    "options": ["UGT, PSOE y CNT", "FAI, PCE y ERC", "CCOO y UGT", "CEDA y CNT"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t26_q17",
+    "question": "¿Qué efecto económico contradictorio tuvo la neutralidad española en la Primera Guerra Mundial?",
+    "options": ["Solo pobreza general", "Beneficios para la burguesía e inflación para las clases trabajadoras", "Fin de la conflictividad social", "Desaparición del movimiento obrero"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q18",
+    "question": "¿Qué grupo social acumuló grandes fortunas gracias a las exportaciones durante la Gran Guerra?",
+    "options": ["El campesinado andaluz", "La burguesía", "Los militares peninsulares", "Los jornaleros"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q19",
+    "question": "¿Qué ocurrió con los salarios durante la Primera Guerra Mundial según el tema?",
+    "options": ["Subieron al ritmo de los precios", "Quedaron estancados mientras subía la inflación", "Desaparecieron", "Se duplicaron por ley"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q20",
+    "question": "¿Qué año concentró un triple desafío militar, político y social contra el Estado?",
+    "options": ["1902", "1909", "1917", "1923"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t26_q21",
+    "question": "¿Qué conflicto militar formó parte de la crisis de 1917?",
+    "options": ["La Tercera Guerra Carlista", "Las Juntas de Defensa", "El cantonalismo", "La huelga minera asturiana"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q22",
+    "question": "¿Qué órgano político representó el desafío político de 1917?",
+    "options": ["La Junta Suprema Central", "La Asamblea de Parlamentarios de Barcelona", "Las Cortes de Cádiz", "El Consejo de Ministros"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q23",
+    "question": "¿Qué conflicto social evidenció la fractura del orden público en 1917?",
+    "options": ["La Semana Trágica", "La Huelga General", "La Revolución Cantonal", "El Motín de Esquilache"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q24",
+    "question": "¿Qué gran acontecimiento internacional radicalizó al marxismo y al anarquismo en España?",
+    "options": ["La Guerra Franco-Prusiana", "La Revolución Rusa de 1917", "La unificación alemana", "La guerra de Cuba"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q25",
+    "question": "¿Qué fenómeno de violencia social se desarrolló en Barcelona?",
+    "options": ["Cantonalismo", "Pistolerismo", "Carlismo", "Regeneracionismo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q26",
+    "question": "¿Qué fue el pistolerismo según el tema?",
+    "options": ["Un movimiento estudiantil", "Una guerra de sicarios entre patronal y anarcosindicalistas", "Una reforma policial", "Una huelga general armada"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q27",
+    "question": "¿Cómo se denomina el periodo de intensa agitación campesina en Andalucía entre 1918 y 1920?",
+    "options": ["Bienio Progresista", "Trienio Bolchevique", "Década Ominosa", "Sexenio Democrático"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q28",
+    "question": "¿Qué conflicto colonial fue presentado como el detonante final de la monarquía?",
+    "options": ["La guerra de Cuba", "La cuestión del Rif en Marruecos", "La guerra de Filipinas", "La guerra de Portugal"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q29",
+    "question": "¿Qué episodio de 1909 se relaciona con el rechazo popular a la guerra de Marruecos?",
+    "options": ["Desastre de Annual", "Semana Trágica de Barcelona", "Golpe de Pavía", "Pacto del Pardo"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q30",
+    "question": "¿Qué desastre militar previo a la Semana Trágica menciona el tema?",
+    "options": ["Barranco del Lobo", "Rocroi", "Bailén", "Alcolea"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t26_q31",
+    "question": "¿Qué división existía dentro del ejército respecto a Marruecos?",
+    "options": ["Moderados y exaltados", "Afrancesados y patriotas", "Africanistas y peninsulares", "Carlistas e isabelinos"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t26_q32",
+    "question": "¿Qué ocurrió en el desastre de Annual de 1921?",
+    "options": ["Abdicó Alfonso XIII", "Murieron más de 10.000 soldados", "Se proclamó la república", "Se firmó la paz con Marruecos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q33",
+    "question": "¿Qué investigación se abrió tras Annual?",
+    "options": ["Expediente Costa", "Expediente Picasso", "Informe Sandhurst", "Sumario Sagasta"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q34",
+    "question": "¿Qué temor precipitó el fin de la legalidad tras el desastre de Annual?",
+    "options": ["Que la investigación implicara al rey", "Que la CNT tomara el poder", "Que Cataluña se independizara", "Que Maura regresara al gobierno"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t26_q35",
+    "question": "¿Quién dio el golpe de Estado del 13 de septiembre de 1923?",
+    "options": ["Martínez Campos", "Miguel Primo de Rivera", "Berenguer", "Canalejas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q36",
+    "question": "¿Con qué respaldo contó Primo de Rivera para el golpe?",
+    "options": ["El de la CNT", "El consentimiento de Alfonso XIII", "El apoyo de la Segunda República", "La aprobación de las Cortes"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q37",
+    "question": "¿Qué gran éxito militar del Directorio Militar resolvió el problema de Marruecos?",
+    "options": ["La batalla de Bailén", "El Desembarco de Alhucemas", "La guerra de Cuba", "El Convenio de Vergara"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q38",
+    "question": "¿Qué organización intentó institucionalizar el Directorio Civil?",
+    "options": ["La UGT", "La Unión Patriótica", "La AIT", "La Asamblea de Parlamentarios"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q39",
+    "question": "¿Qué monopolios estatales se crearon durante la dictadura?",
+    "options": ["RENFE y Tabacalera", "CAMPSA y Telefónica", "Iberia y Endesa", "Banco de España y Campsa"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t26_q40",
+    "question": "¿Qué consecuencia tuvo la vinculación de Alfonso XIII a la dictadura de Primo de Rivera?",
+    "options": ["Reforzó definitivamente la monarquía", "Dañó irremediablemente el prestigio de la Corona y facilitó la llegada de la República", "Impulsó una nueva Restauración", "Acabó con la oposición republicana"],
+    "correctAnswer": 1
+  }
+]

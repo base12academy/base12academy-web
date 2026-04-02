@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tc3_1",
+    "question": "¿Quiénes fueron los primeros colonizadores mediterráneos en llegar a la Península Ibérica?",
+    "answerGuide": "Los fenicios, procedentes del actual Líbano, especialmente de Tiro y Sidón.",
+    "keywords": ["fenicios", "Líbano", "Tiro", "Sidón"]
+  },
+  {
+    "id": "tc3_2",
+    "question": "¿Qué buscaban principalmente los fenicios en la Península Ibérica?",
+    "answerGuide": "La riqueza minera, especialmente plata y cobre de la zona de Tartessos.",
+    "keywords": ["riqueza minera", "plata", "cobre", "Tartessos"]
+  },
+  {
+    "id": "tc3_3",
+    "question": "¿Qué tipo de asentamientos fundaron los fenicios?",
+    "answerGuide": "Factorías o colonias comerciales en puntos estratégicos de la costa.",
+    "keywords": ["factorías", "colonias comerciales", "costa"]
+  },
+  {
+    "id": "tc3_4",
+    "question": "Cita dos colonias fenicias importantes en la Península.",
+    "answerGuide": "Gadir, Malaka, Abdera o Sexi.",
+    "keywords": ["Gadir", "Malaka", "Abdera", "Sexi"]
+  },
+  {
+    "id": "tc3_5",
+    "question": "¿Qué aportaciones económicas introdujeron los fenicios?",
+    "answerGuide": "Las salazones de pescado y el cultivo del olivo.",
+    "keywords": ["salazones", "olivo", "economía"]
+  },
+  {
+    "id": "tc3_6",
+    "question": "¿Cuál fue la principal aportación cultural de los fenicios?",
+    "answerGuide": "El alfabeto fenicio, base de alfabetos posteriores, y el torno de alfarero.",
+    "keywords": ["alfabeto fenicio", "torno de alfarero"]
+  },
+  {
+    "id": "tc3_7",
+    "question": "¿Dónde se concentró principalmente la presencia griega en la Península?",
+    "answerGuide": "En el noreste y el levante peninsular.",
+    "keywords": ["griegos", "noreste", "levante"]
+  },
+  {
+    "id": "tc3_8",
+    "question": "¿Cuál fue la colonia griega más importante?",
+    "answerGuide": "Emporion, situada en la actual Girona.",
+    "keywords": ["Emporion", "Girona"]
+  },
+  {
+    "id": "tc3_9",
+    "question": "¿Qué innovación económica introdujeron los griegos?",
+    "answerGuide": "La moneda, que permitió la acumulación de riqueza.",
+    "keywords": ["moneda", "riqueza"]
+  },
+  {
+    "id": "tc3_10",
+    "question": "¿Qué cultivo difundieron los griegos en la Península?",
+    "answerGuide": "El cultivo de la vid y la producción de vino.",
+    "keywords": ["vid", "vino"]
+  },
+  {
+    "id": "tc3_11",
+    "question": "¿Quiénes eran los cartagineses?",
+    "answerGuide": "Antiguos colonos fenicios independientes procedentes del norte de África.",
+    "keywords": ["cartagineses", "fenicios", "norte de África"]
+  },
+  {
+    "id": "tc3_12",
+    "question": "¿Qué familia dirigió la expansión cartaginesa?",
+    "answerGuide": "La familia de los Bárcidas: Amílcar, Asdrúbal y Aníbal.",
+    "keywords": ["Bárcidas", "Amílcar", "Asdrúbal", "Aníbal"]
+  },
+  {
+    "id": "tc3_13",
+    "question": "¿Qué ciudad fundaron los cartagineses como enclave estratégico?",
+    "answerGuide": "Qart Hadasht, la actual Cartagena.",
+    "keywords": ["Qart Hadasht", "Cartagena"]
+  },
+  {
+    "id": "tc3_14",
+    "question": "¿Cómo trataron los cartagineses a los pueblos indígenas?",
+    "answerGuide": "Les impusieron tributos y levas militares, utilizándolos también como mercenarios.",
+    "keywords": ["tributos", "levas", "mercenarios", "indígenas"]
+  },
+  {
+    "id": "tc3_15",
+    "question": "¿Qué consecuencias generales tuvo el periodo orientalizante en la Península?",
+    "answerGuide": "Transformación económica, diferenciación social y evolución cultural con escritura, técnicas constructivas y arte mediterráneo.",
+    "keywords": ["transformación económica", "diferenciación social", "escritura", "arte", "murallas"]
+  }
+]

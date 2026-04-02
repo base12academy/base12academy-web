@@ -5,8 +5,9 @@ import { useEffect, useRef, useState } from "react";
 export default function LeadChatBot() {
   const [abierto, setAbierto] = useState(false);
   const [mensaje, setMensaje] = useState("");
+  const [comunidad, setComunidad] = useState("");
   const [chat, setChat] = useState<string[]>([
-    "Asistente Base12: Hola, soy el asistente de cursos de Base12 Academy. Puedo ayudarte con precios, contenidos, acceso, vídeos y matrícula.",
+    "Asistente Base12: Hola 👋\n\nTe ayudo a preparar la EBAU / PAU paso a paso.\n\nPuedo orientarte sobre:\n• Historia de España\n• Cómo funciona el curso\n• Precio y acceso\n• Estrategia según tu comunidad\n\nSi quieres, selecciona tu comunidad y empieza por una opción 👇",
   ]);
 
   const chatRef = useRef<HTMLDivElement>(null);
@@ -38,6 +39,7 @@ export default function LeadChatBot() {
         },
         body: JSON.stringify({
           mensaje: textoUsuario,
+          comunidad,
         }),
       });
 
@@ -54,7 +56,7 @@ export default function LeadChatBot() {
       setChat((prev) => {
         const copia = [...prev];
         copia[copia.length - 1] =
-          "Asistente Base12: Ahora mismo no puedo conectar. Puedes preguntarme por cursos, precios o acceso.";
+          "Asistente Base12: Ahora mismo no puedo responder bien.\n\n👉 Puedes acceder directamente aquí:\n/dashboard/comprar/historia-espana";
         return copia;
       });
     }
@@ -91,7 +93,7 @@ export default function LeadChatBot() {
             bottom: "96px",
             right: "20px",
             width: "360px",
-            height: "520px",
+            height: "560px",
             background: "white",
             border: "1px solid #d1d5db",
             borderRadius: "16px",
@@ -121,6 +123,34 @@ export default function LeadChatBot() {
               background: "#f9fafb",
             }}
           >
+            <div style={{ marginBottom: "10px" }}>
+              <select
+                value={comunidad}
+                onChange={(e) => setComunidad(e.target.value)}
+                style={{
+                  width: "100%",
+                  padding: "10px 12px",
+                  borderRadius: "10px",
+                  border: "1px solid #d1d5db",
+                  fontSize: "14px",
+                }}
+              >
+                <option value="">Tu comunidad autónoma (opcional)</option>
+                <option value="andalucia">Andalucía</option>
+                <option value="madrid">Madrid</option>
+                <option value="valencia">Comunidad Valenciana</option>
+                <option value="castilla_leon">Castilla y León</option>
+                <option value="galicia">Galicia</option>
+                <option value="aragon">Aragón</option>
+                <option value="navarra">Navarra</option>
+                <option value="rioja">La Rioja</option>
+                <option value="cantabria">Cantabria</option>
+                <option value="murcia">Murcia</option>
+                <option value="extremadura">Extremadura</option>
+                <option value="ministerio">Modelo Ministerio</option>
+              </select>
+            </div>
+
             <div
               style={{
                 display: "flex",
@@ -130,38 +160,38 @@ export default function LeadChatBot() {
             >
               <button
                 onClick={() =>
-                  enviarMensaje("¿Qué cursos tenéis disponibles?")
+                  enviarMensaje("¿Cómo funciona el curso de Historia de España?")
                 }
                 style={quickButtonStyle}
               >
-                Cursos
+                Cómo funciona
               </button>
 
               <button
                 onClick={() =>
-                  enviarMensaje("¿Cuánto cuestan los cursos?")
+                  enviarMensaje("¿Qué incluye el curso de Historia de España?")
                 }
                 style={quickButtonStyle}
               >
-                Precios
+                Qué incluye
               </button>
 
               <button
                 onClick={() =>
-                  enviarMensaje("¿Los cursos incluyen vídeos y test?")
+                  enviarMensaje("¿Cuánto cuesta y cómo accedo?")
                 }
                 style={quickButtonStyle}
               >
-                Vídeos y test
+                Precio y acceso
               </button>
 
               <button
                 onClick={() =>
-                  enviarMensaje("¿Cómo puedo matricularme?")
+                  enviarMensaje("¿Cómo cambia la preparación según mi comunidad?")
                 }
                 style={quickButtonStyle}
               >
-                Matrícula
+                Mi comunidad
               </button>
             </div>
           </div>
@@ -225,7 +255,7 @@ export default function LeadChatBot() {
                   enviarMensaje();
                 }
               }}
-              placeholder="Pregúntame por cursos, precios o acceso..."
+              placeholder="Pregúntame por cursos, precios o tu comunidad..."
               style={{
                 flex: 1,
                 border: "1px solid #d1d5db",

@@ -1,0 +1,242 @@
+[
+  {
+    "id": "t1_q1",
+    "question": "¿En qué periodo comienza la historia de la Península Ibérica?",
+    "options": ["Edad Antigua", "Prehistoria", "Edad Media", "Edad Moderna"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t1_q2",
+    "question": "¿Entre qué fechas se desarrolla el Paleolítico en la Península Ibérica?",
+    "options": ["500.000 - 5.000 a.C.", "1.300.000 - 10.000 a.C.", "800.000 - 20.000 a.C.", "2.000.000 - 5.000 a.C."],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t1_q3",
+    "question": "¿Dónde se encuentran los restos humanos más antiguos de la Península Ibérica?",
+    "options": ["Altamira", "Atapuerca", "Los Millares", "El Argar"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t1_q4",
+    "question": "¿Qué especie fue la primera en poblar la Península Ibérica?",
+    "options": ["Homo sapiens", "Homo neanderthalensis", "Homo antecessor", "Homo habilis"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t1_q5",
+    "question": "¿Qué especie apareció hace unos 250.000 años?",
+    "options": ["Homo sapiens", "Homo heidelbergensis", "Homo antecessor", "Homo neanderthalensis"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t1_q6",
+    "question": "¿Qué especie humana aparece en el Paleolítico Superior?",
+    "options": ["Homo sapiens", "Homo antecessor", "Homo erectus", "Homo heidelbergensis"],
+    "correctAnswer": 0
+  },
+  {
+    "id": "t1_q7",
+    "question": "¿Cuál era la base económica del Paleolítico?",
+    "options": ["Agricultura", "Ganadería", "Depredación", "Comercio"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t1_q8",
+    "question": "¿De qué actividades dependía la subsistencia en el Paleolítico?",
+    "options": ["Agricultura y comercio", "Caza, pesca y recolección", "Ganadería intensiva", "Artesanía"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t1_q9",
+    "question": "¿Cómo eran los grupos humanos del Paleolítico?",
+    "options": ["Sedentarios", "Nómadas", "Urbanos", "Agrarios"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t1_q10",
+    "question": "¿Cómo se organizaban socialmente los grupos paleolíticos?",
+    "options": ["En ciudades", "En reinos", "En bandas u hordas", "En imperios"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t1_q11",
+    "question": "¿Existía propiedad privada en el Paleolítico?",
+    "options": ["Sí", "No", "Solo en algunos casos", "Solo en Europa"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t1_q12",
+    "question": "¿En qué se basaba la división del trabajo en el Paleolítico?",
+    "options": ["Riqueza", "Sexo", "Capacidad física o edad", "Jerarquía social"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t1_q13",
+    "question": "¿Qué práctica demuestra espiritualidad en los neandertales?",
+    "options": ["Agricultura", "Enterramientos", "Escultura", "Cerámica"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t1_q14",
+    "question": "¿Dónde se han encontrado enterramientos neandertales en la Península?",
+    "options": ["Atapuerca", "Altamira", "Cueva de Morín", "El Argar"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t1_q15",
+    "question": "¿Qué herramientas se fabricaban con piedra en el Paleolítico?",
+    "options": ["Hachas de hierro", "Bifaces y raederas", "Espadas", "Arados"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t1_q16",
+    "question": "¿Qué materiales se incorporaron en el Paleolítico Superior?",
+    "options": ["Hierro", "Bronce", "Hueso y asta", "Plástico"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t1_q17",
+    "question": "¿Quién desarrolló el arte rupestre?",
+    "options": ["Homo antecessor", "Homo sapiens", "Homo erectus", "Neandertal"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t1_q18",
+    "question": "¿Entre qué fechas se desarrolla el arte rupestre?",
+    "options": ["50.000 - 20.000 a.C.", "35.000 - 10.000 a.C.", "10.000 - 5.000 a.C.", "5.000 - 1.000 a.C."],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t1_q19",
+    "question": "¿Dónde se localiza la escuela franco-cantábrica?",
+    "options": ["Al aire libre", "En cuevas profundas", "En ciudades", "En castros"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t1_q20",
+    "question": "¿Qué caracteriza el arte franco-cantábrico?",
+    "options": ["Esquemático", "Monocromo", "Realista y policromo", "Abstracto"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t1_q21",
+    "question": "¿Qué animales se representaban en la escuela franco-cantábrica?",
+    "options": ["Humanos", "Escenas sociales", "Animales aislados", "Dioses"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t1_q22",
+    "question": "¿Cuál es el máximo exponente del arte franco-cantábrico?",
+    "options": ["Atapuerca", "Altamira", "Los Millares", "El Argar"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t1_q23",
+    "question": "¿Qué función tenía el arte rupestre franco-cantábrico?",
+    "options": ["Decorativa", "Educativa", "Mágico-religiosa", "Política"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t1_q24",
+    "question": "¿Dónde se encuentra la escuela levantina?",
+    "options": ["Cuevas profundas", "Montañas nevadas", "Abrigos al aire libre", "Ciudades"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t1_q25",
+    "question": "¿Qué caracteriza el arte levantino?",
+    "options": ["Policromo", "Realista", "Monocromo y esquemático", "Religioso exclusivamente"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t1_q26",
+    "question": "¿Qué figura cobra protagonismo en el arte levantino?",
+    "options": ["Animales", "Plantas", "Humana", "Dioses"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t1_q27",
+    "question": "¿Qué representa el arte rupestre en general?",
+    "options": ["Economía agrícola", "Pensamiento simbólico", "Tecnología", "Comercio"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t1_q28",
+    "question": "¿Entre qué fechas se sitúa el Neolítico?",
+    "options": ["10.000 - 5.000 a.C.", "6.000 - 3.000 a.C.", "3.000 - 1.000 a.C.", "8.000 - 2.000 a.C."],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t1_q29",
+    "question": "¿Qué cambio económico se produce en el Neolítico?",
+    "options": ["De productora a depredadora", "De depredadora a productora", "De agrícola a industrial", "De urbana a rural"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t1_q30",
+    "question": "¿Qué cultivos aparecen en el Neolítico?",
+    "options": ["Maíz y patata", "Trigo y cebada", "Arroz", "Olivo y vid"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t1_q31",
+    "question": "¿Qué animales se domesticaron en el Neolítico?",
+    "options": ["Caballos y vacas", "Ovejas y cabras", "Perros y gatos", "Gallinas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t1_q32",
+    "question": "¿Qué tipo de vida se desarrolla en el Neolítico?",
+    "options": ["Nómada", "Sedentaria", "Urbana", "Militar"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t1_q33",
+    "question": "¿Qué aparece con la acumulación de excedentes?",
+    "options": ["Igualdad social", "Propiedad privada", "Nomadismo", "Desaparición del comercio"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t1_q34",
+    "question": "¿Qué cerámica es característica del Neolítico?",
+    "options": ["Campaniforme", "Cardial", "Talayótica", "Argárica"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t1_q35",
+    "question": "¿Qué metal caracteriza el Calcolítico?",
+    "options": ["Hierro", "Bronce", "Cobre", "Oro"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t1_q36",
+    "question": "¿Qué cultura destaca en el Calcolítico?",
+    "options": ["El Argar", "Los Millares", "Tartessos", "Íberos"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t1_q37",
+    "question": "¿Qué cultura pertenece a la Edad del Bronce?",
+    "options": ["Los Millares", "El Argar", "Tartessos", "Celtas"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "t1_q38",
+    "question": "¿Qué metal mejora herramientas y armas en la Edad del Hierro?",
+    "options": ["Cobre", "Bronce", "Hierro", "Plata"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t1_q39",
+    "question": "¿Qué pueblo es considerado el primer Estado organizado?",
+    "options": ["Íberos", "Celtas", "Tartessos", "Fenicios"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "t1_q40",
+    "question": "¿Qué introdujeron los colonizadores mediterráneos?",
+    "options": ["Hierro", "Escritura, moneda y torno", "Agricultura", "Ganadería"],
+    "correctAnswer": 1
+  }
+]
