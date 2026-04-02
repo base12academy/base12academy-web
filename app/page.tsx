@@ -1,7 +1,11 @@
 "use client";
 
 import Link from "next/link";
+
+// import LeadChatBot from "@/components/LeadChatBot";
 import LeadChatBot from "@/components/LeadChatBot";
+
+// import LeadChatBot from "@/components/LeadChatBot";
 import { introVideos } from "@/lib/intro-videos";
 
 const COLORS = {
@@ -414,7 +418,10 @@ export default function HomePage() {
         </div>
       </footer>
 
+          {/* <LeadChatBot /> */}
       <LeadChatBot />
     </>
   );
 }
+
+// rebuild
