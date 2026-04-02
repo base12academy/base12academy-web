@@ -96,8 +96,12 @@ function normalizeText(text: string) {
 }
 
 export default function ShortsPage() {
-  const searchParams = useSearchParams();
-  const tema = searchParams.get("tema") || "tema-1";
+  const [tema, setTema] = useState("tema-1");
+
+useEffect(() => {
+  const params = new URLSearchParams(window.location.search);
+  setTema(params.get("tema") || "tema-1");
+}, []);
 
   const [testVersion, setTestVersion] = useState(0);
   const [questions, setQuestions] = useState<ShortQuestion[]>([]);
