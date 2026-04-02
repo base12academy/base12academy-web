@@ -1,6 +1,5 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "../../../lib/supabaseClient";
 import { historiaTests } from "@/src/data/historia/tests/index";
@@ -14,8 +13,12 @@ type Question = {
 };
 
 export default function TestPage() {
-  const searchParams = useSearchParams();
-  const tema = searchParams.get("tema") || "tema-1";
+  const [tema, setTema] = useState("tema-1");
+
+useEffect(() => {
+  const params = new URLSearchParams(window.location.search);
+  setTema(params.get("tema") || "tema-1");
+}, []);
 
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [score, setScore] = useState<number | null>(null);
