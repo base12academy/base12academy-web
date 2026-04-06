@@ -1,46 +1,44 @@
-export type BadgeId =
-  | 'primer_test_aprobado'
-  | 'test_tema1_80'
-  | 'cortas_tema1_5_5'
-  | 'tema1_completado'
-  | 'tema2_desbloqueado'
+export type BadgeLevel = "none" | "bronze" | "silver" | "gold";
 
-export type Badge = {
-  id: BadgeId
-  title: string
-  description: string
-  category: 'progress' | 'performance'
-}
+export type BadgeInfo = {
+  level: BadgeLevel;
+  label: string;
+  icon: string;
+  description: string;
+};
 
-export const BADGES: Record<BadgeId, Badge> = {
-  primer_test_aprobado: {
-    id: 'primer_test_aprobado',
-    title: 'Primer logro',
-    description: 'Has aprobado tu primer test.',
-    category: 'progress',
-  },
-  test_tema1_80: {
-    id: 'test_tema1_80',
-    title: 'Tema 1 dominado',
-    description: 'Has superado el test del Tema 1 con al menos un 80%.',
-    category: 'performance',
-  },
-  cortas_tema1_5_5: {
-    id: 'cortas_tema1_5_5',
-    title: 'Precisión total',
-    description: 'Has conseguido 5/5 en las respuestas cortas del Tema 1.',
-    category: 'performance',
-  },
-  tema1_completado: {
-    id: 'tema1_completado',
-    title: 'Tema 1 completado',
-    description: 'Has completado todos los requisitos del Tema 1.',
-    category: 'progress',
-  },
-  tema2_desbloqueado: {
-    id: 'tema2_desbloqueado',
-    title: 'Nuevo nivel',
-    description: 'Has desbloqueado el Tema 2.',
-    category: 'progress',
-  },
+export function getBadgeFromPassedCount(passedCount: number): BadgeInfo {
+  if (passedCount >= 3) {
+    return {
+      level: "gold",
+      label: "Oro",
+      icon: "🥇",
+      description: "Has completado el nivel final del curso.",
+    };
+  }
+
+  if (passedCount >= 2) {
+    return {
+      level: "silver",
+      label: "Plata",
+      icon: "🥈",
+      description: "Estás consolidando el nivel final del curso.",
+    };
+  }
+
+  if (passedCount >= 1) {
+    return {
+      level: "bronze",
+      label: "Bronce",
+      icon: "🥉",
+      description: "Has superado tu primera prueba final.",
+    };
+  }
+
+  return {
+    level: "none",
+    label: "Sin insignia",
+    icon: "",
+    description: "Todavía no has superado ninguna prueba final.",
+  };
 }

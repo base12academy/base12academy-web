@@ -55,13 +55,19 @@ export default function SeleccionTemasPage() {
       return;
     }
 
-    await supabase
-      .from("perfiles")
-      .update({ temas_activos: seleccionados })
-      .eq("user_id", user.id);
+    const { error } = await supabase
+  .from("perfiles")
+  .update({ temas_activos: seleccionados })
+  .eq("user_id", user.id);
 
-    alert("Temas guardados correctamente");
-    window.location.href = "/dashboard";
+if (error) {
+  alert("Error guardando temas: " + error.message);
+  setGuardando(false);
+  return;
+}
+
+alert("Temas guardados correctamente");
+window.location.href = "/dashboard";
   };
 
   return (

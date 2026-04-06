@@ -86,20 +86,78 @@ export default function TemaPage() {
 }, []);
 
   const temaElegido = temasActivos.includes(slug);
-  const canSeeContent = slug === "tema-1" || (hasAccess && temaElegido);
-  const canDoTests = (slug === "tema-1") || (hasAccess && unlocked);
+  const isFreeTopic = slug === "tema-1";
+
+  const canAccessTopic = isFreeTopic || (hasAccess && temaElegido && unlocked);
+  const canSeeContent = canAccessTopic;
+  const canDoTests = canAccessTopic;
   const showBlockExam = isLastTopicOfBlock(slug);
+
+// 🔴 BLOQUEO 1 — NO HA COMPRADO
+if (!isFreeTopic && !hasAccess) {
+  return (
+    <main style={{ padding: "32px", maxWidth: "900px", margin: "0 auto" }}>
+      <Link href="/dashboard">← Volver</Link>
+
+      <div style={{ marginTop: "24px", background: "#fff7ed", border: "1px solid #fed7aa", borderRadius: "16px", padding: "24px" }}>
+        <h1 style={{ marginTop: 0 }}>Acceso bloqueado</h1>
+        <p style={{ marginBottom: "16px" }}>
+          Ya has podido ver el Tema 1. Para acceder al resto del curso, desbloquea el acceso completo.
+        </p>
+
+        <Link href="/comprar" style={{ display: "inline-block", padding: "12px 16px", background: "#2563eb", color: "white", borderRadius: "10px", textDecoration: "none", fontWeight: 600 }}>
+          Desbloquear curso completo
+        </Link>
+      </div>
+    </main>
+  );
+}
+
+
+// 🔴 BLOQUEO 2 — NO ESTÁ EN SUS 25 TEMAS
+if (hasAccess && !temaElegido && !isFreeTopic) {
+  return (
+    <main style={{ padding: "32px", maxWidth: "900px", margin: "0 auto" }}>
+      <Link href="/dashboard">← Volver</Link>
+
+      <div style={{ marginTop: "24px", background: "#eff6ff", border: "1px solid #bfdbfe", borderRadius: "16px", padding: "24px" }}>
+        <h1 style={{ marginTop: 0 }}>Tema no incluido</h1>
+        <p style={{ marginBottom: "16px" }}>
+          Este tema no forma parte de tu selección actual.
+        </p>
+
+        <Link href="/dashboard" style={{ display: "inline-block", padding: "12px 16px", background: "#111827", color: "white", borderRadius: "10px", textDecoration: "none", fontWeight: 600 }}>
+          Volver al dashboard
+        </Link>
+      </div>
+    </main>
+  );
+}
+
+
+// 🔴 BLOQUEO 3 — PROGRESO
+if (!unlocked && !isFreeTopic) {
+  return (
+    <main style={{ padding: "32px", maxWidth: "900px", margin: "0 auto" }}>
+      <Link href="/dashboard">← Volver</Link>
+
+      <div style={{ marginTop: "24px", background: "#fef3c7", border: "1px solid #fcd34d", borderRadius: "16px", padding: "24px" }}>
+        <h1 style={{ marginTop: 0 }}>Tema bloqueado</h1>
+        <p style={{ marginBottom: "16px" }}>
+          Debes superar el tema anterior con al menos un 80%.
+        </p>
+
+        <Link href="/dashboard" style={{ display: "inline-block", padding: "12px 16px", background: "#111827", color: "white", borderRadius: "10px", textDecoration: "none", fontWeight: 600 }}>
+          Volver al dashboard
+        </Link>
+      </div>
+    </main>
+  );
+}
 
   return (
     <main style={{ padding: "32px", maxWidth: "900px", margin: "0 auto" }}>
       
-      {/* 🔥 BLOQUEO DE TEMA */}
-      {!unlocked && (
-        <div style={{ background: "#fdeaea", padding: "20px", borderRadius: "12px", marginBottom: "24px" }}>
-          🔒 Debes superar el tema anterior con al menos un 80%
-        </div>
-      )}
-
       <Link href="/dashboard">← Volver</Link>
 
       <h1>{temaData.titulo}</h1>
@@ -125,21 +183,7 @@ export default function TemaPage() {
 
     {openTemario && <div>{temaData.contenido}</div>}
   </>
-) : hasAccess && !temaElegido ? (
-  <div
-    style={{
-      background: "#fff7ed",
-      border: "1px solid #fed7aa",
-      borderRadius: "12px",
-      padding: "16px",
-      marginTop: "12px",
-    }}
-  >
-    Este tema no forma parte de tu selección actual de 25 temas.
-  </div>
-) : (
-  <Link href="/comprar">Comprar acceso</Link>
-)}
+) : null}
 
       {/* 🔥 PRUEBAS CORRECTAS */}
       <section>
@@ -155,23 +199,9 @@ export default function TemaPage() {
         <div>Preguntas cortas</div>
       </Link>
     </>
-  ) : (
-    <div
-      style={{
-        background: "#fff7ed",
-        border: "1px solid #fed7aa",
-        borderRadius: "12px",
-        padding: "16px",
-        marginTop: "12px",
-      }}
-    >
-      <p style={{ marginBottom: "10px" }}>
-        🔒 Debes activar el acceso y superar el tema anterior para desbloquear las pruebas.
-      </p>
+  
+  ) : null}
 
-      <Link href="/comprar">Ir a comprar acceso</Link>
-    </div>
-  )}
 </section>
 
       {/* 🔥 MEDALLA */}

@@ -6,8 +6,8 @@ import LeadChatBot from "@/components/LeadChatBot";
 import { supabase } from "../../lib/supabaseClient";
 import { temasHistoria } from "@/lib/temas";
 import { introVideos } from "@/lib/intro-videos";
-import { BADGES } from "@/lib/badges";
 import { CONFIG_COMUNIDADES, type ComunidadId } from "@/lib/config-comunidades";
+import { getPrecioCurso } from "@/lib/getPrecioCurso";
 
 const COLORS = {
   muted: "#6b7280",
@@ -15,26 +15,31 @@ const COLORS = {
 
 const cursos = [
   {
+    id: "historia-espana",
     titulo: "Historia de España",
-    precio: "29 €",
-    descripcion: "Temario, apoyo al estudio, test y preparación académica.",
+    precio: "17 € / mes",
+    descripcion: "Preparación completa para la PAU con vídeos, test, apoyo al estudio y entrenamiento para responder mejor.",
   },
   {
+    id: "filosofia",
     titulo: "Historia de la Filosofía",
-    precio: "29 €",
-    descripcion: "Curso estructurado por temas para repaso y comprensión de autores.",
+    precio: "17 € / mes",
+    descripcion: "Curso estructurado por temas para repaso, comprensión de autores y preparación de examen.",
   },
   {
+    id: "protocolo-social",
     titulo: "Protocolo Social y Empresarial",
     precio: "39 €",
     descripcion: "Formación práctica para situaciones sociales y profesionales.",
   },
   {
+    id: "protocolo-institucional",
     titulo: "Protocolo Institucional",
     precio: "39 €",
     descripcion: "Normas, ceremonial y organización en entornos institucionales.",
   },
   {
+    id: "gestion-tiempo",
     titulo: "Gestión Eficaz del Tiempo para Profesionales",
     precio: "35 €",
     descripcion: "Mejora tu organización, productividad y planificación diaria.",
@@ -49,6 +54,9 @@ export default function HomePage() {
   const [temasActivos, setTemasActivos] = useState<string[]>([]);
   const [comunidad, setComunidad] = useState<string>("");
   
+  const [fechaExamen, setFechaExamen] = useState<string | null>(null);
+  const precioCurso = getPrecioCurso(fechaExamen);
+
   useEffect(() => {
     const loadData = async () => {
       const { data: userData } = await supabase.auth.getUser();
@@ -62,9 +70,13 @@ export default function HomePage() {
 
       const { data: perfil } = await supabase
   .from("perfiles")
-  .select("acceso, comunidad, temas_activos")
+  .select("acceso, comunidad, temas_activos, fecha_examen")
   .eq("user_id", user.id)
   .maybeSingle();
+
+  if (perfil?.fecha_examen) {
+    setFechaExamen(perfil.fecha_examen);
+}
 
 if (perfil?.acceso) {
   setHasAccess(true);
@@ -405,29 +417,7 @@ if (hasAccess && temasActivos.length === 0) {
                     gap: "12px",
                   }}
                 >
-                  {earnedBadges.map((id) => {
-                    const badge = BADGES[id as keyof typeof BADGES];
-                    if (!badge) return null;
-
-                    return (
-                      <div
-                        key={id}
-                        style={{
-                          border: "1px solid #e5e7eb",
-                          borderRadius: "12px",
-                          padding: "16px",
-                          background: "#fafafa",
-                        }}
-                      >
-                        <p style={{ marginBottom: "8px", fontWeight: "bold" }}>
-                          🏅 {badge.title}
-                        </p>
-                        <p style={{ fontSize: "14px", color: "#4b5563", margin: 0 }}>
-                          {badge.description}
-                        </p>
-                      </div>
-                    );
-                  })}
+                  
                 </div>
               )}
             </div>
@@ -512,45 +502,118 @@ if (hasAccess && temasActivos.length === 0) {
           </section>
 
           <section id="cursos" style={{ marginTop: "40px" }}>
-            <h2>Cursos</h2>
+  <h2 style={{ fontSize: "28px", fontWeight: "bold", marginBottom: "12px" }}>
+    Desbloquea el curso completo
+  </h2>
 
-            <p style={{ marginBottom: "16px", color: "#4b5563" }}>
-              Accede al curso completo y desbloquea todos los temas, pruebas y preparación
-              progresiva para la PAU.
-            </p>
+  <p style={{ marginBottom: "20px", color: "#4b5563", maxWidth: "720px" }}>
+    Ya tienes acceso al Tema 1. Activa el curso completo para acceder a todos los temas,
+    test, preguntas de desarrollo y preparación completa para la PAU.
+  </p>
 
-            {cursos.map((curso) => (
-              <div key={curso.titulo} style={{ marginBottom: "20px" }}>
-                <h3>{curso.titulo}</h3>
-                <p>{curso.descripcion}</p>
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+      gap: "20px",
+    }}
+  >
+    {cursos.map((curso) => (
+      <div
+        key={curso.id}
+        style={{
+          background: "white",
+          border: "1px solid #e5e7eb",
+          borderRadius: "16px",
+          padding: "20px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+        }}
+      >
+        <div>
+          <h3 style={{ fontSize: "20px", fontWeight: "bold", marginBottom: "8px" }}>
+            {curso.titulo}
+          </h3>
 
-                <p style={{ fontSize: "14px", color: COLORS.muted, marginTop: "8px" }}>
-                  {curso.titulo === "Historia de España"
-                    ? "Acceso online completo"
-                    : "Temario en actualización"}
-                </p>
+          <p style={{ color: "#6b7280", marginBottom: "10px", fontSize: "14px" }}>
+            {curso.descripcion}
+          </p>
 
-                <p style={{ fontSize: "16px", fontWeight: "600", marginTop: "4px" }}>
-                  Desde {curso.precio}
-                </p>
+          <p style={{ fontSize: "14px", color: "#6b7280", marginBottom: "6px" }}>
+            {curso.id === "historia-espana"
+              ? "Acceso completo inmediato"
+              : "En actualización"}
+          </p>
 
-                {curso.titulo === "Historia de España" ? (
-                  <Link href="/comprar">🔓 Activar acceso completo</Link>
-                ) : null}
+          <p style={{ fontSize: "16px", fontWeight: "600", marginBottom: "16px" }}>
+            Desde {curso.id === "historia-espana" ? precioCurso.texto : curso.precio}
+          </p>
+        </div>
 
-                {curso.titulo === "Historia de la Filosofía" ? (
-                  <>
-                    <div>
-                      <Link href="/dashboard/filosofia">Ver curso →</Link>
-                    </div>
-                    <p style={{ marginTop: "8px", fontSize: "14px", color: "#6b7280" }}>
-                      Curso estructurado. Pruebas comparativas en desarrollo.
-                    </p>
-                  </>
-                ) : null}
-              </div>
-            ))}
-          </section>
+        {/* CTA */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+          {curso.id === "historia-espana" && (
+            <>
+              <Link
+                href="/comprar"
+                style={{
+                  display: "inline-block",
+                  textAlign: "center",
+                  padding: "12px 16px",
+                  background: "#2563eb",
+                  color: "white",
+                  borderRadius: "10px",
+                  textDecoration: "none",
+                  fontWeight: "600",
+                }}
+              >
+                Desbloquear curso completo
+              </Link>
+
+              <span style={{ fontSize: "13px", color: "#6b7280" }}>
+                Acceso inmediato
+              </span>
+            </>
+          )}
+
+          {curso.id === "filosofia" && (
+            <>
+              <Link
+                href="/dashboard/filosofia"
+                style={{
+                  display: "inline-block",
+                  textAlign: "center",
+                  padding: "12px 16px",
+                  background: "#111827",
+                  color: "white",
+                  borderRadius: "10px",
+                  textDecoration: "none",
+                  fontWeight: "600",
+                }}
+              >
+                Explorar curso
+              </Link>
+
+              <span
+                style={{
+                  fontSize: "13px",
+                  color: "#92400e",
+                  background: "#fef3c7",
+                  padding: "4px 10px",
+                  borderRadius: "999px",
+                  width: "fit-content",
+                }}
+              >
+                En actualización
+              </span>
+            </>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
 
           <section style={{ marginTop: "40px" }}>
             <h2 style={{ fontSize: "28px", fontWeight: "bold", marginBottom: "16px" }}>
