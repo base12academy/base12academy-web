@@ -1,700 +1,629 @@
-"use client";
-
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import LeadChatBot from "@/components/LeadChatBot";
-import { introVideos } from "@/lib/intro-videos";
 
-const COLORS = {
-  bg: "#f8fafc",
-  card: "#ffffff",
-  border: "#e5e7eb",
-  text: "#1f2937",
-  muted: "#6b7280",
-  primary: "#2563eb",
-  dark: "#111827",
-};
-
-const pauCursos = [
+const areas = [
   {
-    titulo: "Historia de España",
-    precio: "17 € / mes",
-    descripcion:
-      "Preparación completa para la PAU con vídeos, test, apoyo al estudio y entrenamiento para responder mejor.",
+    title: "Bachillerato y PAU",
+    text: "Apoyo estructurado para comprender las asignaturas, preparar exámenes y llegar a la PAU con seguridad.",
+    href: "/bachillerato-pau",
+    cta: "Ver aula",
   },
   {
-    titulo: "Historia de la Filosofía",
-    precio: "17 € / mes",
-    descripcion:
-      "Curso estructurado por temas para repaso, comprensión de autores y preparación de examen.",
+    title: "Oposiciones",
+    text: "Preparación práctica, ordenada y orientada a examen para avanzar con método y constancia.",
+    href: "#oposiciones",
+    cta: "Próximamente",
+  },
+  {
+    title: "Cursos online",
+    text: "Formación útil, directa y aplicable para mejorar competencias profesionales y personales.",
+    href: "/cursos",
+    cta: "Ver aula",
   },
 ];
 
-const oposicionesCursos = [
+const videos = [
   {
-    titulo: "Auxiliar Administrativo del Estado",
-    descripcion:
-      "Preparación estructurada para avanzar con claridad, práctica y seguimiento.",
+    title: "Qué es Base12",
+    text: "Una presentación general de la plataforma y de sus aulas de formación.",
+    src: "/videos/que-es-base12.mp4",
   },
   {
-    titulo: "Administrativo del Estado",
-    descripcion:
-      "Temario, apoyo al estudio y práctica guiada para consolidar resultados.",
+    title: "Método Base12",
+    text: "Cómo Base12 organiza el aprendizaje para avanzar con estructura, comprensión y seguridad.",
+    src: "/videos/metodo-base12.mp4",
   },
   {
-    titulo: "Otra oposición",
-    descripcion:
-      "Preparación guiada con estructura clara y recursos de apoyo.",
-  },
-];
-
-const onlineCursos = [
-  {
-    titulo: "Protocolo Institucional",
-    precio: "39 €",
-    descripcion:
-      "Curso completo estructurado por temas con vídeos explicativos.",
-  },
-  {
-    titulo: "Protocolo Social y Empresarial",
-    precio: "39 €",
-    descripcion:
-      "Formación práctica para entornos profesionales y empresariales.",
-  },
-  {
-    titulo: "Gestión eficaz del tiempo",
-    precio: "35 €",
-    descripcion:
-      "Técnicas prácticas para organizar el estudio y mejorar el rendimiento.",
+    title: "Cómo funciona",
+    text: "Una explicación sencilla del funcionamiento de la plataforma, las aulas, los recursos y el acceso.",
+    src: "/videos/como-funciona-base12.mp4",
   },
 ];
-
-const quickLinkStyle = {
-  display: "inline-block",
-  padding: "10px 14px",
-  borderRadius: "10px",
-  border: `1px solid ${COLORS.border}`,
-  textDecoration: "none",
-  color: COLORS.text,
-  fontWeight: 600,
-  background: "#fff",
-  fontSize: "14px",
-};
-
-const cardStyle = {
-  padding: "24px",
-  background: COLORS.card,
-  border: `1px solid ${COLORS.border}`,
-  borderRadius: "16px",
-};
 
 export default function HomePage() {
   return (
     <>
-      <main
-        style={{
-          minHeight: "100vh",
-          background: COLORS.bg,
-          color: COLORS.text,
-        }}
-      >
-        <section
-          style={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-            padding: "32px 24px 48px",
-          }}
-        >
-          <header
-            id="top"
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              gap: "24px",
-              flexWrap: "wrap",
-              marginBottom: "64px",
-            }}
-          >
-            <img
-              src="/images/base12-logo.png"
-              alt="Base12 Academy"
-              style={{
-                height: "220px",
-                objectFit: "contain",
-              }}
-            />
-
-            <nav
-              style={{
-                display: "flex",
-                gap: "12px",
-                alignItems: "center",
-                flexWrap: "wrap",
-              }}
-            >
-              <Link
-                href="/login"
-                style={{
-                  padding: "10px 16px",
-                  border: `1px solid ${COLORS.border}`,
-                  borderRadius: "10px",
-                  textDecoration: "none",
-                  color: COLORS.text,
-                  fontWeight: "500",
-                  background: "#fff",
-                }}
-              >
-                Acceso
-              </Link>
-
-              <div style={{ display: "flex", gap: "12px", marginLeft: "8px", flexWrap: "wrap" }}>
-                <Link href="/aviso-legal" style={{ color: COLORS.muted, fontSize: "14px" }}>
-                  Aviso legal
-                </Link>
-                <Link href="/privacidad" style={{ color: COLORS.muted, fontSize: "14px" }}>
-                  Privacidad
-                </Link>
-                <Link href="/cookies" style={{ color: COLORS.muted, fontSize: "14px" }}>
-                  Cookies
-                </Link>
-                <Link
-                  href="/terminos-contratacion"
-                  style={{ color: COLORS.muted, fontSize: "14px" }}
-                >
-                  Términos
-                </Link>
-              </div>
-            </nav>
-          </header>
-
-          <section
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "40px",
-              alignItems: "center",
-              marginBottom: "56px",
-            }}
-          >
-            <div>
-              <h1
-                style={{
-                  fontSize: "56px",
-                  fontWeight: "bold",
-                  lineHeight: "1.1",
-                  marginBottom: "20px",
-                }}
-              >
-                Domina cualquier examen con un método que funciona
-              </h1>
-
-              <div
-                style={{
-                  fontSize: "18px",
-                  fontWeight: "600",
-                  color: COLORS.primary,
-                  marginBottom: "16px",
-                }}
-              >
-                Construye · Comprende · Domina
-              </div>
-
-              <p
-                style={{
-                  fontSize: "22px",
-                  lineHeight: "1.6",
-                  color: COLORS.muted,
-                  marginBottom: "12px",
-                  maxWidth: "600px",
-                }}
-              >
-                Estudia con un método claro, vídeos explicativos, test interactivos y
-                seguimiento real para mejorar tu rendimiento sin aumentar tu carga de estudio.
-              </p>
-
-              <p
-                style={{
-                  fontSize: "18px",
-                  lineHeight: "1.5",
-                  color: COLORS.text,
-                  marginBottom: "24px",
-                  fontWeight: 600,
-                }}
-              >
-                Sin más temario. Sin perder tiempo. Enfocado en sacar puntos.
-              </p>
-
-              <Link
-                href="/login"
-                style={{
-                  display: "inline-block",
-                  padding: "14px 20px",
-                  borderRadius: "10px",
-                  border: "none",
-                  background: "#1d4ed8",
-                  color: "white",
-                  fontSize: "16px",
-                  fontWeight: 700,
-                  textDecoration: "none",
-                }}
-              >
-                Comienza gratis
-              </Link>
-
-              <div
-                style={{
-                  display: "flex",
-                  gap: "12px",
-                  flexWrap: "wrap",
-                  marginTop: "16px",
-                }}
-              >
-                <a href="#pau" style={quickLinkStyle}>
-                  Ver cursos PAU
-                </a>
-                <a href="#oposiciones" style={quickLinkStyle}>
-                  Ver oposiciones
-                </a>
-                <a href="#online" style={quickLinkStyle}>
-                  Ver cursos online
-                </a>
-              </div>
-
-              <p style={{ marginTop: "12px", fontSize: "14px", color: "#6b7280" }}>
-                Acceso inmediato • Sin permanencia • Empieza hoy • Sin tarjeta
-              </p>
-            </div>
-
-            <div>
+      <main style={styles.page}>
+        <header style={styles.header}>
+          <div style={styles.headerInner}>
+            <Link href="/" style={styles.brand}>
               <img
-                src="/images/hero-estudiante.jpg"
-                alt="Estudiante preparando un examen"
-                style={{
-                  width: "100%",
-                  borderRadius: "16px",
-                  objectFit: "cover",
-                }}
+                src="/images/base12-logo.png"
+                alt="Base12 Academy"
+                style={styles.logoImage}
               />
-            </div>
-          </section>
+            </Link>
 
-          <section style={{ marginBottom: "56px" }}>
-            <div style={{ marginBottom: "20px" }}>
-              <h2 style={{ fontSize: "32px", marginBottom: "12px" }}>
-                No necesitas más apuntes
-              </h2>
-              <p
-                style={{
-                  fontSize: "18px",
-                  color: COLORS.muted,
-                  lineHeight: "1.6",
-                  maxWidth: "820px",
-                  margin: 0,
-                }}
+            <nav style={styles.nav}>
+              <a href="#tipos-cursos" style={styles.navLink}>
+                Tipos de cursos
+              </a>
+
+              <a href="#videos-presentacion" style={styles.navLink}>
+                Presentación
+              </a>
+
+              <a href="#beca-menace" style={styles.navLink}>
+                Beca Ménace
+              </a>
+
+              <a
+                href="https://discord.gg/CJ2CKEFvc"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={styles.communityLink}
               >
-                Ya tienes el temario de tu centro. Aquí trabajas lo que realmente necesitas
-                para sacar nota: entender lo importante, memorizar lo esencial y aprender
-                cómo responder en el examen.
-              </p>
-            </div>
+                Comunidad B12
+              </a>
+            </nav>
 
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-                gap: "20px",
-              }}
-            >
-              <div style={cardStyle}>
-                <h3 style={{ fontSize: "22px", fontWeight: "bold", marginBottom: "12px" }}>
-                  Entiende lo importante
-                </h3>
-                <p style={{ margin: 0, lineHeight: "1.6", color: COLORS.muted }}>
-                  Vídeos claros para dar contexto a las lagunas de los resúmenes y entender
-                  lo que de verdad te van a pedir.
-                </p>
-              </div>
-
-              <div style={cardStyle}>
-                <h3 style={{ fontSize: "22px", fontWeight: "bold", marginBottom: "12px" }}>
-                  Memoriza con práctica
-                </h3>
-                <p style={{ margin: 0, lineHeight: "1.6", color: COLORS.muted }}>
-                  Baterías de test para fijar fechas, conceptos y datos clave sin aumentar
-                  tu carga de estudio.
-                </p>
-              </div>
-
-              <div style={cardStyle}>
-                <h3 style={{ fontSize: "22px", fontWeight: "bold", marginBottom: "12px" }}>
-                  Aprende a responder
-                </h3>
-                <p style={{ margin: 0, lineHeight: "1.6", color: COLORS.muted }}>
-                  Entrena preguntas cortas, preguntas de desarrollo y comentarios de imágenes
-                  y textos históricos, donde muchos alumnos pierden puntos.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section id="pau" style={{ marginBottom: "56px", scrollMarginTop: "24px" }}>
-            <div style={{ marginBottom: "20px" }}>
-              <h2 style={{ fontSize: "32px", marginBottom: "12px" }}>
-                Preparación para la PAU
-              </h2>
-              <p
-                style={{
-                  fontSize: "18px",
-                  color: COLORS.muted,
-                  lineHeight: "1.6",
-                  maxWidth: "820px",
-                  margin: 0,
-                }}
-              >
-                Cursos pensados para estudiar solo lo necesario, practicar cómo te van a
-                evaluar y llegar al examen con una estrategia clara.
-              </p>
-            </div>
-
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-                gap: "20px",
-              }}
-            >
-              {pauCursos.map((curso) => (
-                <div
-  key={curso.titulo}
-  onClick={() => {
-    if (curso.titulo === "Historia de España") {
-      window.location.href = "/login";
-    }
-  }}
-  style={{
-    padding: "24px",
-    background: COLORS.card,
-    border: `1px solid ${COLORS.border}`,
-    borderRadius: "16px",
-    minHeight: "300px",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-    cursor: curso.titulo === "Historia de España" ? "pointer" : "default",
-    transition: "transform 0.15s ease, box-shadow 0.15s ease",
-  }}
-  onMouseEnter={(e) => {
-    if (curso.titulo === "Historia de España") {
-      e.currentTarget.style.transform = "translateY(-4px)";
-      e.currentTarget.style.boxShadow = "0 10px 20px rgba(0,0,0,0.08)";
-    }
-  }}
-  onMouseLeave={(e) => {
-    e.currentTarget.style.transform = "translateY(0)";
-    e.currentTarget.style.boxShadow = "none";
-  }}
->
-  
-                    <div>
-                    <h3 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "12px" }}>
-                      {curso.titulo}
-                    </h3>
-
-{curso.titulo === "Historia de España" && (
-  <span
-    style={{
-      display: "inline-block",
-      marginBottom: "10px",
-      padding: "4px 10px",
-      background: "#dcfce7",
-      color: "#166534",
-      borderRadius: "999px",
-      fontSize: "12px",
-      fontWeight: "600",
-    }}
-  >
-    Curso ya disponible
-  </span>
-)}
-
-                    <p style={{ marginBottom: "12px", lineHeight: "1.6", color: COLORS.muted }}>
-                      {curso.descripcion}
-                    </p>
-
-                    <p style={{ fontSize: "14px", color: COLORS.muted, marginBottom: "6px" }}>
-                      {curso.titulo === "Historia de España"
-                        ? "Acceso online completo"
-                        : "Temario en actualización"}
-                    </p>
-
-                    <ul
-                      style={{
-                        margin: "0 0 16px 18px",
-                        padding: 0,
-                        color: COLORS.muted,
-                        lineHeight: "1.7",
-                        fontSize: "15px",
-                      }}
-                    >
-                      <li>Vídeos explicativos por tema</li>
-                      <li>Tests interactivos para memorizar lo esencial</li>
-                      <li>Entrenamiento para preguntas de desarrollo</li>
-                      <li>
-                        {curso.titulo === "Historia de España"
-                          ? "Comentario de imágenes y textos históricos"
-                          : "Comentario guiado de textos"}
-                      </li>
-                      <li>Recomendaciones finales para el examen</li>
-                    </ul>
-
-                    <p style={{ fontSize: "18px", fontWeight: "600", marginBottom: "16px" }}>
-                      Desde {curso.precio}
-                    </p>
-                  </div>
-
-                  <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-                    {curso.titulo === "Historia de España" && (
-                      <>
-                        <Link
-  href="/login"
-  style={{
-    display: "inline-block",
-    padding: "12px 16px",
-    background: COLORS.primary,
-    color: "white",
-    borderRadius: "10px",
-    textDecoration: "none",
-    fontWeight: "600",
-    textAlign: "center",
-  }}
->
-  Empezar ahora
-</Link>
-
-                        <span style={{ fontSize: "13px", color: COLORS.muted }}>
-                          Acceso inmediato
-                        </span>
-                      </>
-                    )}
-
-                    {curso.titulo === "Historia de la Filosofía" && (
-                      <>
-                        <Link
-                          href="/dashboard/filosofia"
-                          style={{
-                            display: "inline-block",
-                            padding: "12px 16px",
-                            background: COLORS.dark,
-                            color: "white",
-                            borderRadius: "10px",
-                            textDecoration: "none",
-                            fontWeight: "600",
-                            textAlign: "center",
-                          }}
-                        >
-                          Explorar curso
-                        </Link>
-
-                        <span
-  style={{
-    fontSize: "13px",
-    color: "#92400e",
-    background: "#fef3c7",
-    padding: "4px 10px",
-    borderRadius: "999px",
-    display: "inline-block",
-    width: "fit-content",
-  }}
->
-  En actualización
-</span>
-
-<span style={{ fontSize: "13px", color: COLORS.muted }}>
-  Accede y ve cómo está estructurado
-</span>
-
-                      </>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section id="oposiciones" style={{ marginBottom: "56px", scrollMarginTop: "24px" }}>
-            <div style={{ marginBottom: "20px" }}>
-              <h2 style={{ fontSize: "32px", marginBottom: "12px" }}>
-                Preparación de oposiciones
-              </h2>
-              <p
-                style={{
-                  fontSize: "18px",
-                  color: COLORS.muted,
-                  lineHeight: "1.6",
-                  maxWidth: "820px",
-                  margin: 0,
-                }}
-              >
-                Una línea de preparación pensada para crecer contigo. Ya puedes ver lo que
-                iremos incorporando y hacia dónde evoluciona la academia.
-              </p>
-            </div>
-
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-                gap: "20px",
-              }}
-            >
-              {oposicionesCursos.map((curso) => (
-                <div key={curso.titulo} style={cardStyle}>
-                  <h3 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "12px" }}>
-                    {curso.titulo}
-                  </h3>
-
-                  <p style={{ marginBottom: "12px", lineHeight: "1.6", color: COLORS.muted }}>
-                    {curso.descripcion}
-                  </p>
-
-                  <p style={{ fontSize: "14px", color: COLORS.muted, marginTop: "8px" }}>
-                    Temario en actualización
-                  </p>
-                  <p style={{ fontSize: "16px", fontWeight: "600", marginTop: "4px" }}>
-                    Desde 19 € / mes
-                  </p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section id="online" style={{ marginBottom: "56px", scrollMarginTop: "24px" }}>
-            <div style={{ marginBottom: "20px" }}>
-              <h2 style={{ fontSize: "32px", marginBottom: "12px" }}>
-                Cursos online
-              </h2>
-              <p
-                style={{
-                  fontSize: "18px",
-                  color: COLORS.muted,
-                  lineHeight: "1.6",
-                  maxWidth: "820px",
-                  margin: 0,
-                }}
-              >
-                Formación online práctica para seguir aprendiendo con estructura clara y
-                recursos útiles.
-              </p>
-            </div>
-
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-                gap: "20px",
-              }}
-            >
-              {onlineCursos.map((curso) => (
-                <div key={curso.titulo} style={cardStyle}>
-                  <h3 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "12px" }}>
-                    {curso.titulo}
-                  </h3>
-                  <p style={{ marginBottom: "12px", lineHeight: "1.6", color: COLORS.muted }}>
-                    {curso.descripcion}
-                  </p>
-                  <p style={{ fontSize: "14px", color: COLORS.muted, marginTop: "8px" }}>
-                    Temario en actualización
-                  </p>
-                  <p style={{ fontSize: "16px", fontWeight: "600", marginTop: "4px" }}>
-                    Desde {curso.precio}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section style={{ marginTop: "40px" }}>
-            <h2 style={{ fontSize: "32px", marginBottom: "20px" }}>
-              Empieza por aquí
-            </h2>
-
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-                gap: "20px",
-                alignItems: "start",
-              }}
-            >
-              {introVideos.map((video) => (
-                <div
-                  key={video.slug}
-                  style={{
-                    background: COLORS.card,
-                    border: `1px solid ${COLORS.border}`,
-                    borderRadius: "16px",
-                    padding: "16px",
-                  }}
-                >
-                  <h3 style={{ fontSize: "18px", marginBottom: "12px" }}>{video.titulo}</h3>
-
-                  <iframe
-                    width="100%"
-                    height="180"
-                    src={video.videoUrl}
-                    title={video.titulo}
-                    style={{ border: "none", borderRadius: "12px" }}
-                    allowFullScreen
-                  />
-                </div>
-              ))}
-            </div>
-          </section>
-        </section>
-      </main>
-
-      <footer
-        style={{
-          marginTop: "64px",
-          padding: "40px 24px",
-          background: "#ffffff",
-          borderTop: "1px solid #e5e7eb",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-            fontSize: "14px",
-            color: "#6b7280",
-            lineHeight: "1.6",
-          }}
-        >
-          <p style={{ marginBottom: "16px", fontWeight: "bold", color: "#1f2937" }}>
-            Base12 Academy
-          </p>
-
-          <div style={{ marginBottom: "8px" }}>
-            <p style={{ margin: 0 }}>Imagen Digital Ménace, S. L. U.</p>
-            <p style={{ margin: 0 }}>CIF: B21746086</p>
-            <p style={{ margin: 0 }}>Calle Lanuza, 8 · 29009 Málaga</p>
-            <p style={{ margin: 0 }}>Contacto técnico: base12academy@gmail.com</p>
+            <Link href="/login" style={styles.loginButton}>
+              Acceso alumnos
+            </Link>
           </div>
+        </header>
 
-          <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", marginTop: "12px" }}>
-            <Link href="/aviso-legal">Aviso legal</Link>
-            <Link href="/privacidad">Política de privacidad</Link>
-            <Link href="/cookies">Política de cookies</Link>
-            <Link href="/terminos-contratacion">Términos de contratación</Link>
-          </div>
+        <div style={styles.layout}>
+          <section style={styles.content}>
+            <section style={styles.hero}>
+              <div style={styles.heroTextColumn}>
+                <div style={styles.label}>
+                  Bachillerato · PAU · Oposiciones · Cursos online
+                </div>
 
-          <p style={{ marginTop: "16px", fontSize: "14px", color: "#9ca3af" }}>
-            © 2026 Base12 Academy. Todos los derechos reservados.
-          </p>
+                <h1 style={styles.h1}>
+                  Aprende con estructura. Avanza con seguridad.
+                </h1>
+
+                <p style={styles.heroText}>
+                  Base12 Academy reúne distintas líneas de formación: Bachillerato
+                  y PAU, Oposiciones y Cursos online. Cada aula tendrá su propio
+                  método, sus propios recursos y una preparación adaptada al
+                  objetivo del estudiante.
+                </p>
+
+                <div style={styles.heroButtons}>
+                  <a href="#videos-presentacion" style={styles.secondaryButton}>
+                    Ver presentación
+                  </a>
+                </div>
+              </div>
+
+              <div style={styles.heroVideoBox}>
+                <video
+                  src="/videos/presentacion-base12.mp4"
+                  controls
+                  playsInline
+                  style={styles.heroVideo}
+                />
+                <div style={styles.videoFallback}>
+                  Vídeo de presentación Base12
+                </div>
+              </div>
+            </section>
+
+            <section id="tipos-cursos">
+              <h2 style={styles.h2}>Tipos de cursos</h2>
+              <p style={styles.subtitle}>
+                Elige el aula que corresponde a tu objetivo.
+              </p>
+
+              <div style={styles.cards}>
+                {areas.map((area) => (
+                  <article
+                    key={area.title}
+                    id={
+                      area.title === "Bachillerato y PAU"
+                        ? "bachillerato-pau"
+                        : area.title === "Oposiciones"
+                          ? "oposiciones"
+                          : area.title === "Cursos online"
+                            ? "cursos-online"
+                            : undefined
+                    }
+                    style={styles.card}
+                  >
+                    <div style={styles.cardImage}></div>
+                    <h3 style={styles.h3}>{area.title}</h3>
+                    <p style={styles.cardText}>{area.text}</p>
+                    <Link href={area.href} style={styles.cardButton}>
+                      {area.cta}
+                    </Link>
+                  </article>
+                ))}
+              </div>
+            </section>
+
+            <section id="videos-presentacion" style={styles.videoSection}>
+              <h2 style={styles.h2}>Vídeos de presentación</h2>
+              <p style={styles.subtitle}>
+                Conoce qué es Base12 Academy, cómo funciona y cuál es su método
+                de trabajo.
+              </p>
+
+              <div style={styles.cards}>
+                {videos.map((video) => (
+                  <article key={video.title} style={styles.videoCard}>
+                    <video
+                      src={video.src}
+                      controls
+                      preload="metadata"
+                      playsInline
+                      style={styles.presentationVideo}
+                    />
+                    <div style={styles.videoContent}>
+                      <h3 style={styles.h3}>{video.title}</h3>
+                      <p style={styles.cardText}>{video.text}</p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+
+            <section id="beca-menace" style={styles.scholarship}>
+              <p style={styles.scholarshipLabel}>Beca Ménace</p>
+              <h2 style={styles.h2}>
+                Base12 puede asumir el 50% del coste del curso
+              </h2>
+              <p style={styles.scholarshipText}>
+                La Beca Ménace está pensada para facilitar el acceso a estudiantes
+                que quieren preparar seriamente el curso y comprometerse con su
+                propio proceso de aprendizaje. La solicitud preferente estará
+                abierta hasta el 30 de noviembre o hasta completar el número de
+                becas disponibles.
+              </p>
+              <Link href="/register" style={styles.scholarshipButton}>
+                Solicitar información
+              </Link>
+            </section>
+
+            <footer style={styles.footer}>
+              <div style={styles.footerInner}>
+                <p style={styles.footerBrand}>Base12 Academy</p>
+
+                <p style={styles.footerText}>Imagen Digital Ménace, S. L. U.</p>
+                <p style={styles.footerText}>CIF: B21746086</p>
+                <p style={styles.footerText}>Calle Lanuza, 8 · 29009 Málaga</p>
+                <p style={styles.footerText}>
+                  Contacto técnico: base12academy@gmail.com
+                </p>
+
+                <div style={styles.footerLinks}>
+                  <Link href="/aviso-legal" style={styles.footerLink}>
+                    Aviso legal
+                  </Link>
+                  <Link href="/privacidad" style={styles.footerLink}>
+                    Política de privacidad
+                  </Link>
+                  <Link href="/cookies" style={styles.footerLink}>
+                    Política de cookies
+                  </Link>
+                  <Link
+                    href="/terminos-contratacion"
+                    style={styles.footerLink}
+                  >
+                    Términos de contratación
+                  </Link>
+                </div>
+
+                <p style={styles.footerCopy}>
+                  © 2026 Base12 Academy. Todos los derechos reservados.
+                </p>
+              </div>
+            </footer>
+          </section>
+
+          <aside style={styles.aside}>
+            <div style={styles.adBox}>
+              <p style={styles.adTitle}>Publicidad</p>
+              <div style={styles.adPlaceholder}>Espacio para anuncio</div>
+            </div>
+
+            <div style={styles.adBox}>
+              <p style={styles.adTitle}>Publicidad</p>
+              <div style={styles.adPlaceholder}>Espacio para anuncio</div>
+            </div>
+
+            <div style={styles.quickBox}>
+              <p style={styles.adTitle}>Acceso rápido</p>
+              <Link href="/login" style={styles.quickPrimary}>
+                Entrar al aula
+              </Link>
+            </div>
+          </aside>
         </div>
-      </footer>
+      </main>
 
       <LeadChatBot />
     </>
   );
 }
+
+const styles: Record<string, CSSProperties> = {
+  page: {
+    minHeight: "100vh",
+    background: "#f4f7fb",
+    color: "#0f172a",
+    fontFamily:
+      "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+  },
+  header: {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    zIndex: 50,
+    background: "rgba(255, 255, 255, 0.96)",
+    borderBottom: "1px solid rgba(15, 23, 42, 0.10)",
+    backdropFilter: "blur(10px)",
+  },
+  headerInner: {
+    maxWidth: 1200,
+    margin: "0 auto",
+    padding: "10px 24px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 24,
+  },
+  brand: {
+    display: "flex",
+    alignItems: "center",
+    textDecoration: "none",
+  },
+  logoImage: {
+    width: 350,
+    height: 130,
+    objectFit: "contain",
+    borderRadius: 12,
+    background: "#ffffff",
+    padding: 4,
+  },
+  nav: {
+    display: "flex",
+    alignItems: "center",
+    gap: 22,
+    fontSize: 14,
+  },
+  navLink: {
+    color: "#1e293b",
+    textDecoration: "none",
+    fontWeight: 600,
+  },
+  communityLink: {
+    color: "#1d4ed8",
+    background: "#eff6ff",
+    border: "1px solid rgba(37, 99, 235, 0.20)",
+    textDecoration: "none",
+    fontWeight: 800,
+    padding: "9px 14px",
+    borderRadius: 999,
+    whiteSpace: "nowrap",
+  },
+  loginButton: {
+    border: "1px solid rgba(15, 23, 42, 0.18)",
+    color: "#0f172a",
+    background: "#ffffff",
+    textDecoration: "none",
+    padding: "10px 16px",
+    borderRadius: 999,
+    fontSize: 14,
+    fontWeight: 800,
+  },
+  layout: {
+    maxWidth: 1200,
+    margin: "0 auto",
+    padding: "122px 24px 64px",
+    display: "grid",
+    gridTemplateColumns: "1fr 280px",
+    gap: 28,
+  },
+  content: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 36,
+  },
+  hero: {
+    border: "1px solid rgba(15, 23, 42, 0.10)",
+    borderRadius: 32,
+    padding: 34,
+    background:
+      "linear-gradient(135deg, #ffffff 0%, #eaf1fb 55%, #dbeafe 100%)",
+    boxShadow: "0 24px 70px rgba(15, 23, 42, 0.10)",
+    display: "grid",
+    gridTemplateColumns: "1.1fr 0.9fr",
+    gap: 28,
+    alignItems: "center",
+  },
+  heroTextColumn: {
+    minWidth: 0,
+  },
+  label: {
+    display: "inline-block",
+    border: "1px solid rgba(15, 23, 42, 0.16)",
+    borderRadius: 999,
+    padding: "7px 14px",
+    color: "#1e3a8a",
+    background: "#ffffff",
+    fontSize: 14,
+    fontWeight: 700,
+    marginBottom: 20,
+  },
+  h1: {
+    margin: 0,
+    fontSize: 48,
+    lineHeight: 1.05,
+    letterSpacing: "-0.04em",
+    maxWidth: 760,
+    color: "#020617",
+  },
+  heroText: {
+    maxWidth: 720,
+    color: "#334155",
+    fontSize: 17,
+    lineHeight: 1.75,
+    marginTop: 22,
+  },
+  heroButtons: {
+    display: "flex",
+    gap: 12,
+    marginTop: 28,
+    flexWrap: "wrap",
+  },
+  secondaryButton: {
+    border: "1px solid rgba(37, 99, 235, 0.35)",
+    color: "#1d4ed8",
+    background: "#ffffff",
+    padding: "13px 22px",
+    borderRadius: 999,
+    fontWeight: 900,
+    textDecoration: "none",
+    fontSize: 14,
+  },
+  heroVideoBox: {
+    position: "relative",
+    overflow: "hidden",
+    borderRadius: 28,
+    minHeight: 330,
+    background: "linear-gradient(135deg, #dbeafe, #e2e8f0)",
+    border: "1px solid rgba(15, 23, 42, 0.10)",
+    boxShadow: "0 20px 50px rgba(15, 23, 42, 0.12)",
+  },
+  heroVideo: {
+    position: "absolute",
+    inset: 0,
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    zIndex: 2,
+  },
+  videoFallback: {
+    position: "absolute",
+    inset: 0,
+    zIndex: 1,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    color: "#64748b",
+    fontWeight: 800,
+    textAlign: "center",
+    padding: 24,
+  },
+  h2: {
+    margin: 0,
+    fontSize: 28,
+    lineHeight: 1.2,
+    letterSpacing: "-0.02em",
+    color: "#020617",
+  },
+  subtitle: {
+    color: "#475569",
+    marginTop: 8,
+    marginBottom: 20,
+  },
+  cards: {
+    display: "grid",
+    gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+    gap: 18,
+  },
+  card: {
+    border: "1px solid rgba(15, 23, 42, 0.10)",
+    background: "#ffffff",
+    borderRadius: 28,
+    padding: 22,
+    minHeight: 270,
+    boxShadow: "0 18px 45px rgba(15, 23, 42, 0.08)",
+  },
+  cardImage: {
+    height: 110,
+    borderRadius: 20,
+    background: "linear-gradient(135deg, #e2e8f0, #dbeafe)",
+    border: "1px solid rgba(15, 23, 42, 0.08)",
+    marginBottom: 20,
+  },
+  h3: {
+    margin: 0,
+    fontSize: 20,
+    lineHeight: 1.25,
+    color: "#020617",
+  },
+  cardText: {
+    color: "#475569",
+    fontSize: 14,
+    lineHeight: 1.65,
+    marginTop: 12,
+  },
+  cardButton: {
+    display: "inline-block",
+    marginTop: 18,
+    color: "#1d4ed8",
+    background: "#eff6ff",
+    border: "1px solid rgba(37, 99, 235, 0.18)",
+    borderRadius: 999,
+    padding: "9px 14px",
+    textDecoration: "none",
+    fontSize: 14,
+    fontWeight: 900,
+  },
+  videoSection: {
+    border: "1px solid rgba(15, 23, 42, 0.10)",
+    borderRadius: 30,
+    padding: 24,
+    background: "#ffffff",
+    boxShadow: "0 18px 45px rgba(15, 23, 42, 0.08)",
+  },
+  videoCard: {
+    overflow: "hidden",
+    borderRadius: 24,
+    background: "#ffffff",
+    border: "1px solid rgba(15, 23, 42, 0.10)",
+  },
+  presentationVideo: {
+    width: "100%",
+    aspectRatio: "16 / 9",
+    background: "#e2e8f0",
+    display: "block",
+    objectFit: "cover",
+  },
+  videoContent: {
+    padding: 18,
+  },
+  scholarship: {
+    border: "1px solid rgba(180, 83, 9, 0.20)",
+    borderRadius: 30,
+    padding: 28,
+    background: "#fffbeb",
+    boxShadow: "0 18px 45px rgba(15, 23, 42, 0.06)",
+  },
+  scholarshipLabel: {
+    color: "#92400e",
+    fontWeight: 900,
+    textTransform: "uppercase",
+    letterSpacing: "0.08em",
+    fontSize: 13,
+    margin: 0,
+    marginBottom: 12,
+  },
+  scholarshipText: {
+    color: "#713f12",
+    lineHeight: 1.75,
+    maxWidth: 760,
+  },
+  scholarshipButton: {
+    display: "inline-block",
+    marginTop: 16,
+    background: "#1d4ed8",
+    color: "#ffffff",
+    padding: "12px 20px",
+    borderRadius: 999,
+    fontWeight: 900,
+    textDecoration: "none",
+  },
+  footer: {
+    borderTop: "1px solid #e5e7eb",
+    paddingTop: 34,
+    marginTop: 12,
+  },
+  footerInner: {
+    color: "#475569",
+    fontSize: 14,
+    lineHeight: 1.7,
+  },
+  footerBrand: {
+    margin: "0 0 18px",
+    color: "#111827",
+    fontWeight: 900,
+  },
+  footerText: {
+    margin: "2px 0",
+  },
+  footerLinks: {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: 18,
+    marginTop: 18,
+  },
+  footerLink: {
+    color: "#004aad",
+    textDecoration: "none",
+    fontWeight: 600,
+  },
+  footerCopy: {
+    marginTop: 22,
+    color: "#94a3b8",
+  },
+  aside: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 18,
+    position: "sticky",
+    top: 106,
+    alignSelf: "start",
+  },
+  adBox: {
+    border: "1px solid rgba(15, 23, 42, 0.10)",
+    borderRadius: 28,
+    padding: 16,
+    background: "#ffffff",
+    boxShadow: "0 18px 45px rgba(15, 23, 42, 0.07)",
+  },
+  adTitle: {
+    color: "#64748b",
+    fontSize: 12,
+    fontWeight: 900,
+    textTransform: "uppercase",
+    letterSpacing: "0.08em",
+    margin: 0,
+    marginBottom: 14,
+  },
+  adPlaceholder: {
+    height: 260,
+    borderRadius: 20,
+    border: "1px dashed rgba(15, 23, 42, 0.20)",
+    background: "#f8fafc",
+    color: "#64748b",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
+    fontSize: 14,
+  },
+  quickBox: {
+    border: "1px solid rgba(15, 23, 42, 0.10)",
+    borderRadius: 28,
+    padding: 16,
+    background: "#ffffff",
+    boxShadow: "0 18px 45px rgba(15, 23, 42, 0.07)",
+  },
+  quickPrimary: {
+    display: "block",
+    background: "#1d4ed8",
+    color: "#ffffff",
+    textAlign: "center",
+    textDecoration: "none",
+    fontWeight: 900,
+    padding: "12px 14px",
+    borderRadius: 18,
+  },
+};
