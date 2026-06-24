@@ -235,23 +235,115 @@ export default function HomePage() {
           </section>
 
           <aside style={styles.aside}>
-            <div style={styles.adBox}>
-              <p style={styles.adTitle}>Publicidad</p>
-              <div style={styles.adPlaceholder}>Espacio para anuncio</div>
-            </div>
+  <div style={styles.trustBox}>
+    <p style={styles.sideLabel}>Decide con seguridad</p>
 
-            <div style={styles.adBox}>
-              <p style={styles.adTitle}>Publicidad</p>
-              <div style={styles.adPlaceholder}>Espacio para anuncio</div>
-            </div>
+    <h3 style={styles.sideTitle}>
+      Una experiencia docente real convertida en método
+    </h3>
 
-            <div style={styles.quickBox}>
-              <p style={styles.adTitle}>Acceso rápido</p>
-              <Link href="/login" style={styles.quickPrimary}>
-                Entrar al aula
-              </Link>
-            </div>
-          </aside>
+    <p style={styles.sideIntro}>
+      Base12 Academy nace de años de enseñanza, acompañamiento académico y
+      trabajo con alumnos reales.
+    </p>
+
+    <div style={styles.trustList}>
+      <div style={styles.trustItem}>
+        <strong style={styles.trustNumber}>3.200</strong>
+        <span style={styles.trustText}>alumnos formados</span>
+      </div>
+
+      <div style={styles.trustItem}>
+        <strong style={styles.trustNumber}>11 años</strong>
+        <span style={styles.trustText}>de experiencia docente</span>
+      </div>
+
+      <div style={styles.trustItem}>
+        <strong style={styles.trustNumber}>Doctor</strong>
+        <span style={styles.trustText}>
+          con formación en Historia, Teología, Pedagogía y Alta Dirección
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div style={styles.faqBox}>
+    <p style={styles.sideLabel}>Preguntas frecuentes</p>
+
+    <details style={styles.faqItem}>
+      <summary style={styles.faqQuestion}>¿Qué es Base12 Academy?</summary>
+      <p style={styles.faqAnswer}>
+        Una plataforma de formación pensada para estudiar con estructura,
+        avanzar con seguridad y comprender mejor lo que se aprende.
+      </p>
+    </details>
+
+    <details style={styles.faqItem}>
+      <summary style={styles.faqQuestion}>
+        ¿Base12 sustituye a mi profesor?
+      </summary>
+      <p style={styles.faqAnswer}>
+        No. Base12 complementa las clases, ordena los contenidos y ayuda al
+        alumno a estudiar con más método.
+      </p>
+    </details>
+
+    <details style={styles.faqItem}>
+      <summary style={styles.faqQuestion}>
+        ¿Qué diferencia hay con estudiar solo?
+      </summary>
+      <p style={styles.faqAnswer}>
+        Base12 ofrece orientación, vídeos de apoyo, materiales organizados y
+        pruebas para comprobar si realmente se avanza.
+      </p>
+    </details>
+
+    <details style={styles.faqItem}>
+      <summary style={styles.faqQuestion}>
+        ¿Tengo que estudiar más temario?
+      </summary>
+      <p style={styles.faqAnswer}>
+        No se trata de añadir carga sin sentido, sino de comprender mejor el
+        contexto, las causas, las consecuencias y las relaciones importantes.
+      </p>
+    </details>
+
+    <details style={styles.faqItem}>
+      <summary style={styles.faqQuestion}>
+        ¿Qué paquete debería elegir?
+      </summary>
+      <p style={styles.faqAnswer}>
+        Depende de tu situación: apoyo para la asignatura, preparación PAU o
+        acompañamiento más completo. La idea es elegir según la necesidad real.
+      </p>
+    </details>
+
+    <details style={styles.faqItem}>
+      <summary style={styles.faqQuestion}>¿Qué es la Beca Ménace?</summary>
+      <p style={styles.faqAnswer}>
+        Es una ayuda de Base12 Academy para facilitar el acceso a la formación
+        a estudiantes comprometidos con su aprendizaje.
+      </p>
+    </details>
+
+    <details style={styles.faqItem}>
+      <summary style={styles.faqQuestion}>
+        ¿Qué significa “Consigue tu libertad”?
+      </summary>
+      <p style={styles.faqAnswer}>
+        Significa que aprender bien abre posibilidades. Cuando entiendes y
+        avanzas con seguridad, dependes menos del miedo y de la improvisación.
+      </p>
+    </details>
+  </div>
+
+  <div style={styles.quickBox}>
+    <p style={styles.sideLabel}>Acceso rápido</p>
+    <Link href="/login" style={styles.quickPrimary}>
+      Entrar al aula
+    </Link>
+  </div>
+</aside>
         </div>
       </main>
 
@@ -581,38 +673,92 @@ const styles: Record<string, CSSProperties> = {
     top: 106,
     alignSelf: "start",
   },
-  adBox: {
+  trustBox: {
+  border: "1px solid rgba(37, 99, 235, 0.16)",
+  borderRadius: 28,
+  padding: 18,
+  background: "linear-gradient(180deg, #ffffff 0%, #eff6ff 100%)",
+  boxShadow: "0 18px 45px rgba(15, 23, 42, 0.07)",
+},
+faqBox: {
+  border: "1px solid rgba(15, 23, 42, 0.10)",
+  borderRadius: 28,
+  padding: 18,
+  background: "#ffffff",
+  boxShadow: "0 18px 45px rgba(15, 23, 42, 0.07)",
+},
+sideLabel: {
+  color: "#1d4ed8",
+  fontSize: 12,
+  fontWeight: 900,
+  textTransform: "uppercase",
+  letterSpacing: "0.08em",
+  margin: 0,
+  marginBottom: 12,
+},
+sideTitle: {
+  margin: 0,
+  color: "#0f172a",
+  fontSize: 19,
+  lineHeight: 1.25,
+  letterSpacing: "-0.02em",
+},
+sideIntro: {
+  color: "#475569",
+  fontSize: 14,
+  lineHeight: 1.65,
+  marginTop: 12,
+  marginBottom: 16,
+},
+trustList: {
+  display: "flex",
+  flexDirection: "column",
+  gap: 12,
+},
+trustItem: {
+  border: "1px solid rgba(37, 99, 235, 0.12)",
+  borderRadius: 20,
+  padding: 14,
+  background: "rgba(255, 255, 255, 0.78)",
+},
+trustNumber: {
+  display: "block",
+  color: "#1e3a8a",
+  fontSize: 22,
+  lineHeight: 1.1,
+  fontWeight: 950,
+  marginBottom: 4,
+},
+trustText: {
+  display: "block",
+  color: "#334155",
+  fontSize: 13,
+  lineHeight: 1.45,
+  fontWeight: 650,
+},
+faqItem: {
+  borderTop: "1px solid rgba(15, 23, 42, 0.08)",
+  paddingTop: 12,
+  paddingBottom: 12,
+},
+faqQuestion: {
+  cursor: "pointer",
+  color: "#0f172a",
+  fontSize: 14,
+  lineHeight: 1.35,
+  fontWeight: 850,
+},
+faqAnswer: {
+  color: "#475569",
+  fontSize: 13,
+  lineHeight: 1.6,
+  marginTop: 10,
+  marginBottom: 0,
+},
+    quickBox: {
     border: "1px solid rgba(15, 23, 42, 0.10)",
     borderRadius: 28,
-    padding: 16,
-    background: "#ffffff",
-    boxShadow: "0 18px 45px rgba(15, 23, 42, 0.07)",
-  },
-  adTitle: {
-    color: "#64748b",
-    fontSize: 12,
-    fontWeight: 900,
-    textTransform: "uppercase",
-    letterSpacing: "0.08em",
-    margin: 0,
-    marginBottom: 14,
-  },
-  adPlaceholder: {
-    height: 260,
-    borderRadius: 20,
-    border: "1px dashed rgba(15, 23, 42, 0.20)",
-    background: "#f8fafc",
-    color: "#64748b",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    textAlign: "center",
-    fontSize: 14,
-  },
-  quickBox: {
-    border: "1px solid rgba(15, 23, 42, 0.10)",
-    borderRadius: 28,
-    padding: 16,
+    padding: 18,
     background: "#ffffff",
     boxShadow: "0 18px 45px rgba(15, 23, 42, 0.07)",
   },
