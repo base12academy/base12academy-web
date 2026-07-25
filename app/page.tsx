@@ -1,25 +1,26 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import LeadChatBot from "@/components/LeadChatBot";
+import CourseCatalog from "@/components/CourseCatalog";
 
 const areas = [
   {
     title: "Bachillerato y PAU",
     text: "Apoyo estructurado para comprender las asignaturas, preparar exámenes y llegar a la PAU con seguridad.",
-    href: "/bachillerato-pau",
-    cta: "Ver aula",
+    href: "#catalogo",
+    cta: "Ver cursos",
   },
   {
     title: "Oposiciones",
     text: "Preparación práctica, ordenada y orientada a examen para avanzar con método y constancia.",
-    href: "#oposiciones",
-    cta: "Próximamente",
+    href: "#catalogo",
+    cta: "Ver cursos",
   },
   {
     title: "Cursos online",
-    text: "Formación útil, directa y aplicable para mejorar competencias profesionales y personales.",
-    href: "/cursos",
-    cta: "Ver aula",
+    text: "Formación útil, directa y aplicable, con certificado verificable al superar el curso.",
+    href: "#catalogo",
+    cta: "Ver cursos",
   },
 ];
 
@@ -64,6 +65,10 @@ export default function HomePage() {
                 Presentación
               </a>
 
+              <a href="#catalogo" style={styles.navLink}>
+                Cursos y precios
+              </a>
+
               <a href="#beca-menace" style={styles.navLink}>
                 Beca Ménace
               </a>
@@ -78,9 +83,7 @@ export default function HomePage() {
               </a>
             </nav>
 
-            <Link href="/login" style={styles.loginButton}>
-              Acceso alumnos
-            </Link>
+            <a href="#catalogo" style={styles.loginButton}>Matriculación</a>
           </div>
         </header>
 
@@ -181,6 +184,8 @@ export default function HomePage() {
               </div>
             </section>
 
+            <CourseCatalog />
+
             <section id="beca-menace" style={styles.scholarship}>
               <p style={styles.scholarshipLabel}>Beca Ménace</p>
               <h2 style={styles.h2}>
@@ -193,7 +198,7 @@ export default function HomePage() {
                 abierta hasta el 30 de noviembre o hasta completar el número de
                 becas disponibles.
               </p>
-              <Link href="/register" style={styles.scholarshipButton}>
+              <Link href="#catalogo" style={styles.scholarshipButton}>
                 Solicitar información
               </Link>
             </section>
@@ -339,9 +344,7 @@ export default function HomePage() {
 
   <div style={styles.quickBox}>
     <p style={styles.sideLabel}>Acceso rápido</p>
-    <Link href="/login" style={styles.quickPrimary}>
-      Entrar al aula
-    </Link>
+    <a href="#catalogo" style={styles.quickPrimary}>Ver cursos y precios</a>
   </div>
 </aside>
         </div>

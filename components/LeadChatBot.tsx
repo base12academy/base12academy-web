@@ -7,7 +7,7 @@ export default function LeadChatBot() {
   const [mensaje, setMensaje] = useState("");
   const [comunidad, setComunidad] = useState("");
   const [chat, setChat] = useState<string[]>([
-    "Asistente Base12: Hola 👋\n\nTe ayudo a preparar la PAU paso a paso.\n\nPuedo orientarte sobre:\n• Historia de España\n• Cómo funciona el curso\n• Precio y acceso\n• Estrategia según tu comunidad\n\nSi quieres, selecciona tu comunidad y empieza por una opción 👇",
+    "Asistente Base12: Hola 👋\n\nEstoy aquí para ayudarte a elegir bien.\n\nPuedo orientarte sobre:\n• Bachillerato y PAU\n• Cursos online y certificados\n• Oposiciones\n• Modalidades, precios y descuentos\n• Acceso según tu comunidad\n\nSelecciona tu comunidad si lo deseas y pregúntame.",
   ]);
 
   const chatRef = useRef<HTMLDivElement>(null);
@@ -56,7 +56,7 @@ export default function LeadChatBot() {
       setChat((prev) => {
         const copia = [...prev];
         copia[copia.length - 1] =
-          "Asistente Base12: Ahora mismo no puedo responder bien.\n\n👉 Puedes acceder directamente aquí:\n/dashboard/comprar/historia-espana";
+            "Asistente Base12: Ahora mismo no puedo responder bien.\n\nPuedes consultar todos los cursos y precios en la sección Oferta formativa de esta misma página.";
         return copia;
       });
     }
@@ -83,7 +83,7 @@ export default function LeadChatBot() {
           zIndex: 1000,
         }}
       >
-        B
+        B12
       </button>
 
       {abierto && (
@@ -160,7 +160,7 @@ export default function LeadChatBot() {
             >
               <button
                 onClick={() =>
-                  enviarMensaje("¿Cómo funciona el curso de Historia de España?")
+                  enviarMensaje("¿Cómo funciona Base12 Academy?")
                 }
                 style={quickButtonStyle}
               >
@@ -169,7 +169,7 @@ export default function LeadChatBot() {
 
               <button
                 onClick={() =>
-                  enviarMensaje("¿Qué incluye el curso de Historia de España?")
+                  enviarMensaje("¿Qué incluyen las modalidades Esencial, Estándar y Premium?")
                 }
                 style={quickButtonStyle}
               >
@@ -178,7 +178,7 @@ export default function LeadChatBot() {
 
               <button
                 onClick={() =>
-                  enviarMensaje("¿Cuánto cuesta y cómo accedo?")
+                  enviarMensaje("¿Cuáles son los precios y descuentos?")
                 }
                 style={quickButtonStyle}
               >
@@ -187,7 +187,7 @@ export default function LeadChatBot() {
 
               <button
                 onClick={() =>
-                  enviarMensaje("¿Cómo cambia la preparación según mi comunidad?")
+                  enviarMensaje("¿Qué oposiciones hay para mi comunidad?")
                 }
                 style={quickButtonStyle}
               >

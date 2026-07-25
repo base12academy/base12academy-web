@@ -1,56 +1,19 @@
+import Link from "next/link";
+
 export default function TerminosContratacionPage() {
   return (
-    <main style={{ maxWidth: "800px", margin: "0 auto", padding: "40px 24px" }}>
-      <h1 style={{ fontSize: "32px", marginBottom: "24px" }}>
-        Términos de contratación
-      </h1>
-
-      <p style={{ marginBottom: "16px" }}>
-        Los presentes términos regulan la contratación de los servicios formativos
-        ofrecidos a través de Base12 Academy.
-      </p>
-
-      <p style={{ marginBottom: "16px" }}>
-        <strong>Producto:</strong> cursos online de preparación para la PAU,
-        oposiciones y cursos online especializados.
-      </p>
-
-      <p style={{ marginBottom: "16px" }}>
-        <strong>Precios orientativos:</strong>
-      </p>
-
-      <ul style={{ marginBottom: "16px", paddingLeft: "24px", lineHeight: "1.8" }}>
-        <li>Preparación PAU: 17 € al mes (suscripción mensual).</li>
-        <li>Plan intensivo PAU: 29 € (acceso durante 2 meses).</li>
-        <li>Oposiciones: 19 € al mes (suscripción mensual).</li>
-        <li>Cursos online especializados: entre 35 € y 39 € según el curso.</li>
-      </ul>
-
-      <p style={{ marginBottom: "16px" }}>
-        Los precios mostrados en la web podrán actualizarse en cualquier momento,
-        quedando vigentes los que aparezcan publicados en el momento de la compra.
-      </p>
-
-      <p style={{ marginBottom: "16px" }}>
-        <strong>Activación del acceso:</strong> el acceso al curso o servicio
-        contratado se activará automáticamente tras la confirmación correcta del pago.
-      </p>
-
-      <p style={{ marginBottom: "16px" }}>
-        <strong>Modalidad del servicio:</strong> acceso online a contenidos,
-        materiales, vídeos, recursos de apoyo y funcionalidades de la plataforma,
-        según el plan contratado.
-      </p>
-
-      <p style={{ marginBottom: "16px" }}>
-        <strong>Forma de pago:</strong> el pago se realizará a través de los medios
-        habilitados en la plataforma en cada momento.
-      </p>
-
-      <p>
-        Para cualquier duda relacionada con la contratación, el usuario puede
-        contactar en base12academy@gmail.com.
-      </p>
+    <main className="legal-page">
+      <Link href="/" className="legal-back">← Volver a Base12 Academy</Link>
+      <h1>Términos de contratación</h1>
+      <p>Estas condiciones regulan la contratación de los cursos de Bachillerato–PAU, oposiciones y formación online ofrecidos por Base12 Academy.</p>
+      <h2>Precio, acceso y modalidad</h2>
+      <p>El curso, modalidad, precio total y prestaciones se muestran antes de confirmar la matrícula. El acceso se activará una vez confirmado el pago por el medio habilitado.</p>
+      <h2>Certificados de cursos online</h2>
+      <p>El certificado correspondiente a la modalidad contratada se expedirá a nombre del alumno cuando conste la finalización académica exigida y no existan pagos pendientes. Se enviará al correo electrónico facilitado en la matrícula e incorporará un código de verificación.</p>
+      <h2>Desistimiento y contenidos digitales</h2>
+      <p>Antes de iniciar el acceso inmediato a contenidos digitales, el alumno deberá prestar los consentimientos legalmente exigibles. Las condiciones concretas y la información sobre desistimiento se mostrarán en el proceso de contratación.</p>
+      <h2>Contacto</h2>
+      <p>Para cualquier consulta: base12academy@gmail.com.</p>
     </main>
   );
 }

@@ -1,33 +1,18 @@
+import Link from "next/link";
+
 export default function AvisoLegal() {
   return (
-    <main style={{ maxWidth: "800px", margin: "0 auto", padding: "40px 24px" }}>
-      <h1 style={{ fontSize: "32px", marginBottom: "24px" }}>
-        Aviso legal
-      </h1>
-
-      <p style={{ marginBottom: "16px" }}>
-        En cumplimiento de la Ley de Servicios de la Sociedad de la Información (LSSI),
-        se informa de los siguientes datos:
-      </p>
-
+    <main className="legal-page">
+      <Link href="/" className="legal-back">← Volver a Base12 Academy</Link>
+      <h1>Aviso legal</h1>
+      <p>En cumplimiento de la normativa aplicable, se informa de los datos del titular de este sitio web:</p>
       <p><strong>Titular:</strong> Imagen Digital Ménace, S. L. U.</p>
       <p><strong>CIF:</strong> B21746086</p>
       <p><strong>Domicilio:</strong> Calle Lanuza, 8 · 29009 Málaga</p>
-      <p><strong>Email:</strong> base12academy@gmail.com</p>
-
-      <p style={{ marginTop: "24px", marginBottom: "16px" }}>
-        <strong>Actividad:</strong> Plataforma online de formación para la preparación de pruebas de acceso a la universidad (PAU), oposiciones y cursos online.
-      </p>
-
-      <p style={{ marginBottom: "16px" }}>
-        El acceso y uso de esta web atribuye la condición de usuario, aceptando las
-        condiciones aquí reflejadas.
-      </p>
-
-      <p>
-        El titular se reserva el derecho a modificar cualquier tipo de información que
-        pudiera aparecer en el sitio web, sin obligación de preavisar a los usuarios.
-      </p>
+      <p><strong>Correo electrónico:</strong> base12academy@gmail.com</p>
+      <h2>Actividad</h2>
+      <p>Plataforma online de formación para Bachillerato y PAU, preparación de oposiciones y cursos online especializados.</p>
+      <p>El acceso y uso de esta web atribuye la condición de usuario e implica la aceptación de las condiciones publicadas.</p>
     </main>
   );
 }
