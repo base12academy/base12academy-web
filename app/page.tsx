@@ -3,27 +3,6 @@ import type { CSSProperties } from "react";
 import LeadChatBot from "@/components/LeadChatBot";
 import CourseCatalog from "@/components/CourseCatalog";
 
-const areas = [
-  {
-    title: "Bachillerato y PAU",
-    text: "Apoyo estructurado para comprender las asignaturas, preparar exámenes y llegar a la PAU con seguridad.",
-    href: "#catalogo",
-    cta: "Ver cursos",
-  },
-  {
-    title: "Oposiciones",
-    text: "Preparación práctica, ordenada y orientada a examen para avanzar con método y constancia.",
-    href: "#catalogo",
-    cta: "Ver cursos",
-  },
-  {
-    title: "Cursos online",
-    text: "Formación útil, directa y aplicable, con certificado verificable al superar el curso.",
-    href: "#catalogo",
-    cta: "Ver cursos",
-  },
-];
-
 const videos = [
   {
     title: "Qué es Base12",
@@ -57,10 +36,6 @@ export default function HomePage() {
             </Link>
 
             <nav style={styles.nav}>
-              <a href="#tipos-cursos" style={styles.navLink}>
-                Tipos de cursos
-              </a>
-
               <a href="#videos-presentacion" style={styles.navLink}>
                 Presentación
               </a>
@@ -123,38 +98,6 @@ export default function HomePage() {
                 <div style={styles.videoFallback}>
                   Vídeo de presentación Base12
                 </div>
-              </div>
-            </section>
-
-            <section id="tipos-cursos">
-              <h2 style={styles.h2}>Tipos de cursos</h2>
-              <p style={styles.subtitle}>
-                Elige el aula que corresponde a tu objetivo.
-              </p>
-
-              <div style={styles.cards}>
-                {areas.map((area) => (
-                  <article
-                    key={area.title}
-                    id={
-                      area.title === "Bachillerato y PAU"
-                        ? "bachillerato-pau"
-                        : area.title === "Oposiciones"
-                          ? "oposiciones"
-                          : area.title === "Cursos online"
-                            ? "cursos-online"
-                            : undefined
-                    }
-                    style={styles.card}
-                  >
-                    <div style={styles.cardImage}></div>
-                    <h3 style={styles.h3}>{area.title}</h3>
-                    <p style={styles.cardText}>{area.text}</p>
-                    <Link href={area.href} style={styles.cardButton}>
-                      {area.cta}
-                    </Link>
-                  </article>
-                ))}
               </div>
             </section>
 

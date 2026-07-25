@@ -105,9 +105,9 @@ export default function CourseCatalog() {
   return (
     <section id="catalogo" className="original-catalog">
       <div className="original-catalog-heading">
-        <p>Oferta formativa y precios</p>
-        <h2>Elige el curso que corresponde a tu objetivo</h2>
-        <span>La nueva oferta se integra en la experiencia original de Base12, con sus colores, su método y su acompañamiento.</span>
+        <p>Tipos de cursos, paquetes y precios</p>
+        <h2>Elige el aula que corresponde a tu objetivo</h2>
+        <span>Consulta cada curso, compara lo que incluye cada modalidad y revisa el precio antes de matricularte.</span>
       </div>
 
       <div className="original-tabs" role="tablist" aria-label="Tipos de cursos">
