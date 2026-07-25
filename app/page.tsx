@@ -97,6 +97,8 @@ export default function HomePage() {
               </div>
             </section>
 
+            <CourseCatalog />
+
             <section id="videos-presentacion" style={styles.videoSection}>
               <h2 style={styles.h2}>Vídeos de presentación</h2>
               <p style={styles.subtitle}>
@@ -122,8 +124,6 @@ export default function HomePage() {
                 ))}
               </div>
             </section>
-
-            <CourseCatalog />
 
             <footer style={styles.footer}>
               <div style={styles.footerInner}>
@@ -290,7 +290,7 @@ const styles: Record<string, CSSProperties> = {
   headerInner: {
     maxWidth: 1200,
     margin: "0 auto",
-    padding: "10px 24px",
+    padding: "7px 24px",
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
@@ -302,8 +302,8 @@ const styles: Record<string, CSSProperties> = {
     textDecoration: "none",
   },
   logoImage: {
-    width: 350,
-    height: 130,
+    width: 180,
+    height: 76,
     objectFit: "contain",
     borderRadius: 12,
     background: "#ffffff",
@@ -343,7 +343,7 @@ const styles: Record<string, CSSProperties> = {
   layout: {
     maxWidth: 1200,
     margin: "0 auto",
-    padding: "122px 24px 64px",
+    padding: "100px 24px 64px",
     display: "grid",
     gridTemplateColumns: "1fr 280px",
     gap: 28,
@@ -351,18 +351,18 @@ const styles: Record<string, CSSProperties> = {
   content: {
     display: "flex",
     flexDirection: "column",
-    gap: 36,
+    gap: 26,
   },
   hero: {
     border: "1px solid rgba(15, 23, 42, 0.10)",
     borderRadius: 32,
-    padding: 34,
+    padding: 26,
     background:
       "linear-gradient(135deg, #ffffff 0%, #eaf1fb 55%, #dbeafe 100%)",
     boxShadow: "0 24px 70px rgba(15, 23, 42, 0.10)",
     display: "grid",
     gridTemplateColumns: "1.1fr 0.9fr",
-    gap: 28,
+    gap: 24,
     alignItems: "center",
   },
   heroTextColumn: {
@@ -377,11 +377,11 @@ const styles: Record<string, CSSProperties> = {
     background: "#ffffff",
     fontSize: 14,
     fontWeight: 700,
-    marginBottom: 20,
+    marginBottom: 14,
   },
   h1: {
     margin: 0,
-    fontSize: 48,
+    fontSize: 41,
     lineHeight: 1.05,
     letterSpacing: "-0.04em",
     maxWidth: 760,
@@ -390,14 +390,14 @@ const styles: Record<string, CSSProperties> = {
   heroText: {
     maxWidth: 720,
     color: "#334155",
-    fontSize: 17,
-    lineHeight: 1.75,
-    marginTop: 22,
+    fontSize: 16,
+    lineHeight: 1.58,
+    marginTop: 16,
   },
   heroButtons: {
     display: "flex",
     gap: 12,
-    marginTop: 28,
+    marginTop: 18,
     flexWrap: "wrap",
   },
   secondaryButton: {
@@ -414,7 +414,7 @@ const styles: Record<string, CSSProperties> = {
     position: "relative",
     overflow: "hidden",
     borderRadius: 28,
-    minHeight: 330,
+    minHeight: 275,
     background: "linear-gradient(135deg, #dbeafe, #e2e8f0)",
     border: "1px solid rgba(15, 23, 42, 0.10)",
     boxShadow: "0 20px 50px rgba(15, 23, 42, 0.12)",
@@ -556,7 +556,7 @@ const styles: Record<string, CSSProperties> = {
     flexDirection: "column",
     gap: 18,
     position: "sticky",
-    top: 106,
+    top: 100,
     alignSelf: "start",
   },
   trustBox: {
