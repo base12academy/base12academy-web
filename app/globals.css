@@ -223,6 +223,14 @@ button, input, select { font: inherit; }
 .original-plan-grid button > span { display: flex; flex-direction: column; }
 .original-plan-grid small { color: #64748b; font-size: 11px; }
 .original-plan-grid strong { color: #1e3a8a; white-space: nowrap; }
+.original-plan-includes { margin: 18px 0 22px; padding: 20px; border: 1px solid #bfdbfe; border-radius: 18px; background: #eff6ff; }
+.original-plan-includes-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; padding-bottom: 14px; border-bottom: 1px solid #bfdbfe; }
+.original-plan-includes-heading small { display: block; color: #475569; font-weight: 700; }
+.original-plan-includes-heading h3 { margin: 2px 0 0; color: #102a56; font-size: 1.12rem; }
+.original-plan-includes-heading > strong { color: #1d4ed8; font-size: 1.25rem; white-space: nowrap; }
+.original-plan-includes ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px 22px; margin: 16px 0 0; padding: 0; list-style: none; }
+.original-plan-includes li { position: relative; padding-left: 24px; color: #24364f; line-height: 1.45; }
+.original-plan-includes li::before { content: "✓"; position: absolute; left: 0; color: #0b4ea2; font-weight: 900; }
 .original-legal { margin-top: 18px; border: 1px solid #dbe2ea; border-radius: 15px; overflow: hidden; }
 .original-legal h3 { margin: 0; padding: 13px 16px; background: #f8fafc; color: #0f172a; font-size: 15px; }
 .original-legal details { border-top: 1px solid #e2e8f0; }
@@ -247,6 +255,7 @@ button, input, select { font: inherit; }
   .original-catalog { padding: 20px; border-radius: 22px; }
   .original-catalog-heading h2 { font-size: 24px; }
   .original-plan-grid { grid-template-columns: 1fr; }
+  .original-plan-includes ul { grid-template-columns: 1fr; }
   .original-modal { padding: 24px 18px; }
   .original-checkout { align-items: stretch; flex-direction: column; }
 }

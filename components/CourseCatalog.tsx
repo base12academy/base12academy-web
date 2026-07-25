@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 
 type Family = "Bachillerato y PAU" | "Cursos online" | "Oposiciones";
 type Course = { family: Family; name: string; region?: string };
-type Plan = { name: string; price: string; detail: string };
+type Plan = { name: string; price: string; detail: string; includes: string[] };
 
 const bachillerato = [
   "Historia de España",
@@ -53,30 +53,30 @@ const allCourses: Course[] = [
 function plansFor(course: Course): Plan[] {
   if (course.family === "Bachillerato y PAU") {
     return [
-      { name: "Esencial", price: "249 €", detail: "Apoyo completo para 2.º de Bachillerato" },
-      { name: "Estándar", price: "299 €", detail: "Bachillerato y preparación PAU" },
-      { name: "Premium", price: "399 €", detail: "Acompañamiento avanzado" },
-      { name: "PAU", price: "199 €", detail: "Preparación específica para la prueba" },
+      { name: "Esencial", price: "249 €", detail: "Comprende y domina 2.º de Bachillerato", includes: ["Curso completo y temario estructurado", "Vídeos explicativos y texto de cada contenido", "Pruebas tipo test", "Banco de textos, imágenes y recursos", "Asistente virtual de apoyo", "Sin entrenamiento específico PAU"] },
+      { name: "Estándar", price: "299 €", detail: "Bachillerato más entrenamiento PAU", includes: ["Todo lo incluido en Esencial", "Preparación específica para la PAU", "Pruebas tipo test y de desarrollo", "Banco de textos, imágenes y modelos PAU", "Comprobaciones para avanzar por el temario", "Entrenamiento con método y seguridad"] },
+      { name: "Premium", price: "399 €", detail: "Preparación avanzada y acompañamiento", includes: ["Todo lo incluido en Estándar", "Preparación PAU avanzada", "Más pruebas de desarrollo y recursos didácticos", "Banco ampliado de textos e imágenes", "Mentoría de apoyo", "Mayor seguimiento y exigencia académica"] },
+      { name: "PAU", price: "199 €", detail: "Entrenamiento exclusivo para la prueba", includes: ["Preparación específica para la PAU", "Pruebas y modelos tipo PAU", "Banco de textos, imágenes y ejercicios", "Entrenamiento de respuestas de desarrollo", "Asistente virtual", "Mentoría de apoyo"] },
     ];
   }
   if (course.name === "Ofimática") {
     return [
-      { name: "Esencial", price: "39 €", detail: "Acceso durante 6 meses" },
-      { name: "Estándar", price: "99 €", detail: "Acceso durante 9 meses" },
-      { name: "Premium", price: "199 €", detail: "Acceso durante 12 meses" },
+      { name: "Esencial", price: "39 €", detail: "Comprender · Acceso durante 6 meses", includes: ["Vídeos y síntesis de los contenidos", "Claves esenciales y comprobaciones rápidas", "Glosario y Profesor IA básico", "Certificado de realización al completar los contenidos"] },
+      { name: "Estándar", price: "99 €", detail: "Aplicar · Acceso durante 9 meses", includes: ["Todo lo incluido en Esencial", "Desarrollo aplicado, casos y actividades", "Diagnóstico final", "Proyecto práctico autoguiado con autoevaluación", "Certificado de aprovechamiento"] },
+      { name: "Premium", price: "199 €", detail: "Revisión · Acceso durante 12 meses", includes: ["Todo lo incluido en Estándar", "Proyecto revisado por una persona", "Comprobación de la versión ajustada", "Una mentoría individual de 45 minutos", "Hasta 3 consultas breves", "Certificado Premium"] },
     ];
   }
   if (course.family === "Cursos online") {
     return [
-      { name: "Esencial", price: "69,90 €", detail: "Bases y aplicación práctica" },
-      { name: "Estándar", price: "119,90 €", detail: "Práctica ampliada y proyecto" },
-      { name: "Premium", price: "249,90 €", detail: "Revisión y acompañamiento" },
+      { name: "Esencial", price: "69,90 €", detail: "Comprender los contenidos esenciales", includes: ["Todos los vídeos del programa", "Síntesis, claves y 2 comprobaciones por contenido", "Glosario y Profesor IA básico", "Sin casos, diagnóstico, proyecto ni mentoría", "Certificado de realización"] },
+      { name: "Estándar", price: "119,90 €", detail: "Aplicar lo aprendido de forma autónoma", includes: ["Todo lo incluido en Esencial", "Desarrollo aplicado completo", "4 comprobaciones explicadas por contenido", "Casos y aplicaciones prácticas", "Diagnóstico final con mínimo del 70 %", "Proyecto autoguiado con rúbrica", "Certificado de aprovechamiento"] },
+      { name: "Premium", price: "249,90 €", detail: "Aplicar con revisión y acompañamiento", includes: ["Todo lo incluido en Estándar", "Revisión humana completa del proyecto", "Comprobación posterior de los ajustes", "Una mentoría individual de 45 minutos", "Hasta 3 consultas breves sobre el proyecto", "Informe de fortalezas y prioridades de mejora", "Certificado Premium"] },
     ];
   }
   return [
-    { name: "Esencial", price: "149 €", detail: "Preparación completa a tu ritmo" },
-    { name: "Estándar", price: "299 €", detail: "Más práctica y acompañamiento" },
-    { name: "Premium", price: "499 €", detail: "Seguimiento prioritario" },
+    { name: "Esencial", price: "149 €", detail: "Preparación completa a tu ritmo", includes: ["Temario estructurado de la oposición", "Glosarios y cuadros de apoyo", "Fuentes oficiales vinculadas", "Test de comprobación", "Acceso online a tu ritmo"] },
+    { name: "Estándar", price: "299 €", detail: "Más práctica y entrenamiento de examen", includes: ["Todo lo incluido en Esencial", "Banco ampliado de preguntas", "Textos de audio y vídeo cuando estén disponibles", "Simulacros de examen", "Seguimiento del progreso"] },
+    { name: "Premium", price: "499 €", detail: "Seguimiento y apoyo prioritarios", includes: ["Todo lo incluido en Estándar", "Plan de estudio personalizado", "Revisión prioritaria del progreso", "Acompañamiento tutorial", "Resolución prioritaria de consultas"] },
   ];
 }
 
@@ -170,6 +170,19 @@ export default function CourseCatalog() {
                   <strong>{item.price}</strong>
                 </button>
               ))}
+            </div>
+
+            <div className="original-plan-includes" aria-live="polite">
+              <div className="original-plan-includes-heading">
+                <div>
+                  <small>Modalidad seleccionada</small>
+                  <h3>Qué incluye {plan.name}</h3>
+                </div>
+                <strong>{plan.price}</strong>
+              </div>
+              <ul>
+                {plan.includes.map((item) => <li key={item}>{item}</li>)}
+              </ul>
             </div>
 
             <div className="original-legal">
