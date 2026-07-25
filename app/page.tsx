@@ -54,7 +54,7 @@ export default function HomePage() {
               </a>
             </nav>
 
-            <a href="#catalogo" style={styles.loginButton}>Matriculación</a>
+            <Link href="/login" style={styles.loginButton}>Acceso alumnos</Link>
           </div>
         </header>
 
