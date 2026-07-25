@@ -110,6 +110,9 @@ export default function CursoHistoriaEspanaPage() {
             <Link href="/#cursos-online" style={styles.navLink}>
               Cursos online
             </Link>
+            <Link href="/#beca-menace" style={styles.navLink}>
+              Beca Ménace
+            </Link>
           </nav>
 
           <Link href="/login" style={styles.loginButton}>

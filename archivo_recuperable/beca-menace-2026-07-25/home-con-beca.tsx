@@ -44,6 +44,10 @@ export default function HomePage() {
                 Cursos y precios
               </a>
 
+              <a href="#beca-menace" style={styles.navLink}>
+                Beca Ménace
+              </a>
+
               <a
                 href="https://discord.gg/CJ2CKEFvc"
                 target="_blank"
@@ -124,6 +128,23 @@ export default function HomePage() {
             </section>
 
             <CourseCatalog />
+
+            <section id="beca-menace" style={styles.scholarship}>
+              <p style={styles.scholarshipLabel}>Beca Ménace</p>
+              <h2 style={styles.h2}>
+                Base12 puede asumir el 50% del coste del curso
+              </h2>
+              <p style={styles.scholarshipText}>
+                La Beca Ménace está pensada para facilitar el acceso a estudiantes
+                que quieren preparar seriamente el curso y comprometerse con su
+                propio proceso de aprendizaje. La solicitud preferente estará
+                abierta hasta el 30 de noviembre o hasta completar el número de
+                becas disponibles.
+              </p>
+              <Link href="#catalogo" style={styles.scholarshipButton}>
+                Solicitar información
+              </Link>
+            </section>
 
             <footer style={styles.footer}>
               <div style={styles.footerInner}>
@@ -242,6 +263,14 @@ export default function HomePage() {
       <p style={styles.faqAnswer}>
         Depende de tu situación: apoyo para la asignatura, preparación PAU o
         acompañamiento más completo. La idea es elegir según la necesidad real.
+      </p>
+    </details>
+
+    <details style={styles.faqItem}>
+      <summary style={styles.faqQuestion}>¿Qué es la Beca Ménace?</summary>
+      <p style={styles.faqAnswer}>
+        Es una ayuda de Base12 Academy para facilitar el acceso a la formación
+        a estudiantes comprometidos con su aprendizaje.
       </p>
     </details>
 
@@ -517,6 +546,37 @@ const styles: Record<string, CSSProperties> = {
   },
   videoContent: {
     padding: 18,
+  },
+  scholarship: {
+    border: "1px solid rgba(180, 83, 9, 0.20)",
+    borderRadius: 30,
+    padding: 28,
+    background: "#fffbeb",
+    boxShadow: "0 18px 45px rgba(15, 23, 42, 0.06)",
+  },
+  scholarshipLabel: {
+    color: "#92400e",
+    fontWeight: 900,
+    textTransform: "uppercase",
+    letterSpacing: "0.08em",
+    fontSize: 13,
+    margin: 0,
+    marginBottom: 12,
+  },
+  scholarshipText: {
+    color: "#713f12",
+    lineHeight: 1.75,
+    maxWidth: 760,
+  },
+  scholarshipButton: {
+    display: "inline-block",
+    marginTop: 16,
+    background: "#1d4ed8",
+    color: "#ffffff",
+    padding: "12px 20px",
+    borderRadius: 999,
+    fontWeight: 900,
+    textDecoration: "none",
   },
   footer: {
     borderTop: "1px solid #e5e7eb",
