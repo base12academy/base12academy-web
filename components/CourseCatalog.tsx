@@ -189,7 +189,7 @@ export default function CourseCatalog() {
               <h3>Información contractual</h3>
               <details>
                 <summary>Condiciones de contratación</summary>
-                <p>La matrícula da acceso online al curso y modalidad seleccionados durante el periodo indicado. En Ofimática, Estándar incluye Esencial y Premium incluye Estándar. El acompañamiento ordinario es virtual mediante la plataforma y sus asistentes IA.</p>
+                <p>La matrícula da acceso online a {course.name} — modalidad {plan.name}, por {plan.price}, durante el periodo indicado. En Ofimática, Estándar incluye Esencial y Premium incluye Estándar. El acompañamiento ordinario es virtual mediante la plataforma, la Profesora IA Rocío y el Tutor IA Fernando; no incluye tutoría humana individual, mentoría ni revisión personal.</p>
               </details>
               <details>
                 <summary>Privacidad y tratamiento de datos</summary>
@@ -208,7 +208,7 @@ export default function CourseCatalog() {
               {course.name === "Ofimática" && (
                 <details>
                   <summary>Desistimiento e inicio inmediato</summary>
-                  <p>Con carácter general, el plazo de desistimiento en contratos a distancia es de 14 días naturales, salvo excepción legal aplicable. Si solicita acceso inmediato, deberá prestar separadamente los consentimientos legalmente exigibles antes del inicio.</p>
+                  <p>Con carácter general, el plazo de desistimiento en contratos a distancia es de 14 días naturales, salvo excepción legal aplicable. El inicio durante ese plazo requerirá una solicitud expresa y los consentimientos legalmente exigibles, recogidos separadamente y sin casillas premarcadas. La confirmación contractual se facilitará en soporte duradero.</p>
                 </details>
               )}
             </div>
