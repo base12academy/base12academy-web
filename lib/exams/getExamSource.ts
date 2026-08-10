@@ -1,6 +1,7 @@
-import { supabase } from "@/lib/supabase/server";
+import { getSupabase } from "@/lib/supabase/server";
 
 export async function getExamSource(sourceId: string) {
+  const supabase = getSupabase();
   const { data, error } = await supabase
     .from("exam_sources")
     .select("*")

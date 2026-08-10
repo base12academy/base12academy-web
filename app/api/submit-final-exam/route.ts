@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase/server";
+import { getSupabase } from "@/lib/supabase/server";
 import { getShortQuestionsByTopic } from "@/lib/exams/getShortQuestions";
 import { gradeShorts } from "@/lib/exams/gradeShorts";
 import { gradeDevelopment } from "@/lib/exams/gradeDevelopment";
@@ -8,6 +8,7 @@ import { temasHistoria } from "@/lib/temas";
 
 export async function POST(req: Request) {
   try {
+    const supabase = getSupabase();
     const body = await req.json();
 
     const userId = body.userId;

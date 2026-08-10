@@ -1,9 +1,10 @@
-import { supabase } from "@/lib/supabase/server";
+import { getSupabase } from "@/lib/supabase/server";
 
 export async function getSourceGradingConfig(
   sourceType: "image" | "text",
   sourceId: string
 ) {
+  const supabase = getSupabase();
   const { data, error } = await supabase
     .from("source_grading_configs")
     .select("config")

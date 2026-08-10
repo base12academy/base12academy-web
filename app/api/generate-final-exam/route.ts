@@ -1,9 +1,10 @@
 import { NextResponse } from "next/server";
 import { generateFinalExam } from "@/lib/exams/generateFinalExam";
-import { supabase } from "@/lib/supabase/server";
+import { getSupabase } from "@/lib/supabase/server";
 
 export async function POST(req: Request) {
   try {
+    const supabase = getSupabase();
     const body = await req.json();
 
     const userId = body.userId;
