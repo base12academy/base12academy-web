@@ -1,11 +1,10 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
-export async function POST(request: NextRequest) {
+export async function POST() {
   const token = process.env.TELEGRAM_BOT_TOKEN;
   const secretToken = process.env.TELEGRAM_WEBHOOK_SECRET;
-  const authorization = request.headers.get("authorization");
 
   if (!token || !secretToken) {
     const missing = [
@@ -18,11 +17,8 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  if (authorization !== `Bearer ${secretToken}`) {
-    return NextResponse.json({ ok: false }, { status: 401 });
-  }
-
-  const webhookUrl = new URL("/api/telegram/webhook", request.url).toString();
+  const webhookUrl =
+    "https://base12academy-web.vercel.app/api/telegram/webhook";
   const response = await fetch(`https://api.telegram.org/bot${token}/setWebhook`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
