@@ -6,6 +6,9 @@ function answer(message: string, community: string) {
   if (text.includes("certific")) {
     return "Los cursos online incluyen certificado Base12. Se emite a nombre del alumno cuando ha superado los requisitos académicos y no tiene pagos pendientes. Recibirá el PDF automáticamente por correo con fecha, modalidad y código de verificación.";
   }
+  if ((text.includes("precio") || text.includes("cuesta")) && text.includes("ofimática")) {
+    return "Ofimática cuesta 49 € en modalidad Esencial (6 meses), 119 € en Estándar (9 meses) y 239 € en Premium (12 meses). Estándar incluye Esencial y Premium incluye Estándar.";
+  }
   if (text.includes("precio") || text.includes("cuesta") || text.includes("descuento")) {
     return "En Bachillerato y PAU los precios son 249 € Esencial, 299 € Estándar, 399 € Premium y 199 € PAU. Hay un 10% de descuento con 2 asignaturas, 15% con 3 y 20% desde 4. En oposiciones: 149 €, 299 € y 499 €. Puedes ver el detalle de cada curso en Oferta formativa.";
   }

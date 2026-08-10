@@ -61,9 +61,9 @@ function plansFor(course: Course): Plan[] {
   }
   if (course.name === "Ofimática") {
     return [
-      { name: "Esencial", price: "39 €", detail: "Comprender · Acceso durante 6 meses", includes: ["Vídeos y síntesis de los contenidos", "Claves esenciales y comprobaciones rápidas", "Glosario y Profesor IA básico", "Certificado de realización al completar los contenidos"] },
-      { name: "Estándar", price: "99 €", detail: "Aplicar · Acceso durante 9 meses", includes: ["Todo lo incluido en Esencial", "Desarrollo aplicado, casos y actividades", "Diagnóstico final", "Proyecto práctico autoguiado con autoevaluación", "Certificado de aprovechamiento"] },
-      { name: "Premium", price: "199 €", detail: "Revisión · Acceso durante 12 meses", includes: ["Todo lo incluido en Estándar", "Proyecto revisado por una persona", "Comprobación de la versión ajustada", "Una mentoría individual de 45 minutos", "Hasta 3 consultas breves", "Certificado Premium"] },
+      { name: "Esencial", price: "49 €", detail: "Ofimática de uso habitual · Acceso durante 6 meses", includes: ["Entorno digital, Word, Excel, PowerPoint, Outlook, archivos, Internet, nube y PDF de uso habitual", "Prácticas, retos y comprobaciones para demostrar competencias", "Acompañamiento virtual con Profesora IA Rocío y Tutor IA Fernando", "Certificado Base12 de Ofimática Esencial tras completar el itinerario y demostrar las competencias exigidas"] },
+      { name: "Estándar", price: "119 €", detail: "Datos y herramientas profesionales · Acceso durante 9 meses", includes: ["Todo lo incluido en Esencial", "Documentos y datos avanzados: formularios, Access, Power Query y Power BI funcional", "Colaboración estructurada, multimedia y automatizaciones sencillas", "Certificado Base12 de Ofimática Estándar tras completar el itinerario y demostrar las competencias exigidas"] },
+      { name: "Premium", price: "239 €", detail: "Automatización e IA aplicada · Acceso durante 12 meses", includes: ["Todo lo incluido en Estándar", "Publicación y distribución de Power BI, flujos, aprobaciones y control operativo", "Automatización avanzada e inteligencia artificial integrada en procesos profesionales", "Certificado Base12 de Ofimática Premium tras completar el itinerario y demostrar las competencias exigidas"] },
     ];
   }
   if (course.family === "Cursos online") {
@@ -189,11 +189,11 @@ export default function CourseCatalog() {
               <h3>Información contractual</h3>
               <details>
                 <summary>Condiciones de contratación</summary>
-                <p>La matrícula da acceso al curso y modalidad seleccionados durante el periodo indicado. Antes del pago se informará del contenido, duración, soporte, medios de pago, impuestos aplicables y derecho de desistimiento.</p>
+                <p>La matrícula da acceso online al curso y modalidad seleccionados durante el periodo indicado. En Ofimática, Estándar incluye Esencial y Premium incluye Estándar. El acompañamiento ordinario es virtual mediante la plataforma y sus asistentes IA.</p>
               </details>
               <details>
                 <summary>Privacidad y tratamiento de datos</summary>
-                <p>Imagen Digital Ménace, S. L. U. tratará los datos necesarios para gestionar la matrícula, prestar el servicio, verificar el progreso académico, emitir certificados y cumplir sus obligaciones legales.</p>
+                <p>Imagen Digital Ménace, S. L. U. tratará los datos necesarios para gestionar la matrícula, prestar el servicio, habilitar los asistentes IA, verificar el progreso académico, emitir certificados y cumplir sus obligaciones legales.</p>
               </details>
               <details>
                 <summary>Aviso legal y normas de uso</summary>
@@ -202,7 +202,13 @@ export default function CourseCatalog() {
               {course.family === "Cursos online" && (
                 <details>
                   <summary>Condiciones del certificado</summary>
-                  <p>El certificado se genera únicamente si el alumno ha completado los requisitos de su modalidad, ha superado la evaluación o proyecto correspondiente y no mantiene pagos pendientes. Incluirá nombre completo, curso, fecha, modalidad y código único de verificación.</p>
+                  <p>El certificado se genera únicamente tras finalizar el itinerario y demostrar las competencias y evidencias exigidas para la modalidad, sin pagos pendientes. No equivale por sí mismo a una titulación oficial ni a una certificación profesional regulada.</p>
+                </details>
+              )}
+              {course.name === "Ofimática" && (
+                <details>
+                  <summary>Desistimiento e inicio inmediato</summary>
+                  <p>Con carácter general, el plazo de desistimiento en contratos a distancia es de 14 días naturales, salvo excepción legal aplicable. Si solicita acceso inmediato, deberá prestar separadamente los consentimientos legalmente exigibles antes del inicio.</p>
                 </details>
               )}
             </div>
@@ -215,7 +221,7 @@ export default function CourseCatalog() {
 
             <div className="original-checkout">
               <span>Total <b>{plan.price}</b></span>
-              <button disabled={!terms || !privacy}>Continuar con la matrícula</button>
+              <button disabled>Matriculación disponible próximamente</button>
             </div>
           </section>
         </div>
