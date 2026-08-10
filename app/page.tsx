@@ -54,7 +54,10 @@ export default function HomePage() {
               </a>
             </nav>
 
-            <Link href="/login" style={styles.loginButton}>Acceso alumnos</Link>
+            <div style={styles.accessLinks}>
+              <Link href="/admin" style={styles.adminLink}>Administración</Link>
+              <Link href="/login" style={styles.loginButton}>Acceso alumnos</Link>
+            </div>
           </div>
         </header>
 
@@ -339,6 +342,17 @@ const styles: Record<string, CSSProperties> = {
     borderRadius: 999,
     fontSize: 14,
     fontWeight: 800,
+  },
+  accessLinks: {
+    display: "flex",
+    alignItems: "center",
+    gap: 10,
+  },
+  adminLink: {
+    color: "#475569",
+    textDecoration: "none",
+    fontSize: 12,
+    fontWeight: 700,
   },
   layout: {
     maxWidth: 1200,
