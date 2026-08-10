@@ -8,8 +8,12 @@ export async function POST(request: NextRequest) {
   const authorization = request.headers.get("authorization");
 
   if (!token || !secretToken) {
+    const missing = [
+      !token ? "TELEGRAM_BOT_TOKEN" : null,
+      !secretToken ? "TELEGRAM_WEBHOOK_SECRET" : null,
+    ].filter(Boolean);
     return NextResponse.json(
-      { ok: false, error: "Faltan variables de Telegram" },
+      { ok: false, error: "Faltan variables de Telegram", missing },
       { status: 500 }
     );
   }
@@ -45,4 +49,3 @@ export async function POST(request: NextRequest) {
     webhook: webhookUrl,
   });
 }
-
