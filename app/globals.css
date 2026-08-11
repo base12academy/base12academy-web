@@ -232,6 +232,10 @@ button, input, select { font: inherit; }
 .original-plan-includes ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px 22px; margin: 16px 0 0; padding: 0; list-style: none; }
 .original-plan-includes li { position: relative; padding-left: 24px; color: #24364f; line-height: 1.45; }
 .original-plan-includes li::before { content: "✓"; position: absolute; left: 0; color: #0b4ea2; font-weight: 900; }
+.original-plan-video { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; margin-top: 16px; }
+.original-plan-video > button { padding: 8px 13px; border: 1px solid #93c5fd; border-radius: 999px; background: #fff; color: #174da1; font-size: 12px; font-weight: 800; cursor: pointer; }
+.original-plan-video > button:hover { background: #dbeafe; }
+.original-plan-video video { display: block; width: min(100%, 640px); max-height: 360px; border-radius: 12px; background: #020617; box-shadow: 0 8px 24px rgba(15,23,42,.18); }
 .original-legal { margin-top: 18px; border: 1px solid #dbe2ea; border-radius: 15px; overflow: hidden; }
 .original-legal h3 { margin: 0; padding: 13px 16px; background: #f8fafc; color: #0f172a; font-size: 15px; }
 .original-legal details { border-top: 1px solid #e2e8f0; }

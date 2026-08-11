@@ -6,6 +6,12 @@ type Family = "Bachillerato y PAU" | "Cursos online" | "Oposiciones";
 type Course = { family: Family; name: string; region?: string };
 type Plan = { name: string; price: string; detail: string; includes: string[] };
 
+const officePresentationVideos: Record<string, string> = {
+  Esencial: "/videos/ofimatica-esencial-presentacion.mp4",
+  "Estándar": "/videos/ofimatica-estandar-presentacion.mp4",
+  Premium: "/videos/ofimatica-premium-presentacion.mp4",
+};
+
 const bachillerato = [
   "Historia de España",
   "Historia de la Filosofía",
@@ -90,6 +96,7 @@ export default function CourseCatalog() {
   const [marketing, setMarketing] = useState(false);
   const [immediateAccess, setImmediateAccess] = useState(false);
   const [withdrawalAcknowledged, setWithdrawalAcknowledged] = useState(false);
+  const [presentationVideo, setPresentationVideo] = useState<string | null>(null);
 
   const filtered = useMemo(
     () => allCourses.filter((item) => item.family === family && item.name.toLowerCase().includes(search.toLowerCase())),
@@ -104,6 +111,7 @@ export default function CourseCatalog() {
     setMarketing(false);
     setImmediateAccess(false);
     setWithdrawalAcknowledged(false);
+    setPresentationVideo(null);
   }
 
   return (
@@ -162,14 +170,14 @@ export default function CourseCatalog() {
       {course && plan && (
         <div className="original-modal-backdrop" onMouseDown={(event) => event.target === event.currentTarget && setCourse(null)}>
           <section className="original-modal" role="dialog" aria-modal="true" aria-labelledby="modal-course-title">
-            <button className="original-modal-close" onClick={() => setCourse(null)} aria-label="Cerrar">×</button>
+            <button className="original-modal-close" onClick={() => { setCourse(null); setPresentationVideo(null); }} aria-label="Cerrar">×</button>
             <small>{course.family}</small>
             <h2 id="modal-course-title">{course.name}</h2>
             <p>Selecciona una modalidad y revisa la información antes de continuar.</p>
 
             <div className="original-plan-grid">
               {plansFor(course).map((item) => (
-                <button key={item.name} className={plan.name === item.name ? "active" : ""} onClick={() => setPlan(item)}>
+                <button key={item.name} className={plan.name === item.name ? "active" : ""} onClick={() => { setPlan(item); setPresentationVideo(null); }}>
                   <span><b>{item.name}</b><small>{item.detail}</small></span>
                   <strong>{item.price}</strong>
                 </button>
@@ -187,6 +195,23 @@ export default function CourseCatalog() {
               <ul>
                 {plan.includes.map((item) => <li key={item}>{item}</li>)}
               </ul>
+              {course.name === "Ofimática" && (
+                <div className="original-plan-video">
+                  <button
+                    type="button"
+                    aria-expanded={presentationVideo === plan.name}
+                    onClick={() => setPresentationVideo(presentationVideo === plan.name ? null : plan.name)}
+                  >
+                    {presentationVideo === plan.name ? "Cerrar vídeo" : "▶ Ver vídeo de presentación"}
+                  </button>
+                  {presentationVideo === plan.name && (
+                    <video controls preload="metadata" playsInline aria-label={`Vídeo de presentación de Ofimática ${plan.name}`}>
+                      <source src={officePresentationVideos[plan.name]} type="video/mp4" />
+                      Tu navegador no permite reproducir este vídeo.
+                    </video>
+                  )}
+                </div>
+              )}
             </div>
 
             <div className="original-legal">
