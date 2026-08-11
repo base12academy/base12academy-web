@@ -193,6 +193,24 @@ export default function LeadChatBot() {
               >
                 Mi comunidad
               </button>
+
+              <button
+                onClick={() =>
+                  enviarMensaje("¿Puedo probar Ofimática antes de matricularme?")
+                }
+                style={quickButtonStyle}
+              >
+                Unidad gratuita
+              </button>
+
+              <button
+                onClick={() =>
+                  enviarMensaje("¿Cómo funcionan el desistimiento y el acceso inmediato?")
+                }
+                style={quickButtonStyle}
+              >
+                Contratación
+              </button>
             </div>
           </div>
 

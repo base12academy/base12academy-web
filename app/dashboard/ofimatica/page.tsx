@@ -4,8 +4,10 @@ import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import course from "@/lib/ofimatica-content.json";
+import rocioQuestions from "@/lib/rocio-questions.json";
 import { supabase } from "@/lib/supabaseClient";
 import styles from "./ofimatica.module.css";
+import quizStyles from "./rocio.module.css";
 
 type Tab = "explicacion" | "glosario" | "rocio" | "fernando" | "actividad";
 
@@ -104,7 +106,7 @@ function OfimaticaCourse() {
               {tab === "explicacion" && <TextContent title="Explicación del contenido" text={selected.explanation} />}
               {tab === "glosario" && <TextContent title="Glosario" text={selected.glossary} />}
               {tab === "actividad" && <TextContent title="Pruebas, retos y prácticas" text={selected.activities} />}
-              {tab === "rocio" && <Assistant name="Rocío" role="Profesora IA" text="Te explica el contenido paso a paso, propone ejemplos y resuelve dudas académicas sobre esta unidad." />}
+              {tab === "rocio" && <RocioQuiz lesson={selected.id} />}
               {tab === "fernando" && <Assistant name="Fernando" role="Tutor IA" text="Te ayuda a organizar el estudio, comprueba tu avance y te orienta para retomar el curso si te has despistado." />}
             </section>
           </>
@@ -120,4 +122,104 @@ function TextContent({ title, text }: { title: string; text: string }) {
 
 function Assistant({ name, role, text }: { name: string; role: string; text: string }) {
   return <div className={styles.assistant}><div className={styles.avatar}>{name[0]}</div><div><p className={styles.eyebrow}>{role}</p><h2>{name}</h2><p>{text}</p><button>Preguntar sobre este contenido</button></div></div>;
+}
+
+type RocioQuestion = {
+  code: string;
+  lesson: string;
+  type: string;
+  difficulty: string;
+  prompt: string;
+  options: string[];
+  answer: number;
+  explanation: string;
+  criterion: string;
+  recovery: string;
+};
+
+function RocioQuiz({ lesson }: { lesson: string }) {
+  const questions = useMemo(
+    () => (rocioQuestions as RocioQuestion[]).filter((question) => question.lesson === lesson),
+    [lesson],
+  );
+  const ordinary = useMemo(() => questions.filter((question) => question.type !== "Recuperación"), [questions]);
+  const recovery = questions.find((question) => question.type === "Recuperación");
+  const [queue, setQueue] = useState<RocioQuestion[]>(ordinary);
+  const [position, setPosition] = useState(0);
+  const [selectedOption, setSelectedOption] = useState<number | null>(null);
+  const [correct, setCorrect] = useState(0);
+
+  useEffect(() => {
+    setQueue(ordinary);
+    setPosition(0);
+    setSelectedOption(null);
+    setCorrect(0);
+  }, [lesson, ordinary]);
+
+  const question = queue[position];
+  const finished = position >= queue.length;
+
+  const choose = (option: number) => {
+    if (selectedOption !== null || !question) return;
+    setSelectedOption(option);
+    if (option === question.answer) setCorrect((value) => value + 1);
+  };
+
+  const next = () => {
+    if (!question || selectedOption === null) return;
+    if (selectedOption !== question.answer && recovery && !queue.some((item) => item.code === recovery.code)) {
+      setQueue((items) => [...items.slice(0, position + 1), recovery, ...items.slice(position + 1)]);
+    }
+    setPosition((value) => value + 1);
+    setSelectedOption(null);
+  };
+
+  const restart = () => {
+    setQueue(ordinary);
+    setPosition(0);
+    setSelectedOption(null);
+    setCorrect(0);
+  };
+
+  if (!questions.length) {
+    return <Assistant name="Rocío" role="Profesora IA" text="Las preguntas de comprobación de este contenido están en preparación." />;
+  }
+
+  if (finished) {
+    return (
+      <div className={quizStyles.quiz}>
+        <p className={styles.eyebrow}>ROCÍO · PROFESORA IA</p>
+        <h2>Comprobación terminada</h2>
+        <p>Has respondido correctamente {correct} de {queue.length} preguntas realizadas.</p>
+        <p>Estas preguntas sirven para practicar y recuperar conceptos; no sustituyen las evidencias certificables del curso.</p>
+        <button className={quizStyles.primaryButton} onClick={restart}>Repetir comprobación</button>
+      </div>
+    );
+  }
+
+  const isCorrect = selectedOption === question.answer;
+  return (
+    <div className={quizStyles.quiz}>
+      <div className={quizStyles.quizHeader}>
+        <div><p className={styles.eyebrow}>ROCÍO · PROFESORA IA</p><h2>Comprueba lo aprendido</h2></div>
+        <span>{position + 1} / {queue.length}</span>
+      </div>
+      <p className={quizStyles.quizMeta}>{question.type} · {question.difficulty}</p>
+      <h3>{question.prompt}</h3>
+      <div className={quizStyles.options}>
+        {question.options.map((option, index) => {
+          const state = selectedOption === null ? "" : index === question.answer ? quizStyles.correct : index === selectedOption ? quizStyles.incorrect : "";
+          return <button key={option} className={state} onClick={() => choose(index)} disabled={selectedOption !== null}><b>{String.fromCharCode(65 + index)}</b>{option}</button>;
+        })}
+      </div>
+      {selectedOption !== null && (
+        <div className={isCorrect ? quizStyles.feedbackCorrect : quizStyles.feedbackIncorrect}>
+          <strong>{isCorrect ? "Correcto." : "Vamos a revisarlo."}</strong> {question.explanation}
+          <p><b>Criterio:</b> {question.criterion}</p>
+          {!isCorrect && <p><b>Recuperación:</b> {question.recovery}</p>}
+          <button className={quizStyles.primaryButton} onClick={next}>{position + 1 === queue.length ? "Ver resultado" : "Siguiente pregunta"}</button>
+        </div>
+      )}
+    </div>
+  );
 }

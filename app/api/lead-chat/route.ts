@@ -1,36 +1,80 @@
 import { NextResponse } from "next/server";
 
-function answer(message: string, community: string) {
-  const text = message.toLowerCase();
+const normalize = (value: string) =>
+  value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
-  if (text.includes("certific")) {
-    return "Los cursos online incluyen certificado Base12. Se emite a nombre del alumno cuando ha superado los requisitos académicos y no tiene pagos pendientes. Recibirá el PDF automáticamente por correo con fecha, modalidad y código de verificación.";
+function has(text: string, ...terms: string[]) {
+  return terms.some((term) => text.includes(term));
+}
+
+function answer(message: string, community: string) {
+  const text = normalize(message);
+
+  if (has(text, "como funciona", "que es base12")) {
+    return "Base12 Academy ofrece formación online estructurada por unidades. Puedes revisar la muestra gratuita, elegir una modalidad y avanzar con explicaciones, glosario, vídeos, prácticas y evaluación. Rocío enseña, Fernando acompaña el progreso, Jefatura organiza, Secretaría atiende la gestión económica y Comercial informa antes de contratar.";
   }
-  if ((text.includes("precio") || text.includes("cuesta")) && text.includes("ofimática")) {
-    return "Ofimática cuesta 49 € en modalidad Esencial (6 meses), 119 € en Estándar (9 meses) y 239 € en Premium (12 meses). Estándar incluye Esencial y Premium incluye Estándar.";
+  if (has(text, "desist", "14 dias", "catorce dias", "acceso inmediato", "renuncia")) {
+    return "Antes de activar el curso se informa del derecho legal de desistimiento. Si quieres comenzar antes de que terminen los 14 días, debes solicitar expresamente el acceso inmediato y reconocer que, una vez ejecutado completamente el contenido digital en los términos legales aplicables, puedes perder ese derecho. La aceptación se realiza mediante una casilla separada, voluntaria y no premarcada.";
   }
-  if (text.includes("precio") || text.includes("cuesta") || text.includes("descuento")) {
-    return "En Bachillerato y PAU los precios son 249 € Esencial, 299 € Estándar, 399 € Premium y 199 € PAU. Hay un 10% de descuento con 2 asignaturas, 15% con 3 y 20% desde 4. En oposiciones: 149 €, 299 € y 499 €. Puedes ver el detalle de cada curso en Oferta formativa.";
+  if (has(text, "factura", "pago", "cobro", "recibo")) {
+    return "Secretaría atiende pagos, facturas y cuestiones económicas. Antes de confirmar la matrícula verás el precio total, los impuestos aplicables, la modalidad, la duración y las condiciones. El pago online se habilitará cuando esté operativo el nuevo TPV; mientras tanto no se debe completar ningún cobro desde la plataforma.";
   }
-  if (text.includes("opos")) {
-    const location = community ? ` Para la comunidad seleccionada (${community}) puedes usar el filtro del catálogo.` : "";
+  if (has(text, "humano", "director", "direccion academica", "reclam", "queja")) {
+    return "La atención ordinaria la prestan los asistentes y el equipo responsable de cada área. Las dudas académicas que no puedan resolverse, o cuya revisión solicites expresamente, pueden escalarse por correo diferido a Dirección académica. También están disponibles los canales legales de quejas y reclamaciones indicados en la web.";
+  }
+  if (has(text, "rocio", "profesora", "duda academica")) {
+    return "Rocío es la Profesora IA: explica los contenidos, utiliza el glosario oficial, propone ejemplos y preguntas de comprobación y orienta la recuperación. Durante retos y evidencias no realiza la tarea ni revela la solución al alumno.";
+  }
+  if (has(text, "fernando", "tutor", "seguimiento", "despist")) {
+    return "Fernando es el Tutor IA: organiza el seguimiento, detecta interrupciones, recuerda los próximos pasos y ayuda a retomar el itinerario. No sustituye la evaluación ni responde las actividades por el alumno.";
+  }
+  if (has(text, "secretaria")) {
+    return "Secretaría gestiona las cuestiones administrativas y económicas, especialmente pagos, matrículas, justificantes y facturas.";
+  }
+  if (has(text, "jefatura", "jefe de estudios", "organizacion")) {
+    return "Jefatura de Estudios coordina la organización académica, el itinerario, las incidencias de acceso y la distribución de la atención.";
+  }
+  if (has(text, "comercial", "contratar", "matricul")) {
+    return "El área Comercial informa antes de la contratación sobre cursos, modalidades, precios, duración y acceso. La matrícula queda vinculada al alumno, al correo utilizado y al curso elegido.";
+  }
+  if (has(text, "clave", "gratis", "gratuit", "familiar", "invitacion")) {
+    return "Administración puede emitir una clave personal gratuita vinculada a un único correo y a un curso concreto. No es una clave común, no puede compartirse y solo activa la matrícula para la persona destinataria.";
+  }
+  if (has(text, "unidad abierta", "unidad 1", "probar", "muestra", "antes de pagar")) {
+    return "Puedes consultar gratuitamente la primera unidad de Ofimática antes de matricularte, con su explicación, glosario, actividad y asistentes. El resto del curso requiere una matrícula o una clave personal válida.";
+  }
+  if (has(text, "progreso", "registro", "avance")) {
+    return "La plataforma registra el progreso, los intentos y las evidencias necesarios para prestar el curso, emitir el certificado y acreditar cuándo comenzó el acceso al contenido. El tratamiento se realiza conforme a la política de privacidad.";
+  }
+  if (has(text, "certific")) {
+    return "Los cursos online incluyen certificado Base12. Se emite a nombre del alumno cuando completa los requisitos de su modalidad, supera la evaluación o proyecto correspondiente y no mantiene pagos pendientes. El PDF incluye curso, modalidad, fecha y código único de verificación.";
+  }
+  if (has(text, "ofimatica") && has(text, "precio", "cuesta", "modalidad", "incluye", "duracion")) {
+    return "Ofimática ofrece tres modalidades acumulativas: Esencial, 49 € y 6 meses; Estándar, 119 € y 9 meses; Premium, 239 € y 12 meses. Cada modalidad muestra antes de contratar su contenido, acompañamiento, evaluación y condiciones exactas.";
+  }
+  if (has(text, "precio", "cuesta", "descuento")) {
+    return "En Bachillerato los paquetes publicados son 249 € Esencial, 299 € Estándar y 399 € Premium; PAU, 199 €. Los descuentos por varias asignaturas son 10 % con 2, 15 % con 3 y 20 % desde 4. En oposiciones, las modalidades publicadas son 149 €, 299 € y 499 €. Consulta siempre la ficha antes de matricularte.";
+  }
+  if (has(text, "opos")) {
+    const location = community ? ` Para ${community}, utiliza el filtro territorial del catálogo.` : "";
     return `Base12 prepara oposiciones de Andalucía, Madrid, Comunidad Valenciana y Administración del Estado, con modalidades Esencial, Estándar y Premium.${location}`;
   }
-  if (text.includes("modalidad") || text.includes("incluye")) {
-    return "Esencial ofrece la base estructurada para avanzar a tu ritmo; Estándar añade más práctica, diagnóstico y proyecto; Premium incorpora revisión y acompañamiento reforzado. Cada ficha muestra el contenido y precio exactos antes de matricularte.";
+  if (has(text, "modalidad", "incluye")) {
+    return "Esencial proporciona la base estructurada; Estándar añade práctica, diagnóstico y proyecto; Premium incorpora revisión y acompañamiento reforzado. Las modalidades son acumulativas, pero prevalece siempre el detalle de la ficha del curso elegido.";
   }
-  if (text.includes("pau") || text.includes("bachiller") || text.includes("historia") || text.includes("matem")) {
-    return "En Bachillerato y PAU tienes Historia de España, Historia de la Filosofía, Matemáticas II, Matemáticas Aplicadas a las CCSS y Lengua y Literatura. Puedes combinar asignaturas con descuento automático.";
+  if (has(text, "pau", "bachiller", "historia", "matem", "lengua")) {
+    return "En Bachillerato y PAU se ofrecen Historia de España, Historia de la Filosofía, Matemáticas II, Matemáticas Aplicadas a las CCSS y Lengua Castellana y Literatura. Es posible combinar asignaturas con descuento automático.";
   }
-  if (text.includes("curso online") || text.includes("ofimática") || text.includes("protocolo") || text.includes("tiempo")) {
-    return "Los cursos online disponibles son Ofimática, Protocolo Institucional, Protocolo Social y Empresarial y Gestión Eficaz del Tiempo. Todos cuentan con tres modalidades y certificado al superar los requisitos.";
+  if (has(text, "curso online", "ofimatica", "protocolo", "tiempo")) {
+    return "Los cursos online publicados son Ofimática, Protocolo Institucional, Protocolo Social y Empresarial y Gestión Eficaz del Tiempo. Disponen de tres modalidades y certificado cuando se superan los requisitos correspondientes.";
   }
-  return "Base12 Academy reúne Bachillerato y PAU, cursos online y oposiciones. Dime qué objetivo tienes o pregúntame por precios, modalidades, certificados o tu comunidad y te orientaré.";
+  if (has(text, "privacidad", "datos", "conversacion")) {
+    return "Se tratan únicamente los datos necesarios para gestionar la matrícula, prestar el servicio, registrar el progreso, atender incidencias y emitir certificados. Las conversaciones con asistentes pueden utilizarse para mantener la continuidad y prestar ayuda, según la política de privacidad.";
+  }
+  return "Puedo orientarte sobre cursos, precios, modalidades, duración, acceso gratuito, certificados, contratación, desistimiento, pagos y funciones del equipo Base12. Dime qué necesitas y te dirigiré al área adecuada.";
 }
 
 export async function POST(request: Request) {
   const body = (await request.json()) as { mensaje?: string; comunidad?: string };
-  return NextResponse.json({
-    respuesta: answer(body.mensaje || "", body.comunidad || ""),
-  });
+  return NextResponse.json({ respuesta: answer(body.mensaje || "", body.comunidad || "") });
 }
