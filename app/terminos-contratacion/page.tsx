@@ -53,6 +53,7 @@ export default function TerminosContratacionPage() {
 
       <h2>13. Quejas y reclamaciones</h2>
       <p>Las hojas oficiales de quejas y reclamaciones de la Junta de Andalucía están disponibles gratuitamente. Pueden solicitarse mediante <a href="mailto:base12academy+administracion@gmail.com">base12academy+administracion@gmail.com</a>, <a href="https://www.juntadeandalucia.es/salud/hoja/" target="_blank" rel="noreferrer">utilizarse en el sistema electrónico Hoj@</a> o <a href="https://www.juntadeandalucia.es/temas/vivienda-consumo/consumo/reclamaciones.html" target="_blank" rel="noreferrer">descargarse desde la información oficial de Consumo</a>. La empresa responderá dentro del plazo legal aplicable. La persona consumidora también puede acudir a los organismos públicos de consumo competentes.</p>
+      <p><a href="https://www.juntadeandalucia.es/salud/hoja/" target="_blank" rel="noreferrer"><img src="/legal/hoja-qr-base12.png" width="150" height="150" alt="Código QR oficial de Hoj@ para Base12 Academy" /></a></p>
 
       <h2>14. Protección de datos</h2>
       <p>El tratamiento de datos personales se regula en la <Link href="/privacidad">Política de privacidad</Link>. Las comunicaciones comerciales requieren una base jurídica propia y pueden cancelarse en cualquier momento.</p>
