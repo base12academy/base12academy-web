@@ -18,6 +18,7 @@ export default function AdminPage() {
   const [accessMonths, setAccessMonths] = useState("6");
   const [validDays, setValidDays] = useState("30");
   const [generatedCode, setGeneratedCode] = useState("");
+  const [reviewCode, setReviewCode] = useState("");
   const [generatingCode, setGeneratingCode] = useState(false);
 
   useEffect(() => {
@@ -84,6 +85,32 @@ export default function AdminPage() {
     setGeneratingCode(false);
   };
 
+  const handleGenerateReviewCode = async () => {
+    setMessage("");
+    setReviewCode("");
+    setGeneratingCode(true);
+    const { data } = await supabase.auth.getSession();
+    const response = await fetch("/api/admin/access-codes", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${data.session?.access_token}`,
+      },
+      body: JSON.stringify({
+        email: ADMIN_EMAIL,
+        courseSlug: "ofimatica",
+        planSlug: "premium",
+        accessMonths: 36,
+        validDays: 365,
+        note: "Clave personal del administrador para revisión integral del curso",
+      }),
+    });
+    const result = await response.json();
+    if (!response.ok) setMessage(result.error || "No se pudo crear la clave de revisión.");
+    else setReviewCode(result.code);
+    setGeneratingCode(false);
+  };
+
   const codeEmailHref = generatedCode
     ? `mailto:${encodeURIComponent(beneficiaryEmail.trim())}?subject=${encodeURIComponent("Tu clave personal de acceso a Base12 Academy")}&body=${encodeURIComponent(
         `Hola:\n\nTe enviamos una clave personal para acceder gratuitamente al curso ${codeCourse}, modalidad ${codePlan}, durante ${accessMonths} meses.\n\nCLAVE PERSONAL: ${generatedCode}\n\nEsta clave es individual, de un solo uso e intransferible. Solo puede vincularse a una cuenta de Base12 Academy registrada con este mismo correo electrónico: ${beneficiaryEmail.trim()}\n\nPara utilizarla:\n1. Regístrate o inicia sesión en Base12 Academy con este correo.\n2. Abre la pantalla de acceso al curso.\n3. Introduce la clave en el apartado \"Activar con clave\".\n4. Acepta las condiciones de contratación y la política de privacidad.\n\nLa clave debe canjearse en un plazo de ${validDays} días. Una vez vinculada, no podrá utilizarse en otra cuenta.\n\nUn saludo,\nAdministración de Base12 Academy\nImagen Digital Ménace, S. L. U.`
@@ -135,6 +162,17 @@ export default function AdminPage() {
         <button onClick={handleLogout} style={{ padding: "10px 16px", borderRadius: 999, border: "1px solid #cbd5e1", background: "white", cursor: "pointer" }}>Cerrar sesión</button>
       </div>
       <p>Sesión autorizada para {ADMIN_EMAIL}.</p>
+      <section style={{ marginTop: 24, padding: 22, border: "1px solid #b9d2f2", background: "#f3f8ff", borderRadius: 16 }}>
+        <h2>Revisar íntegramente el curso de Ofimática</h2>
+        <p>Tu cuenta administradora puede abrir las 11 unidades y los 80 contenidos. También puedes crear una clave personal Premium para comprobar el proceso de activación como alumno.</p>
+        <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+          <Link href="/dashboard/ofimatica" style={{ padding: "11px 16px", borderRadius: 10, background: "#0f3f92", color: "white", textDecoration: "none", fontWeight: 800 }}>Entrar al curso completo</Link>
+          <button onClick={handleGenerateReviewCode} disabled={generatingCode} style={{ padding: "11px 16px", borderRadius: 10, border: "1px solid #0f3f92", background: "white", color: "#0f3f92", fontWeight: 800, cursor: "pointer" }}>
+            {generatingCode ? "Creando…" : "Crear mi clave personal de revisión"}
+          </button>
+        </div>
+        {reviewCode && <p style={{ marginTop: 14, padding: 12, background: "#dcfce7", borderRadius: 9 }}><b>Tu clave:</b> <code>{reviewCode}</code><br /><small>Está ligada a {ADMIN_EMAIL}, es de un solo uso y activa Ofimática Premium durante 36 meses.</small></p>}
+      </section>
       <section style={{ marginTop: 24, padding: 22, border: "1px solid #dbe3ef", borderRadius: 16 }}>
         <h2>Crear una clave personal gratuita</h2>
         <p>La clave quedará ligada al correo indicado, será de un solo uso y no podrá utilizarla otra cuenta.</p>

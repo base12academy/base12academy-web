@@ -174,6 +174,9 @@ export default function CourseCatalog() {
             <small>{course.family}</small>
             <h2 id="modal-course-title">{course.name}</h2>
             <p>Selecciona una modalidad y revisa la información antes de continuar.</p>
+            {course.name === "Ofimática" && (
+              <p><a href="/dashboard/ofimatica?contenido=G01_V01" style={{ display: "inline-block", padding: "10px 14px", borderRadius: 999, background: "#eaf2ff", color: "#0751b5", textDecoration: "none", fontWeight: 800 }}>Probar gratis la Unidad 1 completa</a></p>
+            )}
 
             <div className="original-plan-grid">
               {plansFor(course).map((item) => (
