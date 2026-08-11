@@ -88,6 +88,8 @@ export default function CourseCatalog() {
   const [terms, setTerms] = useState(false);
   const [privacy, setPrivacy] = useState(false);
   const [marketing, setMarketing] = useState(false);
+  const [immediateAccess, setImmediateAccess] = useState(false);
+  const [withdrawalAcknowledged, setWithdrawalAcknowledged] = useState(false);
 
   const filtered = useMemo(
     () => allCourses.filter((item) => item.family === family && item.name.toLowerCase().includes(search.toLowerCase())),
@@ -100,6 +102,8 @@ export default function CourseCatalog() {
     setTerms(false);
     setPrivacy(false);
     setMarketing(false);
+    setImmediateAccess(false);
+    setWithdrawalAcknowledged(false);
   }
 
   return (
@@ -189,15 +193,19 @@ export default function CourseCatalog() {
               <h3>Información contractual</h3>
               <details>
                 <summary>Condiciones de contratación</summary>
-                <p>La matrícula da acceso online a {course.name} — modalidad {plan.name}, por {plan.price}, durante el periodo indicado. En Ofimática, Estándar incluye Esencial y Premium incluye Estándar. El acompañamiento ordinario es virtual mediante la plataforma, la Profesora IA Rocío y el Tutor IA Fernando; no incluye tutoría humana individual, mentoría ni revisión personal.</p>
+                <p>La matrícula da acceso personal y no transferible a {course.name} — modalidad {plan.name}, por {plan.price}, durante el periodo indicado. El precio, los impuestos, el contenido incluido, los requisitos y la fecha de activación se mostrarán antes del pago. En Ofimática, Estándar incluye Esencial y Premium incluye Estándar.</p>
+                <p>El acompañamiento ordinario es virtual: Rocío enseña y resuelve dudas académicas; Fernando realiza seguimiento y recuperación; Jefatura organiza el itinerario; Secretaría atiende pagos y facturas; y Comercial informa sobre modalidades y contratación. No se incluye tutoría humana síncrona ni mentoría individual. Las dudas que los asistentes no resuelvan, o cuya revisión solicite expresamente el alumno, podrán escalarse por correo diferido a Dirección académica.</p>
+                <p><a href="/terminos-contratacion" target="_blank" rel="noreferrer">Consultar las condiciones generales completas</a>.</p>
               </details>
               <details>
                 <summary>Privacidad y tratamiento de datos</summary>
-                <p>Imagen Digital Ménace, S. L. U. tratará los datos necesarios para gestionar la matrícula, prestar el servicio, habilitar los asistentes IA, verificar el progreso académico, emitir certificados y cumplir sus obligaciones legales.</p>
+                <p>Imagen Digital Ménace, S. L. U. tratará los datos necesarios para atender la solicitud, gestionar matrícula, pago y factura, crear el acceso, prestar el servicio, habilitar los asistentes IA, registrar progreso y evidencias, emitir certificados, atender incidencias y cumplir obligaciones legales. Las comunicaciones comerciales requieren una base jurídica separada.</p>
+                <p><a href="/privacidad" target="_blank" rel="noreferrer">Consultar la política de privacidad completa</a>.</p>
               </details>
               <details>
                 <summary>Aviso legal y normas de uso</summary>
-                <p>Los materiales y credenciales son personales. No se permite reproducir, distribuir o compartir los contenidos sin autorización. La normativa de convocatorias debe contrastarse con la publicación oficial.</p>
+                <p>Las credenciales y los materiales son personales. No se permite compartir el acceso, reproducir, distribuir, revender o comunicar públicamente los contenidos sin autorización. Las convocatorias, normas y requisitos deben contrastarse con la publicación oficial vigente.</p>
+                <p><a href="/aviso-legal" target="_blank" rel="noreferrer">Consultar el aviso legal completo</a>.</p>
               </details>
               {course.family === "Cursos online" && (
                 <details>
@@ -208,14 +216,41 @@ export default function CourseCatalog() {
               {course.name === "Ofimática" && (
                 <details>
                   <summary>Desistimiento e inicio inmediato</summary>
-                  <p>Con carácter general, el plazo de desistimiento en contratos a distancia es de 14 días naturales, salvo excepción legal aplicable. El inicio durante ese plazo requerirá una solicitud expresa y los consentimientos legalmente exigibles, recogidos separadamente y sin casillas premarcadas. La confirmación contractual se facilitará en soporte duradero.</p>
+                  <p>Con carácter general, el consumidor dispone de 14 días naturales para desistir de un contrato a distancia, salvo excepción legal. Si solicita que un servicio comience durante ese plazo y desiste antes de su ejecución completa, podrá corresponder el pago proporcional de la parte efectivamente prestada. En contenido digital sin soporte material, la pérdida del derecho desde el inicio solo operará si concurren todos los consentimientos y confirmaciones exigidos por la ley.</p>
+                  <p>La solicitud de inicio inmediato y el conocimiento de sus consecuencias se recogerán de manera expresa, separada y trazable, sin casillas premarcadas. La confirmación contractual se facilitará en soporte duradero.</p>
                 </details>
               )}
+              <details>
+                <summary>Quejas, reclamaciones y contacto</summary>
+                <p>Las incidencias técnicas se atienden en base12academy+soporte@gmail.com; pagos y facturas, en base12academy+facturacion@gmail.com; y desistimientos o reclamaciones, en base12academy+administracion@gmail.com. Base12 dispone de hojas oficiales de quejas y reclamaciones de la Junta de Andalucía, que pueden solicitarse gratuitamente.</p>
+              </details>
             </div>
 
             <div className="original-consents">
               <label><input type="checkbox" checked={terms} onChange={(event) => setTerms(event.target.checked)} /> <span>He leído y acepto las condiciones de contratación y las normas de uso. <b>Obligatorio</b></span></label>
-              <label><input type="checkbox" checked={privacy} onChange={(event) => setPrivacy(event.target.checked)} /> <span>He leído la política de privacidad y autorizo el tratamiento necesario para la matrícula. <b>Obligatorio</b></span></label>
+              <label><input type="checkbox" checked={privacy} onChange={(event) => setPrivacy(event.target.checked)} /> <span>He leído la política de privacidad y confirmo que los datos facilitados pueden tratarse para gestionar la matrícula y prestar el servicio. <b>Obligatorio</b></span></label>
+              {course.family === "Cursos online" && (
+                <>
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={immediateAccess}
+                      onChange={(event) => {
+                        setImmediateAccess(event.target.checked);
+                        if (!event.target.checked) setWithdrawalAcknowledged(false);
+                      }}
+                    />
+                    <span>Solicito expresamente que el acceso al curso y la prestación comiencen antes de que finalice el plazo de desistimiento de 14 días. <em>Opcional; necesario para acceso inmediato</em></span>
+                  </label>
+                  {immediateAccess && (
+                    <label>
+                      <input type="checkbox" checked={withdrawalAcknowledged} onChange={(event) => setWithdrawalAcknowledged(event.target.checked)} />
+                      <span>Declaro que comprendo las consecuencias de comenzar: si desisto de una prestación de servicios ya iniciada, podrá corresponder el importe proporcional efectivamente prestado; y, respecto del contenido digital sin soporte material, perderé el derecho de desistimiento desde que comience su ejecución cuando concurran los requisitos legales. <b>Obligatorio para acceso inmediato</b></span>
+                    </label>
+                  )}
+                  {!immediateAccess && <p>Si no solicita el inicio inmediato, el acceso se activará una vez finalizado el plazo legal de desistimiento.</p>}
+                </>
+              )}
               <label><input type="checkbox" checked={marketing} onChange={(event) => setMarketing(event.target.checked)} /> <span>Quiero recibir novedades y ofertas. <em>Opcional</em></span></label>
             </div>
 
