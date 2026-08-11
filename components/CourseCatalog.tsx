@@ -222,7 +222,7 @@ export default function CourseCatalog() {
               )}
               <details>
                 <summary>Quejas, reclamaciones y contacto</summary>
-                <p>Las incidencias técnicas se atienden en base12academy+soporte@gmail.com; pagos y facturas, en base12academy+facturacion@gmail.com; y desistimientos o reclamaciones, en base12academy+administracion@gmail.com. Base12 dispone de hojas oficiales de quejas y reclamaciones de la Junta de Andalucía, que pueden solicitarse gratuitamente.</p>
+                <p>Las incidencias técnicas se atienden en base12academy+soporte@gmail.com; pagos y facturas, en base12academy+facturacion@gmail.com; y desistimientos o reclamaciones, en base12academy+administracion@gmail.com. Las hojas oficiales de la Junta de Andalucía pueden solicitarse gratuitamente, <a href="https://www.juntadeandalucia.es/salud/hoja/" target="_blank" rel="noreferrer">presentarse mediante Hoj@</a> o <a href="https://www.juntadeandalucia.es/temas/vivienda-consumo/consumo/reclamaciones.html" target="_blank" rel="noreferrer">descargarse desde Consumo</a>.</p>
               </details>
             </div>
 
