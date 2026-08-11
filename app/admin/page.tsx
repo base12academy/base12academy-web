@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
 
-const ADMIN_EMAIL = "base12academy+administracion@gmail.com";
+const ADMIN_EMAIL = "base12academy@gmail.com";
 
 export default function AdminPage() {
   const [email, setEmail] = useState(ADMIN_EMAIL);

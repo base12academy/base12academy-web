@@ -1,4 +1,4 @@
-export const ADMIN_EMAIL = "base12academy+administracion@gmail.com";
+export const ADMIN_EMAIL = "base12academy@gmail.com";
 
 export const OFIMATICA_PUBLIC_PREVIEW = {
   courseSlug: "ofimatica",

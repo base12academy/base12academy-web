@@ -3,7 +3,7 @@ import crypto from "crypto";
 import { getSupabase } from "@/lib/supabase/server";
 import { courses, type CourseSlug } from "@/lib/courses";
 
-const ADMIN_EMAIL = "base12academy+administracion@gmail.com";
+const ADMIN_EMAIL = "base12academy@gmail.com";
 
 export async function POST(req: NextRequest) {
   const token = req.headers.get("authorization")?.replace(/^Bearer\s+/i, "");
