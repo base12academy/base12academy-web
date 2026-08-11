@@ -18,6 +18,10 @@ export default function ComprarPage({ params }: Props) {
   const [courseSlug, setCourseSlug] = useState<CourseSlug>("historia-espana");
   const [codigo, setCodigo] = useState("");
   const [mensajeCodigo, setMensajeCodigo] = useState("");
+  const [termsAccepted, setTermsAccepted] = useState(false);
+  const [privacyAcknowledged, setPrivacyAcknowledged] = useState(false);
+  const [immediateAccess, setImmediateAccess] = useState(false);
+  const [withdrawalAcknowledged, setWithdrawalAcknowledged] = useState(false);
 
   useEffect(() => {
     const loadData = async () => {
@@ -45,18 +49,35 @@ export default function ComprarPage({ params }: Props) {
 
     setLoading(true);
 
+    const { data: sessionData } = await supabase.auth.getSession();
+    const accessToken = sessionData.session?.access_token;
+    if (!accessToken) {
+      alert("Tu sesión ha caducado. Vuelve a iniciar sesión.");
+      setLoading(false);
+      return;
+    }
+
     const res = await fetch("/api/redsys", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
       },
       body: JSON.stringify({
-        userId,
         courseSlug,
+        termsAccepted,
+        privacyAcknowledged,
+        immediateAccess,
+        withdrawalAcknowledged,
       }),
     });
 
     const data = await res.json();
+    if (!res.ok) {
+      alert(data.error || "No se pudo preparar el pago.");
+      setLoading(false);
+      return;
+    }
 
     const form = document.createElement("form");
     form.method = "POST";
@@ -99,67 +120,34 @@ export default function ComprarPage({ params }: Props) {
 
     setLoadingCode(true);
 
-    const codigoNormalizado = codigo.trim().toUpperCase();
-
-    const { data: codigoData, error: codigoError } = await supabase
-      .from("codigos_acceso")
-      .select("*")
-      .eq("codigo", codigoNormalizado)
-      .maybeSingle();
-
-    if (codigoError || !codigoData) {
-      setMensajeCodigo("Código no válido.");
+    if (!termsAccepted || !privacyAcknowledged) {
+      setMensajeCodigo("Acepta primero las condiciones y la política de privacidad.");
       setLoadingCode(false);
       return;
     }
 
-    if (codigoData.usado) {
-      setMensajeCodigo("Este código ya ha sido usado.");
+    const { data: sessionData } = await supabase.auth.getSession();
+    const accessToken = sessionData.session?.access_token;
+    const response = await fetch("/api/access-codes/redeem", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify({
+        code: codigo.trim().toUpperCase(),
+        termsAccepted,
+        privacyAcknowledged,
+      }),
+    });
+    const result = await response.json();
+    if (!response.ok) {
+      setMensajeCodigo(result.error || "No se pudo activar la clave.");
       setLoadingCode(false);
       return;
     }
 
-    const ahora = new Date();
-    const expira = new Date(codigoData.expira_en);
-
-    if (expira < ahora) {
-      setMensajeCodigo("Este código ha caducado.");
-      setLoadingCode(false);
-      return;
-    }
-
-    const { error: marcarError } = await supabase
-      .from("codigos_acceso")
-      .update({
-        usado: true,
-        user_id: userId,
-      })
-      .eq("id", codigoData.id);
-
-    if (marcarError) {
-      setMensajeCodigo("No se pudo activar el código.");
-      setLoadingCode(false);
-      return;
-    }
-
-    const { error: accesoError } = await supabase
-  .from("perfiles")
-  .update({
-    acceso: true,
-    temas_activos: ["tema-1", "tema-2", "tema-3"] // temporal
-  })
-  .eq("id", userId);
-
-    if (accesoError) {
-  setMensajeCodigo(
-    "El código es válido, pero no se pudo activar el acceso: " +
-      accesoError.message
-  );
-  setLoadingCode(false);
-  return;
-}
-
-    setMensajeCodigo("✅ Código aplicado. Tu acceso ya está activado.");
+    setMensajeCodigo("✅ Clave personal aplicada. Tu acceso ya está activado.");
     setCodigo("");
     setLoadingCode(false);
   };
@@ -375,9 +363,54 @@ export default function ComprarPage({ params }: Props) {
           </div>
 
           <div style={{ display: "grid", gap: "12px" }}>
+            <label>
+              <input
+                type="checkbox"
+                checked={termsAccepted}
+                onChange={(event) => setTermsAccepted(event.target.checked)}
+              />{" "}
+              He leído y acepto las condiciones de contratación y las normas de uso.
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                checked={privacyAcknowledged}
+                onChange={(event) => setPrivacyAcknowledged(event.target.checked)}
+              />{" "}
+              He leído la política de privacidad.
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                checked={immediateAccess}
+                onChange={(event) => {
+                  setImmediateAccess(event.target.checked);
+                  if (!event.target.checked) setWithdrawalAcknowledged(false);
+                }}
+              />{" "}
+              Solicito expresamente que el acceso comience antes de finalizar los 14 días.
+            </label>
+            {immediateAccess && (
+              <label>
+                <input
+                  type="checkbox"
+                  checked={withdrawalAcknowledged}
+                  onChange={(event) => setWithdrawalAcknowledged(event.target.checked)}
+                />{" "}
+                Comprendo las consecuencias sobre el derecho de desistimiento al comenzar la prestación y acceder al contenido digital.
+              </label>
+            )}
+            {!immediateAccess && (
+              <p>El acceso se activará cuando finalice el plazo legal de 14 días.</p>
+            )}
             <button
               onClick={handlePago}
-              disabled={loading}
+              disabled={
+                loading ||
+                !termsAccepted ||
+                !privacyAcknowledged ||
+                (immediateAccess && !withdrawalAcknowledged)
+              }
               style={{
                 padding: "14px 20px",
                 background: "#2563eb",

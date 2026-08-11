@@ -123,7 +123,27 @@ if (approved) {
       );
     }
 
-    const startsAt = new Date();
+    const { data: acceptance, error: acceptanceError } = await supabase
+      .from("contract_acceptances")
+      .select("id, immediate_access_requested, withdrawal_acknowledged")
+      .eq("id", merchantData?.consentId || "")
+      .eq("order_id", order)
+      .eq("user_id", userId)
+      .single();
+
+    if (acceptanceError || !acceptance) {
+      console.error("Pago aprobado sin evidencia contractual válida", acceptanceError);
+      return NextResponse.json(
+        { ok: false, error: "missing_contract_evidence" },
+        { status: 500 }
+      );
+    }
+
+    const paidAt = new Date();
+    const immediateAccess =
+      acceptance.immediate_access_requested && acceptance.withdrawal_acknowledged;
+    const startsAt = new Date(paidAt);
+    if (!immediateAccess) startsAt.setUTCDate(startsAt.getUTCDate() + 14);
     const accessMonths =
       "accessMonths" in course ? course.accessMonths : null;
     const expiresAt = accessMonths ? new Date(startsAt) : null;
@@ -136,13 +156,14 @@ if (approved) {
       course_slug:
         "courseSlug" in course ? course.courseSlug : course.slug,
       plan_slug: "planSlug" in course ? course.planSlug : "standard",
-      status: "active",
+      status: immediateAccess ? "active" : "pending",
       starts_at: startsAt.toISOString(),
       expires_at: expiresAt?.toISOString() || null,
       payment_order_id: order,
       amount_cents: Number(decoded.Ds_Amount || 0),
-      metadata: { catalogSlug },
-      updated_at: startsAt.toISOString(),
+      consent_id: acceptance.id,
+      metadata: { catalogSlug, immediateAccess },
+      updated_at: paidAt.toISOString(),
     };
 
     const { error: enrollmentError } = await supabase
@@ -159,11 +180,18 @@ if (approved) {
       );
     }
 
-    // Compatibilidad temporal con las pantallas antiguas.
     await supabase
-      .from("perfiles")
-      .update({ acceso: true })
-      .eq("user_id", userId);
+      .from("contract_acceptances")
+      .update({ payment_confirmed_at: paidAt.toISOString() })
+      .eq("id", acceptance.id);
+
+    // Compatibilidad temporal con las pantallas antiguas.
+    if (immediateAccess) {
+      await supabase
+        .from("perfiles")
+        .update({ acceso: true })
+        .eq("user_id", userId);
+    }
   } else {
     console.error("Pago aprobado pero sin userId → acceso no activado");
   }
