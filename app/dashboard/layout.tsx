@@ -15,6 +15,7 @@ export default function DashboardLayout({
   const isHistoria =
     pathname === "/dashboard/historia-espana" ||
     pathname.startsWith("/dashboard/tema/");
+  const isOfimatica = pathname.startsWith("/dashboard/ofimatica");
 
   const linkStyle = (path: string) => ({
     color: pathname === path ? "white" : "#9ca3af",
@@ -81,9 +82,9 @@ export default function DashboardLayout({
         </aside>
       ) : null}
 
-      <main style={{ flex: 1, padding: "40px" }}>
+      <main style={{ flex: 1, padding: isOfimatica ? 0 : "40px" }}>
         {children}
-        <ChatBot />
+        {!isOfimatica && <ChatBot />}
       </main>
     </div>
   );

@@ -25,6 +25,18 @@ const readFirstText = (folder) => {
   return file ? fs.readFileSync(path.join(folder, file), "utf8").replace(/^\uFEFF/, "").trim() : "";
 };
 
+const extractStudentExplanation = (text) => {
+  const startMarker = "2. EXPLICACIÓN DEFINITIVA PARA EL ALUMNO";
+  const endMarkers = ["2.1. Glosario oficial", "2.1. GLOSARIO OFICIAL"];
+  const start = text.indexOf(startMarker);
+  let result = start >= 0 ? text.slice(start + startMarker.length).trim() : text;
+  for (const marker of endMarkers) {
+    const end = result.indexOf(marker);
+    if (end >= 0) result = result.slice(0, end).trim();
+  }
+  return result;
+};
+
 const groups = fs.readdirSync(source, { withFileTypes: true })
   .filter((entry) => entry.isDirectory() && /^G\d{2}_/.test(entry.name))
   .sort((a, b) => a.name.localeCompare(b.name, "es"))
@@ -40,7 +52,7 @@ const groups = fs.readdirSync(source, { withFileTypes: true })
         return {
           id: lessonId,
           title: titleFromFolder(lessonEntry.name),
-          explanation: readFirstText(path.join(lessonPath, "04_EXPLICACION")),
+          explanation: extractStudentExplanation(readFirstText(path.join(lessonPath, "04_EXPLICACION"))),
           glossary: readFirstText(path.join(lessonPath, "05_GLOSARIO")),
           activities: readFirstText(path.join(lessonPath, "06_RETOS_Y_PRACTICAS")),
           videoFile: `VT${lessonId.slice(1, 3)}${lessonId.slice(5, 7)}.mp4`,
