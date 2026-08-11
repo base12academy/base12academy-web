@@ -177,12 +177,36 @@ export default function CourseCatalog() {
 
             <div className="original-plan-grid">
               {plansFor(course).map((item) => (
-                <button key={item.name} className={plan.name === item.name ? "active" : ""} onClick={() => { setPlan(item); setPresentationVideo(null); }}>
-                  <span><b>{item.name}</b><small>{item.detail}</small></span>
+                <div key={item.name} className={`original-plan-option ${plan.name === item.name ? "active" : ""}`}>
+                  <button className="original-plan-select" onClick={() => { setPlan(item); setPresentationVideo(null); }}>
+                    <span><b>{item.name}</b><small>{item.detail}</small></span>
+                  </button>
+                  {course.name === "Ofimática" && (
+                    <button
+                      type="button"
+                      className="original-plan-video-button"
+                      aria-expanded={presentationVideo === item.name}
+                      onClick={() => {
+                        setPlan(item);
+                        setPresentationVideo(presentationVideo === item.name ? null : item.name);
+                      }}
+                    >
+                      {presentationVideo === item.name ? "Cerrar vídeo" : "▶ Ver vídeo"}
+                    </button>
+                  )}
                   <strong>{item.price}</strong>
-                </button>
+                </div>
               ))}
             </div>
+
+            {course.name === "Ofimática" && presentationVideo && (
+              <div className="original-plan-video-player">
+                <video controls preload="metadata" playsInline aria-label={`Vídeo de presentación de Ofimática ${presentationVideo}`}>
+                  <source src={officePresentationVideos[presentationVideo]} type="video/mp4" />
+                  Tu navegador no permite reproducir este vídeo.
+                </video>
+              </div>
+            )}
 
             <div className="original-plan-includes" aria-live="polite">
               <div className="original-plan-includes-heading">
@@ -195,23 +219,6 @@ export default function CourseCatalog() {
               <ul>
                 {plan.includes.map((item) => <li key={item}>{item}</li>)}
               </ul>
-              {course.name === "Ofimática" && (
-                <div className="original-plan-video">
-                  <button
-                    type="button"
-                    aria-expanded={presentationVideo === plan.name}
-                    onClick={() => setPresentationVideo(presentationVideo === plan.name ? null : plan.name)}
-                  >
-                    {presentationVideo === plan.name ? "Cerrar vídeo" : "▶ Ver vídeo de presentación"}
-                  </button>
-                  {presentationVideo === plan.name && (
-                    <video controls preload="metadata" playsInline aria-label={`Vídeo de presentación de Ofimática ${plan.name}`}>
-                      <source src={officePresentationVideos[plan.name]} type="video/mp4" />
-                      Tu navegador no permite reproducir este vídeo.
-                    </video>
-                  )}
-                </div>
-              )}
             </div>
 
             <div className="original-legal">
