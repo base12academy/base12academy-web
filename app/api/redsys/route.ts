@@ -64,7 +64,7 @@ export async function POST(req: Request) {
   const courseSlug = (body?.courseSlug || "historia-espana") as CourseSlug;
   const course = courses[courseSlug];
 
-  if (!course) {
+  if (!course || !course.active || course.priceInCents == null) {
   return NextResponse.json(
     { error: "Curso no válido" },
     { status: 400 }
@@ -82,8 +82,11 @@ export async function POST(req: Request) {
     Ds_Merchant_Terminal: terminal,
     Ds_Merchant_MerchantData: Buffer.from(
   JSON.stringify({
-  userId,
-  courseSlug,
+    userId,
+    courseSlug,
+    catalogSlug: course.slug,
+    planSlug: "planSlug" in course ? course.planSlug : "standard",
+    accessMonths: "accessMonths" in course ? course.accessMonths : null,
 })
 ).toString("base64"),
     Ds_Merchant_MerchantURL:

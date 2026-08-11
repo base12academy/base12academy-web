@@ -6,6 +6,7 @@ import {
   normalizeSignature,
   safeEqual,
 } from "@/lib/redsys";
+import { courses, type CourseSlug } from "@/lib/courses";
 
 function isApproved(dsResponse?: string) {
   const code = Number(dsResponse);
@@ -76,6 +77,10 @@ export async function POST(req: NextRequest) {
     }
 
     const userId = merchantData?.userId;
+    const catalogSlug = (merchantData?.catalogSlug ||
+      merchantData?.courseSlug ||
+      "historia-espana") as CourseSlug;
+    const course = courses[catalogSlug];
 
     const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -91,7 +96,8 @@ await supabase.from("pagos").upsert(
   {
     user_id: userId || null,
     order_id: order,
-    course_slug: merchantData?.courseSlug || "historia-espana",
+    course_slug:
+      course && "courseSlug" in course ? course.courseSlug : catalogSlug,
     amount: Number(decoded.Ds_Amount || 0),
     currency: decoded.Ds_Currency || "978",
     status: approved ? "paid" : "denied",
@@ -109,6 +115,51 @@ await supabase.from("pagos").upsert(
 // Activar acceso SOLO si pago aprobado
 if (approved) {
   if (userId) {
+    if (!course) {
+      console.error("Pago aprobado para un producto desconocido", catalogSlug);
+      return NextResponse.json(
+        { ok: false, error: "unknown_product" },
+        { status: 400 }
+      );
+    }
+
+    const startsAt = new Date();
+    const accessMonths =
+      "accessMonths" in course ? course.accessMonths : null;
+    const expiresAt = accessMonths ? new Date(startsAt) : null;
+    if (expiresAt && accessMonths !== null) {
+      expiresAt.setUTCMonth(expiresAt.getUTCMonth() + accessMonths);
+    }
+
+    const enrollment = {
+      user_id: userId,
+      course_slug:
+        "courseSlug" in course ? course.courseSlug : course.slug,
+      plan_slug: "planSlug" in course ? course.planSlug : "standard",
+      status: "active",
+      starts_at: startsAt.toISOString(),
+      expires_at: expiresAt?.toISOString() || null,
+      payment_order_id: order,
+      amount_cents: Number(decoded.Ds_Amount || 0),
+      metadata: { catalogSlug },
+      updated_at: startsAt.toISOString(),
+    };
+
+    const { error: enrollmentError } = await supabase
+      .from("course_enrollments")
+      .upsert(enrollment, {
+        onConflict: "user_id,course_slug,plan_slug",
+      });
+
+    if (enrollmentError) {
+      console.error("No se pudo activar la matrícula", enrollmentError);
+      return NextResponse.json(
+        { ok: false, error: "enrollment_failed" },
+        { status: 500 }
+      );
+    }
+
+    // Compatibilidad temporal con las pantallas antiguas.
     await supabase
       .from("perfiles")
       .update({ acceso: true })
