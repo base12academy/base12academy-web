@@ -22,7 +22,7 @@ export default function TerminosContratacionPage() {
 
       <h2>5. Activación, duración y uso del acceso</h2>
       <p>El acceso se activará tras la confirmación del pago, salvo que la oferta indique otra fecha. La matrícula, las credenciales y los materiales son personales e intransferibles. El periodo de acceso comienza en la fecha indicada en la confirmación y no se amplía por falta de uso, salvo incidencia imputable a Base12 o acuerdo expreso.</p>
-      <p>Las modalidades de Ofimática son: Ofimática Esencial, 49 € y 6 meses de acceso; Ofimática Estándar, 119 € y 9 meses; y Ofimática Premium, 239 € y 12 meses. Estándar incluye Esencial y Premium incluye Estándar.</p>
+      <p>El curso Competencias y Productividad Digital, Ofimática e IA ofrece tres paquetes acumulativos: Competencias digitales, 49 € y 6 meses de acceso; Ofimática, 119 € y 9 meses; y Productividad Digital e IA, 239 € y 12 meses. Ofimática incluye Competencias digitales y Productividad Digital e IA incluye Ofimática.</p>
 
       <h2>6. Naturaleza del servicio y acompañamiento</h2>
       <p>La formación se presta online. El acompañamiento ordinario se realiza mediante la plataforma y los asistentes asignados: Rocío, Profesora IA, explica los contenidos y atiende dudas académicas; Fernando, Tutor IA, realiza seguimiento y ayuda a recuperar a los alumnos que interrumpen el itinerario; Jefatura de Estudios coordina la organización académica; Secretaría gestiona las cuestiones administrativas y económicas; y el área Comercial atiende la información previa y la contratación.</p>

@@ -169,7 +169,7 @@ export default function LeadChatBot() {
 
               <button
                 onClick={() =>
-                  enviarMensaje("¿Qué incluyen las modalidades Esencial, Estándar y Premium?")
+                  enviarMensaje("¿Qué incluyen los paquetes y modalidades disponibles?")
                 }
                 style={quickButtonStyle}
               >
@@ -196,7 +196,7 @@ export default function LeadChatBot() {
 
               <button
                 onClick={() =>
-                  enviarMensaje("¿Puedo probar Ofimática antes de matricularme?")
+                  enviarMensaje("¿Puedo probar Competencias y Productividad Digital, Ofimática e IA antes de matricularme?")
                 }
                 style={quickButtonStyle}
               >

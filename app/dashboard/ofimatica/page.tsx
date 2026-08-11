@@ -12,7 +12,7 @@ import quizStyles from "./rocio.module.css";
 type Tab = "explicacion" | "glosario" | "rocio" | "fernando" | "actividad";
 
 export default function OfimaticaPage() {
-  return <Suspense fallback={<div className={styles.loading}>Preparando el aula de Ofimática…</div>}><OfimaticaCourse /></Suspense>;
+  return <Suspense fallback={<div className={styles.loading}>Preparando el aula de Competencias y Productividad Digital, Ofimática e IA…</div>}><OfimaticaCourse /></Suspense>;
 }
 
 function OfimaticaCourse() {
@@ -51,7 +51,7 @@ function OfimaticaCourse() {
       <aside className={styles.sidebar}>
         <Link href="/" className={styles.brand}>B12 <span>Base12 Academy</span></Link>
         <p className={styles.eyebrow}>PROGRAMA</p>
-        <h2>Curso de Ofimática</h2>
+        <h2>Competencias y Productividad Digital, Ofimática e IA</h2>
         <div className={styles.progress}><span /></div>
         <nav className={styles.index}>
           {course.groups.map((group) => (
@@ -74,7 +74,7 @@ function OfimaticaCourse() {
           {access === "public_preview" && <b>Unidad abierta</b>}
         </div>
         <h1>{selected.title}</h1>
-        <p className={styles.subtitle}>Contenido práctico del programa de Ofimática de Base12 Academy.</p>
+        <p className={styles.subtitle}>Contenido práctico del programa de Competencias y Productividad Digital, Ofimática e IA de Base12 Academy.</p>
 
         {!allowed ? (
           <section className={styles.locked}>

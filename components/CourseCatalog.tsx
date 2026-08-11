@@ -7,9 +7,9 @@ type Course = { family: Family; name: string; region?: string };
 type Plan = { name: string; price: string; detail: string; includes: string[] };
 
 const officePresentationVideos: Record<string, string> = {
-  Esencial: "/videos/ofimatica-esencial-presentacion.mp4",
-  "Estándar": "/videos/ofimatica-estandar-presentacion.mp4",
-  Premium: "/videos/ofimatica-premium-presentacion.mp4",
+  "Competencias digitales": "/videos/ofimatica-esencial-presentacion.mp4",
+  "Ofimática": "/videos/ofimatica-estandar-presentacion.mp4",
+  "Productividad Digital e IA": "/videos/ofimatica-premium-presentacion.mp4",
 };
 
 const bachillerato = [
@@ -21,7 +21,7 @@ const bachillerato = [
 ];
 
 const online = [
-  "Ofimática",
+  "Competencias y Productividad Digital, Ofimática e IA",
   "Protocolo Institucional",
   "Protocolo Social y Empresarial",
   "Gestión Eficaz del Tiempo para Profesionales y Empresarios",
@@ -65,11 +65,11 @@ function plansFor(course: Course): Plan[] {
       { name: "PAU", price: "199 €", detail: "Entrenamiento exclusivo para la prueba", includes: ["Preparación específica para la PAU", "Pruebas y modelos tipo PAU", "Banco de textos, imágenes y ejercicios", "Entrenamiento de respuestas de desarrollo", "Asistente virtual", "Mentoría de apoyo"] },
     ];
   }
-  if (course.name === "Ofimática") {
+  if (course.name === "Competencias y Productividad Digital, Ofimática e IA") {
     return [
-      { name: "Esencial", price: "49 €", detail: "Ofimática de uso habitual · Acceso durante 6 meses", includes: ["Entorno digital, Word, Excel, PowerPoint, Outlook, archivos, Internet, nube y PDF de uso habitual", "Prácticas, retos y comprobaciones para demostrar competencias", "Acompañamiento virtual con Profesora IA Rocío y Tutor IA Fernando", "Certificado Base12 de Ofimática Esencial tras completar el itinerario y demostrar las competencias exigidas"] },
-      { name: "Estándar", price: "119 €", detail: "Datos y herramientas profesionales · Acceso durante 9 meses", includes: ["Todo lo incluido en Esencial", "Documentos y datos avanzados: formularios, Access, Power Query y Power BI funcional", "Colaboración estructurada, multimedia y automatizaciones sencillas", "Certificado Base12 de Ofimática Estándar tras completar el itinerario y demostrar las competencias exigidas"] },
-      { name: "Premium", price: "239 €", detail: "Automatización e IA aplicada · Acceso durante 12 meses", includes: ["Todo lo incluido en Estándar", "Publicación y distribución de Power BI, flujos, aprobaciones y control operativo", "Automatización avanzada e inteligencia artificial integrada en procesos profesionales", "Certificado Base12 de Ofimática Premium tras completar el itinerario y demostrar las competencias exigidas"] },
+      { name: "Competencias digitales", price: "49 €", detail: "Competencias digitales de uso habitual · Acceso durante 6 meses", includes: ["Entorno digital, Word, Excel, PowerPoint, Outlook, archivos, Internet, nube y PDF de uso habitual", "Prácticas, retos y comprobaciones para demostrar competencias", "Acompañamiento virtual con Profesora IA Rocío y Tutor IA Fernando", "Certificado Base12 de Competencias digitales tras completar el itinerario y demostrar las competencias exigidas"] },
+      { name: "Ofimática", price: "119 €", detail: "Ofimática y herramientas profesionales · Acceso durante 9 meses", includes: ["Todo lo incluido en Competencias digitales", "Documentos y datos avanzados: formularios, Access, Power Query y Power BI funcional", "Colaboración estructurada, multimedia y automatizaciones sencillas", "Certificado Base12 de Ofimática tras completar el itinerario y demostrar las competencias exigidas"] },
+      { name: "Productividad Digital e IA", price: "239 €", detail: "Automatización, productividad e IA aplicada · Acceso durante 12 meses", includes: ["Todo lo incluido en Ofimática", "Publicación y distribución de Power BI, flujos, aprobaciones y control operativo", "Automatización avanzada e inteligencia artificial integrada en procesos profesionales", "Certificado Base12 de Productividad Digital e IA tras completar el itinerario y demostrar las competencias exigidas"] },
     ];
   }
   if (course.family === "Cursos online") {
@@ -174,7 +174,7 @@ export default function CourseCatalog() {
             <small>{course.family}</small>
             <h2 id="modal-course-title">{course.name}</h2>
             <p>Selecciona una modalidad y revisa la información antes de continuar.</p>
-            {course.name === "Ofimática" && (
+            {course.name === "Competencias y Productividad Digital, Ofimática e IA" && (
               <p><a href="/dashboard/ofimatica?contenido=G01_V01" style={{ display: "inline-block", padding: "10px 14px", borderRadius: 999, background: "#eaf2ff", color: "#0751b5", textDecoration: "none", fontWeight: 800 }}>Probar gratis la Unidad 1 completa</a></p>
             )}
 
@@ -184,7 +184,7 @@ export default function CourseCatalog() {
                   <button className="original-plan-select" onClick={() => { setPlan(item); setPresentationVideo(null); }}>
                     <span><b>{item.name}</b><small>{item.detail}</small></span>
                   </button>
-                  {course.name === "Ofimática" && (
+                  {course.name === "Competencias y Productividad Digital, Ofimática e IA" && (
                     <button
                       type="button"
                       className="original-plan-video-button"
@@ -202,9 +202,9 @@ export default function CourseCatalog() {
               ))}
             </div>
 
-            {course.name === "Ofimática" && presentationVideo && (
+            {course.name === "Competencias y Productividad Digital, Ofimática e IA" && presentationVideo && (
               <div className="original-plan-video-player">
-                <video controls preload="metadata" playsInline aria-label={`Vídeo de presentación de Ofimática ${presentationVideo}`}>
+                <video controls preload="metadata" playsInline aria-label={`Vídeo de presentación de ${presentationVideo}`}>
                   <source src={officePresentationVideos[presentationVideo]} type="video/mp4" />
                   Tu navegador no permite reproducir este vídeo.
                 </video>
@@ -228,7 +228,7 @@ export default function CourseCatalog() {
               <h3>Información contractual</h3>
               <details>
                 <summary>Condiciones de contratación</summary>
-                <p>La matrícula da acceso personal y no transferible a {course.name} — modalidad {plan.name}, por {plan.price}, durante el periodo indicado. El precio, los impuestos, el contenido incluido, los requisitos y la fecha de activación se mostrarán antes del pago. En Ofimática, Estándar incluye Esencial y Premium incluye Estándar.</p>
+                <p>La matrícula da acceso personal y no transferible a {course.name} — paquete {plan.name}, por {plan.price}, durante el periodo indicado. El precio, los impuestos, el contenido incluido, los requisitos y la fecha de activación se mostrarán antes del pago. Ofimática incluye Competencias digitales y Productividad Digital e IA incluye Ofimática.</p>
                 <p>El acompañamiento ordinario es virtual: Rocío enseña y resuelve dudas académicas; Fernando realiza seguimiento y recuperación; Jefatura organiza el itinerario; Secretaría atiende pagos y facturas; y Comercial informa sobre modalidades y contratación. No se incluye tutoría humana síncrona ni mentoría individual. Las dudas que los asistentes no resuelvan, o cuya revisión solicite expresamente el alumno, podrán escalarse por correo diferido a Dirección académica.</p>
                 <p><a href="/terminos-contratacion" target="_blank" rel="noreferrer">Consultar las condiciones generales completas</a>.</p>
               </details>
@@ -248,7 +248,7 @@ export default function CourseCatalog() {
                   <p>El certificado se genera únicamente tras finalizar el itinerario y demostrar las competencias y evidencias exigidas para la modalidad, sin pagos pendientes. No equivale por sí mismo a una titulación oficial ni a una certificación profesional regulada.</p>
                 </details>
               )}
-              {course.name === "Ofimática" && (
+              {course.name === "Competencias y Productividad Digital, Ofimática e IA" && (
                 <details>
                   <summary>Desistimiento e inicio inmediato</summary>
                   <p>Con carácter general, el consumidor dispone de 14 días naturales para desistir de un contrato a distancia, salvo excepción legal. Si solicita que un servicio comience durante ese plazo y desiste antes de su ejecución completa, podrá corresponder el pago proporcional de la parte efectivamente prestada. En contenido digital sin soporte material, la pérdida del derecho desde el inicio solo operará si concurren todos los consentimientos y confirmaciones exigidos por la ley.</p>

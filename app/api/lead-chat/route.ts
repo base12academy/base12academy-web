@@ -41,7 +41,7 @@ function answer(message: string, community: string) {
     return "Administración puede emitir una clave personal gratuita vinculada a un único correo y a un curso concreto. No es una clave común, no puede compartirse y solo activa la matrícula para la persona destinataria.";
   }
   if (has(text, "unidad abierta", "unidad 1", "probar", "muestra", "antes de pagar")) {
-    return "Puedes consultar gratuitamente la primera unidad de Ofimática antes de matricularte, con su explicación, glosario, actividad y asistentes. El resto del curso requiere una matrícula o una clave personal válida.";
+    return "Puedes consultar gratuitamente la primera unidad de Competencias y Productividad Digital, Ofimática e IA antes de matricularte, con su explicación, glosario, actividad y asistentes. El resto del curso requiere una matrícula o una clave personal válida.";
   }
   if (has(text, "progreso", "registro", "avance")) {
     return "La plataforma registra el progreso, los intentos y las evidencias necesarios para prestar el curso, emitir el certificado y acreditar cuándo comenzó el acceso al contenido. El tratamiento se realiza conforme a la política de privacidad.";
@@ -49,8 +49,8 @@ function answer(message: string, community: string) {
   if (has(text, "certific")) {
     return "Los cursos online incluyen certificado Base12. Se emite a nombre del alumno cuando completa los requisitos de su modalidad, supera la evaluación o proyecto correspondiente y no mantiene pagos pendientes. El PDF incluye curso, modalidad, fecha y código único de verificación.";
   }
-  if (has(text, "ofimatica") && has(text, "precio", "cuesta", "modalidad", "incluye", "duracion")) {
-    return "Ofimática ofrece tres modalidades acumulativas: Esencial, 49 € y 6 meses; Estándar, 119 € y 9 meses; Premium, 239 € y 12 meses. Cada modalidad muestra antes de contratar su contenido, acompañamiento, evaluación y condiciones exactas.";
+  if (has(text, "ofimatica", "competencias digitales", "productividad digital") && has(text, "precio", "cuesta", "modalidad", "paquete", "incluye", "duracion")) {
+    return "Competencias y Productividad Digital, Ofimática e IA ofrece tres paquetes acumulativos: Competencias digitales, 49 € y 6 meses; Ofimática, 119 € y 9 meses; Productividad Digital e IA, 239 € y 12 meses. Ofimática incluye Competencias digitales y Productividad Digital e IA incluye Ofimática.";
   }
   if (has(text, "precio", "cuesta", "descuento")) {
     return "En Bachillerato los paquetes publicados son 249 € Esencial, 299 € Estándar y 399 € Premium; PAU, 199 €. Los descuentos por varias asignaturas son 10 % con 2, 15 % con 3 y 20 % desde 4. En oposiciones, las modalidades publicadas son 149 €, 299 € y 499 €. Consulta siempre la ficha antes de matricularte.";
@@ -66,7 +66,7 @@ function answer(message: string, community: string) {
     return "En Bachillerato y PAU se ofrecen Historia de España, Historia de la Filosofía, Matemáticas II, Matemáticas Aplicadas a las CCSS y Lengua Castellana y Literatura. Es posible combinar asignaturas con descuento automático.";
   }
   if (has(text, "curso online", "ofimatica", "protocolo", "tiempo")) {
-    return "Los cursos online publicados son Ofimática, Protocolo Institucional, Protocolo Social y Empresarial y Gestión Eficaz del Tiempo. Disponen de tres modalidades y certificado cuando se superan los requisitos correspondientes.";
+    return "Los cursos online publicados son Competencias y Productividad Digital, Ofimática e IA; Protocolo Institucional; Protocolo Social y Empresarial; y Gestión Eficaz del Tiempo. Disponen de varios paquetes y certificado cuando se superan los requisitos correspondientes.";
   }
   if (has(text, "privacidad", "datos", "conversacion")) {
     return "Se tratan únicamente los datos necesarios para gestionar la matrícula, prestar el servicio, registrar el progreso, atender incidencias y emitir certificados. Las conversaciones con asistentes pueden utilizarse para mantener la continuidad y prestar ayuda, según la política de privacidad.";

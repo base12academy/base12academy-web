@@ -116,6 +116,16 @@ export default function AdminPage() {
         `Hola:\n\nTe enviamos una clave personal para acceder gratuitamente al curso ${codeCourse}, modalidad ${codePlan}, durante ${accessMonths} meses.\n\nCLAVE PERSONAL: ${generatedCode}\n\nEsta clave es individual, de un solo uso e intransferible. Solo puede vincularse a una cuenta de Base12 Academy registrada con este mismo correo electrónico: ${beneficiaryEmail.trim()}\n\nPara utilizarla:\n1. Regístrate o inicia sesión en Base12 Academy con este correo.\n2. Abre la pantalla de acceso al curso.\n3. Introduce la clave en el apartado \"Activar con clave\".\n4. Acepta las condiciones de contratación y la política de privacidad.\n\nLa clave debe canjearse en un plazo de ${validDays} días. Una vez vinculada, no podrá utilizarse en otra cuenta.\n\nUn saludo,\nAdministración de Base12 Academy\nImagen Digital Ménace, S. L. U.`
       )}`
     : "#";
+  const courseDisplayName = codeCourse === "ofimatica"
+    ? "Competencias y Productividad Digital, Ofimática e IA"
+    : codeCourse;
+  const planDisplayName = codeCourse === "ofimatica"
+    ? ({ esencial: "Competencias digitales", estandar: "Ofimática", premium: "Productividad Digital e IA" }[codePlan] || codePlan)
+    : codePlan;
+  const displayedCodeEmailHref = codeEmailHref.replace(
+    encodeURIComponent(`curso ${codeCourse}, modalidad ${codePlan}`),
+    encodeURIComponent(`curso ${courseDisplayName}, paquete ${planDisplayName}`),
+  );
 
   if (checking) {
     return <main className="legal-page"><p>Comprobando acceso…</p></main>;
@@ -163,15 +173,15 @@ export default function AdminPage() {
       </div>
       <p>Sesión autorizada para {ADMIN_EMAIL}.</p>
       <section style={{ marginTop: 24, padding: 22, border: "1px solid #b9d2f2", background: "#f3f8ff", borderRadius: 16 }}>
-        <h2>Revisar íntegramente el curso de Ofimática</h2>
-        <p>Tu cuenta administradora puede abrir las 11 unidades y los 80 contenidos. También puedes crear una clave personal Premium para comprobar el proceso de activación como alumno.</p>
+        <h2>Revisar íntegramente Competencias y Productividad Digital, Ofimática e IA</h2>
+        <p>Tu cuenta administradora puede abrir las 11 unidades y los 80 contenidos. También puedes crear una clave personal de Productividad Digital e IA para comprobar el proceso de activación como alumno.</p>
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
           <Link href="/dashboard/ofimatica" style={{ padding: "11px 16px", borderRadius: 10, background: "#0f3f92", color: "white", textDecoration: "none", fontWeight: 800 }}>Entrar al curso completo</Link>
           <button onClick={handleGenerateReviewCode} disabled={generatingCode} style={{ padding: "11px 16px", borderRadius: 10, border: "1px solid #0f3f92", background: "white", color: "#0f3f92", fontWeight: 800, cursor: "pointer" }}>
             {generatingCode ? "Creando…" : "Crear mi clave personal de revisión"}
           </button>
         </div>
-        {reviewCode && <p style={{ marginTop: 14, padding: 12, background: "#dcfce7", borderRadius: 9 }}><b>Tu clave:</b> <code>{reviewCode}</code><br /><small>Está ligada a {ADMIN_EMAIL}, es de un solo uso y activa Ofimática Premium durante 36 meses.</small></p>}
+        {reviewCode && <p style={{ marginTop: 14, padding: 12, background: "#dcfce7", borderRadius: 9 }}><b>Tu clave:</b> <code>{reviewCode}</code><br /><small>Está ligada a {ADMIN_EMAIL}, es de un solo uso y activa Productividad Digital e IA durante 36 meses.</small></p>}
       </section>
       <section style={{ marginTop: 24, padding: 22, border: "1px solid #dbe3ef", borderRadius: 16 }}>
         <h2>Crear una clave personal gratuita</h2>
@@ -181,7 +191,7 @@ export default function AdminPage() {
           <label>Curso (identificador)<input value={codeCourse} onChange={(e) => setCodeCourse(e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, "-"))} style={{ width: "100%", padding: 10 }} /></label>
           <label>Modalidad
             <select value={codePlan} onChange={(e) => setCodePlan(e.target.value)} style={{ width: "100%", padding: 10 }}>
-              <option value="esencial">Esencial</option><option value="estandar">Estándar</option><option value="premium">Premium</option><option value="pau">PAU</option><option value="standard">General</option>
+              <option value="esencial">{codeCourse === "ofimatica" ? "Competencias digitales" : "Esencial"}</option><option value="estandar">{codeCourse === "ofimatica" ? "Ofimática" : "Estándar"}</option><option value="premium">{codeCourse === "ofimatica" ? "Productividad Digital e IA" : "Premium"}</option><option value="pau">PAU</option><option value="standard">General</option>
             </select>
           </label>
           <label>Meses de acceso<input type="number" min="1" max="36" value={accessMonths} onChange={(e) => setAccessMonths(e.target.value)} style={{ width: "100%", padding: 10 }} /></label>
@@ -192,7 +202,7 @@ export default function AdminPage() {
           {generatedCode && (
             <div style={{ padding: 14, background: "#ecfdf5", borderRadius: 10 }}>
               <p><b>Clave:</b> <code>{generatedCode}</code><br />Guárdala ahora: no volverá a mostrarse.</p>
-              <a href={codeEmailHref} style={{ display: "inline-block", marginTop: 8, padding: "10px 14px", borderRadius: 9, background: "#166534", color: "white", textDecoration: "none", fontWeight: 800 }}>
+              <a href={displayedCodeEmailHref} style={{ display: "inline-block", marginTop: 8, padding: "10px 14px", borderRadius: 9, background: "#166534", color: "white", textDecoration: "none", fontWeight: 800 }}>
                 Preparar correo con la clave
               </a>
               <p style={{ marginBottom: 0, fontSize: 13 }}>Se abrirá el correo ya redactado para que puedas revisarlo antes de enviarlo.</p>
