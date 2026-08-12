@@ -37,7 +37,7 @@ function diversifyKey(order: string, signingKey: string) {
     cipher.final(),
   ]);
 
-  return encrypted;
+  return encrypted.toString("base64");
 }
 
 export function createRedsysSignature(
@@ -48,7 +48,7 @@ export function createRedsysSignature(
   const diversifiedKey = diversifyKey(order, signingKey);
 
   const hmac = crypto
-    .createHmac("sha512", diversifiedKey)
+    .createHmac("sha512", Buffer.from(diversifiedKey, "utf8"))
     .update(dsMerchantParameters, "utf8")
     .digest();
 
@@ -85,3 +85,4 @@ export function safeEqual(a: string, b: string) {
 
   return crypto.timingSafeEqual(aBuffer, bBuffer);
 }
+
