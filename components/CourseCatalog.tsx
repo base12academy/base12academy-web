@@ -1,6 +1,7 @@
-"use client";
+﻿"use client";
 
 import { useMemo, useState } from "react";
+import { supabase } from "../lib/supabaseClient";
 
 type Family = "Bachillerato y PAU" | "Cursos online" | "Oposiciones";
 type Course = { family: Family; name: string; region?: string };
@@ -97,6 +98,8 @@ export default function CourseCatalog() {
   const [immediateAccess, setImmediateAccess] = useState(false);
   const [withdrawalAcknowledged, setWithdrawalAcknowledged] = useState(false);
   const [presentationVideo, setPresentationVideo] = useState<string | null>(null);
+  const [checkoutLoading, setCheckoutLoading] = useState(false);
+  const [checkoutError, setCheckoutError] = useState("");
 
   const filtered = useMemo(
     () => allCourses.filter((item) => item.family === family && item.name.toLowerCase().includes(search.toLowerCase())),
@@ -114,6 +117,94 @@ export default function CourseCatalog() {
     setPresentationVideo(null);
   }
 
+  async function checkout() {
+    if (!course || !plan) return;
+
+    if (course.name !== "Competencias y Productividad Digital, Ofimática e IA") {
+      setCheckoutError("La matrícula online de este curso todavía no está disponible.");
+      return;
+    }
+
+    if (!terms || !privacy || (immediateAccess && !withdrawalAcknowledged)) {
+      setCheckoutError("Acepta primero los consentimientos obligatorios.");
+      return;
+    }
+
+    const slugByPlan: Record<string, string> = {
+      "Competencias digitales": "ofimatica-esencial",
+      "Ofimática": "ofimatica-estandar",
+      "Productividad Digital e IA": "ofimatica-premium",
+    };
+
+    const courseSlug = slugByPlan[plan.name];
+
+    if (!courseSlug) {
+      setCheckoutError("No se ha podido identificar la modalidad seleccionada.");
+      return;
+    }
+
+    setCheckoutLoading(true);
+    setCheckoutError("");
+
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const accessToken = sessionData.session?.access_token;
+
+      if (!accessToken) {
+        setCheckoutError("Debes iniciar sesión antes de continuar al pago.");
+        setCheckoutLoading(false);
+        return;
+      }
+
+      const response = await fetch("/api/redsys", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({
+          courseSlug,
+          termsAccepted: terms,
+          privacyAcknowledged: privacy,
+          immediateAccess,
+          withdrawalAcknowledged,
+          marketingConsent: marketing,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "No se pudo preparar el pago.");
+      }
+
+      const form = document.createElement("form");
+      form.method = "POST";
+      form.action = data.redsysUrl;
+
+      const fields = {
+        Ds_SignatureVersion: data.dsSignatureVersion,
+        Ds_MerchantParameters: data.dsMerchantParameters,
+        Ds_Signature: data.signature,
+      };
+
+      Object.entries(fields).forEach(([name, value]) => {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = name;
+        input.value = String(value);
+        form.appendChild(input);
+      });
+
+      document.body.appendChild(form);
+      form.submit();
+    } catch (error) {
+      setCheckoutError(
+        error instanceof Error ? error.message : "No se pudo iniciar el pago."
+      );
+      setCheckoutLoading(false);
+    }
+  }
   return (
     <section id="catalogo" className="original-catalog">
       <div className="original-catalog-heading">
@@ -292,11 +383,33 @@ export default function CourseCatalog() {
 
             <div className="original-checkout">
               <span>Total <b>{plan.price}</b></span>
-              <button disabled>Matriculación disponible próximamente</button>
+              {course.name === "Competencias y Productividad Digital, Ofimática e IA" ? (
+                <button
+                  type="button"
+                  onClick={checkout}
+                  disabled={
+                    checkoutLoading ||
+                    !terms ||
+                    !privacy ||
+                    (immediateAccess && !withdrawalAcknowledged)
+                  }
+                >
+                  {checkoutLoading ? "Conectando con el banco…" : "Continuar al pago"}
+                </button>
+              ) : (
+                <button disabled>Matriculación disponible próximamente</button>
+              )}
             </div>
+            {checkoutError && (
+              <p className="original-checkout-error" role="alert">
+                {checkoutError}
+              </p>
+            )}
           </section>
         </div>
       )}
     </section>
   );
 }
+
+

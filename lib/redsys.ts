@@ -1,4 +1,4 @@
-// lib/redsys.ts
+﻿// lib/redsys.ts
 import crypto from "crypto";
 
 function base64UrlEncode(buffer: Buffer) {
@@ -10,44 +10,78 @@ function base64UrlEncode(buffer: Buffer) {
 }
 
 export function decodeMerchantParameters(dsMerchantParameters: string) {
-  const decoded = Buffer.from(dsMerchantParameters, "base64").toString("utf8");
+  const normalized = dsMerchantParameters
+    .replace(/-/g, "+")
+    .replace(/_/g, "/");
+
+  const decoded = Buffer.from(normalized, "base64").toString("utf8");
   return JSON.parse(decoded);
 }
 
-function encrypt3DES(order: string, secretKeyBase64: string) {
-  const key = Buffer.from(secretKeyBase64, "base64");
-  const iv = Buffer.alloc(8, 0);
+function normalizeSigningKey(signingKey: string) {
+  if (signingKey.length >= 16) {
+    return signingKey.slice(0, 16);
+  }
 
-  const cipher = crypto.createCipheriv("des-ede3-cbc", key, iv);
-  cipher.setAutoPadding(true);
+  return signingKey.padEnd(16, "0");
+}
 
-  return Buffer.concat([
+function diversifyKey(order: string, signingKey: string) {
+  const key = Buffer.from(normalizeSigningKey(signingKey), "utf8");
+  const iv = Buffer.alloc(16, 0);
+
+  const cipher = crypto.createCipheriv("aes-128-cbc", key, iv);
+
+  const encrypted = Buffer.concat([
     cipher.update(order, "utf8"),
     cipher.final(),
   ]);
+
+  return encrypted;
+}
+
+export function createRedsysSignature(
+  dsMerchantParameters: string,
+  order: string,
+  signingKey: string
+) {
+  const diversifiedKey = diversifyKey(order, signingKey);
+
+  const hmac = crypto
+    .createHmac("sha512", diversifiedKey)
+    .update(dsMerchantParameters, "utf8")
+    .digest();
+
+  return base64UrlEncode(hmac);
 }
 
 export function createNotifySignature(
   dsMerchantParameters: string,
   order: string,
-  secretKeyBase64: string
+  signingKey: string
 ) {
-  const key = encrypt3DES(order, secretKeyBase64);
-  const hmac = crypto.createHmac("sha512", key);
-  hmac.update(dsMerchantParameters);
-
-  return base64UrlEncode(hmac.digest());
+  return createRedsysSignature(
+    dsMerchantParameters,
+    order,
+    signingKey
+  );
 }
 
 export function normalizeSignature(signature: string) {
-  return signature.replace(/\s/g, "");
+  return signature
+    .replace(/\s/g, "")
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=+$/, "");
 }
 
 export function safeEqual(a: string, b: string) {
   const aBuffer = Buffer.from(a);
   const bBuffer = Buffer.from(b);
 
-  if (aBuffer.length !== bBuffer.length) return false;
+  if (aBuffer.length !== bBuffer.length) {
+    return false;
+  }
 
   return crypto.timingSafeEqual(aBuffer, bBuffer);
 }
