@@ -1,4 +1,4 @@
-﻿import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import crypto from "crypto";
 import { courses, type CourseSlug } from "@/lib/courses";
 import { getSupabase } from "@/lib/supabase/server";
@@ -195,7 +195,7 @@ export async function POST(req: Request) {
   };
 
   const dsMerchantParameters =
-    base64UrlEncode(JSON.stringify(params));
+    Buffer.from(JSON.stringify(params), "utf8").toString("base64");
 
   const signature = createRedsysSignature(
     dsMerchantParameters,
@@ -212,9 +212,11 @@ export async function POST(req: Request) {
 
   return NextResponse.json({
     redsysUrl,
-    dsSignatureVersion: "HMAC_SHA512_V2",
+    dsSignatureVersion: "HMAC_SHA256_V1",
     dsMerchantParameters,
     signature,
     order,
   });
 }
+
+
