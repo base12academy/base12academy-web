@@ -252,13 +252,10 @@ export async function POST(req: Request) {
     new URL(req.url).origin;
 
   /*
-   * En TEST enviamos 10,00 €.
-   * En producción se utiliza el precio real.
-   */
-  const paymentAmount =
-    environment === "TEST"
-      ? 1000
-      : course.priceInCents;
+ * Se utiliza el precio oficial configurado para cada paquete.
+ */
+  
+  const paymentAmount = course.priceInCents;
 
   const params = {
     DS_MERCHANT_AMOUNT:
