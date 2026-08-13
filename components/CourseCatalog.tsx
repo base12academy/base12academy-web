@@ -394,7 +394,7 @@ export default function CourseCatalog() {
                     (immediateAccess && !withdrawalAcknowledged)
                   }
                 >
-                  {checkoutLoading ? "Conectando con el banco…" : "Continuar al pago"}
+                  {checkoutLoading ? "Conectando con el banco…" : "Continuar con la suscripción"}
                 </button>
               ) : (
                 <button disabled>Matriculación disponible próximamente</button>
