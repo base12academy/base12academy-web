@@ -224,7 +224,7 @@ const dsMerchantParameters =
 });
   return NextResponse.json({
     redsysUrl,
-    dsSignatureVersion: "HMAC_SHA512_V2",
+    dsSignatureVersion: "HMAC_SHA256_V1",
     dsMerchantParameters,
     signature,
     order,
