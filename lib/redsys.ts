@@ -28,7 +28,12 @@ function diversifyKey(
   order: string,
   signingKey: string
 ) {
-  const key = Buffer.from(signingKey, "base64");
+  const normalizedKey =
+  signingKey.length >= 16
+    ? signingKey.slice(0, 16)
+    : signingKey.padEnd(16, "0");
+
+const key = Buffer.from(normalizedKey, "utf8");
   const iv = Buffer.alloc(16, 0);
 
   const cipher = crypto.createCipheriv(
