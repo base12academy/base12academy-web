@@ -174,28 +174,28 @@ export async function POST(req: Request) {
     process.env.NEXT_PUBLIC_SITE_URL ||
     new URL(req.url).origin;
 
-  const params = {
-    Ds_Merchant_Amount: String(course.priceInCents),
-    Ds_Merchant_Order: order,
-    Ds_Merchant_MerchantCode: merchantCode,
-    Ds_Merchant_Currency: "978",
-    Ds_Merchant_TransactionType: "0",
-    Ds_Merchant_Terminal: terminal,
-    Ds_Merchant_MerchantData:
-      Buffer.from(
-        JSON.stringify(merchantData),
-        "utf8"
-      ).toString("base64"),
-    Ds_Merchant_MerchantURL:
-      `${origin}/api/redsys/notify`,
-    Ds_Merchant_UrlOK:
-      `${origin}/pago-ok`,
-    Ds_Merchant_UrlKO:
-      `${origin}/pago-error`,
-  };
+ const params = {
+  DS_MERCHANT_AMOUNT: String(course.priceInCents),
+  DS_MERCHANT_ORDER: order,
+  DS_MERCHANT_MERCHANTCODE: merchantCode,
+  DS_MERCHANT_CURRENCY: "978",
+  DS_MERCHANT_TRANSACTIONTYPE: "0",
+  DS_MERCHANT_TERMINAL: terminal,
+  DS_MERCHANT_MERCHANTDATA:
+    Buffer.from(
+      JSON.stringify(merchantData),
+      "utf8"
+    ).toString("base64"),
+  DS_MERCHANT_MERCHANTURL:
+    `${origin}/api/redsys/notify`,
+  DS_MERCHANT_URLOK:
+    `${origin}/pago-ok`,
+  DS_MERCHANT_URLKO:
+    `${origin}/pago-error`,
+};
 
-  const dsMerchantParameters =
-    Buffer.from(JSON.stringify(params), "utf8").toString("base64");
+const dsMerchantParameters =
+  base64UrlEncode(JSON.stringify(params));
 
   const signature = createRedsysSignature(
     dsMerchantParameters,
@@ -212,7 +212,7 @@ export async function POST(req: Request) {
 
   return NextResponse.json({
     redsysUrl,
-    dsSignatureVersion: "HMAC_SHA256_V1",
+    dsSignatureVersion: "HMAC_SHA512_V2",
     dsMerchantParameters,
     signature,
     order,
