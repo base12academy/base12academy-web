@@ -58,10 +58,12 @@ export function createRedsysSignature(
     signingKey
   );
 
-  return crypto
-    .createHmac("sha256", diversifiedKey)
-    .update(dsMerchantParameters, "utf8")
-    .digest("base64");
+ return crypto
+  .createHmac("sha256", diversifiedKey)
+  .update(dsMerchantParameters, "utf8")
+  .digest("base64")
+  .replace(/\+/g, "-")
+  .replace(/\//g, "_");
 }
 
 export function createNotifySignature(
