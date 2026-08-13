@@ -1,26 +1,55 @@
 // lib/redsys.ts
 import crypto from "crypto";
 
-export function decodeMerchantParameters(dsMerchantParameters: string) {
+export function decodeMerchantParameters(
+  dsMerchantParameters: string
+) {
   const normalized = dsMerchantParameters
     .replace(/-/g, "+")
     .replace(/_/g, "/");
 
-  const decoded = Buffer.from(normalized, "base64").toString("utf8");
+  const decoded = Buffer.from(
+    normalized,
+    "base64"
+  ).toString("utf8");
+
   return JSON.parse(decoded);
 }
 
-function diversifyKey(order: string, signingKey: string) {
+function base64UrlEncode(buffer: Buffer) {
+  return buffer
+    .toString("base64")
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=+$/, "");
+}
+
+function diversifyKey(
+  order: string,
+  signingKey: string
+) {
   const key = Buffer.from(signingKey, "base64");
-  const iv = Buffer.alloc(8, 0);
+  const iv = Buffer.alloc(16, 0);
+
+  const cipher = crypto.createCipheriv(
+    "aes-128-cbc",
+    key,
+    iv
+  );
+
+  cipher.setAutoPadding(false);
 
   const orderBuffer = Buffer.from(order, "utf8");
-  const paddedLength = Math.ceil(orderBuffer.length / 8) * 8;
-  const paddedOrder = Buffer.alloc(paddedLength, 0);
-  orderBuffer.copy(paddedOrder);
 
-  const cipher = crypto.createCipheriv("des-ede3-cbc", key, iv);
-  cipher.setAutoPadding(false);
+  const paddedLength =
+    Math.ceil(orderBuffer.length / 16) * 16;
+
+  const paddedOrder = Buffer.alloc(
+    paddedLength,
+    0
+  );
+
+  orderBuffer.copy(paddedOrder);
 
   return Buffer.concat([
     cipher.update(paddedOrder),
@@ -33,12 +62,17 @@ export function createRedsysSignature(
   order: string,
   signingKey: string
 ) {
-  const diversifiedKey = diversifyKey(order, signingKey);
+  const diversifiedKey = diversifyKey(
+    order,
+    signingKey
+  );
 
-  return crypto
-    .createHmac("sha256", diversifiedKey)
+  const hmac = crypto
+    .createHmac("sha512", diversifiedKey)
     .update(dsMerchantParameters, "utf8")
-    .digest("base64");
+    .digest();
+
+  return base64UrlEncode(hmac);
 }
 
 export function createNotifySignature(
@@ -53,7 +87,9 @@ export function createNotifySignature(
   );
 }
 
-export function normalizeSignature(signature: string) {
+export function normalizeSignature(
+  signature: string
+) {
   return signature
     .replace(/\s/g, "")
     .replace(/\+/g, "-")
@@ -61,7 +97,10 @@ export function normalizeSignature(signature: string) {
     .replace(/=+$/, "");
 }
 
-export function safeEqual(a: string, b: string) {
+export function safeEqual(
+  a: string,
+  b: string
+) {
   const aBuffer = Buffer.from(a);
   const bBuffer = Buffer.from(b);
 
@@ -69,5 +108,8 @@ export function safeEqual(a: string, b: string) {
     return false;
   }
 
-  return crypto.timingSafeEqual(aBuffer, bBuffer);
+  return crypto.timingSafeEqual(
+    aBuffer,
+    bBuffer
+  );
 }
