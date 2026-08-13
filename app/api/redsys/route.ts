@@ -19,12 +19,49 @@ function generateOrder() {
 }
 
 export async function POST(req: Request) {
-  const merchantCode = process.env.REDSYS_MERCHANT_CODE;
-  const terminal = process.env.REDSYS_TERMINAL;
-  const signingKey = process.env.REDSYS_SIGNING_KEY;
-  const environment = process.env.REDSYS_ENVIRONMENT || "test";
+ 
+  const apiKey = process.env.REDSYS_API_KEY;
+  if (!apiKey) {
+  return NextResponse.json(
+    { error: "Falta la variable REDSYS_API_KEY" },
+    { status: 500 }
+  );
+}
 
-  if (!merchantCode || !terminal || !signingKey) {
+const separator = apiKey.indexOf("_");
+
+if (separator <= 0) {
+  return NextResponse.json(
+    { error: "REDSYS_API_KEY no tiene un formato válido" },
+    { status: 500 }
+  );
+}
+
+const environment = apiKey.slice(0, separator);
+const encodedPayload = apiKey.slice(separator + 1);
+
+const normalizedPayload = encodedPayload
+  .replace(/-/g, "+")
+  .replace(/_/g, "/");
+
+const paddedPayload =
+  normalizedPayload +
+  "=".repeat((4 - (normalizedPayload.length % 4)) % 4);
+
+const decodedPayload = Buffer.from(
+  paddedPayload,
+  "base64"
+).toString("utf8");
+
+const [merchantCode, terminal, signingKey] =
+  decodedPayload.split("_");
+
+if (!merchantCode || !terminal || !signingKey) {
+  return NextResponse.json(
+    { error: "REDSYS_API_KEY no contiene credenciales válidas" },
+    { status: 500 }
+  );
+}
     return NextResponse.json(
       {
         error:
@@ -209,7 +246,7 @@ const dsMerchantParameters =
   );
 
   const isLive =
-    environment.toLowerCase() === "live";
+  environment.toUpperCase() === "PROD";
 
   const redsysUrl = isLive
     ? "https://sis.redsys.es/sis/realizarPago"
