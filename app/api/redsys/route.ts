@@ -174,8 +174,13 @@ export async function POST(req: Request) {
     process.env.NEXT_PUBLIC_SITE_URL ||
     new URL(req.url).origin;
 
- const params = {
-  DS_MERCHANT_AMOUNT: String(course.priceInCents),
+const paymentAmount =
+  environment.toLowerCase() === "test"
+    ? 1000
+    : course.priceInCents;
+
+const params = {
+  DS_MERCHANT_AMOUNT: String(paymentAmount),
   DS_MERCHANT_ORDER: order,
   DS_MERCHANT_MERCHANTCODE: merchantCode,
   DS_MERCHANT_CURRENCY: "978",
