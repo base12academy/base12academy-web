@@ -29,11 +29,15 @@ function diversifyKey(
   signingKey: string
 ) {
   const normalizedKey =
-  signingKey.length >= 16
-    ? signingKey.slice(0, 16)
-    : signingKey.padEnd(16, "0");
+    signingKey.length >= 16
+      ? signingKey.slice(0, 16)
+      : signingKey.padEnd(16, "0");
 
-const key = Buffer.from(normalizedKey, "utf8");
+  const key = Buffer.from(
+    normalizedKey,
+    "utf8"
+  );
+
   const iv = Buffer.alloc(16, 0);
 
   const cipher = crypto.createCipheriv(
@@ -42,22 +46,13 @@ const key = Buffer.from(normalizedKey, "utf8");
     iv
   );
 
-  cipher.setAutoPadding(false);
-
-  const orderBuffer = Buffer.from(order, "utf8");
-
-  const paddedLength =
-    Math.ceil(orderBuffer.length / 16) * 16;
-
-  const paddedOrder = Buffer.alloc(
-    paddedLength,
-    0
+  const orderBuffer = Buffer.from(
+    order,
+    "utf8"
   );
 
-  orderBuffer.copy(paddedOrder);
-
   return Buffer.concat([
-    cipher.update(paddedOrder),
+    cipher.update(orderBuffer),
     cipher.final(),
   ]);
 }
@@ -73,8 +68,14 @@ export function createRedsysSignature(
   );
 
   const hmac = crypto
-    .createHmac("sha512", diversifiedKey)
-    .update(dsMerchantParameters, "utf8")
+    .createHmac(
+      "sha512",
+      diversifiedKey
+    )
+    .update(
+      dsMerchantParameters,
+      "utf8"
+    )
     .digest();
 
   return base64UrlEncode(hmac);
@@ -109,7 +110,9 @@ export function safeEqual(
   const aBuffer = Buffer.from(a);
   const bBuffer = Buffer.from(b);
 
-  if (aBuffer.length !== bBuffer.length) {
+  if (
+    aBuffer.length !== bBuffer.length
+  ) {
     return false;
   }
 
