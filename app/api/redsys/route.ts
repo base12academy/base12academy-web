@@ -200,7 +200,10 @@ const params = {
 };
 
 const dsMerchantParameters =
-  base64UrlEncode(JSON.stringify(params));
+  Buffer.from(
+    JSON.stringify(params),
+    "utf8"
+  ).toString("base64");
 
   const signature = createRedsysSignature(
     dsMerchantParameters,
