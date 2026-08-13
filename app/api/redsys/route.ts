@@ -215,6 +215,13 @@ const dsMerchantParameters =
     ? "https://sis.redsys.es/sis/realizarPago"
     : "https://sis-t.redsys.es:25443/sis/realizarPago";
 
+  console.log("REDSYS_DEBUG", {
+  environment,
+  paymentAmount,
+  order,
+  params,
+  dsMerchantParameters,
+});
   return NextResponse.json({
     redsysUrl,
     dsSignatureVersion: "HMAC_SHA512_V2",
