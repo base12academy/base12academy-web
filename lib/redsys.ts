@@ -18,7 +18,11 @@ function diversifyKey(
 ) {
   // La clave se recibe tal como aparece en el módulo de administración.
   // La decodificación forma parte del algoritmo HMAC_SHA256_V1.
-  const key = Buffer.from(signingKey, "base64");
+  const normalizedKey = signingKey
+  .replace(/-/g, "+")
+  .replace(/_/g, "/");
+
+const key = Buffer.from(normalizedKey, "base64");
 
   const iv = Buffer.alloc(8, 0);
 
