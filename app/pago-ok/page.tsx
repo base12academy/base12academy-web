@@ -1,151 +1,111 @@
-import Link from "next/link";
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function PagoOkPage() {
+  const router = useRouter();
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [autoplayBlocked, setAutoplayBlocked] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    if (!video) return;
+
+    const startVideo = async () => {
+      try {
+        await video.play();
+      } catch {
+        setAutoplayBlocked(true);
+      }
+    };
+
+    startVideo();
+  }, []);
+
+  const handleVideoEnded = () => {
+    router.replace("/onboarding");
+  };
+
+  const handleStartVideo = async () => {
+    const video = videoRef.current;
+
+    if (!video) return;
+
+    try {
+      await video.play();
+      setAutoplayBlocked(false);
+    } catch {
+      setAutoplayBlocked(true);
+    }
+  };
+
   return (
     <main
       style={{
         minHeight: "100vh",
-        background: "#f8fafc",
-        padding: "48px 24px",
-        color: "#111827",
+        background: "#06152f",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "24px",
       }}
     >
       <section
         style={{
-          maxWidth: "720px",
-          margin: "0 auto",
+          width: "100%",
+          maxWidth: "1200px",
+          position: "relative",
         }}
       >
-        <div
+        <video
+          ref={videoRef}
+          src="/videos/VB00_Bienvenida_Comunicaciones.mp4"
+          autoPlay
+          playsInline
+          controls
+          onEnded={handleVideoEnded}
           style={{
-            background: "#ffffff",
-            border: "1px solid #e5e7eb",
-            borderRadius: "20px",
-            padding: "32px",
-            boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
+            width: "100%",
+            display: "block",
+            borderRadius: "18px",
+            background: "#000000",
+            boxShadow: "0 24px 70px rgba(0,0,0,0.35)",
           }}
-        >
+        />
+
+        {autoplayBlocked && (
           <div
             style={{
-              display: "inline-block",
-              background: "#dcfce7",
-              color: "#166534",
-              border: "1px solid #86efac",
-              borderRadius: "999px",
-              padding: "8px 14px",
-              fontWeight: "bold",
-              fontSize: "14px",
-              marginBottom: "16px",
+              position: "absolute",
+              inset: 0,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              background: "rgba(6,21,47,0.72)",
+              borderRadius: "18px",
             }}
           >
-            Pago realizado correctamente
+            <button
+              type="button"
+              onClick={handleStartVideo}
+              style={{
+                border: "none",
+                borderRadius: "999px",
+                padding: "18px 30px",
+                background: "#2563eb",
+                color: "#ffffff",
+                fontSize: "18px",
+                fontWeight: 700,
+                cursor: "pointer",
+                boxShadow: "0 10px 30px rgba(0,0,0,0.25)",
+              }}
+            >
+              Comenzar bienvenida
+            </button>
           </div>
-
-          <h1
-            style={{
-              fontSize: "36px",
-              lineHeight: "1.2",
-              fontWeight: "bold",
-              marginBottom: "16px",
-            }}
-          >
-            Ya puedes entrar a Base12 Academy
-          </h1>
-
-          <p
-            style={{
-              fontSize: "18px",
-              lineHeight: "1.7",
-              color: "#4b5563",
-              marginBottom: "24px",
-            }}
-          >
-            Hemos recibido tu pago. Si tu operación ha sido aprobada, tu acceso
-            queda activado automáticamente.
-          </p>
-
-          <div
-            style={{
-              background: "#f9fafb",
-              border: "1px solid #e5e7eb",
-              borderRadius: "16px",
-              padding: "20px",
-              marginBottom: "24px",
-            }}
-          >
-            <p style={{ fontWeight: "bold", marginBottom: "12px" }}>
-              Qué hacer ahora
-            </p>
-
-            <div style={{ display: "grid", gap: "10px", lineHeight: "1.7" }}>
-              <p>1. Entra con tu usuario.</p>
-              <p>2. Accede al dashboard.</p>
-              <p>3. Empieza a estudiar Historia de España.</p>
-            </div>
-          </div>
-
-          <div style={{ display: "grid", gap: "12px", marginBottom: "20px" }}>
-  <Link
-    href="/login"
-    style={{
-      display: "inline-block",
-      textAlign: "center",
-      padding: "16px 20px",
-      background: "#2563eb",
-      color: "white",
-      borderRadius: "14px",
-      textDecoration: "none",
-      fontWeight: "bold",
-    }}
-  >
-    Entrar ahora
-  </Link>
-
-  <Link
-    href="/dashboard/seleccion-temas"
-    style={{
-      display: "inline-block",
-      textAlign: "center",
-      padding: "14px 20px",
-      background: "#111827",
-      color: "white",
-      borderRadius: "14px",
-      textDecoration: "none",
-      fontWeight: "bold",
-    }}
-  >
-    Elegir mis 25 temas
-  </Link>
-
-  <Link
-    href="/dashboard"
-    style={{
-      display: "inline-block",
-      textAlign: "center",
-      padding: "14px 20px",
-      background: "#e5e7eb",
-      color: "#111827",
-      borderRadius: "14px",
-      textDecoration: "none",
-      fontWeight: "bold",
-    }}
-  >
-    Ir al dashboard
-  </Link>
-</div>
-
-          <p
-            style={{
-              fontSize: "13px",
-              color: "#6b7280",
-              lineHeight: "1.7",
-            }}
-          >
-            Si acabas de pagar y todavía no ves el acceso, entra de nuevo con tu
-            cuenta y espera unos segundos. Si el problema continúa, escribe a
-            base12academy@gmail.com o WhatsApp 604 896 760.
-          </p>
-        </div>
+        )}
       </section>
     </main>
   );
