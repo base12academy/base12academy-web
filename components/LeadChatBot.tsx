@@ -398,3 +398,4 @@ const quickButtonStyle: React.CSSProperties = {
   cursor: "pointer",
   whiteSpace: "nowrap",
 };
+
