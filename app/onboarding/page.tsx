@@ -161,31 +161,107 @@ export default function OnboardingPage() {
     }
   }
 
-  async function handleTelegramCheck() {
-    try {
-      setSaving(true);
-      setPageError("");
-      setTelegramMessage("");
+ async function handleTelegramCheck() {
+  let telegramWindow: Window | null = null;
 
-      const data = await saveOnboardingStep({
+  try {
+    telegramWindow = window.open("about:blank", "_blank");
+
+    setSaving(true);
+    setPageError("");
+    setTelegramMessage("");
+
+    const { data: sessionData } = await supabase.auth.getSession();
+    const accessToken = sessionData.session?.access_token;
+
+    if (!accessToken) {
+      throw new Error("Debes iniciar sesión para continuar.");
+    }
+
+    const linkResponse = await fetch("/api/telegram/link", {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
+    const linkData = await linkResponse.json();
+
+    if (!linkResponse.ok) {
+      throw new Error(
+        linkData.error || "No se pudo preparar Telegram."
+      );
+    }
+
+    if (linkData.linked) {
+      telegramWindow?.close();
+
+      await saveOnboardingStep({
         step: "telegram",
       });
 
-      if (data.linked) {
-  setTelegramMessage("Telegram está vinculado correctamente.");
-  window.location.href = "/onboarding/videos";
-  return;
-}
-    } catch (error) {
-      setTelegramMessage(
-        error instanceof Error
-          ? error.message
-          : "Todavía no se ha podido comprobar la vinculación con Telegram."
-      );
-    } finally {
-      setSaving(false);
+      window.location.href = "/onboarding/videos";
+      return;
     }
+
+    if (!linkData.url) {
+      throw new Error("No se recibió el enlace de Telegram.");
+    }
+
+    if (telegramWindow) {
+      telegramWindow.location.href = linkData.url;
+    } else {
+      window.location.href = linkData.url;
+      return;
+    }
+
+    setTelegramMessage(
+      "Telegram se ha abierto en otra ventana. Pulsa «Iniciar» en el bot. Esta pantalla continuará automáticamente cuando la cuenta quede vinculada."
+    );
+
+    for (let attempt = 0; attempt < 60; attempt++) {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
+      const statusResponse = await fetch("/api/onboarding", {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+
+      if (!statusResponse.ok) {
+        continue;
+      }
+
+      const statusData = await statusResponse.json();
+
+      if (statusData.telegram?.linked) {
+        await saveOnboardingStep({
+          step: "telegram",
+        });
+
+        setTelegramMessage(
+          "Telegram está vinculado correctamente."
+        );
+
+        window.location.href = "/onboarding/videos";
+        return;
+      }
+    }
+
+    setTelegramMessage(
+      "La vinculación sigue pendiente. Si ya has pulsado «Iniciar» en Telegram, vuelve a pulsar «Vincular Telegram»."
+    );
+  } catch (error) {
+    telegramWindow?.close();
+
+    setTelegramMessage(
+      error instanceof Error
+        ? error.message
+        : "No se pudo completar la vinculación con Telegram."
+    );
+  } finally {
+    setSaving(false);
   }
+}
 
   const cardStyle: React.CSSProperties = {
     background: "#ffffff",
