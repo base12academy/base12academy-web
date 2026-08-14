@@ -267,7 +267,7 @@ export default function HomePage() {
         </div>
       </main>
 
-      <LeadChatBot />
+      <LeadChatBot attention />
     </>
   );
 }

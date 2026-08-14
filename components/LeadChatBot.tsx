@@ -2,13 +2,14 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export default function LeadChatBot() {
+const initialMessage =
+  "Asistente Base12: Hola 👋\n\nEstoy aquí para ayudarte a elegir bien.\n\nPuedo orientarte sobre:\n• Competencias, Productividad, Ofimática e IA\n• Bachillerato y PAU\n• Oposiciones\n• Modalidades, precios y duración\n• Acceso gratuito y contratación\n\nElige una pregunta o escríbeme lo que necesites.";
+
+export default function LeadChatBot({ attention = false }: { attention?: boolean }) {
   const [abierto, setAbierto] = useState(false);
   const [mensaje, setMensaje] = useState("");
   const [comunidad, setComunidad] = useState("");
-  const [chat, setChat] = useState<string[]>([
-    "Asistente Base12: Hola 👋\n\nEstoy aquí para ayudarte a elegir bien.\n\nPuedo orientarte sobre:\n• Bachillerato y PAU\n• Cursos online y certificados\n• Oposiciones\n• Modalidades, precios y descuentos\n• Acceso según tu comunidad\n\nSelecciona tu comunidad si lo deseas y pregúntame.",
-  ]);
+  const [chat, setChat] = useState<string[]>([initialMessage]);
 
   const chatRef = useRef<HTMLDivElement>(null);
 
@@ -52,11 +53,11 @@ export default function LeadChatBot() {
           (data.respuesta || "Ahora mismo no puedo responder.");
         return copia;
       });
-    } catch (error) {
+    } catch {
       setChat((prev) => {
         const copia = [...prev];
         copia[copia.length - 1] =
-            "Asistente Base12: Ahora mismo no puedo responder bien.\n\nPuedes consultar todos los cursos y precios en la sección Oferta formativa de esta misma página.";
+          "Asistente Base12: Ahora mismo no puedo responder bien.\n\nPuedes consultar los accesos, precios y vídeos de presentación en la sección Oferta formativa de esta misma página.";
         return copia;
       });
     }
@@ -64,8 +65,83 @@ export default function LeadChatBot() {
 
   return (
     <>
+      <style jsx global>{`
+        @keyframes b12CommercialPulse {
+          0%,
+          100% {
+            box-shadow:
+              0 10px 25px rgba(0, 0, 0, 0.2),
+              0 0 0 0 rgba(37, 99, 235, 0);
+            transform: scale(1);
+          }
+          50% {
+            box-shadow:
+              0 10px 25px rgba(0, 0, 0, 0.2),
+              0 0 0 13px rgba(37, 99, 235, 0.22);
+            transform: scale(1.055);
+          }
+        }
+
+        @keyframes b12CommercialHint {
+          0% {
+            opacity: 0;
+            transform: translateX(8px);
+          }
+          12%,
+          72% {
+            opacity: 1;
+            transform: translateX(0);
+          }
+          100% {
+            opacity: 0;
+            transform: translateX(4px);
+          }
+        }
+
+        .b12-commercial-attention {
+          animation: b12CommercialPulse 2.2s ease-in-out 1.3s 3;
+        }
+
+        .b12-commercial-hint {
+          animation: b12CommercialHint 7.2s ease-in-out 1.1s 1 both;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .b12-commercial-attention,
+          .b12-commercial-hint {
+            animation: none !important;
+          }
+        }
+      `}</style>
+
+      {attention && !abierto && (
+        <div
+          className="b12-commercial-hint"
+          style={{
+            position: "fixed",
+            bottom: "35px",
+            right: "96px",
+            padding: "8px 12px",
+            borderRadius: "999px",
+            background: "white",
+            color: "#111827",
+            border: "1px solid #d1d5db",
+            boxShadow: "0 8px 24px rgba(0,0,0,0.12)",
+            fontSize: "13px",
+            fontWeight: 700,
+            whiteSpace: "nowrap",
+            zIndex: 999,
+            pointerEvents: "none",
+          }}
+        >
+          ¿Te ayudo a elegir?
+        </div>
+      )}
+
       <button
         onClick={() => setAbierto(!abierto)}
+        aria-label={abierto ? "Cerrar asistente Base12" : "Abrir asistente Base12"}
+        className={attention ? "b12-commercial-attention" : undefined}
         style={{
           position: "fixed",
           bottom: "20px",
@@ -160,56 +236,62 @@ export default function LeadChatBot() {
             >
               <button
                 onClick={() =>
-                  enviarMensaje("¿Cómo funciona Base12 Academy?")
+                  enviarMensaje("¿Qué incluye Competencias Digitales?")
                 }
                 style={quickButtonStyle}
               >
-                Cómo funciona
+                Competencias Digitales
               </button>
 
               <button
                 onClick={() =>
-                  enviarMensaje("¿Qué incluyen los paquetes y modalidades disponibles?")
+                  enviarMensaje("¿Qué incluye el acceso Ofimática?")
                 }
                 style={quickButtonStyle}
               >
-                Qué incluye
+                Ofimática
               </button>
 
               <button
                 onClick={() =>
-                  enviarMensaje("¿Cuáles son los precios y descuentos?")
+                  enviarMensaje("¿Qué incluye Productividad Digital e IA?")
                 }
                 style={quickButtonStyle}
               >
-                Precio y acceso
+                Productividad Digital e IA
               </button>
 
               <button
                 onClick={() =>
-                  enviarMensaje("¿Qué oposiciones hay para mi comunidad?")
+                  enviarMensaje(
+                    "¿Qué diferencias hay entre Competencias Digitales, Ofimática y Productividad Digital e IA?"
+                  )
                 }
                 style={quickButtonStyle}
               >
-                Mi comunidad
+                Comparar los 3 accesos
               </button>
 
               <button
                 onClick={() =>
-                  enviarMensaje("¿Puedo probar Competencias y Productividad Digital, Ofimática e IA antes de matricularme?")
+                  enviarMensaje(
+                    "¿Cuánto cuesta y cuánto dura cada acceso de Competencias, Productividad, Ofimática e IA?"
+                  )
                 }
                 style={quickButtonStyle}
               >
-                Unidad gratuita
+                Precio y duración
               </button>
 
               <button
                 onClick={() =>
-                  enviarMensaje("¿Cómo funcionan el desistimiento y el acceso inmediato?")
+                  enviarMensaje(
+                    "¿Qué puedo probar gratis antes de suscribirme a Competencias, Productividad, Ofimática e IA?"
+                  )
                 }
                 style={quickButtonStyle}
               >
-                Contratación
+                Probar gratis
               </button>
             </div>
           </div>
@@ -273,7 +355,7 @@ export default function LeadChatBot() {
                   enviarMensaje();
                 }
               }}
-              placeholder="Pregúntame por cursos, precios o tu comunidad..."
+              placeholder="Pregúntame por accesos, precios o qué te conviene..."
               style={{
                 flex: 1,
                 border: "1px solid #d1d5db",
@@ -285,6 +367,7 @@ export default function LeadChatBot() {
 
             <button
               onClick={() => enviarMensaje()}
+              aria-label="Enviar mensaje"
               style={{
                 background: "#111827",
                 color: "white",
