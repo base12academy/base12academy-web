@@ -73,7 +73,7 @@ export default function OnboardingVideosPage() {
         } else if (data.currentStep === "vb03") {
           setIndex(2);
         } else if (data.currentStep === "completed") {
-          router.replace("/dashboard");
+          router.replace("/dashboard/ofimatica");
           return;
         } else {
           setIndex(0);
@@ -159,7 +159,7 @@ export default function OnboardingVideosPage() {
       if (index < onboardingVideos.length - 1) {
         setIndex((current) => current + 1);
       } else {
-        router.replace("/dashboard");
+        router.replace("/dashboard/ofimatica");
       }
     } catch (err) {
       setError(
