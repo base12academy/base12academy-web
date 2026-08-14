@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 const initialMessage =
-  "Asistente Base12: Hola ðŸ‘‹\n\nEstoy aquÃ­ para ayudarte a elegir bien.\n\nPuedo orientarte sobre:\nâ€¢ Competencias, Productividad, OfimÃ¡tica e IA\nâ€¢ Bachillerato y PAU\nâ€¢ Oposiciones\nâ€¢ Modalidades, precios y duraciÃ³n\nâ€¢ Acceso gratuito y contrataciÃ³n\n\nElige una pregunta o escrÃ­beme lo que necesites.";
+  "Asistente Base12: Hola 👋\n\nEstoy aquí para ayudarte a elegir bien.\n\nPuedo orientarte sobre:\n• Competencias, Productividad, Ofimática e IA\n• Bachillerato y PAU\n• Oposiciones\n• Modalidades, precios y duración\n• Acceso gratuito y contratación\n\nElige una pregunta o escríbeme lo que necesites.";
 
 export default function LeadChatBot({ attention = false }: { attention?: boolean }) {
   const [abierto, setAbierto] = useState(false);
@@ -100,7 +100,7 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
       setChat((prev) => {
         const copia = [...prev];
         copia[copia.length - 1] =
-          "Asistente Base12: Ahora mismo no puedo responder bien.\n\nPuedes consultar los accesos, precios y vÃ­deos de presentaciÃ³n en la secciÃ³n Oferta formativa de esta misma pÃ¡gina.";
+          "Asistente Base12: Ahora mismo no puedo responder bien.\n\nPuedes consultar los accesos, precios y vídeos de presentación en la sección Oferta formativa de esta misma página.";
         return copia;
       });
     }
@@ -177,7 +177,7 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
             pointerEvents: "none",
           }}
         >
-          Â¿Te ayudo a elegir?
+          ¿Te ayudo a elegir?
         </div>
       )}
 
@@ -254,13 +254,13 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
                   fontSize: "14px",
                 }}
               >
-                <option value="">Tu comunidad autÃ³noma (opcional)</option>
-                <option value="andalucia">AndalucÃ­a</option>
+                <option value="">Tu comunidad autónoma (opcional)</option>
+                <option value="andalucia">Andalucía</option>
                 <option value="madrid">Madrid</option>
                 <option value="valencia">Comunidad Valenciana</option>
-                <option value="castilla_leon">Castilla y LeÃ³n</option>
+                <option value="castilla_leon">Castilla y León</option>
                 <option value="galicia">Galicia</option>
-                <option value="aragon">AragÃ³n</option>
+                <option value="aragon">Aragón</option>
                 <option value="navarra">Navarra</option>
                 <option value="rioja">La Rioja</option>
                 <option value="cantabria">Cantabria</option>
@@ -279,7 +279,7 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
             >
               <button
                 onClick={() =>
-                  enviarMensaje("Â¿QuÃ© incluye Competencias Digitales?")
+                  enviarMensaje("¿Qué incluye Competencias Digitales?")
                 }
                 style={quickButtonStyle}
               >
@@ -288,16 +288,16 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
 
               <button
                 onClick={() =>
-                  enviarMensaje("Â¿QuÃ© incluye el acceso OfimÃ¡tica?")
+                  enviarMensaje("¿Qué incluye el acceso Ofimática?")
                 }
                 style={quickButtonStyle}
               >
-                OfimÃ¡tica
+                Ofimática
               </button>
 
               <button
                 onClick={() =>
-                  enviarMensaje("Â¿QuÃ© incluye Productividad Digital e IA?")
+                  enviarMensaje("¿Qué incluye Productividad Digital e IA?")
                 }
                 style={quickButtonStyle}
               >
@@ -307,7 +307,7 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
               <button
                 onClick={() =>
                   enviarMensaje(
-                    "Â¿QuÃ© diferencias hay entre Competencias Digitales, OfimÃ¡tica y Productividad Digital e IA?"
+                    "¿Qué diferencias hay entre Competencias Digitales, Ofimática y Productividad Digital e IA?"
                   )
                 }
                 style={quickButtonStyle}
@@ -318,18 +318,18 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
               <button
                 onClick={() =>
                   enviarMensaje(
-                    "Â¿CuÃ¡nto cuesta y cuÃ¡nto dura cada acceso de Competencias, Productividad, OfimÃ¡tica e IA?"
+                    "¿Cuánto cuesta y cuánto dura cada acceso de Competencias, Productividad, Ofimática e IA?"
                   )
                 }
                 style={quickButtonStyle}
               >
-                Precio y duraciÃ³n
+                Precio y duración
               </button>
 
               <button
                 onClick={() =>
                   enviarMensaje(
-                    "Â¿QuÃ© puedo probar gratis antes de suscribirme a Competencias, Productividad, OfimÃ¡tica e IA?"
+                    "¿Qué puedo probar gratis antes de suscribirme a Competencias, Productividad, Ofimática e IA?"
                   )
                 }
                 style={quickButtonStyle}
@@ -398,7 +398,7 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
                   enviarMensaje();
                 }
               }}
-              placeholder="PregÃºntame por accesos, precios o quÃ© te conviene..."
+              placeholder="Pregúntame por accesos, precios o qué te conviene..."
               style={{
                 flex: 1,
                 border: "1px solid #d1d5db",
@@ -421,7 +421,7 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
                 fontWeight: "bold",
               }}
             >
-              â†’
+              →
             </button>
           </div>
         </div>
