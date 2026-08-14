@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, Suspense, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 
@@ -14,7 +14,7 @@ type ClaimResponse = {
   code?: string;
 };
 
-export default function AltaPage() {
+function AltaContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -636,6 +636,32 @@ export default function AltaPage() {
         </div>
       </section>
     </main>
+  );
+}
+
+
+export default function AltaPage() {
+  return (
+    <Suspense
+      fallback={
+        <main
+          style={{
+            minHeight: "100vh",
+            background: "#f5f8fc",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "28px 18px",
+            fontFamily: "Arial, Helvetica, sans-serif",
+            color: "#0f172a",
+          }}
+        >
+          Preparando tu acceso...
+        </main>
+      }
+    >
+      <AltaContent />
+    </Suspense>
   );
 }
 
