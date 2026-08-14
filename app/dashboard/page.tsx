@@ -1,8 +1,7 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import LeadChatBot from "@/components/LeadChatBot";
 import { supabase } from "../../lib/supabaseClient";
 import { temasHistoria } from "@/lib/temas";
 import { introVideos } from "@/lib/intro-videos";
@@ -16,33 +15,33 @@ const COLORS = {
 const cursos = [
   {
     id: "historia-espana",
-    titulo: "Historia de España",
-    precio: "17 € / mes",
-    descripcion: "Preparación completa para la PAU con vídeos, test, apoyo al estudio y entrenamiento para responder mejor.",
+    titulo: "Historia de EspaÃ±a",
+    precio: "17 â‚¬ / mes",
+    descripcion: "PreparaciÃ³n completa para la PAU con vÃ­deos, test, apoyo al estudio y entrenamiento para responder mejor.",
   },
   {
     id: "filosofia",
-    titulo: "Historia de la Filosofía",
-    precio: "17 € / mes",
-    descripcion: "Curso estructurado por temas para repaso, comprensión de autores y preparación de examen.",
+    titulo: "Historia de la FilosofÃ­a",
+    precio: "17 â‚¬ / mes",
+    descripcion: "Curso estructurado por temas para repaso, comprensiÃ³n de autores y preparaciÃ³n de examen.",
   },
   {
     id: "protocolo-social",
     titulo: "Protocolo Social y Empresarial",
-    precio: "39 €",
-    descripcion: "Formación práctica para situaciones sociales y profesionales.",
+    precio: "39 â‚¬",
+    descripcion: "FormaciÃ³n prÃ¡ctica para situaciones sociales y profesionales.",
   },
   {
     id: "protocolo-institucional",
     titulo: "Protocolo Institucional",
-    precio: "39 €",
-    descripcion: "Normas, ceremonial y organización en entornos institucionales.",
+    precio: "39 â‚¬",
+    descripcion: "Normas, ceremonial y organizaciÃ³n en entornos institucionales.",
   },
   {
     id: "gestion-tiempo",
-    titulo: "Gestión Eficaz del Tiempo para Profesionales",
-    precio: "35 €",
-    descripcion: "Mejora tu organización, productividad y planificación diaria.",
+    titulo: "GestiÃ³n Eficaz del Tiempo para Profesionales",
+    precio: "35 â‚¬",
+    descripcion: "Mejora tu organizaciÃ³n, productividad y planificaciÃ³n diaria.",
   },
 ];
 
@@ -187,7 +186,7 @@ if (hasAccess && temasActivos.length === 0) {
           </h1>
 
           <p style={{ fontSize: "18px", lineHeight: "1.7", color: "#4b5563", marginBottom: "24px" }}>
-            Tu acceso ya está activo. Antes de empezar, debes seleccionar tus 25 temas.
+            Tu acceso ya estÃ¡ activo. Antes de empezar, debes seleccionar tus 25 temas.
           </p>
 
           <Link
@@ -227,11 +226,11 @@ if (hasAccess && temasActivos.length === 0) {
             padding: "64px 24px 32px",
           }}
         >
-          <h1 style={{ fontSize: "48px", fontWeight: "bold" }}>Área de estudio</h1>
+          <h1 style={{ fontSize: "48px", fontWeight: "bold" }}>Ãrea de estudio</h1>
 
           <div style={{ marginTop: "20px", marginBottom: "24px" }}>
             <p style={{ fontWeight: "bold", marginBottom: "8px" }}>
-              Tu comunidad autónoma
+              Tu comunidad autÃ³noma
             </p>
 
             <select
@@ -245,12 +244,12 @@ if (hasAccess && temasActivos.length === 0) {
               }}
             >
               <option value="">Selecciona tu comunidad</option>
-              <option value="andalucia">Andalucía</option>
+              <option value="andalucia">AndalucÃ­a</option>
               <option value="madrid">Madrid</option>
               <option value="valencia">Comunidad Valenciana</option>
-              <option value="castilla_leon">Castilla y León</option>
+              <option value="castilla_leon">Castilla y LeÃ³n</option>
               <option value="galicia">Galicia</option>
-              <option value="aragon">Aragón</option>
+              <option value="aragon">AragÃ³n</option>
               <option value="navarra">Navarra</option>
               <option value="rioja">La Rioja</option>
               <option value="cantabria">Cantabria</option>
@@ -407,7 +406,7 @@ if (hasAccess && temasActivos.length === 0) {
             >
               {earnedBadges.length === 0 ? (
                 <p style={{ color: COLORS.muted }}>
-                  Todavía no has conseguido medallas. Empieza por el test del Tema 1.
+                  TodavÃ­a no has conseguido medallas. Empieza por el test del Tema 1.
                 </p>
               ) : (
                 <div
@@ -424,7 +423,7 @@ if (hasAccess && temasActivos.length === 0) {
           </section>
 
           <section style={{ marginTop: "40px" }}>
-            <h2>Vídeos de introducción</h2>
+            <h2>VÃ­deos de introducciÃ³n</h2>
 
             <div
               style={{
@@ -464,7 +463,7 @@ if (hasAccess && temasActivos.length === 0) {
 
           <section style={{ marginTop: "40px" }}>
             <h2 style={{ fontSize: "28px", fontWeight: "bold", marginBottom: "16px" }}>
-              Cómo estudiar este curso
+              CÃ³mo estudiar este curso
             </h2>
 
             <div
@@ -477,24 +476,24 @@ if (hasAccess && temasActivos.length === 0) {
               }}
             >
               <p style={{ marginBottom: "16px" }}>
-                Este curso está diseñado en tres fases para maximizar el aprendizaje y
+                Este curso estÃ¡ diseÃ±ado en tres fases para maximizar el aprendizaje y
                 preparar la PAU de forma eficaz:
               </p>
 
               <p>
-                <strong>Fase 1 — Comprensión</strong>
+                <strong>Fase 1 â€” ComprensiÃ³n</strong>
                 <br />
-                Estudia el tema, revisa el índice y comprende el contenido.
+                Estudia el tema, revisa el Ã­ndice y comprende el contenido.
               </p>
 
               <p>
-                <strong>Fase 2 — Fijación</strong>
+                <strong>Fase 2 â€” FijaciÃ³n</strong>
                 <br />
                 Realiza los test hasta alcanzar al menos un 80% de aciertos.
               </p>
 
               <p>
-                <strong>Fase 3 — Dominio</strong>
+                <strong>Fase 3 â€” Dominio</strong>
                 <br />
                 Supera las preguntas cortas y las pruebas tipo PAU.
               </p>
@@ -508,7 +507,7 @@ if (hasAccess && temasActivos.length === 0) {
 
   <p style={{ marginBottom: "20px", color: "#4b5563", maxWidth: "720px" }}>
     Ya tienes acceso al Tema 1. Activa el curso completo para acceder a todos los temas,
-    test, preguntas de desarrollo y preparación completa para la PAU.
+    test, preguntas de desarrollo y preparaciÃ³n completa para la PAU.
   </p>
 
   <div
@@ -543,7 +542,7 @@ if (hasAccess && temasActivos.length === 0) {
           <p style={{ fontSize: "14px", color: "#6b7280", marginBottom: "6px" }}>
             {curso.id === "historia-espana"
               ? "Acceso completo inmediato"
-              : "En actualización"}
+              : "En actualizaciÃ³n"}
           </p>
 
           <p style={{ fontSize: "16px", fontWeight: "600", marginBottom: "16px" }}>
@@ -605,7 +604,7 @@ if (hasAccess && temasActivos.length === 0) {
                   width: "fit-content",
                 }}
               >
-                En actualización
+                En actualizaciÃ³n
               </span>
             </>
           )}
@@ -742,7 +741,7 @@ if (hasAccess && temasActivos.length === 0) {
                             whiteSpace: "nowrap",
                           }}
                         >
-                          ✅ Superado
+                          âœ… Superado
                         </span>
                       ) : best > 0 ? (
                         <span
@@ -806,7 +805,7 @@ if (hasAccess && temasActivos.length === 0) {
         fontWeight: 600,
       }}
     >
-      🔒 Bloqueado
+      ðŸ”’ Bloqueado
     </span>
   )}
 
@@ -836,7 +835,7 @@ if (hasAccess && temasActivos.length === 0) {
         fontWeight: 600,
       }}
     >
-      🔒 Test
+      ðŸ”’ Test
     </span>
   )}
 
@@ -868,7 +867,7 @@ if (hasAccess && temasActivos.length === 0) {
         border: "1px solid #e5e7eb",
       }}
     >
-      🔒 Cortas
+      ðŸ”’ Cortas
     </span>
   )}
 </div>
@@ -884,7 +883,7 @@ if (hasAccess && temasActivos.length === 0) {
                           fontSize: "14px",
                         }}
                       >
-                        🔒 Activa el curso para acceder al contenido completo.
+                        ðŸ”’ Activa el curso para acceder al contenido completo.
                       </div>
                     ) : null}
                   </div>
@@ -907,30 +906,29 @@ if (hasAccess && temasActivos.length === 0) {
           <p style={{ marginBottom: "16px", fontWeight: "bold" }}>Base12 Academy</p>
 
           <p style={{ marginBottom: "8px", color: "#6b7280" }}>
-            Imagen Digital Ménace, S. L. U.
+            Imagen Digital MÃ©nace, S. L. U.
           </p>
           <p style={{ marginBottom: "8px", color: "#6b7280" }}>CIF: B21746086</p>
           <p style={{ marginBottom: "8px", color: "#6b7280" }}>
-            Calle Lanuza, 8 · 29009 Málaga
+            Calle Lanuza, 8 Â· 29009 MÃ¡laga
           </p>
           <p style={{ marginBottom: "16px", color: "#6b7280" }}>
-            Contacto técnico: base12academy@gmail.com
+            Contacto tÃ©cnico: base12academy@gmail.com
           </p>
 
           <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
             <Link href="/aviso-legal">Aviso legal</Link>
-            <Link href="/privacidad">Política de privacidad</Link>
-            <Link href="/cookies">Política de cookies</Link>
-            <Link href="/terminos-contratacion">Términos de contratación</Link>
+            <Link href="/privacidad">PolÃ­tica de privacidad</Link>
+            <Link href="/cookies">PolÃ­tica de cookies</Link>
+            <Link href="/terminos-contratacion">TÃ©rminos de contrataciÃ³n</Link>
           </div>
 
           <p style={{ marginTop: "16px", fontSize: "14px", color: "#9ca3af" }}>
-            © 2026 Base12 Academy. Todos los derechos reservados.
+            Â© 2026 Base12 Academy. Todos los derechos reservados.
           </p>
         </div>
       </footer>
 
-      <LeadChatBot />
     </>
   );
 }
