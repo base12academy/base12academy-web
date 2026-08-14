@@ -1,4 +1,4 @@
-/* Base12 Academy - identidad visual original */
+﻿/* Base12 Academy - identidad visual original */
 :root {
   --b12-bg: #f6f2e9;
   --b12-page: #f4f7fb;
@@ -235,7 +235,7 @@ button, input, select { font: inherit; }
 .original-plan-includes-heading > strong { color: #1d4ed8; font-size: 1.25rem; white-space: nowrap; }
 .original-plan-includes ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px 22px; margin: 16px 0 0; padding: 0; list-style: none; }
 .original-plan-includes li { position: relative; padding-left: 24px; color: #24364f; line-height: 1.45; }
-.original-plan-includes li::before { content: "✓"; position: absolute; left: 0; color: #0b4ea2; font-weight: 900; }
+.original-plan-includes li::before { content: "âœ“"; position: absolute; left: 0; color: #0b4ea2; font-weight: 900; }
 .original-legal { margin-top: 18px; border: 1px solid #dbe2ea; border-radius: 15px; overflow: hidden; }
 .original-legal h3 { margin: 0; padding: 13px 16px; background: #f8fafc; color: #0f172a; font-size: 15px; }
 .original-legal details { border-top: 1px solid #e2e8f0; }
@@ -263,4 +263,53 @@ button, input, select { font: inherit; }
   .original-plan-includes ul { grid-template-columns: 1fr; }
   .original-modal { padding: 24px 18px; }
   .original-checkout { align-items: stretch; flex-direction: column; }
+}
+
+/* Base12 mobile home adjustments */
+
+
+
+@media (max-width: 720px) {
+  .b12-header-inner {
+    flex-wrap: wrap !important;
+    gap: 8px 10px !important;
+    padding: 6px 12px !important;
+  }
+
+  .b12-header-inner > nav {
+    order: 3;
+    width: 100%;
+    gap: 12px !important;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+
+  .b12-header-inner > nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .b12-header-inner > div:last-child {
+    margin-left: auto;
+  }
+
+  .b12-home-layout {
+    grid-template-columns: minmax(0, 1fr) !important;
+    padding: 150px 12px 48px !important;
+    gap: 20px !important;
+  }
+
+  .b12-home-hero {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .b12-home-video-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .b12-home-aside {
+    position: static !important;
+    top: auto !important;
+    width: 100% !important;
+  }
 }

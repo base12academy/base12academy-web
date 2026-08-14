@@ -1,22 +1,22 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import type { CSSProperties } from "react";
 import LeadChatBot from "@/components/LeadChatBot";
 import CourseCatalog from "@/components/CourseCatalog";
 
 const videos = [
   {
-    title: "Qué es Base12",
-    text: "Una presentación general de la plataforma y de sus aulas de formación.",
+    title: "QuÃ© es Base12",
+    text: "Una presentaciÃ³n general de la plataforma y de sus aulas de formaciÃ³n.",
     src: "/videos/que-es-base12.mp4",
   },
   {
-    title: "Método Base12",
-    text: "Cómo Base12 organiza el aprendizaje para avanzar con estructura, comprensión y seguridad.",
+    title: "MÃ©todo Base12",
+    text: "CÃ³mo Base12 organiza el aprendizaje para avanzar con estructura, comprensiÃ³n y seguridad.",
     src: "/videos/metodo-base12.mp4",
   },
   {
-    title: "Cómo funciona",
-    text: "Una explicación sencilla del funcionamiento de la plataforma, las aulas, los recursos y el acceso.",
+    title: "CÃ³mo funciona",
+    text: "Una explicaciÃ³n sencilla del funcionamiento de la plataforma, las aulas, los recursos y el acceso.",
     src: "/videos/como-funciona-base12.mp4",
   },
 ];
@@ -26,7 +26,7 @@ export default function HomePage() {
     <>
       <main style={styles.page}>
         <header style={styles.header}>
-          <div style={styles.headerInner}>
+          <div className="b12-header-inner" style={styles.headerInner}>
             <Link href="/" style={styles.brand}>
               <img
                 src="/images/base12-logo.png"
@@ -37,7 +37,7 @@ export default function HomePage() {
 
             <nav style={styles.nav}>
               <a href="#videos-presentacion" style={styles.navLink}>
-                Presentación
+                PresentaciÃ³n
               </a>
 
               <a href="#catalogo" style={styles.navLink}>
@@ -55,18 +55,18 @@ export default function HomePage() {
             </nav>
 
             <div style={styles.accessLinks}>
-              <Link href="/admin" style={styles.adminLink}>Administración</Link>
+              <Link href="/admin" style={styles.adminLink}>AdministraciÃ³n</Link>
               <Link href="/login" style={styles.loginButton}>Acceso alumnos</Link>
             </div>
           </div>
         </header>
 
-        <div style={styles.layout}>
+        <div className="b12-home-layout" style={styles.layout}>
           <section style={styles.content}>
-            <section style={styles.hero}>
+            <section className="b12-home-hero" style={styles.hero}>
               <div style={styles.heroTextColumn}>
                 <div style={styles.label}>
-                  Bachillerato · PAU · Oposiciones · Cursos online
+                  Bachillerato Â· PAU Â· Oposiciones Â· Cursos online
                 </div>
 
                 <h1 style={styles.h1}>
@@ -74,15 +74,15 @@ export default function HomePage() {
                 </h1>
 
                 <p style={styles.heroText}>
-                  Base12 Academy reúne distintas líneas de formación: Bachillerato
-                  y PAU, Oposiciones y Cursos online. Cada aula tendrá su propio
-                  método, sus propios recursos y una preparación adaptada al
+                  Base12 Academy reÃºne distintas lÃ­neas de formaciÃ³n: Bachillerato
+                  y PAU, Oposiciones y Cursos online. Cada aula tendrÃ¡ su propio
+                  mÃ©todo, sus propios recursos y una preparaciÃ³n adaptada al
                   objetivo del estudiante.
                 </p>
 
                 <div style={styles.heroButtons}>
                   <a href="#videos-presentacion" style={styles.secondaryButton}>
-                    Ver presentación
+                    Ver presentaciÃ³n
                   </a>
                 </div>
               </div>
@@ -95,7 +95,7 @@ export default function HomePage() {
                   style={styles.heroVideo}
                 />
                 <div style={styles.videoFallback}>
-                  Vídeo de presentación Base12
+                  VÃ­deo de presentaciÃ³n Base12
                 </div>
               </div>
             </section>
@@ -103,13 +103,13 @@ export default function HomePage() {
             <CourseCatalog />
 
             <section id="videos-presentacion" style={styles.videoSection}>
-              <h2 style={styles.h2}>Vídeos de presentación</h2>
+              <h2 style={styles.h2}>VÃ­deos de presentaciÃ³n</h2>
               <p style={styles.subtitle}>
-                Conoce qué es Base12 Academy, cómo funciona y cuál es su método
+                Conoce quÃ© es Base12 Academy, cÃ³mo funciona y cuÃ¡l es su mÃ©todo
                 de trabajo.
               </p>
 
-              <div style={styles.cards}>
+              <div className="b12-home-video-grid" style={styles.cards}>
                 {videos.map((video) => (
                   <article key={video.title} style={styles.videoCard}>
                     <video
@@ -132,11 +132,11 @@ export default function HomePage() {
               <div style={styles.footerInner}>
                 <p style={styles.footerBrand}>Base12 Academy</p>
 
-                <p style={styles.footerText}>Imagen Digital Ménace, S. L. U.</p>
+                <p style={styles.footerText}>Imagen Digital MÃ©nace, S. L. U.</p>
                 <p style={styles.footerText}>CIF: B21746086</p>
-                <p style={styles.footerText}>Calle Lanuza, 8 · 29009 Málaga</p>
+                <p style={styles.footerText}>Calle Lanuza, 8 Â· 29009 MÃ¡laga</p>
                 <p style={styles.footerText}>
-                  Contacto técnico: base12academy@gmail.com
+                  Contacto tÃ©cnico: base12academy@gmail.com
                 </p>
 
                 <div style={styles.footerLinks}>
@@ -144,36 +144,36 @@ export default function HomePage() {
                     Aviso legal
                   </Link>
                   <Link href="/privacidad" style={styles.footerLink}>
-                    Política de privacidad
+                    PolÃ­tica de privacidad
                   </Link>
                   <Link href="/cookies" style={styles.footerLink}>
-                    Política de cookies
+                    PolÃ­tica de cookies
                   </Link>
                   <Link
                     href="/terminos-contratacion"
                     style={styles.footerLink}
                   >
-                    Términos de contratación
+                    TÃ©rminos de contrataciÃ³n
                   </Link>
                 </div>
 
                 <p style={styles.footerCopy}>
-                  © 2026 Base12 Academy. Todos los derechos reservados.
+                  Â© 2026 Base12 Academy. Todos los derechos reservados.
                 </p>
               </div>
             </footer>
           </section>
 
-          <aside style={styles.aside}>
+          <aside className="b12-home-aside" style={styles.aside}>
   <div style={styles.trustBox}>
     <p style={styles.sideLabel}>Decide con seguridad</p>
 
     <h3 style={styles.sideTitle}>
-      Una experiencia docente real convertida en método
+      Una experiencia docente real convertida en mÃ©todo
     </h3>
 
     <p style={styles.sideIntro}>
-      Base12 Academy nace de años de enseñanza, acompañamiento académico y
+      Base12 Academy nace de aÃ±os de enseÃ±anza, acompaÃ±amiento acadÃ©mico y
       trabajo con alumnos reales.
     </p>
 
@@ -184,14 +184,14 @@ export default function HomePage() {
       </div>
 
       <div style={styles.trustItem}>
-        <strong style={styles.trustNumber}>11 años</strong>
+        <strong style={styles.trustNumber}>11 aÃ±os</strong>
         <span style={styles.trustText}>de experiencia docente</span>
       </div>
 
       <div style={styles.trustItem}>
         <strong style={styles.trustNumber}>Doctor</strong>
         <span style={styles.trustText}>
-          con formación en Historia, Teología, Pedagogía y Alta Dirección
+          con formaciÃ³n en Historia, TeologÃ­a, PedagogÃ­a y Alta DirecciÃ³n
         </span>
       </div>
     </div>
@@ -201,66 +201,66 @@ export default function HomePage() {
     <p style={styles.sideLabel}>Preguntas frecuentes</p>
 
     <details style={styles.faqItem}>
-      <summary style={styles.faqQuestion}>¿Qué es Base12 Academy?</summary>
+      <summary style={styles.faqQuestion}>Â¿QuÃ© es Base12 Academy?</summary>
       <p style={styles.faqAnswer}>
-        Una plataforma de formación pensada para estudiar con estructura,
+        Una plataforma de formaciÃ³n pensada para estudiar con estructura,
         avanzar con seguridad y comprender mejor lo que se aprende.
       </p>
     </details>
 
     <details style={styles.faqItem}>
       <summary style={styles.faqQuestion}>
-        ¿Base12 sustituye a mi profesor?
+        Â¿Base12 sustituye a mi profesor?
       </summary>
       <p style={styles.faqAnswer}>
         No. Base12 complementa las clases, ordena los contenidos y ayuda al
-        alumno a estudiar con más método.
+        alumno a estudiar con mÃ¡s mÃ©todo.
       </p>
     </details>
 
     <details style={styles.faqItem}>
       <summary style={styles.faqQuestion}>
-        ¿Qué diferencia hay con estudiar solo?
+        Â¿QuÃ© diferencia hay con estudiar solo?
       </summary>
       <p style={styles.faqAnswer}>
-        Base12 ofrece orientación, vídeos de apoyo, materiales organizados y
+        Base12 ofrece orientaciÃ³n, vÃ­deos de apoyo, materiales organizados y
         pruebas para comprobar si realmente se avanza.
       </p>
     </details>
 
     <details style={styles.faqItem}>
       <summary style={styles.faqQuestion}>
-        ¿Tengo que estudiar más temario?
+        Â¿Tengo que estudiar mÃ¡s temario?
       </summary>
       <p style={styles.faqAnswer}>
-        No se trata de añadir carga sin sentido, sino de comprender mejor el
+        No se trata de aÃ±adir carga sin sentido, sino de comprender mejor el
         contexto, las causas, las consecuencias y las relaciones importantes.
       </p>
     </details>
 
     <details style={styles.faqItem}>
       <summary style={styles.faqQuestion}>
-        ¿Qué paquete debería elegir?
+        Â¿QuÃ© paquete deberÃ­a elegir?
       </summary>
       <p style={styles.faqAnswer}>
-        Depende de tu situación: apoyo para la asignatura, preparación PAU o
-        acompañamiento más completo. La idea es elegir según la necesidad real.
+        Depende de tu situaciÃ³n: apoyo para la asignatura, preparaciÃ³n PAU o
+        acompaÃ±amiento mÃ¡s completo. La idea es elegir segÃºn la necesidad real.
       </p>
     </details>
 
     <details style={styles.faqItem}>
       <summary style={styles.faqQuestion}>
-        ¿Qué significa “Consigue tu libertad”?
+        Â¿QuÃ© significa â€œConsigue tu libertadâ€?
       </summary>
       <p style={styles.faqAnswer}>
         Significa que aprender bien abre posibilidades. Cuando entiendes y
-        avanzas con seguridad, dependes menos del miedo y de la improvisación.
+        avanzas con seguridad, dependes menos del miedo y de la improvisaciÃ³n.
       </p>
     </details>
   </div>
 
   <div style={styles.quickBox}>
-    <p style={styles.sideLabel}>Acceso rápido</p>
+    <p style={styles.sideLabel}>Acceso rÃ¡pido</p>
     <a href="#catalogo" style={styles.quickPrimary}>Ver cursos y precios</a>
   </div>
 </aside>
@@ -673,3 +673,5 @@ faqAnswer: {
     borderRadius: 18,
   },
 };
+
+
