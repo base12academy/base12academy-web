@@ -10,8 +10,10 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
   const [mensaje, setMensaje] = useState("");
   const [comunidad, setComunidad] = useState("");
   const [chat, setChat] = useState<string[]>([initialMessage]);
+  const [showAttention, setShowAttention] = useState(false);
 
   const chatRef = useRef<HTMLDivElement>(null);
+  const attentionAudioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     if (chatRef.current) {
