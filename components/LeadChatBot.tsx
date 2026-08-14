@@ -160,6 +160,18 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
           animation: b12CommercialHint 7.2s ease-in-out 0s 1 both;
         }
 
+        @media (max-width: 600px) {
+          .b12-commercial-panel {
+            left: 10px !important;
+            right: 10px !important;
+            bottom: 76px !important;
+            width: auto !important;
+            height: calc(100dvh - 92px) !important;
+            max-height: none !important;
+            border-radius: 14px !important;
+            overscroll-behavior: contain;
+          }
+        }
         @media (prefers-reduced-motion: reduce) {
           .b12-commercial-attention,
           .b12-commercial-hint {
@@ -218,6 +230,7 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
 
       {abierto && (
         <div
+            className="b12-commercial-panel"
           style={{
             position: "fixed",
               bottom: "84px",
@@ -452,6 +465,7 @@ const quickButtonStyle: React.CSSProperties = {
   cursor: "pointer",
   whiteSpace: "nowrap",
 };
+
 
 
 
