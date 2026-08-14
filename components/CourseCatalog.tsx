@@ -1,7 +1,6 @@
 ﻿"use client";
 
 import { useMemo, useState } from "react";
-import { supabase } from "../lib/supabaseClient";
 
 type Family = "Bachillerato y PAU" | "Cursos online" | "Oposiciones";
 type Course = { family: Family; name: string; region?: string };
@@ -147,20 +146,10 @@ export default function CourseCatalog() {
     setCheckoutError("");
 
     try {
-      const { data: sessionData } = await supabase.auth.getSession();
-      const accessToken = sessionData.session?.access_token;
-
-      if (!accessToken) {
-        setCheckoutError("Debes iniciar sesión antes de continuar al pago.");
-        setCheckoutLoading(false);
-        return;
-      }
-
       const response = await fetch("/api/redsys", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
         },
         body: JSON.stringify({
           courseSlug,
@@ -411,5 +400,4 @@ export default function CourseCatalog() {
     </section>
   );
 }
-
 

@@ -2,17 +2,121 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { supabase } from "@/lib/supabaseClient";
 
 export default function PagoOkPage() {
   const router = useRouter();
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  const [checkoutToken, setCheckoutToken] = useState("");
+  const [paymentReady, setPaymentReady] = useState(false);
+  const [checkingPayment, setCheckingPayment] = useState(true);
   const [autoplayBlocked, setAutoplayBlocked] = useState(false);
   const [finishing, setFinishing] = useState(false);
   const [error, setError] = useState("");
 
   useEffect(() => {
+    let cancelled = false;
+    let timer: ReturnType<typeof setTimeout> | null = null;
+
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get("checkout")?.trim() ?? "";
+
+    if (!token) {
+      setCheckingPayment(false);
+      setError(
+        "No se ha encontrado la referencia de la compra."
+      );
+      return;
+    }
+
+    setCheckoutToken(token);
+
+    async function checkPayment(attempt = 0) {
+      try {
+        const response = await fetch(
+          `/api/checkout/status?checkout=${encodeURIComponent(
+            token
+          )}`,
+          {
+            cache: "no-store",
+          }
+        );
+
+        const data = await response.json().catch(() => ({}));
+
+        if (cancelled) return;
+
+        if (!response.ok) {
+          throw new Error(
+            data.error ||
+              "No se ha podido comprobar el pago."
+          );
+        }
+
+        if (data.linked) {
+          setCheckingPayment(false);
+          router.replace("/onboarding");
+          return;
+        }
+
+        if (data.paid) {
+          setCheckingPayment(false);
+
+          if (data.communicationsVideoCompleted) {
+            router.replace(
+              `/onboarding/alta?checkout=${encodeURIComponent(
+                token
+              )}`
+            );
+            return;
+          }
+
+          setPaymentReady(true);
+          return;
+        }
+
+        /*
+         * La notificación del banco puede llegar
+         * unos segundos después que el navegador.
+         */
+        if (attempt < 20) {
+          timer = setTimeout(
+            () => checkPayment(attempt + 1),
+            1500
+          );
+          return;
+        }
+
+        setCheckingPayment(false);
+        setError(
+          "El banco todavía no ha confirmado el pago. Espera unos segundos y vuelve a intentarlo."
+        );
+      } catch (err) {
+        if (cancelled) return;
+
+        setCheckingPayment(false);
+        setError(
+          err instanceof Error
+            ? err.message
+            : "No se ha podido comprobar el pago."
+        );
+      }
+    }
+
+    checkPayment();
+
+    return () => {
+      cancelled = true;
+
+      if (timer) {
+        clearTimeout(timer);
+      }
+    };
+  }, [router]);
+
+  useEffect(() => {
+    if (!paymentReady) return;
+
     const video = videoRef.current;
 
     if (!video) return;
@@ -20,60 +124,61 @@ export default function PagoOkPage() {
     const startVideo = async () => {
       try {
         await video.play();
+        setAutoplayBlocked(false);
       } catch {
         setAutoplayBlocked(true);
       }
     };
 
     startVideo();
-  }, []);
+  }, [paymentReady]);
 
-  const completeCommunicationsVideo = async () => {
-    if (finishing) return;
+  async function completeCommunicationsVideo() {
+    if (finishing || !checkoutToken) return;
 
     try {
       setFinishing(true);
       setError("");
 
-      const { data: sessionData } = await supabase.auth.getSession();
-      const accessToken = sessionData.session?.access_token;
-
-      if (!accessToken) {
-        router.replace("/login");
-        return;
-      }
-
-      const response = await fetch("/api/onboarding", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
-        },
-        body: JSON.stringify({
-          step: "communications_video",
-        }),
-      });
+      const response = await fetch(
+        "/api/checkout/status",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            checkout: checkoutToken,
+          }),
+        }
+      );
 
       const data = await response.json().catch(() => ({}));
 
       if (!response.ok) {
         throw new Error(
-          data.error || "No se pudo registrar el vídeo de bienvenida."
+          data.error ||
+            "No se pudo registrar la bienvenida."
         );
       }
 
-      router.replace("/onboarding");
+      router.replace(
+        `/onboarding/alta?checkout=${encodeURIComponent(
+          checkoutToken
+        )}`
+      );
     } catch (err) {
       setFinishing(false);
+
       setError(
         err instanceof Error
           ? err.message
-          : "No se pudo continuar con el onboarding."
+          : "No se pudo continuar con el alta."
       );
     }
-  };
+  }
 
-  const handleStartVideo = async () => {
+  async function handleStartVideo() {
     const video = videoRef.current;
 
     if (!video) return;
@@ -84,7 +189,94 @@ export default function PagoOkPage() {
     } catch {
       setAutoplayBlocked(true);
     }
-  };
+  }
+
+  if (checkingPayment) {
+    return (
+      <main
+        style={{
+          minHeight: "100vh",
+          background: "#06152f",
+          color: "#ffffff",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "24px",
+          fontFamily: "Arial, Helvetica, sans-serif",
+        }}
+      >
+        <div
+          style={{
+            textAlign: "center",
+            fontSize: "18px",
+            fontWeight: 700,
+          }}
+        >
+          Confirmando tu pago...
+        </div>
+      </main>
+    );
+  }
+
+  if (error && !paymentReady) {
+    return (
+      <main
+        style={{
+          minHeight: "100vh",
+          background: "#06152f",
+          color: "#ffffff",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "24px",
+          fontFamily: "Arial, Helvetica, sans-serif",
+        }}
+      >
+        <div
+          style={{
+            width: "100%",
+            maxWidth: "680px",
+            textAlign: "center",
+          }}
+        >
+          <h1
+            style={{
+              marginBottom: "16px",
+              fontSize: "28px",
+            }}
+          >
+            Estamos confirmando tu compra
+          </h1>
+
+          <p
+            style={{
+              lineHeight: 1.6,
+              opacity: 0.9,
+            }}
+          >
+            {error}
+          </p>
+
+          <button
+            type="button"
+            onClick={() => window.location.reload()}
+            style={{
+              marginTop: "18px",
+              border: "none",
+              borderRadius: "999px",
+              padding: "13px 22px",
+              background: "#2563eb",
+              color: "#ffffff",
+              fontWeight: 700,
+              cursor: "pointer",
+            }}
+          >
+            Volver a comprobar
+          </button>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main
@@ -95,6 +287,7 @@ export default function PagoOkPage() {
         alignItems: "center",
         justifyContent: "center",
         padding: "24px",
+        fontFamily: "Arial, Helvetica, sans-serif",
       }}
     >
       <section
@@ -116,7 +309,8 @@ export default function PagoOkPage() {
             display: "block",
             borderRadius: "18px",
             background: "#000000",
-            boxShadow: "0 24px 70px rgba(0,0,0,0.35)",
+            boxShadow:
+              "0 24px 70px rgba(0,0,0,0.35)",
           }}
         />
 
@@ -144,7 +338,6 @@ export default function PagoOkPage() {
                 fontSize: "18px",
                 fontWeight: 700,
                 cursor: "pointer",
-                boxShadow: "0 10px 30px rgba(0,0,0,0.25)",
               }}
             >
               Comenzar bienvenida
@@ -167,7 +360,7 @@ export default function PagoOkPage() {
               fontWeight: 700,
             }}
           >
-            Preparando tu acceso...
+            Preparando tu alta...
           </div>
         )}
 
@@ -180,29 +373,10 @@ export default function PagoOkPage() {
               background: "#fff1f2",
               border: "1px solid #fecdd3",
               color: "#9f1239",
-              fontFamily: "Arial, Helvetica, sans-serif",
-              fontSize: "14px",
               lineHeight: 1.5,
             }}
           >
             {error}
-
-            <button
-              type="button"
-              onClick={completeCommunicationsVideo}
-              style={{
-                marginLeft: "12px",
-                border: "none",
-                background: "#155eef",
-                color: "#ffffff",
-                borderRadius: "8px",
-                padding: "8px 14px",
-                fontWeight: 700,
-                cursor: "pointer",
-              }}
-            >
-              Reintentar
-            </button>
           </div>
         )}
       </section>

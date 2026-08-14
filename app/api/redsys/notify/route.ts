@@ -30,8 +30,12 @@ export async function POST(req: NextRequest) {
 
     if (!signingKey) {
       console.error("Falta REDSYS_SIGNING_KEY");
+
       return NextResponse.json(
-        { ok: false, error: "missing_signing_key" },
+        {
+          ok: false,
+          error: "missing_signing_key",
+        },
         { status: 500 }
       );
     }
@@ -53,11 +57,18 @@ export async function POST(req: NextRequest) {
       !dsSignature
     ) {
       return NextResponse.json(
-        { ok: false, error: "missing_params" },
+        {
+          ok: false,
+          error: "missing_params",
+        },
         { status: 400 }
       );
     }
 
+    /*
+     * Conservamos el sistema de verificación
+     * que ya utilizaba la notificación Redsys.
+     */
     if (dsSignatureVersion !== "HMAC_SHA512_V2") {
       console.error(
         "Versión de firma Redsys no admitida:",
@@ -65,7 +76,10 @@ export async function POST(req: NextRequest) {
       );
 
       return NextResponse.json(
-        { ok: false, error: "invalid_signature_version" },
+        {
+          ok: false,
+          error: "invalid_signature_version",
+        },
         { status: 400 }
       );
     }
@@ -82,7 +96,10 @@ export async function POST(req: NextRequest) {
 
     if (!order) {
       return NextResponse.json(
-        { ok: false, error: "missing_order" },
+        {
+          ok: false,
+          error: "missing_order",
+        },
         { status: 400 }
       );
     }
@@ -103,7 +120,10 @@ export async function POST(req: NextRequest) {
       console.error("Firma Redsys no válida");
 
       return NextResponse.json(
-        { ok: false, error: "invalid_signature" },
+        {
+          ok: false,
+          error: "invalid_signature",
+        },
         { status: 400 }
       );
     }
@@ -116,10 +136,11 @@ export async function POST(req: NextRequest) {
 
     const merchantData = decodeMerchantData(
       decoded.Ds_MerchantData ||
-      decoded.DS_MERCHANTDATA
+        decoded.DS_MERCHANTDATA
     );
 
-    const userId = merchantData?.userId;
+    const checkoutId =
+      merchantData?.checkoutId || "";
 
     const catalogSlug = (
       merchantData?.catalogSlug ||
@@ -129,49 +150,60 @@ export async function POST(req: NextRequest) {
 
     const course = courses[catalogSlug];
 
-    const supabase = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!
-    );
-
-    if (!userId) {
-      console.error(
-        "Pago recibido sin userId",
-        merchantData
-      );
-    }
-
-    const amount =
-      Number(
-        decoded.Ds_Amount ||
+    const amount = Number(
+      decoded.Ds_Amount ||
         decoded.DS_AMOUNT ||
         0
-      );
+    );
 
     const currency =
       decoded.Ds_Currency ||
       decoded.DS_CURRENCY ||
       "978";
 
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    );
+
+    /*
+     * Conservamos también un registro contable
+     * del intento de pago. Todavía no existe
+     * user_id porque el alumno se dará de alta
+     * después del pago.
+     */
     const { error: paymentError } =
       await supabase
         .from("pagos")
         .upsert(
           {
-            user_id: userId || null,
+            user_id: null,
             order_id: String(order),
+
             course_slug:
               course && "courseSlug" in course
                 ? course.courseSlug
                 : catalogSlug,
+
             amount,
             currency,
-            status: approved ? "paid" : "denied",
-            response_code: Number(dsResponse),
+
+            status: approved
+              ? "paid"
+              : "denied",
+
+            response_code:
+              Number(dsResponse),
+
             redsys_signature_version:
               dsSignatureVersion,
-            merchant_data: merchantData,
-            redsys_raw: decoded,
+
+            merchant_data:
+              merchantData,
+
+            redsys_raw:
+              decoded,
+
             paid_at: approved
               ? new Date().toISOString()
               : null,
@@ -188,24 +220,160 @@ export async function POST(req: NextRequest) {
       );
 
       return NextResponse.json(
-        { ok: false, error: "payment_record_failed" },
+        {
+          ok: false,
+          error: "payment_record_failed",
+        },
         { status: 500 }
       );
     }
 
-    if (!approved) {
-      return NextResponse.json({ ok: true });
-    }
-
-    if (!userId) {
+    /*
+     * A partir de aquí la referencia principal
+     * es checkout_orders, no el usuario.
+     */
+    if (!checkoutId) {
       console.error(
-        "Pago aprobado pero sin userId"
+        "Notificación Redsys sin checkoutId",
+        merchantData
       );
 
       return NextResponse.json(
-        { ok: false, error: "missing_user" },
+        {
+          ok: false,
+          error: "missing_checkout",
+        },
         { status: 400 }
       );
+    }
+
+    const {
+      data: checkoutOrder,
+      error: checkoutError,
+    } = await supabase
+      .from("checkout_orders")
+      .select(
+        "id, order_id, catalog_slug, amount_cents, status, linked_user_id"
+      )
+      .eq("id", checkoutId)
+      .eq("order_id", String(order))
+      .single();
+
+    if (
+      checkoutError ||
+      !checkoutOrder
+    ) {
+      console.error(
+        "No se ha encontrado el pedido previo",
+        checkoutError
+      );
+
+      return NextResponse.json(
+        {
+          ok: false,
+          error: "checkout_not_found",
+        },
+        { status: 400 }
+      );
+    }
+
+    /*
+     * Comprobamos que el producto que vuelve
+     * de Redsys sea el mismo que se preparó.
+     */
+    if (
+      checkoutOrder.catalog_slug !==
+      catalogSlug
+    ) {
+      console.error(
+        "El producto Redsys no coincide con el pedido",
+        {
+          checkout:
+            checkoutOrder.catalog_slug,
+          received:
+            catalogSlug,
+        }
+      );
+
+      return NextResponse.json(
+        {
+          ok: false,
+          error: "product_mismatch",
+        },
+        { status: 400 }
+      );
+    }
+
+    if (
+      amount !==
+      checkoutOrder.amount_cents
+    ) {
+      console.error(
+        "Importe Redsys no coincide con el pedido",
+        {
+          received:
+            amount,
+          expected:
+            checkoutOrder.amount_cents,
+        }
+      );
+
+      return NextResponse.json(
+        {
+          ok: false,
+          error: "amount_mismatch",
+        },
+        { status: 400 }
+      );
+    }
+
+    const now =
+      new Date().toISOString();
+
+    /*
+     * Si Redsys deniega el pago, dejamos
+     * constancia y termina el proceso.
+     */
+    if (!approved) {
+      const { error: deniedError } =
+        await supabase
+          .from("checkout_orders")
+          .update({
+            status: "denied",
+
+            redsys_response_code:
+              Number(dsResponse),
+
+            redsys_raw:
+              decoded,
+
+            updated_at:
+              now,
+          })
+          .eq(
+            "id",
+            checkoutOrder.id
+          );
+
+      if (deniedError) {
+        console.error(
+          "No se pudo marcar el pedido como denegado",
+          deniedError
+        );
+
+        return NextResponse.json(
+          {
+            ok: false,
+            error:
+              "checkout_update_failed",
+          },
+          { status: 500 }
+        );
+      }
+
+      return NextResponse.json({
+        ok: true,
+      });
     }
 
     if (!course) {
@@ -215,152 +383,66 @@ export async function POST(req: NextRequest) {
       );
 
       return NextResponse.json(
-        { ok: false, error: "unknown_product" },
-        { status: 400 }
-      );
-    }
-
-    if (
-      course.priceInCents != null &&
-      amount !== course.priceInCents
-    ) {
-      console.error(
-        "Importe Redsys no coincide con el curso",
         {
-          received: amount,
-          expected: course.priceInCents,
-        }
-      );
-
-      return NextResponse.json(
-        { ok: false, error: "amount_mismatch" },
+          ok: false,
+          error: "unknown_product",
+        },
         { status: 400 }
       );
     }
 
+    /*
+     * PAGO APROBADO.
+     *
+     * Todavía NO:
+     * - creamos usuario;
+     * - creamos matrícula;
+     * - creamos perfil;
+     * - asignamos contraseña.
+     *
+     * Solo marcamos el pedido como pagado.
+     */
     const {
-      data: acceptance,
-      error: acceptanceError,
+      error: paidCheckoutError,
     } = await supabase
-      .from("contract_acceptances")
-      .select(
-        "id, immediate_access_requested, withdrawal_acknowledged"
-      )
-      .eq("id", merchantData?.consentId || "")
-      .eq("order_id", String(order))
-      .eq("user_id", userId)
-      .single();
-
-    if (acceptanceError || !acceptance) {
-      console.error(
-        "Pago aprobado sin evidencia contractual válida",
-        acceptanceError
-      );
-
-      return NextResponse.json(
-        {
-          ok: false,
-          error: "missing_contract_evidence",
-        },
-        { status: 500 }
-      );
-    }
-
-    const paidAt = new Date();
-
-    const immediateAccess =
-      acceptance.immediate_access_requested &&
-      acceptance.withdrawal_acknowledged;
-
-    const startsAt = new Date(paidAt);
-
-    if (!immediateAccess) {
-      startsAt.setUTCDate(
-        startsAt.getUTCDate() + 14
-      );
-    }
-
-    const accessMonths =
-      "accessMonths" in course
-        ? course.accessMonths
-        : null;
-
-    const expiresAt = accessMonths
-      ? new Date(startsAt)
-      : null;
-
-    if (
-      expiresAt &&
-      accessMonths !== null
-    ) {
-      expiresAt.setUTCMonth(
-        expiresAt.getUTCMonth() +
-          accessMonths
-      );
-    }
-
-    const enrollment = {
-      user_id: userId,
-      course_slug:
-        "courseSlug" in course
-          ? course.courseSlug
-          : course.slug,
-      plan_slug:
-        "planSlug" in course
-          ? course.planSlug
-          : "standard",
-      status: immediateAccess
-        ? "active"
-        : "pending",
-      starts_at: startsAt.toISOString(),
-      expires_at:
-        expiresAt?.toISOString() || null,
-      payment_order_id: String(order),
-      amount_cents: amount,
-      consent_id: acceptance.id,
-      metadata: {
-        catalogSlug,
-        immediateAccess,
-      },
-      updated_at: paidAt.toISOString(),
-    };
-
-    const { error: enrollmentError } =
-      await supabase
-        .from("course_enrollments")
-        .upsert(enrollment, {
-          onConflict:
-            "user_id,course_slug,plan_slug",
-        });
-
-    if (enrollmentError) {
-      console.error(
-        "No se pudo activar la matrícula",
-        enrollmentError
-      );
-
-      return NextResponse.json(
-        {
-          ok: false,
-          error: "enrollment_failed",
-        },
-        { status: 500 }
-      );
-    }
-
-    await supabase
-      .from("contract_acceptances")
+      .from("checkout_orders")
       .update({
-        payment_confirmed_at:
-          paidAt.toISOString(),
-      })
-      .eq("id", acceptance.id);
+        status:
+          checkoutOrder.linked_user_id
+            ? "linked"
+            : "paid",
 
-    if (immediateAccess) {
-      await supabase
-        .from("perfiles")
-        .update({ acceso: true })
-        .eq("user_id", userId);
+        redsys_response_code:
+          Number(dsResponse),
+
+        redsys_raw:
+          decoded,
+
+        paid_at:
+          now,
+
+        updated_at:
+          now,
+      })
+      .eq(
+        "id",
+        checkoutOrder.id
+      );
+
+    if (paidCheckoutError) {
+      console.error(
+        "No se pudo confirmar el pedido pagado",
+        paidCheckoutError
+      );
+
+      return NextResponse.json(
+        {
+          ok: false,
+          error:
+            "checkout_payment_update_failed",
+        },
+        { status: 500 }
+      );
     }
 
     return NextResponse.json({
