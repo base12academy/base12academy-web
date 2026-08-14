@@ -29,6 +29,253 @@ function getBearerToken(request: NextRequest) {
   return authorization.slice(7);
 }
 
+function escapeHtml(value: unknown) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function formatEuro(amountCents: number) {
+  return new Intl.NumberFormat("es-ES", {
+    style: "currency",
+    currency: "EUR",
+  }).format(amountCents / 100);
+}
+
+function planName(planSlug: string) {
+  if (planSlug === "esencial") {
+    return "Competencias Digitales";
+  }
+
+  if (planSlug === "estandar") {
+    return "Ofimática";
+  }
+
+  if (planSlug === "premium") {
+    return "Productividad Digital e IA";
+  }
+
+  return planSlug;
+}
+
+function formatDate(date: Date) {
+  return new Intl.DateTimeFormat("es-ES", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  }).format(date);
+}
+
+type ConfirmationEmailInput = {
+  email: string;
+  fullName: string;
+  orderId: string;
+  planSlug: string;
+  amountCents: number;
+  accessMonths: number | null;
+  immediateAccess: boolean;
+  startsAt: Date;
+  expiresAt: Date | null;
+  termsAccepted: boolean;
+  privacyAcknowledged: boolean;
+  withdrawalAcknowledged: boolean;
+  marketingConsent: boolean;
+};
+
+async function sendPurchaseConfirmation(
+  input: ConfirmationEmailInput
+) {
+  const apiKey = process.env.RESEND_API_KEY;
+  const from = process.env.RESEND_FROM_EMAIL;
+
+  if (!apiKey || !from) {
+    console.warn(
+      "Correo de confirmación no enviado: faltan RESEND_API_KEY o RESEND_FROM_EMAIL."
+    );
+    return false;
+  }
+
+  const accessName = planName(input.planSlug);
+  const price = formatEuro(input.amountCents);
+  const activationText = input.immediateAccess
+    ? "Acceso inmediato solicitado y habilitado."
+    : `El acceso de pago se activará el ${formatDate(input.startsAt)}.`;
+
+  const expirationText = input.expiresAt
+    ? ` hasta el ${formatDate(input.expiresAt)}`
+    : "";
+
+  const durationText = input.accessMonths
+    ? `${input.accessMonths} meses${expirationText}`
+    : "Según las condiciones del acceso contratado";
+
+  const subject =
+    `Confirmación de contratación · ${accessName} · Base12 Academy`;
+
+  const text = [
+    `Hola ${input.fullName},`,
+    "",
+    "Tu contratación en Base12 Academy ha quedado registrada correctamente.",
+    "",
+    "RESUMEN DE LA CONTRATACIÓN",
+    "Curso: Competencias, Productividad, Ofimática e IA",
+    `Acceso: ${accessName}`,
+    `Importe pagado: ${price}`,
+    `Referencia del pedido: ${input.orderId}`,
+    `Duración del acceso: ${durationText}`,
+    `Activación: ${activationText}`,
+    "",
+    "ACEPTACIONES REGISTRADAS",
+    `Condiciones de contratación y normas de uso: ${input.termsAccepted ? "Aceptadas" : "No aceptadas"}`,
+    `Política de privacidad: ${input.privacyAcknowledged ? "Confirmada" : "No confirmada"}`,
+    `Inicio inmediato: ${input.immediateAccess ? "Solicitado" : "No solicitado"}`,
+    `Conocimiento de las consecuencias del inicio inmediato: ${input.withdrawalAcknowledged ? "Confirmado" : "No aplicable / no confirmado"}`,
+    `Comunicaciones comerciales opcionales: ${input.marketingConsent ? "Aceptadas" : "No aceptadas"}`,
+    "",
+    "TU CUENTA",
+    `Correo de acceso: ${input.email}`,
+    "Por seguridad, Base12 Academy no envía contraseñas por correo electrónico.",
+    "Puedes acceder a tu cuenta desde https://base12academy.es/login",
+    "",
+    "Durante el alta completarás los datos de facturación, tu planificación con Fernando, la vinculación con Telegram y los vídeos de bienvenida.",
+    "",
+    "Conserva este correo junto con la referencia del pedido.",
+    "",
+    "Base12 Academy",
+  ].join("\n");
+
+  const html = `
+    <div style="font-family:Arial,Helvetica,sans-serif;max-width:680px;margin:0 auto;color:#172033;line-height:1.55">
+      <div style="padding:24px 0 18px;border-bottom:1px solid #e5e7eb">
+        <div style="font-size:22px;font-weight:800;color:#0b4fc2">Base12 Academy</div>
+      </div>
+
+      <div style="padding:26px 0">
+        <p>Hola ${escapeHtml(input.fullName)},</p>
+
+        <p>
+          Tu contratación en Base12 Academy ha quedado registrada correctamente.
+          Este correo resume la operación y las aceptaciones asociadas a tu pedido.
+        </p>
+
+        <h2 style="font-size:18px;margin-top:28px">Resumen de la contratación</h2>
+
+        <table style="width:100%;border-collapse:collapse">
+          <tr>
+            <td style="padding:8px 0;color:#64748b">Curso</td>
+            <td style="padding:8px 0;font-weight:700;text-align:right">
+              Competencias, Productividad, Ofimática e IA
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:8px 0;color:#64748b">Acceso</td>
+            <td style="padding:8px 0;font-weight:700;text-align:right">
+              ${escapeHtml(accessName)}
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:8px 0;color:#64748b">Importe pagado</td>
+            <td style="padding:8px 0;font-weight:700;text-align:right">
+              ${escapeHtml(price)}
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:8px 0;color:#64748b">Referencia</td>
+            <td style="padding:8px 0;font-weight:700;text-align:right">
+              ${escapeHtml(input.orderId)}
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:8px 0;color:#64748b">Duración</td>
+            <td style="padding:8px 0;font-weight:700;text-align:right">
+              ${escapeHtml(durationText)}
+            </td>
+          </tr>
+        </table>
+
+        <div style="margin-top:20px;padding:14px 16px;background:#eef5ff;border:1px solid #bfdbfe;border-radius:12px;color:#174b8f">
+          ${escapeHtml(activationText)}
+        </div>
+
+        <h2 style="font-size:18px;margin-top:30px">Aceptaciones registradas</h2>
+
+        <ul style="padding-left:20px">
+          <li>Condiciones de contratación y normas de uso: <strong>${input.termsAccepted ? "Aceptadas" : "No aceptadas"}</strong>.</li>
+          <li>Política de privacidad: <strong>${input.privacyAcknowledged ? "Confirmada" : "No confirmada"}</strong>.</li>
+          <li>Inicio inmediato: <strong>${input.immediateAccess ? "Solicitado" : "No solicitado"}</strong>.</li>
+          <li>Conocimiento de las consecuencias del inicio inmediato: <strong>${input.withdrawalAcknowledged ? "Confirmado" : "No aplicable / no confirmado"}</strong>.</li>
+          <li>Comunicaciones comerciales opcionales: <strong>${input.marketingConsent ? "Aceptadas" : "No aceptadas"}</strong>.</li>
+        </ul>
+
+        <h2 style="font-size:18px;margin-top:30px">Tu cuenta</h2>
+
+        <p>
+          Correo de acceso:
+          <strong>${escapeHtml(input.email)}</strong>.
+          Por seguridad, Base12 Academy no envía contraseñas por correo electrónico.
+        </p>
+
+        <p>
+          <a
+            href="https://base12academy.es/login"
+            style="display:inline-block;background:#0b4fc2;color:#ffffff;text-decoration:none;font-weight:700;padding:12px 18px;border-radius:10px"
+          >
+            Acceder a Base12 Academy
+          </a>
+        </p>
+
+        <p style="margin-top:26px;color:#526176">
+          Durante el alta completarás los datos de facturación, tu planificación con Fernando,
+          la vinculación con Telegram y los vídeos de bienvenida.
+        </p>
+
+        <p style="margin-top:24px">
+          Conserva este correo junto con la referencia del pedido.
+        </p>
+      </div>
+
+      <div style="border-top:1px solid #e5e7eb;padding:18px 0;color:#64748b;font-size:13px">
+        Base12 Academy
+      </div>
+    </div>
+  `;
+
+  const response = await fetch(
+    "https://api.resend.com/emails",
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+        "User-Agent": "Base12Academy/1.0",
+        "Idempotency-Key": `base12-contract-${input.orderId}`,
+      },
+      body: JSON.stringify({
+        from,
+        to: [input.email],
+        subject,
+        html,
+        text,
+      }),
+    }
+  );
+
+  if (!response.ok) {
+    const errorText = await response.text().catch(() => "");
+    console.error(
+      "Resend no pudo enviar la confirmación de contratación",
+      response.status,
+      errorText
+    );
+    return false;
+  }
+
+  return true;
+}
+
 export async function POST(request: NextRequest) {
   const supabase = getSupabase();
 
@@ -591,6 +838,40 @@ export async function POST(request: NextRequest) {
       }
     }
 
+    /*
+     * Confirmación de contratación y bienvenida.
+     *
+     * El correo nunca contiene la contraseña.
+     * Un fallo del proveedor de correo no bloquea
+     * el alta ni deja la compra a medias.
+     */
+    const confirmationEmailSent =
+      await sendPurchaseConfirmation({
+        email,
+        fullName,
+        orderId: checkout.order_id,
+        planSlug: checkout.plan_slug,
+        amountCents: checkout.amount_cents,
+        accessMonths: checkout.access_months,
+        immediateAccess,
+        startsAt,
+        expiresAt,
+        termsAccepted:
+          checkout.terms_accepted,
+        privacyAcknowledged:
+          checkout.privacy_acknowledged,
+        withdrawalAcknowledged:
+          checkout.withdrawal_acknowledged,
+        marketingConsent:
+          checkout.marketing_consent,
+      }).catch((emailError) => {
+        console.error(
+          "Error enviando confirmación de contratación",
+          emailError
+        );
+        return false;
+      });
+
     createdUserId = null;
 
     return NextResponse.json({
@@ -599,6 +880,7 @@ export async function POST(request: NextRequest) {
       email,
       temporaryPassword,
       nextStep: "billing",
+      confirmationEmailSent,
     });
   } catch (error) {
     /*
