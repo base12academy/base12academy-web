@@ -19,6 +19,35 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
     }
   }, [chat]);
 
+  useEffect(() => {
+    if (!attention || abierto) return;
+
+    const storageKey = "base12-commercial-audio-shown";
+
+    if (sessionStorage.getItem(storageKey) === "1") return;
+
+    const timer = window.setTimeout(() => {
+      sessionStorage.setItem(storageKey, "1");
+      setShowAttention(true);
+
+      const audio = new Audio("/audios/comercial-aviso.mp3");
+      attentionAudioRef.current = audio;
+
+      audio.play().catch(() => {
+        // El aviso visual continúa si el navegador bloquea el audio automático.
+      });
+    }, 3000);
+
+    return () => {
+      window.clearTimeout(timer);
+
+      if (attentionAudioRef.current) {
+        attentionAudioRef.current.pause();
+        attentionAudioRef.current.currentTime = 0;
+        attentionAudioRef.current = null;
+      }
+    };
+  }, [attention, abierto]);
   async function enviarMensaje(textoDirecto?: string) {
     const textoUsuario = (textoDirecto ?? mensaje).trim();
 
@@ -398,4 +427,5 @@ const quickButtonStyle: React.CSSProperties = {
   cursor: "pointer",
   whiteSpace: "nowrap",
 };
+
 
