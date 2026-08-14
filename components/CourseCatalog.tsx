@@ -8,9 +8,9 @@ type Course = { family: Family; name: string; region?: string };
 type Plan = { name: string; price: string; detail: string; includes: string[] };
 
 const officePresentationVideos: Record<string, string> = {
-  "Competencias digitales": "/videos/ofimatica-esencial-presentacion.mp4",
-  "Ofimática": "/videos/ofimatica-estandar-presentacion.mp4",
-  "Productividad Digital e IA": "/videos/ofimatica-premium-presentacion.mp4",
+ "Competencias digitales": "/videos/competencias-digitales-presentacion.mp4",
+"Ofimática": "/videos/ofimatica-presentacion.mp4",
+"Productividad Digital e IA": "/videos/produccion-digital-ia-presentacion.mp4",
 };
 
 const bachillerato = [
