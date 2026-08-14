@@ -1,11 +1,41 @@
 "use client";
 
 import { useState } from "react";
+import { supabase } from "@/lib/supabaseClient";
 
 type Step = 1 | 2 | 3 | 4;
 
 export default function OnboardingPage() {
   const [step, setStep] = useState<Step>(1);
+  const [saving, setSaving] = useState(false);
+  const [pageError, setPageError] = useState("");
+  const [telegramMessage, setTelegramMessage] = useState("");
+
+  async function saveOnboardingStep(payload: Record<string, unknown>) {
+  const { data: sessionData } = await supabase.auth.getSession();
+  const accessToken = sessionData.session?.access_token;
+
+  if (!accessToken) {
+    throw new Error("Debes iniciar sesión para continuar.");
+  }
+
+  const response = await fetch("/api/onboarding", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify(payload),
+  });
+
+    const data = await response.json().catch(() => ({}));
+
+    if (!response.ok) {
+      throw new Error(data.error || "No se pudieron guardar los datos.");
+    }
+
+    return data;
+  }
 
   const [personal, setPersonal] = useState({
     fullName: "",
@@ -34,6 +64,128 @@ export default function OnboardingPage() {
     examPlace: "",
     objective: "",
   });
+
+  async function handlePersonalContinue() {
+    try {
+      setSaving(true);
+      setPageError("");
+
+      await saveOnboardingStep({
+        step: "personal_data",
+        fullName: personal.fullName,
+        email: personal.email,
+        phone: personal.phone,
+      });
+
+      setStep(2);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch (error) {
+      setPageError(
+        error instanceof Error
+          ? error.message
+          : "No se pudieron guardar los datos personales."
+      );
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  async function handleBillingContinue() {
+    try {
+      setSaving(true);
+      setPageError("");
+
+      await saveOnboardingStep({
+        step: "billing",
+        billingType: billing.type,
+        nominativeInvoice: billing.nominativeInvoice,
+        billingName: billing.billingName,
+        taxId: billing.taxId,
+        address: billing.address,
+        postalCode: billing.postalCode,
+        city: billing.city,
+        province: billing.province,
+        country: billing.country,
+        billingEmail: billing.billingEmail,
+      });
+
+      setStep(3);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch (error) {
+      setPageError(
+        error instanceof Error
+          ? error.message
+          : "No se pudieron guardar los datos de facturación."
+      );
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  async function handlePlanningContinue() {
+    try {
+      setSaving(true);
+      setPageError("");
+
+      const durationMatch = planning.sessionDuration.match(/\d+/);
+      const sessionDurationMinutes = durationMatch
+        ? Number(durationMatch[0])
+        : 0;
+
+      if (!sessionDurationMinutes) {
+        throw new Error(
+          "Indica la duración habitual de las sesiones en minutos."
+        );
+      }
+
+      await saveOnboardingStep({
+        step: "planning",
+        studyDays: planning.studyDays,
+        studyTime: planning.studyTime,
+        sessionDurationMinutes,
+        examDate: planning.examDate || null,
+        examPlace: planning.examPlace,
+        objective: planning.objective,
+      });
+
+      setStep(4);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch (error) {
+      setPageError(
+        error instanceof Error
+          ? error.message
+          : "No se pudo guardar la planificación."
+      );
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  async function handleTelegramCheck() {
+    try {
+      setSaving(true);
+      setPageError("");
+      setTelegramMessage("");
+
+      const data = await saveOnboardingStep({
+        step: "telegram",
+      });
+
+      if (data.linked) {
+        setTelegramMessage(
+          "Telegram está vinculado correctamente. El siguiente paso será la bienvenida al curso."
+        );
+      }
+    } catch (error) {
+      setTelegramMessage(
+        error instanceof Error
+          ? error.message
+          : "Todavía no se ha podido comprobar la vinculación con Telegram."
+      );
+    } finally {
+      setSaving(false);
+    }
+  }
 
   const cardStyle: React.CSSProperties = {
     background: "#ffffff",
@@ -70,7 +222,8 @@ export default function OnboardingPage() {
     padding: "13px 22px",
     fontWeight: 700,
     fontSize: "15px",
-    cursor: "pointer",
+    cursor: saving ? "wait" : "pointer",
+    opacity: saving ? 0.7 : 1,
   };
 
   const steps = [
@@ -236,12 +389,29 @@ export default function OnboardingPage() {
 
           <p
             style={{
-              margin: "0 0 28px",
+              margin: "0 0 20px",
               color: "#50617e",
             }}
           >
             Sigue estos pasos para empezar tu formación con buen pie.
           </p>
+
+          {pageError && (
+            <div
+              role="alert"
+              style={{
+                background: "#fff1f2",
+                border: "1px solid #fecdd3",
+                color: "#9f1239",
+                borderRadius: "12px",
+                padding: "14px 16px",
+                marginBottom: "20px",
+                lineHeight: 1.5,
+              }}
+            >
+              {pageError}
+            </div>
+          )}
 
           {/* PASO 1 */}
           <div
@@ -336,10 +506,12 @@ export default function OnboardingPage() {
                   }}
                 >
                   <button
+                    type="button"
                     style={primaryButton}
-                    onClick={() => setStep(2)}
+                    disabled={saving}
+                    onClick={handlePersonalContinue}
                   >
-                    Guardar y continuar →
+                    {saving ? "Guardando..." : "Guardar y continuar →"}
                   </button>
                 </div>
               </>
@@ -562,10 +734,12 @@ export default function OnboardingPage() {
                   }}
                 >
                   <button
+                    type="button"
                     style={primaryButton}
-                    onClick={() => setStep(3)}
+                    disabled={saving}
+                    onClick={handleBillingContinue}
                   >
-                    Guardar y continuar →
+                    {saving ? "Guardando..." : "Guardar y continuar →"}
                   </button>
                 </div>
               </>
@@ -729,10 +903,12 @@ export default function OnboardingPage() {
                   }}
                 >
                   <button
+                    type="button"
                     style={primaryButton}
-                    onClick={() => setStep(4)}
+                    disabled={saving}
+                    onClick={handlePlanningContinue}
                   >
-                    Guardar y continuar →
+                    {saving ? "Guardando..." : "Guardar y continuar →"}
                   </button>
                 </div>
               </>
@@ -762,6 +938,7 @@ export default function OnboardingPage() {
             </p>
 
             {step === 4 && (
+              <>
               <div
                 style={{
                   display: "flex",
@@ -787,10 +964,33 @@ export default function OnboardingPage() {
                   </p>
                 </div>
 
-                <button style={primaryButton}>
-                  Vincular Telegram
+                <button
+                  type="button"
+                  style={primaryButton}
+                  disabled={saving}
+                  onClick={handleTelegramCheck}
+                >
+                  {saving ? "Comprobando..." : "Vincular Telegram"}
                 </button>
               </div>
+
+              {telegramMessage && (
+                <div
+                  style={{
+                    marginTop: "14px",
+                    padding: "13px 15px",
+                    background: "#ffffff",
+                    border: "1px solid #dbe5f3",
+                    borderRadius: "10px",
+                    color: "#29436f",
+                    fontSize: "14px",
+                    lineHeight: 1.5,
+                  }}
+                >
+                  {telegramMessage}
+                </div>
+              )}
+              </>
             )}
           </div>
         </section>
