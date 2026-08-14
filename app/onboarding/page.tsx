@@ -254,15 +254,15 @@ export default function OnboardingPage() {
           padding: "0 32px",
         }}
       >
-        <div
-          style={{
-            fontSize: "22px",
-            fontWeight: 800,
-            color: "#0e2855",
-          }}
-        >
-          B12 · Base12 Academy
-        </div>
+        <img
+  src="/images/base12-logo.png"
+  alt="Base12 Academy"
+  style={{
+    height: "58px",
+    width: "auto",
+    objectFit: "contain",
+  }}
+/>
 
         <div
           style={{
