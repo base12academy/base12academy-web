@@ -1,9 +1,9 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 
 const initialMessage =
-  "Asistente Base12: Hola 👋\n\nEstoy aquí para ayudarte a elegir bien.\n\nPuedo orientarte sobre:\n• Competencias, Productividad, Ofimática e IA\n• Bachillerato y PAU\n• Oposiciones\n• Modalidades, precios y duración\n• Acceso gratuito y contratación\n\nElige una pregunta o escríbeme lo que necesites.";
+  "Asistente Base12: Hola ðŸ‘‹\n\nEstoy aquÃ­ para ayudarte a elegir bien.\n\nPuedo orientarte sobre:\nâ€¢ Competencias, Productividad, OfimÃ¡tica e IA\nâ€¢ Bachillerato y PAU\nâ€¢ Oposiciones\nâ€¢ Modalidades, precios y duraciÃ³n\nâ€¢ Acceso gratuito y contrataciÃ³n\n\nElige una pregunta o escrÃ­beme lo que necesites.";
 
 export default function LeadChatBot({ attention = false }: { attention?: boolean }) {
   const [abierto, setAbierto] = useState(false);
@@ -57,7 +57,7 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
       setChat((prev) => {
         const copia = [...prev];
         copia[copia.length - 1] =
-          "Asistente Base12: Ahora mismo no puedo responder bien.\n\nPuedes consultar los accesos, precios y vídeos de presentación en la sección Oferta formativa de esta misma página.";
+          "Asistente Base12: Ahora mismo no puedo responder bien.\n\nPuedes consultar los accesos, precios y vÃ­deos de presentaciÃ³n en la secciÃ³n Oferta formativa de esta misma pÃ¡gina.";
         return copia;
       });
     }
@@ -99,11 +99,11 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
         }
 
         .b12-commercial-attention {
-          animation: b12CommercialPulse 2.2s ease-in-out 1.3s 3;
+          animation: b12CommercialPulse 2.2s ease-in-out 0s 3;
         }
 
         .b12-commercial-hint {
-          animation: b12CommercialHint 7.2s ease-in-out 1.1s 1 both;
+          animation: b12CommercialHint 7.2s ease-in-out 0s 1 both;
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -114,7 +114,7 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
         }
       `}</style>
 
-      {attention && !abierto && (
+      {showAttention && !abierto && (
         <div
           className="b12-commercial-hint"
           style={{
@@ -134,14 +134,14 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
             pointerEvents: "none",
           }}
         >
-          ¿Te ayudo a elegir?
+          Â¿Te ayudo a elegir?
         </div>
       )}
 
       <button
         onClick={() => setAbierto(!abierto)}
         aria-label={abierto ? "Cerrar asistente Base12" : "Abrir asistente Base12"}
-        className={attention ? "b12-commercial-attention" : undefined}
+        className={showAttention ? "b12-commercial-attention" : undefined}
         style={{
           position: "fixed",
           bottom: "20px",
@@ -211,13 +211,13 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
                   fontSize: "14px",
                 }}
               >
-                <option value="">Tu comunidad autónoma (opcional)</option>
-                <option value="andalucia">Andalucía</option>
+                <option value="">Tu comunidad autÃ³noma (opcional)</option>
+                <option value="andalucia">AndalucÃ­a</option>
                 <option value="madrid">Madrid</option>
                 <option value="valencia">Comunidad Valenciana</option>
-                <option value="castilla_leon">Castilla y León</option>
+                <option value="castilla_leon">Castilla y LeÃ³n</option>
                 <option value="galicia">Galicia</option>
-                <option value="aragon">Aragón</option>
+                <option value="aragon">AragÃ³n</option>
                 <option value="navarra">Navarra</option>
                 <option value="rioja">La Rioja</option>
                 <option value="cantabria">Cantabria</option>
@@ -236,7 +236,7 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
             >
               <button
                 onClick={() =>
-                  enviarMensaje("¿Qué incluye Competencias Digitales?")
+                  enviarMensaje("Â¿QuÃ© incluye Competencias Digitales?")
                 }
                 style={quickButtonStyle}
               >
@@ -245,16 +245,16 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
 
               <button
                 onClick={() =>
-                  enviarMensaje("¿Qué incluye el acceso Ofimática?")
+                  enviarMensaje("Â¿QuÃ© incluye el acceso OfimÃ¡tica?")
                 }
                 style={quickButtonStyle}
               >
-                Ofimática
+                OfimÃ¡tica
               </button>
 
               <button
                 onClick={() =>
-                  enviarMensaje("¿Qué incluye Productividad Digital e IA?")
+                  enviarMensaje("Â¿QuÃ© incluye Productividad Digital e IA?")
                 }
                 style={quickButtonStyle}
               >
@@ -264,7 +264,7 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
               <button
                 onClick={() =>
                   enviarMensaje(
-                    "¿Qué diferencias hay entre Competencias Digitales, Ofimática y Productividad Digital e IA?"
+                    "Â¿QuÃ© diferencias hay entre Competencias Digitales, OfimÃ¡tica y Productividad Digital e IA?"
                   )
                 }
                 style={quickButtonStyle}
@@ -275,18 +275,18 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
               <button
                 onClick={() =>
                   enviarMensaje(
-                    "¿Cuánto cuesta y cuánto dura cada acceso de Competencias, Productividad, Ofimática e IA?"
+                    "Â¿CuÃ¡nto cuesta y cuÃ¡nto dura cada acceso de Competencias, Productividad, OfimÃ¡tica e IA?"
                   )
                 }
                 style={quickButtonStyle}
               >
-                Precio y duración
+                Precio y duraciÃ³n
               </button>
 
               <button
                 onClick={() =>
                   enviarMensaje(
-                    "¿Qué puedo probar gratis antes de suscribirme a Competencias, Productividad, Ofimática e IA?"
+                    "Â¿QuÃ© puedo probar gratis antes de suscribirme a Competencias, Productividad, OfimÃ¡tica e IA?"
                   )
                 }
                 style={quickButtonStyle}
@@ -355,7 +355,7 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
                   enviarMensaje();
                 }
               }}
-              placeholder="Pregúntame por accesos, precios o qué te conviene..."
+              placeholder="PregÃºntame por accesos, precios o quÃ© te conviene..."
               style={{
                 flex: 1,
                 border: "1px solid #d1d5db",
@@ -378,7 +378,7 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
                 fontWeight: "bold",
               }}
             >
-              →
+              â†’
             </button>
           </div>
         </div>
