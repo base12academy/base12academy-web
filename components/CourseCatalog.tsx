@@ -271,25 +271,16 @@ export default function CourseCatalog() {
                       aria-expanded={presentationVideo === item.name}
                       onClick={() => {
                         setPlan(item);
-                        setPresentationVideo(presentationVideo === item.name ? null : item.name);
+                        setPresentationVideo(item.name);
                       }}
                     >
-                      {presentationVideo === item.name ? "Cerrar vídeo" : "▶ Ver vídeo"}
+                      ▶ Ver vídeo
                     </button>
                   )}
                   <strong>{item.price}</strong>
                 </div>
               ))}
             </div>
-
-            {course.name === "Competencias y Productividad Digital, Ofimática e IA" && presentationVideo && (
-              <div className="original-plan-video-player">
-                <video controls preload="metadata" playsInline aria-label={`Vídeo de presentación de ${presentationVideo}`}>
-                  <source src={officePresentationVideos[presentationVideo]} type="video/mp4" />
-                  Tu navegador no permite reproducir este vídeo.
-                </video>
-              </div>
-            )}
 
             <div className="original-plan-includes" aria-live="polite">
               <div className="original-plan-includes-heading">
@@ -395,6 +386,85 @@ export default function CourseCatalog() {
               </p>
             )}
           </section>
+
+          {presentationVideo && (
+            <div
+              role="dialog"
+              aria-modal="true"
+              aria-label={`Vídeo de presentación de ${presentationVideo}`}
+              onMouseDown={(event) => {
+                if (event.target === event.currentTarget) {
+                  setPresentationVideo(null);
+                }
+              }}
+              style={{
+                position: "fixed",
+                inset: 0,
+                zIndex: 10000,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "24px",
+                background: "rgba(3, 10, 25, 0.88)",
+              }}
+            >
+              <div
+                style={{
+                  position: "relative",
+                  width: "min(1100px, 96vw)",
+                  background: "#000000",
+                  borderRadius: "18px",
+                  overflow: "hidden",
+                  boxShadow: "0 30px 90px rgba(0,0,0,0.5)",
+                }}
+              >
+                <button
+                  type="button"
+                  onClick={() => setPresentationVideo(null)}
+                  aria-label="Cerrar vídeo"
+                  style={{
+                    position: "absolute",
+                    top: "12px",
+                    right: "12px",
+                    zIndex: 2,
+                    width: "42px",
+                    height: "42px",
+                    border: "none",
+                    borderRadius: "50%",
+                    background: "rgba(255,255,255,0.94)",
+                    color: "#111827",
+                    fontSize: "26px",
+                    lineHeight: 1,
+                    cursor: "pointer",
+                    boxShadow: "0 6px 20px rgba(0,0,0,0.25)",
+                  }}
+                >
+                  ×
+                </button>
+
+                <video
+                  key={presentationVideo}
+                  controls
+                  autoPlay
+                  preload="metadata"
+                  playsInline
+                  style={{
+                    width: "100%",
+                    display: "block",
+                    maxHeight: "86vh",
+                    background: "#000000",
+                  }}
+                >
+                  <source
+                    src={officePresentationVideos[presentationVideo]}
+                    type="video/mp4"
+                  />
+                  Tu navegador no permite reproducir este vídeo.
+                </video>
+              </div>
+            </div>
+          )}
+
         </div>
       )}
     </section>
