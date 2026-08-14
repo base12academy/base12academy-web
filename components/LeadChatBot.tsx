@@ -62,6 +62,17 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
       }
     };
   }, [attention, abierto]);
+  useEffect(() => {
+    if (!abierto) return;
+
+    const overflowAnterior = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = overflowAnterior;
+    };
+  }, [abierto]);
+
   async function enviarMensaje(textoDirecto?: string) {
     const textoUsuario = (textoDirecto ?? mensaje).trim();
 
@@ -209,10 +220,10 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
         <div
           style={{
             position: "fixed",
-            bottom: "96px",
+              bottom: "84px",
             right: "20px",
-            width: "360px",
-            height: "560px",
+              width: "min(360px, calc(100vw - 24px))",
+              height: "min(560px, calc(100dvh - 108px))",
             background: "white",
             border: "1px solid #d1d5db",
             borderRadius: "16px",
@@ -441,6 +452,7 @@ const quickButtonStyle: React.CSSProperties = {
   cursor: "pointer",
   whiteSpace: "nowrap",
 };
+
 
 
 
