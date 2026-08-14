@@ -172,10 +172,10 @@ export default function OnboardingPage() {
       });
 
       if (data.linked) {
-        setTelegramMessage(
-          "Telegram está vinculado correctamente. El siguiente paso será la bienvenida al curso."
-        );
-      }
+  setTelegramMessage("Telegram está vinculado correctamente.");
+  window.location.href = "/onboarding/videos";
+  return;
+}
     } catch (error) {
       setTelegramMessage(
         error instanceof Error
