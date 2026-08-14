@@ -36,8 +36,20 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
       attentionAudioRef.current = audio;
 
       audio.play().catch(() => {
-        // El aviso visual continúa si el navegador bloquea el audio automático.
+        const reproducirTrasInteraccion = () => {
+          audio.play().catch(() => {});
+
+          window.removeEventListener("pointerdown", reproducirTrasInteraccion);
+          window.removeEventListener("keydown", reproducirTrasInteraccion);
+        };
+
+        window.addEventListener("pointerdown", reproducirTrasInteraccion, { once: true });
+        window.addEventListener("keydown", reproducirTrasInteraccion, { once: true });
       });
+
+      window.setTimeout(() => {
+        setShowAttention(false);
+      }, 7000);
     }, 3000);
 
     return () => {
