@@ -99,8 +99,7 @@ function OfimaticaCourse() {
               )}
             </section>
 
-            {!isWelcome && (
-              <>
+
                 <div className={styles.tabs}>
                   {(["explicacion", "glosario", "rocio", "fernando", "actividad"] as Tab[]).map((name) => (
                     <button key={name} onClick={() => setTab(name)} className={tab === name ? styles.selectedTab : ""}>
@@ -116,8 +115,7 @@ function OfimaticaCourse() {
                   {tab === "rocio" && <RocioQuiz lesson={selected.id} />}
                   {tab === "fernando" && <Assistant name="Fernando" role="Tutor IA" text="Te ayuda a organizar el estudio, comprueba tu avance y te orienta para retomar el curso si te has despistado." />}
                 </section>
-              </>
-            )}
+
           </>
         )}
       </main>
@@ -232,6 +230,7 @@ function RocioQuiz({ lesson }: { lesson: string }) {
     </div>
   );
 }
+
 
 
 
