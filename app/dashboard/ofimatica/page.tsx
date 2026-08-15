@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -12,7 +12,7 @@ import quizStyles from "./rocio.module.css";
 type Tab = "explicacion" | "glosario" | "rocio" | "fernando" | "actividad";
 
 export default function OfimaticaPage() {
-  return <Suspense fallback={<div className={styles.loading}>Preparando el aula de Competencias y Productividad Digital, Ofimática e IA…</div>}><OfimaticaCourse /></Suspense>;
+  return <Suspense fallback={<div className={styles.loading}>Preparando el aula de Competencias y Productividad Digital, OfimÃ¡tica e IAâ€¦</div>}><OfimaticaCourse /></Suspense>;
 }
 
 function OfimaticaCourse() {
@@ -43,15 +43,14 @@ function OfimaticaCourse() {
     return () => { active = false; };
   }, [selected.id]);
 
-  const videoBase = process.env.NEXT_PUBLIC_OFIMATICA_VIDEO_BASE_URL?.replace(/\/$/, "");
-  const videoUrl = videoBase ? `${videoBase}/${selected.videoFile}` : "";
+  const youtubeUrl = "videoUrl" in selected ? selected.videoUrl : "";
 
   return (
     <div className={styles.shell}>
       <aside className={styles.sidebar}>
         <Link href="/" className={styles.brand}>B12 <span>Base12 Academy</span></Link>
         <p className={styles.eyebrow}>PROGRAMA</p>
-        <h2>Competencias y Productividad Digital, Ofimática e IA</h2>
+        <h2>Competencias y Productividad Digital, OfimÃ¡tica e IA</h2>
         <div className={styles.progress}><span /></div>
         <nav className={styles.index}>
           {course.groups.map((group) => (
@@ -59,7 +58,7 @@ function OfimaticaCourse() {
               <summary>{group.id.slice(1)}. {group.title}</summary>
               {group.lessons.map((lesson) => (
                 <Link key={lesson.id} href={`/dashboard/ofimatica?contenido=${lesson.id}`} className={lesson.id === selected.id ? styles.active : ""}>
-                  {lesson.id === "G01_V01" ? "● " : ""}{lesson.title}
+                  {lesson.id === "G01_V01" ? "â— " : ""}{lesson.title}
                 </Link>
               ))}
             </details>
@@ -69,17 +68,17 @@ function OfimaticaCourse() {
 
       <main className={styles.main}>
         <div className={styles.topline}>
-          <span>{selected.group.title} · {selected.id}</span>
+          <span>{selected.group.title} Â· {selected.id}</span>
           {access === "administrator" && <b>Vista completa de administrador</b>}
           {access === "public_preview" && <b>Unidad abierta</b>}
         </div>
         <h1>{selected.title}</h1>
-        <p className={styles.subtitle}>Contenido práctico del programa de Competencias y Productividad Digital, Ofimática e IA de Base12 Academy.</p>
+        <p className={styles.subtitle}>Contenido prÃ¡ctico del programa de Competencias y Productividad Digital, OfimÃ¡tica e IA de Base12 Academy.</p>
 
         {!allowed ? (
           <section className={styles.locked}>
             <h2>Este contenido requiere acceso al curso</h2>
-            <p>La primera unidad está abierta. Para continuar, inicia sesión y activa una matrícula o una clave personal.</p>
+            <p>La primera unidad estÃ¡ abierta. Para continuar, inicia sesiÃ³n y activa una matrÃ­cula o una clave personal.</p>
             <div><Link href="/dashboard/ofimatica?contenido=G01_V01">Ver la unidad abierta</Link><Link href="/dashboard/comprar/ofimatica-esencial">Ver modalidades</Link></div>
           </section>
         ) : (
@@ -87,28 +86,38 @@ function OfimaticaCourse() {
             <section className={styles.videoCard}>
               {!showVideo ? (
                 <button onClick={() => setShowVideo(true)}>▶ Ver vídeo de este contenido</button>
-              ) : videoUrl ? (
-                <video controls autoPlay preload="metadata"><source src={videoUrl} type="video/mp4" /></video>
+              ) : youtubeUrl ? (
+                <iframe
+                  src={`${youtubeUrl}?autoplay=1&rel=0`}
+                  title={selected.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  style={{ width: "100%", aspectRatio: "16 / 9", border: 0 }}
+                />
               ) : (
-                <div className={styles.videoPending}>El vídeo está preparado y se mostrará aquí cuando termine la carga al alojamiento.</div>
+                <div className={styles.videoPending}>El vÃ­deo estÃ¡ preparado y se mostrarÃ¡ aquÃ­ cuando termine la carga al alojamiento.</div>
               )}
             </section>
 
-            <div className={styles.tabs}>
-              {(["explicacion", "glosario", "rocio", "fernando", "actividad"] as Tab[]).map((name) => (
-                <button key={name} onClick={() => setTab(name)} className={tab === name ? styles.selectedTab : ""}>
-                  {name === "rocio" ? "Rocío · Profesora IA" : name === "fernando" ? "Fernando · Tutor IA" : name[0].toUpperCase() + name.slice(1)}
-                </button>
-              ))}
-            </div>
+            {!isWelcome && (
+              <>
+                <div className={styles.tabs}>
+                  {(["explicacion", "glosario", "rocio", "fernando", "actividad"] as Tab[]).map((name) => (
+                    <button key={name} onClick={() => setTab(name)} className={tab === name ? styles.selectedTab : ""}>
+                      {name === "rocio" ? "Rocío · Profesora IA" : name === "fernando" ? "Fernando · Tutor IA" : name[0].toUpperCase() + name.slice(1)}
+                    </button>
+                  ))}
+                </div>
 
-            <section className={styles.contentCard}>
-              {tab === "explicacion" && <TextContent title="Explicación del contenido" text={selected.explanation} />}
-              {tab === "glosario" && <TextContent title="Glosario" text={selected.glossary} />}
-              {tab === "actividad" && <TextContent title="Pruebas, retos y prácticas" text={selected.activities} />}
-              {tab === "rocio" && <RocioQuiz lesson={selected.id} />}
-              {tab === "fernando" && <Assistant name="Fernando" role="Tutor IA" text="Te ayuda a organizar el estudio, comprueba tu avance y te orienta para retomar el curso si te has despistado." />}
-            </section>
+                <section className={styles.contentCard}>
+                  {tab === "explicacion" && <TextContent title="Explicación del contenido" text={selected.explanation} />}
+                  {tab === "glosario" && <TextContent title="Glosario" text={selected.glossary} />}
+                  {tab === "actividad" && <TextContent title="Pruebas, retos y prácticas" text={selected.activities} />}
+                  {tab === "rocio" && <RocioQuiz lesson={selected.id} />}
+                  {tab === "fernando" && <Assistant name="Fernando" role="Tutor IA" text="Te ayuda a organizar el estudio, comprueba tu avance y te orienta para retomar el curso si te has despistado." />}
+                </section>
+              </>
+            )}
           </>
         )}
       </main>
@@ -117,7 +126,7 @@ function OfimaticaCourse() {
 }
 
 function TextContent({ title, text }: { title: string; text: string }) {
-  return <><h2>{title}</h2><div className={styles.pre}>{text || "Contenido en preparación."}</div></>;
+  return <><h2>{title}</h2><div className={styles.pre}>{text || "Contenido en preparaciÃ³n."}</div></>;
 }
 
 function Assistant({ name, role, text }: { name: string; role: string; text: string }) {
@@ -142,8 +151,8 @@ function RocioQuiz({ lesson }: { lesson: string }) {
     () => (rocioQuestions as RocioQuestion[]).filter((question) => question.lesson === lesson),
     [lesson],
   );
-  const ordinary = useMemo(() => questions.filter((question) => question.type !== "Recuperación"), [questions]);
-  const recovery = questions.find((question) => question.type === "Recuperación");
+  const ordinary = useMemo(() => questions.filter((question) => question.type !== "RecuperaciÃ³n"), [questions]);
+  const recovery = questions.find((question) => question.type === "RecuperaciÃ³n");
   const [queue, setQueue] = useState<RocioQuestion[]>(ordinary);
   const [position, setPosition] = useState(0);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
@@ -182,17 +191,17 @@ function RocioQuiz({ lesson }: { lesson: string }) {
   };
 
   if (!questions.length) {
-    return <Assistant name="Rocío" role="Profesora IA" text="Las preguntas de comprobación de este contenido están en preparación." />;
+    return <Assistant name="RocÃ­o" role="Profesora IA" text="Las preguntas de comprobaciÃ³n de este contenido estÃ¡n en preparaciÃ³n." />;
   }
 
   if (finished) {
     return (
       <div className={quizStyles.quiz}>
-        <p className={styles.eyebrow}>ROCÍO · PROFESORA IA</p>
-        <h2>Comprobación terminada</h2>
+        <p className={styles.eyebrow}>ROCÃO Â· PROFESORA IA</p>
+        <h2>ComprobaciÃ³n terminada</h2>
         <p>Has respondido correctamente {correct} de {queue.length} preguntas realizadas.</p>
         <p>Estas preguntas sirven para practicar y recuperar conceptos; no sustituyen las evidencias certificables del curso.</p>
-        <button className={quizStyles.primaryButton} onClick={restart}>Repetir comprobación</button>
+        <button className={quizStyles.primaryButton} onClick={restart}>Repetir comprobaciÃ³n</button>
       </div>
     );
   }
@@ -201,10 +210,10 @@ function RocioQuiz({ lesson }: { lesson: string }) {
   return (
     <div className={quizStyles.quiz}>
       <div className={quizStyles.quizHeader}>
-        <div><p className={styles.eyebrow}>ROCÍO · PROFESORA IA</p><h2>Comprueba lo aprendido</h2></div>
+        <div><p className={styles.eyebrow}>ROCÃO Â· PROFESORA IA</p><h2>Comprueba lo aprendido</h2></div>
         <span>{position + 1} / {queue.length}</span>
       </div>
-      <p className={quizStyles.quizMeta}>{question.type} · {question.difficulty}</p>
+      <p className={quizStyles.quizMeta}>{question.type} Â· {question.difficulty}</p>
       <h3>{question.prompt}</h3>
       <div className={quizStyles.options}>
         {question.options.map((option, index) => {
@@ -216,10 +225,17 @@ function RocioQuiz({ lesson }: { lesson: string }) {
         <div className={isCorrect ? quizStyles.feedbackCorrect : quizStyles.feedbackIncorrect}>
           <strong>{isCorrect ? "Correcto." : "Vamos a revisarlo."}</strong> {question.explanation}
           <p><b>Criterio:</b> {question.criterion}</p>
-          {!isCorrect && <p><b>Recuperación:</b> {question.recovery}</p>}
+          {!isCorrect && <p><b>RecuperaciÃ³n:</b> {question.recovery}</p>}
           <button className={quizStyles.primaryButton} onClick={next}>{position + 1 === queue.length ? "Ver resultado" : "Siguiente pregunta"}</button>
         </div>
       )}
     </div>
   );
 }
+
+
+
+
+
+
+
