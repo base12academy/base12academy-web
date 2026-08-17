@@ -9,16 +9,19 @@ const videos = [
     title: "Qué es Base12",
     text: "Una presentación general de la plataforma y de sus aulas de formación.",
     src: "/videos/que-es-base12.mp4",
+    poster: "/images/que-es-base12.jpg",
   },
   {
     title: "Método Base12",
     text: "Cómo Base12 organiza el aprendizaje para avanzar con estructura, comprensión y seguridad.",
     src: "/videos/metodo-base12.mp4",
+    poster: "/images/metodo-base12.jpg",
   },
   {
     title: "Cómo funciona",
     text: "Una explicación sencilla del funcionamiento de la plataforma, las aulas, los recursos y el acceso.",
     src: "/videos/como-funciona-base12.mp4",
+    poster: "/images/como-funciona-base12.jpg",
   },
 ];
 
@@ -117,6 +120,7 @@ export default function HomePage() {
                   <article key={video.title} style={styles.videoCard}>
                     <video
                       src={video.src}
+                      poster={video.poster}
                       controls
                       preload="metadata"
                       playsInline
