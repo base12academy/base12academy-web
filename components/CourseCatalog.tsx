@@ -1,15 +1,25 @@
 ﻿"use client";
 
 import { useMemo, useState } from "react";
+import officeProgram from "../lib/ofimatica-content.json";
 
 type Family = "Bachillerato y PAU" | "Cursos online" | "Oposiciones";
 type Course = { family: Family; name: string; region?: string };
 type Plan = { name: string; price: string; detail: string; includes: string[] };
 
-const officePresentationVideos: Record<string, string> = {
- "Competencias digitales": "/videos/competencias-digitales-presentacion.mp4",
-"Ofimática": "/videos/ofimatica-presentacion.mp4",
-"Productividad Digital e IA": "/videos/productividad-digital-ia-presentacion.mp4",
+const officePresentationMedia: Record<string, { videoUrl: string; videoPoster: string }> = {
+  "Competencias digitales": {
+    videoUrl: "/videos/competencias-digitales-presentacion.mp4",
+    videoPoster: "/images/posters/competencias-digitales.png",
+  },
+  "Ofimática": {
+    videoUrl: "/videos/ofimatica-presentacion.mp4",
+    videoPoster: "/images/posters/ofimatica.png",
+  },
+  "Productividad Digital e IA": {
+    videoUrl: "/videos/productividad-digital-ia-presentacion.mp4",
+    videoPoster: "/images/posters/productividad-digital-ia.png",
+  },
 };
 
 const bachillerato = [
@@ -113,7 +123,6 @@ export default function CourseCatalog() {
     setMarketing(false);
     setImmediateAccess(false);
     setWithdrawalAcknowledged(false);
-    setPresentationVideo(null);
   }
 
   async function checkout() {
@@ -250,33 +259,50 @@ export default function CourseCatalog() {
       {course && plan && (
         <div className="original-modal-backdrop" onMouseDown={(event) => event.target === event.currentTarget && setCourse(null)}>
           <section className="original-modal" role="dialog" aria-modal="true" aria-labelledby="modal-course-title">
-            <button className="original-modal-close" onClick={() => { setCourse(null); setPresentationVideo(null); }} aria-label="Cerrar">×</button>
-            <small>{course.family}</small>
-            <h2 id="modal-course-title">{course.name}</h2>
-            <p>Selecciona una modalidad y revisa la información antes de continuar.</p>
-            {course.name === "Competencias y Productividad Digital, Ofimática e IA" && (
-              <p><a href="/dashboard/ofimatica?contenido=G01_V01" style={{ display: "inline-block", padding: "10px 14px", borderRadius: 999, background: "#eaf2ff", color: "#0751b5", textDecoration: "none", fontWeight: 800 }}>Probar gratis la Unidad 1 completa</a></p>
+            <button className="original-modal-close" onClick={() => setCourse(null)} aria-label="Cerrar">×</button>
+            {course.name === "Competencias y Productividad Digital, Ofimática e IA" ? (
+              <div className="commercial-course-hero">
+                <div className="commercial-course-copy">
+                  <small>{course.family}</small>
+                  <h2 id="modal-course-title">{plan.name}</h2>
+                  <p>{plan.detail}</p>
+                  <div className="commercial-course-value">
+                    <span>Acceso online</span>
+                    <span>Certificado Base12</span>
+                  </div>
+                  <strong className="commercial-course-price">{plan.price}</strong>
+                  <div className="commercial-course-actions">
+                    <a href="#course-checkout">Matricularme</a>
+                    <a className="secondary" href="/dashboard/ofimatica?contenido=G01_V01">Probar la Unidad 1 gratis</a>
+                  </div>
+                </div>
+                <div className="commercial-course-video">
+                  <video
+                    controls
+                    preload="metadata"
+                    playsInline
+                    poster={officePresentationMedia[plan.name].videoPoster}
+                    aria-label={`Vídeo de presentación de ${plan.name}`}
+                  >
+                    <source src={officePresentationMedia[plan.name].videoUrl} type="video/mp4" />
+                    Tu navegador no permite reproducir este vídeo.
+                  </video>
+                </div>
+              </div>
+            ) : (
+              <>
+                <small>{course.family}</small>
+                <h2 id="modal-course-title">{course.name}</h2>
+                <p>Selecciona una modalidad y revisa la información antes de continuar.</p>
+              </>
             )}
 
             <div className="original-plan-grid">
               {plansFor(course).map((item) => (
                 <div key={item.name} className={`original-plan-option ${plan.name === item.name ? "active" : ""}`}>
-                  <button className="original-plan-select" onClick={() => { setPlan(item); setPresentationVideo(null); }}>
+                  <button className="original-plan-select" onClick={() => setPlan(item)}>
                     <span><b>{item.name}</b><small>{item.detail}</small></span>
                   </button>
-                  {course.name === "Competencias y Productividad Digital, Ofimática e IA" && (
-                    <button
-                      type="button"
-                      className="original-plan-video-button"
-                      aria-expanded={presentationVideo === item.name}
-                      onClick={() => {
-                        setPlan(item);
-                        setPresentationVideo(item.name);
-                      }}
-                    >
-                      ▶ Ver vídeo
-                    </button>
-                  )}
                   <strong>{item.price}</strong>
                 </div>
               ))}
@@ -294,6 +320,41 @@ export default function CourseCatalog() {
                 {plan.includes.map((item) => <li key={item}>{item}</li>)}
               </ul>
             </div>
+
+            {course.name === "Competencias y Productividad Digital, Ofimática e IA" && (
+              <div className="commercial-course-details">
+                <section>
+                  <small>Programa completo</small>
+                  <h3>Del entorno digital al proyecto integrado</h3>
+                  <div className="commercial-course-program">
+                    {officeProgram.groups.map((group) => (
+                      <details key={group.id}>
+                        <summary><span>{group.id}</span>{group.title}<b>{group.lessons.length} contenidos</b></summary>
+                        <ul>{group.lessons.map((lesson) => <li key={lesson.id}>{lesson.title}</li>)}</ul>
+                      </details>
+                    ))}
+                  </div>
+                </section>
+
+                <section>
+                  <small>Competencias que adquirirás</small>
+                  <h3>Un itinerario práctico y acumulativo</h3>
+                  <ul className="commercial-course-competencies">
+                    {officeProgram.groups.map((group) => <li key={group.id}>{group.title}</li>)}
+                  </ul>
+                </section>
+
+                <section className="commercial-course-ai">
+                  <div><span aria-hidden="true">R</span><p><b>Rocío · Profesora IA</b>Enseña y resuelve dudas académicas durante el itinerario.</p></div>
+                  <div><span aria-hidden="true">F</span><p><b>Fernando · Tutor IA</b>Realiza seguimiento, recuperación y orientación del progreso.</p></div>
+                </section>
+
+                <section className="commercial-course-certificate">
+                  <span aria-hidden="true">✓</span>
+                  <div><small>Certificado</small><h3>Certificado Base12 de {plan.name}</h3><p>Se emite al completar el itinerario y demostrar las competencias exigidas, sin pagos pendientes.</p></div>
+                </section>
+              </div>
+            )}
 
             <div className="original-legal">
               <h3>Información contractual</h3>
@@ -361,7 +422,7 @@ export default function CourseCatalog() {
               <label><input type="checkbox" checked={marketing} onChange={(event) => setMarketing(event.target.checked)} /> <span>Quiero recibir novedades y ofertas. <em>Opcional</em></span></label>
             </div>
 
-            <div className="original-checkout">
+            <div className="original-checkout" id="course-checkout">
               <span>Total <b>{plan.price}</b></span>
               {course.name === "Competencias y Productividad Digital, Ofimática e IA" ? (
                 <button
@@ -456,7 +517,7 @@ export default function CourseCatalog() {
                   }}
                 >
                   <source
-                    src={officePresentationVideos[presentationVideo]}
+                    src={officePresentationMedia[presentationVideo].videoUrl}
                     type="video/mp4"
                   />
                   Tu navegador no permite reproducir este vídeo.

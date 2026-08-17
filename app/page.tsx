@@ -2,6 +2,7 @@
 import type { CSSProperties } from "react";
 import LeadChatBot from "@/components/LeadChatBot";
 import CourseCatalog from "@/components/CourseCatalog";
+import PwaInstallButton from "@/components/PwaInstallButton";
 
 const videos = [
   {
@@ -55,6 +56,7 @@ export default function HomePage() {
             </nav>
 
             <div style={styles.accessLinks}>
+              <PwaInstallButton />
               <Link href="/admin" style={styles.adminLink}>Administración</Link>
               <Link href="/login" style={styles.loginButton}>Acceso alumnos</Link>
             </div>
@@ -90,6 +92,7 @@ export default function HomePage() {
               <div style={styles.heroVideoBox}>
                 <video
                   src="/videos/presentacion-base12.mp4"
+                  poster="/images/posters/base12-academy.png"
                   controls
                   playsInline
                   style={styles.heroVideo}
