@@ -296,6 +296,9 @@ export default function CourseCatalog() {
                 <p>Selecciona una modalidad y revisa la información antes de continuar.</p>
               </>
             )}
+            {course.name === "Administrativo de la Junta de Andalucía" && (
+              <p><a href="/dashboard/administrativo-ja?tema=T01" style={{ display: "inline-block", padding: "10px 14px", borderRadius: 999, background: "#e5f0e1", color: "#285b35", textDecoration: "none", fontWeight: 800 }}>Probar gratis el Tema 1</a></p>
+            )}
 
             <div className="original-plan-grid">
               {plansFor(course).map((item) => (

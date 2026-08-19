@@ -11,9 +11,11 @@ const PLAN_MAX_GROUP: Record<string, number> = {
 
 export async function GET(req: NextRequest) {
   const lessonId = String(req.nextUrl.searchParams.get("lesson") || "G01_V01").toUpperCase();
+  const courseSlug = String(req.nextUrl.searchParams.get("course") || "ofimatica").toLowerCase();
   const groupNumber = Number(lessonId.slice(1, 3));
 
-  if (isPublicOfimaticaLesson(lessonId)) {
+  const publicLesson = courseSlug === "ofimatica" ? isPublicOfimaticaLesson(lessonId) : lessonId === "T01";
+  if (publicLesson) {
     return NextResponse.json({ allowed: true, access: "public_preview", maxGroup: 1 });
   }
 
@@ -27,7 +29,7 @@ export async function GET(req: NextRequest) {
   }
 
   if (isCourseAdministrator(data.user.email)) {
-    return NextResponse.json({ allowed: true, access: "administrator", maxGroup: 11 });
+    return NextResponse.json({ allowed: true, access: "administrator", maxGroup: courseSlug === "ofimatica" ? 11 : 42 });
   }
 
   const now = new Date().toISOString();
@@ -35,12 +37,14 @@ export async function GET(req: NextRequest) {
     .from("course_enrollments")
     .select("plan_slug,expires_at")
     .eq("user_id", data.user.id)
-    .eq("course_slug", "ofimatica")
+    .eq("course_slug", courseSlug)
     .eq("status", "active")
     .lte("starts_at", now);
 
   const valid = (enrollments || []).filter((item) => !item.expires_at || item.expires_at >= now);
-  const maxGroup = valid.reduce((max, item) => Math.max(max, PLAN_MAX_GROUP[item.plan_slug] || 0), 0);
+  const maxGroup = courseSlug === "ofimatica"
+    ? valid.reduce((max, item) => Math.max(max, PLAN_MAX_GROUP[item.plan_slug] || 0), 0)
+    : valid.length ? 42 : 0;
   return NextResponse.json({
     allowed: maxGroup >= groupNumber,
     access: maxGroup >= groupNumber ? "enrollment" : "subscription_required",
