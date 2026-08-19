@@ -4,6 +4,7 @@ import re
 from pathlib import Path
 
 from docx import Document
+from test_bank_docx import parse_test_bank, parse_test_bank_from_zip
 
 SOURCE = Path(r"E:\Escritorio\Agente IA\Oposiciones\Junta de Andalucía\Administrativo JA")
 OUTPUT = Path(__file__).resolve().parents[1] / "lib" / "administrativo-ja-content.json"
@@ -16,7 +17,8 @@ def read_csv(path):
 
 glossary_rows = read_csv(SOURCE / "Glosarios" / "Glosarios_Administrativo_JA_Importacion.csv")
 question_rows = read_csv(SOURCE / "Preguntas cerradas Rocío" / "Profesor_IA_Preguntas_Cerradas_Administrativo_JA_Importacion.csv")
-test_rows = read_csv(SOURCE / "Tests" / "Banco_1250_Preguntas_Administrativo_JA_Importacion.csv")
+TESTS = SOURCE / "Tests"
+TEST_ZIP = TESTS / "Bancos_Test_T01_T25_REGENERADOS_DOCX.zip"
 
 videos = {
     1: "Q1hB77f1h3s", 2: "mVT3mjxmiqM", 3: "E4ivM8OKLKY", 4: "dzzB_hrLbuE",
@@ -54,16 +56,15 @@ for number in range(1, 43):
         {"question": row["question"].strip(), "answer": row["answer"].strip()}
         for row in question_rows if int(row["theme"]) == number
     ]
-    tests = []
-    for row in test_rows:
-        if int(row["theme"]) != number or len(tests) >= 10:
-            continue
-        tests.append({
-            "question": row["stem"].strip(),
-            "options": [row[f"option_{letter}"].strip() for letter in "abcd"],
-            "answer": int(row["correct_index"]),
-            "explanation": row["explanation"].strip(),
-        })
+    if number <= 25:
+        tests = parse_test_bank_from_zip(
+            TEST_ZIP, f"T{number:02d}_Banco_50_Preguntas_REGENERADO.docx"
+        )
+    else:
+        matches = sorted(TESTS.glob(f"PAJ_Test_T{number:02d}_*_50_preguntas.docx"))
+        if len(matches) != 1:
+            raise ValueError(f"Se esperaba un banco DOCX para el tema {number}, encontrados: {matches}")
+        tests = parse_test_bank(matches[0])
 
     themes.append({
         "id": f"T{number:02d}",

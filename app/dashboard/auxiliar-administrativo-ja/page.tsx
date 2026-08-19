@@ -3,15 +3,15 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useMemo, useState } from "react";
-import data from "@/lib/administrativo-ja-content.json";
+import data from "@/lib/auxiliar-administrativo-ja-content.json";
 import { supabase } from "@/lib/supabaseClient";
-import styles from "./administrativo-ja.module.css";
-import layout from "./course-layout.module.css";
+import styles from "../administrativo-ja/administrativo-ja.module.css";
+import layout from "../administrativo-ja/course-layout.module.css";
 
 type Tab = "explicacion" | "glosario" | "rocio" | "fernando" | "test";
 type TestQuestion = { question: string; options: string[]; answer: number; explanation: string };
 
-export default function AdministrativoJaPage() {
+export default function AuxiliarAdministrativoJaPage() {
   return <Suspense fallback={<div className={styles.loading}>Preparando el aula…</div>}><Course /></Suspense>;
 }
 
@@ -28,7 +28,7 @@ function Course() {
     setTab("explicacion");
     const check = async () => {
       const { data: sessionData } = await supabase.auth.getSession();
-      const response = await fetch(`/api/course-access?course=administrativo-ja&lesson=${theme.id}`, {
+      const response = await fetch(`/api/course-access?course=auxiliar-administrativo-ja&lesson=${theme.id}`, {
         headers: sessionData.session?.access_token ? { Authorization: `Bearer ${sessionData.session.access_token}` } : {},
       });
       const result = await response.json().catch(() => ({}));
@@ -48,13 +48,13 @@ function Course() {
       <aside className={styles.sidebar}>
         <Link href="/" className={styles.brand}><img className={layout.brandLogo} src="/images/base12-logo.png" alt="Base12 Academy" /></Link>
         <p className={styles.eyebrow}>OPOSICIONES · JUNTA DE ANDALUCÍA</p>
-        <h2>Administrativo/a</h2>
+        <h2>Auxiliar Administrativo</h2>
         <div className={styles.progressText}><span>Progreso del temario</span><b>{progress}%</b></div>
         <div className={styles.progress}><span style={{ width: `${progress}%` }} /></div>
-        <p className={styles.indexTitle}>ÍNDICE DEL TEMARIO · 42 TEMAS</p>
+        <p className={styles.indexTitle}>ÍNDICE DEL TEMARIO · {data.themes.length} TEMAS</p>
         <nav className={styles.index}>
           {data.themes.map((item) => (
-            <Link key={item.id} href={`/dashboard/administrativo-ja?tema=${item.id}`} className={item.id === theme.id ? styles.active : ""}>
+            <Link key={item.id} href={`/dashboard/auxiliar-administrativo-ja?tema=${item.id}`} className={item.id === theme.id ? styles.active : ""}>
               <span>{item.number}</span><span>{item.title}</span>{item.publicPreview && <small>ABIERTO</small>}
             </Link>
           ))}
@@ -66,15 +66,15 @@ function Course() {
           <span>Temario / Tema {theme.number}</span>
           <b>{access === "administrator" ? "Vista de administrador" : access === "public_preview" ? "Tema abierto" : "Aula Base12"}</b>
         </div>
-        <p className={styles.kicker}>TEMA {theme.number} DE 42</p>
+        <p className={styles.kicker}>TEMA {theme.number} DE {data.themes.length}</p>
         <h1>{theme.title}</h1>
-        <p className={styles.subtitle}>Administrativo/a de la Junta de Andalucía</p>
+        <p className={styles.subtitle}>Auxiliar Administrativo de la Junta de Andalucía</p>
 
         {!allowed ? (
           <section className={styles.locked}>
             <div className={styles.lockIcon}>🔒</div>
             <div><h2>Este tema requiere matrícula</h2><p>El Tema 1 está abierto para que conozcas el aula. Inicia sesión con una matrícula activa para continuar.</p></div>
-            <div className={styles.lockActions}><Link href="/dashboard/administrativo-ja?tema=T01">Ver el Tema 1</Link><Link href="/#catalogo">Ver modalidades</Link></div>
+            <div className={styles.lockActions}><Link href="/dashboard/auxiliar-administrativo-ja?tema=T01">Ver el Tema 1</Link><Link href="/#catalogo">Ver modalidades</Link></div>
           </section>
         ) : (
           <div className={layout.learningGrid}>
