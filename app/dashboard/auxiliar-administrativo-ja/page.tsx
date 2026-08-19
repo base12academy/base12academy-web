@@ -64,7 +64,7 @@ function Course() {
       <main className={styles.main}>
         <div className={styles.topline}>
           <span>Temario / Tema {theme.number}</span>
-          <b>{access === "administrator" ? "Vista de administrador" : access === "public_preview" ? "Tema abierto" : "Aula Base12"}</b>
+          <div className={layout.topActions}><b>{access === "administrator" ? "Vista de administrador" : access === "public_preview" ? "Tema abierto" : "Aula Base12"}</b><Link className={layout.accountLink} href="/dashboard"><span aria-hidden="true">◯</span> Mi cuenta</Link></div>
         </div>
         <p className={styles.kicker}>TEMA {theme.number} DE {data.themes.length}</p>
         <h1>{theme.title}</h1>
@@ -86,7 +86,7 @@ function Course() {
             <div className={styles.tabs} role="tablist" aria-label="Recursos del tema">
               {(["explicacion", "glosario", "rocio", "fernando", "test"] as Tab[]).map((name) => (
                 <button key={name} onClick={() => setTab(name)} className={tab === name ? styles.selectedTab : ""}>
-                  <span>{name === "explicacion" ? "▤" : name === "glosario" ? "◫" : name === "rocio" ? "R" : name === "fernando" ? "F" : "✓"}</span>
+                  {name !== "rocio" && name !== "fernando" && <span>{name === "explicacion" ? "▤" : name === "glosario" ? "◫" : "✓"}</span>}
                   {name === "explicacion" ? "Explicación" : name === "glosario" ? "Glosario" : name === "rocio" ? "Rocío · Profesora IA" : name === "fernando" ? "Fernando · Tutor IA" : "Simulacro"}
                 </button>
               ))}
