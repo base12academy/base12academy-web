@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import officeProgram from "../lib/ofimatica-content.json";
 
 type Family = "Bachillerato y PAU" | "Cursos online" | "Oposiciones";
@@ -114,6 +114,21 @@ export default function CourseCatalog() {
     () => allCourses.filter((item) => item.family === family && item.name.toLowerCase().includes(search.toLowerCase())),
     [family, search],
   );
+
+  useEffect(() => {
+    const requested = new URLSearchParams(window.location.search).get("curso");
+    const requestedName = requested === "administrativo-ja"
+      ? "Administrativo de la Junta de Andalucía"
+      : requested === "auxiliar-administrativo-ja"
+        ? "Auxiliar Administrativo de la Junta de Andalucía"
+        : "";
+    if (!requestedName) return;
+    const requestedCourse = allCourses.find((item) => item.name === requestedName);
+    if (requestedCourse) {
+      setFamily("Oposiciones");
+      open(requestedCourse);
+    }
+  }, []);
 
   function open(item: Course) {
     setCourse(item);

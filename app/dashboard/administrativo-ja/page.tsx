@@ -72,7 +72,7 @@ function Course() {
       <main className={styles.main}>
         <div className={styles.topline}>
           <span>Temario / Tema {theme.number}</span>
-          <div className={layout.topActions}><b>{access === "administrator" ? "Vista de administrador" : access === "public_preview" ? "Tema abierto" : "Aula Base12"}</b><Link className={layout.accountLink} href="/dashboard"><span aria-hidden="true">◯</span> Mi cuenta</Link></div>
+          <div className={layout.topActions}>{theme.number === 1 && <Link className={layout.accountLink} href="/?curso=administrativo-ja#catalogo">Suscribirse</Link>}<b>{access === "administrator" ? "Vista de administrador" : access === "public_preview" ? "Tema abierto" : "Aula Base12"}</b><Link className={layout.accountLink} href="/dashboard"><span aria-hidden="true">◯</span> Mi cuenta</Link></div>
         </div>
         <p className={styles.kicker}>TEMA {theme.number} DE 42</p>
         <h1>{theme.title}</h1>
