@@ -90,9 +90,9 @@ function plansFor(course: Course): Plan[] {
     ];
   }
   return [
-    { name: "Esencial", price: "149 €", detail: "Preparación completa a tu ritmo", includes: ["Temario estructurado de la oposición", "Glosarios y cuadros de apoyo", "Fuentes oficiales vinculadas", "Test de comprobación", "Acceso online a tu ritmo"] },
-    { name: "Estándar", price: "299 €", detail: "Más práctica y entrenamiento de examen", includes: ["Todo lo incluido en Esencial", "Banco ampliado de preguntas", "Textos de audio y vídeo cuando estén disponibles", "Simulacros de examen", "Seguimiento del progreso"] },
-    { name: "Premium", price: "499 €", detail: "Seguimiento y apoyo prioritarios", includes: ["Todo lo incluido en Estándar", "Plan de estudio personalizado", "Revisión prioritaria del progreso", "Acompañamiento tutorial", "Resolución prioritaria de consultas"] },
+    { name: "Esencial", price: "149 €", detail: "Preparación completa a tu ritmo · 12 meses", includes: ["Temario estructurado de la oposición", "Glosarios y cuadros de apoyo", "Fuentes oficiales vinculadas", "Un test de comprobación por tema", "Preguntas cerradas y abiertas a Rocío"] },
+    { name: "Estándar", price: "299 €", detail: "Más práctica y entrenamiento · 12 meses", includes: ["Todo lo incluido en Esencial", "Banco de 50 preguntas por tema", "Simulacros de 20 preguntas aleatorias", "Historial y progresión de resultados", "Acompañamiento de Rocío y Fernando"] },
+    { name: "Premium", price: "499 €", detail: "Seguimiento humano semanal · 12 meses", includes: ["Todo lo incluido en Estándar", "Plan de estudio personalizado", "Revisión prioritaria del progreso", "Tutoría humana individual de 30 minutos cada semana", "Calendario de reserva modificable"] },
   ];
 }
 
@@ -128,7 +128,8 @@ export default function CourseCatalog() {
   async function checkout() {
     if (!course || !plan) return;
 
-    if (course.name !== "Competencias y Productividad Digital, Ofimática e IA") {
+    const purchasableOpposition = course.name === "Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo de la Junta de Andalucía";
+    if (course.name !== "Competencias y Productividad Digital, Ofimática e IA" && !purchasableOpposition) {
       setCheckoutError("La matrícula online de este curso todavía no está disponible.");
       return;
     }
@@ -144,7 +145,9 @@ export default function CourseCatalog() {
       "Productividad Digital e IA": "ofimatica-premium",
     };
 
-    const courseSlug = slugByPlan[plan.name];
+    const oppositionPrefix = course.name === "Administrativo de la Junta de Andalucía" ? "administrativo-ja" : course.name === "Auxiliar Administrativo de la Junta de Andalucía" ? "auxiliar-administrativo-ja" : "";
+    const oppositionPlan = ({ Esencial: "esencial", "Estándar": "estandar", Premium: "premium" } as Record<string, string>)[plan.name];
+    const courseSlug = slugByPlan[plan.name] || (oppositionPrefix && oppositionPlan ? `${oppositionPrefix}-${oppositionPlan}` : "");
 
     if (!courseSlug) {
       setCheckoutError("No se ha podido identificar la modalidad seleccionada.");

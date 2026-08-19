@@ -7,8 +7,9 @@ import data from "@/lib/auxiliar-administrativo-ja-index.json";
 import { supabase } from "@/lib/supabaseClient";
 import styles from "../administrativo-ja/administrativo-ja.module.css";
 import layout from "../administrativo-ja/course-layout.module.css";
+import { OpenQuestion, OppositionTest, TutoringCalendar } from "@/components/OppositionTools";
 
-type Tab = "explicacion" | "glosario" | "rocio" | "fernando" | "test";
+type Tab = "explicacion" | "glosario" | "rocio" | "fernando" | "test" | "tutoria";
 type TestQuestion = { question: string; options: string[]; answer: number; explanation: string };
 type ThemeContent = { id: string; number: number; title: string; videoUrl: string; explanation: string; glossary: { term: string; definition: string }[]; rocio: { question: string; answer: string }[]; tests: TestQuestion[]; publicPreview: boolean };
 
@@ -26,6 +27,7 @@ function Course() {
   const [content, setContent] = useState<ThemeContent | null>(null);
   const [canNavigateAll, setCanNavigateAll] = useState(false);
   const [checking, setChecking] = useState(true);
+  const [planSlug, setPlanSlug] = useState("esencial");
 
   useEffect(() => {
     let active = true;
@@ -43,6 +45,7 @@ function Course() {
         setAccess(result.access || "subscription_required");
         setCanNavigateAll(Boolean(result.canNavigateAll));
         setContent(result.theme || null);
+        setPlanSlug(result.planSlug || "esencial");
         setChecking(false);
       }
     };
@@ -89,10 +92,10 @@ function Course() {
             </section>
 
             <div className={styles.tabs} role="tablist" aria-label="Recursos del tema">
-              {(["explicacion", "glosario", "rocio", "fernando", "test"] as Tab[]).map((name) => (
+              {(["explicacion", "glosario", "rocio", "fernando", "test", ...(planSlug === "premium" ? ["tutoria" as Tab] : [])] as Tab[]).map((name) => (
                 <button key={name} onClick={() => setTab(name)} className={tab === name ? styles.selectedTab : ""}>
                   {name !== "rocio" && name !== "fernando" && <span>{name === "explicacion" ? "▤" : name === "glosario" ? "◫" : "✓"}</span>}
-                  {name === "explicacion" ? "Explicación" : name === "glosario" ? "Glosario" : name === "rocio" ? "Rocío · Profesora IA" : name === "fernando" ? "Fernando · Tutor IA" : "Simulacro"}
+                  {name === "explicacion" ? "Explicación" : name === "glosario" ? "Glosario" : name === "rocio" ? "Rocío · Profesora IA" : name === "fernando" ? "Fernando · Tutor IA" : name === "tutoria" ? "Tutoría humana" : planSlug === "esencial" ? "Comprobación" : "Simulacro"}
                 </button>
               ))}
             </div>
@@ -100,9 +103,10 @@ function Course() {
             <section className={styles.contentCard}>
               {tab === "explicacion" && <><p className={styles.sectionLabel}>EXPLICACIÓN DEL TEMA</p><h2>{theme.title}</h2><div className={styles.pre}>{content.explanation}</div></>}
               {tab === "glosario" && <Glossary items={content.glossary} />}
-              {tab === "rocio" && <Rocio items={content.rocio} />}
+              {tab === "rocio" && <><Rocio items={content.rocio} /><OpenQuestion courseSlug="auxiliar-administrativo-ja" themeId={theme.id} /></>}
               {tab === "fernando" && <Assistant name="Fernando" role="Tutor IA" text={`Te ayuda a organizar el estudio del Tema ${theme.number}, comprobar tu avance y retomar el itinerario cuando lo necesites.`} />}
-              {tab === "test" && <QuickTest questions={content.tests} />}
+              {tab === "test" && <OppositionTest questions={content.tests} courseSlug="auxiliar-administrativo-ja" themeId={theme.id} planSlug={planSlug} />}
+              {tab === "tutoria" && planSlug === "premium" && <TutoringCalendar courseSlug="auxiliar-administrativo-ja" />}
             </section>
             </div>
             <RightRail theme={content} onSelect={setTab} />

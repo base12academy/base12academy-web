@@ -63,6 +63,12 @@ export const courses = {
     accessMonths: 12,
     comingSoon: false,
   },
+  "administrativo-ja-esencial": { slug: "administrativo-ja-esencial", courseSlug: "administrativo-ja", planSlug: "esencial", title: "Administrativo de la Junta de Andalucía · Esencial", shortTitle: "Administrativo JA · Esencial", price: 149, priceInCents: 14900, mode: "one_time", active: true, accessType: "fixed_term", accessMonths: 12, comingSoon: false },
+  "administrativo-ja-estandar": { slug: "administrativo-ja-estandar", courseSlug: "administrativo-ja", planSlug: "estandar", title: "Administrativo de la Junta de Andalucía · Estándar", shortTitle: "Administrativo JA · Estándar", price: 299, priceInCents: 29900, mode: "one_time", active: true, accessType: "fixed_term", accessMonths: 12, comingSoon: false },
+  "administrativo-ja-premium": { slug: "administrativo-ja-premium", courseSlug: "administrativo-ja", planSlug: "premium", title: "Administrativo de la Junta de Andalucía · Premium", shortTitle: "Administrativo JA · Premium", price: 499, priceInCents: 49900, mode: "one_time", active: true, accessType: "fixed_term", accessMonths: 12, comingSoon: false },
+  "auxiliar-administrativo-ja-esencial": { slug: "auxiliar-administrativo-ja-esencial", courseSlug: "auxiliar-administrativo-ja", planSlug: "esencial", title: "Auxiliar Administrativo de la Junta de Andalucía · Esencial", shortTitle: "Auxiliar JA · Esencial", price: 149, priceInCents: 14900, mode: "one_time", active: true, accessType: "fixed_term", accessMonths: 12, comingSoon: false },
+  "auxiliar-administrativo-ja-estandar": { slug: "auxiliar-administrativo-ja-estandar", courseSlug: "auxiliar-administrativo-ja", planSlug: "estandar", title: "Auxiliar Administrativo de la Junta de Andalucía · Estándar", shortTitle: "Auxiliar JA · Estándar", price: 299, priceInCents: 29900, mode: "one_time", active: true, accessType: "fixed_term", accessMonths: 12, comingSoon: false },
+  "auxiliar-administrativo-ja-premium": { slug: "auxiliar-administrativo-ja-premium", courseSlug: "auxiliar-administrativo-ja", planSlug: "premium", title: "Auxiliar Administrativo de la Junta de Andalucía · Premium", shortTitle: "Auxiliar JA · Premium", price: 499, priceInCents: 49900, mode: "one_time", active: true, accessType: "fixed_term", accessMonths: 12, comingSoon: false },
 } as const;
 
 export type CourseSlug = keyof typeof courses;

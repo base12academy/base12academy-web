@@ -16,6 +16,8 @@ export async function GET(req: NextRequest) {
 
   const token = req.headers.get("authorization")?.replace(/^Bearer\s+/i, "");
   let access = "public_preview";
+  let planSlug = "esencial";
+  let enrollmentId: string | null = null;
   let canNavigateAll = false;
   if (token) {
     const supabase = getSupabase();
@@ -23,18 +25,20 @@ export async function GET(req: NextRequest) {
     if (!authError && authData.user) {
       if (isCourseAdministrator(authData.user.email)) {
         access = "administrator";
+        planSlug = "premium";
         canNavigateAll = true;
       } else {
         const now = new Date().toISOString();
-        const { data: enrollment } = await supabase.from("course_enrollments").select("id")
+        const { data: enrollment } = await supabase.from("course_enrollments").select("id, plan_slug")
           .eq("user_id", authData.user.id).eq("course_slug", courseSlug).eq("status", "active")
           .lte("starts_at", now).or(`expires_at.is.null,expires_at.gte.${now}`).limit(1).maybeSingle();
-        if (enrollment) { access = "enrollment"; canNavigateAll = true; }
+        if (enrollment) { access = "enrollment"; canNavigateAll = true; planSlug = enrollment.plan_slug; enrollmentId = enrollment.id; }
       }
     }
   }
   if (!theme.publicPreview && !canNavigateAll) {
     return NextResponse.json({ allowed: false, access: token ? "subscription_required" : "login_required", canNavigateAll: false }, { status: token ? 403 : 401 });
   }
-  return NextResponse.json({ allowed: true, access, canNavigateAll, theme });
+  const questionLimit = planSlug === "esencial" ? 10 : 50;
+  return NextResponse.json({ allowed: true, access, planSlug, enrollmentId, canNavigateAll, theme: { ...theme, tests: theme.tests.slice(0, questionLimit) } });
 }

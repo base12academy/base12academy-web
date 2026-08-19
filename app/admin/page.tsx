@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
+import TutoringSlotAdmin from "@/components/TutoringSlotAdmin";
 
 const ADMIN_EMAIL = "base12academy@gmail.com";
 
@@ -210,6 +211,7 @@ export default function AdminPage() {
           )}
         </div>
       </section>
+      <TutoringSlotAdmin />
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 16, marginTop: 28 }}>
         <a href="https://vercel.com/base12academys-projects/base12academy-web" target="_blank" rel="noreferrer" style={{ padding: 20, border: "1px solid #dbe3ef", borderRadius: 16, textDecoration: "none", color: "#0f172a" }}><strong>Publicación web</strong><br /><span style={{ color: "#64748b" }}>Abrir Vercel</span></a>
         <a href="https://supabase.com/dashboard" target="_blank" rel="noreferrer" style={{ padding: 20, border: "1px solid #dbe3ef", borderRadius: 16, textDecoration: "none", color: "#0f172a" }}><strong>Alumnos y datos</strong><br /><span style={{ color: "#64748b" }}>Abrir Supabase</span></a>
