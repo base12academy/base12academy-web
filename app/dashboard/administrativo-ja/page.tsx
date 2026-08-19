@@ -106,7 +106,7 @@ function Course() {
               {tab === "rocio" && <><Rocio items={content.rocio} /><OpenQuestion courseSlug="administrativo-ja" themeId={theme.id} /></>}
               {tab === "fernando" && <Assistant name="Fernando" role="Tutor IA" text={`Te ayuda a organizar el estudio del Tema ${theme.number}, comprobar tu avance y retomar el itinerario cuando lo necesites.`} />}
               {tab === "test" && <OppositionTest questions={content.tests} courseSlug="administrativo-ja" themeId={theme.id} planSlug={planSlug} />}
-              {tab === "tutoria" && planSlug === "premium" && <TutoringCalendar courseSlug="administrativo-ja" />}
+              {tab === "tutoria" && planSlug === "premium" && <TutoringCalendar courseSlug="administrativo-ja" courseName="Administrativo de la Junta de Andalucía" themeId={theme.id} themeName={theme.title} />}
             </section>
             </div>
             <RightRail theme={content} onSelect={setTab} />
