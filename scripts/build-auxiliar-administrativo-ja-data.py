@@ -8,6 +8,7 @@ from test_bank_docx import parse_test_bank_from_zip
 
 SOURCE = Path(r"E:\Escritorio\Agente IA\Oposiciones\Junta de Andalucía\Auxiliar Administrativo JA")
 OUTPUT = Path(__file__).resolve().parents[1] / "lib" / "auxiliar-administrativo-ja-content.json"
+INDEX_OUTPUT = Path(__file__).resolve().parents[1] / "lib" / "auxiliar-administrativo-ja-index.json"
 
 
 def read_csv(path):
@@ -83,4 +84,5 @@ for number in range(1, 23):
     })
 
 OUTPUT.write_text(json.dumps({"course": "Auxiliar Administrativo de la Junta de Andalucía", "themes": themes}, ensure_ascii=False, indent=2), encoding="utf-8")
+INDEX_OUTPUT.write_text(json.dumps({"course": "Auxiliar Administrativo de la Junta de Andalucía", "themes": [{key: theme[key] for key in ("id", "number", "title", "publicPreview")} for theme in themes]}, ensure_ascii=False, indent=2), encoding="utf-8")
 print(f"{len(themes)} temas escritos en {OUTPUT}")

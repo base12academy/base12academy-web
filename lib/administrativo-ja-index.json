@@ -1,0 +1,257 @@
+{
+  "course": "Administrativo/a de la Junta de Andalucía",
+  "themes": [
+    {
+      "id": "T01",
+      "number": 1,
+      "title": "La Constitución Española de 1978",
+      "publicPreview": true
+    },
+    {
+      "id": "T02",
+      "number": 2,
+      "title": "Los órganos constitucionales",
+      "publicPreview": false
+    },
+    {
+      "id": "T03",
+      "number": 3,
+      "title": "Organización territorial del Estado",
+      "publicPreview": false
+    },
+    {
+      "id": "T04",
+      "number": 4,
+      "title": "La Unión Europea",
+      "publicPreview": false
+    },
+    {
+      "id": "T05",
+      "number": 5,
+      "title": "La Comunidad Autónoma de Andalucía",
+      "publicPreview": false
+    },
+    {
+      "id": "T06",
+      "number": 6,
+      "title": "Organización institucional de Andalucía",
+      "publicPreview": false
+    },
+    {
+      "id": "T07",
+      "number": 7,
+      "title": "Organización de la Administración de la Junta",
+      "publicPreview": false
+    },
+    {
+      "id": "T08",
+      "number": 8,
+      "title": "Fuentes del Derecho Administrativo",
+      "publicPreview": false
+    },
+    {
+      "id": "T09",
+      "number": 9,
+      "title": "Órganos administrativos y acto administrativo",
+      "publicPreview": false
+    },
+    {
+      "id": "T10",
+      "number": 10,
+      "title": "Procedimiento administrativo común",
+      "publicPreview": false
+    },
+    {
+      "id": "T11",
+      "number": 11,
+      "title": "Recursos administrativos y jurisdicción contencioso-administrativa",
+      "publicPreview": false
+    },
+    {
+      "id": "T12",
+      "number": 12,
+      "title": "Los contratos del sector público",
+      "publicPreview": false
+    },
+    {
+      "id": "T13",
+      "number": 13,
+      "title": "Responsabilidad patrimonial de la Administración",
+      "publicPreview": false
+    },
+    {
+      "id": "T14",
+      "number": 14,
+      "title": "Propiedades administrativas y patrimonio de la Junta",
+      "publicPreview": false
+    },
+    {
+      "id": "T15",
+      "number": 15,
+      "title": "Igualdad y violencia de género",
+      "publicPreview": false
+    },
+    {
+      "id": "T16",
+      "number": 16,
+      "title": "Igualdad de género en las políticas públicas",
+      "publicPreview": false
+    },
+    {
+      "id": "T17",
+      "number": 17,
+      "title": "El presupuesto",
+      "publicPreview": false
+    },
+    {
+      "id": "T18",
+      "number": 18,
+      "title": "Presupuesto de Andalucía: estructura y modificaciones",
+      "publicPreview": false
+    },
+    {
+      "id": "T19",
+      "number": 19,
+      "title": "Ejecución del presupuesto de gastos",
+      "publicPreview": false
+    },
+    {
+      "id": "T20",
+      "number": 20,
+      "title": "Retribuciones y nóminas",
+      "publicPreview": false
+    },
+    {
+      "id": "T21",
+      "number": 21,
+      "title": "Subvenciones de la Comunidad Autónoma",
+      "publicPreview": false
+    },
+    {
+      "id": "T22",
+      "number": 22,
+      "title": "Gestión de expedientes de contratación",
+      "publicPreview": false
+    },
+    {
+      "id": "T23",
+      "number": 23,
+      "title": "Tesorería de la Comunidad Autónoma",
+      "publicPreview": false
+    },
+    {
+      "id": "T24",
+      "number": 24,
+      "title": "Control de la actividad financiera",
+      "publicPreview": false
+    },
+    {
+      "id": "T25",
+      "number": 25,
+      "title": "Función pública en la Junta de Andalucía",
+      "publicPreview": false
+    },
+    {
+      "id": "T26",
+      "number": 26,
+      "title": "Relación de servicio, carrera y provisión",
+      "publicPreview": false
+    },
+    {
+      "id": "T27",
+      "number": 27,
+      "title": "Derechos, deberes, permisos, disciplina y prevención",
+      "publicPreview": false
+    },
+    {
+      "id": "T28",
+      "number": 28,
+      "title": "Personal laboral de la Junta",
+      "publicPreview": false
+    },
+    {
+      "id": "T29",
+      "number": 29,
+      "title": "Sistema español de Seguridad Social",
+      "publicPreview": false
+    },
+    {
+      "id": "T30",
+      "number": 30,
+      "title": "Comunicación y atención al público",
+      "publicPreview": false
+    },
+    {
+      "id": "T31",
+      "number": 31,
+      "title": "Relaciones de la ciudadanía con la Junta",
+      "publicPreview": false
+    },
+    {
+      "id": "T32",
+      "number": 32,
+      "title": "Documentos de la Junta de Andalucía",
+      "publicPreview": false
+    },
+    {
+      "id": "T33",
+      "number": 33,
+      "title": "Gestión de documentos y registros",
+      "publicPreview": false
+    },
+    {
+      "id": "T34",
+      "number": 34,
+      "title": "El archivo administrativo",
+      "publicPreview": false
+    },
+    {
+      "id": "T35",
+      "number": 35,
+      "title": "Protección de datos y acceso a archivos",
+      "publicPreview": false
+    },
+    {
+      "id": "T36",
+      "number": 36,
+      "title": "Calidad y Cartas de Servicios",
+      "publicPreview": false
+    },
+    {
+      "id": "T37",
+      "number": 37,
+      "title": "Trabajo administrativo y simplificación",
+      "publicPreview": false
+    },
+    {
+      "id": "T38",
+      "number": 38,
+      "title": "Sistemas informáticos",
+      "publicPreview": false
+    },
+    {
+      "id": "T39",
+      "number": 39,
+      "title": "Sistemas operativos: Windows y Guadalinex",
+      "publicPreview": false
+    },
+    {
+      "id": "T40",
+      "number": 40,
+      "title": "Sistemas ofimáticos",
+      "publicPreview": false
+    },
+    {
+      "id": "T41",
+      "number": 41,
+      "title": "Redes de comunicaciones e Internet",
+      "publicPreview": false
+    },
+    {
+      "id": "T42",
+      "number": 42,
+      "title": "Administración electrónica en la Junta",
+      "publicPreview": false
+    }
+  ]
+}

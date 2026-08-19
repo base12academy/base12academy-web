@@ -1,0 +1,137 @@
+{
+  "course": "Auxiliar Administrativo de la Junta de Andalucía",
+  "themes": [
+    {
+      "id": "T01",
+      "number": 1,
+      "title": "Constitución Española: valores, derechos y garantías",
+      "publicPreview": true
+    },
+    {
+      "id": "T02",
+      "number": 2,
+      "title": "Organización territorial del Estado y Administración Local",
+      "publicPreview": false
+    },
+    {
+      "id": "T03",
+      "number": 3,
+      "title": "Comunidad Autónoma y Estatuto de Autonomía para Andalucía",
+      "publicPreview": false
+    },
+    {
+      "id": "T04",
+      "number": 4,
+      "title": "Organización institucional de Andalucía",
+      "publicPreview": false
+    },
+    {
+      "id": "T05",
+      "number": 5,
+      "title": "Organización de la Administración de la Junta de Andalucía",
+      "publicPreview": false
+    },
+    {
+      "id": "T06",
+      "number": 6,
+      "title": "Derecho Administrativo, acto administrativo y recursos",
+      "publicPreview": false
+    },
+    {
+      "id": "T07",
+      "number": 7,
+      "title": "Procedimiento administrativo común",
+      "publicPreview": false
+    },
+    {
+      "id": "T08",
+      "number": 8,
+      "title": "Normativa e igualdad de género",
+      "publicPreview": false
+    },
+    {
+      "id": "T09",
+      "number": 9,
+      "title": "Igualdad de género en las políticas públicas",
+      "publicPreview": false
+    },
+    {
+      "id": "T10",
+      "number": 10,
+      "title": "Presupuesto de la Comunidad Autónoma de Andalucía",
+      "publicPreview": false
+    },
+    {
+      "id": "T11",
+      "number": 11,
+      "title": "Función pública de la Junta de Andalucía",
+      "publicPreview": false
+    },
+    {
+      "id": "T12",
+      "number": 12,
+      "title": "Sistema español de Seguridad Social",
+      "publicPreview": false
+    },
+    {
+      "id": "T13",
+      "number": 13,
+      "title": "Comunicación y atención al público",
+      "publicPreview": false
+    },
+    {
+      "id": "T14",
+      "number": 14,
+      "title": "Relaciones de la ciudadanía con la Junta de Andalucía",
+      "publicPreview": false
+    },
+    {
+      "id": "T15",
+      "number": 15,
+      "title": "Documentos administrativos e identidad corporativa",
+      "publicPreview": false
+    },
+    {
+      "id": "T16",
+      "number": 16,
+      "title": "Gestión de documentos, expedientes y registros",
+      "publicPreview": false
+    },
+    {
+      "id": "T17",
+      "number": 17,
+      "title": "Archivo administrativo",
+      "publicPreview": false
+    },
+    {
+      "id": "T18",
+      "number": 18,
+      "title": "Protección de datos y acceso a los archivos",
+      "publicPreview": false
+    },
+    {
+      "id": "T19",
+      "number": 19,
+      "title": "Calidad y Cartas de Servicios",
+      "publicPreview": false
+    },
+    {
+      "id": "T20",
+      "number": 20,
+      "title": "Sistemas informáticos y sistemas operativos",
+      "publicPreview": false
+    },
+    {
+      "id": "T21",
+      "number": 21,
+      "title": "Sistemas ofimáticos",
+      "publicPreview": false
+    },
+    {
+      "id": "T22",
+      "number": 22,
+      "title": "Redes, internet y Administración electrónica",
+      "publicPreview": false
+    }
+  ]
+}
