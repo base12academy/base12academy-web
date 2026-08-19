@@ -430,7 +430,7 @@ export default function CourseCatalog() {
 
             <div className="original-checkout" id="course-checkout">
               <span>Total <b>{plan.price}</b></span>
-              {course.name === "Competencias y Productividad Digital, Ofimática e IA" ? (
+              {(course.name === "Competencias y Productividad Digital, Ofimática e IA" || course.name === "Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo de la Junta de Andalucía") ? (
                 <button
                   type="button"
                   onClick={checkout}
