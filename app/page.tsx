@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import type { CSSProperties } from "react";
 import LeadChatBot from "@/components/LeadChatBot";
 import CourseCatalog from "@/components/CourseCatalog";
@@ -257,7 +257,7 @@ export default function HomePage() {
 
     <details style={styles.faqItem}>
       <summary style={styles.faqQuestion}>
-        ¿Qué significa “Consigue tu libertad”?
+        ¿Qué significa "Consigue tu libertad"?
       </summary>
       <p style={styles.faqAnswer}>
         Significa que aprender bien abre posibilidades. Cuando entiendes y
