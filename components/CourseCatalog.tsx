@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import officeProgram from "../lib/ofimatica-content.json";
 
-type Family = "Bachillerato y PAU" | "Cursos online" | "Oposiciones";
+type Family = "Tropa y Marinería" | "Clases Online" | "Oposiciones" | "Cursos Online" | "Bachillerato y PAU";
 type Course = { family: Family; name: string; region?: string };
 type Plan = { name: string; price: string; detail: string; includes: string[] };
 
@@ -37,6 +37,16 @@ const online = [
   "Gestión Eficaz del Tiempo para Profesionales y Empresarios",
 ];
 
+const tropa = [
+  "Tropa y Marinería",
+];
+
+const clasesOnline = [
+  "Historia · Universidad",
+  "Historia y Filosofía · ESO y Bachillerato",
+  "Solicitud de clases · Otras asignaturas",
+];
+
 const oposiciones = [
   ["Andalucía", "Administrativo de la Junta de Andalucía"],
   ["Andalucía", "Auxiliar Administrativo de la Junta de Andalucía"],
@@ -61,9 +71,11 @@ const oposiciones = [
 ] as const;
 
 const allCourses: Course[] = [
-  ...bachillerato.map((name) => ({ family: "Bachillerato y PAU" as const, name })),
-  ...online.map((name) => ({ family: "Cursos online" as const, name })),
+  ...tropa.map((name) => ({ family: "Tropa y Marinería" as const, name })),
+  ...clasesOnline.map((name) => ({ family: "Clases Online" as const, name })),
   ...oposiciones.map(([region, name]) => ({ family: "Oposiciones" as const, name, region })),
+  ...online.map((name) => ({ family: "Cursos Online" as const, name })),
+  ...bachillerato.map((name) => ({ family: "Bachillerato y PAU" as const, name })),
 ];
 
 function plansFor(course: Course): Plan[] {
@@ -82,7 +94,181 @@ function plansFor(course: Course): Plan[] {
       { name: "Productividad Digital e IA", price: "239 €", detail: "Automatización, productividad e IA aplicada · Acceso durante 12 meses", includes: ["Todo lo incluido en Ofimática", "Publicación y distribución de Power BI, flujos, aprobaciones y control operativo", "Automatización avanzada e inteligencia artificial integrada en procesos profesionales", "Certificado Base12 de Productividad Digital e IA tras completar el itinerario y demostrar las competencias exigidas"] },
     ];
   }
-  if (course.family === "Cursos online") {
+  if (course.name === "Tropa y Marinería") {
+    return [
+      {
+        name: "Esencial",
+        price: "179 €",
+        detail: "Entrenamiento esencial · 14.000 preguntas",
+        includes: [
+          "14.000 preguntas de entrenamiento",
+          "Acceso al itinerario Tropa y Marinería",
+          "Rocío · Profesora IA",
+          "Fernando · Tutor IA",
+        ],
+      },
+      {
+        name: "Operativa",
+        price: "249 €",
+        detail: "Entrenamiento ampliado · 21.000 preguntas",
+        includes: [
+          "21.000 preguntas de entrenamiento",
+          "Acceso ampliado al itinerario Tropa y Marinería",
+          "Rocío · Profesora IA",
+          "Fernando · Tutor IA",
+        ],
+      },
+      {
+        name: "Integral",
+        price: "319 €",
+        detail: "Preparación completa · 28.000 preguntas",
+        includes: [
+          "28.000 preguntas de entrenamiento",
+          "Acceso completo al itinerario Tropa y Marinería",
+          "Rocío · Profesora IA",
+          "Fernando · Tutor IA",
+        ],
+      },
+    ];
+  }
+
+  if (course.name === "Historia · Universidad") {
+    return [
+      {
+        name: "5 horas",
+        price: "125 €",
+        detail: "5 clases online de 1 hora · Historia universitaria",
+        includes: [
+          "5 horas de clases individuales online de Historia",
+          "Reserva mediante agenda según disponibilidad",
+          "Clases mediante Google Meet",
+          "Classroom individual por alumno y asignatura",
+          "WhatsApp de Base12 Academy para mensajería rápida",
+          "Bono válido durante 2 meses desde la compra",
+        ],
+      },
+      {
+        name: "10 horas",
+        price: "230 €",
+        detail: "10 clases online de 1 hora · Historia universitaria",
+        includes: [
+          "10 horas de clases individuales online de Historia",
+          "Reserva mediante agenda según disponibilidad",
+          "Clases mediante Google Meet",
+          "Classroom individual por alumno y asignatura",
+          "WhatsApp de Base12 Academy para mensajería rápida",
+          "Bono válido durante 2 meses desde la compra",
+        ],
+      },
+      {
+        name: "15 horas",
+        price: "300 €",
+        detail: "15 clases online de 1 hora · Historia universitaria",
+        includes: [
+          "15 horas de clases individuales online de Historia",
+          "Reserva mediante agenda según disponibilidad",
+          "Clases mediante Google Meet",
+          "Classroom individual por alumno y asignatura",
+          "WhatsApp de Base12 Academy para mensajería rápida",
+          "Bono válido durante 2 meses desde la compra",
+        ],
+      },
+      {
+        name: "20 horas",
+        price: "400 €",
+        detail: "20 clases online de 1 hora · Historia universitaria",
+        includes: [
+          "20 horas de clases individuales online de Historia",
+          "Reserva mediante agenda según disponibilidad",
+          "Clases mediante Google Meet",
+          "Classroom individual por alumno y asignatura",
+          "WhatsApp de Base12 Academy para mensajería rápida",
+          "Bono válido durante 2 meses desde la compra",
+        ],
+      },
+    ];
+  }
+
+  if (course.name === "Historia y Filosofía · ESO y Bachillerato") {
+    return [
+      {
+        name: "5 horas",
+        price: "100 €",
+        detail: "5 clases online de 1 hora · Historia y Filosofía",
+        includes: [
+          "5 horas para Historia y/o Filosofía",
+          "4.º ESO, 1.º y 2.º de Bachillerato",
+          "Reserva mediante agenda según disponibilidad",
+          "Clases mediante Google Meet",
+          "Classroom individual por alumno y asignatura",
+          "WhatsApp de Base12 Academy para mensajería rápida",
+          "Bono válido durante 2 meses desde la compra",
+        ],
+      },
+      {
+        name: "10 horas",
+        price: "190 €",
+        detail: "10 clases online de 1 hora · Historia y Filosofía",
+        includes: [
+          "10 horas para Historia y/o Filosofía",
+          "4.º ESO, 1.º y 2.º de Bachillerato",
+          "Reserva mediante agenda según disponibilidad",
+          "Clases mediante Google Meet",
+          "Classroom individual por alumno y asignatura",
+          "WhatsApp de Base12 Academy para mensajería rápida",
+          "Bono válido durante 2 meses desde la compra",
+        ],
+      },
+      {
+        name: "15 horas",
+        price: "280 €",
+        detail: "15 clases online de 1 hora · Historia y Filosofía",
+        includes: [
+          "15 horas para Historia y/o Filosofía",
+          "4.º ESO, 1.º y 2.º de Bachillerato",
+          "Reserva mediante agenda según disponibilidad",
+          "Clases mediante Google Meet",
+          "Classroom individual por alumno y asignatura",
+          "WhatsApp de Base12 Academy para mensajería rápida",
+          "Bono válido durante 2 meses desde la compra",
+        ],
+      },
+      {
+        name: "20 horas",
+        price: "340 €",
+        detail: "20 clases online de 1 hora · Historia y Filosofía",
+        includes: [
+          "20 horas para Historia y/o Filosofía",
+          "4.º ESO, 1.º y 2.º de Bachillerato",
+          "Reserva mediante agenda según disponibilidad",
+          "Clases mediante Google Meet",
+          "Classroom individual por alumno y asignatura",
+          "WhatsApp de Base12 Academy para mensajería rápida",
+          "Bono válido durante 2 meses desde la compra",
+        ],
+      },
+    ];
+  }
+
+  if (course.name === "Solicitud de clases · Otras asignaturas") {
+    return [
+      {
+        name: "Solicitud",
+        price: "Consultar",
+        detail: "Matemáticas, Lengua, Física y Química",
+        includes: [
+          "Matemáticas II",
+          "Matemáticas Aplicadas a las CCSS",
+          "Lengua y Literatura",
+          "Física y Química",
+          "Solicitud previa de disponibilidad",
+          "La contratación se habilitará después de la confirmación de Base12 Academy",
+        ],
+      },
+    ];
+  }
+
+  if (course.family === "Cursos Online") {
     return [
       { name: "Esencial", price: "69,90 €", detail: "Comprender los contenidos esenciales", includes: ["Todos los vídeos del programa", "Síntesis, claves y 2 comprobaciones por contenido", "Glosario y Profesor IA básico", "Sin casos, diagnóstico, proyecto ni mentoría", "Certificado de realización"] },
       { name: "Estándar", price: "119,90 €", detail: "Aplicar lo aprendido de forma autónoma", includes: ["Todo lo incluido en Esencial", "Desarrollo aplicado completo", "4 comprobaciones explicadas por contenido", "Casos y aplicaciones prácticas", "Diagnóstico final con mínimo del 70 %", "Proyecto autoguiado con rúbrica", "Certificado de aprovechamiento"] },
@@ -97,7 +283,7 @@ function plansFor(course: Course): Plan[] {
 }
 
 export default function CourseCatalog() {
-  const [family, setFamily] = useState<Family>("Bachillerato y PAU");
+  const [family, setFamily] = useState<Family>("Tropa y Marinería");
   const [search, setSearch] = useState("");
   const [course, setCourse] = useState<Course | null>(null);
   const [plan, setPlan] = useState<Plan | null>(null);
@@ -230,7 +416,7 @@ export default function CourseCatalog() {
       </div>
 
       <div className="original-tabs" role="tablist" aria-label="Tipos de cursos">
-        {(["Bachillerato y PAU", "Cursos online", "Oposiciones"] as Family[]).map((item) => (
+        {(["Tropa y Marinería", "Clases Online", "Oposiciones", "Cursos Online", "Bachillerato y PAU"] as Family[]).map((item) => (
           <button key={item} role="tab" aria-selected={family === item} className={family === item ? "active" : ""} onClick={() => { setFamily(item); setSearch(""); }}>
             {item}
           </button>
@@ -251,7 +437,7 @@ export default function CourseCatalog() {
         </div>
       )}
 
-      {family === "Cursos online" && (
+      {family === "Cursos Online" && (
         <div className="certificate-note">
           <div className="certificate-icon">✓</div>
           <div>
@@ -267,7 +453,11 @@ export default function CourseCatalog() {
             <div>
               <small>{item.region || item.family}</small>
               <h3>{item.name}</h3>
-              <p>Desde <b>{plansFor(item)[0].price}</b></p>
+              <p>
+                {item.name === "Solicitud de clases · Otras asignaturas"
+                  ? <b>Consultar disponibilidad</b>
+                  : <>Desde <b>{plansFor(item)[0].price}</b></>}
+              </p>
             </div>
             <button onClick={() => open(item)}>Ver modalidades</button>
           </article>
@@ -377,6 +567,7 @@ export default function CourseCatalog() {
               </div>
             )}
 
+            {course.family !== "Tropa y Marinería" && course.family !== "Clases Online" && (<>
             <div className="original-legal">
               <h3>Información contractual</h3>
               <details>
@@ -395,7 +586,7 @@ export default function CourseCatalog() {
                 <p>Las credenciales y los materiales son personales. No se permite compartir el acceso, reproducir, distribuir, revender o comunicar públicamente los contenidos sin autorización. Las convocatorias, normas y requisitos deben contrastarse con la publicación oficial vigente.</p>
                 <p><a href="/aviso-legal" target="_blank" rel="noreferrer">Consultar el aviso legal completo</a>.</p>
               </details>
-              {course.family === "Cursos online" && (
+              {course.family === "Cursos Online" && (
                 <details>
                   <summary>Condiciones del certificado</summary>
                   <p>El certificado se genera únicamente tras finalizar el itinerario y demostrar las competencias y evidencias exigidas para la modalidad, sin pagos pendientes. No equivale por sí mismo a una titulación oficial ni a una certificación profesional regulada.</p>
@@ -418,7 +609,7 @@ export default function CourseCatalog() {
             <div className="original-consents">
               <label><input type="checkbox" checked={terms} onChange={(event) => setTerms(event.target.checked)} /> <span>He leído y acepto las condiciones de contratación y las normas de uso. <b>Obligatorio</b></span></label>
               <label><input type="checkbox" checked={privacy} onChange={(event) => setPrivacy(event.target.checked)} /> <span>He leído la política de privacidad y confirmo que los datos facilitados pueden tratarse para gestionar la matrícula y prestar el servicio. <b>Obligatorio</b></span></label>
-              {course.family === "Cursos online" && (
+              {course.family === "Cursos Online" && (
                 <>
                   <label>
                     <input
@@ -443,8 +634,14 @@ export default function CourseCatalog() {
               <label><input type="checkbox" checked={marketing} onChange={(event) => setMarketing(event.target.checked)} /> <span>Quiero recibir novedades y ofertas. <em>Opcional</em></span></label>
             </div>
 
+            </>)}
+
             <div className="original-checkout" id="course-checkout">
-              <span>Total <b>{plan.price}</b></span>
+              <span>
+                {plan.price === "Consultar"
+                  ? <b>Precio tras confirmar disponibilidad</b>
+                  : <>Total <b>{plan.price}</b></>}
+              </span>
               {(course.name === "Competencias y Productividad Digital, Ofimática e IA" || course.name === "Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo de la Junta de Andalucía") ? (
                 <button
                   type="button"
@@ -459,7 +656,15 @@ export default function CourseCatalog() {
                   {checkoutLoading ? "Conectando con el banco…" : "Continuar con la suscripción"}
                 </button>
               ) : (
-                <button disabled>Matriculación disponible próximamente</button>
+                <button disabled>
+                  {course.family === "Tropa y Marinería"
+                    ? "Contratación disponible próximamente"
+                    : course.family === "Clases Online"
+                      ? course.name === "Solicitud de clases · Otras asignaturas"
+                        ? "Solicitud de disponibilidad próximamente"
+                        : "Contratación del bono disponible próximamente"
+                      : "Matriculación disponible próximamente"}
+                </button>
               )}
             </div>
             {checkoutError && (
