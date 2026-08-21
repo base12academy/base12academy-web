@@ -1,0 +1,318 @@
+.wrapper {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.heading span {
+  display: block;
+  color: #1d4ed8;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .08em;
+}
+
+.heading h3 {
+  margin: 6px 0 4px;
+  font-size: 22px;
+}
+
+.heading p {
+  margin: 0;
+  color: #64748b;
+}
+
+.months {
+  display: flex;
+  gap: 9px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.months button {
+  min-width: 115px;
+  padding: 10px 16px;
+  border: 1px solid #dbe3ef;
+  border-radius: 15px;
+  background: #f8fafc;
+  color: #334155;
+  text-align: left;
+  cursor: pointer;
+}
+
+.months strong,
+.months small {
+  display: block;
+}
+
+.months small {
+  margin-top: 2px;
+  color: #64748b;
+}
+
+.months .monthActive {
+  border-color: #93c5fd;
+  background: #eff6ff;
+  color: #1e40af;
+}
+
+.bookingGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr);
+  gap: 18px;
+}
+
+.calendar,
+.hoursPanel,
+.legend {
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  background: #fbfdff;
+}
+
+.calendar {
+  padding: 18px;
+}
+
+.weekdays,
+.days {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.weekdays {
+  margin-bottom: 10px;
+}
+
+.weekdays span {
+  text-align: center;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.day {
+  min-height: 64px;
+  padding: 8px;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  background: #fff;
+  color: #0f172a;
+  cursor: pointer;
+}
+
+.day strong,
+.day small {
+  display: block;
+}
+
+.day small {
+  margin-top: 5px;
+  color: #64748b;
+  font-size: 10px;
+}
+
+.day:hover:not(:disabled) {
+  border-color: #bfdbfe;
+  background: #eff6ff;
+}
+
+.day:disabled {
+  background: #f8fafc;
+  color: #cbd5e1;
+  cursor: default;
+}
+
+.daySelected {
+  border-color: #2563eb;
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.hoursPanel,
+.legend {
+  padding: 16px;
+}
+
+.placeholder {
+  display: flex;
+  min-height: 190px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  text-align: center;
+}
+
+.placeholder strong {
+  color: #334155;
+}
+
+.selectedDate {
+  margin-bottom: 12px;
+}
+
+.selectedDate small,
+.selectedDate strong {
+  display: block;
+}
+
+.selectedDate small {
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.selectedDate strong {
+  margin-top: 3px;
+  text-transform: capitalize;
+}
+
+.hours {
+  display: grid;
+  gap: 7px;
+}
+
+.hour {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 13px;
+  cursor: pointer;
+}
+
+.hour span {
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.free {
+  background: #DCFCE7;
+  color: #166534;
+}
+
+.provisional {
+  background: #FEF3C7;
+  color: #92400E;
+  outline: 2px solid #f59e0b;
+  outline-offset: 1px;
+}
+
+.mine {
+  background: #DBEAFE;
+  color: #1E40AF;
+}
+
+.unavailable {
+  background: #CBD5E1;
+  color: #334155;
+  cursor: default;
+}
+
+.legend h4 {
+  margin: 0 0 12px;
+  font-size: 14px;
+}
+
+.legend > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 0;
+}
+
+.legend i {
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
+}
+
+.legend span,
+.legend strong,
+.legend small {
+  display: block;
+}
+
+.legend strong {
+  color: #334155;
+  font-size: 12px;
+}
+
+.legend small {
+  margin-top: 1px;
+  color: #64748b;
+  font-size: 10px;
+}
+
+.freeSample {
+  background: #DCFCE7;
+  border: 1px solid #86efac;
+}
+
+.provisionalSample {
+  background: #FEF3C7;
+  border: 1px solid #fcd34d;
+}
+
+.mineSample {
+  background: #DBEAFE;
+  border: 1px solid #93c5fd;
+}
+
+.unavailableSample {
+  background: #CBD5E1;
+  border: 1px solid #94a3b8;
+}
+
+.notice {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border: 1px solid #fde68a;
+  border-radius: 15px;
+  background: #fffbeb;
+  color: #78350f;
+}
+
+.notice p {
+  margin: 4px 0 0;
+  color: #92400e;
+}
+
+.scheduleNote {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 12px;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+@media (max-width: 780px) {
+  .bookingGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .months button {
+    flex: 1 1 100px;
+  }
+
+  .day {
+    min-height: 52px;
+  }
+
+  .day small {
+    display: none;
+  }
+}

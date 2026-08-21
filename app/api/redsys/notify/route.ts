@@ -150,6 +150,11 @@ export async function POST(req: NextRequest) {
 
     const course = courses[catalogSlug];
 
+    const isClassBono =
+      course != null &&
+      "accessType" in course &&
+      course.accessType === "class_bono";
+
     const amount = Number(
       decoded.Ds_Amount ||
         decoded.DS_AMOUNT ||
@@ -389,6 +394,45 @@ export async function POST(req: NextRequest) {
         },
         { status: 400 }
       );
+    }
+
+    /*
+     * CLASES ONLINE.
+     *
+     * Redsys ya ha confirmado el cobro.
+     * La retenci?n deja de depender de los 60 minutos
+     * y queda protegida hasta convertirse en la primera clase.
+     */
+    if (isClassBono) {
+      const {
+        error: classHoldPaidError,
+      } = await supabase.rpc(
+        "mark_class_booking_hold_paid",
+        {
+          p_checkout_order_id:
+            checkoutOrder.id,
+        }
+      );
+
+      if (classHoldPaidError) {
+        console.error(
+          "Pago aprobado pero no se pudo proteger la hora de Clases Online",
+          {
+            checkoutId: checkoutOrder.id,
+            catalogSlug,
+            error: classHoldPaidError,
+          }
+        );
+
+        return NextResponse.json(
+          {
+            ok: false,
+            error:
+              "class_hold_payment_protection_failed",
+          },
+          { status: 500 }
+        );
+      }
     }
 
     /*

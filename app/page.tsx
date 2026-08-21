@@ -71,18 +71,15 @@ export default function HomePage() {
             <section className="b12-home-hero" style={styles.hero}>
               <div style={styles.heroTextColumn}>
                 <div style={styles.label}>
-                  Bachillerato · PAU · Oposiciones · Cursos online
+                  Tropa y Marinería · Clases Online · Oposiciones · Cursos Online · Bachillerato y PAU
                 </div>
 
                 <h1 style={styles.h1}>
-                  Aprende con estructura. Avanza con seguridad.
+                  Aprende con método. Avanza acompañado. Domina con seguridad.
                 </h1>
 
                 <p style={styles.heroText}>
-                  Base12 Academy reúne distintas líneas de formación: Bachillerato
-                  y PAU, Oposiciones y Cursos online. Cada aula tendrá su propio
-                  método, sus propios recursos y una preparación adaptada al
-                  objetivo del estudiante.
+                  Base12 Academy reúne formación, entrenamiento y apoyo académico para objetivos distintos. Prepárate para Tropa y Marinería, recibe apoyo personalizado con nuestras Clases Online, entrena tu oposición, mejora tus competencias con nuestros Cursos Online o prepara Bachillerato y PAU. En cada opción encontrarás un método definido, recursos específicos y acompañamiento adaptado a tu objetivo.
                 </p>
 
                 <div style={styles.heroButtons}>

@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import officeProgram from "../lib/ofimatica-content.json";
+import ClassBookingCalendar from "./ClassBookingCalendar";
 
 type Family = "Tropa y Marinería" | "Clases Online" | "Oposiciones" | "Cursos Online" | "Bachillerato y PAU";
 type Course = { family: Family; name: string; region?: string };
@@ -295,6 +296,7 @@ export default function CourseCatalog() {
   const [presentationVideo, setPresentationVideo] = useState<string | null>(null);
   const [checkoutLoading, setCheckoutLoading] = useState(false);
   const [checkoutError, setCheckoutError] = useState("");
+  const [classHoldReady, setClassHoldReady] = useState(false);
 
   const filtered = useMemo(
     () => allCourses.filter((item) => item.family === family && item.name.toLowerCase().includes(search.toLowerCase())),
@@ -316,6 +318,67 @@ export default function CourseCatalog() {
     }
   }, []);
 
+  useEffect(() => {
+    const purchasableClasses =
+      course?.family === "Clases Online" &&
+      course.name !== "Solicitud de clases · Otras asignaturas";
+
+    if (!purchasableClasses) {
+      setClassHoldReady(false);
+      return;
+    }
+
+    const checkHold = () => {
+      try {
+        const raw =
+          window.sessionStorage.getItem(
+            "b12_class_booking_hold"
+          );
+
+        if (!raw) {
+          setClassHoldReady(false);
+          return;
+        }
+
+        const parsed = JSON.parse(raw) as {
+          holdId?: unknown;
+          holdToken?: unknown;
+          expiresAt?: unknown;
+        };
+
+        const valid =
+          typeof parsed.holdId === "string" &&
+          parsed.holdId.length > 0 &&
+          typeof parsed.holdToken === "string" &&
+          parsed.holdToken.length > 0 &&
+          typeof parsed.expiresAt === "string" &&
+          Date.parse(parsed.expiresAt) > Date.now();
+
+        setClassHoldReady(valid);
+
+        if (!valid) {
+          window.sessionStorage.removeItem(
+            "b12_class_booking_hold"
+          );
+        }
+      } catch {
+        setClassHoldReady(false);
+        window.sessionStorage.removeItem(
+          "b12_class_booking_hold"
+        );
+      }
+    };
+
+    checkHold();
+
+    const timer =
+      window.setInterval(checkHold, 500);
+
+    return () => {
+      window.clearInterval(timer);
+    };
+  }, [course]);
+
   function open(item: Course) {
     setCourse(item);
     setPlan(plansFor(item)[0]);
@@ -330,7 +393,15 @@ export default function CourseCatalog() {
     if (!course || !plan) return;
 
     const purchasableOpposition = course.name === "Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo de la Junta de Andalucía";
-    if (course.name !== "Competencias y Productividad Digital, Ofimática e IA" && !purchasableOpposition) {
+    const purchasableClasses =
+      course.family === "Clases Online" &&
+      course.name !== "Solicitud de clases · Otras asignaturas";
+
+    if (
+      course.name !== "Competencias y Productividad Digital, Ofimática e IA" &&
+      !purchasableOpposition &&
+      !purchasableClasses
+    ) {
       setCheckoutError("La matrícula online de este curso todavía no está disponible.");
       return;
     }
@@ -348,11 +419,90 @@ export default function CourseCatalog() {
 
     const oppositionPrefix = course.name === "Administrativo de la Junta de Andalucía" ? "administrativo-ja" : course.name === "Auxiliar Administrativo de la Junta de Andalucía" ? "auxiliar-administrativo-ja" : "";
     const oppositionPlan = ({ Esencial: "esencial", "Estándar": "estandar", Premium: "premium" } as Record<string, string>)[plan.name];
-    const courseSlug = slugByPlan[plan.name] || (oppositionPrefix && oppositionPlan ? `${oppositionPrefix}-${oppositionPlan}` : "");
+
+    const classHours =
+      purchasableClasses
+        ? plan.name.match(/\d+/)?.[0] ?? ""
+        : "";
+
+    const classCourseSlug =
+      purchasableClasses && classHours
+        ? course.name.includes("Universidad")
+          ? `clases-online-universidad-${classHours}h`
+          : `clases-online-eso-bach-${classHours}h`
+        : "";
+
+    const courseSlug =
+      slugByPlan[plan.name] ||
+      (oppositionPrefix && oppositionPlan
+        ? `${oppositionPrefix}-${oppositionPlan}`
+        : "") ||
+      classCourseSlug;
 
     if (!courseSlug) {
       setCheckoutError("No se ha podido identificar la modalidad seleccionada.");
       return;
+    }
+
+    let classHold:
+      | {
+          holdId: string;
+          holdToken: string;
+        }
+      | null = null;
+
+    if (purchasableClasses) {
+      try {
+        const raw =
+          window.sessionStorage.getItem(
+            "b12_class_booking_hold"
+          );
+
+        if (!raw) {
+          setCheckoutError(
+            "Selecciona primero una hora disponible para tu primera clase."
+          );
+          return;
+        }
+
+        const parsed = JSON.parse(raw) as {
+          holdId?: unknown;
+          holdToken?: unknown;
+          expiresAt?: unknown;
+        };
+
+        if (
+          typeof parsed.holdId !== "string" ||
+          !parsed.holdId ||
+          typeof parsed.holdToken !== "string" ||
+          !parsed.holdToken ||
+          typeof parsed.expiresAt !== "string" ||
+          Date.parse(parsed.expiresAt) <= Date.now()
+        ) {
+          window.sessionStorage.removeItem(
+            "b12_class_booking_hold"
+          );
+          setClassHoldReady(false);
+          setCheckoutError(
+            "La reserva provisional ha caducado. Selecciona de nuevo una hora."
+          );
+          return;
+        }
+
+        classHold = {
+          holdId: parsed.holdId,
+          holdToken: parsed.holdToken,
+        };
+      } catch {
+        window.sessionStorage.removeItem(
+          "b12_class_booking_hold"
+        );
+        setClassHoldReady(false);
+        setCheckoutError(
+          "No se ha podido recuperar la hora seleccionada. Elige de nuevo una hora."
+        );
+        return;
+      }
     }
 
     setCheckoutLoading(true);
@@ -371,6 +521,12 @@ export default function CourseCatalog() {
           immediateAccess,
           withdrawalAcknowledged,
           marketingConsent: marketing,
+          ...(classHold
+            ? {
+                holdId: classHold.holdId,
+                holdToken: classHold.holdToken,
+              }
+            : {}),
         }),
       });
 
@@ -532,6 +688,10 @@ export default function CourseCatalog() {
               </ul>
             </div>
 
+            {course.family === "Clases Online" && course.name !== "Solicitud de clases · Otras asignaturas" && (
+              <ClassBookingCalendar />
+            )}
+
             {course.name === "Competencias y Productividad Digital, Ofimática e IA" && (
               <div className="commercial-course-details">
                 <section>
@@ -642,7 +802,7 @@ export default function CourseCatalog() {
                   ? <b>Precio tras confirmar disponibilidad</b>
                   : <>Total <b>{plan.price}</b></>}
               </span>
-              {(course.name === "Competencias y Productividad Digital, Ofimática e IA" || course.name === "Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo de la Junta de Andalucía") ? (
+              {(course.name === "Competencias y Productividad Digital, Ofimática e IA" || course.name === "Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo de la Junta de Andalucía" || (course.family === "Clases Online" && course.name !== "Solicitud de clases · Otras asignaturas")) ? (
                 <button
                   type="button"
                   onClick={checkout}
@@ -650,10 +810,21 @@ export default function CourseCatalog() {
                     checkoutLoading ||
                     !terms ||
                     !privacy ||
-                    (immediateAccess && !withdrawalAcknowledged)
+                    (immediateAccess && !withdrawalAcknowledged) ||
+                    (
+                      course.family === "Clases Online" &&
+                      course.name !== "Solicitud de clases · Otras asignaturas" &&
+                      !classHoldReady
+                    )
                   }
                 >
-                  {checkoutLoading ? "Conectando con el banco…" : "Continuar con la suscripción"}
+                  {checkoutLoading
+                    ? "Conectando con el banco…"
+                    : course.family === "Clases Online"
+                      ? classHoldReady
+                        ? "Continuar con el pago del bono"
+                        : "Selecciona primero una hora"
+                      : "Continuar con la suscripción"}
                 </button>
               ) : (
                 <button disabled>

@@ -43,6 +43,7 @@ function AltaContent() {
   const [changingPassword, setChangingPassword] = useState(false);
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
+  const [nextStep, setNextStep] = useState("billing");
 
   async function claimOrder(accessToken?: string): Promise<ClaimResponse> {
     const response = await fetch("/api/checkout/claim", {
@@ -110,6 +111,8 @@ function AltaContent() {
 
       const result = await claimOrder();
 
+      setNextStep(result.nextStep || "billing");
+
       const tempPassword = result.temporaryPassword || "";
 
       if (!result.email || !tempPassword) {
@@ -164,9 +167,13 @@ function AltaContent() {
         existingPassword
       );
 
-      await claimOrder(accessToken);
+      const result = await claimOrder(accessToken);
 
-      router.replace("/onboarding");
+      router.replace(
+        result.nextStep === "classes"
+          ? "/dashboard/clases"
+          : "/onboarding"
+      );
     } catch (err) {
       setError(
         err instanceof Error
@@ -233,7 +240,11 @@ function AltaContent() {
   }
 
   function continueOnboarding() {
-    router.replace("/onboarding");
+    router.replace(
+      nextStep === "classes"
+        ? "/dashboard/clases"
+        : "/onboarding"
+    );
   }
 
   return (

@@ -62,6 +62,21 @@ export default function PagoOkPage() {
         if (data.paid) {
           setCheckingPayment(false);
 
+          /*
+           * Clases Online no utiliza el v?deo general
+           * de bienvenida de los cursos.
+           */
+          if (data.courseSlug === "clases-online") {
+            router.replace(
+              `/onboarding/alta?checkout=${encodeURIComponent(
+                token
+              )}&classes=1&plan=${encodeURIComponent(
+                data.planSlug || ""
+              )}`
+            );
+            return;
+          }
+
           if (data.communicationsVideoCompleted) {
             router.replace(
               `/onboarding/alta?checkout=${encodeURIComponent(

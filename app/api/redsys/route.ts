@@ -137,6 +137,31 @@ export async function POST(req: Request) {
     );
   }
 
+
+  const isClassBono =
+    "accessType" in course &&
+    course.accessType === "class_bono";
+
+  const holdId =
+    typeof body?.holdId === "string"
+      ? body.holdId.trim()
+      : "";
+
+  const holdToken =
+    typeof body?.holdToken === "string"
+      ? body.holdToken.trim()
+      : "";
+
+  if (isClassBono && (!holdId || !holdToken)) {
+    return NextResponse.json(
+      {
+        error:
+          "Debes seleccionar una hora disponible antes de iniciar el pago.",
+      },
+      { status: 409 }
+    );
+  }
+
   const termsAccepted =
     body?.termsAccepted === true;
 
@@ -305,6 +330,58 @@ export async function POST(req: Request) {
       },
       { status: 500 }
     );
+  }
+
+  /*
+   * En Clases Online, el pedido queda vinculado a la
+   * reserva provisional antes de enviar al alumno a Redsys.
+   */
+  if (isClassBono) {
+    const holdTokenHash = crypto
+      .createHash("sha256")
+      .update(holdToken)
+      .digest("hex");
+
+    const now = new Date().toISOString();
+
+    const {
+      data: linkedHold,
+      error: holdLinkError,
+    } = await supabase
+      .from("class_booking_holds")
+      .update({
+        checkout_order_id: checkoutOrder.id,
+        updated_at: now,
+      })
+      .eq("id", holdId)
+      .eq("hold_token_hash", holdTokenHash)
+      .eq("status", "held")
+      .gt("expires_at", now)
+      .select("id")
+      .maybeSingle();
+
+    if (holdLinkError || !linkedHold) {
+      console.error(
+        "No se pudo vincular la reserva provisional",
+        holdLinkError
+      );
+
+      await supabase
+        .from("checkout_orders")
+        .update({
+          status: "cancelled",
+          updated_at: new Date().toISOString(),
+        })
+        .eq("id", checkoutOrder.id);
+
+      return NextResponse.json(
+        {
+          error:
+            "La reserva provisional ha caducado o ya no est? disponible. Selecciona otra hora.",
+        },
+        { status: 409 }
+      );
+    }
   }
 
   /*
