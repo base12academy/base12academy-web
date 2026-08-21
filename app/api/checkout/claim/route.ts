@@ -1,4 +1,4 @@
-import crypto from "crypto";
+﻿import crypto from "crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabase } from "@/lib/supabase/server";
 
@@ -31,7 +31,7 @@ function getBearerToken(request: NextRequest) {
 
 function escapeHtml(value: unknown) {
   return String(value ?? "")
-    .replace(/&/g, "&")
+    .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
@@ -51,7 +51,7 @@ function planName(planSlug: string) {
   }
 
   if (planSlug === "estandar") {
-    return "Ofimática";
+    return "Ofim├ítica";
   }
 
   if (planSlug === "premium") {
@@ -102,7 +102,7 @@ async function sendPurchaseConfirmation(
   const price = formatEuro(input.amountCents);
   const activationText = input.immediateAccess
     ? "Acceso inmediato solicitado y habilitado."
-    : `El acceso de pago se activará el ${formatDate(input.startsAt)}.`;
+    : `El acceso de pago se activar├í el ${formatDate(input.startsAt)}.`;
 
   const expirationText = input.expiresAt
     ? ` hasta el ${formatDate(input.expiresAt)}`
@@ -120,8 +120,8 @@ async function sendPurchaseConfirmation(
     "",
     "Tu contrataci├│n en Base12 Academy ha quedado registrada correctamente.",
     "",
-    "RESUMEN DE LA CONTRATACIÓN",
-    "Curso: Competencias, Productividad, Ofimática e IA",
+    "RESUMEN DE LA CONTRATACI├ôN",
+    "Curso: Competencias, Productividad, Ofim├ítica e IA",
     `Acceso: ${accessName}`,
     `Importe pagado: ${price}`,
     `Referencia del pedido: ${input.orderId}`,
@@ -130,17 +130,17 @@ async function sendPurchaseConfirmation(
     "",
     "ACEPTACIONES REGISTRADAS",
     `Condiciones de contrataci├│n y normas de uso: ${input.termsAccepted ? "Aceptadas" : "No aceptadas"}`,
-    `Política de privacidad: ${input.privacyAcknowledged ? "Confirmada" : "No confirmada"}`,
+    `Pol├¡tica de privacidad: ${input.privacyAcknowledged ? "Confirmada" : "No confirmada"}`,
     `Inicio inmediato: ${input.immediateAccess ? "Solicitado" : "No solicitado"}`,
     `Conocimiento de las consecuencias del inicio inmediato: ${input.withdrawalAcknowledged ? "Confirmado" : "No aplicable / no confirmado"}`,
     `Comunicaciones comerciales opcionales: ${input.marketingConsent ? "Aceptadas" : "No aceptadas"}`,
     "",
     "TU CUENTA",
     `Correo de acceso: ${input.email}`,
-    "Por seguridad, Base12 Academy no envía contraseñas por correo electrónico.",
+    "Por seguridad, Base12 Academy no env├¡a contrase├▒as por correo electr├│nico.",
     "Puedes acceder a tu cuenta desde https://base12academy.es/login",
     "",
-    "Durante el alta completarás los datos de facturación, tu planificación con Fernando, la vinculación con Telegram y los vídeos de bienvenida.",
+    "Durante el alta completar├ís los datos de facturaci├│n, tu planificaci├│n con Fernando, la vinculaci├│n con Telegram y los v├¡deos de bienvenida.",
     "",
     "Conserva este correo junto con la referencia del pedido.",
     "",
@@ -167,7 +167,7 @@ async function sendPurchaseConfirmation(
           <tr>
             <td style="padding:8px 0;color:#64748b">Curso</td>
             <td style="padding:8px 0;font-weight:700;text-align:right">
-              Competencias, Productividad, Ofimática e IA
+              Competencias, Productividad, Ofim├ítica e IA
             </td>
           </tr>
           <tr>
@@ -204,7 +204,7 @@ async function sendPurchaseConfirmation(
 
         <ul style="padding-left:20px">
           <li>Condiciones de contrataci├│n y normas de uso: <strong>${input.termsAccepted ? "Aceptadas" : "No aceptadas"}</strong>.</li>
-          <li>Política de privacidad: <strong>${input.privacyAcknowledged ? "Confirmada" : "No confirmada"}</strong>.</li>
+          <li>Pol├¡tica de privacidad: <strong>${input.privacyAcknowledged ? "Confirmada" : "No confirmada"}</strong>.</li>
           <li>Inicio inmediato: <strong>${input.immediateAccess ? "Solicitado" : "No solicitado"}</strong>.</li>
           <li>Conocimiento de las consecuencias del inicio inmediato: <strong>${input.withdrawalAcknowledged ? "Confirmado" : "No aplicable / no confirmado"}</strong>.</li>
           <li>Comunicaciones comerciales opcionales: <strong>${input.marketingConsent ? "Aceptadas" : "No aceptadas"}</strong>.</li>
@@ -215,7 +215,7 @@ async function sendPurchaseConfirmation(
         <p>
           Correo de acceso:
           <strong>${escapeHtml(input.email)}</strong>.
-          Por seguridad, Base12 Academy no envía contraseñas por correo electrónico.
+          Por seguridad, Base12 Academy no env├¡a contrase├▒as por correo electr├│nico.
         </p>
 
         <p>
@@ -228,8 +228,8 @@ async function sendPurchaseConfirmation(
         </p>
 
         <p style="margin-top:26px;color:#526176">
-          Durante el alta completarás los datos de facturación, tu planificación con Fernando,
-          la vinculación con Telegram y los vídeos de bienvenida.
+          Durante el alta completar├ís los datos de facturaci├│n, tu planificaci├│n con Fernando,
+          la vinculaci├│n con Telegram y los v├¡deos de bienvenida.
         </p>
 
         <p style="margin-top:24px">
@@ -327,7 +327,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           error:
-            "Indica un correo electrónico válido.",
+            "Indica un correo electr├│nico v├ílido.",
         },
         { status: 400 }
       );
@@ -337,7 +337,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           error:
-            "Indica un número de móvil válido.",
+            "Indica un n├║mero de m├│vil v├ílido.",
         },
         { status: 400 }
       );
@@ -400,7 +400,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           error:
-            "El pago todavía no está confirmado.",
+            "El pago todav├¡a no est├í confirmado.",
         },
         { status: 409 }
       );
@@ -412,14 +412,14 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           error:
-            "La bienvenida inicial todavía no está completada.",
+            "La bienvenida inicial todav├¡a no est├í completada.",
         },
         { status: 409 }
       );
     }
 
     /*
-     * Si el pedido ya está vinculado,
+     * Si el pedido ya est├í vinculado,
      * no puede reclamarse con otra cuenta.
      */
     if (
@@ -429,7 +429,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           error:
-            "Esta compra ya está vinculada a una cuenta.",
+            "Esta compra ya est├í vinculada a una cuenta.",
           code: "ALREADY_LINKED",
         },
         { status: 409 }
@@ -462,7 +462,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json(
           {
             error:
-              "La sesión no es válida.",
+              "La sesi├│n no es v├ílida.",
           },
           { status: 401 }
         );
@@ -601,7 +601,7 @@ export async function POST(request: NextRequest) {
     }
 
     /*
-     * Perfil básico del alumno.
+     * Perfil b├ísico del alumno.
      */
     const { error: profileError } =
       await supabase
@@ -656,7 +656,7 @@ export async function POST(request: NextRequest) {
     }
 
     /*
-     * Matrícula.
+     * Matr├¡cula.
      */
     const {
       data: enrollment,
@@ -719,14 +719,14 @@ export async function POST(request: NextRequest) {
     ) {
       throw enrollmentError ??
         new Error(
-          "No se pudo crear la matrícula."
+          "No se pudo crear la matr├¡cula."
         );
     }
 
     /*
      * El alta ya equivale al paso
      * de datos personales.
-     * El siguiente paso será Facturación.
+     * El siguiente paso ser├í Facturaci├│n.
      */
     const {
       error: progressError,
@@ -815,7 +815,7 @@ export async function POST(request: NextRequest) {
 
     /*
      * Compatibilidad con el control
-     * de acceso que ya existía.
+     * de acceso que ya exist├¡a.
      */
     if (immediateAccess) {
       const {

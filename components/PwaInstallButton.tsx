@@ -55,8 +55,8 @@ export default function PwaInstallButton() {
             <button type="button" className="pwa-help-close" onClick={() => setShowHelp(false)} aria-label="Cerrar">×</button>
             <img src="/images/base12-logo.png" alt="" />
             <h2 id="pwa-help-title">Instala Base12 Academy</h2>
-            <p><b>En iPhone o iPad:</b> abre esta página en Safari, pulsa Compartir y elige "Añadir a pantalla de inicio".</p>
-            <p><b>En Android u ordenador:</b> abre el menú del navegador y selecciona "Instalar aplicación" o "Añadir a pantalla de inicio".</p>
+            <p><b>En iPhone o iPad:</b> abre esta página en Safari, pulsa Compartir y elige “Añadir a pantalla de inicio”.</p>
+            <p><b>En Android u ordenador:</b> abre el menú del navegador y selecciona “Instalar aplicación” o “Añadir a pantalla de inicio”.</p>
             <button type="button" className="pwa-help-understood" onClick={() => setShowHelp(false)}>Entendido</button>
           </section>
         </div>
