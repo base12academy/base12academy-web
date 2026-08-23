@@ -129,6 +129,35 @@ function eventRange(event: calendar_v3.Schema$Event) {
 
 export async function GET() {
   try {
+    if (process.env.VERCEL_ENV === "preview") {
+      const { createHash } = await import("crypto");
+      const names = [
+        "GOOGLE_CALENDAR_CLIENT_ID",
+        "GOOGLE_CALENDAR_CLIENT_SECRET",
+        "GOOGLE_CALENDAR_REFRESH_TOKEN",
+        "GOOGLE_CLASSES_CALENDAR_ID",
+        "GOOGLE_CALENDAR_REDIRECT_URI",
+      ];
+
+      console.log(
+        "GOOGLE_ENV_FINGERPRINTS",
+        Object.fromEntries(
+          names.map((name) => {
+            const value = process.env[name] ?? "";
+            return [
+              name,
+              {
+                length: value.length,
+                sha: createHash("sha256")
+                  .update(value)
+                  .digest("hex")
+                  .slice(0, 10),
+              },
+            ];
+          })
+        )
+      );
+    }
     const refreshToken =
       process.env.GOOGLE_CALENDAR_REFRESH_TOKEN?.trim();
 
