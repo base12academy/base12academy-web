@@ -649,7 +649,14 @@ export default function ClassBookingCalendar({
                         styles.day,
                         selected ? styles.daySelected : "",
                       ].join(" ")}
-                      onClick={() => setDay(item.date)}
+                      onClick={() => {
+                        setDay(item.date);
+                        if (!isPostPurchase) {
+                          setTurnstileToken("");
+                          setTurnstileResetKey((value) => value + 1);
+                          setHoldError("");
+                        }
+                      }}
                     >
                       <strong>{Number(item.date.slice(-2))}</strong>
                       {!past && (
@@ -681,6 +688,13 @@ export default function ClassBookingCalendar({
                       </strong>
                     </div>
 
+                    {!isPostPurchase && !hold && (
+                      <TurnstileWidget
+                        onTokenChange={setTurnstileToken}
+                        resetKey={turnstileResetKey}
+                      />
+                    )}
+
                     <div className={styles.hours}>
                       {hours.map((item) => {
                         const mine =
@@ -697,7 +711,11 @@ export default function ClassBookingCalendar({
                           <button
                             key={item.start}
                             type="button"
-                            disabled={unavailable || holdBusy}
+                            disabled={
+                              unavailable ||
+                              holdBusy ||
+                              (!isPostPurchase && !hold && !turnstileToken)
+                            }
                             className={[
                               styles.hour,
                               mine
@@ -828,13 +846,6 @@ export default function ClassBookingCalendar({
                   automáticamente a estar disponible.
                 </p>
               </>
-            )}
-
-            {!isPostPurchase && (
-              <TurnstileWidget
-                onTokenChange={setTurnstileToken}
-                resetKey={turnstileResetKey}
-              />
             )}
 
             {holdError && <p role="alert">{holdError}</p>}
