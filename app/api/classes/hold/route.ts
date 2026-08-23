@@ -1,3 +1,4 @@
+import { requestClientIp, verifyTurnstileToken } from "@/lib/turnstile";
 ﻿import crypto from "crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { google } from "googleapis";
@@ -94,6 +95,27 @@ function monthIndex(year: number, month: number) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
+
+    const turnstileToken =
+      typeof body.turnstileToken === "string"
+        ? body.turnstileToken.trim()
+        : "";
+
+    const turnstileOk = await verifyTurnstileToken({
+      token: turnstileToken,
+      remoteIp: requestClientIp(request),
+    });
+
+    if (!turnstileOk) {
+      return NextResponse.json(
+        {
+          ok: false,
+          error: "Completa la verificación anti-bots antes de reservar la hora.",
+          code: "TURNSTILE_REQUIRED",
+        },
+        { status: 403 }
+      );
+    }
 
     const date =
       typeof body.date === "string" ? body.date.trim() : "";

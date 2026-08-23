@@ -1,3 +1,4 @@
+import { refreshClassReminders } from "@/lib/class-reminders";
 import { NextRequest, NextResponse } from "next/server";
 import { google } from "googleapis";
 import {
@@ -659,6 +660,15 @@ export async function POST(request: NextRequest) {
     if (linkError) {
       throw linkError;
     }
+
+    await refreshClassReminders(
+      booking.id
+    ).catch((reminderError) => {
+      console.error(
+        "Clase reprogramada, pero no se pudieron actualizar sus recordatorios",
+        reminderError
+      );
+    });
 
     return NextResponse.json(
       {

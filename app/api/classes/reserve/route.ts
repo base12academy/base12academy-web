@@ -1,3 +1,4 @@
+import { refreshClassReminders } from "@/lib/class-reminders";
 ﻿import { NextRequest, NextResponse } from "next/server";
 import { google } from "googleapis";
 import {
@@ -733,6 +734,15 @@ export async function POST(
     if (calendarLinkError) {
       throw calendarLinkError;
     }
+
+    await refreshClassReminders(
+      booking.id
+    ).catch((reminderError) => {
+      console.error(
+        "Reserva creada, pero no se pudieron programar sus recordatorios",
+        reminderError
+      );
+    });
 
     return NextResponse.json(
       {

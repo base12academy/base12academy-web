@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
 import TutoringSlotAdmin from "@/components/TutoringSlotAdmin";
+import ClassBookingAdmin from "@/components/ClassBookingAdmin";
 
 const ADMIN_EMAIL = "base12academy@gmail.com";
 
@@ -184,6 +185,24 @@ export default function AdminPage() {
         </div>
         {reviewCode && <p style={{ marginTop: 14, padding: 12, background: "#dcfce7", borderRadius: 9 }}><b>Tu clave:</b> <code>{reviewCode}</code><br /><small>Está ligada a {ADMIN_EMAIL}, es de un solo uso y activa Productividad Digital e IA durante 36 meses.</small></p>}
       </section>
+      <section style={{ marginTop: 24, padding: 22, border: "1px solid #b7d7bf", background: "#f5fbf6", borderRadius: 16 }}>
+        <h2>Revisar Administrativo/a de la Junta de Andalucía</h2>
+        <p>Acceso administrativo al curso completo para revisar el temario, los recursos y la experiencia del alumno.</p>
+        <Link
+          href="/dashboard/administrativo-ja"
+          style={{
+            display: "inline-block",
+            padding: "11px 16px",
+            borderRadius: 10,
+            background: "#1f6b3a",
+            color: "white",
+            textDecoration: "none",
+            fontWeight: 800,
+          }}
+        >
+          Entrar a Administrativo/a
+        </Link>
+      </section>
       <section style={{ marginTop: 24, padding: 22, border: "1px solid #dbe3ef", borderRadius: 16 }}>
         <h2>Crear una clave personal gratuita</h2>
         <p>La clave quedará ligada al correo indicado, será de un solo uso y no podrá utilizarla otra cuenta.</p>
@@ -211,6 +230,7 @@ export default function AdminPage() {
           )}
         </div>
       </section>
+      <ClassBookingAdmin />
       <TutoringSlotAdmin />
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 16, marginTop: 28 }}>
         <a href="https://vercel.com/base12academys-projects/base12academy-web" target="_blank" rel="noreferrer" style={{ padding: 20, border: "1px solid #dbe3ef", borderRadius: 16, textDecoration: "none", color: "#0f172a" }}><strong>Publicación web</strong><br /><span style={{ color: "#64748b" }}>Abrir Vercel</span></a>

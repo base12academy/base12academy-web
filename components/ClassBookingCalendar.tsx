@@ -1,5 +1,6 @@
 "use client";
 
+import TurnstileWidget from "@/components/TurnstileWidget";
 import { useEffect, useState } from "react";
 import styles from "./ClassBookingCalendar.module.css";
 import { supabase } from "@/lib/supabaseClient";
@@ -170,6 +171,8 @@ export default function ClassBookingCalendar({
   const [hold, setHold] = useState<ActiveHold | null>(null);
   const [holdBusy, setHoldBusy] = useState(false);
   const [holdError, setHoldError] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [turnstileResetKey, setTurnstileResetKey] = useState(0);
   const [reservationNotice, setReservationNotice] = useState("");
 
   async function refreshAvailability() {
@@ -486,8 +489,16 @@ export default function ClassBookingCalendar({
       return;
     }
 
-    setHoldBusy(true);
     setHoldError("");
+
+    if (!turnstileToken) {
+      setHoldError(
+        "Completa la verificación anti-bots antes de elegir una hora."
+      );
+      return;
+    }
+
+    setHoldBusy(true);
 
     try {
       if (hold) {
@@ -504,6 +515,7 @@ export default function ClassBookingCalendar({
         body: JSON.stringify({
           date: selectedDay.date,
           start: slot.start,
+          turnstileToken,
         }),
       });
 
@@ -539,6 +551,10 @@ export default function ClassBookingCalendar({
         await refreshAvailability();
       } catch {}
     } finally {
+      setTurnstileToken("");
+      setTurnstileResetKey(
+        (value) => value + 1
+      );
       setHoldBusy(false);
     }
   }
@@ -812,6 +828,13 @@ export default function ClassBookingCalendar({
                   automáticamente a estar disponible.
                 </p>
               </>
+            )}
+
+            {!isPostPurchase && (
+              <TurnstileWidget
+                onTokenChange={setTurnstileToken}
+                resetKey={turnstileResetKey}
+              />
             )}
 
             {holdError && <p role="alert">{holdError}</p>}

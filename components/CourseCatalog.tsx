@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import ClassAvailabilityRequestForm from "@/components/ClassAvailabilityRequestForm";
 import { useEffect, useMemo, useState } from "react";
 import officeProgram from "../lib/ofimatica-content.json";
 import ClassBookingCalendar from "./ClassBookingCalendar";
@@ -262,6 +263,8 @@ function plansFor(course: Course): Plan[] {
           "Matemáticas Aplicadas a las CCSS",
           "Lengua y Literatura",
           "Física y Química",
+          "Física",
+          "Química",
           "Solicitud previa de disponibilidad",
           "La contratación se habilitará después de la confirmación de Base12 Academy",
         ],
@@ -692,6 +695,10 @@ export default function CourseCatalog() {
               <ClassBookingCalendar />
             )}
 
+            {course.name === "Solicitud de clases · Otras asignaturas" && (
+              <ClassAvailabilityRequestForm />
+            )}
+
             {course.name === "Competencias y Productividad Digital, Ofimática e IA" && (
               <div className="commercial-course-details">
                 <section>
@@ -796,6 +803,96 @@ export default function CourseCatalog() {
 
             </>)}
 
+            {course.family === "Clases Online" &&
+              course.name !== "Solicitud de clases · Otras asignaturas" && (
+              <>
+                <div className="original-legal">
+                  <h3>Información contractual · Clases Online</h3>
+                  <details>
+                    <summary>Condiciones de contratación</summary>
+                    <p>
+                      La contratación corresponde a un bono de clases online de pago único.
+                      El bono caduca a los dos meses desde la compra. La primera hora
+                      seleccionada antes del pago queda incorporada al bono cuando Redsys
+                      confirma correctamente la operación.
+                    </p>
+                    <p>
+                      Las clases se imparten mediante Google Meet. La documentación y los
+                      materiales de apoyo podrán facilitarse mediante Google Classroom.
+                    </p>
+                    <p>
+                      <a href="/terminos-contratacion" target="_blank" rel="noreferrer">
+                        Consultar las condiciones generales completas
+                      </a>.
+                    </p>
+                  </details>
+
+                  <details>
+                    <summary>Reservas, cambios y ausencias</summary>
+                    <p>
+                      El alumno puede reprogramar una clase desde «Mis clases» hasta
+                      30 minutos antes de su inicio. Una ausencia del alumno consume la
+                      hora reservada. Si Base12 cancela una clase, esa hora vuelve a quedar
+                      disponible en el bono.
+                    </p>
+                  </details>
+
+                  <details>
+                    <summary>Privacidad y tratamiento de datos</summary>
+                    <p>
+                      Imagen Digital Ménace, S. L. U. tratará los datos necesarios para
+                      gestionar la contratación, el pago, la factura, las reservas, las
+                      comunicaciones operativas y la prestación de las Clases Online.
+                    </p>
+                    <p>
+                      <a href="/privacidad" target="_blank" rel="noreferrer">
+                        Consultar la política de privacidad completa
+                      </a>.
+                    </p>
+                  </details>
+                </div>
+
+                <div className="original-consents">
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={terms}
+                      onChange={(event) => setTerms(event.target.checked)}
+                    />
+                    <span>
+                      He leído y acepto las condiciones de contratación de Clases Online.
+                      {" "}<b>Obligatorio</b>
+                    </span>
+                  </label>
+
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={privacy}
+                      onChange={(event) => setPrivacy(event.target.checked)}
+                    />
+                    <span>
+                      He leído la política de privacidad y autorizo el tratamiento de los
+                      datos necesarios para gestionar la contratación y prestar el servicio.
+                      {" "}<b>Obligatorio</b>
+                    </span>
+                  </label>
+
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={marketing}
+                      onChange={(event) => setMarketing(event.target.checked)}
+                    />
+                    <span>
+                      Quiero recibir novedades y ofertas. <em>Opcional</em>
+                    </span>
+                  </label>
+                </div>
+              </>
+            )}
+
+            {course.name !== "Solicitud de clases · Otras asignaturas" && (
             <div className="original-checkout" id="course-checkout">
               <span>
                 {plan.price === "Consultar"
@@ -838,6 +935,7 @@ export default function CourseCatalog() {
                 </button>
               )}
             </div>
+            )}
             {checkoutError && (
               <p className="original-checkout-error" role="alert">
                 {checkoutError}

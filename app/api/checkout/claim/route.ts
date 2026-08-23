@@ -1,3 +1,4 @@
+import { refreshClassReminders } from "@/lib/class-reminders";
 ﻿import crypto from "crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { google } from "googleapis";
@@ -1446,6 +1447,14 @@ export async function POST(request: NextRequest) {
             topic,
 
             bookPublisher,
+          });
+          await refreshClassReminders(
+            classPurchaseRecord.booking_id
+          ).catch((reminderError) => {
+            console.error(
+              "No se pudieron programar los recordatorios de la primera clase",
+              reminderError
+            );
           });
         } catch (calendarError) {
           console.error(
