@@ -688,7 +688,7 @@ export default function ClassBookingCalendar({
                       </strong>
                     </div>
 
-                    {!isPostPurchase && !hold && (
+                    {!isPostPurchase && (
                       <TurnstileWidget
                         onTokenChange={setTurnstileToken}
                         resetKey={turnstileResetKey}
@@ -714,7 +714,7 @@ export default function ClassBookingCalendar({
                             disabled={
                               unavailable ||
                               holdBusy ||
-                              (!isPostPurchase && !hold && !turnstileToken)
+                              (!isPostPurchase && !mine && !turnstileToken)
                             }
                             className={[
                               styles.hour,
