@@ -142,6 +142,7 @@ export async function GET(request: Request) {
         "GOOGLE_CALENDAR_REFRESH_TOKEN",
         "GOOGLE_CLASSES_CALENDAR_ID",
         "GOOGLE_CALENDAR_REDIRECT_URI",
+        "NEXT_PUBLIC_TURNSTILE_SITE_KEY",
       ];
 
       return NextResponse.json({
