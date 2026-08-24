@@ -169,7 +169,8 @@ button, input, select { font: inherit; }
 .original-course-grid h3 { margin: 5px 0 10px; color: #020617; font-size: 17px; line-height: 1.28; }
 .original-course-grid p { margin: 0; color: #64748b; font-size: 12px; }
 .original-course-grid p b { color: #0f172a; font-size: 19px; }
-.original-course-grid article > button {
+.original-course-grid article > button,
+.original-course-grid article > a {
   align-self: flex-start;
   padding: 8px 13px;
   border: 1px solid rgba(37,99,235,.18);
@@ -420,6 +421,8 @@ button, input, select { font: inherit; }
     width: 100% !important;
   }
 }
+.original-course-grid article > a { text-decoration: none; }
+.original-course-grid p del { margin-right: 7px; color: #94a3b8; font-weight: 700; }
 
 @media (max-width: 359px) {
   .b12-header-inner {

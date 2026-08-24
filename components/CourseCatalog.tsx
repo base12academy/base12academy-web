@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import ClassAvailabilityRequestForm from "@/components/ClassAvailabilityRequestForm";
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import officeProgram from "../lib/ofimatica-content.json";
 import ClassBookingCalendar from "./ClassBookingCalendar";
@@ -100,7 +101,7 @@ function plansFor(course: Course): Plan[] {
     return [
       {
         name: "Esencial",
-        price: "179 €",
+        price: "139 €",
         detail: "Entrenamiento esencial · 14.000 preguntas",
         includes: [
           "14.000 preguntas de entrenamiento",
@@ -111,7 +112,7 @@ function plansFor(course: Course): Plan[] {
       },
       {
         name: "Operativa",
-        price: "249 €",
+        price: "209 €",
         detail: "Entrenamiento ampliado · 21.000 preguntas",
         includes: [
           "21.000 preguntas de entrenamiento",
@@ -122,7 +123,7 @@ function plansFor(course: Course): Plan[] {
       },
       {
         name: "Integral",
-        price: "319 €",
+        price: "279 €",
         detail: "Preparación completa · 28.000 preguntas",
         includes: [
           "28.000 preguntas de entrenamiento",
@@ -613,12 +614,18 @@ export default function CourseCatalog() {
               <small>{item.region || item.family}</small>
               <h3>{item.name}</h3>
               <p>
-                {item.name === "Solicitud de clases · Otras asignaturas"
+                {item.family === "Tropa y Marinería"
+                  ? <><del>179 €</del> Desde <b>139 €</b></>
+                  : item.name === "Solicitud de clases · Otras asignaturas"
                   ? <b>Consultar disponibilidad</b>
                   : <>Desde <b>{plansFor(item)[0].price}</b></>}
               </p>
             </div>
-            <button onClick={() => open(item)}>Ver modalidades</button>
+            {item.family === "Tropa y Marinería" ? (
+              <Link href="/tropa-y-marineria">Ver modalidades</Link>
+            ) : (
+              <button onClick={() => open(item)}>Ver modalidades</button>
+            )}
           </article>
         ))}
       </div>
