@@ -1,7 +1,9 @@
 import { google } from "googleapis";
 
-export const GOOGLE_CALENDAR_SCOPE =
-  "https://www.googleapis.com/auth/calendar.events.owned";
+export const GOOGLE_CALENDAR_SCOPES = [
+  "https://www.googleapis.com/auth/calendar.events",
+  "https://www.googleapis.com/auth/calendar.calendarlist.readonly",
+];
 
 function requiredEnv(name: string) {
   const value = process.env[name]?.trim();
@@ -28,7 +30,7 @@ export function getCalendarAuthUrl(state: string) {
     access_type: "offline",
     prompt: "consent",
     include_granted_scopes: true,
-    scope: [GOOGLE_CALENDAR_SCOPE],
+    scope: GOOGLE_CALENDAR_SCOPES,
     state,
   });
 }

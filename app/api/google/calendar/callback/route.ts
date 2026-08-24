@@ -2,10 +2,7 @@ import fs from "fs/promises";
 import path from "path";
 import { NextRequest, NextResponse } from "next/server";
 import { google } from "googleapis";
-import {
-  getCalendarOAuthClient,
-  getClassesCalendarId,
-} from "@/lib/google-calendar";
+import { getCalendarOAuthClient } from "@/lib/google-calendar";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -35,7 +32,7 @@ function htmlPage(title: string, message: string, status = 200) {
   );
 }
 
-async function saveRefreshToken(refreshToken: string) {
+async function saveCalendarConfig(refreshToken: string, calendarId: string) {
   const envPath = path.join(process.cwd(), ".env.local");
 
   let contents = "";
@@ -46,14 +43,15 @@ async function saveRefreshToken(refreshToken: string) {
     contents = "";
   }
 
-  const key = "GOOGLE_CALENDAR_REFRESH_TOKEN";
-  const line = `${key}=${refreshToken}`;
-  const pattern = new RegExp(`^${key}=.*$`, "m");
-
-  if (pattern.test(contents)) {
-    contents = contents.replace(pattern, line);
-  } else {
-    contents = `${contents.trimEnd()}\n${line}\n`;
+  for (const [key, value] of [
+    ["GOOGLE_CALENDAR_REFRESH_TOKEN", refreshToken],
+    ["GOOGLE_CLASSES_CALENDAR_ID", calendarId],
+  ]) {
+    const line = `${key}=${value}`;
+    const pattern = new RegExp(`^${key}=.*$`, "m");
+    contents = pattern.test(contents)
+      ? contents.replace(pattern, line)
+      : `${contents.trimEnd()}\n${line}\n`;
   }
 
   await fs.writeFile(envPath, contents, "utf8");
@@ -114,19 +112,42 @@ export async function GET(request: NextRequest) {
       auth: oauthClient,
     });
 
+    const calendarList = await calendar.calendarList.list({
+      maxResults: 250,
+    });
+    const classesCalendar = calendarList.data.items?.find((item) => {
+      const summary = item.summary
+        ?.normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLocaleLowerCase("es");
+
+      return summary?.includes("horario") && summary.includes("clases");
+    });
+
+    if (!classesCalendar?.id) {
+      const available = calendarList.data.items
+        ?.map((item) => item.summary)
+        .filter(Boolean)
+        .join(", ");
+      throw new Error(
+        `No se encontro "Horario Clases". Calendarios visibles: ${available || "ninguno"}`
+      );
+    }
+
     await calendar.events.list({
-      calendarId: getClassesCalendarId(),
+      calendarId: classesCalendar.id,
       timeMin: new Date().toISOString(),
       maxResults: 1,
       singleEvents: true,
     });
 
-    await saveRefreshToken(tokens.refresh_token);
+    await saveCalendarConfig(tokens.refresh_token, classesCalendar.id);
     process.env.GOOGLE_CALENDAR_REFRESH_TOKEN = tokens.refresh_token;
+    process.env.GOOGLE_CLASSES_CALENDAR_ID = classesCalendar.id;
 
     const response = htmlPage(
       "Google Calendar conectado",
-      'La cuenta ha autorizado correctamente el calendario "Horario de clases". El refresh token se ha guardado en .env.local.'
+      'La cuenta ha autorizado correctamente el calendario "Horario Clases". La configuracion se ha guardado de forma segura.'
     );
 
     response.cookies.delete(STATE_COOKIE);
@@ -135,9 +156,15 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error("Google Calendar OAuth error", error);
 
+    const detail = (error instanceof Error ? error.message : String(error))
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+
     return htmlPage(
       "No se pudo conectar Google Calendar",
-      'Comprueba que la cuenta que has autorizado sea propietaria del calendario "Horario de clases".',
+      `Detalle: ${detail}`,
       500
     );
   }
