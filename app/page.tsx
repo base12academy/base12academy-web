@@ -31,7 +31,7 @@ export default function HomePage() {
       <main style={styles.page}>
         <header style={styles.header}>
           <div className="b12-header-inner" style={styles.headerInner}>
-            <Link href="/" style={styles.brand}>
+            <Link href="/" className="b12-header-brand" style={styles.brand}>
               <img
                 src="/images/base12-logo.png"
                 alt="Base12 Academy"
@@ -39,7 +39,7 @@ export default function HomePage() {
               />
             </Link>
 
-            <nav style={styles.nav}>
+            <nav className="b12-header-nav" aria-label="Navegación principal" style={styles.nav}>
               <a href="#videos-presentacion" style={styles.navLink}>
                 Presentación
               </a>
@@ -58,10 +58,10 @@ export default function HomePage() {
               </a>
             </nav>
 
-            <div style={styles.accessLinks}>
+            <div className="b12-header-access" style={styles.accessLinks}>
               <PwaInstallButton />
-              <Link href="/admin" style={styles.adminLink}>Administración</Link>
-              <Link href="/login" style={styles.loginButton}>Acceso alumnos</Link>
+              <Link href="/admin" className="b12-header-admin" style={styles.adminLink}>Administración</Link>
+              <Link href="/login" className="b12-header-login" style={styles.loginButton}>Acceso alumnos</Link>
             </div>
           </div>
         </header>

@@ -319,33 +319,90 @@ button, input, select { font: inherit; }
 
 
 
-@media (max-width: 720px) {
+@media (max-width: 900px) {
   .b12-header-inner {
-    flex-wrap: wrap !important;
-    gap: 8px 10px !important;
-    padding: 6px 12px !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    grid-template-areas:
+      "brand login"
+      "nav nav"
+      "install admin" !important;
+    gap: 6px 10px !important;
+    padding: 5px 12px 7px !important;
   }
 
-  .b12-header-inner > nav {
-    order: 3;
+  .b12-header-brand {
+    grid-area: brand;
+    min-width: 0;
+  }
+
+  .b12-header-brand img {
+    width: 112px !important;
+    height: 48px !important;
+    padding: 2px !important;
+    border-radius: 8px !important;
+  }
+
+  .b12-header-nav {
+    grid-area: nav;
     width: 100%;
-    gap: 12px !important;
-    overflow-x: auto;
-    padding-bottom: 4px;
-    scrollbar-width: none;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px !important;
   }
 
-  .b12-header-inner > nav::-webkit-scrollbar {
-    display: none;
+  .b12-header-nav a {
+    min-width: 0;
+    min-height: 44px;
+    padding: 7px 5px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 11px !important;
+    line-height: 1.15;
+    white-space: normal !important;
+    border-radius: 12px !important;
   }
 
-  .b12-header-inner > div:last-child {
-    margin-left: auto;
+  .b12-header-access {
+    display: contents !important;
+  }
+
+  .b12-header-login {
+    grid-area: login;
+    align-self: center;
+    min-height: 44px;
+    padding: 9px 12px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px !important;
+    white-space: nowrap;
+  }
+
+  .pwa-install-button {
+    grid-area: install;
+    justify-self: end;
+  }
+
+  .b12-header-admin {
+    grid-area: admin;
+    justify-self: start;
+  }
+
+  .pwa-install-button,
+  .b12-header-admin {
+    min-height: 40px;
+    padding: 7px 12px !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .b12-home-layout {
     grid-template-columns: minmax(0, 1fr) !important;
-    padding: 150px 12px 48px !important;
+    padding: 164px 12px 48px !important;
     gap: 20px !important;
   }
 
@@ -361,6 +418,41 @@ button, input, select { font: inherit; }
     position: static !important;
     top: auto !important;
     width: 100% !important;
+  }
+}
+
+@media (max-width: 359px) {
+  .b12-header-inner {
+    padding-inline: 8px !important;
+    gap: 5px 6px !important;
+  }
+
+  .b12-header-brand img {
+    width: 102px !important;
+  }
+
+  .b12-header-login {
+    padding-inline: 9px !important;
+  }
+
+  .b12-header-nav a {
+    font-size: 10px !important;
+    padding-inline: 3px !important;
+  }
+}
+
+@media (min-width: 721px) and (max-width: 1024px) {
+  .b12-header-inner {
+    gap: 14px !important;
+    padding-inline: 18px !important;
+  }
+
+  .b12-header-inner > nav {
+    gap: 12px !important;
+  }
+
+  .b12-header-inner > div:last-child {
+    gap: 7px !important;
   }
 }
 
