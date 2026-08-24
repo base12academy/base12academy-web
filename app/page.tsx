@@ -3,6 +3,7 @@ import type { CSSProperties } from "react";
 import LeadChatBot from "@/components/LeadChatBot";
 import CourseCatalog from "@/components/CourseCatalog";
 import PwaInstallButton from "@/components/PwaInstallButton";
+import AdminHeaderLink from "@/components/AdminHeaderLink";
 
 const videos = [
   {
@@ -60,7 +61,7 @@ export default function HomePage() {
 
             <div className="b12-header-access" style={styles.accessLinks}>
               <PwaInstallButton />
-              <Link href="/admin" className="b12-header-admin" style={styles.adminLink}>Administración</Link>
+              <AdminHeaderLink className="b12-header-admin" style={styles.adminLink} />
               <Link href="/login" className="b12-header-login" style={styles.loginButton}>Acceso alumnos</Link>
             </div>
           </div>
