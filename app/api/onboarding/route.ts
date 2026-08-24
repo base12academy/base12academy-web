@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getSupabase } from "@/lib/supabase/server";
+import { emailInvoice, issueInvoice } from "@/lib/invoices";
 
 type OnboardingStep =
   | "communications_video"
@@ -424,8 +425,8 @@ export async function POST(req: Request) {
      * FACTURACIÓN
      */
     if (step === "billing") {
-      const nominativeInvoice =
-        body?.nominativeInvoice !== false;
+      // Todas las compras generan factura: los datos fiscales son obligatorios.
+      const nominativeInvoice = true;
 
       const billingType =
         body?.billingType === "empresa"
@@ -557,12 +558,23 @@ export async function POST(req: Request) {
         throw billingError;
       }
 
+      const invoice = await issueInvoice(
+        current.enrollment.id,
+        user.id,
+        `${current.enrollment.course_slug} · ${current.enrollment.plan_slug}`
+      );
+      await emailInvoice(invoice);
+
+      const isClassBono =
+        current.enrollment.course_slug === "clases-online";
+
       const { error: progressError } =
         await supabase
           .from("onboarding_progress")
           .update({
             billing_completed_at: now,
-            current_step: "planning",
+            current_step: isClassBono ? "completed" : "planning",
+            ...(isClassBono ? { completed_at: now } : {}),
             updated_at: now,
           })
           .eq(
@@ -577,7 +589,7 @@ export async function POST(req: Request) {
 
       return NextResponse.json({
         ok: true,
-        nextStep: "planning",
+        nextStep: isClassBono ? "classes" : "planning",
       });
     }
 

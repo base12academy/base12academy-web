@@ -95,7 +95,7 @@ export default function OnboardingPage() {
       setSaving(true);
       setPageError("");
 
-      await saveOnboardingStep({
+      const result = await saveOnboardingStep({
         step: "billing",
         billingType: billing.type,
         nominativeInvoice: billing.nominativeInvoice,
@@ -108,6 +108,11 @@ export default function OnboardingPage() {
         country: billing.country,
         billingEmail: billing.billingEmail,
       });
+
+      if (result.nextStep === "classes") {
+        window.location.href = "/dashboard/clases";
+        return;
+      }
 
       setStep(3);
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -779,28 +784,19 @@ export default function OnboardingPage() {
                   </div>
                 </div>
 
-                <label
+                <p
                   style={{
-                    display: "flex",
-                    gap: "10px",
-                    alignItems: "center",
                     marginTop: "20px",
                     color: "#29436f",
                     fontSize: "14px",
+                    background: "#eef4ff",
+                    borderRadius: "10px",
+                    padding: "12px 14px",
                   }}
                 >
-                  <input
-                    type="checkbox"
-                    checked={!billing.nominativeInvoice}
-                    onChange={(e) =>
-                      setBilling({
-                        ...billing,
-                        nominativeInvoice: !e.target.checked,
-                      })
-                    }
-                  />
-                  No necesito factura nominativa
-                </label>
+                  Emitiremos automáticamente una factura nominativa. Comprueba que los datos
+                  fiscales sean correctos antes de continuar.
+                </p>
 
                 <div
                   style={{

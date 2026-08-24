@@ -1734,10 +1734,7 @@ export async function POST(request: NextRequest) {
       newAccount,
       email,
       temporaryPassword,
-      nextStep:
-        isClassBono
-          ? "classes"
-          : "billing",
+      nextStep: "billing",
       confirmationEmailSent,
     });
   } catch (error) {

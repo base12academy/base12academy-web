@@ -83,6 +83,13 @@ export default function DashboardLayout({
       ) : null}
 
       <main style={{ flex: 1, padding: isOfimatica ? 0 : "40px" }}>
+        {!isOfimatica && (
+          <div style={{ maxWidth: "1200px", margin: "0 auto 18px", textAlign: "right" }}>
+            <Link href="/dashboard/facturas" style={{ color: "#15294b", fontWeight: 600 }}>
+              Mis facturas
+            </Link>
+          </div>
+        )}
         {children}
         {!isOfimatica && <ChatBot />}
       </main>
