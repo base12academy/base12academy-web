@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "trop:validate": "python scripts/trop/import_v4.py"
   },
   "dependencies": {
     "@react-pdf/renderer": "^4.3.2",
