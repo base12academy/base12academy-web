@@ -67,7 +67,7 @@ function ProductCard({ plan }: { plan: TropaPlan }) {
 }
 
 export function TropaLanding() {
-  const psychometricProducts = tropaPlans.filter((plan) => plan.kind !== "training");
+  const psychometricProducts = tropaPlans;
   const training = tropaPlans.find((plan) => plan.kind === "training");
 
   return (
@@ -96,7 +96,7 @@ export function TropaLanding() {
           </div>
         </section>
 
-        {training && (
+        {false && training && (
           <section className={styles.trainingSection}>
             <div className={styles.sectionHeading}>
               <p className={styles.eyebrow}>Preparación física</p>
@@ -179,3 +179,4 @@ export function TropaPlanPage({ plan }: { plan: TropaPlan }) {
     </div>
   );
 }
+
