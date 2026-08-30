@@ -21,7 +21,7 @@ APTITUDE_MAP = {
     "07_ABSTRACTO": ("abstracto", "RA"),
 }
 
-def extract_docx(path):
+def extract_docx(path, validate_structure=True):
     raw = path.read_bytes()
     with zipfile.ZipFile(path) as z:
         root = ET.fromstring(z.read("word/document.xml"))
@@ -49,7 +49,7 @@ def extract_docx(path):
 
     headings = [x["text"] for x in paragraphs if x["style"] == "Heading1"]
 
-    if len(headings) != 9:
+    if validate_structure and len(headings) != 9:
         raise RuntimeError(f"{path.name}: se esperaban 9 secciones y hay {len(headings)}")
 
     required = [
@@ -64,7 +64,7 @@ def extract_docx(path):
         "9. Mensajes de Fernando",
     ]
 
-    if headings != required:
+    if validate_structure and headings != required:
         raise RuntimeError(f"{path.name}: estructura inesperada: {headings}")
 
     title = next((x["text"] for x in paragraphs if x["style"] == "Title"), path.stem)
@@ -114,7 +114,13 @@ def main():
         raise RuntimeError("Mapa técnico no reconocido")
 
     if len(map_data.get("varaderos", [])) != 7:
-        raise RuntimeError("El mapa técnico no contiene 7 Varaderos")
+        raise RuntimeError("El mapa t?cnico no contiene 7 Varaderos")
+
+    master_path = root / "00_Sistema_Maestro_Varaderos_TROP.docx"
+    if not master_path.is_file():
+        raise RuntimeError(f"No existe: {master_path}")
+
+    master = extract_docx(master_path, validate_structure=False)
 
     system_row = {
         "system_id": "TROP-VARADEROS",
@@ -122,6 +128,11 @@ def main():
         "config_json": map_data,
         "source_file": map_path.name,
         "source_sha256": hashlib.sha256(map_raw).hexdigest(),
+        "master_title": master["title"],
+        "master_full_text": master["full_text"],
+        "master_content_json": master["content_json"],
+        "master_source_document": master_path.name,
+        "master_source_sha256": hashlib.sha256(master["raw"]).hexdigest(),
     }
 
     rows = []
