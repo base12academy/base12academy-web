@@ -5,7 +5,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import {
-  motorIsAvailable,
   tropaAptitudes,
   tropaMotors,
   tropaPlanAccess,
@@ -18,7 +17,16 @@ type AccessState =
   | { state: "login" }
   | { state: "locked" }
   | { state: "error" }
-  | { state: "ready"; planSlug: TropaPlanSlug; administrator: boolean };
+  | {
+      state: "ready";
+      planSlug: TropaPlanSlug | null;
+      label: string;
+      questionCount: number;
+      motorCount: number;
+      aptitudeSlugs: string[];
+      availableMotors: string[];
+      administrator: boolean;
+    };
 
 export default function TropaDashboardPage() {
   const [access, setAccess] = useState<AccessState>({ state: "loading" });
@@ -35,8 +43,17 @@ export default function TropaDashboardPage() {
       const response = await fetch("/api/tropa/access", { headers: { Authorization: `Bearer ${token}` } });
       const body = await response.json().catch(() => ({}));
       if (!active) return;
-      if (response.ok && body.allowed && body.planSlug in tropaPlanAccess) {
-        setAccess({ state: "ready", planSlug: body.planSlug, administrator: body.access === "administrator" });
+      if (response.ok && body.allowed && Array.isArray(body.aptitudeSlugs)) {
+        setAccess({
+          state: "ready",
+          planSlug: body.planSlug && body.planSlug in tropaPlanAccess ? body.planSlug : null,
+          label: String(body.label || "Tropa y Marinería"),
+          questionCount: Number(body.questionCount || 0),
+          motorCount: Number(body.motorCount || 0),
+          aptitudeSlugs: body.aptitudeSlugs.map(String),
+          availableMotors: Array.isArray(body.availableMotors) ? body.availableMotors.map(String) : [],
+          administrator: body.access === "administrator",
+        });
       } else if (response.status === 401) {
         setAccess({ state: "login" });
       } else if (response.status === 403) {
@@ -47,9 +64,6 @@ export default function TropaDashboardPage() {
     })();
     return () => { active = false; };
   }, []);
-
-  const planSlug = access.state === "ready" ? access.planSlug : "esencial";
-  const plan = tropaPlanAccess[planSlug];
 
   return (
     <div className={styles.page}>
@@ -64,7 +78,7 @@ export default function TropaDashboardPage() {
             <h1>Centro de operaciones psicotécnicas</h1>
             <p>Comprende, practica, comprueba y recupera los ejercicios que necesitas reforzar.</p>
           </div>
-          {access.state === "ready" && <aside><span>Paquete activo</span><strong>{plan.label}</strong><small>{plan.questionCount.toLocaleString("es-ES")} preguntas · {plan.motorCount} motores</small></aside>}
+          {access.state === "ready" && <aside><span>Acceso activo</span><strong>{access.label}</strong><small>{access.questionCount.toLocaleString("es-ES")} preguntas · {access.motorCount} motores</small></aside>}
         </section>
 
         {access.state === "loading" && <section className={styles.notice}>Comprobando tu acceso al curso…</section>}
@@ -84,23 +98,27 @@ export default function TropaDashboardPage() {
               <ul>
                 {aptitude.motors.map((code) => {
                   const motor = tropaMotors[code];
-                  const available = access.state === "ready" && motorIsAvailable(code, planSlug);
+                  const available = access.state === "ready" && access.availableMotors.includes(code);
                   return <li key={code} className={available ? styles.available : styles.unavailable}><b>{code}</b><span>{motor.name}</span><small>{available ? "Disponible" : `Desde ${tropaPlanAccess[motor.minimumPlan].label}`}</small></li>;
                 })}
               </ul>
-              <button type="button" disabled={access.state !== "ready"}>Entrenar esta aptitud</button>
+              {access.state === "ready" && access.aptitudeSlugs.includes(aptitude.slug) ? (
+                <Link className={styles.trainLink} href={`/dashboard/tropa-y-marineria/${aptitude.slug}`}>Entrenar esta aptitud</Link>
+              ) : (
+                <button type="button" disabled>Sin acceso a esta aptitud</button>
+              )}
             </article>
           ))}
         </section>
 
         <section className={styles.modules}>
-          <article><span>01</span><div><h2>Operaciones</h2><p>Entrenamientos por factor, combinados y completos con dificultad controlada.</p></div><b>En preparación</b></article>
-          <article><span>02</span><div><h2>Pruebas de Mar</h2><p>Siete controles de 105 preguntas, equilibrados y vinculados a tu progreso.</p></div><b>En preparación</b></article>
-          <article><span>03</span><div><h2>Parte de Operaciones</h2><p>Fortalezas, prioridades y siguiente paso sin etiquetas de apto/no apto.</p></div><b>En preparación</b></article>
-          <article><span>04</span><div><h2>Hoja de Servicio</h2><p>Tu evolución, hitos e historial de entrenamiento comparados contigo mismo.</p></div><b>En preparación</b></article>
+          <article><span>01</span><div><h2>Operaciones</h2><p>Entrenamientos por factor, combinados y completos con dificultad controlada.</p></div><Link href="/dashboard/tropa-y-marineria/operaciones">Abrir</Link></article>
+          <article><span>02</span><div><h2>Simulacros y Pruebas de Mar</h2><p>Veinte simulacros auditados, equilibrados y vinculados a tu progreso.</p></div><Link href="/dashboard/tropa-y-marineria/simulacros">Abrir</Link></article>
+          <article><span>03</span><div><h2>Parte de Operaciones</h2><p>Fortalezas, prioridades y siguiente paso sin etiquetas de apto/no apto.</p></div><Link href="/dashboard/tropa-y-marineria/operaciones#parte">Abrir</Link></article>
+          <article><span>04</span><div><h2>Hoja de Servicio</h2><p>Tu evolución, hitos e historial de entrenamiento comparados contigo mismo.</p></div><Link href="/dashboard/tropa-y-marineria/operaciones#hoja">Abrir</Link></article>
         </section>
 
-        <p className={styles.notice}><b>Integración segura en curso.</b> La interfaz ya respeta el acceso acumulativo; el banco V4 se activará únicamente después de completar la migración y la carga de prueba.</p>
+        <p className={styles.notice}><b>Contenido protegido.</b> El aula aplica los permisos de tu compra en cada consulta; las respuestas y explicaciones nunca se entregan antes de responder.</p>
       </main>
     </div>
   );

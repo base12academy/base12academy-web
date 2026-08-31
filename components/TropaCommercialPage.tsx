@@ -1,4 +1,5 @@
 ﻿import Link from "next/link";
+import Image from "next/image";
 import { tropaPlans, type TropaPlan } from "@/lib/tropa-commercial";
 import styles from "./TropaCommercialPage.module.css";
 
@@ -7,7 +8,7 @@ function Header() {
     <header className={styles.header}>
       <div className={styles.headerInner}>
         <Link href="/">
-          <img className={styles.logo} src="/images/base12-logo.png" alt="Base12 Academy" />
+          <Image className={styles.logo} src="/images/base12-logo.png" alt="Base12 Academy" width={126} height={58} />
         </Link>
         <nav className={styles.nav} aria-label="Navegación principal">
           <Link href="/#catalogo">Catálogo</Link>
@@ -55,7 +56,7 @@ function ProductCard({ plan }: { plan: TropaPlan }) {
         ))}
       </ul>
 
-      <Link className={styles.link} href={`/tropa-y-marineria/${plan.slug}`}>
+      <Link className={styles.link} href={plan.kind === "training" ? `/tropa-y-marineria/${plan.slug}` : `/dashboard/tropa-y-marineria?product=${plan.slug}`}>
         Ver contenido
       </Link>
 
@@ -67,8 +68,7 @@ function ProductCard({ plan }: { plan: TropaPlan }) {
 }
 
 export function TropaLanding() {
-  const psychometricProducts = tropaPlans;
-  const training = tropaPlans.find((plan) => plan.kind === "training");
+  const psychometricProducts = tropaPlans.filter((plan) => plan.kind !== "training");
 
   return (
     <div className={styles.page}>
@@ -95,18 +95,6 @@ export function TropaLanding() {
             ))}
           </div>
         </section>
-
-        {false && training && (
-          <section className={styles.trainingSection}>
-            <div className={styles.sectionHeading}>
-              <p className={styles.eyebrow}>Preparación física</p>
-              <h2>Base12 Training</h2>
-            </div>
-            <div className={styles.trainingGrid}>
-              <ProductCard plan={training} />
-            </div>
-          </section>
-        )}
 
         <p className={styles.notice}>
           <b>Contratación todavía cerrada.</b> Estas páginas presentan las modalidades comerciales.

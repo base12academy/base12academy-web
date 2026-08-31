@@ -29,7 +29,8 @@
 .available small { color: #047857; }
 .unavailable { opacity: .62; }
 .unavailable small { color: #9a3412; }
-.card button { width: 100%; min-height: 46px; margin-top: 18px; border: 0; border-radius: 999px; background: #0b4ea2; color: #fff; font-weight: 900; }
+.card button,.trainLink { width: 100%; min-height: 46px; margin-top: 18px; border: 0; border-radius: 999px; background: #0b4ea2; color: #fff; font-weight: 900; }
+.trainLink { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
 .card button:disabled { border: 1px solid #bfdbfe; background: #eff6ff; color: #1e40af; cursor: not-allowed; }
 .modules { margin-top: 28px; display: grid; gap: 12px; }
 .modules article { padding: 18px 20px; display: grid; grid-template-columns: 48px minmax(0,1fr) auto; gap: 16px; align-items: center; border: 1px solid #dbe5f0; border-radius: 18px; background: #fff; }
@@ -37,6 +38,7 @@
 .modules h2,.modules p { margin: 0; }
 .modules p { margin-top: 4px; color: #64748b; }
 .modules article > b { padding: 7px 10px; border-radius: 999px; background: #fff7ed; color: #9a3412; font-size: 11px; white-space: nowrap; }
+.modules article > a { padding: 9px 13px; border-radius: 999px; background: #0b4ea2; color: #fff; font-size: 12px; font-weight: 850; text-decoration: none; white-space: nowrap; }
 .notice { margin-top: 24px; padding: 18px; border-radius: 18px; background: #fff7ed; color: #9a3412; line-height: 1.55; }
 @media (max-width: 820px) { .hero { grid-template-columns: 1fr; } .aptitudes { grid-template-columns: 1fr; } }
 @media (max-width: 560px) { .header { min-height: 72px; padding-inline: 12px; } .brand img { width: 94px; height: 52px; } .main { width: calc(100% - 24px); padding-top: 18px; } .hero,.card { padding: 20px; border-radius: 20px; } .accessMessage,.sectionHeading { align-items: stretch; flex-direction: column; } .card li { grid-template-columns: 54px minmax(0,1fr); } .card li small { grid-column: 2; } .modules article { grid-template-columns: 38px 1fr; } .modules article > b { grid-column: 2; justify-self: start; } }

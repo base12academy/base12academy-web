@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Valida e importa de forma idempotente los siete bancos TROP V4.
+"""Valida e importa de forma idempotente el banco maestro TROP.
+
+Usa los V4 auditados para seis aptitudes y, por defecto, el banco Numérico V2
+auditado más reciente junto con el inventario visual V5 de 540 recursos.
 
 El modo predeterminado es solo lectura. Para escribir hay que indicar --apply y
 proporcionar SUPABASE_SERVICE_ROLE_KEY y SUPABASE_URL (o
@@ -25,6 +28,7 @@ from typing import Any
 
 
 EXPECTED_VERSION = "TROP-V4-2026-08-29"
+NUMERIC_V2_VERSION = "TROP-NUM-V2-2026-08-31"
 GLOBAL_AUDIT_NAME = "TROP_28000_AUDITORIA_FINAL_V4.json"
 SOURCE_DEFAULT = Path(r"D:\Escritorio\Agente IA\Tropa y Marinería")
 FACTORS = {
@@ -71,6 +75,226 @@ def required_text(row: dict[str, str], field: str, question_id: str) -> str:
     if not value:
         raise ValueError(f"{question_id}: campo obligatorio vacío {field}")
     return value
+
+
+def resolve_v4_source(source: Path) -> Path:
+    if (source / GLOBAL_AUDIT_NAME).is_file():
+        return source
+    direct = source / "TROPA y MARINERÍA"
+    if (direct / GLOBAL_AUDIT_NAME).is_file():
+        return direct
+    matches = list(source.rglob(GLOBAL_AUDIT_NAME)) if source.is_dir() else []
+    if len(matches) == 1:
+        return matches[0].parent
+    raise FileNotFoundError(
+        f"No se encontró una única carpeta con {GLOBAL_AUDIT_NAME} bajo {source}"
+    )
+
+
+def resolve_numeric_v2(source: Path, explicit: Path | None) -> Path:
+    if explicit:
+        if explicit.is_file():
+            return explicit
+        raise FileNotFoundError(f"No existe el banco Numérico V2 indicado: {explicit}")
+    search_roots = [source, source.parent]
+    matches: list[Path] = []
+    for root in search_roots:
+        if root.is_dir():
+            matches.extend(root.rglob("TROP_NUMERICO_4000_V2.csv"))
+    unique = sorted(set(path.resolve() for path in matches))
+    if len(unique) != 1:
+        raise FileNotFoundError(
+            "No se encontró un único TROP_NUMERICO_4000_V2.csv; "
+            "indícalo con --numeric-v2"
+        )
+    return unique[0]
+
+
+def load_numeric_v5_resource_ids(v4_source: Path) -> set[str]:
+    visual_root = v4_source / "TROP_Recursos_Visuales_V4" / "NUMÉRICO"
+    archives = sorted(visual_root.glob("B2_T??_*_V5.zip"))
+    if len(archives) != 18:
+        raise ValueError(f"Numérico V5: se esperaban 18 ZIP de familia y hay {len(archives)}")
+    resource_ids: set[str] = set()
+    for archive in archives:
+        with zipfile.ZipFile(archive) as zipped:
+            manifest_names = [name for name in zipped.namelist() if Path(name).name.lower() == "manifest.csv"]
+            audit_names = [name for name in zipped.namelist() if Path(name).name.startswith("AUDITORIA_") and name.endswith("_V5.csv")]
+            if len(manifest_names) != 1 or len(audit_names) != 1:
+                raise ValueError(f"{archive.name}: manifiesto o auditoría V5 ausente/ambiguo")
+            with zipped.open(manifest_names[0]) as raw:
+                rows = list(csv.DictReader(io.TextIOWrapper(raw, encoding="utf-8-sig", newline="")))
+            with zipped.open(audit_names[0]) as raw:
+                audit = {row["control"]: row["resultado"] for row in csv.DictReader(io.TextIOWrapper(raw, encoding="utf-8-sig", newline=""))}
+        if len(rows) != 30:
+            raise ValueError(f"{archive.name}: se esperaban 30 recursos y hay {len(rows)}")
+        if audit.get("png_totales") != "30" or "CERRADA V5" not in audit.get("estado", ""):
+            raise ValueError(f"{archive.name}: auditoría V5 no cerrada")
+        for row in rows:
+            resource_id = required_text(row, "resource_id", archive.name)
+            if row.get("verified_math") != "SI":
+                raise ValueError(f"{resource_id}: recurso V5 sin verificación matemática")
+            if resource_id in resource_ids:
+                raise ValueError(f"Numérico V5: recurso duplicado {resource_id}")
+            resource_ids.add(resource_id)
+    if len(resource_ids) != 540:
+        raise ValueError(f"Numérico V5: se esperaban 540 recursos únicos y hay {len(resource_ids)}")
+    return resource_ids
+
+
+def load_numeric_v2(
+    path: Path,
+    v4_source: Path,
+) -> tuple[list[dict[str, Any]], dict[str, dict[str, Any]], dict[str, Any]]:
+    source_sha = digest_file(path)
+    with path.open("r", encoding="utf-8-sig", newline="") as stream:
+        rows = list(csv.DictReader(stream))
+    if len(rows) != 4000:
+        raise ValueError(f"{path.name}: se esperaban 4000 preguntas y hay {len(rows)}")
+
+    audit_path = path.with_name("AUDITORIA_QA_NUMERICO_4000_V2.csv")
+    coverage_path = path.with_name("COBERTURA_18_FAMILIAS_108_SUBTIPOS_V2.csv")
+    summary_path = path.with_name("RESUMEN_18_FAMILIAS_V2.csv")
+    for required_path in (audit_path, coverage_path, summary_path):
+        if not required_path.is_file():
+            raise FileNotFoundError(f"Falta {required_path.name}")
+    with audit_path.open("r", encoding="utf-8-sig", newline="") as stream:
+        audit = {row["control"]: row["resultado"] for row in csv.DictReader(stream)}
+    required_audit = {
+        "preguntas_finales": "4000",
+        "familias_cubiertas": "18/18",
+        "subtipos_cubiertos": "108/108",
+        "opciones_distintas": "4000/4000",
+        "correcta_coincide_canonical": "4000/4000",
+        "feedback_A_D_completo": "4000/4000",
+        "referencia_recurso_V5_valida": "4000/4000",
+        "estimulos_logicos_unicos": "4000/4000",
+        "items_completos_visibles_unicos": "4000/4000",
+    }
+    for key, expected in required_audit.items():
+        if audit.get(key) != expected:
+            raise ValueError(f"{audit_path.name}: {key}={audit.get(key)!r}; se esperaba {expected!r}")
+    if "CERRADO" not in audit.get("estado", ""):
+        raise ValueError(f"{audit_path.name}: el estado no está cerrado para importación")
+    with coverage_path.open("r", encoding="utf-8-sig", newline="") as stream:
+        if len(list(csv.DictReader(stream))) != 108:
+            raise ValueError(f"{coverage_path.name}: no contiene 108 subtipos")
+    with summary_path.open("r", encoding="utf-8-sig", newline="") as stream:
+        if len(list(csv.DictReader(stream))) != 18:
+            raise ValueError(f"{summary_path.name}: no contiene 18 familias")
+
+    approved_resources = load_numeric_v5_resource_ids(v4_source)
+    families: dict[str, dict[str, Any]] = {}
+    questions: list[dict[str, Any]] = []
+    ids: set[str] = set()
+    signatures: set[str] = set()
+    stimuli: set[str] = set()
+    subtypes: set[str] = set()
+    access_counts = Counter()
+    level_counts = Counter()
+    motor_counts = Counter()
+    letter_counts = Counter()
+    for row in rows:
+        question_id = required_text(row, "question_id", "sin-id")
+        if question_id in ids:
+            raise ValueError(f"{path.name}: ID duplicado {question_id}")
+        ids.add(question_id)
+        family_id = required_text(row, "family_code", question_id)
+        family_name = required_text(row, "family_name", question_id)
+        subtype = required_text(row, "subtype_code", question_id)
+        subtypes.add(f"{family_id}:{subtype}")
+        families.setdefault(family_id, {
+            "family_id": family_id,
+            "aptitude_slug": "numerico",
+            "name": family_name,
+            "evaluable": True,
+            "transverse": False,
+            "active": True,
+        })
+        motor = required_text(row, "motor", question_id)
+        if motor not in FACTORS["NUMERICO"][2]:
+            raise ValueError(f"{question_id}: motor no aprobado {motor}")
+        options = {letter: required_text(row, letter, question_id) for letter in "ABCD"}
+        if len(set(options.values())) != 4:
+            raise ValueError(f"{question_id}: opciones repetidas")
+        correct = required_text(row, "correcta", question_id)
+        if correct not in "ABCD":
+            raise ValueError(f"{question_id}: respuesta correcta inválida")
+        stimulus = json.loads(required_text(row, "stimulus_json", question_id))
+        if str(stimulus.get("canonical_correct")) != options[correct]:
+            raise ValueError(f"{question_id}: la respuesta no coincide con canonical_correct")
+        resource_id = required_text(row, "recurso_v5_referencia", question_id)
+        if resource_id not in approved_resources:
+            raise ValueError(f"{question_id}: recurso V5 inexistente {resource_id}")
+        stimulus = {
+            **stimulus,
+            "resource_v5_reference": resource_id,
+            "visual_required": required_text(row, "visual_required", question_id),
+        }
+        signature = content_signature(required_text(row, "pregunta", question_id), options, stimulus)
+        stimulus_sig = stimulus_signature(stimulus)
+        if signature in signatures or stimulus_sig in stimuli:
+            raise ValueError(f"{question_id}: contenido o estímulo duplicado")
+        signatures.add(signature)
+        stimuli.add(stimulus_sig)
+
+        sequence = int(question_id.rsplit("_", 1)[-1])
+        remainder = sequence % 4
+        access_min = "esencial" if remainder in (0, 1) else "operativa" if remainder == 2 else "integral"
+        level = int(required_text(row, "nivel", question_id))
+        normalized = {
+            "question_id": question_id,
+            "aptitude_slug": "numerico",
+            "motor_code": motor,
+            "family_id": family_id,
+            "level": level,
+            "access_min": access_min,
+            "usage": "general",
+            "prompt": required_text(row, "pregunta", question_id),
+            "options": options,
+            "correct_option": correct,
+            "explanation": required_text(row, "explicacion", question_id),
+            "feedback": {letter: required_text(row, f"feedback_{letter}", question_id) for letter in "ABCD"},
+            "error_codes": {letter: str(row.get(f"error_{letter}", "")).strip() or None for letter in "ABCD"},
+            "stimulus": stimulus,
+            "audit_status": "VALIDADA_NUMERICO_V2",
+            "audit_version": NUMERIC_V2_VERSION,
+            "source_archive": path.name,
+            "source_sha256": source_sha,
+            "source_row_hash": row_hash(row),
+            "active": True,
+        }
+        questions.append(normalized)
+        access_counts[access_min] += 1
+        level_counts[str(level)] += 1
+        motor_counts[motor] += 1
+        letter_counts[correct] += 1
+
+    if len(families) != 18 or len(subtypes) != 108:
+        raise ValueError(f"Numérico V2: familias={len(families)}, subtipos={len(subtypes)}")
+    if level_counts != Counter({str(level): 800 for level in range(1, 6)}):
+        raise ValueError(f"Numérico V2: niveles inválidos {dict(level_counts)}")
+    if access_counts != Counter({"esencial": 2000, "operativa": 1000, "integral": 1000}):
+        raise ValueError(f"Numérico V2: accesos inválidos {dict(access_counts)}")
+    if motor_counts != Counter({"NU01": 1334, "NU02": 1333, "NU03": 1333}):
+        raise ValueError(f"Numérico V2: motores inválidos {dict(motor_counts)}")
+    if letter_counts != Counter({"A": 1000, "B": 1000, "C": 1000, "D": 1000}):
+        raise ValueError(f"Numérico V2: respuestas inválidas {dict(letter_counts)}")
+    summary = {
+        "archive": path.name,
+        "source_sha256": source_sha,
+        "audit_version": NUMERIC_V2_VERSION,
+        "questions": len(questions),
+        "families": len(families),
+        "subtypes": len(subtypes),
+        "visual_resources_v5": len(approved_resources),
+        "levels": dict(sorted(level_counts.items())),
+        "access_min": dict(sorted(access_counts.items())),
+        "motors": dict(sorted(motor_counts.items())),
+        "letters": dict(sorted(letter_counts.items())),
+        "access_assignment": "question_id_mod_4: 0/1 esencial, 2 operativa, 3 integral",
+    }
+    return questions, families, summary
 
 
 def load_archive(source: Path, factor: str) -> tuple[list[dict[str, Any]], dict[str, dict[str, Any]], dict[str, Any]]:
@@ -190,6 +414,7 @@ def load_archive(source: Path, factor: str) -> tuple[list[dict[str, Any]], dict[
     summary = {
         "archive": archive.name,
         "source_sha256": source_sha,
+        "audit_version": EXPECTED_VERSION,
         "questions": len(questions),
         "families": len(families),
         "levels": dict(sorted(level_counts.items())),
@@ -199,7 +424,11 @@ def load_archive(source: Path, factor: str) -> tuple[list[dict[str, Any]], dict[
     return questions, families, summary
 
 
-def validate_global_audit(source: Path, summaries: list[dict[str, Any]]) -> dict[str, Any]:
+def validate_global_audit(
+    source: Path,
+    summaries: list[dict[str, Any]],
+    replaced_factors: set[str] | None = None,
+) -> dict[str, Any]:
     path = source / GLOBAL_AUDIT_NAME
     if not path.is_file():
         raise FileNotFoundError(
@@ -225,6 +454,8 @@ def validate_global_audit(source: Path, summaries: list[dict[str, Any]]) -> dict
     by_archive = {summary["archive"]: summary for summary in summaries}
     aptitude_report = report.get("aptitudes") or {}
     for factor, (_slug, aptitude_name, _motors) in FACTORS.items():
+        if factor in (replaced_factors or set()):
+            continue
         archive_name = f"TROP_{factor}_4000_DEFINITIVO_V4.zip"
         summary = by_archive.get(archive_name)
         audit = aptitude_report.get(aptitude_name)
@@ -279,9 +510,26 @@ class Postgrest:
             detail = exc.read().decode("utf-8", errors="replace")[:1000]
             raise RuntimeError(f"Error importando {table}: HTTP {exc.code}: {detail}") from exc
 
-    def exact_count(self, table: str) -> int:
+    def patch_where(self, table: str, values: dict[str, Any], filters: dict[str, str]) -> None:
+        query = urllib.parse.urlencode(filters)
         request = urllib.request.Request(
-            f"{self.base}/{table}?select=question_id",
+            f"{self.base}/{table}?{query}",
+            data=json.dumps(values, ensure_ascii=False, separators=(",", ":")).encode("utf-8"),
+            headers={**self.headers, "Prefer": "return=minimal"},
+            method="PATCH",
+        )
+        try:
+            with urllib.request.urlopen(request, timeout=90) as response:
+                if response.status not in (200, 204):
+                    raise RuntimeError(f"Supabase respondió {response.status}")
+        except urllib.error.HTTPError as exc:
+            detail = exc.read().decode("utf-8", errors="replace")[:1000]
+            raise RuntimeError(f"Error actualizando {table}: HTTP {exc.code}: {detail}") from exc
+
+    def exact_count(self, table: str, filters: dict[str, str] | None = None) -> int:
+        query = urllib.parse.urlencode({"select": "question_id", **(filters or {})})
+        request = urllib.request.Request(
+            f"{self.base}/{table}?{query}",
             headers={**self.headers, "Prefer": "count=exact", "Range": "0-0"},
             method="GET",
         )
@@ -298,14 +546,22 @@ def chunks(rows: list[dict[str, Any]], size: int):
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Valida/importa los siete bancos TROP DEFINITIVO_V4")
+    parser = argparse.ArgumentParser(description="Valida/importa el banco maestro TROP más reciente")
     parser.add_argument("--source", type=Path, default=SOURCE_DEFAULT)
+    parser.add_argument("--numeric-v2", type=Path, help="Ruta explícita al CSV Numérico V2 auditado")
+    parser.add_argument(
+        "--allow-v4-numeric",
+        action="store_true",
+        help="Usa el Numérico V4 histórico; solo para reproducir una auditoría anterior",
+    )
     parser.add_argument("--apply", action="store_true", help="Escribe en Supabase; sin esta opción solo valida")
     parser.add_argument("--batch-size", type=int, default=200)
     args = parser.parse_args()
     if not 10 <= args.batch_size <= 500:
         parser.error("--batch-size debe estar entre 10 y 500")
 
+    v4_source = resolve_v4_source(args.source)
+    numeric_v2 = None if args.allow_v4_numeric else resolve_numeric_v2(v4_source, args.numeric_v2)
     all_questions: list[dict[str, Any]] = []
     all_families: dict[str, dict[str, Any]] = {}
     summaries = []
@@ -313,7 +569,10 @@ def main() -> int:
     global_signatures: dict[str, str] = {}
     global_stimuli: dict[str, str] = {}
     for factor in FACTORS:
-        questions, families, summary = load_archive(args.source, factor)
+        if factor == "NUMERICO" and numeric_v2 is not None:
+            questions, families, summary = load_numeric_v2(numeric_v2, v4_source)
+        else:
+            questions, families, summary = load_archive(v4_source, factor)
         overlap = global_ids.intersection(question["question_id"] for question in questions)
         if overlap:
             raise ValueError(f"IDs duplicados entre archivos: {sorted(overlap)[:5]}")
@@ -345,7 +604,11 @@ def main() -> int:
         raise ValueError(
             f"Unicidad global inválida: firmas={len(global_signatures)}, stimuli={len(global_stimuli)}"
         )
-    validate_global_audit(args.source, summaries)
+    validate_global_audit(
+        v4_source,
+        summaries,
+        replaced_factors={"NUMERICO"} if numeric_v2 is not None else set(),
+    )
 
     report = {
         "status": "PASS",
@@ -355,6 +618,7 @@ def main() -> int:
         "unique_content_signatures": 28000,
         "unique_stimuli": 28000,
         "global_audit": GLOBAL_AUDIT_NAME,
+        "numeric_source": numeric_v2.name if numeric_v2 is not None else "TROP_NUMERICO_4000_DEFINITIVO_V4.zip",
         "archives": summaries,
     }
     if not args.apply:
@@ -372,7 +636,7 @@ def main() -> int:
         client.upsert("trop_import_batches", [{
             "source_archive": summary["archive"],
             "source_sha256": summary["source_sha256"],
-            "audit_version": EXPECTED_VERSION,
+            "audit_version": summary["audit_version"],
             "question_count": summary["questions"],
             "status": "validated",
             "summary": {**summary, "validated_at": validated_at},
@@ -384,18 +648,33 @@ def main() -> int:
             client.upsert("trop_import_batches", [{
                 "source_archive": summary["archive"],
                 "source_sha256": summary["source_sha256"],
-                "audit_version": EXPECTED_VERSION,
+                "audit_version": summary["audit_version"],
                 "question_count": summary["questions"],
                 "status": "importing",
                 "summary": summary,
                 "imported_at": None,
             }], "source_sha256")
         client.upsert("trop_families", list(all_families.values()), "family_id")
+        for aptitude_slug, _aptitude_name, _motors in FACTORS.values():
+            client.patch_where(
+                "trop_questions",
+                {"active": False},
+                {"aptitude_slug": f"eq.{aptitude_slug}", "active": "eq.true"},
+            )
         for batch in chunks(all_questions, args.batch_size):
             client.upsert("trop_questions", batch, "question_id")
-        database_count = client.exact_count("trop_questions")
+        database_count = client.exact_count("trop_questions", {"active": "eq.true"})
         if database_count != 28000:
             raise RuntimeError(f"La verificación posterior devolvió {database_count} preguntas, no 28000")
+        database_by_aptitude = {
+            aptitude_slug: client.exact_count(
+                "trop_questions",
+                {"active": "eq.true", "aptitude_slug": f"eq.{aptitude_slug}"},
+            )
+            for aptitude_slug, _aptitude_name, _motors in FACTORS.values()
+        }
+        if any(count != 4000 for count in database_by_aptitude.values()):
+            raise RuntimeError(f"Conteos activos por aptitud inválidos: {database_by_aptitude}")
     except Exception as exc:
         failed_at = datetime_module.datetime.now(datetime_module.timezone.utc).isoformat()
         for summary in summaries:
@@ -403,7 +682,7 @@ def main() -> int:
                 client.upsert("trop_import_batches", [{
                     "source_archive": summary["archive"],
                     "source_sha256": summary["source_sha256"],
-                    "audit_version": EXPECTED_VERSION,
+                    "audit_version": summary["audit_version"],
                     "question_count": summary["questions"],
                     "status": "failed",
                     "summary": {**summary, "failed_at": failed_at, "error": str(exc)[:500]},
@@ -418,13 +697,14 @@ def main() -> int:
         client.upsert("trop_import_batches", [{
             "source_archive": summary["archive"],
             "source_sha256": summary["source_sha256"],
-            "audit_version": EXPECTED_VERSION,
+            "audit_version": summary["audit_version"],
             "question_count": summary["questions"],
             "status": "completed",
             "summary": summary,
             "imported_at": completed_at,
         }], "source_sha256")
     report["database_questions"] = database_count
+    report["database_questions_by_aptitude"] = database_by_aptitude
     print(json.dumps(report, ensure_ascii=False, indent=2))
     return 0
 

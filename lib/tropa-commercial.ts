@@ -64,7 +64,7 @@ export const tropaPlans = [
     currentPrice: "39 €",
     description: "Entrenamiento independiente y completo de Aptitud Verbal.",
     includes: [
-      "2.000 preguntas específicas",
+      "4.000 preguntas específicas",
       "Taller completo · 12 familias",
       "Juegos: Intruso semántico, Parejas relámpago y Analogía táctica",
       "20 simulacros específicos de 15 preguntas",
@@ -79,7 +79,7 @@ export const tropaPlans = [
     currentPrice: "39 €",
     description: "Entrenamiento independiente y completo de Aptitud Numérica.",
     includes: [
-      "2.000 preguntas específicas",
+      "4.000 preguntas específicas",
       "Taller completo · 18 familias",
       "Juegos: Número objetivo, Estimación rápida y Caza la serie",
       "20 simulacros específicos de 15 preguntas",
@@ -94,7 +94,7 @@ export const tropaPlans = [
     currentPrice: "39 €",
     description: "Entrenamiento independiente y completo de Aptitud Espacial.",
     includes: [
-      "2.000 preguntas específicas",
+      "4.000 preguntas específicas",
       "Taller completo · 15 familias",
       "Juegos: Giro mental, Espejo o giro y Cierra el cubo",
       "20 simulacros específicos de 15 preguntas",
@@ -109,7 +109,7 @@ export const tropaPlans = [
     currentPrice: "39 €",
     description: "Entrenamiento independiente y completo de Aptitud Mecánica.",
     includes: [
-      "2.000 preguntas específicas",
+      "4.000 preguntas específicas",
       "Taller completo · 18 familias",
       "Juegos: Cadena de engranajes, Equilibra la palanca y ¿Qué ocurrirá?",
       "20 simulacros específicos de 15 preguntas",
@@ -124,7 +124,7 @@ export const tropaPlans = [
     currentPrice: "39 €",
     description: "Entrenamiento independiente y completo de Aptitud Perceptiva.",
     includes: [
-      "2.000 preguntas específicas",
+      "4.000 preguntas específicas",
       "Taller completo · 15 contenidos pedagógicos",
       "Juegos: Radar, El infiltrado y Comparación flash",
       "20 simulacros específicos de 15 preguntas",
@@ -139,7 +139,7 @@ export const tropaPlans = [
     currentPrice: "39 €",
     description: "Entrenamiento independiente y completo de Memoria.",
     includes: [
-      "2.000 preguntas específicas",
+      "4.000 preguntas específicas",
       "Taller completo · 15 contenidos pedagógicos",
       "Juegos: Kim Base12, ¿Qué cambió? y Mapa de memoria",
       "20 simulacros específicos de 15 preguntas",
@@ -154,7 +154,7 @@ export const tropaPlans = [
     currentPrice: "39 €",
     description: "Entrenamiento independiente y completo de Razonamiento Abstracto.",
     includes: [
-      "2.000 preguntas específicas",
+      "4.000 preguntas específicas",
       "Taller completo · 17 familias",
       "Juegos: Regla oculta, Matriz incompleta y Cazador de hipótesis",
       "20 simulacros específicos de 15 preguntas",

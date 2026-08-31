@@ -10,7 +10,7 @@ export type TropaPlanSlug = keyof typeof tropaPlanAccess;
 
 export const tropaAptitudes = [
   { slug: "verbal", name: "Verbal", code: "VER", motors: ["VB01", "VB02", "VB03"] },
-  { slug: "numerico", name: "Numérico", code: "NUM", motors: ["NU01", "NU02", "NU03"] },
+  { slug: "numerico", name: "Numérico", code: "NUM", motors: ["NU02", "NU03", "NU01"] },
   { slug: "espacial", name: "Espacial", code: "ESP", motors: ["ES01", "ES02", "ES03"] },
   { slug: "mecanico", name: "Mecánico", code: "MEC", motors: ["ME01", "ME03", "ME05"] },
   { slug: "perceptivo", name: "Perceptivo", code: "PER", motors: ["PE01", "PE02", "PE03"] },
@@ -18,13 +18,27 @@ export const tropaAptitudes = [
   { slug: "abstracto", name: "Razonamiento abstracto", code: "ABS", motors: ["AB01", "AB04", "AB05"] },
 ] as const;
 
+export type TropaAptitudeSlug = (typeof tropaAptitudes)[number]["slug"];
+
+export const tropaIndividualProductAccess = {
+  "aptitud-verbal": "verbal",
+  "aptitud-numerica": "numerico",
+  "aptitud-espacial": "espacial",
+  "aptitud-mecanica": "mecanico",
+  "aptitud-perceptiva": "perceptivo",
+  memoria: "memoria",
+  "razonamiento-abstracto": "abstracto",
+} as const satisfies Record<string, TropaAptitudeSlug>;
+
+export type TropaIndividualProductSlug = keyof typeof tropaIndividualProductAccess;
+
 export const tropaMotors = {
   VB01: { name: "Intruso semántico", minimumPlan: "esencial" },
   VB02: { name: "Parejas relámpago", minimumPlan: "operativa" },
   VB03: { name: "Analogía táctica", minimumPlan: "integral" },
-  NU01: { name: "Número objetivo", minimumPlan: "esencial" },
-  NU02: { name: "Estimación rápida", minimumPlan: "operativa" },
-  NU03: { name: "Caza la serie", minimumPlan: "integral" },
+  NU02: { name: "Estimación rápida", minimumPlan: "esencial" },
+  NU03: { name: "Caza la serie", minimumPlan: "operativa" },
+  NU01: { name: "Número objetivo", minimumPlan: "integral" },
   ES01: { name: "Giro mental", minimumPlan: "esencial" },
   ES02: { name: "Espejo o giro", minimumPlan: "operativa" },
   ES03: { name: "Cierra el cubo", minimumPlan: "integral" },
@@ -46,6 +60,14 @@ export type TropaMotorCode = keyof typeof tropaMotors;
 
 export function isTropaPlanSlug(value: string): value is TropaPlanSlug {
   return value in tropaPlanAccess;
+}
+
+export function isTropaAptitudeSlug(value: string): value is TropaAptitudeSlug {
+  return tropaAptitudes.some((aptitude) => aptitude.slug === value);
+}
+
+export function isTropaIndividualProductSlug(value: string): value is TropaIndividualProductSlug {
+  return value in tropaIndividualProductAccess;
 }
 
 export function effectiveTropaPlan(planSlugs: string[]) {
