@@ -53,7 +53,7 @@ export default function OnboardingPage() {
     province: "",
     country: "EspaÃ±a",
     billingEmail: "",
-    nominativeInvoice: true,
+    nominativeInvoice: false,
   });
 
   const [planning, setPlanning] = useState({
@@ -618,11 +618,39 @@ export default function OnboardingPage() {
             </h2>
 
             <p style={{ color: "#607089" }}>
-              Completa los datos necesarios para la emisiÃ³n de tu factura.
+              Indica si deseas recibir una factura nominativa de tu compra.
             </p>
 
             {step === 2 && (
               <>
+                <label
+                  style={{
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: "10px",
+                    marginTop: "20px",
+                    padding: "16px",
+                    borderRadius: "12px",
+                    background: "#eef4ff",
+                    color: "#29436f",
+                    fontWeight: 700,
+                  }}
+                >
+                  <input
+                    type="checkbox"
+                    checked={billing.nominativeInvoice}
+                    onChange={(e) =>
+                      setBilling({
+                        ...billing,
+                        nominativeInvoice: e.target.checked,
+                      })
+                    }
+                    style={{ width: "18px", height: "18px", marginTop: "1px" }}
+                  />
+                  Quiero recibir una factura nominativa por correo electrónico.
+                </label>
+
+                {billing.nominativeInvoice && (
                 <div
                   style={{
                     display: "grid",
@@ -783,6 +811,7 @@ export default function OnboardingPage() {
                     />
                   </div>
                 </div>
+                )}
 
                 <p
                   style={{
@@ -794,8 +823,9 @@ export default function OnboardingPage() {
                     padding: "12px 14px",
                   }}
                 >
-                  Emitiremos automáticamente una factura nominativa. Comprueba que los datos
-                  fiscales sean correctos antes de continuar.
+                  {billing.nominativeInvoice
+                    ? "La factura se emitirá con los datos indicados y se enviará al correo de facturación."
+                    : "No se emitirá una factura nominativa. Puedes continuar con el alta sin completar datos fiscales."}
                 </p>
 
                 <div
@@ -811,7 +841,7 @@ export default function OnboardingPage() {
                     disabled={saving}
                     onClick={handleBillingContinue}
                   >
-                    {saving ? "Guardando..." : "Guardar y continuar â†’"}
+                    {saving ? "Guardando..." : "Guardar y continuar →"}
                   </button>
                 </div>
               </>

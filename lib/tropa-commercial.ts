@@ -184,3 +184,7 @@ export type TropaPlan = (typeof tropaPlans)[number];
 export function getTropaPlan(slug: string) {
   return tropaPlans.find((plan) => plan.slug === slug);
 }
+
+export function getTropaCatalogSlug(productSlug: string) {
+  return `tropa-y-marineria-${productSlug}`;
+}

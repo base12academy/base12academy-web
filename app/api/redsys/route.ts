@@ -2,10 +2,10 @@ import { NextResponse } from "next/server";
 import crypto from "crypto";
 import { courses, type CourseSlug } from "@/lib/courses";
 import { getSupabase } from "@/lib/supabase/server";
-import { createRedsysSignature } from "@/lib/redsys";
+import { createRedsysSignature, getRedsysCredentials } from "@/lib/redsys";
 
 const LEGAL_VERSION = "2026-08-11";
-const REDSYS_SIGNATURE_VERSION = "HMAC_SHA256_V1";
+const REDSYS_SIGNATURE_VERSION = "HMAC_SHA512_V2";
 
 function base64UrlEncode(value: string) {
   return Buffer.from(value, "utf8")
@@ -31,91 +31,21 @@ function hashCheckoutToken(token: string) {
 }
 
 export async function POST(req: Request) {
-  const apiKey = process.env.REDSYS_API_KEY;
-
-  if (!apiKey) {
-    return NextResponse.json(
-      { error: "Falta la variable REDSYS_API_KEY" },
-      { status: 500 }
-    );
-  }
-
-  const separator = apiKey.indexOf("_");
-
-  if (separator <= 0) {
-    return NextResponse.json(
-      { error: "REDSYS_API_KEY no tiene un formato válido" },
-      { status: 500 }
-    );
-  }
-
-  const environment = apiKey
-    .slice(0, separator)
-    .toUpperCase();
-
-  const encodedPayload =
-    apiKey.slice(separator + 1);
-
-  if (
-    environment !== "TEST" &&
-    environment !== "PROD"
-  ) {
-    return NextResponse.json(
-      {
-        error:
-          "Entorno Redsys no válido en REDSYS_API_KEY",
-      },
-      { status: 500 }
-    );
-  }
-
-  const normalizedPayload = encodedPayload
-    .replace(/-/g, "+")
-    .replace(/_/g, "/");
-
-  const paddedPayload =
-    normalizedPayload +
-    "=".repeat(
-      (4 - (normalizedPayload.length % 4)) % 4
-    );
-
-  let decodedPayload: string;
+  let credentials;
 
   try {
-    decodedPayload = Buffer.from(
-      paddedPayload,
-      "base64"
-    ).toString("utf8");
-  } catch {
+    credentials = getRedsysCredentials();
+  } catch (error) {
+    console.error("Configuración de Redsys no válida", error);
     return NextResponse.json(
       {
-        error:
-          "No se ha podido decodificar REDSYS_API_KEY",
+        error: "La pasarela de pago no está configurada correctamente",
       },
       { status: 500 }
     );
   }
 
-  const credentialParts =
-    decodedPayload.split("_");
-
-  const merchantCode = credentialParts[0];
-  const terminal = credentialParts[1];
-  const signingKey = credentialParts[2];
-
-  if (
-    !merchantCode ||
-    !terminal ||
-    !signingKey
-  ) {
-    return NextResponse.json(
-      {
-        error:
-          "REDSYS_API_KEY no contiene comercio, terminal y clave de firma válidos",
-      },
-      { status: 500 }
-    );
-  }
+  const { environment, merchantCode, terminal, signingKey } = credentials;
 
   const body = await req
     .json()

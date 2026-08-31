@@ -5,6 +5,7 @@ import {
   createNotifySignature,
   normalizeSignature,
   safeEqual,
+  getRedsysCredentials,
 } from "@/lib/redsys";
 import { courses, type CourseSlug } from "@/lib/courses";
 
@@ -26,10 +27,12 @@ function decodeMerchantData(value?: string) {
 
 export async function POST(req: NextRequest) {
   try {
-    const signingKey = process.env.REDSYS_SIGNING_KEY;
+    let signingKey: string;
 
-    if (!signingKey) {
-      console.error("Falta REDSYS_SIGNING_KEY");
+    try {
+      signingKey = getRedsysCredentials().signingKey;
+    } catch (error) {
+      console.error("Configuración de Redsys no válida", error);
 
       return NextResponse.json(
         {

@@ -1,6 +1,11 @@
 import { NextResponse } from "next/server";
 import { getSupabase } from "@/lib/supabase/server";
 import { emailInvoice, issueInvoice } from "@/lib/invoices";
+import {
+  parseSessionDuration,
+  parseStudyDays,
+  scheduleFernandoTelegramReminders,
+} from "@/lib/fernando-telegram";
 
 type OnboardingStep =
   | "communications_video"
@@ -425,8 +430,8 @@ export async function POST(req: Request) {
      * FACTURACIÓN
      */
     if (step === "billing") {
-      // Todas las compras generan factura: los datos fiscales son obligatorios.
-      const nominativeInvoice = true;
+      const nominativeInvoice =
+        body?.nominativeInvoice === true;
 
       const billingType =
         body?.billingType === "empresa"
@@ -558,12 +563,14 @@ export async function POST(req: Request) {
         throw billingError;
       }
 
-      const invoice = await issueInvoice(
-        current.enrollment.id,
-        user.id,
-        `${current.enrollment.course_slug} · ${current.enrollment.plan_slug}`
-      );
-      await emailInvoice(invoice);
+      if (nominativeInvoice) {
+        const invoice = await issueInvoice(
+          current.enrollment.id,
+          user.id,
+          `${current.enrollment.course_slug} · ${current.enrollment.plan_slug}`
+        );
+        await emailInvoice(invoice);
+      }
 
       const isClassBono =
         current.enrollment.course_slug === "clases-online";
@@ -597,25 +604,7 @@ export async function POST(req: Request) {
      * PLANIFICACIÓN DE FERNANDO
      */
     if (step === "planning") {
-      const rawStudyDays =
-        body?.studyDays;
-
-      let studyDays: string[] = [];
-
-      if (Array.isArray(rawStudyDays)) {
-        studyDays = rawStudyDays
-          .map((day) =>
-            String(day).trim()
-          )
-          .filter(Boolean);
-      } else {
-        studyDays = String(
-          rawStudyDays ?? ""
-        )
-          .split(",")
-          .map((day) => day.trim())
-          .filter(Boolean);
-      }
+      const studyDays = parseStudyDays(body?.studyDays);
 
       const studyTime =
         String(
@@ -623,10 +612,9 @@ export async function POST(req: Request) {
         ).trim();
 
       const sessionDurationMinutes =
-        Number(
+        parseSessionDuration(
           body?.sessionDurationMinutes ??
-            body?.sessionDuration ??
-            0
+            body?.sessionDuration
         );
 
       const examDate =
@@ -752,6 +740,27 @@ export async function POST(req: Request) {
           { status: 409 }
         );
       }
+
+      const { data: studyPlan, error: studyPlanError } = await supabase
+        .from("study_plans")
+        .select("study_days,study_time,exam_date")
+        .eq("user_id", user.id)
+        .eq("enrollment_id", current.enrollment.id)
+        .maybeSingle();
+
+      if (studyPlanError || !studyPlan) {
+        throw studyPlanError ?? new Error("No se encontró el plan de Fernando");
+      }
+
+      await scheduleFernandoTelegramReminders({
+        userId: user.id,
+        enrollmentId: current.enrollment.id,
+        courseSlug: current.enrollment.course_slug,
+        planSlug: current.enrollment.plan_slug,
+        studyDays: studyPlan.study_days,
+        studyTime: studyPlan.study_time,
+        examDate: studyPlan.exam_date,
+      });
 
       const { error: progressError } =
         await supabase

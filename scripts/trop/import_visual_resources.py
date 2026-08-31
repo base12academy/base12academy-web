@@ -9,6 +9,7 @@ import hashlib
 import io
 import json
 import mimetypes
+import mimetypes
 import os
 import re
 import sys
@@ -335,13 +336,36 @@ def apply(rows: list[dict[str, Any]], url: str, key: str, batch_size: int) -> No
             print(f"Recursos visuales cargados: {index}/{len(rows)}", file=sys.stderr, flush=True)
 
 
+def upload_export_dir(root: Path, url: str, key: str, batch_size: int) -> int:
+    files = sorted(path for path in root.rglob("*") if path.is_file())
+    for index, path in enumerate(files, start=1):
+        object_path = path.relative_to(root).as_posix()
+        object_url = url.rstrip("/") + "/storage/v1/object/trop-resources/" + urllib.parse.quote(object_path, safe="/")
+        mime_type = mimetypes.guess_type(path.name)[0] or "application/octet-stream"
+        request(object_url, key, "POST", path.read_bytes(), {"Content-Type": mime_type, "x-upsert": "true"})
+        if index % batch_size == 0 or index == len(files):
+            print(f"Recursos visuales cargados: {index}/{len(files)}", file=sys.stderr, flush=True)
+    return len(files)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--source", type=Path, required=True)
+    parser.add_argument("--source", type=Path)
     parser.add_argument("--apply", action="store_true")
     parser.add_argument("--export-dir", type=Path, help="Materializa el master vigente para una carga por CLI")
+    parser.add_argument("--upload-dir", type=Path, help="Sube un master ya materializado sin repetir el inventario")
     parser.add_argument("--batch-size", type=int, default=100)
     args = parser.parse_args()
+    if args.upload_dir:
+        url = os.getenv("NEXT_PUBLIC_SUPABASE_URL") or os.getenv("SUPABASE_URL")
+        key = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
+        if not url or not key:
+            raise RuntimeError("Faltan variables del Supabase local")
+        uploaded = upload_export_dir(args.upload_dir.resolve(), url, key, args.batch_size)
+        print(json.dumps({"status": "PASS", "mode": "upload-dir", "uploaded_resources": uploaded}, ensure_ascii=False, indent=2))
+        return 0
+    if not args.source:
+        parser.error("--source es obligatorio salvo cuando se usa --upload-dir")
     rows, report = inventory(args.source)
     if args.export_dir:
         export_root = args.export_dir.resolve()

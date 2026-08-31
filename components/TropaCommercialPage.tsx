@@ -1,6 +1,8 @@
 ﻿import Link from "next/link";
 import Image from "next/image";
-import { tropaPlans, type TropaPlan } from "@/lib/tropa-commercial";
+import { tropaPlans, type TropaPlan, getTropaCatalogSlug } from "@/lib/tropa-commercial";
+import type { CourseSlug } from "@/lib/courses";
+import TropaCheckoutForm from "./TropaCheckoutForm";
 import styles from "./TropaCommercialPage.module.css";
 
 function Header() {
@@ -56,13 +58,15 @@ function ProductCard({ plan }: { plan: TropaPlan }) {
         ))}
       </ul>
 
-      <Link className={styles.link} href={plan.kind === "training" ? `/tropa-y-marineria/${plan.slug}` : `/dashboard/tropa-y-marineria?product=${plan.slug}`}>
+      <Link className={styles.link} href={`/tropa-y-marineria/${plan.slug}`}>
         Ver contenido
       </Link>
 
-      <button className={styles.closed} type="button" disabled>
-        Contratación disponible próximamente
-      </button>
+      {plan.kind !== "training" && (
+        <Link className={styles.cardPurchase} href={`/tropa-y-marineria/${plan.slug}#contratar`}>
+          Contratar ahora
+        </Link>
+      )}
     </article>
   );
 }
@@ -97,8 +101,8 @@ export function TropaLanding() {
         </section>
 
         <p className={styles.notice}>
-          <b>Contratación todavía cerrada.</b> Estas páginas presentan las modalidades comerciales.
-          No habilitan pagos, pedidos ni matrículas.
+          <b>Pago seguro con Redsys.</b> Tras el pago completarás el alta, elegirás si necesitas
+          factura y recibirás el acceso correspondiente a tu modalidad.
         </p>
       </main>
     </div>
@@ -147,9 +151,18 @@ export function TropaPlanPage({ plan }: { plan: TropaPlan }) {
               </>
             )}
 
-            <button className={styles.closed} type="button" disabled>
-              Contratación disponible próximamente
-            </button>
+            {plan.kind === "training" ? (
+              <button className={styles.closed} type="button" disabled>
+                Contratación disponible próximamente
+              </button>
+            ) : (
+              <div id="contratar">
+                <TropaCheckoutForm
+                  courseSlug={getTropaCatalogSlug(plan.slug) as CourseSlug}
+                  productName={plan.name}
+                />
+              </div>
+            )}
           </section>
 
           <aside className={styles.panel}>
