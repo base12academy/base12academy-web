@@ -4,10 +4,6 @@
     {
       "path": "/api/cron/class-reminders",
       "schedule": "17 3 * * *"
-    },
-    {
-      "path": "/api/telegram/process",
-      "schedule": "*/5 * * * *"
     }
   ]
 }
