@@ -534,10 +534,19 @@ export default function CourseCatalog() {
         }),
       });
 
-      const data = await response.json();
+      const data = await response.json().catch(() => ({}));
 
       if (!response.ok) {
         throw new Error(data.error || "No se pudo preparar el pago.");
+      }
+
+      if (
+        !data.redsysUrl ||
+        !data.dsSignatureVersion ||
+        !data.dsMerchantParameters ||
+        !data.signature
+      ) {
+        throw new Error("La pasarela de pago no ha respondido correctamente.");
       }
 
       const form = document.createElement("form");

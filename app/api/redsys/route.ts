@@ -390,12 +390,33 @@ export async function POST(req: Request) {
       JSON.stringify(params)
     );
 
-  const signature =
-    createRedsysSignature(
+  let signature: string;
+
+  try {
+    signature = createRedsysSignature(
       dsMerchantParameters,
       order,
       signingKey
     );
+  } catch (error) {
+    console.error("No se pudo firmar la operacion de Redsys", error);
+
+    await supabase
+      .from("checkout_orders")
+      .update({
+        status: "cancelled",
+        updated_at: new Date().toISOString(),
+      })
+      .eq("id", checkoutOrder.id);
+
+    return NextResponse.json(
+      {
+        error:
+          "La pasarela de pago no esta configurada correctamente. Intentalo de nuevo mas tarde.",
+      },
+      { status: 500 }
+    );
+  }
 
   const isLive =
     environment === "PROD";
