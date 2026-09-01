@@ -167,14 +167,10 @@ export const tropaPlans = [
     name: "Base12 Training",
     kind: "training",
     currentPrice: "29 €",
-    description: "Aplicación independiente de preparación física para las pruebas de Tropa y Marinería.",
+    description: "Paquete independiente de preparación física para Tropa y Marinería. Puedes contratarlo sin tener ningún otro paquete Base12.",
     includes: [
-      "Aplicación descargable independiente",
-      "Calentamiento general",
-      "Preparación para flexiones",
-      "Preparación de plancha y core",
-      "Preparación para 2.000 metros",
-      "Preparación para circuito de agilidad",
+      "Compra independiente, sin requisitos previos",
+      "Contenido disponible en breve",
     ],
   },
 ] as const satisfies readonly TropaCommercialProduct[];

@@ -48,6 +48,10 @@ function ProductCard({ plan }: { plan: TropaPlan }) {
             : "Aplicación de preparación física"}
       </span>
 
+      {plan.kind === "training" && (
+        <Image className={styles.trainingLogo} src="/images/banco-opositores/logo-base12-training.png" alt="Base12 Training" width={180} height={180} />
+      )}
+
       <h2>{plan.name}</h2>
       <Price plan={plan} />
       <p>{plan.description}</p>
@@ -62,17 +66,16 @@ function ProductCard({ plan }: { plan: TropaPlan }) {
         Ver contenido
       </Link>
 
-      {plan.kind !== "training" && (
-        <Link className={styles.cardPurchase} href={`/tropa-y-marineria/${plan.slug}#contratar`}>
-          Contratar ahora
-        </Link>
-      )}
+      <Link className={styles.cardPurchase} href={`/tropa-y-marineria/${plan.slug}#contratar`}>
+        Contratar ahora
+      </Link>
     </article>
   );
 }
 
 export function TropaLanding() {
   const psychometricProducts = tropaPlans.filter((plan) => plan.kind !== "training");
+  const trainingProducts = tropaPlans.filter((plan) => plan.kind === "training");
 
   return (
     <div className={styles.page}>
@@ -85,6 +88,17 @@ export function TropaLanding() {
           <p className={styles.intro}>
             Puedes elegir una preparación completa o entrenar únicamente la aptitud que necesites reforzar.
           </p>
+        </section>
+
+        <section className={styles.trainingSection}>
+          <div className={styles.sectionHeading}>
+            <p className={styles.eyebrow}>Preparación física independiente</p>
+            <h2>Base12 Training</h2>
+          </div>
+          <p className={styles.independentNotice}>Disponible para cualquier persona, aunque no tenga contratado otro paquete Base12. Contenido disponible en breve.</p>
+          <div className={styles.trainingGrid} aria-label="Base12 Training">
+            {trainingProducts.map((plan) => <ProductCard key={plan.slug} plan={plan} />)}
+          </div>
         </section>
 
         <section className={styles.sectionBlock}>
@@ -131,6 +145,9 @@ export function TropaPlanPage({ plan }: { plan: TropaPlan }) {
           </p>
 
           <h1>{plan.name}</h1>
+          {plan.kind === "training" && (
+            <Image className={styles.trainingHeroLogo} src="/images/banco-opositores/logo-base12-training.png" alt="Base12 Training" width={240} height={240} priority />
+          )}
           <p className={styles.intro}>{plan.description}</p>
           <Price plan={plan} />
         </section>
@@ -151,18 +168,12 @@ export function TropaPlanPage({ plan }: { plan: TropaPlan }) {
               </>
             )}
 
-            {plan.kind === "training" ? (
-              <button className={styles.closed} type="button" disabled>
-                Contratación disponible próximamente
-              </button>
-            ) : (
-              <div id="contratar">
-                <TropaCheckoutForm
-                  courseSlug={getTropaCatalogSlug(plan.slug) as CourseSlug}
-                  productName={plan.name}
-                />
-              </div>
-            )}
+            <div id="contratar">
+              <TropaCheckoutForm
+                courseSlug={getTropaCatalogSlug(plan.slug) as CourseSlug}
+                productName={plan.name}
+              />
+            </div>
           </section>
 
           <aside className={styles.panel}>
