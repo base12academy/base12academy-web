@@ -41,9 +41,7 @@ function ProductCard({ plan }: { plan: TropaPlan }) {
   return (
     <article className={`${styles.card} ${plan.kind === "training" ? styles.trainingCard : ""}`}>
       <span className={styles.productType}>
-        {plan.slug === "prueba-redsys"
-          ? "Prueba técnica autorizada"
-          : plan.kind === "plan"
+        {plan.kind === "plan"
           ? "Preparación completa"
           : plan.kind === "aptitude"
             ? "Por aptitud"
@@ -125,9 +123,7 @@ export function TropaPlanPage({ plan }: { plan: TropaPlan }) {
 
         <section className={styles.hero}>
           <p className={styles.eyebrow}>
-            {plan.slug === "prueba-redsys"
-              ? "Tropa y Marinería · Prueba técnica"
-              : plan.kind === "training"
+            {plan.kind === "training"
               ? "Base12 Training · Preparación física"
               : plan.kind === "aptitude"
                 ? "Tropa y Marinería · Aptitud"

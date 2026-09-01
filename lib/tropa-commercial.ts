@@ -58,20 +58,6 @@ export const tropaPlans = [
     difference: "Amplía Operativa con 7.000 preguntas adicionales y el alcance completo.",
   },
   {
-    slug: "prueba-redsys",
-    name: "Prueba real Redsys",
-    kind: "aptitude",
-    currentPrice: "3 €",
-    description: "Producto temporal para validar un pago real, el alta y la solicitud de factura de Tropa y Marinería.",
-    includes: [
-      "Cargo real de 3 € mediante Redsys",
-      "Recorrido completo de pago y alta",
-      "Solicitud opcional de factura nominativa",
-      "No concede acceso formativo ni sustituye la contratación de un curso",
-    ],
-    difference: "Uso exclusivo para la prueba técnica autorizada de Redsys y facturación.",
-  },
-  {
     slug: "aptitud-verbal",
     name: "Aptitud Verbal",
     kind: "aptitude",
