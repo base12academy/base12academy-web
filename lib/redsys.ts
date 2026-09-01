@@ -11,6 +11,21 @@ export type RedsysCredentials = {
 
 type RedsysEnvironmentSource = Record<string, string | undefined>;
 
+const REDSYS_STANDARD_TEST_KEY = "sq7HjrUOBfKmC576ILgskD5srU870gJ7";
+
+function validateCredentials(credentials: RedsysCredentials) {
+  if (
+    credentials.environment === "PROD" &&
+    credentials.signingKey === REDSYS_STANDARD_TEST_KEY
+  ) {
+    throw new Error(
+      "La clave estandar de pruebas de Redsys no puede utilizarse en produccion"
+    );
+  }
+
+  return credentials;
+}
+
 function normalizeEnvironment(value?: string): RedsysEnvironment {
   const normalized = value?.trim().toUpperCase();
 
@@ -62,18 +77,18 @@ export function getRedsysCredentials(
   )?.trim();
 
   if (merchantCode && terminal && signingKey) {
-    return {
+    return validateCredentials({
       environment: normalizeEnvironment(source.REDSYS_ENV),
       merchantCode,
       terminal,
       signingKey,
-    };
+    });
   }
 
   const packedApiKey = source.REDSYS_API_KEY?.trim();
 
   if (packedApiKey) {
-    return decodePackedCredentials(packedApiKey);
+    return validateCredentials(decodePackedCredentials(packedApiKey));
   }
 
   throw new Error(
