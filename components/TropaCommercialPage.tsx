@@ -74,9 +74,6 @@ function ProductCard({ plan }: { plan: TropaPlan }) {
 }
 
 export function TropaLanding() {
-  const psychometricProducts = tropaPlans.filter((plan) => plan.kind !== "training");
-  const trainingProducts = tropaPlans.filter((plan) => plan.kind === "training");
-
   return (
     <div className={styles.page}>
       <Header />
@@ -90,17 +87,6 @@ export function TropaLanding() {
           </p>
         </section>
 
-        <section className={styles.trainingSection}>
-          <div className={styles.sectionHeading}>
-            <p className={styles.eyebrow}>Preparación física independiente</p>
-            <h2>Base12 Training</h2>
-          </div>
-          <p className={styles.independentNotice}>Disponible para cualquier persona, aunque no tenga contratado otro paquete Base12. Contenido disponible en breve.</p>
-          <div className={styles.trainingGrid} aria-label="Base12 Training">
-            {trainingProducts.map((plan) => <ProductCard key={plan.slug} plan={plan} />)}
-          </div>
-        </section>
-
         <section className={styles.sectionBlock}>
           <div className={styles.sectionHeading}>
             <p className={styles.eyebrow}>Preparación psicotécnica</p>
@@ -108,7 +94,7 @@ export function TropaLanding() {
           </div>
 
           <div className={styles.plans} aria-label="Paquetes y aptitudes de Tropa y Marinería">
-            {psychometricProducts.map((plan) => (
+            {tropaPlans.map((plan) => (
               <ProductCard key={plan.slug} plan={plan} />
             ))}
           </div>

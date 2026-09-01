@@ -171,6 +171,7 @@ export const tropaPlans = [
     includes: [
       "Compra independiente, sin requisitos previos",
       "Contenido disponible en breve",
+      "Pendiente de revisión",
     ],
   },
 ] as const satisfies readonly TropaCommercialProduct[];
