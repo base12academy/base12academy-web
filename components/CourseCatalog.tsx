@@ -627,6 +627,10 @@ export default function CourseCatalog() {
                   ? <><del>179 €</del> Desde <b>139 €</b></>
                   : item.name === "Solicitud de clases · Otras asignaturas"
                   ? <b>Consultar disponibilidad</b>
+                  : item.name === "Historia · Universidad"
+                  ? <>Desde <b>20 €/hora</b> · Mínimo <b>125 €</b></>
+                  : item.name === "Historia y Filosofía · ESO y Bachillerato"
+                  ? <>Desde <b>17 €/hora</b> · Mínimo <b>100 €</b></>
                   : <>Desde <b>{plansFor(item)[0].price}</b></>}
               </p>
             </div>
