@@ -5,14 +5,10 @@ import { getSupabase } from "@/lib/supabase/server";
 import { createRedsysSignature, getRedsysCredentials } from "@/lib/redsys";
 
 const LEGAL_VERSION = "2026-08-11";
-const REDSYS_SIGNATURE_VERSION = "HMAC_SHA512_V2";
+const REDSYS_SIGNATURE_VERSION = "HMAC_SHA256_V1";
 
-function base64UrlEncode(value: string) {
-  return Buffer.from(value, "utf8")
-    .toString("base64")
-    .replace(/\+/g, "-")
-    .replace(/\//g, "_")
-    .replace(/=+$/, "");
+function base64Encode(value: string) {
+  return Buffer.from(value, "utf8").toString("base64");
 }
 
 function generateOrder() {
@@ -390,7 +386,7 @@ export async function POST(req: Request) {
   };
 
   const dsMerchantParameters =
-    base64UrlEncode(
+    base64Encode(
       JSON.stringify(params)
     );
 

@@ -102,11 +102,30 @@ export function decodeMerchantParameters(dsMerchantParameters: string) {
 }
 
 function diversifyKey(order: string, signingKey: string) {
-  const key = Buffer.alloc(16, 0);
-  Buffer.from(signingKey.slice(0, 16), "utf8").copy(key);
-  const cipher = crypto.createCipheriv("aes-128-cbc", key, Buffer.alloc(16, 0));
+  const key = Buffer.from(signingKey, "base64");
 
-  return Buffer.concat([cipher.update(order, "utf8"), cipher.final()]);
+  if (key.length !== 24) {
+    throw new Error("La clave de firma HMAC SHA-256 de Redsys no es valida");
+  }
+
+  const orderBytes = Buffer.from(order, "utf8");
+  const paddedOrder = Buffer.alloc(
+    Math.ceil(orderBytes.length / 8) * 8,
+    0
+  );
+  orderBytes.copy(paddedOrder);
+
+  const cipher = crypto.createCipheriv(
+    "des-ede3-cbc",
+    key,
+    Buffer.alloc(8, 0)
+  );
+  cipher.setAutoPadding(false);
+
+  return Buffer.concat([
+    cipher.update(paddedOrder),
+    cipher.final(),
+  ]);
 }
 
 export function createRedsysSignature(
@@ -117,9 +136,9 @@ export function createRedsysSignature(
   const diversifiedKey = diversifyKey(order, signingKey);
 
   return crypto
-    .createHmac("sha512", diversifiedKey.toString("base64"))
+    .createHmac("sha256", diversifiedKey)
     .update(dsMerchantParameters, "utf8")
-    .digest("base64url");
+    .digest("base64");
 }
 
 export function createNotifySignature(

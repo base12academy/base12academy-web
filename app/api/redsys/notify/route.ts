@@ -72,7 +72,7 @@ export async function POST(req: NextRequest) {
      * Conservamos el sistema de verificación
      * que ya utilizaba la notificación Redsys.
      */
-    if (dsSignatureVersion !== "HMAC_SHA512_V2") {
+    if (dsSignatureVersion !== "HMAC_SHA256_V1") {
       console.error(
         "Versión de firma Redsys no admitida:",
         dsSignatureVersion
