@@ -4,6 +4,7 @@ import LeadChatBot from "@/components/LeadChatBot";
 import CourseCatalog from "@/components/CourseCatalog";
 import PwaInstallButton from "@/components/PwaInstallButton";
 import AdminHeaderLink from "@/components/AdminHeaderLink";
+import HomeServiceCards from "@/components/HomeServiceCards";
 
 const videos = [
   {
@@ -169,6 +170,8 @@ export default function HomePage() {
             </footer>
           </section>
 
+          <HomeServiceCards />
+
           <aside className="b12-home-aside" style={styles.aside}>
   <div style={styles.trustBox}>
     <p style={styles.sideLabel}>Decide con seguridad</p>
@@ -296,7 +299,7 @@ const styles: Record<string, CSSProperties> = {
     backdropFilter: "blur(10px)",
   },
   headerInner: {
-    maxWidth: 1200,
+    maxWidth: 1560,
     margin: "0 auto",
     padding: "7px 24px",
     display: "flex",
@@ -360,12 +363,12 @@ const styles: Record<string, CSSProperties> = {
     fontWeight: 700,
   },
   layout: {
-    maxWidth: 1200,
+    maxWidth: 1560,
     margin: "0 auto",
     padding: "100px 24px 64px",
     display: "grid",
-    gridTemplateColumns: "1fr 280px",
-    gap: 28,
+    gridTemplateColumns: "minmax(720px, 1fr) 220px 280px",
+    gap: 20,
   },
   content: {
     display: "flex",
