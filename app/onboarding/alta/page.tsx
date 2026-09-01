@@ -214,6 +214,27 @@ function AltaContent() {
       setChangingPassword(true);
       setError("");
 
+      /*
+       * Algunos navegadores tardan en persistir la sesión creada justo
+       * después de reclamar la compra. Antes de cambiar la contraseña,
+       * comprobamos la sesión y, si se ha perdido, la recuperamos con las
+       * credenciales temporales que todavía están en esta pantalla.
+       */
+      const { data: sessionData } = await supabase.auth.getSession();
+
+      if (!sessionData.session) {
+        if (!email.trim() || !temporaryPassword) {
+          throw new Error(
+            "La sesión ha caducado. Entra con la contraseña temporal y vuelve a intentarlo."
+          );
+        }
+
+        await signIn(
+          email.trim().toLowerCase(),
+          temporaryPassword
+        );
+      }
+
       const { error: updateError } = await supabase.auth.updateUser({
         password: newPassword,
       });
