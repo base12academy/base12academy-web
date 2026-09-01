@@ -55,30 +55,30 @@ function decodePackedCredentials(apiKey: string): RedsysCredentials {
 export function getRedsysCredentials(
   source: RedsysEnvironmentSource = process.env
 ): RedsysCredentials {
-  const packedApiKey = source.REDSYS_API_KEY?.trim();
-
-  if (packedApiKey) {
-    return decodePackedCredentials(packedApiKey);
-  }
-
   const merchantCode = source.REDSYS_MERCHANT_CODE?.trim();
   const terminal = source.REDSYS_TERMINAL?.trim();
   const signingKey = (
     source.REDSYS_SECRET_KEY || source.REDSYS_SIGNING_KEY
   )?.trim();
 
-  if (!merchantCode || !terminal || !signingKey) {
-    throw new Error(
-      "Faltan REDSYS_MERCHANT_CODE, REDSYS_TERMINAL o REDSYS_SECRET_KEY"
-    );
+  if (merchantCode && terminal && signingKey) {
+    return {
+      environment: normalizeEnvironment(source.REDSYS_ENV),
+      merchantCode,
+      terminal,
+      signingKey,
+    };
   }
 
-  return {
-    environment: normalizeEnvironment(source.REDSYS_ENV),
-    merchantCode,
-    terminal,
-    signingKey,
-  };
+  const packedApiKey = source.REDSYS_API_KEY?.trim();
+
+  if (packedApiKey) {
+    return decodePackedCredentials(packedApiKey);
+  }
+
+  throw new Error(
+    "Faltan REDSYS_MERCHANT_CODE, REDSYS_TERMINAL o REDSYS_SECRET_KEY"
+  );
 }
 
 export function decodeMerchantParameters(dsMerchantParameters: string) {
