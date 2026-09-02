@@ -20,14 +20,17 @@ export const metadata: Metadata = {
   alternates: { canonical: "/lp/tropa-y-marineria" },
 };
 
-const aptitudeNames = [
-  "Aptitud Verbal",
-  "Aptitud Numérica",
-  "Aptitud Espacial",
-  "Aptitud Mecánica",
-  "Aptitud Perceptiva",
-  "Memoria",
-  "Razonamiento Abstracto",
+const learningFeatures = [
+  ["▣", "Explicación", "Entiende el porqué de cada respuesta con explicaciones claras y didácticas."],
+  ["✎", "Práctica", "Miles de ejercicios y simulacros para entrenar tu mente como en el examen."],
+  ["✓", "Corrección", "Corrección pedagógica que te enseña de tus errores y te hace mejorar."],
+  ["▥", "Progreso", "Estadísticas y seguimiento para medir tu evolución y seguir mejorando."],
+];
+
+const answerBenefits = [
+  ["◆", "Corrección pedagógica", "Entiende por qué fallas y aprende la clave para acertar."],
+  ["!", "Errores frecuentes", "Identifica los fallos típicos y evita caer en ellos."],
+  ["★", "Mejora real", "Gana velocidad, seguridad y confianza para el día del examen."],
 ];
 
 export default async function TropaAdsLanding({
@@ -43,6 +46,7 @@ export default async function TropaAdsLanding({
   return (
     <div className={styles.page}>
       <LandingHeader
+        active="tropa"
         campaign={campaign}
         ctaHref="#modalidades"
         ctaLabel="Ver modalidades"
@@ -50,197 +54,120 @@ export default async function TropaAdsLanding({
 
       <main className={styles.main}>
         <section className={styles.hero}>
-          <div>
-            <p className={styles.eyebrow}>Tropa y Marinería</p>
-            <h1>Prepárate entrenando de verdad</h1>
+          <div className={styles.heroCopy}>
+            <p className={styles.eyebrow}>Preparación online</p>
+            <h1>Prepárate para Tropa y Marinería entrenando de verdad</h1>
             <p className={styles.heroIntro}>
-              Miles de ejercicios psicotécnicos, práctica organizada por
-              aptitudes, explicaciones y entrenamiento progresivo para llegar a
-              las pruebas con método, velocidad y seguridad.
+              Psicotécnicos, práctica progresiva, explicaciones y miles de
+              ejercicios para llegar a las pruebas con método, velocidad y
+              seguridad.
             </p>
-            <div className={styles.heroProof}>
-              <span>Desde 139 €</span>
-              <span>Pago único</span>
-              <span>Acceso durante 12 meses</span>
+            <div className={styles.priceLine}>
+              <span>Desde</span><strong>139 €</strong><span>· pago único</span>
             </div>
+            <p className={styles.priceNote}>Sin cuotas mensuales</p>
             <div className={styles.actions}>
-              <Link className={styles.primaryCta} href="#modalidades">
-                Ver modalidades
-              </Link>
-              <CampaignLink
-                campaign={campaign}
-                className={styles.secondaryCta}
-                href="/tropa-y-marineria"
-              >
+              <Link className={styles.primaryCta} href="#modalidades">Ver modalidades</Link>
+              <CampaignLink campaign={campaign} className={styles.secondaryCta} href="/tropa-y-marineria">
                 Conocer el curso
               </CampaignLink>
             </div>
-          </div>
-
-          <div className={styles.heroVisual}>
-            <strong>28.000</strong>
-            <p>preguntas en la preparación de mayor alcance</p>
-            <ul>
-              <li>Siete aptitudes psicotécnicas</li>
-              <li>Práctica progresiva y simulacros</li>
-              <li>Explicaciones para aprender de cada error</li>
+            <ul className={styles.quickFacts}>
+              <li><span className={styles.factIcon}>?</span>14.000 a 28.000 preguntas</li>
+              <li><span className={styles.factIcon}>◎</span>Entrenamiento por aptitudes</li>
+              <li><span className={styles.factIcon}>▣</span>Acceso online</li>
             </ul>
+          </div>
+          <div className={styles.heroImage}>
+            <Image src="/images/landings/tropa-hero.png" alt="Alumno entrenando psicotécnicos para Tropa y Marinería" fill sizes="(max-width: 880px) 100vw, 58vw" priority />
           </div>
         </section>
 
-        <section className={styles.section}>
-          <div className={styles.split}>
-            <div>
-              <p className={styles.eyebrow}>No se trata solo de hacer test</p>
-              <h2>Comprende, practica y gana velocidad</h2>
-              <p>
-                En una prueba psicotécnica no basta con conocer la respuesta.
-                Necesitas reconocer el ejercicio, elegir el procedimiento,
-                evitar errores frecuentes y mantener la concentración bajo
-                presión.
-              </p>
-            </div>
-            <div className={styles.accentPanel}>
-              <h3>Entrena las siete aptitudes</h3>
-              <p>
-                Cada bloque trabaja una capacidad concreta y permite reforzar
-                las áreas en las que más tiempo o precisión pierdes.
-              </p>
-              <div className={styles.aptitudeList}>
-                {aptitudeNames.map((name) => (
-                  <span key={name}>{name}</span>
-                ))}
-              </div>
-            </div>
+        <section className={`${styles.section} ${styles.sectionTint}`}>
+          <div className={styles.sectionHeader}><h2>No se trata solo de hacer test</h2></div>
+          <div className={styles.grid4}>
+            {learningFeatures.map(([icon, title, text]) => (
+              <article className={styles.featureCard} key={title}>
+                <span className={styles.icon}>{icon}</span>
+                <div><h3>{title}</h3><p>{text}</p></div>
+              </article>
+            ))}
           </div>
         </section>
 
         <section className={styles.section} id="modalidades">
-          <div className={styles.sectionHeader}>
-            <p className={styles.eyebrow}>Preparación completa</p>
-            <h2>Tres formas de prepararte</h2>
-            <p>
-              Empieza por el nivel que necesitas. Si después amplías tu
-              preparación, mantienes el progreso y solo pagas la diferencia.
-            </p>
-          </div>
-
-          <div className={styles.grid3}>
-            {plans.map((plan, index) => (
-              <article
-                className={`${styles.priceCard} ${index === 1 ? styles.featuredCard : ""}`}
-                key={plan.slug}
-              >
+          <div className={styles.sectionHeader}><h2>Paquetes y aptitudes</h2></div>
+          <div className={styles.grid4}>
+            {plans.map((plan) => (
+              <article className={styles.priceCard} key={plan.slug}>
                 <p className={styles.cardLabel}>Preparación completa</p>
                 <h3>{plan.name}</h3>
-                <div className={styles.price}>
-                  {"previousPrice" in plan && plan.previousPrice ? (
-                    <span className={styles.oldPrice}>{plan.previousPrice}</span>
-                  ) : null}
+                <span className={styles.price}>
+                  {plan.previousPrice ? <span className={styles.oldPrice}>{plan.previousPrice}</span> : null}
                   {plan.currentPrice}
-                </div>
-                <p className={styles.priceContext}>pago único</p>
+                </span>
+                <span className={styles.discount}>40 € de descuento</span>
                 <p>{plan.description}</p>
-                <ul className={styles.checkList}>
-                  {plan.includes.slice(0, 3).map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-                <CampaignLink
-                  campaign={campaign}
-                  className={styles.cardCta}
-                  href={`/tropa-y-marineria/${plan.slug}#contratar`}
-                >
-                  Elegir {plan.name}
-                </CampaignLink>
-                <CampaignLink
-                  campaign={campaign}
-                  className={styles.textLink}
-                  href={`/tropa-y-marineria/${plan.slug}`}
-                >
-                  Ver contenido
-                </CampaignLink>
-              </article>
-            ))}
-          </div>
-
-          <p className={styles.note}>
-            <strong>Ampliación acumulativa:</strong> de Esencial a Operativa y
-            de Operativa a Integral se conserva lo adquirido y se paga
-            únicamente la diferencia correspondiente.
-          </p>
-        </section>
-
-        <section className={styles.section}>
-          <div className={styles.sectionHeader}>
-            <p className={styles.eyebrow}>Entrenamiento independiente</p>
-            <h2>Refuerza una aptitud concreta por 39 €</h2>
-            <p>
-              Las siete aptitudes también se pueden contratar de forma
-              independiente, con su propio entrenamiento, talleres, juegos y
-              simulacros.
-            </p>
-          </div>
-
-          <div className={styles.grid4}>
-            {aptitudes.map((aptitude) => (
-              <article className={styles.priceCard} key={aptitude.slug}>
-                <p className={styles.cardLabel}>Por aptitud</p>
-                <h3>{aptitude.name}</h3>
-                <span className={styles.price}>{aptitude.currentPrice}</span>
-                <p>{aptitude.description}</p>
-                <CampaignLink
-                  campaign={campaign}
-                  className={styles.cardCta}
-                  href={`/tropa-y-marineria/${aptitude.slug}#contratar`}
-                >
-                  Contratar aptitud
-                </CampaignLink>
+                <ul className={styles.checkList}>{plan.includes.slice(0, 3).map((item) => <li key={item}>{item}</li>)}</ul>
+                <div className={styles.cardActions}>
+                  <CampaignLink campaign={campaign} className={styles.cardCta} href={`/tropa-y-marineria/${plan.slug}`}>Ver contenido</CampaignLink>
+                  <CampaignLink campaign={campaign} className={styles.cardCtaOutline} href={`/tropa-y-marineria/${plan.slug}#contratar`}>Contratar ahora</CampaignLink>
+                </div>
               </article>
             ))}
 
             {training ? (
               <article className={`${styles.priceCard} ${styles.trainingCard}`}>
-                <p className={styles.cardLabel}>Preparación física</p>
-                <Image
-                  className={styles.trainingLogo}
-                  src="/images/banco-opositores/logo-base12-training.png"
-                  alt="Base12 Training"
-                  width={150}
-                  height={150}
-                />
+                <p className={styles.cardLabel}>Aplicación de preparación física</p>
+                <Image className={styles.trainingLogo} src="/images/banco-opositores/logo-base12-training.png" alt="Base12 Training" width={120} height={110} />
                 <h3>{training.name}</h3>
                 <span className={styles.price}>{training.currentPrice}</span>
                 <p>{training.description}</p>
-                <CampaignLink
-                  campaign={campaign}
-                  className={styles.cardCta}
-                  href={`/tropa-y-marineria/${training.slug}#contratar`}
-                >
-                  Contratar preparación física
-                </CampaignLink>
+                <ul className={styles.checkList}>{training.includes.slice(0, 3).map((item) => <li key={item}>{item}</li>)}</ul>
+                <div className={styles.cardActions}>
+                  <CampaignLink campaign={campaign} className={styles.cardCta} href={`/tropa-y-marineria/${training.slug}`}>Ver contenido</CampaignLink>
+                  <CampaignLink campaign={campaign} className={styles.cardCtaOutline} href={`/tropa-y-marineria/${training.slug}#contratar`}>Contratar ahora</CampaignLink>
+                </div>
               </article>
             ) : null}
           </div>
-        </section>
 
-        <section className={styles.section}>
-          <div className={styles.ctaPanel}>
-            <h2>El examen será el mismo. Tu preparación puede ser diferente.</h2>
-            <p>
-              Elige una preparación completa o trabaja de forma independiente
-              la aptitud que necesitas reforzar.
-            </p>
-            <div className={styles.actions}>
-              <CampaignLink
-                campaign={campaign}
-                className={styles.primaryCta}
-                href="/tropa-y-marineria"
-              >
-                Prepararme para Tropa y Marinería
-              </CampaignLink>
+          <div className={styles.sectionHeader} style={{ marginTop: 34 }}><h2>Entrena por aptitud</h2></div>
+          <div className={styles.aptitudeGrid}>
+            {aptitudes.map((aptitude) => (
+              <article className={`${styles.priceCard} ${styles.compactCard}`} key={aptitude.slug}>
+                <p className={styles.cardLabel}>Por aptitud</p>
+                <h3>{aptitude.name}</h3>
+                <span className={styles.price}>{aptitude.currentPrice}</span>
+                <p>{aptitude.description}</p>
+                <ul className={styles.checkList}>{aptitude.includes.slice(0, 3).map((item) => <li key={item}>{item}</li>)}</ul>
+                <div className={styles.cardActions}>
+                  <CampaignLink campaign={campaign} className={styles.cardCta} href={`/tropa-y-marineria/${aptitude.slug}`}>Ver contenido</CampaignLink>
+                  <CampaignLink campaign={campaign} className={styles.cardCtaOutline} href={`/tropa-y-marineria/${aptitude.slug}#contratar`}>Contratar ahora</CampaignLink>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className={styles.upgradeBand}>
+            <div><h2>Amplía cuando quieras</h2><p>Si empiezas por Esencial y quieres pasar a Operativa, solo pagas 70 €. Si pasas de Operativa a Integral, solo pagas otros 70 €.</p></div>
+            <div className={styles.upgradeFlow}>
+              <div className={styles.upgradeStep}>Esencial<strong>139 €</strong></div><span className={styles.upgradeArrow}>+70 € →</span>
+              <div className={styles.upgradeStep}>Operativa<strong>209 €</strong></div><span className={styles.upgradeArrow}>+70 € →</span>
+              <div className={styles.upgradeStep}>Integral<strong>279 €</strong></div>
             </div>
           </div>
+
+          <div className={styles.sectionHeader} style={{ marginTop: 30 }}><h2>Cada respuesta debe enseñarte algo</h2></div>
+          <div className={styles.benefitRow}>
+            {answerBenefits.map(([icon, title, text]) => <article className={styles.benefit} key={title}><span className={styles.icon}>{icon}</span><div><h3>{title}</h3><p>{text}</p></div></article>)}
+          </div>
+        </section>
+
+        <section className={styles.ctaBand}>
+          <Image className={styles.ctaLogo} src="/images/base12-logo.png" alt="Base12 Academy" width={130} height={78} />
+          <div><h2>El examen será el mismo.<span>Tu preparación puede ser diferente.</span></h2><p>Esencial 139 € · Operativa 209 € · Integral 279 €</p></div>
+          <CampaignLink campaign={campaign} className={styles.primaryCta} href="/tropa-y-marineria">Prepararme para Tropa y Marinería</CampaignLink>
         </section>
       </main>
 
