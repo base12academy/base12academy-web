@@ -308,17 +308,22 @@ export default function CourseCatalog() {
   );
 
   useEffect(() => {
-    const requested = new URLSearchParams(window.location.search).get("curso");
-    const requestedName = requested === "administrativo-ja"
-      ? "Administrativo de la Junta de Andalucía"
-      : requested === "auxiliar-administrativo-ja"
-        ? "Auxiliar Administrativo de la Junta de Andalucía"
-        : "";
+    const params = new URLSearchParams(window.location.search);
+    const requested = params.get("curso") ?? "";
+    const requestedBono = params.get("bono") ?? "";
+    const requestedNames: Record<string, string> = {
+      "administrativo-ja": "Administrativo de la Junta de Andalucía",
+      "auxiliar-administrativo-ja": "Auxiliar Administrativo de la Junta de Andalucía",
+      "clases-online-eso-bach": "Historia y Filosofía · ESO y Bachillerato",
+      "clases-online-universidad": "Historia · Universidad",
+      "clases-online-solicitud": "Solicitud de clases · Otras asignaturas",
+    };
+    const requestedName = requestedNames[requested] ?? "";
     if (!requestedName) return;
     const requestedCourse = allCourses.find((item) => item.name === requestedName);
     if (requestedCourse) {
-      setFamily("Oposiciones");
-      open(requestedCourse);
+      setFamily(requestedCourse.family);
+      open(requestedCourse, requestedBono);
     }
   }, []);
 
@@ -383,9 +388,15 @@ export default function CourseCatalog() {
     };
   }, [course]);
 
-  function open(item: Course) {
+  function open(item: Course, requestedBono = "") {
+    const availablePlans = plansFor(item);
+    const requestedHours = requestedBono.replace(/h$/i, "");
+    const requestedPlan = requestedHours
+      ? availablePlans.find((itemPlan) => itemPlan.name.startsWith(`${requestedHours} `))
+      : undefined;
+
     setCourse(item);
-    setPlan(plansFor(item)[0]);
+    setPlan(requestedPlan ?? availablePlans[0]);
     setTerms(false);
     setPrivacy(false);
     setMarketing(false);
