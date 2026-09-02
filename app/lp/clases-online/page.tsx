@@ -55,7 +55,7 @@ export default async function ClassesAdsLanding({
             <p className={styles.heroIntro}>
               Clases a distancia con un profesor real, en directo, para resolver
               dudas, preparar exámenes y comprender la asignatura. No son clases
-              con inteligencia artificial.
+              con IA ni con inteligencia artificial.
             </p>
             <div className={styles.heroProof}>
               <span>Profesor real</span>
