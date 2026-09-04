@@ -244,10 +244,19 @@ button, input, select { font: inherit; }
   text-align: left;
 }
 .original-plan-option.active { border: 2px solid #1d4ed8; background: #eff6ff; }
+.original-plan-option.recommended {
+  border: 2px solid #15803d;
+  box-shadow: 0 12px 28px rgba(21,128,61,.22);
+}
+.original-plan-option.recommended.active {
+  background: #f0fdf4;
+}
 .original-plan-select { flex: 1; align-self: stretch; padding: 0; border: 0; background: transparent; color: inherit; text-align: left; cursor: pointer; }
 .original-plan-select > span { display: flex; flex-direction: column; }
 .original-plan-grid small { color: #64748b; font-size: 11px; }
 .original-plan-grid strong { color: #1e3a8a; white-space: nowrap; }
+.original-plan-meta { display: flex; flex: 0 0 auto; flex-direction: column; align-items: flex-end; gap: 8px; }
+.original-plan-option.recommended .original-plan-meta > strong { color: #166534; }
 .original-plan-video-button { flex: 0 0 auto; padding: 7px 10px; border: 1px solid #93c5fd; border-radius: 999px; background: #fff; color: #174da1; font-size: 11px; font-weight: 800; white-space: nowrap; cursor: pointer; }
 .original-plan-video-button:hover { background: #dbeafe; }
 .original-plan-video-player { display: flex; justify-content: center; margin: 14px 0 4px; }

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import officeProgram from "../lib/ofimatica-content.json";
 import ClassBookingCalendar from "./ClassBookingCalendar";
+import RecommendedBadge from "./RecommendedBadge";
 
 type Family = "Tropa y Marinería" | "Clases Online" | "Oposiciones" | "Cursos Online" | "Bachillerato y PAU";
 type Course = { family: Family; name: string; region?: string };
@@ -285,6 +286,29 @@ function plansFor(course: Course): Plan[] {
     { name: "Estándar", price: "299 €", detail: "Más práctica y entrenamiento · 12 meses", includes: ["Todo lo incluido en Esencial", "Banco de 50 preguntas por tema", "Simulacros de 20 preguntas aleatorias", "Historial y progresión de resultados", "Acompañamiento de Rocío y Fernando"] },
     { name: "Premium", price: "499 €", detail: "Seguimiento humano semanal · 12 meses", includes: ["Todo lo incluido en Estándar", "Plan de estudio personalizado", "Revisión prioritaria del progreso", "Tutoría humana individual de 30 minutos cada semana", "Calendario de reserva modificable"] },
   ];
+}
+
+function isRecommendedPlan(course: Course, plan: Plan) {
+  if (course.family === "Tropa y Marinería") return plan.name === "Operativa";
+
+  if (
+    course.name === "Historia · Universidad" ||
+    course.name === "Historia y Filosofía · ESO y Bachillerato"
+  ) {
+    return plan.name === "10 horas";
+  }
+
+  if (course.family === "Oposiciones") return plan.name === "Estándar";
+
+  if (course.name === "Competencias y Productividad Digital, Ofimática e IA") {
+    return plan.name === "Ofimática";
+  }
+
+  if (course.family === "Cursos Online" || course.family === "Bachillerato y PAU") {
+    return plan.name === "Estándar";
+  }
+
+  return false;
 }
 
 export default function CourseCatalog() {
@@ -699,14 +723,21 @@ export default function CourseCatalog() {
             )}
 
             <div className="original-plan-grid">
-              {plansFor(course).map((item) => (
-                <div key={item.name} className={`original-plan-option ${plan.name === item.name ? "active" : ""}`}>
-                  <button className="original-plan-select" onClick={() => setPlan(item)}>
-                    <span><b>{item.name}</b><small>{item.detail}</small></span>
-                  </button>
-                  <strong>{item.price}</strong>
-                </div>
-              ))}
+              {plansFor(course).map((item) => {
+                const recommended = isRecommendedPlan(course, item);
+
+                return (
+                  <div key={item.name} className={`original-plan-option ${plan.name === item.name ? "active" : ""} ${recommended ? "recommended" : ""}`}>
+                    <button className="original-plan-select" onClick={() => setPlan(item)}>
+                      <span><b>{item.name}</b><small>{item.detail}</small></span>
+                    </button>
+                    <div className="original-plan-meta">
+                      {recommended && <RecommendedBadge />}
+                      <strong>{item.price}</strong>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
 
             <div className="original-plan-includes" aria-live="polite">

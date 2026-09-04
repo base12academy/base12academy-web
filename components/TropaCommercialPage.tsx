@@ -3,6 +3,7 @@ import Image from "next/image";
 import { tropaPlans, type TropaPlan, getTropaCatalogSlug } from "@/lib/tropa-commercial";
 import type { CourseSlug } from "@/lib/courses";
 import TropaCheckoutForm from "./TropaCheckoutForm";
+import RecommendedBadge from "./RecommendedBadge";
 import styles from "./TropaCommercialPage.module.css";
 
 function Header() {
@@ -38,15 +39,20 @@ function Price({ plan }: { plan: TropaPlan }) {
 }
 
 function ProductCard({ plan }: { plan: TropaPlan }) {
+  const recommended = plan.slug === "operativa";
+
   return (
-    <article className={`${styles.card} ${plan.kind === "training" ? styles.trainingCard : ""}`}>
-      <span className={styles.productType}>
-        {plan.kind === "plan"
-          ? "Preparación completa"
-          : plan.kind === "aptitude"
-            ? "Por aptitud"
-            : "Aplicación de preparación física"}
-      </span>
+    <article className={`${styles.card} ${plan.kind === "training" ? styles.trainingCard : ""} ${recommended ? styles.recommendedCard : ""}`}>
+      <div className={styles.cardTop}>
+        <span className={styles.productType}>
+          {plan.kind === "plan"
+            ? "Preparación completa"
+            : plan.kind === "aptitude"
+              ? "Por aptitud"
+              : "Aplicación de preparación física"}
+        </span>
+        {recommended && <RecommendedBadge />}
+      </div>
 
       {plan.kind === "training" && (
         <Image className={styles.trainingLogo} src="/images/banco-opositores/logo-base12-training.png" alt="Base12 Training" width={180} height={180} />
