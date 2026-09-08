@@ -847,6 +847,64 @@ async function sendPurchaseConfirmation(
   return true;
 }
 
+type CourseConfirmationEmailInput = ConfirmationEmailInput & {
+  courseName: string;
+};
+
+async function sendCoursePurchaseConfirmation(input: CourseConfirmationEmailInput) {
+  const apiKey = process.env.RESEND_API_KEY;
+  const from = process.env.RESEND_FROM_EMAIL;
+  if (!apiKey || !from) {
+    console.warn("Correo de confirmación no enviado: faltan RESEND_API_KEY o RESEND_FROM_EMAIL.");
+    return false;
+  }
+
+  const price = formatEuro(input.amountCents);
+  const activationText = input.immediateAccess
+    ? "Acceso inmediato solicitado y habilitado."
+    : `El acceso se activará el ${formatDate(input.startsAt)}.`;
+  const durationText = input.expiresAt
+    ? `Hasta el ${formatDate(input.expiresAt)}`
+    : "Acceso sin fecha de caducidad";
+  const planLabel = ({ esencial: "Esencial", estandar: "Estándar", standard: "Estándar", premium: "Premium", pau: "PAU" } as Record<string, string>)[input.planSlug] || input.planSlug;
+
+  const text = [
+    `Hola ${input.fullName},`,
+    "",
+    "Tu contratación en Base12 Academy ha quedado registrada correctamente.",
+    `Curso: ${input.courseName}`,
+    `Modalidad: ${planLabel}`,
+    `Importe pagado: ${price}`,
+    `Referencia del pedido: ${input.orderId}`,
+    `Duración: ${durationText}`,
+    `Activación: ${activationText}`,
+    "",
+    `Condiciones de contratación: ${input.termsAccepted ? "Aceptadas" : "No aceptadas"}`,
+    `Política de privacidad: ${input.privacyAcknowledged ? "Confirmada" : "No confirmada"}`,
+    `Inicio inmediato: ${input.immediateAccess ? "Solicitado" : "No solicitado"}`,
+    "",
+    "Durante el alta completarás los datos de facturación, tu planificación con Fernando y la vinculación con Telegram.",
+    "Acceso: https://base12academy.es/login",
+    "",
+    "Base12 Academy",
+  ].join("\n");
+
+  const html = `<div style="font-family:Arial,Helvetica,sans-serif;max-width:680px;margin:0 auto;color:#172033;line-height:1.55"><div style="padding:24px 0 18px;border-bottom:1px solid #e5e7eb"><div style="font-size:22px;font-weight:800;color:#0b4fc2">Base12 Academy</div></div><div style="padding:26px 0"><p>Hola ${escapeHtml(input.fullName)},</p><p>Tu contratación ha quedado registrada correctamente.</p><h2 style="font-size:18px;margin-top:28px">Resumen de la contratación</h2><table style="width:100%;border-collapse:collapse"><tr><td style="padding:8px 0;color:#64748b">Curso</td><td style="padding:8px 0;font-weight:700;text-align:right">${escapeHtml(input.courseName)}</td></tr><tr><td style="padding:8px 0;color:#64748b">Modalidad</td><td style="padding:8px 0;font-weight:700;text-align:right">${escapeHtml(planLabel)}</td></tr><tr><td style="padding:8px 0;color:#64748b">Importe</td><td style="padding:8px 0;font-weight:700;text-align:right">${escapeHtml(price)}</td></tr><tr><td style="padding:8px 0;color:#64748b">Referencia</td><td style="padding:8px 0;font-weight:700;text-align:right">${escapeHtml(input.orderId)}</td></tr><tr><td style="padding:8px 0;color:#64748b">Duración</td><td style="padding:8px 0;font-weight:700;text-align:right">${escapeHtml(durationText)}</td></tr></table><div style="margin-top:20px;padding:14px 16px;background:#eef5ff;border:1px solid #bfdbfe;border-radius:12px;color:#174b8f">${escapeHtml(activationText)}</div><p style="margin-top:26px">Durante el alta completarás los datos de facturación, tu planificación con Fernando y la vinculación con Telegram.</p><p><a href="https://base12academy.es/login" style="display:inline-block;background:#0b4fc2;color:#ffffff;text-decoration:none;font-weight:700;padding:12px 18px;border-radius:10px">Acceder a Base12 Academy</a></p></div></div>`;
+
+  const response = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json", "User-Agent": "Base12Academy/1.0", "Idempotency-Key": `base12-contract-${input.orderId}` },
+    body: JSON.stringify({ from, to: [input.email], subject: `Confirmación de contratación · ${input.courseName} · Base12 Academy`, html, text }),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text().catch(() => "");
+    console.error("Resend no pudo enviar la confirmación de contratación", response.status, errorText);
+    return false;
+  }
+  return true;
+}
+
 export async function POST(request: NextRequest) {
   const supabase = getSupabase();
 
@@ -1699,10 +1757,17 @@ export async function POST(request: NextRequest) {
             );
             return false;
           })
-        : await sendPurchaseConfirmation({
+        : await sendCoursePurchaseConfirmation({
             email,
             fullName,
             orderId: checkout.order_id,
+            courseName: ({
+              "historia-espana": "Historia de España",
+              "historia-filosofia": "Historia de la Filosofía",
+              ofimatica: "Ofimática y competencias digitales",
+              "administrativo-ja": "Administrativo de la Junta de Andalucía",
+              "auxiliar-administrativo-ja": "Auxiliar Administrativo de la Junta de Andalucía",
+            } as Record<string, string>)[checkout.course_slug] || courses[checkout.catalog_slug as keyof typeof courses]?.title || checkout.course_slug,
             planSlug: checkout.plan_slug,
             amountCents:
               checkout.amount_cents,

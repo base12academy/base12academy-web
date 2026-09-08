@@ -166,15 +166,9 @@ export async function POST(req: Request) {
         : null,
   };
 
-  const actualCourseSlug =
-    "courseSlug" in course
-      ? course.courseSlug
-      : course.slug;
+  const actualCourseSlug = course.courseSlug;
 
-  const planSlug =
-    "planSlug" in course
-      ? course.planSlug
-      : "standard";
+  const planSlug = course.planSlug;
 
   const accessMonths =
     "accessMonths" in course

@@ -341,6 +341,8 @@ export default function CourseCatalog() {
       "clases-online-eso-bach": "Historia y Filosofía · ESO y Bachillerato",
       "clases-online-universidad": "Historia · Universidad",
       "clases-online-solicitud": "Solicitud de clases · Otras asignaturas",
+      "historia-espana": "Historia de España",
+      "historia-filosofia": "Historia de la Filosofía",
     };
     const requestedName = requestedNames[requested] ?? "";
     if (!requestedName) return;
@@ -435,11 +437,15 @@ export default function CourseCatalog() {
     const purchasableClasses =
       course.family === "Clases Online" &&
       course.name !== "Solicitud de clases · Otras asignaturas";
+    const purchasableBachillerato =
+      course.family === "Bachillerato y PAU" &&
+      (course.name === "Historia de España" || course.name === "Historia de la Filosofía");
 
     if (
       course.name !== "Competencias y Productividad Digital, Ofimática e IA" &&
       !purchasableOpposition &&
-      !purchasableClasses
+      !purchasableClasses &&
+      !purchasableBachillerato
     ) {
       setCheckoutError("La matrícula online de este curso todavía no está disponible.");
       return;
@@ -459,6 +465,13 @@ export default function CourseCatalog() {
     const oppositionPrefix = course.name === "Administrativo de la Junta de Andalucía" ? "administrativo-ja" : course.name === "Auxiliar Administrativo de la Junta de Andalucía" ? "auxiliar-administrativo-ja" : "";
     const oppositionPlan = ({ Esencial: "esencial", "Estándar": "estandar", Premium: "premium" } as Record<string, string>)[plan.name];
 
+    const bachilleratoPrefix = course.name === "Historia de España"
+      ? "historia-espana"
+      : course.name === "Historia de la Filosofía"
+        ? "historia-filosofia"
+        : "";
+    const bachilleratoPlan = ({ Esencial: "esencial", "Estándar": "estandar", Premium: "premium", PAU: "pau" } as Record<string, string>)[plan.name];
+
     const classHours =
       purchasableClasses
         ? plan.name.match(/\d+/)?.[0] ?? ""
@@ -475,6 +488,9 @@ export default function CourseCatalog() {
       slugByPlan[plan.name] ||
       (oppositionPrefix && oppositionPlan
         ? `${oppositionPrefix}-${oppositionPlan}`
+        : "") ||
+      (bachilleratoPrefix && bachilleratoPlan
+        ? `${bachilleratoPrefix}-${bachilleratoPlan}`
         : "") ||
       classCourseSlug;
 
@@ -666,6 +682,8 @@ export default function CourseCatalog() {
                   ? <>Desde <b>20 €/hora</b> · Mínimo <b>125 €</b></>
                   : item.name === "Historia y Filosofía · ESO y Bachillerato"
                   ? <>Desde <b>17 €/hora</b> · Mínimo <b>100 €</b></>
+                  : item.family === "Bachillerato y PAU"
+                  ? <>Desde <b>199 €</b></>
                   : <>Desde <b>{plansFor(item)[0].price}</b></>}
               </p>
             </div>
@@ -838,7 +856,7 @@ export default function CourseCatalog() {
             <div className="original-consents">
               <label><input type="checkbox" checked={terms} onChange={(event) => setTerms(event.target.checked)} /> <span>He leído y acepto las condiciones de contratación y las normas de uso. <b>Obligatorio</b></span></label>
               <label><input type="checkbox" checked={privacy} onChange={(event) => setPrivacy(event.target.checked)} /> <span>He leído la política de privacidad y confirmo que los datos facilitados pueden tratarse para gestionar la matrícula y prestar el servicio. <b>Obligatorio</b></span></label>
-              {course.family === "Cursos Online" && (
+              {(course.family === "Cursos Online" || course.family === "Bachillerato y PAU") && (
                 <>
                   <label>
                     <input
@@ -961,7 +979,7 @@ export default function CourseCatalog() {
                   ? <b>Precio tras confirmar disponibilidad</b>
                   : <>Total <b>{plan.price}</b></>}
               </span>
-              {(course.name === "Competencias y Productividad Digital, Ofimática e IA" || course.name === "Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo de la Junta de Andalucía" || (course.family === "Clases Online" && course.name !== "Solicitud de clases · Otras asignaturas")) ? (
+              {(course.name === "Competencias y Productividad Digital, Ofimática e IA" || course.name === "Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo de la Junta de Andalucía" || course.name === "Historia de España" || course.name === "Historia de la Filosofía" || (course.family === "Clases Online" && course.name !== "Solicitud de clases · Otras asignaturas")) ? (
                 <button
                   type="button"
                   onClick={checkout}
@@ -983,7 +1001,9 @@ export default function CourseCatalog() {
                       ? classHoldReady
                         ? "Continuar con el pago del bono"
                         : "Selecciona primero una hora"
-                      : "Continuar con la suscripción"}
+                      : course.name === "Historia de España" || course.name === "Historia de la Filosofía"
+                        ? "Suscribirme"
+                        : "Continuar con la suscripción"}
                 </button>
               ) : (
                 <button disabled>

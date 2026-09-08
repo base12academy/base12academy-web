@@ -6,6 +6,7 @@ import {
   parseStudyDays,
   scheduleFernandoTelegramReminders,
 } from "@/lib/fernando-telegram";
+import { courses } from "@/lib/courses";
 
 type OnboardingStep =
   | "communications_video"
@@ -16,6 +17,13 @@ type OnboardingStep =
   | "vb01"
   | "vb02"
   | "vb03";
+
+function enrollmentDescription(courseSlug: string, planSlug: string) {
+  const product = Object.values(courses).find(
+    (item) => item.courseSlug === courseSlug && item.planSlug === planSlug
+  );
+  return product?.title || `${courseSlug} · ${planSlug}`;
+}
 
 async function getAuthenticatedUser(req: Request) {
   const token = req.headers
@@ -567,7 +575,7 @@ export async function POST(req: Request) {
         const invoice = await issueInvoice(
           current.enrollment.id,
           user.id,
-          `${current.enrollment.course_slug} · ${current.enrollment.plan_slug}`
+          enrollmentDescription(current.enrollment.course_slug, current.enrollment.plan_slug)
         );
         await emailInvoice(invoice);
       }

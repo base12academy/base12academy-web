@@ -189,7 +189,7 @@ export async function POST(req: NextRequest) {
             order_id: String(order),
 
             course_slug:
-              course && "courseSlug" in course
+              course
                 ? course.courseSlug
                 : catalogSlug,
 

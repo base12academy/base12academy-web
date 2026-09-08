@@ -6,16 +6,16 @@ const subjects = [
     title: "Historia de España",
     description:
       "Comprende los grandes procesos históricos, entrena comentarios de textos e imágenes y prepara la PAU con método.",
-    status: "En actualización",
-    href: "/cursos/historia-espana",
+    status: "Disponible",
+    href: "/dashboard/historia-espana",
     video: "/videos/presentacion-historia-espana.mp4",
   },
   {
     title: "Historia de la Filosofía",
     description:
       "Estudia autores, problemas filosóficos, textos y comparaciones con una preparación pensada para Bachillerato y PAU.",
-    status: "En preparación",
-    href: "#",
+    status: "Disponible",
+    href: "/dashboard/filosofia",
     video: "/videos/presentacion-historia-filosofia.mp4",
   },
   {

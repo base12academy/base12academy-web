@@ -22,10 +22,10 @@ export async function POST(req: NextRequest) {
   const customCourseSlug = String(body.courseSlug || "").trim().toLowerCase();
   const customPlanSlug = String(body.planSlug || "standard").trim().toLowerCase();
   const courseSlug = course && course.active
-    ? ("courseSlug" in course ? course.courseSlug : course.slug)
+    ? course.courseSlug
     : customCourseSlug;
   const planSlug = course && course.active
-    ? ("planSlug" in course ? course.planSlug : "standard")
+    ? course.planSlug
     : customPlanSlug;
   const accessMonths = course && course.active
     ? ("accessMonths" in course ? course.accessMonths : null)

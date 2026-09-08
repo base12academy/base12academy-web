@@ -20,7 +20,7 @@ const paquetes = [
     slogan: "Empieza a despegar",
     description:
       "Para comprender Historia de España durante el curso, ordenar el temario y avanzar con una base sólida.",
-    price: "Precio en revisión",
+    price: "249 €",
     imageLabel: "Imagen Esencial",
     features: [
       "Curso completo de Historia de España",
@@ -37,7 +37,7 @@ const paquetes = [
     slogan: "Toma el control",
     description:
       "Para preparar la asignatura y comenzar el entrenamiento específico de la PAU con método y seguridad.",
-    price: "Precio en revisión",
+    price: "299 €",
     imageLabel: "Imagen Estándar",
     features: [
       "Curso completo de Historia de España",
@@ -54,7 +54,7 @@ const paquetes = [
     slogan: "Vuela sin límites",
     description:
       "Para quien busca una preparación más completa, con más recursos, más exigencia y acompañamiento especial.",
-    price: "Precio en revisión",
+    price: "399 €",
     imageLabel: "Imagen Premium",
     features: [
       "Curso completo de Historia de España",
@@ -71,7 +71,7 @@ const paquetes = [
     slogan: "Rompe las cadenas",
     description:
       "Para estudiantes que ya han trabajado la asignatura y necesitan entrenar específicamente la prueba PAU.",
-    price: "Precio en revisión",
+    price: "199 €",
     imageLabel: "Imagen Complementario PAU",
     features: [
       "Preparación específica PAU",
@@ -130,16 +130,14 @@ export default function CursoHistoriaEspanaPage() {
             <h1 style={styles.h1}>Historia de España</h1>
 
             <p style={styles.heroText}>
-              Curso en actualización para adaptarse al nuevo modelo de paquetes
-              de Base12 Academy. El objetivo sigue siendo el mismo: comprender
-              la Historia de España, ordenar el estudio y preparar los exámenes
-              con una guía clara, útil y exigente.
+              Comprende la Historia de España, ordena el estudio y prepara los
+              exámenes con una guía clara, útil y exigente. Elige el paquete que
+              corresponde a tu objetivo en 2.º de Bachillerato y PAU.
             </p>
 
             <div style={styles.statusBox}>
-              <strong>Curso en actualización.</strong> Los paquetes, recursos
-              incluidos y precios están en revisión antes de su activación
-              definitiva.
+              <strong>Matrícula abierta.</strong> Pago seguro con Redsys, alta
+              automática, facturación y planificación de estudio con Fernando.
             </div>
           </div>
 
@@ -157,10 +155,10 @@ export default function CursoHistoriaEspanaPage() {
         </section>
 
         <section style={styles.section}>
-          <h2 style={styles.h2}>Nuevos paquetes previstos</h2>
+          <h2 style={styles.h2}>Elige tu paquete</h2>
           <p style={styles.sectionText}>
-            Estos paquetes aparecen de forma provisional para mostrar la nueva
-            estructura del curso. Todavía no están activados para compra.
+            Compara las cuatro modalidades y selecciona la que mejor encaja con
+            tu preparación de Bachillerato y PAU.
           </p>
 
           <div style={styles.packagesGrid}>
@@ -186,9 +184,9 @@ export default function CursoHistoriaEspanaPage() {
                   ))}
                 </ul>
 
-                <button type="button" disabled style={styles.disabledButton}>
-                  Actualizando el curso
-                </button>
+                <Link href="/?curso=historia-espana#catalogo" style={styles.activeButton}>
+                  Elegir esta modalidad
+                </Link>
               </article>
             ))}
           </div>
@@ -246,11 +244,10 @@ export default function CursoHistoriaEspanaPage() {
         </section>
 
         <section style={styles.notice}>
-          <h2 style={styles.noticeTitle}>Aviso de actualización</h2>
+          <h2 style={styles.noticeTitle}>Listo para empezar</h2>
           <p style={styles.noticeText}>
-            Durante esta fase, Base12 Academy está reorganizando Historia de
-            España para adaptarla al nuevo sistema de paquetes. Las condiciones
-            finales se publicarán cuando el curso quede activado definitivamente.
+            Tras el pago podrás crear o vincular tu cuenta, completar los datos
+            de facturación y configurar con Fernando tu planificación de estudio.
           </p>
         </section>
       </div>
@@ -502,15 +499,18 @@ const styles: Record<string, CSSProperties> = {
     fontSize: 14,
     lineHeight: 1.45,
   },
-  disabledButton: {
+  activeButton: {
     width: "100%",
+    display: "block",
+    boxSizing: "border-box",
     border: "none",
-    background: "#cbd5e1",
-    color: "#475569",
+    background: COLORS.primary,
+    color: "#ffffff",
     borderRadius: 16,
     padding: "13px 14px",
     fontWeight: 900,
-    cursor: "not-allowed",
+    textAlign: "center",
+    textDecoration: "none",
   },
   simpleList: {
     marginTop: 16,

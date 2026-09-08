@@ -20,6 +20,20 @@ function normalize(value: string) {
     .toLowerCase();
 }
 
+function courseName(slug: string) {
+  return ({
+    "historia-espana": "Historia de España",
+    "historia-filosofia": "Historia de la Filosofía",
+    ofimatica: "Ofimática y competencias digitales",
+    "administrativo-ja": "Administrativo de la Junta de Andalucía",
+    "auxiliar-administrativo-ja": "Auxiliar Administrativo de la Junta de Andalucía",
+  } as Record<string, string>)[slug] || slug;
+}
+
+function planName(slug: string) {
+  return ({ esencial: "Esencial", estandar: "Estándar", standard: "Estándar", premium: "Premium", pau: "PAU" } as Record<string, string>)[slug] || slug;
+}
+
 export function parseStudyDays(raw: unknown) {
   const values = Array.isArray(raw) ? raw.map(String) : [String(raw ?? "")];
 
@@ -153,8 +167,8 @@ export async function scheduleFernandoTelegramReminders(input: ScheduleInput) {
             title: "Tu sesión de estudio",
             message:
               minutesBefore === 30
-                ? `Tu sesión de ${input.courseSlug} · ${input.planSlug} empieza a las ${time.label}. Entra en Base12 Academy y prepara tu siguiente bloque de trabajo.`
-                : `Tu sesión de ${input.courseSlug} · ${input.planSlug} comienza en 5 minutos. Fernando te espera para ayudarte a priorizar el entrenamiento de hoy.`,
+                ? `Tu sesión de ${courseName(input.courseSlug)} · ${planName(input.planSlug)} empieza a las ${time.label}. Entra en Base12 Academy y prepara tu siguiente bloque de trabajo.`
+                : `Tu sesión de ${courseName(input.courseSlug)} · ${planName(input.planSlug)} comienza en 5 minutos. Fernando te espera para ayudarte a priorizar el entrenamiento de hoy.`,
             scheduled_for: scheduledFor.toISOString(),
             status: "pending",
             dedupe_key: `fernando:${input.enrollmentId}:${sessionStart.toISOString()}:${minutesBefore}`,

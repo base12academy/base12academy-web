@@ -6,7 +6,6 @@ import { supabase } from "../../lib/supabaseClient";
 import { temasHistoria } from "@/lib/temas";
 import { introVideos } from "@/lib/intro-videos";
 import { CONFIG_COMUNIDADES, type ComunidadId } from "@/lib/config-comunidades";
-import { getPrecioCurso } from "@/lib/getPrecioCurso";
 
 const COLORS = {
   muted: "#6b7280",
@@ -53,9 +52,6 @@ export default function HomePage() {
   const [temasActivos, setTemasActivos] = useState<string[]>([]);
   const [comunidad, setComunidad] = useState<string>("");
   
-  const [fechaExamen, setFechaExamen] = useState<string | null>(null);
-  const precioCurso = getPrecioCurso(fechaExamen);
-
   useEffect(() => {
     const loadData = async () => {
       const { data: userData } = await supabase.auth.getUser();
@@ -72,10 +68,6 @@ export default function HomePage() {
   .select("acceso, comunidad, temas_activos, fecha_examen")
   .eq("user_id", user.id)
   .maybeSingle();
-
-  if (perfil?.fecha_examen) {
-    setFechaExamen(perfil.fecha_examen);
-}
 
 if (perfil?.acceso) {
   setHasAccess(true);
@@ -548,7 +540,7 @@ if (hasAccess && temasActivos.length === 0) {
           </p>
 
           <p style={{ fontSize: "16px", fontWeight: "600", marginBottom: "16px" }}>
-            Desde {curso.id === "historia-espana" ? precioCurso.texto : curso.precio}
+            Desde {curso.id === "historia-espana" || curso.id === "filosofia" ? "199 €" : curso.precio}
           </p>
         </div>
 

@@ -15,7 +15,7 @@ export default function ComprarPage({ params }: Props) {
   const [loading, setLoading] = useState(false);
   const [loadingCode, setLoadingCode] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
-  const [courseSlug, setCourseSlug] = useState<CourseSlug>("historia-espana");
+  const [courseSlug, setCourseSlug] = useState<CourseSlug>("historia-espana-esencial");
   const [codigo, setCodigo] = useState("");
   const [mensajeCodigo, setMensajeCodigo] = useState("");
   const [termsAccepted, setTermsAccepted] = useState(false);
