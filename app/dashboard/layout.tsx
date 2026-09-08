@@ -17,6 +17,7 @@ export default function DashboardLayout({
     pathname.startsWith("/dashboard/tema/");
   const isOfimatica = pathname.startsWith("/dashboard/ofimatica");
   const isTropa = pathname.startsWith("/dashboard/tropa-y-marineria");
+  const isFilosofia = pathname.startsWith("/dashboard/filosofia");
 
   const linkStyle = (path: string) => ({
     color: pathname === path ? "white" : "#9ca3af",
@@ -83,8 +84,8 @@ export default function DashboardLayout({
         </aside>
       ) : null}
 
-      <main style={{ flex: 1, padding: isOfimatica || isTropa ? 0 : "40px" }}>
-        {!isOfimatica && !isTropa && (
+      <main style={{ flex: 1, padding: isOfimatica || isTropa || isFilosofia ? 0 : "40px" }}>
+        {!isOfimatica && !isTropa && !isFilosofia && (
           <div style={{ maxWidth: "1200px", margin: "0 auto 18px", textAlign: "right" }}>
             <Link href="/dashboard/facturas" style={{ color: "#15294b", fontWeight: 600 }}>
               Mis facturas
@@ -92,7 +93,7 @@ export default function DashboardLayout({
           </div>
         )}
         {children}
-        {!isOfimatica && !isTropa && <ChatBot />}
+        {!isOfimatica && !isTropa && !isFilosofia && <ChatBot />}
       </main>
     </div>
   );

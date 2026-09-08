@@ -21,9 +21,9 @@ const cursos = [
   },
   {
     id: "filosofia",
-    titulo: "Historia de la FilosofÃ­a",
+    titulo: "Historia de la Filosofía",
     precio: "17 â‚¬ / mes",
-    descripcion: "Curso estructurado por temas para repaso, comprensiÃ³n de autores y preparaciÃ³n de examen.",
+    descripcion: "Autores, corrientes, comparaciones, entrenamiento y preparación PAU, con los vídeos ya disponibles.",
   },
   {
     id: "protocolo-social",
@@ -542,7 +542,9 @@ if (hasAccess && temasActivos.length === 0) {
           <p style={{ fontSize: "14px", color: "#6b7280", marginBottom: "6px" }}>
             {curso.id === "historia-espana"
               ? "Acceso completo inmediato"
-              : "En actualizaciÃ³n"}
+              : curso.id === "filosofia"
+                ? "Contenido disponible · vídeos en publicación"
+                : "En actualizaciÃ³n"}
           </p>
 
           <p style={{ fontSize: "16px", fontWeight: "600", marginBottom: "16px" }}>
@@ -604,7 +606,7 @@ if (hasAccess && temasActivos.length === 0) {
                   width: "fit-content",
                 }}
               >
-                En actualizaciÃ³n
+                Contenido disponible
               </span>
             </>
           )}
