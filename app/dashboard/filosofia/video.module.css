@@ -14,33 +14,33 @@
 }
 
 .videoReady {
-  background: #e2f4e9 !important;
-  color: #17633b !important;
+  background: #eff6ff !important;
+  color: #2563eb !important;
 }
 
 .videoWaiting {
-  background: #f1f3f6 !important;
-  color: #6a7789 !important;
+  background: #f3f4f6 !important;
+  color: #6b7280 !important;
 }
 
 .videoLesson {
   margin: 0 0 30px;
   overflow: hidden;
-  border: 1px solid #cfddec;
+  border: 1px solid #e5e7eb;
   border-radius: 18px;
-  background: #0b1e3b;
-  box-shadow: 0 18px 40px #102a4d1a;
+  background: #ffffff;
+  box-shadow: 0 18px 40px rgba(31, 41, 55, .08);
 }
 
 .videoHeading {
   padding: 20px 22px;
-  color: white;
+  color: #1f2937;
 }
 
 .videoHeading span,
 .videoExternal span,
 .videoUnavailable > span {
-  color: #8eb7e5;
+  color: #2563eb;
   font-size: 10px;
   font-weight: 900;
   letter-spacing: .1em;
@@ -50,12 +50,13 @@
 .videoExternal h2 {
   margin: 7px 0 0;
   font: 700 24px Georgia, serif;
+  color: #1f2937;
 }
 
 .videoFrame {
   position: relative;
   aspect-ratio: 16 / 9;
-  background: #061226;
+  background: #000000;
 }
 
 .videoFrame iframe {
@@ -73,38 +74,38 @@
   justify-content: space-between;
   gap: 18px;
   margin: 0 0 30px;
-  border: 1px solid #d8e3ef;
+  border: 1px solid #e5e7eb;
   border-radius: 15px;
   background: white;
   padding: 20px 22px;
 }
 
 .videoUnavailable > span {
-  color: #72839a;
+  color: #6b7280;
 }
 
 .videoUnavailable b {
-  color: #304c6c;
+  color: #1f2937;
 }
 
 .videoUnavailable p {
   margin: 4px 0 0;
-  color: #6a7c92;
+  color: #6b7280;
   font-size: 13px;
 }
 
 .videoExternal span {
-  color: #24609e;
+  color: #2563eb;
 }
 
 .videoExternal h2 {
-  color: #17375e;
+  color: #1f2937;
 }
 
 .videoExternal a {
   flex: 0 0 auto;
   border-radius: 9px;
-  background: #154f91;
+  background: #2563eb;
   padding: 11px 14px;
   color: white;
   font-size: 13px;

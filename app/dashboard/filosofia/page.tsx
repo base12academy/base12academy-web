@@ -62,8 +62,8 @@ export default function FilosofiaPage() {
                 <label className={styles.search}><span>Buscar en esta sección</span><input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Autor, concepto o problema" /></label>
               )}
             </header>
-            {section === "autores" && <CardGrid items={authors.map((item) => ({ href: `/dashboard/filosofia/autor-${item.id}`, eyebrow: item.period, title: item.title, text: item.guide, tags: item.concepts.slice(0, 4), videoAvailable: Boolean(item.video?.url) }))} empty="No hay autores que coincidan con la búsqueda." />}
-            {section === "corrientes" && <CardGrid items={currents.map((item) => ({ href: `/dashboard/filosofia/corriente-${item.id}`, eyebrow: item.period, title: item.title, text: item.concepts.slice(0, 6).join(" · "), videoAvailable: Boolean(item.video?.url) }))} empty="No hay corrientes que coincidan con la búsqueda." />}
+            {section === "autores" && <CardGrid items={authors.map((item) => ({ href: `/dashboard/filosofia/autor-${item.id}`, eyebrow: item.period, title: item.title, text: item.guide, tags: item.concepts.slice(0, 4) }))} empty="No hay autores que coincidan con la búsqueda." />}
+            {section === "corrientes" && <CardGrid items={currents.map((item) => ({ href: `/dashboard/filosofia/corriente-${item.id}`, eyebrow: item.period, title: item.title, text: item.concepts.slice(0, 6).join(" · ") }))} empty="No hay corrientes que coincidan con la búsqueda." />}
             {section === "comparaciones" && <CardGrid items={comparisons.map((item) => ({ href: `/dashboard/filosofia/comparacion-${item.id}`, eyebrow: `COMPARACIÓN ${item.number}`, title: `${item.authorA} y ${item.authorB}`, text: item.axis }))} empty="No hay comparaciones que coincidan con la búsqueda." />}
             {section === "glosario" && <CardGrid compact items={glossary.map((item) => ({ href: `/dashboard/filosofia/concepto-${item.id}`, eyebrow: item.period, title: item.title, text: item.authors }))} empty="No hay conceptos que coincidan con la búsqueda." />}
             {section === "metodologia" && <CardGrid items={catalog.methodology.map((item) => ({ href: `/dashboard/filosofia/metodo-${item.id}`, eyebrow: `DESTREZA ${String(item.number).padStart(2, "0")}`, title: item.title, text: "Explicación, procedimiento, práctica y autocorrección." }))} />}
@@ -87,10 +87,7 @@ function Home({ onOpen }: { onOpen: (section: Section) => void }) {
           <p>Un curso de apoyo para contextualizar autores, aclarar conceptos, entrenar respuestas y preparar el modelo PAU de tu comunidad.</p>
           <div className={styles.heroActions}><Link href="/dashboard/filosofia/autor-socrates">Ver una unidad abierta</Link><button onClick={() => onOpen("autores")}>Explorar el curso</button></div>
         </div>
-        <div className={styles.videoPending}><span>YA DISPONIBLES</span><b>{counts.videos} vídeos del curso</b><p>Los vídeos enlazados ya acompañan a sus unidades. Los restantes aparecerán en cuanto estén preparados.</p></div>
       </section>
-
-      <section className={styles.notice}><b>Curso en publicación</b><p>{catalog.notice}</p></section>
 
       <section className={styles.stats} aria-label="Contenido del curso">
         <Stat value={counts.authors} label="filósofos" />
@@ -121,7 +118,7 @@ function PathCard({ number, title, text, href, onClick }: { number: string; titl
   return href ? <Link className={styles.pathCard} href={href}>{content}</Link> : <button className={styles.pathCard} onClick={onClick}>{content}</button>;
 }
 
-function CardGrid({ items, empty, compact = false }: { items: { href: string; eyebrow: string; title: string; text: string; tags?: string[]; videoAvailable?: boolean }[]; empty?: string; compact?: boolean }) {
+function CardGrid({ items, empty, compact = false }: { items: { href: string; eyebrow: string; title: string; text: string; tags?: string[] }[]; empty?: string; compact?: boolean }) {
   if (!items.length) return <p className={styles.empty}>{empty}</p>;
-  return <div className={`${styles.cardGrid} ${compact ? styles.compactGrid : ""}`}>{items.map((item) => <Link className={styles.resourceCard} href={item.href} key={item.href}><div className={styles.cardMeta}><small>{item.eyebrow}</small>{typeof item.videoAvailable === "boolean" && <span className={item.videoAvailable ? styles.videoReady : styles.videoWaiting}>{item.videoAvailable ? "Vídeo" : "Vídeo pendiente"}</span>}</div><h3>{item.title}</h3><p>{item.text}</p>{item.tags?.length ? <div>{item.tags.map((tag) => <span key={tag}>{tag}</span>)}</div> : null}<b>Consultar →</b></Link>)}</div>;
+  return <div className={`${styles.cardGrid} ${compact ? styles.compactGrid : ""}`}>{items.map((item) => <Link className={styles.resourceCard} href={item.href} key={item.href}><small>{item.eyebrow}</small><h3>{item.title}</h3><p>{item.text}</p>{item.tags?.length ? <div>{item.tags.map((tag) => <span key={tag}>{tag}</span>)}</div> : null}<b>Consultar →</b></Link>)}</div>;
 }

@@ -76,7 +76,7 @@ function BlockSummary({ item }: { item: Record<string, unknown> }) {
 
 function VideoLesson({ video, title }: { video?: { title?: string; url?: string | null }; title: string }) {
   const videoId = youtubeId(video?.url);
-  if (!video?.url) return <section className={styles.videoUnavailable}><span>VÍDEO</span><div><b>Vídeo pendiente</b><p>Se incorporará a esta unidad en cuanto esté disponible.</p></div></section>;
+  if (!video?.url) return null;
   if (!videoId) return <section className={styles.videoExternal}><div><span>VÍDEO</span><h2>{video.title || title}</h2></div><a href={video.url} target="_blank" rel="noopener noreferrer">Ver vídeo ↗</a></section>;
   return <section className={styles.videoLesson}><div className={styles.videoHeading}><span>VÍDEO DE LA UNIDAD</span><h2>{video.title || title}</h2></div><div className={styles.videoFrame}><iframe src={`https://www.youtube-nocookie.com/embed/${videoId}`} title={`Vídeo: ${video.title || title}`} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen /></div></section>;
 }

@@ -23,7 +23,7 @@ const cursos = [
     id: "filosofia",
     titulo: "Historia de la Filosofía",
     precio: "17 â‚¬ / mes",
-    descripcion: "Autores, corrientes, comparaciones, entrenamiento y preparación PAU, con los vídeos ya disponibles.",
+    descripcion: "Curso estructurado por temas para repaso, comprensión de autores y preparación de examen.",
   },
   {
     id: "protocolo-social",
@@ -543,7 +543,7 @@ if (hasAccess && temasActivos.length === 0) {
             {curso.id === "historia-espana"
               ? "Acceso completo inmediato"
               : curso.id === "filosofia"
-                ? "Contenido disponible · vídeos en publicación"
+                ? "Contenido disponible"
                 : "En actualizaciÃ³n"}
           </p>
 
