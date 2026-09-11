@@ -46,7 +46,7 @@ const subjects = [
     title: "Física",
     description:
       "Explicaciones claras, práctica guiada y entrenamiento de problemas para comprender y aplicar los conceptos.",
-    status: "Próximamente",
+    status: "En actualización",
     href: "#",
     video: "/videos/presentacion-fisica.mp4",
   },
@@ -54,7 +54,7 @@ const subjects = [
     title: "Química",
     description:
       "Método, ejercicios y recursos para ordenar la teoría y ganar seguridad en la resolución de problemas.",
-    status: "Próximamente",
+    status: "En actualización",
     href: "#",
     video: "/videos/presentacion-quimica.mp4",
   },

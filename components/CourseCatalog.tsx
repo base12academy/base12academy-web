@@ -32,7 +32,19 @@ const bachillerato = [
   "Matemáticas II",
   "Matemáticas Aplicadas a las CCSS",
   "Lengua y Literatura",
+  "Física",
+  "Química",
 ];
+
+const bachilleratoWithoutPremium = new Set([
+  "Matemáticas II",
+  "Matemáticas Aplicadas a las CCSS",
+  "Lengua y Literatura",
+  "Física",
+  "Química",
+]);
+
+const bachilleratoUpdating = new Set(["Física", "Química"]);
 
 const online = [
   "Competencias y Productividad Digital, Ofimática e IA",
@@ -84,12 +96,16 @@ const allCourses: Course[] = [
 
 function plansFor(course: Course): Plan[] {
   if (course.family === "Bachillerato y PAU") {
-    return [
+    const plans = [
       { name: "Esencial", price: "249 €", detail: "Comprende y domina 2.º de Bachillerato", includes: ["Curso completo y temario estructurado", "Vídeos explicativos y texto de cada contenido", "Pruebas tipo test", "Banco de textos, imágenes y recursos", "Asistente virtual de apoyo", "Sin entrenamiento específico PAU"] },
       { name: "Estándar", price: "299 €", detail: "Bachillerato más entrenamiento PAU", includes: ["Todo lo incluido en Esencial", "Preparación específica para la PAU", "Pruebas tipo test y de desarrollo", "Banco de textos, imágenes y modelos PAU", "Comprobaciones para avanzar por el temario", "Entrenamiento con método y seguridad"] },
       { name: "Premium", price: "399 €", detail: "Preparación avanzada y acompañamiento", includes: ["Todo lo incluido en Estándar", "Preparación PAU avanzada", "Más pruebas de desarrollo y recursos didácticos", "Banco ampliado de textos e imágenes", "Mentoría de apoyo", "Mayor seguimiento y exigencia académica"] },
       { name: "PAU", price: "199 €", detail: "Entrenamiento exclusivo para la prueba", includes: ["Preparación específica para la PAU", "Pruebas y modelos tipo PAU", "Banco de textos, imágenes y ejercicios", "Entrenamiento de respuestas de desarrollo", "Asistente virtual", "Mentoría de apoyo"] },
     ];
+
+    return bachilleratoWithoutPremium.has(course.name)
+      ? plans.filter((plan) => plan.name !== "Premium")
+      : plans;
   }
   if (course.name === "Competencias y Productividad Digital, Ofimática e IA") {
     return [
@@ -671,7 +687,10 @@ export default function CourseCatalog() {
         {filtered.map((item) => (
           <article key={item.name}>
             <div>
-              <small>{item.region || item.family}</small>
+              <small>
+                {item.region || item.family}
+                {bachilleratoUpdating.has(item.name) && " · En actualización"}
+              </small>
               <h3>{item.name}</h3>
               <p>
                 {item.family === "Tropa y Marinería"
@@ -731,7 +750,10 @@ export default function CourseCatalog() {
               </div>
             ) : (
               <>
-                <small>{course.family}</small>
+                <small>
+                  {course.family}
+                  {bachilleratoUpdating.has(course.name) && " · En actualización"}
+                </small>
                 <h2 id="modal-course-title">{course.name}</h2>
                 <p>Selecciona una modalidad y revisa la información antes de continuar.</p>
               </>
