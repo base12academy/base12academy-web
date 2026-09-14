@@ -257,6 +257,16 @@ button, input, select { font: inherit; }
 .original-plan-grid strong { color: #1e3a8a; white-space: nowrap; }
 .original-plan-meta { display: flex; flex: 0 0 auto; flex-direction: column; align-items: flex-end; gap: 8px; }
 .original-plan-option.recommended .original-plan-meta > strong { color: #166534; }
+.chemistry-periodic-inclusion { display: grid; grid-template-columns: 58px minmax(0,1fr) auto; gap: 15px; align-items: center; margin: 16px 0 0; padding: 16px; border: 1px solid #99d5c3; border-radius: 18px; background: linear-gradient(135deg,#f0fdf8,#eef7ff); }
+.chemistry-periodic-symbol { display: grid; width: 58px; height: 58px; padding: 7px; border-radius: 13px; background: #174f43; color: #fff; box-shadow: 0 10px 24px rgba(23,79,67,.2); }
+.chemistry-periodic-symbol small { align-self: start; font-size: 9px; line-height: 1; opacity: .8; }
+.chemistry-periodic-symbol b { align-self: end; font-size: 25px; line-height: 1; }
+.chemistry-periodic-inclusion > div > small { color: #166534; font-size: 10px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+.chemistry-periodic-inclusion h3 { margin: 3px 0 5px; color: #133b35; font-size: 18px; }
+.chemistry-periodic-inclusion p { margin: 0; color: #365a54; font-size: 12px; line-height: 1.5; }
+.chemistry-periodic-actions { display: flex; flex-direction: column; gap: 7px; }
+.chemistry-periodic-actions a { padding: 9px 12px; border: 1px solid #174f43; border-radius: 999px; background: #174f43; color: #fff; font-size: 11px; font-weight: 900; text-align: center; text-decoration: none; white-space: nowrap; }
+.chemistry-periodic-actions a.secondary { background: #fff; color: #174f43; }
 .original-plan-video-button { flex: 0 0 auto; padding: 7px 10px; border: 1px solid #93c5fd; border-radius: 999px; background: #fff; color: #174da1; font-size: 11px; font-weight: 800; white-space: nowrap; cursor: pointer; }
 .original-plan-video-button:hover { background: #dbeafe; }
 .original-plan-video-player { display: flex; justify-content: center; margin: 14px 0 4px; }
@@ -313,6 +323,9 @@ button, input, select { font: inherit; }
   .original-catalog { padding: 20px; border-radius: 22px; }
   .original-catalog-heading h2 { font-size: 24px; }
   .original-plan-grid { grid-template-columns: 1fr; }
+  .chemistry-periodic-inclusion { grid-template-columns: 52px minmax(0,1fr); }
+  .chemistry-periodic-symbol { width: 52px; height: 52px; }
+  .chemistry-periodic-actions { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; }
   .original-plan-includes ul { grid-template-columns: 1fr; }
   .original-modal { padding: 24px 18px; }
   .commercial-course-hero { grid-template-columns: 1fr; padding: 18px; }
@@ -438,6 +451,9 @@ button, input, select { font: inherit; }
 .b12-home-services > a { position: relative; min-height: 150px; display: grid; grid-template-columns: 52px 1fr; align-content: center; gap: 10px; padding: 15px; overflow: hidden; border: 1px solid rgba(15,23,42,.11); border-radius: 22px; background: #fff; color: #0f172a; text-decoration: none; box-shadow: 0 16px 38px rgba(15,23,42,.06); }
 .b12-home-services > a.featured { min-height: 178px; border-color: rgba(113,7,25,.28); background: linear-gradient(145deg,#fff 0%,#fbf1f2 100%); box-shadow: 0 20px 48px rgba(113,7,25,.11); }
 .b12-home-services img { width: 52px; height: 52px; object-fit: cover; border-radius: 12px; mix-blend-mode: multiply; }
+.b12-home-services .periodic-service-icon { display: grid; width: 52px; height: 52px; padding: 7px; border-radius: 12px; background: #174f43; color: #fff; box-shadow: 0 10px 24px rgba(23,79,67,.2); }
+.b12-home-services .periodic-service-icon small { align-self: start; color: rgba(255,255,255,.78); font-size: 8px; line-height: 1; }
+.b12-home-services .periodic-service-icon b { align-self: end; color: #fff; font-size: 22px; line-height: 1; }
 .b12-home-services span { min-width: 0; display: grid; align-content: center; gap: 5px; }
 .b12-home-services b { font-size: 14px; line-height: 1.2; }
 .b12-home-services small { color: #64748b; font-size: 11px; line-height: 1.4; }

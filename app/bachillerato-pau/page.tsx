@@ -53,10 +53,10 @@ const subjects = [
   {
     title: "Química",
     description:
-      "Método, ejercicios y recursos para ordenar la teoría y ganar seguridad en la resolución de problemas.",
-    status: "En actualización",
-    href: "#",
-    video: "/videos/presentacion-quimica.mp4",
+      "Explora los 118 elementos, sus familias y tendencias con la Tabla Periódica Interactiva de Base12.",
+    status: "Herramienta disponible",
+    href: "/apps/tabla-periodica",
+    video: "",
   },
   {
     title: "Biología",
@@ -99,28 +99,30 @@ export default function BachilleratoPauPage() {
         <p style={styles.kicker}>Base12 Academy</p>
         <h1 style={styles.title}>Bachillerato y PAU</h1>
         <p style={styles.subtitle}>
-          Elige la asignatura que quieres preparar. Cada aula tendrá sus propios
-          vídeos, recursos, pruebas, paquetes y metodología específica.
+          Elige la asignatura que quieres preparar. Cada aula o herramienta
+          identifica con claridad sus propios recursos y modalidad de acceso.
         </p>
       </section>
 
       <section style={styles.grid}>
         {subjects.map((subject) => (
           <article key={subject.title} style={styles.card}>
-            <div style={styles.videoBox}>
-              {subject.video ? (
+            {(subject.video || subject.title !== "Química") && (
+              <div style={styles.videoBox}>
+                {subject.video ? (
                 <video
                   src={subject.video}
                   controls
                   playsInline
                   style={styles.video}
                 />
-              ) : (
-                <div style={styles.videoPlaceholder}>
-                  Vídeo de presentación
-                </div>
-              )}
-            </div>
+                ) : (
+                  <div style={styles.videoPlaceholder}>
+                    Vídeo de presentación
+                  </div>
+                )}
+              </div>
+            )}
 
             <div style={styles.cardBody}>
               <p style={styles.status}>{subject.status}</p>

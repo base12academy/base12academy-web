@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 import officeProgram from "../lib/ofimatica-content.json";
 import ClassBookingCalendar from "./ClassBookingCalendar";
 import RecommendedBadge from "./RecommendedBadge";
+import { isPeriodicTableIncludedPlan } from "@/lib/chemistry/periodic-table-product";
 
 type Family = "Tropa y Marinería" | "Clases Online" | "Oposiciones" | "Cursos Online" | "Bachillerato y PAU";
 type Course = { family: Family; name: string; region?: string };
@@ -103,9 +104,21 @@ function plansFor(course: Course): Plan[] {
       { name: "PAU", price: "199 €", detail: "Entrenamiento exclusivo para la prueba", includes: ["Preparación específica para la PAU", "Pruebas y modelos tipo PAU", "Banco de textos, imágenes y ejercicios", "Entrenamiento de respuestas de desarrollo", "Asistente virtual", "Mentoría de apoyo"] },
     ];
 
+    const plansWithSubjectExtras = plans.map((plan) =>
+      isPeriodicTableIncludedPlan(course.name, plan.name)
+        ? {
+            ...plan,
+            includes: [
+              ...plan.includes,
+              "Tabla Periódica Interactiva incluida gratuitamente: 118 elementos, tendencias, comparación y Clara",
+            ],
+          }
+        : plan,
+    );
+
     return bachilleratoWithoutPremium.has(course.name)
-      ? plans.filter((plan) => plan.name !== "Premium")
-      : plans;
+      ? plansWithSubjectExtras.filter((plan) => plan.name !== "Premium")
+      : plansWithSubjectExtras;
   }
   if (course.name === "Competencias y Productividad Digital, Ofimática e IA") {
     return [
@@ -359,6 +372,7 @@ export default function CourseCatalog() {
       "clases-online-solicitud": "Solicitud de clases · Otras asignaturas",
       "historia-espana": "Historia de España",
       "historia-filosofia": "Historia de la Filosofía",
+      quimica: "Química",
     };
     const requestedName = requestedNames[requested] ?? "";
     if (!requestedName) return;
@@ -779,6 +793,23 @@ export default function CourseCatalog() {
                 );
               })}
             </div>
+
+            {course.name === "Química" && (
+              <aside className="chemistry-periodic-inclusion" aria-label="Tabla Periódica incluida en Química">
+                <span className="chemistry-periodic-symbol" aria-hidden="true"><small>26</small><b>Fe</b></span>
+                <div>
+                  <small>Aplicación Base12 incluida</small>
+                  <h3>Tabla Periódica Interactiva</h3>
+                  <p>
+                    Incluida gratuitamente en los paquetes <strong>Esencial</strong> y <strong>Estándar</strong> de Química. También puede adquirirse por separado por 9,99 €, con la misma aplicación y acceso permanente.
+                  </p>
+                </div>
+                <div className="chemistry-periodic-actions">
+                  <Link href="/apps/tabla-periodica">Ver aplicación</Link>
+                  <Link href="/apps/tabla-periodica/licencia" className="secondary">Comprar por separado</Link>
+                </div>
+              </aside>
+            )}
 
             <div className="original-plan-includes" aria-live="polite">
               <div className="original-plan-includes-heading">

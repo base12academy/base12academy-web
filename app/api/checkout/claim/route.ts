@@ -866,7 +866,14 @@ async function sendCoursePurchaseConfirmation(input: CourseConfirmationEmailInpu
   const durationText = input.expiresAt
     ? `Hasta el ${formatDate(input.expiresAt)}`
     : "Acceso sin fecha de caducidad";
-  const planLabel = ({ esencial: "Esencial", estandar: "Estándar", standard: "Estándar", premium: "Premium", pau: "PAU" } as Record<string, string>)[input.planSlug] || input.planSlug;
+  const planLabel = ({ esencial: "Esencial", estandar: "Estándar", standard: "Estándar", premium: "Premium", pau: "PAU", licencia: "Licencia independiente" } as Record<string, string>)[input.planSlug] || input.planSlug;
+  const isPeriodicTable = input.courseName === "Tabla Periódica Interactiva";
+  const onboardingText = isPeriodicTable
+    ? "Antes de entrar te preguntaremos si deseas factura exenta de IVA. Solo solicitaremos datos fiscales si respondes que sí."
+    : "Durante el alta completarás los datos de facturación, tu planificación con Fernando y la vinculación con Telegram.";
+  const accessUrl = isPeriodicTable
+    ? "https://base12academy.es/onboarding?product=tabla-periodica"
+    : "https://base12academy.es/login";
 
   const text = [
     `Hola ${input.fullName},`,
@@ -883,13 +890,13 @@ async function sendCoursePurchaseConfirmation(input: CourseConfirmationEmailInpu
     `Política de privacidad: ${input.privacyAcknowledged ? "Confirmada" : "No confirmada"}`,
     `Inicio inmediato: ${input.immediateAccess ? "Solicitado" : "No solicitado"}`,
     "",
-    "Durante el alta completarás los datos de facturación, tu planificación con Fernando y la vinculación con Telegram.",
-    "Acceso: https://base12academy.es/login",
+    onboardingText,
+    `Acceso: ${accessUrl}`,
     "",
     "Base12 Academy",
   ].join("\n");
 
-  const html = `<div style="font-family:Arial,Helvetica,sans-serif;max-width:680px;margin:0 auto;color:#172033;line-height:1.55"><div style="padding:24px 0 18px;border-bottom:1px solid #e5e7eb"><div style="font-size:22px;font-weight:800;color:#0b4fc2">Base12 Academy</div></div><div style="padding:26px 0"><p>Hola ${escapeHtml(input.fullName)},</p><p>Tu contratación ha quedado registrada correctamente.</p><h2 style="font-size:18px;margin-top:28px">Resumen de la contratación</h2><table style="width:100%;border-collapse:collapse"><tr><td style="padding:8px 0;color:#64748b">Curso</td><td style="padding:8px 0;font-weight:700;text-align:right">${escapeHtml(input.courseName)}</td></tr><tr><td style="padding:8px 0;color:#64748b">Modalidad</td><td style="padding:8px 0;font-weight:700;text-align:right">${escapeHtml(planLabel)}</td></tr><tr><td style="padding:8px 0;color:#64748b">Importe</td><td style="padding:8px 0;font-weight:700;text-align:right">${escapeHtml(price)}</td></tr><tr><td style="padding:8px 0;color:#64748b">Referencia</td><td style="padding:8px 0;font-weight:700;text-align:right">${escapeHtml(input.orderId)}</td></tr><tr><td style="padding:8px 0;color:#64748b">Duración</td><td style="padding:8px 0;font-weight:700;text-align:right">${escapeHtml(durationText)}</td></tr></table><div style="margin-top:20px;padding:14px 16px;background:#eef5ff;border:1px solid #bfdbfe;border-radius:12px;color:#174b8f">${escapeHtml(activationText)}</div><p style="margin-top:26px">Durante el alta completarás los datos de facturación, tu planificación con Fernando y la vinculación con Telegram.</p><p><a href="https://base12academy.es/login" style="display:inline-block;background:#0b4fc2;color:#ffffff;text-decoration:none;font-weight:700;padding:12px 18px;border-radius:10px">Acceder a Base12 Academy</a></p></div></div>`;
+  const html = `<div style="font-family:Arial,Helvetica,sans-serif;max-width:680px;margin:0 auto;color:#172033;line-height:1.55"><div style="padding:24px 0 18px;border-bottom:1px solid #e5e7eb"><div style="font-size:22px;font-weight:800;color:#0b4fc2">Base12 Academy</div></div><div style="padding:26px 0"><p>Hola ${escapeHtml(input.fullName)},</p><p>Tu contratación ha quedado registrada correctamente.</p><h2 style="font-size:18px;margin-top:28px">Resumen de la contratación</h2><table style="width:100%;border-collapse:collapse"><tr><td style="padding:8px 0;color:#64748b">Curso</td><td style="padding:8px 0;font-weight:700;text-align:right">${escapeHtml(input.courseName)}</td></tr><tr><td style="padding:8px 0;color:#64748b">Modalidad</td><td style="padding:8px 0;font-weight:700;text-align:right">${escapeHtml(planLabel)}</td></tr><tr><td style="padding:8px 0;color:#64748b">Importe</td><td style="padding:8px 0;font-weight:700;text-align:right">${escapeHtml(price)}</td></tr><tr><td style="padding:8px 0;color:#64748b">Referencia</td><td style="padding:8px 0;font-weight:700;text-align:right">${escapeHtml(input.orderId)}</td></tr><tr><td style="padding:8px 0;color:#64748b">Duración</td><td style="padding:8px 0;font-weight:700;text-align:right">${escapeHtml(durationText)}</td></tr></table><div style="margin-top:20px;padding:14px 16px;background:#eef5ff;border:1px solid #bfdbfe;border-radius:12px;color:#174b8f">${escapeHtml(activationText)}</div><p style="margin-top:26px">${escapeHtml(onboardingText)}</p><p><a href="${accessUrl}" style="display:inline-block;background:#0b4fc2;color:#ffffff;text-decoration:none;font-weight:700;padding:12px 18px;border-radius:10px">Continuar en Base12 Academy</a></p></div></div>`;
 
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -1149,6 +1156,7 @@ export async function POST(request: NextRequest) {
 
     if (
       !isClassBono &&
+      checkout.course_slug !== "tabla-periodica" &&
       !checkout.communications_video_completed_at
     ) {
       return NextResponse.json(
@@ -1767,6 +1775,7 @@ export async function POST(request: NextRequest) {
               ofimatica: "Ofimática y competencias digitales",
               "administrativo-ja": "Administrativo de la Junta de Andalucía",
               "auxiliar-administrativo-ja": "Auxiliar Administrativo de la Junta de Andalucía",
+              "tabla-periodica": "Tabla Periódica Interactiva",
             } as Record<string, string>)[checkout.course_slug] || courses[checkout.catalog_slug as keyof typeof courses]?.title || checkout.course_slug,
             planSlug: checkout.plan_slug,
             amountCents:
@@ -1799,7 +1808,10 @@ export async function POST(request: NextRequest) {
       newAccount,
       email,
       temporaryPassword,
-      nextStep: "billing",
+      nextStep:
+        checkout.course_slug === "tabla-periodica"
+          ? "periodic-table"
+          : "billing",
       confirmationEmailSent,
     });
   } catch (error) {

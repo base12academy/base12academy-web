@@ -45,6 +45,12 @@ function AltaContent() {
   const [notice, setNotice] = useState("");
   const [nextStep, setNextStep] = useState("billing");
 
+  function destinationFor(step?: string) {
+    if (step === "classes") return "/dashboard/clases";
+    if (step === "periodic-table") return "/onboarding?product=tabla-periodica";
+    return "/onboarding";
+  }
+
   async function claimOrder(accessToken?: string): Promise<ClaimResponse> {
     const response = await fetch("/api/checkout/claim", {
       method: "POST",
@@ -169,11 +175,7 @@ function AltaContent() {
 
       const result = await claimOrder(accessToken);
 
-      router.replace(
-        result.nextStep === "classes"
-          ? "/dashboard/clases"
-          : "/onboarding"
-      );
+      router.replace(destinationFor(result.nextStep));
     } catch (err) {
       setError(
         err instanceof Error
@@ -261,11 +263,7 @@ function AltaContent() {
   }
 
   function continueOnboarding() {
-    router.replace(
-      nextStep === "classes"
-        ? "/dashboard/clases"
-        : "/onboarding"
-    );
+    router.replace(destinationFor(nextStep));
   }
 
   return (

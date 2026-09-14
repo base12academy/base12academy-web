@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 
 type Step = 1 | 2 | 3 | 4;
@@ -10,6 +10,35 @@ export default function OnboardingPage() {
   const [saving, setSaving] = useState(false);
   const [pageError, setPageError] = useState("");
   const [telegramMessage, setTelegramMessage] = useState("");
+  const [periodicProduct, setPeriodicProduct] = useState(false);
+  const [invoiceChoice, setInvoiceChoice] = useState<"yes" | "no" | "">("");
+
+  useEffect(() => {
+    let cancelled = false;
+    const hintedProduct = new URLSearchParams(window.location.search).get("product") === "tabla-periodica";
+    setPeriodicProduct(hintedProduct);
+
+    async function detectEnrollmentProduct() {
+      try {
+        const { data: sessionData } = await supabase.auth.getSession();
+        const token = sessionData.session?.access_token;
+        if (!token) return;
+        const response = await fetch("/api/onboarding", {
+          headers: { Authorization: `Bearer ${token}` },
+          cache: "no-store",
+        });
+        const data = await response.json().catch(() => ({}));
+        if (!cancelled && response.ok) {
+          setPeriodicProduct(data.enrollment?.course_slug === "tabla-periodica");
+        }
+      } catch {
+        // Conserva la pista de la URL si la sesión aún no está disponible.
+      }
+    }
+
+    void detectEnrollmentProduct();
+    return () => { cancelled = true; };
+  }, []);
 
   async function saveOnboardingStep(payload: Record<string, unknown>) {
   const { data: sessionData } = await supabase.auth.getSession();
@@ -95,10 +124,16 @@ export default function OnboardingPage() {
       setSaving(true);
       setPageError("");
 
+      if (periodicProduct && !invoiceChoice) {
+        throw new Error("Indica si deseas recibir una factura exenta de IVA.");
+      }
+
       const result = await saveOnboardingStep({
         step: "billing",
         billingType: billing.type,
-        nominativeInvoice: billing.nominativeInvoice,
+        nominativeInvoice: periodicProduct
+          ? invoiceChoice === "yes"
+          : billing.nominativeInvoice,
         billingName: billing.billingName,
         taxId: billing.taxId,
         address: billing.address,
@@ -111,6 +146,11 @@ export default function OnboardingPage() {
 
       if (result.nextStep === "classes") {
         window.location.href = "/dashboard/clases";
+        return;
+      }
+
+      if (result.nextStep === "periodic-table") {
+        window.location.href = "/apps/tabla-periodica";
         return;
       }
 
@@ -307,12 +347,14 @@ export default function OnboardingPage() {
     opacity: saving ? 0.7 : 1,
   };
 
-  const steps = [
+  const allSteps = [
     ["Datos personales", 1],
     ["FacturaciÃ³n", 2],
     ["Tu planificaciÃ³n con Fernando", 3],
     ["VinculaciÃ³n con Telegram", 4],
   ] as const;
+  const steps = periodicProduct ? allSteps.slice(0, 2) : allSteps;
+  const totalSteps = steps.length;
 
   return (
     <main
@@ -365,7 +407,9 @@ export default function OnboardingPage() {
           maxWidth: "1500px",
           margin: "0 auto",
           display: "grid",
-          gridTemplateColumns: "235px minmax(0, 1fr) 285px",
+          gridTemplateColumns: periodicProduct
+            ? "235px minmax(0, 1fr)"
+            : "235px minmax(0, 1fr) 285px",
           gap: "28px",
           padding: "32px 28px 70px",
         }}
@@ -392,7 +436,7 @@ export default function OnboardingPage() {
           >
             <div
               style={{
-                width: `${step * 25}%`,
+                width: `${(step / totalSteps) * 100}%`,
                 height: "100%",
                 background: "#155eef",
               }}
@@ -406,7 +450,7 @@ export default function OnboardingPage() {
               marginBottom: "28px",
             }}
           >
-            Paso {step} de 4
+            Paso {step} de {totalSteps}
           </div>
 
           <div style={{ display: "grid", gap: "12px" }}>
@@ -465,7 +509,7 @@ export default function OnboardingPage() {
               color: "#102d62",
             }}
           >
-            Completa tu onboarding
+            {periodicProduct ? "Activa tu Tabla Periódica" : "Completa tu onboarding"}
           </h1>
 
           <p
@@ -474,7 +518,9 @@ export default function OnboardingPage() {
               color: "#50617e",
             }}
           >
-            Sigue estos pasos para empezar tu formaciÃ³n con buen pie.
+            {periodicProduct
+              ? "Confirma tus datos y decide si deseas factura antes de entrar en la aplicación."
+              : "Sigue estos pasos para empezar tu formación con buen pie."}
           </p>
 
           {pageError && (
@@ -618,11 +664,57 @@ export default function OnboardingPage() {
             </h2>
 
             <p style={{ color: "#607089" }}>
-              Indica si deseas recibir una factura nominativa de tu compra.
+              {periodicProduct
+                ? "¿Deseas recibir una factura exenta de IVA por esta compra?"
+                : "Indica si deseas recibir una factura nominativa de tu compra."}
             </p>
 
             {step === 2 && (
               <>
+                {periodicProduct ? (
+                  <fieldset
+                    style={{
+                      margin: "20px 0 0",
+                      padding: "16px",
+                      border: "1px solid #c8d8f0",
+                      borderRadius: "12px",
+                      background: "#eef4ff",
+                    }}
+                  >
+                    <legend style={{ ...labelStyle, marginBottom: "10px" }}>
+                      Factura exenta de IVA
+                    </legend>
+                    <div style={{ display: "flex", gap: "22px", flexWrap: "wrap" }}>
+                      <label style={{ display: "flex", gap: "8px", alignItems: "center", fontWeight: 700 }}>
+                        <input
+                          type="radio"
+                          name="periodic-invoice"
+                          checked={invoiceChoice === "yes"}
+                          onChange={() => {
+                            setInvoiceChoice("yes");
+                            setBilling({ ...billing, nominativeInvoice: true });
+                          }}
+                        />
+                        Sí, quiero factura
+                      </label>
+                      <label style={{ display: "flex", gap: "8px", alignItems: "center", fontWeight: 700 }}>
+                        <input
+                          type="radio"
+                          name="periodic-invoice"
+                          checked={invoiceChoice === "no"}
+                          onChange={() => {
+                            setInvoiceChoice("no");
+                            setBilling({ ...billing, nominativeInvoice: false });
+                          }}
+                        />
+                        No quiero factura
+                      </label>
+                    </div>
+                    <p style={{ margin: "12px 0 0", color: "#50617e", fontSize: "13px" }}>
+                      En ambos casos comunicaremos la venta a Facturación Base12.
+                    </p>
+                  </fieldset>
+                ) : (
                 <label
                   style={{
                     display: "flex",
@@ -649,8 +741,9 @@ export default function OnboardingPage() {
                   />
                   Quiero recibir una factura nominativa por correo electrónico.
                 </label>
+                )}
 
-                {billing.nominativeInvoice && (
+                {(periodicProduct ? invoiceChoice === "yes" : billing.nominativeInvoice) && (
                 <div
                   style={{
                     display: "grid",
@@ -823,9 +916,15 @@ export default function OnboardingPage() {
                     padding: "12px 14px",
                   }}
                 >
-                  {billing.nominativeInvoice
-                    ? "La factura se emitirá con los datos indicados y se enviará al correo de facturación."
-                    : "No se emitirá una factura nominativa. Puedes continuar con el alta sin completar datos fiscales."}
+                  {periodicProduct
+                    ? invoiceChoice === "yes"
+                      ? "La factura exenta de IVA se emitirá con estos datos, se enviará al correo de facturación y Facturación Base12 recibirá una copia privada."
+                      : invoiceChoice === "no"
+                        ? "No se emitirá factura. Facturación Base12 recibirá la comunicación de la venta y de esta decisión."
+                        : "Selecciona una opción para continuar."
+                    : billing.nominativeInvoice
+                      ? "La factura se emitirá con los datos indicados y se enviará al correo de facturación."
+                      : "No se emitirá una factura nominativa. Puedes continuar con el alta sin completar datos fiscales."}
                 </p>
 
                 <div
@@ -838,10 +937,14 @@ export default function OnboardingPage() {
                   <button
                     type="button"
                     style={primaryButton}
-                    disabled={saving}
+                    disabled={saving || (periodicProduct && !invoiceChoice)}
                     onClick={handleBillingContinue}
                   >
-                    {saving ? "Guardando..." : "Guardar y continuar →"}
+                    {saving
+                      ? "Guardando..."
+                      : periodicProduct
+                        ? "Confirmar y entrar →"
+                        : "Guardar y continuar →"}
                   </button>
                 </div>
               </>
@@ -852,6 +955,7 @@ export default function OnboardingPage() {
           <div
             style={{
               ...cardStyle,
+              display: periodicProduct ? "none" : undefined,
               marginBottom: "18px",
               opacity: step === 3 ? 1 : 0.72,
             }}
@@ -1021,6 +1125,7 @@ export default function OnboardingPage() {
           <div
             style={{
               ...cardStyle,
+              display: periodicProduct ? "none" : undefined,
               opacity: step === 4 ? 1 : 0.72,
             }}
           >
@@ -1098,7 +1203,7 @@ export default function OnboardingPage() {
         </section>
 
         {/* COLUMNA DERECHA */}
-        <aside>
+        <aside style={{ display: periodicProduct ? "none" : undefined }}>
           <div style={cardStyle}>
             <h3
               style={{

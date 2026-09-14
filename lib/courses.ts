@@ -1,3 +1,5 @@
+import { PERIODIC_TABLE_LICENSE_PRICE_CENTS } from "@/lib/chemistry/periodic-table-product";
+
 export const courses = {
   "historia-espana-esencial": { slug: "historia-espana-esencial", courseSlug: "historia-espana", planSlug: "esencial", title: "Historia de España · Esencial", shortTitle: "Historia de España · Esencial", price: 249, priceInCents: 24900, mode: "one_time", active: true, accessType: "lifetime", comingSoon: false },
   "historia-espana-estandar": { slug: "historia-espana-estandar", courseSlug: "historia-espana", planSlug: "estandar", title: "Historia de España · Estándar", shortTitle: "Historia de España · Estándar", price: 299, priceInCents: 29900, mode: "one_time", active: true, accessType: "lifetime", comingSoon: false },
@@ -186,6 +188,19 @@ export const courses = {
     accessType: "class_bono",
     classService: "eso-bach-historia-filosofia",
     classHours: 20,
+    comingSoon: false,
+  },
+  "tabla-periodica-licencia": {
+    slug: "tabla-periodica-licencia",
+    courseSlug: "tabla-periodica",
+    planSlug: "licencia",
+    title: "Tabla Periódica Interactiva · Licencia independiente",
+    shortTitle: "Tabla Periódica Interactiva",
+    price: PERIODIC_TABLE_LICENSE_PRICE_CENTS / 100,
+    priceInCents: PERIODIC_TABLE_LICENSE_PRICE_CENTS,
+    mode: "one_time",
+    active: true,
+    accessType: "lifetime",
     comingSoon: false,
   },
 } as const;

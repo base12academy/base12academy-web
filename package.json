@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "trop:validate": "python scripts/trop/import_v4.py"
+    "trop:validate": "python scripts/trop/import_v4.py",
+    "chemistry:sync": "node scripts/sync-periodic-table.mjs",
+    "chemistry:validate": "node scripts/validate-periodic-table.mjs",
+    "test:chemistry": "node --experimental-strip-types --test tests/periodic-table-access.test.mjs tests/periodic-table-payment.test.mjs tests/redsys.test.mjs && npm run chemistry:validate"
   },
   "dependencies": {
     "@react-pdf/renderer": "^4.3.2",
