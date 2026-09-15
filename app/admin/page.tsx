@@ -25,6 +25,7 @@ export default function AdminPage() {
   const [giftEmail, setGiftEmail] = useState("");
   const [giftValidDays, setGiftValidDays] = useState("30");
   const [giftLink, setGiftLink] = useState("");
+  const [giftEmailSent, setGiftEmailSent] = useState<boolean | null>(null);
   const [generatingGift, setGeneratingGift] = useState(false);
   const [giftStats, setGiftStats] = useState<{ max: number; reserved: number; redeemed: number; remaining: number } | null>(null);
 
@@ -91,6 +92,7 @@ export default function AdminPage() {
   const handleGenerateGift = async () => {
     setMessage("");
     setGiftLink("");
+    setGiftEmailSent(null);
     setGeneratingGift(true);
     const { data } = await supabase.auth.getSession();
     const response = await fetch("/api/admin/periodic-table-gifts", {
@@ -106,6 +108,7 @@ export default function AdminPage() {
       setMessage(result.error || "No se pudo crear el enlace de regalo.");
     } else {
       setGiftLink(result.claimUrl);
+      setGiftEmailSent(result.emailSent === true);
       setGiftStats((current) => ({
         max: current?.max ?? 50,
         reserved: result.reservedCount,
@@ -248,11 +251,14 @@ export default function AdminPage() {
           <label>Correo del alumno<input type="email" value={giftEmail} onChange={(event) => setGiftEmail(event.target.value)} placeholder="alumno@correo.es" style={{ width: "100%", padding: 11, marginTop: 5, border: "1px solid #d8c49f", borderRadius: 9 }} /></label>
           <label>Días para activar el enlace<input type="number" min="1" max="90" value={giftValidDays} onChange={(event) => setGiftValidDays(event.target.value)} style={{ width: "100%", padding: 11, marginTop: 5, border: "1px solid #d8c49f", borderRadius: 9 }} /></label>
           <button type="button" onClick={handleGenerateGift} disabled={generatingGift || !giftEmail || giftStats?.remaining === 0} style={{ padding: 12, border: 0, borderRadius: 10, background: "#d97706", color: "white", fontWeight: 900, cursor: "pointer", opacity: generatingGift ? .6 : 1 }}>
-            {generatingGift ? "Creando enlace…" : "Crear enlace personal de regalo"}
+            {generatingGift ? "Creando y enviando…" : "Crear y enviar regalo"}
           </button>
           {giftLink && (
             <div style={{ padding: 15, borderRadius: 12, background: "#ecfdf5" }}>
               <p style={{ marginTop: 0 }}><b>Enlace creado para {giftEmail.trim()}</b></p>
+              <p style={{ color: giftEmailSent ? "#166534" : "#9a3412", fontWeight: 800 }}>
+                {giftEmailSent ? "Correo enviado correctamente desde Base12 Academy." : "El enlace está creado, pero el correo automático no pudo enviarse. Usa «Preparar correo» para enviarlo manualmente."}
+              </p>
               <input readOnly value={giftLink} onFocus={(event) => event.currentTarget.select()} style={{ width: "100%", padding: 10, border: "1px solid #a7d8b7", borderRadius: 8 }} />
               <div style={{ display: "flex", flexWrap: "wrap", gap: 9, marginTop: 11 }}>
                 <button type="button" onClick={() => void navigator.clipboard.writeText(giftLink)} style={{ padding: "10px 14px", border: "1px solid #166534", borderRadius: 9, background: "white", color: "#166534", fontWeight: 800 }}>Copiar enlace</button>
