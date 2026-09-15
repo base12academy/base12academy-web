@@ -6,9 +6,7 @@ type HomeService = {
   description: string;
   href: string;
   featured?: boolean;
-  image?: string;
-  symbol?: string;
-  atomicNumber?: string;
+  image: string;
 };
 
 const services: HomeService[] = [
@@ -32,11 +30,10 @@ const services: HomeService[] = [
     image: "/images/banco-opositores/logo-base12-training.png",
   },
   {
-    name: "Tabla Periódica",
-    description: "118 elementos, tendencias, comparación y Clara.",
+    name: "Tabla Periódica Interactiva",
+    description: "118 elementos y sus datos, con apoyo de IA.",
     href: "/apps/tabla-periodica",
-    symbol: "Fe",
-    atomicNumber: "26",
+    image: "/images/tabla-periodica-interactiva.png",
   },
 ];
 
@@ -46,14 +43,13 @@ export default function HomeServiceCards() {
       <p>Servicios Base12</p>
       {services.map((service) => (
         <Link key={service.name} href={service.href} className={service.featured ? "featured" : undefined}>
-          {service.image ? (
-            <Image src={service.image} alt="" width={52} height={52} />
-          ) : (
-            <span className="periodic-service-icon" aria-hidden="true">
-              <small>{service.atomicNumber}</small>
-              <b>{service.symbol}</b>
-            </span>
-          )}
+          <Image
+            src={service.image}
+            alt=""
+            width={52}
+            height={52}
+            className={service.href === "/apps/tabla-periodica" ? "periodic-service-logo" : undefined}
+          />
           <span><b>{service.name}</b><small>{service.description}</small></span>
           <i aria-hidden="true">→</i>
         </Link>

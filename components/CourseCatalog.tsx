@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import ClassAvailabilityRequestForm from "@/components/ClassAvailabilityRequestForm";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import officeProgram from "../lib/ofimatica-content.json";
@@ -796,7 +797,13 @@ export default function CourseCatalog() {
 
             {course.name === "Química" && (
               <aside className="chemistry-periodic-inclusion" aria-label="Tabla Periódica incluida en Química">
-                <span className="chemistry-periodic-symbol" aria-hidden="true"><small>26</small><b>Fe</b></span>
+                <Image
+                  src="/images/tabla-periodica-interactiva.png"
+                  alt="B12 Tabla Periódica Interactiva"
+                  width={72}
+                  height={72}
+                  className="chemistry-periodic-logo"
+                />
                 <div>
                   <small>Aplicación Base12 incluida</small>
                   <h3>Tabla Periódica Interactiva</h3>
