@@ -118,7 +118,7 @@ async function scheduleResendEmail(input: {
     "",
     `Google Meet: ${input.meetUrl}`,
     "",
-    "Puedes consultar tus clases desde Â«Mis clasesÂ» en Base12 Academy.",
+    "Puedes consultar tus clases desde «Mis clases» en Base12 Academy.",
   ]
     .filter(Boolean)
     .join("\n");
@@ -139,7 +139,7 @@ async function scheduleResendEmail(input: {
           Entrar en Google Meet
         </a>
       </p>
-      <p style="font-size:13px;color:#64748b">TambiÃ©n puedes consultar la reserva desde Â«Mis clasesÂ» en Base12 Academy.</p>
+      <p style="font-size:13px;color:#64748b">También puedes consultar la reserva desde «Mis clases» en Base12 Academy.</p>
     </div>
   `;
 
