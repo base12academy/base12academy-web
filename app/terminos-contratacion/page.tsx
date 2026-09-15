@@ -5,7 +5,7 @@ export default function TerminosContratacionPage() {
     <main className="legal-page">
       <Link href="/" className="legal-back">← Volver a Base12 Academy</Link>
       <h1>Condiciones generales de contratación</h1>
-      <p>Estas condiciones regulan la contratación a distancia de los cursos de Bachillerato–PAU, oposiciones y formación online ofrecidos por Base12 Academy. La información particular mostrada para cada curso y modalidad forma parte de la oferta y prevalece cuando sea más específica.</p>
+      <p>Estas condiciones regulan la contratación a distancia de los cursos de Bachillerato–PAU, oposiciones, formación online y aplicaciones digitales ofrecidos por Base12 Academy. La información particular mostrada para cada producto y modalidad forma parte de la oferta y prevalece cuando sea más específica.</p>
 
       <h2>1. Identidad del prestador</h2>
       <p><strong>Titular:</strong> Imagen Digital Ménace, S. L. U. · <strong>CIF:</strong> B21746086 · <strong>Domicilio:</strong> Calle Lanuza, 8, 29009 Málaga · <strong>Contacto general:</strong> base12academy@gmail.com.</p>
@@ -22,6 +22,7 @@ export default function TerminosContratacionPage() {
 
       <h2>5. Activación, duración y uso del acceso</h2>
       <p>El acceso se activará tras la confirmación del pago, salvo que la oferta indique otra fecha. La matrícula, las credenciales y los materiales son personales e intransferibles. El periodo de acceso comienza en la fecha indicada en la confirmación y no se amplía por falta de uso, salvo incidencia imputable a Base12 o acuerdo expreso.</p>
+      <p>La Tabla Periódica Interactiva se adquiere mediante un único pago de 9,99 €. Es una licencia personal de acceso permanente, sin suscripción, cuotas periódicas, renovaciones ni pagos de reposición. El uso de Clara dentro de la aplicación está incluido en esa compra.</p>
       <p>El curso Competencias y Productividad Digital, Ofimática e IA ofrece tres paquetes acumulativos: Competencias digitales, 49 € y 6 meses de acceso; Ofimática, 119 € y 9 meses; y Productividad Digital e IA, 239 € y 12 meses. Ofimática incluye Competencias digitales y Productividad Digital e IA incluye Ofimática.</p>
 
       <h2>6. Naturaleza del servicio y acompañamiento</h2>
@@ -61,7 +62,7 @@ export default function TerminosContratacionPage() {
       <h2>15. Legislación y jurisdicción</h2>
       <p>Estas condiciones se rigen por la legislación española. Cuando el comprador sea consumidor, serán competentes los juzgados y tribunales determinados por la normativa de protección de consumidores. No se impone una sumisión que prive al consumidor del fuero que legalmente le corresponda.</p>
 
-      <p><strong>Última actualización:</strong> 11 de agosto de 2026.</p>
+      <p><strong>Última actualización:</strong> 15 de septiembre de 2026.</p>
     </main>
   );
 }

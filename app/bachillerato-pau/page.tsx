@@ -53,42 +53,10 @@ const subjects = [
   {
     title: "Química",
     description:
-      "Explora los 118 elementos, sus familias y tendencias con la Tabla Periódica Interactiva de Base12.",
-    status: "Herramienta disponible",
-    href: "/apps/tabla-periodica",
-    video: "",
-  },
-  {
-    title: "Biología",
-    description:
-      "Contenido organizado, explicación de procesos biológicos y preparación práctica para pruebas y exámenes.",
-    status: "Próximamente",
-    href: "#",
-    video: "/videos/presentacion-biologia.mp4",
-  },
-  {
-    title: "Empresa",
-    description:
-      "Conceptos económicos y empresariales explicados con claridad y orientados a la aplicación práctica.",
-    status: "Próximamente",
-    href: "#",
-    video: "/videos/presentacion-empresa.mp4",
-  },
-  {
-    title: "Geografía",
-    description:
-      "Mapas, conceptos, análisis territorial y preparación para interpretar datos, gráficos e imágenes.",
-    status: "Próximamente",
-    href: "#",
-    video: "/videos/presentacion-geografia.mp4",
-  },
-  {
-    title: "Geología",
-    description:
-      "Comprensión de procesos geológicos, materiales, estructuras y relación con el entorno físico.",
-    status: "Próximamente",
-    href: "#",
-    video: "",
+      "Comprende los conceptos clave, practica problemas paso a paso y prepárate para Bachillerato y la PAU con un método claro.",
+    status: "En actualización",
+    href: "/?curso=quimica#catalogo",
+    video: "/videos/presentacion-quimica.mp4",
   },
 ];
 
@@ -106,23 +74,21 @@ export default function BachilleratoPauPage() {
 
       <section style={styles.grid}>
         {subjects.map((subject) => (
-          <article key={subject.title} style={styles.card}>
-            {(subject.video || subject.title !== "Química") && (
-              <div style={styles.videoBox}>
-                {subject.video ? (
+          <article key={subject.title} id={subject.title === "Química" ? "quimica" : undefined} style={styles.card}>
+            <div style={styles.videoBox}>
+              {subject.video ? (
                 <video
                   src={subject.video}
                   controls
                   playsInline
                   style={styles.video}
                 />
-                ) : (
-                  <div style={styles.videoPlaceholder}>
-                    Vídeo de presentación
-                  </div>
-                )}
-              </div>
-            )}
+              ) : (
+                <div style={styles.videoPlaceholder}>
+                  Vídeo de presentación
+                </div>
+              )}
+            </div>
 
             <div style={styles.cardBody}>
               <p style={styles.status}>{subject.status}</p>

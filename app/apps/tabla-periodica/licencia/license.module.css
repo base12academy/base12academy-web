@@ -12,6 +12,8 @@
 .consents { display: grid; gap: 10px; margin-bottom: 18px; }
 .consents label { display: flex; align-items: flex-start; gap: 9px; color: #51665f; font-size: 12px; }
 .consents input { margin-top: 3px; }
+.privacyNotice { margin: 2px 0 0 25px; color: #6a7d76; font-size: 12px; line-height: 1.55; }
+.privacyNotice a { color: #15715b; font-weight: 800; }
 .card > button, .pending a { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; padding: 0 20px; border: 0; border-radius: 12px; background: #d99b2b; color: #15342c; font-weight: 950; cursor: pointer; }
 .card > button:disabled { opacity: .6; cursor: wait; }
 .pending { padding: 18px; border: 1px solid #e1ca88; border-radius: 16px; background: #fff9e6; color: #6a571e; }

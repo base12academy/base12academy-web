@@ -4,7 +4,7 @@ import { courses, type CourseSlug } from "@/lib/courses";
 import { getSupabase } from "@/lib/supabase/server";
 import { createRedsysSignature, getRedsysCredentials } from "@/lib/redsys";
 
-const LEGAL_VERSION = "2026-08-11";
+const LEGAL_VERSION = "2026-09-15";
 const REDSYS_SIGNATURE_VERSION = "HMAC_SHA256_V1";
 
 function base64Encode(value: string) {

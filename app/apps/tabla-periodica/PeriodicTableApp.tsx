@@ -312,14 +312,14 @@ export default function PeriodicTableApp() {
       {!canUseApp && access.status !== "loading" && (
         <section className={styles.gate} aria-labelledby="access-title">
           <div>
-            <p className={styles.eyebrow}>Acceso único, misma aplicación</p>
-            <h2 id="access-title">{access.authenticated ? "Esta herramienta no está incluida en tu matrícula actual" : "Accede con tu cuenta o compra la licencia"}</h2>
-            <p>Está incluida exclusivamente con un paquete activo Esencial o Estándar de Química de Bachillerato y PAU. El resto de alumnos puede adquirir la licencia independiente, con las mismas funciones y datos.</p>
+            <p className={styles.eyebrow}>Tu acceso a la Tabla Periódica</p>
+            <h2 id="access-title">{access.authenticated ? "Añade la Tabla Periódica Interactiva a tu cuenta" : "Explora, compara y comprende los 118 elementos"}</h2>
+            <p>Si estudias Química con Base12 en los paquetes Esencial o Estándar, ya la tienes incluida. También puedes comprarla por separado con un único pago de 9,99 €.</p>
           </div>
           <div className={styles.gateActions}>
             {!access.authenticated && <Link href="/login?redirect=/apps/tabla-periodica" className={styles.secondaryButton}>Iniciar sesión</Link>}
-            <Link href="/apps/tabla-periodica/licencia" className={styles.primaryButton}>Ver licencia independiente</Link>
-            <Link href="/bachillerato-pau" className={styles.secondaryButton}>Conocer Química Base12</Link>
+            <Link href="/apps/tabla-periodica/licencia" className={styles.primaryButton}>Comprar aplicación</Link>
+            <Link href="/bachillerato-pau#quimica" className={styles.secondaryButton}>Conocer Química Base12</Link>
           </div>
         </section>
       )}
