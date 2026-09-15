@@ -33,7 +33,7 @@ function LoginForm() {
         <input type="email" placeholder="Correo electrónico" value={email} onChange={(event) => setEmail(event.target.value)} autoComplete="email" style={{ width: "100%", padding: 12, marginBottom: 12, borderRadius: 10, border: "1px solid #e5e7eb" }} />
         <input type="password" placeholder="Contraseña" value={password} onChange={(event) => setPassword(event.target.value)} onKeyDown={(event) => event.key === "Enter" && void handleLogin()} autoComplete="current-password" style={{ width: "100%", padding: 12, marginBottom: 8, borderRadius: 10, border: "1px solid #e5e7eb" }} />
         <p style={{ fontSize: 12, color: "#6b7280", marginBottom: 16 }}>La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula y un número.</p>
-        <div style={{ marginBottom: 16 }}><Link href="/reset-password" style={{ fontSize: 14, color: "#2563eb" }}>¿Has olvidado tu contraseña?</Link></div>
+        <div style={{ marginBottom: 16 }}><Link href={`/reset-password?email=${encodeURIComponent(email.trim())}&redirect=${encodeURIComponent(redirect)}`} style={{ fontSize: 14, color: "#2563eb" }}>¿Has olvidado tu contraseña?</Link></div>
         <button type="button" onClick={handleLogin} style={{ width: "100%", padding: 12, background: "#2563eb", color: "white", borderRadius: 10, border: "none", fontWeight: 600, cursor: "pointer" }}>Entrar</button>
         {message && <p style={{ marginTop: 12, color: "red", fontSize: 14 }}>{message}</p>}
         <p style={{ marginTop: 16, fontSize: 14 }}>¿No tienes cuenta? <Link href={`/register?redirect=${encodeURIComponent(redirect)}`} style={{ color: "#2563eb" }}>Crear cuenta</Link></p>
