@@ -28,7 +28,7 @@ export function buildClaraContext(question: string, preferredAtomicNumbers: numb
     rules: {
       atomicMass: "CIAAW 2024; los valores entre corchetes son números másicos de referencia, no pesos atómicos estándar",
       missingValues: "null significa que la fuente no ofrece un valor tabulado; no debe estimarse",
-      valence: "formulationValences contiene magnitudes sin signo derivadas de los estados de oxidación tabulados; valencia y estado de oxidación no deben presentarse como sinónimos",
+      valence: "formulationValences contiene valores sin signo de uso escolar verificados frente a fuentes didácticas y a los estados de oxidación tabulados; valencia y estado de oxidación no deben presentarse como sinónimos",
       trends: Object.fromEntries(
         Object.entries(trendDefinitions).map(([key, value]) => [key, value.explanation]),
       ),

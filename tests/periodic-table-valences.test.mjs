@@ -18,7 +18,9 @@ test("deriva correctamente casos químicos de referencia sin confundir el signo"
   assert.deepEqual(formulationValences(bySymbol.H), [1]);
   assert.deepEqual(formulationValences(bySymbol.O), [2]);
   assert.deepEqual(formulationValences(bySymbol.Fe), [2, 3]);
-  assert.deepEqual(formulationValences(bySymbol.Cl), [1, 5, 7]);
+  assert.deepEqual(formulationValences(bySymbol.Cl), [1, 3, 5, 7]);
+  assert.deepEqual(formulationValences(bySymbol.Br), [1, 3, 5, 7]);
+  assert.deepEqual(formulationValences(bySymbol.Mn), [2, 3, 4, 6, 7]);
   assert.deepEqual(formulationValences(bySymbol.He), [0]);
 });
 

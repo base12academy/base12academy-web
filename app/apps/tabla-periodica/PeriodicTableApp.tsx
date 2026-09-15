@@ -480,9 +480,10 @@ export default function PeriodicTableApp() {
 
       <section className={styles.sources}>
         <div><p className={styles.eyebrow}>Trazabilidad</p><h2>Fuentes y criterio químico</h2></div>
-        <p>Los pesos atómicos estándar proceden de CIAAW 2024. Las propiedades restantes proceden de PubChem. Las valencias de formulación son magnitudes sin signo obtenidas de los estados tabulados: se muestran separadas porque, según IUPAC, valencia y estado de oxidación describen conceptos distintos.</p>
+        <p>Los pesos atómicos estándar proceden de CIAAW 2024. Las propiedades restantes proceden de PubChem. Las valencias habituales son valores sin signo de uso escolar, contrastados con materiales didácticos y con los estados tabulados. Se muestran separadas porque, según IUPAC, valencia y estado de oxidación describen conceptos distintos.</p>
         <ul>
           {periodicTable.sources.map((source) => <li key={source.url}><a href={source.url} target="_blank" rel="noreferrer">{source.name}</a><span>{source.fields}</span></li>)}
+          <li><a href="https://www.educa2.madrid.org/web/fisica-quimica/material/-/asset_publisher/MLj7YWH2ToLJ/document/id/5021820" target="_blank" rel="noreferrer">EducaMadrid: formulación inorgánica</a><span>Valencias habituales de uso escolar</span></li>
           <li><a href="https://goldbook.iupac.org/terms/view/V06588" target="_blank" rel="noreferrer">IUPAC Gold Book: valence</a><span>Definición y distinción conceptual</span></li>
         </ul>
       </section>
@@ -511,7 +512,7 @@ export default function PeriodicTableApp() {
           <section>
             <span>Valencias habituales para formulación</span>
             <div>{formulationValences(selected).length ? formulationValences(selected).map((valence) => <b key={valence}>{valence}</b>) : <em>Sin dato verificado</em>}</div>
-            <small>Magnitudes sin signo de los estados tabulados. Indican capacidad de combinación; dependen del tipo de enlace.</small>
+            <small>Valores sin signo de uso escolar. Indican capacidad de combinación y dependen del tipo de enlace.</small>
           </section>
           <section>
             <span>Estados de oxidación tabulados</span>

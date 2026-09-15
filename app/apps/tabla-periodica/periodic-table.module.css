@@ -240,7 +240,7 @@
   .header { flex-wrap: wrap; gap: 8px; padding-inline: 13px; }
   .brand img { width: 100px; }
   .accessPill { order: 3; flex-basis: 100%; max-width: none; padding: 7px 9px; font-size: 9px; text-align: center; }
-  .installCard { width: calc(100% - 20px); margin-top: 12px; padding: 18px; grid-template-columns: 64px minmax(0, 1fr); align-items: start; gap: 14px; border-radius: 20px; }
+  .installCard { width: calc(100% - 20px); margin-top: 12px; padding: 18px; grid-template-columns: 1fr; align-items: start; gap: 14px; border-radius: 20px; }
   .installCard > img { width: 64px; height: 64px; border-radius: 16px; }
   .installCopy h2 { font-size: 21px; }
   .installCopy > p:not(.eyebrow) { grid-column: 1 / -1; }
