@@ -143,8 +143,9 @@
 .electronConfig { font-family: var(--font-geist-mono), monospace; font-size: 11px !important; }
 
 .claraSection { display: grid; grid-template-columns: minmax(280px, .75fr) minmax(400px, 1.25fr); gap: clamp(28px, 5vw, 70px); background: #153c32; color: white; }
-.claraIntro { display: flex; align-items: flex-start; gap: 17px; }
-.claraAvatar { flex: 0 0 54px; height: 54px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.35); border-radius: 14px; background: #e2aa3e; color: #153c32; font-size: 22px; font-weight: 950; }
+.claraIntro { display: grid; align-content: start; gap: 18px; }
+.claraPortrait { width: 170px; height: 205px; display: grid; place-items: end center; overflow: hidden; border: 1px solid rgba(255,255,255,.2); border-radius: 28px; background: radial-gradient(circle at 50% 32%, rgba(226,170,62,.4), rgba(255,255,255,.06) 64%, transparent 65%); }
+.claraPortrait img { width: 100%; height: 100%; object-fit: contain; object-position: center bottom; filter: drop-shadow(0 16px 24px rgba(0,0,0,.24)); }
 .claraIntro .eyebrow { color: #b8ded2; }
 .claraIntro h2 { margin: 0; font-size: clamp(27px, 4vw, 43px); line-height: 1.04; letter-spacing: -.04em; }
 .claraIntro p:not(.eyebrow) { color: #c8d8d3; line-height: 1.65; }
@@ -154,7 +155,9 @@
 .messages article strong { display: block; margin-bottom: 3px; font-size: 12px; }
 .messages article p { margin: 0; font-size: 13px; line-height: 1.55; }
 .messages article small { display: block; margin-top: 7px; color: #6d827a; font-size: 9px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
-.claraMessage { background: white; color: #183b32; border-bottom-left-radius: 4px !important; }
+.claraMessage { display: grid; grid-template-columns: 38px minmax(0, 1fr); gap: 9px; align-items: start; background: white; color: #183b32; border-bottom-left-radius: 4px !important; }
+.messageAvatar { position: relative; width: 38px; height: 38px; overflow: hidden; border: 1px solid #d7e5df; border-radius: 50%; background: #edf5f1; }
+.messageAvatar img { position: absolute; top: -8px; left: -21px; width: 80px; max-width: none; height: auto; }
 .userMessage { margin-left: auto !important; background: #e2aa3e; color: #183226; border-bottom-right-radius: 4px !important; }
 .promptChips { display: flex; flex-wrap: wrap; gap: 6px; margin: 11px 0; }
 .promptChips button { padding: 7px 9px; border: 1px solid rgba(255,255,255,.28); border-radius: 999px; background: transparent; color: #e7f3ef; font-size: 10px; cursor: pointer; }
@@ -213,6 +216,7 @@
   .hero { padding-top: 42px; }
   .heroStats div { width: 88px; min-height: 90px; }
   .tableSection, .compareSection, .claraSection, .sources { padding: 18px; border-radius: 20px; }
+  .claraPortrait { width: 132px; height: 160px; border-radius: 23px; }
   .sectionHeading { align-items: flex-start; }
   .controls { grid-template-columns: 1fr; }
   .searchControl { grid-column: auto; }

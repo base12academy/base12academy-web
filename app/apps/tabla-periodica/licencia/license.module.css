@@ -2,6 +2,9 @@
 .card { width: min(820px, 100%); padding: clamp(25px, 6vw, 58px); border: 1px solid #dce5e1; border-radius: 28px; background: rgba(255,255,255,.94); box-shadow: 0 28px 90px rgba(20,55,46,.12); }
 .back { display: inline-block; margin-bottom: 35px; color: #567068; font-size: 12px; font-weight: 800; }
 .eyebrow { margin: 0 0 8px; color: #15715b; font-size: 11px; font-weight: 950; letter-spacing: .12em; text-transform: uppercase; }
+.licenseHero { display: grid; grid-template-columns: minmax(0, 1fr) 170px; gap: 24px; align-items: end; }
+.licenseClara { height: 210px; display: grid; place-items: end center; overflow: hidden; border: 1px solid #dce9e4; border-radius: 26px; background: radial-gradient(circle at 50% 32%, rgba(226,170,62,.28), rgba(220,238,231,.45) 62%, transparent 63%); }
+.licenseClara img { width: 100%; height: 100%; object-fit: contain; object-position: center bottom; filter: drop-shadow(0 15px 22px rgba(20,55,46,.18)); }
 .card h1 { margin: 0; font-size: clamp(38px, 7vw, 68px); line-height: 1; letter-spacing: -.05em; }
 .intro { max-width: 680px; color: #5b6f68; font-size: 17px; line-height: 1.65; }
 .offer { margin: 28px 0; padding: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; border-radius: 20px; background: #173f35; color: white; }
@@ -20,4 +23,8 @@
 .pending p { margin: 5px 0 14px; }
 .pending a { min-height: 42px; background: #173f35; color: white; text-decoration: none; }
 .error { color: #a0322c; font-size: 13px; font-weight: 800; }
-@media (max-width: 650px) { .offer { grid-template-columns: 1fr; } }
+@media (max-width: 650px) {
+  .licenseHero { grid-template-columns: 1fr; }
+  .licenseClara { width: 132px; height: 164px; justify-self: center; }
+  .offer { grid-template-columns: 1fr; }
+}

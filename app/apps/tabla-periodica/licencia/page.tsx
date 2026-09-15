@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import {
@@ -67,9 +68,22 @@ export default function PeriodicTableLicensePage() {
     <main className={styles.page}>
       <section className={styles.card}>
         <Link href="/apps/tabla-periodica" className={styles.back}>← Volver a la tabla</Link>
-        <p className={styles.eyebrow}>Compra única Base12</p>
-        <h1>Tabla Periódica Interactiva</h1>
-        <p className={styles.intro}>Convierte la tabla periódica en una herramienta para comprender la química: encuentra cada elemento, descubre sus propiedades y compara tendencias con ayuda de Clara.</p>
+        <div className={styles.licenseHero}>
+          <div>
+            <p className={styles.eyebrow}>Compra única Base12</p>
+            <h1>Tabla Periódica Interactiva</h1>
+            <p className={styles.intro}>Convierte la tabla periódica en una herramienta para comprender la química: encuentra cada elemento, descubre sus propiedades y compara tendencias con ayuda de Clara.</p>
+          </div>
+          <div className={styles.licenseClara}>
+            <Image
+              src="/images/clara-tabla-periodica.png"
+              alt="Clara, asistente de química de Base12"
+              width={170}
+              height={210}
+              priority
+            />
+          </div>
+        </div>
 
         <div className={styles.offer}>
           <div><span>Acceso personal</span><strong>{new Intl.NumberFormat("es-ES", { style: "currency", currency: "EUR" }).format(priceInCents / 100)}</strong><small>Pago único · acceso permanente</small></div>

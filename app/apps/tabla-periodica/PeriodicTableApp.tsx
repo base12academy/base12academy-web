@@ -405,11 +405,41 @@ export default function PeriodicTableApp() {
 
         <section id="clara" className={styles.claraSection}>
           <div className={styles.claraIntro}>
-            <span className={styles.claraAvatar}>Cl</span>
+            <div className={styles.claraPortrait}>
+              <Image
+                src="/images/clara-tabla-periodica.png"
+                alt="Clara, asistente de química de Base12"
+                width={180}
+                height={222}
+              />
+            </div>
             <div><p className={styles.eyebrow}>Asistente de química con IA</p><h2>Clara razona con datos, no con conjeturas.</h2><p>La IA recibe el contexto químico verificado de esta tabla. Si el servicio externo no está disponible, Clara conserva una respuesta local basada en los mismos datos.</p></div>
           </div>
           <div className={styles.claraChat} aria-live="polite" aria-busy={claraLoading}>
-            <div className={styles.messages}>{messages.slice(-6).map((message) => <article key={message.id} className={message.role === "user" ? styles.userMessage : styles.claraMessage}>{message.title && <strong>{message.title}</strong>}<p>{message.body}</p>{message.mode && <small>{message.mode === "openai" ? "IA · contexto verificado" : "Motor químico local"}</small>}</article>)}{claraLoading && <article className={styles.claraMessage}><p>Clara está razonando…</p></article>}</div>
+            <div className={styles.messages}>
+              {messages.slice(-6).map((message) => (
+                <article key={message.id} className={message.role === "user" ? styles.userMessage : styles.claraMessage}>
+                  {message.role === "assistant" && (
+                    <span className={styles.messageAvatar} aria-hidden="true">
+                      <Image src="/images/clara-tabla-periodica.png" alt="" width={80} height={99} />
+                    </span>
+                  )}
+                  <div>
+                    {message.title && <strong>{message.title}</strong>}
+                    <p>{message.body}</p>
+                    {message.mode && <small>{message.mode === "openai" ? "IA · contexto verificado" : "Motor químico local"}</small>}
+                  </div>
+                </article>
+              ))}
+              {claraLoading && (
+                <article className={styles.claraMessage}>
+                  <span className={styles.messageAvatar} aria-hidden="true">
+                    <Image src="/images/clara-tabla-periodica.png" alt="" width={80} height={99} />
+                  </span>
+                  <div><p>Clara está razonando…</p></div>
+                </article>
+              )}
+            </div>
             <div className={styles.promptChips}>
               {["Compara Na y Cl", "¿Qué estados de oxidación tiene el hierro?", "¿Cómo cambia el radio atómico?"].map((prompt) => <button disabled={!canUseApp || claraLoading} type="button" key={prompt} onClick={() => void askClara(prompt)}>{prompt}</button>)}
             </div>
