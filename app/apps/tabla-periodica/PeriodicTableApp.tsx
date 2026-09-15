@@ -294,13 +294,33 @@ export default function PeriodicTableApp() {
           <a href="#comparar">Comparar</a>
           <a href="#clara">Clara</a>
         </nav>
-        <PwaInstallButton
-          appName="Tabla Periódica Interactiva"
-          iconSrc="/images/tabla-periodica-icon.png"
-          buttonLabel="Instalar app"
-        />
         <span className={`${styles.accessPill} ${canUseApp ? styles.accessGranted : ""}`}>{accessText}</span>
       </header>
+
+      {canUseApp && (
+        <section className={styles.installCard} aria-labelledby="install-app-title">
+          <Image
+            src="/images/tabla-periodica-icon.png"
+            alt="Icono de Tabla Periódica Interactiva"
+            width={92}
+            height={92}
+            priority
+          />
+          <div className={styles.installCopy}>
+            <p className={styles.eyebrow}>Tu aplicación móvil</p>
+            <h2 id="install-app-title">Ya tienes acceso. Instálala en este móvil.</h2>
+            <p>No se descarga ningún archivo ni necesitas una tienda. Al instalarla quedará en tu pantalla de inicio con su propio icono.</p>
+            <div className={styles.installActions}>
+              <PwaInstallButton
+                appName="Tabla Periódica Interactiva"
+                iconSrc="/images/tabla-periodica-icon.png"
+                buttonLabel="Instalar en este móvil"
+              />
+              <p><b>iPhone o iPad:</b> abre la página en Safari y pulsa Compartir → Añadir a pantalla de inicio.<br /><b>Android:</b> pulsa el botón o abre el menú del navegador → Instalar aplicación.</p>
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className={styles.hero}>
         <div>

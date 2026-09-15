@@ -33,6 +33,31 @@
 .accessPill { padding: 8px 12px; border: 1px solid #e5c988; border-radius: 999px; background: #fff8df; color: #74520e; font-size: 12px; font-weight: 900; white-space: nowrap; }
 .accessGranted { border-color: #a9d6c5; background: #e8f6f0; color: #17634f; }
 
+.installCard {
+  width: min(1120px, calc(100% - 36px));
+  margin: 24px auto 0;
+  padding: 22px 26px;
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  align-items: center;
+  gap: 22px;
+  border: 1px solid #b8d8cc;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #ffffff, #eaf7f2);
+  box-shadow: 0 16px 42px rgba(22, 79, 65, .1);
+}
+.installCard > img { width: 92px; height: 92px; border-radius: 22px; box-shadow: 0 8px 22px rgba(10, 54, 100, .15); }
+.installCopy h2 { margin: 0; font-size: clamp(22px, 3vw, 31px); letter-spacing: -.025em; }
+.installCopy > p:not(.eyebrow) { margin: 8px 0 0; color: #52655f; line-height: 1.55; }
+.installActions { margin-top: 14px; display: flex; align-items: center; gap: 18px; }
+.installActions :global(.pwa-install-button) { min-height: 48px; padding: 11px 18px; flex: 0 0 auto; background: #0f5f4c; border-color: #0f5f4c; color: white; font-size: 14px; }
+.installActions :global(.pwa-install-button:hover) { background: #0b4c3d; }
+.installActions p { margin: 0; color: #52655f; font-size: 12px; line-height: 1.55; }
+
+@media (display-mode: standalone) {
+  .installCard { display: none; }
+}
+
 .hero {
   width: min(1440px, calc(100% - 36px));
   margin: 0 auto;
@@ -212,6 +237,12 @@
   .header { flex-wrap: wrap; gap: 8px; padding-inline: 13px; }
   .brand img { width: 100px; }
   .accessPill { order: 3; flex-basis: 100%; max-width: none; padding: 7px 9px; font-size: 9px; text-align: center; }
+  .installCard { width: calc(100% - 20px); margin-top: 12px; padding: 18px; grid-template-columns: 64px minmax(0, 1fr); align-items: start; gap: 14px; border-radius: 20px; }
+  .installCard > img { width: 64px; height: 64px; border-radius: 16px; }
+  .installCopy h2 { font-size: 21px; }
+  .installCopy > p:not(.eyebrow) { grid-column: 1 / -1; }
+  .installActions { grid-column: 1 / -1; align-items: stretch; flex-direction: column; gap: 10px; }
+  .installActions :global(.pwa-install-button) { width: 100%; justify-content: center; }
   .hero, .workspace, .gate, .sources, .footer { width: min(100% - 20px, 1440px); }
   .hero { padding-top: 42px; }
   .heroStats div { width: 88px; min-height: 90px; }
