@@ -5,6 +5,8 @@ import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 
+const SPECIAL_CHARACTERS = "!@#$%^&*()_+-=[]{};'\\:\"|<>?,./`~";
+
 function safeRedirect(value: string | null) {
   return value?.startsWith("/") && !value.startsWith("//") ? value : "/dashboard";
 }
@@ -23,6 +25,7 @@ function ResetPasswordForm() {
   const hasUppercase = /[A-Z]/.test(password);
   const hasLowercase = /[a-z]/.test(password);
   const hasNumber = /\d/.test(password);
+  const hasSpecialCharacter = [...password].some((character) => SPECIAL_CHARACTERS.includes(character));
 
   useEffect(() => {
     const recoveryRequested = searchParams.get("recovery") === "1" || window.location.hash.includes("type=recovery");
@@ -69,8 +72,8 @@ function ResetPasswordForm() {
   const handleReset = async () => {
     setLoading(true);
     setMessage("");
-    if (!hasMinLength || !hasUppercase || !hasLowercase || !hasNumber) {
-      setMessage("La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula y un número.");
+    if (!hasMinLength || !hasUppercase || !hasLowercase || !hasNumber || !hasSpecialCharacter) {
+      setMessage("La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial.");
       setLoading(false);
       return;
     }
@@ -78,7 +81,11 @@ function ResetPasswordForm() {
     const { error } = await supabase.auth.updateUser({ password });
     setLoading(false);
     if (error) {
-      setMessage("El enlace no es válido o ha caducado. Solicita un correo de recuperación nuevo.");
+      setMessage(
+        error.message.includes("Password should contain")
+          ? "La contraseña debe incluir una mayúscula, una minúscula, un número y un carácter especial como !, @ o #."
+          : "El enlace no es válido o ha caducado. Solicita un correo de recuperación nuevo.",
+      );
       return;
     }
 
@@ -125,6 +132,7 @@ function ResetPasswordForm() {
               <div>{hasUppercase ? "✓" : "○"} Una mayúscula</div>
               <div>{hasLowercase ? "✓" : "○"} Una minúscula</div>
               <div>{hasNumber ? "✓" : "○"} Un número</div>
+              <div>{hasSpecialCharacter ? "✓" : "○"} Un carácter especial (!, @, #…)</div>
             </div>
             <button type="button" onClick={handleReset} disabled={loading} style={{ marginTop: 16, width: "100%", padding: 12, borderRadius: 9, background: "#1d4ed8", color: "white", border: 0, fontWeight: 700, cursor: "pointer" }}>
               {loading ? "Actualizando…" : "Guardar contraseña nueva"}

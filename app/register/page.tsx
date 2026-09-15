@@ -5,6 +5,8 @@ import { Suspense, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
 
+const SPECIAL_CHARACTERS = "!@#$%^&*()_+-=[]{};'\\:\"|<>?,./`~";
+
 function safeRedirect(value: string | null) {
   return value?.startsWith("/") && !value.startsWith("//") ? value : "/dashboard";
 }
@@ -24,6 +26,7 @@ function RegisterForm() {
   const hasUppercase = /[A-Z]/.test(password);
   const hasLowercase = /[a-z]/.test(password);
   const hasNumber = /\d/.test(password);
+  const hasSpecialCharacter = [...password].some((character) => SPECIAL_CHARACTERS.includes(character));
 
   const handleRegister = async () => {
     setMessage("");
@@ -35,8 +38,8 @@ function RegisterForm() {
       setMessage("Debes indicar la fecha de tu examen");
       return;
     }
-    if (!hasMinLength || !hasUppercase || !hasLowercase || !hasNumber) {
-      setMessage("La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula y un número");
+    if (!hasMinLength || !hasUppercase || !hasLowercase || !hasNumber || !hasSpecialCharacter) {
+      setMessage("La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial");
       return;
     }
 
@@ -93,6 +96,7 @@ function RegisterForm() {
         <div>{hasUppercase ? "✓" : "○"} Una mayúscula</div>
         <div>{hasLowercase ? "✓" : "○"} Una minúscula</div>
         <div>{hasNumber ? "✓" : "○"} Un número</div>
+        <div>{hasSpecialCharacter ? "✓" : "○"} Un carácter especial (!, @, #…)</div>
       </div>
       <button type="button" onClick={handleRegister} disabled={registrationComplete} style={{ padding: "12px 16px", borderRadius: 8, background: "#111827", color: "white", border: "none", cursor: "pointer", width: "100%", opacity: registrationComplete ? .6 : 1 }}>Registrarse</button>
       <p style={{ marginTop: 12 }}>{message}</p>

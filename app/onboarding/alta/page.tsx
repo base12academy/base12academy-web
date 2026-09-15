@@ -4,6 +4,8 @@ import { FormEvent, Suspense, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 
+const SPECIAL_CHARACTERS = "!@#$%^&*()_+-=[]{};'\\:\"|<>?,./`~";
+
 type ClaimResponse = {
   ok?: boolean;
   newAccount?: boolean;
@@ -202,8 +204,14 @@ function AltaContent() {
   async function handleChangePassword(event: FormEvent) {
     event.preventDefault();
 
-    if (newPassword.length < 8) {
-      setError("La nueva contraseña debe tener al menos 8 caracteres.");
+    const validPassword = newPassword.length >= 8
+      && /[A-Z]/.test(newPassword)
+      && /[a-z]/.test(newPassword)
+      && /\d/.test(newPassword)
+      && [...newPassword].some((character) => SPECIAL_CHARACTERS.includes(character));
+
+    if (!validPassword) {
+      setError("La nueva contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial.");
       return;
     }
 
@@ -563,7 +571,7 @@ function AltaContent() {
                         onChange={setNewPassword}
                         type="password"
                         autoComplete="new-password"
-                        placeholder="Mínimo 8 caracteres"
+                        placeholder="8 caracteres, mayúscula, minúscula, número y símbolo"
                       />
 
                       <Field
