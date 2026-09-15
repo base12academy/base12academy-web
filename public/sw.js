@@ -1,5 +1,5 @@
-const CACHE_NAME = "base12-shell-v2";
-const SHELL = ["/", "/manifest.webmanifest", "/images/base12-logo.png", "/icons/base12-192.png?v=2", "/icons/base12-512.png?v=2", "/icons/apple-touch-icon.png?v=2"];
+const CACHE_NAME = "base12-shell-v3";
+const SHELL = ["/", "/manifest.webmanifest", "/images/base12-logo.png", "/images/tabla-periodica-icon.png", "/icons/base12-192.png?v=2", "/icons/base12-512.png?v=2", "/icons/apple-touch-icon.png?v=2", "/icons/tabla-periodica-192.png", "/icons/tabla-periodica-512.png", "/icons/tabla-periodica-apple.png"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(SHELL)));

@@ -22,6 +22,11 @@ export default function AdminPage() {
   const [generatedCode, setGeneratedCode] = useState("");
   const [reviewCode, setReviewCode] = useState("");
   const [generatingCode, setGeneratingCode] = useState(false);
+  const [giftEmail, setGiftEmail] = useState("");
+  const [giftValidDays, setGiftValidDays] = useState("30");
+  const [giftLink, setGiftLink] = useState("");
+  const [generatingGift, setGeneratingGift] = useState(false);
+  const [giftStats, setGiftStats] = useState<{ max: number; reserved: number; redeemed: number; remaining: number } | null>(null);
 
   useEffect(() => {
     const checkSession = async () => {
@@ -33,6 +38,27 @@ export default function AdminPage() {
 
     checkSession();
   }, []);
+
+  useEffect(() => {
+    if (!authorized) return;
+    const loadGiftStats = async () => {
+      const { data } = await supabase.auth.getSession();
+      const response = await fetch("/api/admin/periodic-table-gifts", {
+        headers: { Authorization: `Bearer ${data.session?.access_token}` },
+        cache: "no-store",
+      });
+      const result = await response.json().catch(() => ({}));
+      if (response.ok) {
+        setGiftStats({
+          max: result.campaign.max_gifts,
+          reserved: result.reservedCount,
+          redeemed: result.redeemedCount,
+          remaining: result.remainingCount,
+        });
+      }
+    };
+    void loadGiftStats();
+  }, [authorized]);
 
   const handleLogin = async () => {
     setMessage("");
@@ -60,6 +86,34 @@ export default function AdminPage() {
   const handleLogout = async () => {
     await supabase.auth.signOut();
     setAuthorized(false);
+  };
+
+  const handleGenerateGift = async () => {
+    setMessage("");
+    setGiftLink("");
+    setGeneratingGift(true);
+    const { data } = await supabase.auth.getSession();
+    const response = await fetch("/api/admin/periodic-table-gifts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${data.session?.access_token}`,
+      },
+      body: JSON.stringify({ email: giftEmail, validDays: Number(giftValidDays) }),
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      setMessage(result.error || "No se pudo crear el enlace de regalo.");
+    } else {
+      setGiftLink(result.claimUrl);
+      setGiftStats((current) => ({
+        max: current?.max ?? 50,
+        reserved: result.reservedCount,
+        redeemed: result.redeemedCount,
+        remaining: result.remainingCount,
+      }));
+    }
+    setGeneratingGift(false);
   };
 
   const handleGenerateCode = async () => {
@@ -118,6 +172,11 @@ export default function AdminPage() {
         `Hola:\n\nTe enviamos una clave personal para acceder gratuitamente al curso ${codeCourse}, modalidad ${codePlan}, durante ${accessMonths} meses.\n\nCLAVE PERSONAL: ${generatedCode}\n\nEsta clave es individual, de un solo uso e intransferible. Solo puede vincularse a una cuenta de Base12 Academy registrada con este mismo correo electrónico: ${beneficiaryEmail.trim()}\n\nPara utilizarla:\n1. Regístrate o inicia sesión en Base12 Academy con este correo.\n2. Abre la pantalla de acceso al curso.\n3. Introduce la clave en el apartado \"Activar con clave\".\n4. Acepta las condiciones de contratación y la política de privacidad.\n\nLa clave debe canjearse en un plazo de ${validDays} días. Una vez vinculada, no podrá utilizarse en otra cuenta.\n\nUn saludo,\nAdministración de Base12 Academy\nImagen Digital Ménace, S. L. U.`
       )}`
     : "#";
+  const giftEmailHref = giftLink
+    ? `mailto:${encodeURIComponent(giftEmail.trim())}?subject=${encodeURIComponent("Tu Tabla Periódica Interactiva, de regalo")}&body=${encodeURIComponent(
+        `Hola:\n\nPor estudiar Matemáticas Aplicadas o Física con Base12 Academy, te regalamos el acceso permanente a B12 Tabla Periódica Interactiva.\n\nActiva tu regalo aquí:\n${giftLink}\n\nEste enlace es personal, de un solo uso y está reservado para este correo electrónico: ${giftEmail.trim()}\n\nTendrás los 118 elementos y sus datos, búsqueda, fichas, tendencias, comparación y el apoyo de Clara. También podrás instalar la aplicación en la pantalla de inicio de tu móvil.\n\nActívalo en un plazo de ${giftValidDays} días.\n\nUn saludo,\nBase12 Academy`
+      )}`
+    : "#";
   const courseDisplayName = codeCourse === "ofimatica"
     ? "Competencias y Productividad Digital, Ofimática e IA"
     : codeCourse;
@@ -174,6 +233,36 @@ export default function AdminPage() {
         <button onClick={handleLogout} style={{ padding: "10px 16px", borderRadius: 999, border: "1px solid #cbd5e1", background: "white", cursor: "pointer" }}>Cerrar sesión</button>
       </div>
       <p>Sesión autorizada para {ADMIN_EMAIL}.</p>
+      <section style={{ marginTop: 24, padding: 22, border: "1px solid #f0c985", background: "#fffaf0", borderRadius: 16 }}>
+        <p style={{ margin: 0, color: "#9a5a13", fontSize: 12, fontWeight: 900, letterSpacing: ".08em", textTransform: "uppercase" }}>Promoción limitada</p>
+        <h2 style={{ marginTop: 7 }}>Regalar Tabla Periódica a los 50 primeros</h2>
+        <p>Crea un enlace individual para un alumno de Matemáticas Aplicadas o Física. Quedará ligado al correo indicado y reservará una plaza hasta que se utilice o caduque.</p>
+        {giftStats ? (
+          <div style={{ display: "flex", gap: 12, flexWrap: "wrap", margin: "16px 0" }}>
+            <strong style={{ padding: "10px 14px", borderRadius: 10, background: "#fff" }}>{giftStats.remaining} disponibles</strong>
+            <span style={{ padding: "10px 14px", borderRadius: 10, background: "#fff" }}>{giftStats.reserved} reservados de {giftStats.max}</span>
+            <span style={{ padding: "10px 14px", borderRadius: 10, background: "#fff" }}>{giftStats.redeemed} activados</span>
+          </div>
+        ) : <p style={{ color: "#805919" }}>Las cifras aparecerán cuando la campaña esté configurada en Supabase.</p>}
+        <div style={{ display: "grid", gap: 12, maxWidth: 680 }}>
+          <label>Correo del alumno<input type="email" value={giftEmail} onChange={(event) => setGiftEmail(event.target.value)} placeholder="alumno@correo.es" style={{ width: "100%", padding: 11, marginTop: 5, border: "1px solid #d8c49f", borderRadius: 9 }} /></label>
+          <label>Días para activar el enlace<input type="number" min="1" max="90" value={giftValidDays} onChange={(event) => setGiftValidDays(event.target.value)} style={{ width: "100%", padding: 11, marginTop: 5, border: "1px solid #d8c49f", borderRadius: 9 }} /></label>
+          <button type="button" onClick={handleGenerateGift} disabled={generatingGift || !giftEmail || giftStats?.remaining === 0} style={{ padding: 12, border: 0, borderRadius: 10, background: "#d97706", color: "white", fontWeight: 900, cursor: "pointer", opacity: generatingGift ? .6 : 1 }}>
+            {generatingGift ? "Creando enlace…" : "Crear enlace personal de regalo"}
+          </button>
+          {giftLink && (
+            <div style={{ padding: 15, borderRadius: 12, background: "#ecfdf5" }}>
+              <p style={{ marginTop: 0 }}><b>Enlace creado para {giftEmail.trim()}</b></p>
+              <input readOnly value={giftLink} onFocus={(event) => event.currentTarget.select()} style={{ width: "100%", padding: 10, border: "1px solid #a7d8b7", borderRadius: 8 }} />
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 9, marginTop: 11 }}>
+                <button type="button" onClick={() => void navigator.clipboard.writeText(giftLink)} style={{ padding: "10px 14px", border: "1px solid #166534", borderRadius: 9, background: "white", color: "#166534", fontWeight: 800 }}>Copiar enlace</button>
+                <a href={giftEmailHref} style={{ padding: "10px 14px", borderRadius: 9, background: "#166534", color: "white", textDecoration: "none", fontWeight: 800 }}>Preparar correo</a>
+              </div>
+              <p style={{ marginBottom: 0, fontSize: 12 }}>No lo publiques: solo puede usarlo la cuenta registrada con ese correo.</p>
+            </div>
+          )}
+        </div>
+      </section>
       <section style={{ marginTop: 24, padding: 22, border: "1px solid #b9d2f2", background: "#f3f8ff", borderRadius: 16 }}>
         <h2>Revisar íntegramente Competencias y Productividad Digital, Ofimática e IA</h2>
         <p>Tu cuenta administradora puede abrir las 11 unidades y los 80 contenidos. También puedes crear una clave personal de Productividad Digital e IA para comprobar el proceso de activación como alumno.</p>

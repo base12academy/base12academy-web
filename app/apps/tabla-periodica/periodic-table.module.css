@@ -209,9 +209,9 @@
 }
 
 @media (max-width: 560px) {
-  .header { gap: 8px; padding-inline: 13px; }
+  .header { flex-wrap: wrap; gap: 8px; padding-inline: 13px; }
   .brand img { width: 100px; }
-  .accessPill { max-width: 145px; padding: 7px 9px; font-size: 9px; }
+  .accessPill { order: 3; flex-basis: 100%; max-width: none; padding: 7px 9px; font-size: 9px; text-align: center; }
   .hero, .workspace, .gate, .sources, .footer { width: min(100% - 20px, 1440px); }
   .hero { padding-top: 42px; }
   .heroStats div { width: 88px; min-height: 90px; }

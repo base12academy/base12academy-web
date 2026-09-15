@@ -17,6 +17,7 @@ import {
   type TrendKey,
 } from "@/lib/chemistry/periodic-table";
 import styles from "./periodic-table.module.css";
+import PwaInstallButton from "@/components/PwaInstallButton";
 
 type AccessState = {
   status: "loading" | "ready" | "error";
@@ -293,6 +294,11 @@ export default function PeriodicTableApp() {
           <a href="#comparar">Comparar</a>
           <a href="#clara">Clara</a>
         </nav>
+        <PwaInstallButton
+          appName="Tabla Periódica Interactiva"
+          iconSrc="/images/tabla-periodica-icon.png"
+          buttonLabel="Instalar app"
+        />
         <span className={`${styles.accessPill} ${canUseApp ? styles.accessGranted : ""}`}>{accessText}</span>
       </header>
 
