@@ -36,6 +36,8 @@ button, input, select { font: inherit; }
 .pwa-help-dialog p { margin: 10px 0; color: #475569; font-size: 14px; line-height: 1.55; }
 .pwa-help-close { position: absolute; top: 12px; right: 12px; width: 36px; height: 36px; border: 0; border-radius: 50%; background: #f1f5f9; color: #0f172a; font-size: 22px; cursor: pointer; }
 .pwa-help-understood { margin-top: 10px; padding: 10px 16px; border: 0; border-radius: 999px; background: #0b4ea2; color: #fff; font-weight: 900; cursor: pointer; }
+.pwa-help-open-browser { display: inline-flex; margin: 4px 0 8px; padding: 11px 16px; border-radius: 999px; background: #0b4ea2; color: #fff; font-size: 14px; font-weight: 900; text-decoration: none; }
+@media (display-mode: standalone) { .pwa-install-button { display: none; } }
 
 .legal-page {
   width: min(860px, calc(100% - 32px));

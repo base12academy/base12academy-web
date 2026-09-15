@@ -1,4 +1,5 @@
 import periodicTableData from "@/data/chemistry/elements.json";
+import { formatFormulationValences } from "@/lib/chemistry/valences";
 
 export type ElementCategory =
   | "actínido"
@@ -174,6 +175,15 @@ export type ClaraAnswer = {
 export function answerClara(question: string): ClaraAnswer {
   const mentioned = findMentionedElements(question).slice(0, 4);
   const trend = inferTrend(question);
+  const asksAboutValence = includesAny(normalizeChemistryText(question), ["valencia", "valencias"]);
+
+  if (mentioned.length >= 2 && asksAboutValence) {
+    return {
+      title: "Comparación de valencias",
+      body: `${mentioned.map((element) => `${element.symbol}: ${formatFormulationValences(element)}`).join(" · ")}. Se muestran magnitudes sin signo útiles para formulación; los estados de oxidación conservan el signo y dependen del compuesto.`,
+      elementNumbers: mentioned.map((element) => element.atomicNumber),
+    };
+  }
 
   if (mentioned.length >= 2) {
     const metric = trend ?? "electronegativity";
@@ -194,7 +204,9 @@ export function answerClara(question: string): ClaraAnswer {
 
   if (mentioned.length === 1) {
     const element = mentioned[0];
-    const metricSentence = trend
+    const metricSentence = asksAboutValence
+      ? `Valencias habituales para formulación: ${formatFormulationValences(element)}. Estados de oxidación tabulados: ${element.oxidationStates.join(", ") || "sin dato"}. La valencia expresa capacidad de combinación; el estado de oxidación es un recuento formal con signo.`
+      : trend
       ? `${trendDefinitions[trend].label}: ${formatTrendValue(trendValue(element, trend), trend)}.`
       : `Configuración electrónica: ${element.electronConfiguration}. Estados de oxidación tabulados: ${element.oxidationStates.join(", ") || "sin dato"}.`;
     return {
@@ -208,6 +220,14 @@ export function answerClara(question: string): ClaraAnswer {
     return {
       title: trendDefinitions[trend].label,
       body: `${trendDefinitions[trend].explanation} Selecciona la tendencia en la tabla o nombra dos elementos para compararlos con sus valores tabulados.`,
+      elementNumbers: [],
+    };
+  }
+
+  if (asksAboutValence) {
+    return {
+      title: "Valencia y estado de oxidación no son lo mismo",
+      body: "La valencia describe la capacidad de combinación de un átomo; en esta tabla, las valencias de formulación se presentan como magnitudes sin signo de los estados tabulados. El estado de oxidación conserva el signo y representa un reparto formal de electrones. Nombra uno o varios elementos para consultar sus valores.",
       elementNumbers: [],
     };
   }

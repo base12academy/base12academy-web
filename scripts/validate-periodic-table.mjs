@@ -26,6 +26,8 @@ for (const element of elements) {
   for (const field of ["electronegativity", "atomicRadiusPm", "ionizationEnergyEv", "meltingPointK", "boilingPointK", "densityGcm3"]) {
     assert.ok(element[field] == null || (Number.isFinite(element[field]) && element[field] >= 0), `${field} inválido en ${element.symbol}`);
   }
+  assert.ok(Array.isArray(element.oxidationStates), `Faltan estados de oxidación en ${element.symbol}`);
+  assert.ok(element.oxidationStates.every((state) => /^[+-]?\d+$/.test(state)), `Estado de oxidación inválido en ${element.symbol}`);
 }
 
 const bySymbol = Object.fromEntries(elements.map((element) => [element.symbol, element]));
@@ -39,9 +41,12 @@ assert.equal(bySymbol.Hg.standardState, "líquido");
 assert.equal(bySymbol.Og.atomicMass, "[295]");
 assert.equal(bySymbol.W.name, "Wolframio");
 assert.equal(bySymbol.Ds.name, "Darmstatio");
+assert.deepEqual(bySymbol.Fe.oxidationStates, ["+3", "+2"]);
+assert.deepEqual(bySymbol.Cl.oxidationStates, ["+7", "+5", "+1", "-1"]);
+assert.deepEqual(elements.filter((element) => element.oxidationStates.length === 0).map((element) => element.symbol), ["Nh"], "Toda ausencia de estados de oxidación debe quedar localizada y explícita");
 
 const fBlock = elements.filter((element) => element.block === "f");
 assert.equal(fBlock.length, 30, "Deben existir 15 lantánidos y 15 actínidos en el bloque f");
 assert.ok(fBlock.every((element) => element.group === null), "El grupo 3 se deja explícitamente sin asignar para las series f");
 
-console.log("Auditoría química superada: 118 elementos, posiciones, unidades, masas y casos de referencia verificados.");
+console.log("Auditoría química superada: 118 elementos, posiciones, unidades, masas, estados de oxidación y casos de referencia verificados.");

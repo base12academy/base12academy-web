@@ -5,6 +5,7 @@ import {
   periodicTable,
   trendDefinitions,
 } from "@/lib/chemistry/periodic-table";
+import { formulationValences } from "@/lib/chemistry/valences";
 
 const MAX_CONTEXT_ELEMENTS = 6;
 
@@ -27,6 +28,7 @@ export function buildClaraContext(question: string, preferredAtomicNumbers: numb
     rules: {
       atomicMass: "CIAAW 2024; los valores entre corchetes son números másicos de referencia, no pesos atómicos estándar",
       missingValues: "null significa que la fuente no ofrece un valor tabulado; no debe estimarse",
+      valence: "formulationValences contiene magnitudes sin signo derivadas de los estados de oxidación tabulados; valencia y estado de oxidación no deben presentarse como sinónimos",
       trends: Object.fromEntries(
         Object.entries(trendDefinitions).map(([key, value]) => [key, value.explanation]),
       ),
@@ -43,6 +45,7 @@ export function buildClaraContext(question: string, preferredAtomicNumbers: numb
       firstIonizationEnergyEv: element.ionizationEnergyEv,
       electronAffinityEv: element.electronAffinityEv,
       oxidationStates: element.oxidationStates,
+      formulationValences: formulationValences(element),
       standardState: element.standardState,
       meltingPointK: element.meltingPointK,
       boilingPointK: element.boilingPointK,

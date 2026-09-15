@@ -16,6 +16,7 @@ import {
   type ElementCategory,
   type TrendKey,
 } from "@/lib/chemistry/periodic-table";
+import { formatFormulationValences, formulationValences } from "@/lib/chemistry/valences";
 import styles from "./periodic-table.module.css";
 import PwaInstallButton from "@/components/PwaInstallButton";
 
@@ -297,8 +298,7 @@ export default function PeriodicTableApp() {
         <span className={`${styles.accessPill} ${canUseApp ? styles.accessGranted : ""}`}>{accessText}</span>
       </header>
 
-      {canUseApp && (
-        <section className={styles.installCard} aria-labelledby="install-app-title">
+      <section className={styles.installCard} aria-labelledby="install-app-title">
           <Image
             src="/images/tabla-periodica-icon.png"
             alt="Icono de Tabla Periódica Interactiva"
@@ -307,20 +307,19 @@ export default function PeriodicTableApp() {
             priority
           />
           <div className={styles.installCopy}>
-            <p className={styles.eyebrow}>Tu aplicación móvil</p>
-            <h2 id="install-app-title">Ya tienes acceso. Instálala en este móvil.</h2>
-            <p>No se descarga ningún archivo ni necesitas una tienda. Al instalarla quedará en tu pantalla de inicio con su propio icono.</p>
+            <p className={styles.eyebrow}>Aplicación móvil</p>
+            <h2 id="install-app-title">{canUseApp ? "Ya tienes acceso. Instálala en este móvil." : "Instala la Tabla Periódica en este móvil."}</h2>
+            <p>Se instala directamente desde el navegador, sin tienda ni archivo APK. Quedará en tu pantalla de inicio con su propio icono y el acceso seguirá ligado a tu correo.</p>
             <div className={styles.installActions}>
               <PwaInstallButton
                 appName="Tabla Periódica Interactiva"
                 iconSrc="/images/tabla-periodica-icon.png"
                 buttonLabel="Instalar en este móvil"
               />
-              <p><b>iPhone o iPad:</b> abre la página en Safari y pulsa Compartir → Añadir a pantalla de inicio.<br /><b>Android:</b> pulsa el botón o abre el menú del navegador → Instalar aplicación.</p>
+              <p><b>Android:</b> pulsa el botón; si el navegador no abre la instalación, usa su menú → Instalar aplicación o Añadir a pantalla de inicio.<br /><b>iPhone o iPad:</b> abre la página en Safari y pulsa Compartir → Añadir a pantalla de inicio.</p>
             </div>
           </div>
         </section>
-      )}
 
       <section className={styles.hero}>
         <div>
@@ -421,6 +420,8 @@ export default function PeriodicTableApp() {
                   <tr><th>Electronegatividad</th>{comparison.map((element) => <td key={element.atomicNumber}>{element.electronegativity ?? "—"}</td>)}</tr>
                   <tr><th>Radio atómico</th>{comparison.map((element) => <td key={element.atomicNumber}>{element.atomicRadiusPm ? `${element.atomicRadiusPm} pm` : "—"}</td>)}</tr>
                   <tr><th>1.ª ionización</th>{comparison.map((element) => <td key={element.atomicNumber}>{element.ionizationEnergyEv ? `${element.ionizationEnergyEv} eV` : "—"}</td>)}</tr>
+                  <tr><th>Valencias habituales</th>{comparison.map((element) => <td key={element.atomicNumber}>{formatFormulationValences(element)}</td>)}</tr>
+                  <tr><th>Estados de oxidación</th>{comparison.map((element) => <td key={element.atomicNumber}>{element.oxidationStates.join(", ") || "Sin dato"}</td>)}</tr>
                   <tr><th>Estado estándar</th>{comparison.map((element) => <td key={element.atomicNumber}>{element.standardState}</td>)}</tr>
                   <tr><th>Configuración</th>{comparison.map((element) => <td className={styles.electronConfig} key={element.atomicNumber}>{element.electronConfiguration}</td>)}</tr>
                 </tbody>
@@ -467,7 +468,7 @@ export default function PeriodicTableApp() {
               )}
             </div>
             <div className={styles.promptChips}>
-              {["Compara Na y Cl", "¿Qué estados de oxidación tiene el hierro?", "¿Cómo cambia el radio atómico?"].map((prompt) => <button disabled={!canUseApp || claraLoading} type="button" key={prompt} onClick={() => void askClara(prompt)}>{prompt}</button>)}
+              {["¿Qué valencias tiene el hierro?", "Compara las valencias de Na y Cl", "¿Qué estados de oxidación tiene el hierro?", "¿Cómo cambia el radio atómico?"].map((prompt) => <button disabled={!canUseApp || claraLoading} type="button" key={prompt} onClick={() => void askClara(prompt)}>{prompt}</button>)}
             </div>
             <form onSubmit={submitClara} className={styles.claraForm}>
               <label htmlFor="clara-question">Pregunta a Clara</label>
@@ -479,8 +480,11 @@ export default function PeriodicTableApp() {
 
       <section className={styles.sources}>
         <div><p className={styles.eyebrow}>Trazabilidad</p><h2>Fuentes y criterio químico</h2></div>
-        <p>Los pesos atómicos estándar proceden de CIAAW 2024. Para elementos sin peso estándar se muestra entre corchetes el número másico del isótopo de referencia. Las propiedades restantes proceden de PubChem; “previsto” identifica predicciones, no medidas.</p>
-        <ul>{periodicTable.sources.map((source) => <li key={source.url}><a href={source.url} target="_blank" rel="noreferrer">{source.name}</a><span>{source.fields}</span></li>)}</ul>
+        <p>Los pesos atómicos estándar proceden de CIAAW 2024. Las propiedades restantes proceden de PubChem. Las valencias de formulación son magnitudes sin signo obtenidas de los estados tabulados: se muestran separadas porque, según IUPAC, valencia y estado de oxidación describen conceptos distintos.</p>
+        <ul>
+          {periodicTable.sources.map((source) => <li key={source.url}><a href={source.url} target="_blank" rel="noreferrer">{source.name}</a><span>{source.fields}</span></li>)}
+          <li><a href="https://goldbook.iupac.org/terms/view/V06588" target="_blank" rel="noreferrer">IUPAC Gold Book: valence</a><span>Definición y distinción conceptual</span></li>
+        </ul>
       </section>
 
       <footer className={styles.footer}><span>Base12 Academy · Tabla Periódica Interactiva</span><Link href="/privacidad">Privacidad</Link><Link href="/terminos-contratacion">Contratación</Link></footer>
@@ -503,7 +507,18 @@ export default function PeriodicTableApp() {
           <Fact label="Densidad" value={selected.densityGcm3 == null ? "Sin dato" : `${selected.densityGcm3} g/cm³`} note="Comparar gases solo en condiciones equivalentes" />
           <Fact label="Descubrimiento" value={selected.discovered} />
         </dl>
-        <div className={styles.oxidation}><span>Estados de oxidación tabulados</span><div>{selected.oxidationStates.length ? selected.oxidationStates.map((state) => <b key={state}>{state}</b>) : <em>Sin dato</em>}</div></div>
+        <div className={styles.chemicalNumbers}>
+          <section>
+            <span>Valencias habituales para formulación</span>
+            <div>{formulationValences(selected).length ? formulationValences(selected).map((valence) => <b key={valence}>{valence}</b>) : <em>Sin dato verificado</em>}</div>
+            <small>Magnitudes sin signo de los estados tabulados. Indican capacidad de combinación; dependen del tipo de enlace.</small>
+          </section>
+          <section>
+            <span>Estados de oxidación tabulados</span>
+            <div>{selected.oxidationStates.length ? selected.oxidationStates.map((state) => <b key={state}>{state}</b>) : <em>Sin dato</em>}</div>
+            <small>Conservan el signo y representan un reparto formal de electrones en un compuesto.</small>
+          </section>
+        </div>
         <button className={styles.compareButton} type="button" onClick={() => toggleComparison(selected)}>{comparison.some((item) => item.atomicNumber === selected.atomicNumber) ? "Quitar de la comparación" : "Añadir a la comparación"}</button>
       </dialog>
     </main>
