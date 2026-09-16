@@ -2,7 +2,9 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {
   formatTrainingValue,
+  getBestTrainingValue,
   getOfficialTarget,
+  getTrainingProgressState,
   hasPassedOfficial,
   nextTrainingTarget,
   trainingTestMap,
@@ -26,6 +28,7 @@ test("en flexiones y plancha una marca mayor es mejor", () => {
   assert.equal(nextTrainingTarget(trainingTestMap.plancha, 35, "female"), 40);
   assert.equal(hasPassedOfficial(trainingTestMap.flexiones, 9, "male"), true);
   assert.equal(hasPassedOfficial(trainingTestMap.flexiones, 8, "male"), false);
+  assert.equal(getBestTrainingValue(trainingTestMap.flexiones, [6, 9, 8]), 9);
 });
 
 test("en carrera y agilidad una marca menor es mejor", () => {
@@ -34,6 +37,18 @@ test("en carrera y agilidad una marca menor es mejor", () => {
   assert.equal(nextTrainingTarget(trainingTestMap.agilidad, 16, "male"), 15.7);
   assert.equal(hasPassedOfficial(trainingTestMap["carrera-2000"], 714, "male"), true);
   assert.equal(hasPassedOfficial(trainingTestMap.agilidad, 15.5, "male"), false);
+  assert.equal(getBestTrainingValue(trainingTestMap["carrera-2000"], [750, 714, 730]), 714);
+});
+
+test("distingue no alcanza, cerca, superada y consolidada", () => {
+  assert.equal(getTrainingProgressState(trainingTestMap.flexiones, [], "male"), "Sin marca inicial");
+  assert.equal(getTrainingProgressState(trainingTestMap.flexiones, [6], "male"), "No alcanza");
+  assert.equal(getTrainingProgressState(trainingTestMap.flexiones, [8], "male"), "Cerca");
+  assert.equal(getTrainingProgressState(trainingTestMap.flexiones, [9], "male"), "Superada");
+  assert.equal(getTrainingProgressState(trainingTestMap.flexiones, [10, 9, 11], "male"), "Consolidada");
+  assert.equal(getTrainingProgressState(trainingTestMap.agilidad, [15.7], "male"), "Cerca");
+  assert.equal(getTrainingProgressState(trainingTestMap.agilidad, [15.4], "male"), "Superada");
+  assert.equal(getTrainingProgressState(trainingTestMap.agilidad, [15.1, 15.3, 15.4], "male"), "Consolidada");
 });
 
 test("formatea correctamente repeticiones y tiempos", () => {
