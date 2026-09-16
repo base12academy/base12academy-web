@@ -5,7 +5,7 @@ import {
   trainingTestMap,
   type TrainingSex,
   type TrainingTestSlug,
-} from "@/lib/training-config";
+} from "./training-config";
 
 export type TrainingResultSnapshot = {
   result_value: number;
@@ -23,7 +23,7 @@ export type TrainingRecommendation = {
   target: number;
   exercises: TrainingPrescription[];
   sessionsBeforeControl: number;
-  status: "start" | "improving" | "stable" | "passed" | "consolidating";
+  status: "start" | "improving" | "stable" | "passed" | "consolidating" | "consolidated";
 };
 
 function selectExercises(testSlug: TrainingTestSlug, offset = 0) {
@@ -47,23 +47,28 @@ export function buildLocalTrainingRecommendation(input: {
   const previous = results[1]?.result_value ?? null;
   const official = getOfficialTarget(test, sex);
   const target = nextTrainingTarget(test, latest, sex);
-  const latestPassed = latest !== null && (test.direction === "higher_is_better" ? latest >= official : latest <= official);
-  const recentPassed = results.slice(0, 3).filter((result) => test.direction === "higher_is_better" ? result.result_value >= official : result.result_value <= official).length;
+  const isPassed = (value: number) => test.direction === "higher_is_better" ? value >= official : value <= official;
+  const latestPassed = latest !== null && isPassed(latest);
+  const lastThree = results.slice(0, 3);
+  const consecutivePassed = lastThree.findIndex((result) => !isPassed(result.result_value));
+  const passedStreak = consecutivePassed === -1 ? lastThree.length : consecutivePassed;
   const improved = latest !== null && previous !== null
     ? (test.direction === "higher_is_better" ? latest > previous : latest < previous)
     : false;
   const stable = latest !== null && previous !== null && Math.abs(latest - previous) < Math.max(test.step / 3, 0.1);
   const status: TrainingRecommendation["status"] = latest === null
     ? "start"
-    : recentPassed >= 2
-      ? "consolidating"
-      : latestPassed
-        ? "passed"
-        : improved
-          ? "improving"
-          : stable
-            ? "stable"
-            : "start";
+    : passedStreak >= 3
+      ? "consolidated"
+      : passedStreak >= 2
+        ? "consolidating"
+        : latestPassed
+          ? "passed"
+          : improved
+            ? "improving"
+            : stable
+              ? "stable"
+              : "start";
 
   const offset = Math.max(0, results.length + sessionsSinceControl) % test.exercises.length;
   const exercises = selectExercises(testSlug, offset);
@@ -74,8 +79,10 @@ export function buildLocalTrainingRecommendation(input: {
   let message: string;
   if (latest === null) {
     message = `Registra una primera marca para personalizar el plan. Mientras tanto trabajaremos técnica y base específica de ${test.shortName}.`;
-  } else if (recentPassed >= 2) {
-    message = `Ya estás superando la referencia oficial con regularidad. Ahora buscamos consolidarla y ampliar el margen antes de la prueba real.`;
+  } else if (passedStreak >= 3) {
+    message = `La referencia oficial está consolidada en tres controles consecutivos. Mantendremos el trabajo específico para llegar a la prueba real con margen.`;
+  } else if (passedStreak >= 2) {
+    message = `Has superado la referencia oficial en dos controles consecutivos. Falta un control más para considerarla consolidada.`;
   } else if (latestPassed) {
     message = `Has superado la referencia oficial (${officialText}). Antes de darla por consolidada, repetiremos el trabajo específico y buscaremos ${formattedTarget}.`;
   } else if (improved) {
@@ -90,7 +97,7 @@ export function buildLocalTrainingRecommendation(input: {
     message,
     target,
     exercises,
-    sessionsBeforeControl: latestPassed ? 2 : 2,
+    sessionsBeforeControl: 2,
     status,
   };
 }
