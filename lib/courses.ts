@@ -9,6 +9,11 @@ export const courses = {
   "historia-filosofia-estandar": { slug: "historia-filosofia-estandar", courseSlug: "historia-filosofia", planSlug: "estandar", title: "Historia de la Filosofía · Estándar", shortTitle: "Historia de la Filosofía · Estándar", price: 299, priceInCents: 29900, mode: "one_time", active: true, accessType: "lifetime", comingSoon: false },
   "historia-filosofia-premium": { slug: "historia-filosofia-premium", courseSlug: "historia-filosofia", planSlug: "premium", title: "Historia de la Filosofía · Premium", shortTitle: "Historia de la Filosofía · Premium", price: 399, priceInCents: 39900, mode: "one_time", active: true, accessType: "lifetime", comingSoon: false },
   "historia-filosofia-pau": { slug: "historia-filosofia-pau", courseSlug: "historia-filosofia", planSlug: "pau", title: "Historia de la Filosofía · PAU", shortTitle: "Historia de la Filosofía · PAU", price: 199, priceInCents: 19900, mode: "one_time", active: true, accessType: "lifetime", comingSoon: false },
+
+  "matematicas-ii-esencial": { slug: "matematicas-ii-esencial", courseSlug: "matematicas-ii", planSlug: "esencial", title: "Matemáticas II · Esencial", shortTitle: "Matemáticas II · Esencial", price: 249, priceInCents: 24900, mode: "one_time", active: true, accessType: "lifetime", comingSoon: false },
+  "matematicas-ii-estandar": { slug: "matematicas-ii-estandar", courseSlug: "matematicas-ii", planSlug: "estandar", title: "Matemáticas II · Estándar", shortTitle: "Matemáticas II · Estándar", price: 299, priceInCents: 29900, mode: "one_time", active: true, accessType: "lifetime", comingSoon: false },
+  "matematicas-ii-pau": { slug: "matematicas-ii-pau", courseSlug: "matematicas-ii", planSlug: "pau", title: "Matemáticas II · PAU", shortTitle: "Matemáticas II · PAU", price: 199, priceInCents: 19900, mode: "one_time", active: true, accessType: "lifetime", comingSoon: false },
+
   "ofimatica-esencial": {
     slug: "ofimatica-esencial",
     courseSlug: "ofimatica",
