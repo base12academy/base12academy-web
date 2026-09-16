@@ -4,6 +4,8 @@ import { FormEvent, Suspense, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 
+const SPECIAL_CHARACTERS = "!@#$%^&*()_+-=[]{};'\\:\"|<>?,./`~";
+
 type ClaimResponse = {
   ok?: boolean;
   newAccount?: boolean;
@@ -43,6 +45,13 @@ function AltaContent() {
   const [changingPassword, setChangingPassword] = useState(false);
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
+  const [nextStep, setNextStep] = useState("billing");
+
+  function destinationFor(step?: string) {
+    if (step === "classes") return "/dashboard/clases";
+    if (step === "periodic-table") return "/onboarding?product=tabla-periodica";
+    return "/onboarding";
+  }
 
   async function claimOrder(accessToken?: string): Promise<ClaimResponse> {
     const response = await fetch("/api/checkout/claim", {
@@ -110,6 +119,8 @@ function AltaContent() {
 
       const result = await claimOrder();
 
+      setNextStep(result.nextStep || "billing");
+
       const tempPassword = result.temporaryPassword || "";
 
       if (!result.email || !tempPassword) {
@@ -164,9 +175,9 @@ function AltaContent() {
         existingPassword
       );
 
-      await claimOrder(accessToken);
+      const result = await claimOrder(accessToken);
 
-      router.replace("/onboarding");
+      router.replace(destinationFor(result.nextStep));
     } catch (err) {
       setError(
         err instanceof Error
@@ -193,8 +204,14 @@ function AltaContent() {
   async function handleChangePassword(event: FormEvent) {
     event.preventDefault();
 
-    if (newPassword.length < 8) {
-      setError("La nueva contraseña debe tener al menos 8 caracteres.");
+    const validPassword = newPassword.length >= 8
+      && /[A-Z]/.test(newPassword)
+      && /[a-z]/.test(newPassword)
+      && /\d/.test(newPassword)
+      && [...newPassword].some((character) => SPECIAL_CHARACTERS.includes(character));
+
+    if (!validPassword) {
+      setError("La nueva contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial.");
       return;
     }
 
@@ -206,6 +223,27 @@ function AltaContent() {
     try {
       setChangingPassword(true);
       setError("");
+
+      /*
+       * Algunos navegadores tardan en persistir la sesión creada justo
+       * después de reclamar la compra. Antes de cambiar la contraseña,
+       * comprobamos la sesión y, si se ha perdido, la recuperamos con las
+       * credenciales temporales que todavía están en esta pantalla.
+       */
+      const { data: sessionData } = await supabase.auth.getSession();
+
+      if (!sessionData.session) {
+        if (!email.trim() || !temporaryPassword) {
+          throw new Error(
+            "La sesión ha caducado. Entra con la contraseña temporal y vuelve a intentarlo."
+          );
+        }
+
+        await signIn(
+          email.trim().toLowerCase(),
+          temporaryPassword
+        );
+      }
 
       const { error: updateError } = await supabase.auth.updateUser({
         password: newPassword,
@@ -233,7 +271,7 @@ function AltaContent() {
   }
 
   function continueOnboarding() {
-    router.replace("/onboarding");
+    router.replace(destinationFor(nextStep));
   }
 
   return (
@@ -533,7 +571,7 @@ function AltaContent() {
                         onChange={setNewPassword}
                         type="password"
                         autoComplete="new-password"
-                        placeholder="Mínimo 8 caracteres"
+                        placeholder="8 caracteres, mayúscula, minúscula, número y símbolo"
                       />
 
                       <Field

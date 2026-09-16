@@ -19,14 +19,14 @@ def read_csv(path):
 def repair(value):
     value = (value or "").strip()
     replacements = {
-        "Â¿": "¿", "Â¡": "¡", "Â«": "«", "Â»": "»", "Â·": "·",
-        "Ã¡": "á", "Ã©": "é", "Ã­": "í", "Ã³": "ó", "Ãº": "ú",
-        "Ã": "Á", "Ã‰": "É", "Ã": "Í", "Ã“": "Ó", "Ãš": "Ú",
-        "Ã±": "ñ", "Ã‘": "Ñ", "Ã¼": "ü", "Ãœ": "Ü",
+        "¿": "¿", "¡": "¡", "«": "«", "»": "»", "·": "·",
+        "á": "á", "é": "é", "í": "í", "ó": "ó", "ú": "ú",
+        "Á": "Á", "É": "É", "Í": "Í", "Ó": "Ó", "Ú": "Ú",
+        "ñ": "ñ", "Ñ": "Ñ", "ü": "ü", "Ü": "Ü",
     }
     for broken, fixed in replacements.items():
         value = value.replace(broken, fixed)
-    if "Ã" in value or "Â" in value:
+    if "\u00c3" in value or "\u00c2" in value:
         try:
             return value.encode("latin-1").decode("utf-8")
         except UnicodeError:

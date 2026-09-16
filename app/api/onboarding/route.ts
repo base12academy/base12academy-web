@@ -1,5 +1,17 @@
 import { NextResponse } from "next/server";
 import { getSupabase } from "@/lib/supabase/server";
+import {
+  emailInvoice,
+  issueInvoice,
+  notifyPeriodicTablePurchaseWithoutInvoice,
+} from "@/lib/invoices";
+import {
+  parseSessionDuration,
+  parseStudyDays,
+  scheduleFernandoTelegramReminders,
+} from "@/lib/fernando-telegram";
+import { courses } from "@/lib/courses";
+import { parsePeriodicInvoiceChoice } from "@/lib/chemistry/periodic-table-product";
 
 type OnboardingStep =
   | "communications_video"
@@ -10,6 +22,13 @@ type OnboardingStep =
   | "vb01"
   | "vb02"
   | "vb03";
+
+function enrollmentDescription(courseSlug: string, planSlug: string) {
+  const product = Object.values(courses).find(
+    (item) => item.courseSlug === courseSlug && item.planSlug === planSlug
+  );
+  return product?.title || `${courseSlug} · ${planSlug}`;
+}
 
 async function getAuthenticatedUser(req: Request) {
   const token = req.headers
@@ -117,6 +136,10 @@ async function getCurrentEnrollment(
     return null;
   }
 
+  const initialStep = enrollment.course_slug === "tabla-periodica"
+    ? "personal_data"
+    : "communications_video";
+
   const { error: insertProgressError } =
     await supabase
       .from("onboarding_progress")
@@ -124,7 +147,7 @@ async function getCurrentEnrollment(
         {
           enrollment_id: enrollment.id,
           user_id: userId,
-          current_step: "communications_video",
+          current_step: initialStep,
           updated_at: new Date().toISOString(),
         },
         {
@@ -138,7 +161,7 @@ async function getCurrentEnrollment(
 
   return {
     enrollment,
-    currentStep: "communications_video",
+    currentStep: initialStep,
   };
 }
 
@@ -424,8 +447,23 @@ export async function POST(req: Request) {
      * FACTURACIÓN
      */
     if (step === "billing") {
-      const nominativeInvoice =
-        body?.nominativeInvoice !== false;
+      const isPeriodicTable =
+        current.enrollment.course_slug === "tabla-periodica";
+
+      const periodicInvoiceChoice = isPeriodicTable
+        ? parsePeriodicInvoiceChoice(body?.nominativeInvoice)
+        : null;
+
+      if (isPeriodicTable && periodicInvoiceChoice === null) {
+        return NextResponse.json(
+          { error: "Indica si deseas recibir una factura exenta de IVA" },
+          { status: 400 },
+        );
+      }
+
+      const nominativeInvoice = isPeriodicTable
+        ? periodicInvoiceChoice === true
+        : body?.nominativeInvoice === true;
 
       const billingType =
         body?.billingType === "empresa"
@@ -557,12 +595,43 @@ export async function POST(req: Request) {
         throw billingError;
       }
 
+      if (nominativeInvoice) {
+        const invoice = await issueInvoice(
+          current.enrollment.id,
+          user.id,
+          enrollmentDescription(current.enrollment.course_slug, current.enrollment.plan_slug)
+        );
+        await emailInvoice(invoice, { notifyBase12: isPeriodicTable });
+      } else if (isPeriodicTable) {
+        const { data: profile, error: profileError } = await supabase
+          .from("student_profiles")
+          .select("full_name,contact_email")
+          .eq("user_id", user.id)
+          .maybeSingle();
+
+        if (profileError || !profile?.full_name || !profile.contact_email) {
+          throw profileError ?? new Error("Perfil del comprador incompleto");
+        }
+
+        await notifyPeriodicTablePurchaseWithoutInvoice({
+          orderId: current.enrollment.payment_order_id || current.enrollment.id,
+          customerName: profile.full_name,
+          customerEmail: profile.contact_email,
+        });
+      }
+
+      const isClassBono =
+        current.enrollment.course_slug === "clases-online";
+
+      const completeAfterBilling = isClassBono || isPeriodicTable;
+
       const { error: progressError } =
         await supabase
           .from("onboarding_progress")
           .update({
             billing_completed_at: now,
-            current_step: "planning",
+            current_step: completeAfterBilling ? "completed" : "planning",
+            ...(completeAfterBilling ? { completed_at: now } : {}),
             updated_at: now,
           })
           .eq(
@@ -577,7 +646,11 @@ export async function POST(req: Request) {
 
       return NextResponse.json({
         ok: true,
-        nextStep: "planning",
+        nextStep: isClassBono
+          ? "classes"
+          : isPeriodicTable
+            ? "periodic-table"
+            : "planning",
       });
     }
 
@@ -585,25 +658,7 @@ export async function POST(req: Request) {
      * PLANIFICACIÓN DE FERNANDO
      */
     if (step === "planning") {
-      const rawStudyDays =
-        body?.studyDays;
-
-      let studyDays: string[] = [];
-
-      if (Array.isArray(rawStudyDays)) {
-        studyDays = rawStudyDays
-          .map((day) =>
-            String(day).trim()
-          )
-          .filter(Boolean);
-      } else {
-        studyDays = String(
-          rawStudyDays ?? ""
-        )
-          .split(",")
-          .map((day) => day.trim())
-          .filter(Boolean);
-      }
+      const studyDays = parseStudyDays(body?.studyDays);
 
       const studyTime =
         String(
@@ -611,10 +666,9 @@ export async function POST(req: Request) {
         ).trim();
 
       const sessionDurationMinutes =
-        Number(
+        parseSessionDuration(
           body?.sessionDurationMinutes ??
-            body?.sessionDuration ??
-            0
+            body?.sessionDuration
         );
 
       const examDate =
@@ -740,6 +794,27 @@ export async function POST(req: Request) {
           { status: 409 }
         );
       }
+
+      const { data: studyPlan, error: studyPlanError } = await supabase
+        .from("study_plans")
+        .select("study_days,study_time,exam_date")
+        .eq("user_id", user.id)
+        .eq("enrollment_id", current.enrollment.id)
+        .maybeSingle();
+
+      if (studyPlanError || !studyPlan) {
+        throw studyPlanError ?? new Error("No se encontró el plan de Fernando");
+      }
+
+      await scheduleFernandoTelegramReminders({
+        userId: user.id,
+        enrollmentId: current.enrollment.id,
+        courseSlug: current.enrollment.course_slug,
+        planSlug: current.enrollment.plan_slug,
+        studyDays: studyPlan.study_days,
+        studyTime: studyPlan.study_time,
+        examDate: studyPlan.exam_date,
+      });
 
       const { error: progressError } =
         await supabase

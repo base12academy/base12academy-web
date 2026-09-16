@@ -1,0 +1,3 @@
+import { NextResponse } from "next/server";
+import { getSupabase } from "@/lib/supabase/server";
+export async function GET(req:Request){const token=req.headers.get("authorization")?.replace(/^Bearer\s+/i,"");if(!token)return NextResponse.json({error:"Debes iniciar sesión"},{status:401});const s=getSupabase();const {data:{user}}=await s.auth.getUser(token);if(!user)return NextResponse.json({error:"Sesión no válida"},{status:401});const {data,error}=await s.from("base12_invoices").select("id,invoice_number,issued_at,description,total_amount_cents,currency").eq("user_id",user.id).order("issued_at",{ascending:false});if(error)return NextResponse.json({error:"No se pudieron cargar las facturas"},{status:500});return NextResponse.json({invoices:data??[]})}

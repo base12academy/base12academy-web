@@ -2,17 +2,13 @@ import { NextResponse } from "next/server";
 import crypto from "crypto";
 import { courses, type CourseSlug } from "@/lib/courses";
 import { getSupabase } from "@/lib/supabase/server";
-import { createRedsysSignature } from "@/lib/redsys";
+import { createRedsysSignature, getRedsysCredentials } from "@/lib/redsys";
 
-const LEGAL_VERSION = "2026-08-11";
+const LEGAL_VERSION = "2026-09-15";
 const REDSYS_SIGNATURE_VERSION = "HMAC_SHA256_V1";
 
-function base64UrlEncode(value: string) {
-  return Buffer.from(value, "utf8")
-    .toString("base64")
-    .replace(/\+/g, "-")
-    .replace(/\//g, "_")
-    .replace(/=+$/, "");
+function base64Encode(value: string) {
+  return Buffer.from(value, "utf8").toString("base64");
 }
 
 function generateOrder() {
@@ -31,91 +27,21 @@ function hashCheckoutToken(token: string) {
 }
 
 export async function POST(req: Request) {
-  const apiKey = process.env.REDSYS_API_KEY;
-
-  if (!apiKey) {
-    return NextResponse.json(
-      { error: "Falta la variable REDSYS_API_KEY" },
-      { status: 500 }
-    );
-  }
-
-  const separator = apiKey.indexOf("_");
-
-  if (separator <= 0) {
-    return NextResponse.json(
-      { error: "REDSYS_API_KEY no tiene un formato válido" },
-      { status: 500 }
-    );
-  }
-
-  const environment = apiKey
-    .slice(0, separator)
-    .toUpperCase();
-
-  const encodedPayload =
-    apiKey.slice(separator + 1);
-
-  if (
-    environment !== "TEST" &&
-    environment !== "PROD"
-  ) {
-    return NextResponse.json(
-      {
-        error:
-          "Entorno Redsys no válido en REDSYS_API_KEY",
-      },
-      { status: 500 }
-    );
-  }
-
-  const normalizedPayload = encodedPayload
-    .replace(/-/g, "+")
-    .replace(/_/g, "/");
-
-  const paddedPayload =
-    normalizedPayload +
-    "=".repeat(
-      (4 - (normalizedPayload.length % 4)) % 4
-    );
-
-  let decodedPayload: string;
+  let credentials;
 
   try {
-    decodedPayload = Buffer.from(
-      paddedPayload,
-      "base64"
-    ).toString("utf8");
-  } catch {
+    credentials = getRedsysCredentials();
+  } catch (error) {
+    console.error("Configuración de Redsys no válida", error);
     return NextResponse.json(
       {
-        error:
-          "No se ha podido decodificar REDSYS_API_KEY",
+        error: "La pasarela de pago no está configurada correctamente",
       },
       { status: 500 }
     );
   }
 
-  const credentialParts =
-    decodedPayload.split("_");
-
-  const merchantCode = credentialParts[0];
-  const terminal = credentialParts[1];
-  const signingKey = credentialParts[2];
-
-  if (
-    !merchantCode ||
-    !terminal ||
-    !signingKey
-  ) {
-    return NextResponse.json(
-      {
-        error:
-          "REDSYS_API_KEY no contiene comercio, terminal y clave de firma válidos",
-      },
-      { status: 500 }
-    );
-  }
+  const { environment, merchantCode, terminal, signingKey } = credentials;
 
   const body = await req
     .json()
@@ -134,6 +60,31 @@ export async function POST(req: Request) {
     return NextResponse.json(
       { error: "Curso no válido" },
       { status: 400 }
+    );
+  }
+
+
+  const isClassBono =
+    "accessType" in course &&
+    course.accessType === "class_bono";
+
+  const holdId =
+    typeof body?.holdId === "string"
+      ? body.holdId.trim()
+      : "";
+
+  const holdToken =
+    typeof body?.holdToken === "string"
+      ? body.holdToken.trim()
+      : "";
+
+  if (isClassBono && (!holdId || !holdToken)) {
+    return NextResponse.json(
+      {
+        error:
+          "Debes seleccionar una hora disponible antes de iniciar el pago.",
+      },
+      { status: 409 }
     );
   }
 
@@ -215,15 +166,9 @@ export async function POST(req: Request) {
         : null,
   };
 
-  const actualCourseSlug =
-    "courseSlug" in course
-      ? course.courseSlug
-      : course.slug;
+  const actualCourseSlug = course.courseSlug;
 
-  const planSlug =
-    "planSlug" in course
-      ? course.planSlug
-      : "standard";
+  const planSlug = course.planSlug;
 
   const accessMonths =
     "accessMonths" in course
@@ -308,6 +253,58 @@ export async function POST(req: Request) {
   }
 
   /*
+   * En Clases Online, el pedido queda vinculado a la
+   * reserva provisional antes de enviar al alumno a Redsys.
+   */
+  if (isClassBono) {
+    const holdTokenHash = crypto
+      .createHash("sha256")
+      .update(holdToken)
+      .digest("hex");
+
+    const now = new Date().toISOString();
+
+    const {
+      data: linkedHold,
+      error: holdLinkError,
+    } = await supabase
+      .from("class_booking_holds")
+      .update({
+        checkout_order_id: checkoutOrder.id,
+        updated_at: now,
+      })
+      .eq("id", holdId)
+      .eq("hold_token_hash", holdTokenHash)
+      .eq("status", "held")
+      .gt("expires_at", now)
+      .select("id")
+      .maybeSingle();
+
+    if (holdLinkError || !linkedHold) {
+      console.error(
+        "No se pudo vincular la reserva provisional",
+        holdLinkError
+      );
+
+      await supabase
+        .from("checkout_orders")
+        .update({
+          status: "cancelled",
+          updated_at: new Date().toISOString(),
+        })
+        .eq("id", checkoutOrder.id);
+
+      return NextResponse.json(
+        {
+          error:
+            "La reserva provisional ha caducado o ya no est? disponible. Selecciona otra hora.",
+        },
+        { status: 409 }
+      );
+    }
+  }
+
+  /*
    * No hay datos personales ni userId.
    * Redsys recibe únicamente la referencia
    * interna necesaria para identificar
@@ -383,16 +380,37 @@ export async function POST(req: Request) {
   };
 
   const dsMerchantParameters =
-    base64UrlEncode(
+    base64Encode(
       JSON.stringify(params)
     );
 
-  const signature =
-    createRedsysSignature(
+  let signature: string;
+
+  try {
+    signature = createRedsysSignature(
       dsMerchantParameters,
       order,
       signingKey
     );
+  } catch (error) {
+    console.error("No se pudo firmar la operacion de Redsys", error);
+
+    await supabase
+      .from("checkout_orders")
+      .update({
+        status: "cancelled",
+        updated_at: new Date().toISOString(),
+      })
+      .eq("id", checkoutOrder.id);
+
+    return NextResponse.json(
+      {
+        error:
+          "La pasarela de pago no esta configurada correctamente. Intentalo de nuevo mas tarde.",
+      },
+      { status: 500 }
+    );
+  }
 
   const isLive =
     environment === "PROD";

@@ -55,12 +55,34 @@ export default function PagoOkPage() {
 
         if (data.linked) {
           setCheckingPayment(false);
-          router.replace("/onboarding");
+          router.replace(
+            data.courseSlug === "tabla-periodica"
+              ? "/onboarding?product=tabla-periodica"
+              : "/onboarding"
+          );
           return;
         }
 
         if (data.paid) {
           setCheckingPayment(false);
+
+          /*
+           * Clases Online no utiliza el v?deo general
+           * de bienvenida de los cursos.
+           */
+          if (
+            data.courseSlug === "clases-online" ||
+            data.courseSlug === "tabla-periodica"
+          ) {
+            router.replace(
+              `/onboarding/alta?checkout=${encodeURIComponent(
+                token
+              )}${data.courseSlug === "clases-online"
+                ? `&classes=1&plan=${encodeURIComponent(data.planSlug || "")}`
+                : ""}`
+            );
+            return;
+          }
 
           if (data.communicationsVideoCompleted) {
             router.replace(

@@ -1,0 +1,1571 @@
+{
+  "version": "TROP-PEDAGOGY-MANIFEST-v1-2026-08-29",
+  "sources": [
+    "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER.xlsx",
+    "00_AUDITORIA_PEDAGOGICA_21_MICROTEMARIOS.docx",
+    "INVENTARIO_25_LAMINAS_MICROTEMARIOS_BASE12.docx"
+  ],
+  "summary": {
+    "microtemarios": 21,
+    "laminas": 25,
+    "error_patterns": 63,
+    "feedback_rules": 9
+  },
+  "microtemarios": [
+    {
+      "micro_id": "MEC-01",
+      "motor_code": "ME01",
+      "factor_name": "Mecánico",
+      "game_name": "Cadena de engranajes",
+      "success_feedback": "Correcto. Has separado el tipo de transmisión y el sentido antes de analizar la velocidad.",
+      "correct_sequence": "IDENTIFICA TRANSMISIÓN → CUENTA/TRACE GIRO → COMPRUEBA SENTIDO → ANALIZA VELOCIDAD SI SE PIDE",
+      "main_tip": "Cadena simple de engranajes exteriores: PAR de ruedas = cambia; IMPAR = conserva. Correa y mismo eje se tratan aparte.",
+      "action_after_success": "Confirmar brevemente y mostrar la secuencia correcta.",
+      "action_after_error": "Diagnosticar el error concreto, mostrar la secuencia correcta y enlazar la lámina si se repite.",
+      "lamina_codes": [
+        "LAM-001",
+        "LAM-002"
+      ],
+      "audit_status": "AUDITADO_CORREGIDO",
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "MEC-02",
+      "motor_code": "ME03",
+      "factor_name": "Mecánico",
+      "game_name": "Equilibra la palanca",
+      "success_feedback": "Correcto. Has comparado fuerza y distancia al fulcro, no solo los pesos.",
+      "correct_sequence": "LOCALIZA FULCRO → MIDE/COMPARA BRAZOS → FUERZA × BRAZO → DECIDE EQUILIBRIO O LADO QUE BAJA",
+      "main_tip": "Brazo doble necesita la mitad de fuerza para el mismo momento; fuerza aplicada en el fulcro no genera momento.",
+      "action_after_success": "Confirmar la comparación de momentos.",
+      "action_after_error": "Indicar si falló por fuerza, brazo o fulcro; mostrar la comparación correcta.",
+      "lamina_codes": [
+        "LAM-003"
+      ],
+      "audit_status": "AUDITADO_CORREGIDO",
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "MEC-03",
+      "motor_code": "ME05",
+      "factor_name": "Mecánico",
+      "game_name": "¿Qué ocurrirá?",
+      "success_feedback": "Correcto. Has identificado la relación física y seguido la cadena causal hasta el resultado.",
+      "correct_sequence": "CLASIFICA MECANISMO → LOCALIZA ENTRADA → SIGUE TRANSMISIÓN → APLICA LEY → PREDICE SALIDA",
+      "main_tip": "En poleas cuenta solo los tramos que sostienen el bloque móvil; una polea fija sola cambia dirección.",
+      "action_after_success": "Confirmar la ley activada y el efecto final.",
+      "action_after_error": "Señalar la pieza o tramo mal interpretado y reconstruir la cadena causal.",
+      "lamina_codes": [
+        "LAM-004",
+        "LAM-005"
+      ],
+      "audit_status": "AUDITADO_CORREGIDO",
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "MEM-01",
+      "motor_code": "MEM01",
+      "factor_name": "Memoria",
+      "game_name": "Kim Base12",
+      "success_feedback": "Correcto. Has codificado la escena con un recorrido estable y agrupaciones útiles.",
+      "correct_sequence": "RECORRIDO FIJO → AGRUPA → ANCLA RARA → ETIQUETAS CORTAS → RECUPERA",
+      "main_tip": "Menos es más: guarda estructura y rasgos discriminantes, no una descripción completa.",
+      "action_after_success": "Confirmar la estrategia de codificación.",
+      "action_after_error": "Indicar si falló el recorrido, la agrupación o la recuperación; recomendar repetir con menos información verbal.",
+      "lamina_codes": [
+        "LAM-006"
+      ],
+      "audit_status": "AUDITADO_CORREGIDO",
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "MEM-02",
+      "motor_code": "MEM03",
+      "factor_name": "Memoria",
+      "game_name": "¿Qué cambió?",
+      "success_feedback": "Correcto. Has comparado las dos escenas posición a posición.",
+      "correct_sequence": "MISMO RECORRIDO EN A Y B → COMPARA PAREJAS → CONFIRMA ESTABLE → CLASIFICA EL CAMBIO",
+      "main_tip": "No reconstruyas dos escenas completas: compara A1↔B1, A2↔B2…",
+      "action_after_success": "Confirmar el tipo de cambio detectado.",
+      "action_after_error": "Explicar si el cambio era aparición, posición o atributo y dónde se perdió la comparación.",
+      "lamina_codes": [
+        "LAM-007"
+      ],
+      "audit_status": "AUDITADO_CORREGIDO",
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "MEM-03",
+      "motor_code": "MEM04",
+      "factor_name": "Memoria",
+      "game_name": "Mapa de memoria",
+      "success_feedback": "Correcto. Has usado origen, dirección e hitos en vez de reconstruir toda la ruta.",
+      "correct_sequence": "FIJA ORIGEN → CODIFICA DIRECCIÓN → MARCA HITOS → USA RELACIONES LOCALES → RECUPERA",
+      "main_tip": "Reloj mental para dirección global; vecino más cercano para reconstrucción local.",
+      "action_after_success": "Confirmar la relación espacial recuperada.",
+      "action_after_error": "Señalar si falló orientación, hito o relación local y reconstruir desde el punto más cercano.",
+      "lamina_codes": [
+        "LAM-008"
+      ],
+      "audit_status": "AUDITADO_CORREGIDO",
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "NUM-01",
+      "motor_code": "NU01",
+      "factor_name": "Numérico",
+      "game_name": "Número objetivo",
+      "success_feedback": "Correcto. Has trabajado desde el objetivo hacia atrás con una operación corta y comprobable.",
+      "correct_sequence": "OBJETIVO → NÚMERO ANTERIOR → OPERACIÓN INVERSA → NÚMERO CÓMODO/FACTOR → VERIFICA",
+      "main_tip": "25% = 1/4; 50% = mitad; usa factores, dobles, mitades y filtros antes de hacer cuentas largas.",
+      "action_after_success": "Confirmar la ruta corta elegida.",
+      "action_after_error": "Mostrar el primer paso útil hacia atrás y por qué la operación elegida no acercaba al objetivo.",
+      "lamina_codes": [
+        "LAM-009"
+      ],
+      "audit_status": "AUDITADO_CORREGIDO",
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "NUM-02",
+      "motor_code": "NU02",
+      "factor_name": "Numérico",
+      "game_name": "Estimación rápida",
+      "success_feedback": "Correcto. Has ajustado la precisión al espacio entre las opciones.",
+      "correct_sequence": "DECIDE PRECISIÓN → REDONDEA/COMPATIBILIZA → ACOTA → COMPARA OPCIONES → AFINA SOLO SI HACE FALTA",
+      "main_tip": "Opciones separadas: estima. Opciones cercanas: afina. Compensa redondeos cuando sea posible.",
+      "action_after_success": "Confirmar que la aproximación era suficiente.",
+      "action_after_error": "Indicar si hubo exceso de cálculo, redondeo sesgado o falta de ajuste final.",
+      "lamina_codes": [
+        "LAM-010"
+      ],
+      "audit_status": "AUDITADO_CORREGIDO",
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "NUM-03",
+      "motor_code": "NU03",
+      "factor_name": "Numérico",
+      "game_name": "Caza la serie",
+      "success_feedback": "Correcto. La regla elegida explica la serie completa, no solo un salto.",
+      "correct_sequence": "DIFERENCIAS → RAZONES → ALTERNANCIAS → COMBINACIONES → ESPECIALES → VERIFICA TODA LA SERIE",
+      "main_tip": "Empieza por la explicación más barata; si una regla falla, abandónala.",
+      "action_after_success": "Confirmar la familia de patrón y el siguiente término.",
+      "action_after_error": "Mostrar el salto que invalida la hipótesis elegida y la regla que sí explica todos los términos.",
+      "lamina_codes": [
+        "LAM-011",
+        "LAM-012"
+      ],
+      "audit_status": "AUDITADO_CORREGIDO",
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "PER-01",
+      "motor_code": "PE01",
+      "factor_name": "Perceptivo",
+      "game_name": "Radar",
+      "success_feedback": "Correcto. Has mantenido un barrido estable sin saltar ni duplicar posiciones.",
+      "correct_sequence": "DEFINE RASGO → FIJA TRAYECTORIA → BLOQUES PEQUEÑOS → BARRIDO COMPLETO → RESPONDE",
+      "main_tip": "Misma ruta y mismo criterio hasta terminar; velocidad sin orden produce huecos.",
+      "action_after_success": "Confirmar que el barrido fue completo.",
+      "action_after_error": "Señalar si hubo salto, retroceso o cambio de criterio y repetir con una trayectoria fija.",
+      "lamina_codes": [
+        "LAM-013"
+      ],
+      "audit_status": "AUDITADO_CORREGIDO",
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "PER-02",
+      "motor_code": "PE02",
+      "factor_name": "Perceptivo",
+      "game_name": "El infiltrado",
+      "success_feedback": "Correcto. Has encontrado la regla de la mayoría y confirmado el candidato con un segundo rasgo.",
+      "correct_sequence": "MAYORÍA → ATRIBUTO CLAVE → CANDIDATO → SEGUNDO CHEQUEO → RESPONDE",
+      "main_tip": "No elijas lo más llamativo; la mayoría orienta y el atributo decide.",
+      "action_after_success": "Confirmar la regla común y la excepción.",
+      "action_after_error": "Explicar qué atributo compartía la mayoría y por qué la opción elegida no era la excepción real.",
+      "lamina_codes": [
+        "LAM-014"
+      ],
+      "audit_status": "AUDITADO_CORREGIDO",
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "PER-03",
+      "motor_code": "PE03",
+      "factor_name": "Perceptivo",
+      "game_name": "Comparación flash",
+      "success_feedback": "Correcto. Has alineado las cadenas y detenido la búsqueda en la primera diferencia segura.",
+      "correct_sequence": "LONGITUD → BLOQUES → ÍNDICES ALINEADOS → COMPARA → PRIMERA DIFERENCIA → DETENTE",
+      "main_tip": "No desplaces mentalmente una cadena; compara siempre posiciones homólogas.",
+      "action_after_success": "Confirmar posición/bloque de la primera diferencia.",
+      "action_after_error": "Mostrar dónde se produjo el desplazamiento o desalineación y rehacer solo desde el último índice seguro.",
+      "lamina_codes": [
+        "LAM-015"
+      ],
+      "audit_status": "AUDITADO_CORREGIDO",
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "VER-01",
+      "motor_code": "VB01",
+      "factor_name": "Verbal",
+      "game_name": "Intruso semántico",
+      "success_feedback": "Correcto. Has construido una categoría precisa antes de buscar el intruso.",
+      "correct_sequence": "MAYORÍA → CATEGORÍA → AJUSTA NIVEL SEMÁNTICO → REVISA POLISEMIA → LOCALIZA INTRUSO",
+      "main_tip": "No busques la palabra más rara; busca la que queda fuera de la categoría que une a la mayoría.",
+      "action_after_success": "Confirmar la categoría y el intruso.",
+      "action_after_error": "Explicar si la categoría elegida era demasiado amplia/estrecha o si se tomó un sentido semántico inadecuado.",
+      "lamina_codes": [
+        "LAM-016"
+      ],
+      "audit_status": "AUDITADO_CORREGIDO",
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "VER-02",
+      "motor_code": "VB02",
+      "factor_name": "Verbal",
+      "game_name": "Parejas relámpago",
+      "success_feedback": "Correcto. Has identificado la relación semántica antes de mirar las opciones.",
+      "correct_sequence": "IDENTIFICA SIN/ANT → PRODUCE RESPUESTA PROPIA → FILTRA CAMPO → INTENSIDAD → CONTEXTO",
+      "main_tip": "Un prefijo no garantiza antonimia; palabras relacionadas no son necesariamente sinónimas.",
+      "action_after_success": "Confirmar relación y matiz semántico.",
+      "action_after_error": "Indicar si falló campo, intensidad, contexto o tipo de relación y mostrar la pareja más precisa.",
+      "lamina_codes": [
+        "LAM-017"
+      ],
+      "audit_status": "AUDITADO_CORREGIDO",
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "VER-03",
+      "motor_code": "VB03",
+      "factor_name": "Verbal",
+      "game_name": "Analogía táctica",
+      "success_feedback": "Correcto. Has conservado la misma frase puente y la misma dirección.",
+      "correct_sequence": "VERBALIZA A→B → NOMBRA RELACIÓN → APLICA A C → PRUEBA SUSTITUCIÓN → ELIGE D",
+      "main_tip": "Si tienes que cambiar la frase para que una opción encaje, la analogía no se conserva.",
+      "action_after_success": "Confirmar la frase puente.",
+      "action_after_error": "Mostrar qué relación/dirección se rompió y reconstruir la frase que debe repetirse.",
+      "lamina_codes": [
+        "LAM-018"
+      ],
+      "audit_status": "AUDITADO_CORREGIDO",
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "ABS-01",
+      "motor_code": "AB01",
+      "factor_name": "Abstracto",
+      "game_name": "Regla oculta",
+      "success_feedback": "Correcto. Has separado atributos y encontrado qué cambia y qué permanece.",
+      "correct_sequence": "ESCANEA ATRIBUTOS → SEPARA CAMBIOS/ESTABLES → PROPÓN REGLA → COMPRUEBA TODAS LAS TRANSICIONES",
+      "main_tip": "Cantidad, posición, orientación, tamaño, relleno y forma se revisan por separado.",
+      "action_after_success": "Confirmar los atributos relevantes.",
+      "action_after_error": "Indicar qué atributo se ignoró o mezcló y mostrar la regla mínima que explica toda la secuencia.",
+      "lamina_codes": [
+        "LAM-019"
+      ],
+      "audit_status": "AUDITADO_CORREGIDO",
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "ABS-02",
+      "motor_code": "AB04",
+      "factor_name": "Abstracto",
+      "game_name": "Matriz incompleta",
+      "success_feedback": "Correcto. La opción satisface simultáneamente la regla de fila y la de columna.",
+      "correct_sequence": "CUENTA → ANALIZA FILA → ANALIZA COLUMNA → INTERSECTA REQUISITOS → VERIFICA",
+      "main_tip": "No mezcles media fila con media columna; usa dos filtros separados.",
+      "action_after_success": "Confirmar los dos filtros.",
+      "action_after_error": "Mostrar cuál de las dos direcciones incumplía la opción y reconstruir el requisito faltante.",
+      "lamina_codes": [
+        "LAM-020"
+      ],
+      "audit_status": "AUDITADO_CORREGIDO",
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "ABS-03",
+      "motor_code": "AB05",
+      "factor_name": "Abstracto",
+      "game_name": "Cazador de hipótesis",
+      "success_feedback": "Correcto. Has intentado falsar la hipótesis antes de aceptarla.",
+      "correct_sequence": "HIPÓTESIS SIMPLE → PRUEBA TRANSICIÓN DIFÍCIL → CRUZA FILA/COLUMNA → DESCARTA SI FALLA → PREDICE",
+      "main_tip": "Una coincidencia local no basta; la regla debe sobrevivir en todo el tablero.",
+      "action_after_success": "Confirmar dónde se verificó la hipótesis.",
+      "action_after_error": "Señalar el punto que destruye la hipótesis elegida y proponer una alternativa más fuerte.",
+      "lamina_codes": [
+        "LAM-021"
+      ],
+      "audit_status": "AUDITADO_CORREGIDO",
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "ESP-01",
+      "motor_code": "ES01",
+      "factor_name": "Espacial",
+      "game_name": "Giro mental",
+      "success_feedback": "Correcto. Has seguido una referencia distintiva durante el giro.",
+      "correct_sequence": "ELIGE ANCLA MÓVIL → IDENTIFICA 1/2/3 CUARTOS → GIRA → FIJA ESTADO → COMPARA RELACIONES",
+      "main_tip": "El ancla se mueve con la figura; reduce giros a cuartos de vuelta.",
+      "action_after_success": "Confirmar posición final del ancla.",
+      "action_after_error": "Indicar si se fijó el ancla a la pantalla, se invirtió como espejo o se perdió el número de cuartos.",
+      "lamina_codes": [
+        "LAM-022",
+        "LAM-025"
+      ],
+      "audit_status": "AUDITADO_CORREGIDO",
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "ESP-02",
+      "motor_code": "ES02",
+      "factor_name": "Espacial",
+      "game_name": "Espejo o giro",
+      "success_feedback": "Correcto. Has comprobado la lateralidad interna del objeto.",
+      "correct_sequence": "BUSCA PARTE ASIMÉTRICA → FIJA RELACIÓN IZQ/DER → COMPARA → GIRO CONSERVA MANO / ESPEJO LA INVIERTE",
+      "main_tip": "Si cambia la mano del objeto, es espejo; un giro conserva las relaciones internas.",
+      "action_after_success": "Confirmar la relación interna usada.",
+      "action_after_error": "Explicar qué relación izquierda-derecha se invirtió o se conservó y descartar la transformación incorrecta.",
+      "lamina_codes": [
+        "LAM-023",
+        "LAM-025"
+      ],
+      "audit_status": "AUDITADO_CORREGIDO",
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "ESP-03",
+      "motor_code": "ES03",
+      "factor_name": "Espacial",
+      "game_name": "Cierra el cubo",
+      "success_feedback": "Correcto. Has usado relaciones invariantes antes de intentar plegar todo el cubo.",
+      "correct_sequence": "LOCALIZA CARA CENTRAL → VECINAS → OPUESTAS → ORIENTACIÓN DE ARISTAS → DESCARTA CONTRADICCIONES → PLIEGA SI HACE FALTA",
+      "main_tip": "Caras opuestas nunca comparten arista; elimina imposibles antes de visualizar el cubo completo.",
+      "action_after_success": "Confirmar pareja opuesta/adyacente usada.",
+      "action_after_error": "Mostrar la contradicción: cara opuesta colocada como vecina, orientación de arista incorrecta o pareja opuesta mal deducida.",
+      "lamina_codes": [
+        "LAM-024"
+      ],
+      "audit_status": "AUDITADO_CORREGIDO",
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    }
+  ],
+  "laminas": [
+    {
+      "lamina_id": "LAM-001",
+      "factor_name": "Mecánico",
+      "micro_ids": [
+        "MEC-01"
+      ],
+      "title": "Paridad y tipo de transmisión",
+      "priority": "A",
+      "status": "CONSERVADA_AUDITADA",
+      "format": "16:9 · 1920×1080 recomendado",
+      "source_version": "INVENTARIO_25_LAMINAS_MICROTEMARIOS_BASE12-production"
+    },
+    {
+      "lamina_id": "LAM-002",
+      "factor_name": "Mecánico",
+      "micro_ids": [
+        "MEC-01"
+      ],
+      "title": "Sentido ≠ velocidad",
+      "priority": "A",
+      "status": "CONSERVADA_AUDITADA",
+      "format": "16:9 · 1920×1080 recomendado",
+      "source_version": "INVENTARIO_25_LAMINAS_MICROTEMARIOS_BASE12-production"
+    },
+    {
+      "lamina_id": "LAM-003",
+      "factor_name": "Mecánico",
+      "micro_ids": [
+        "MEC-02"
+      ],
+      "title": "Momento de palanca en una mirada",
+      "priority": "A",
+      "status": "CONSERVADA_AUDITADA",
+      "format": "16:9 · 1920×1080 recomendado",
+      "source_version": "INVENTARIO_25_LAMINAS_MICROTEMARIOS_BASE12-production"
+    },
+    {
+      "lamina_id": "LAM-004",
+      "factor_name": "Mecánico",
+      "micro_ids": [
+        "MEC-03"
+      ],
+      "title": "Poleas: tramos que sostienen y precio en recorrido",
+      "priority": "A",
+      "status": "CONSERVADA_AUDITADA",
+      "format": "16:9 · 1920×1080 recomendado",
+      "source_version": "INVENTARIO_25_LAMINAS_MICROTEMARIOS_BASE12-production"
+    },
+    {
+      "lamina_id": "LAM-005",
+      "factor_name": "Mecánico",
+      "micro_ids": [
+        "MEC-03"
+      ],
+      "title": "Mapa causal mecánico",
+      "priority": "B",
+      "status": "CONSERVADA_AUDITADA",
+      "format": "16:9 · 1920×1080 recomendado",
+      "source_version": "INVENTARIO_25_LAMINAS_MICROTEMARIOS_BASE12-production"
+    },
+    {
+      "lamina_id": "LAM-006",
+      "factor_name": "Memoria",
+      "micro_ids": [
+        "MEM-01"
+      ],
+      "title": "Codificación eficiente",
+      "priority": "B",
+      "status": "CONSERVADA_AUDITADA",
+      "format": "16:9 · 1920×1080 recomendado",
+      "source_version": "INVENTARIO_25_LAMINAS_MICROTEMARIOS_BASE12-production"
+    },
+    {
+      "lamina_id": "LAM-007",
+      "factor_name": "Memoria",
+      "micro_ids": [
+        "MEM-02"
+      ],
+      "title": "Comparar sin reconstruir dos escenas",
+      "priority": "B",
+      "status": "CONSERVADA_AUDITADA",
+      "format": "16:9 · 1920×1080 recomendado",
+      "source_version": "INVENTARIO_25_LAMINAS_MICROTEMARIOS_BASE12-production"
+    },
+    {
+      "lamina_id": "LAM-008",
+      "factor_name": "Memoria",
+      "micro_ids": [
+        "MEM-03"
+      ],
+      "title": "Reloj mental y relaciones locales",
+      "priority": "B",
+      "status": "CONSERVADA_AUDITADA",
+      "format": "16:9 · 1920×1080 recomendado",
+      "source_version": "INVENTARIO_25_LAMINAS_MICROTEMARIOS_BASE12-production"
+    },
+    {
+      "lamina_id": "LAM-009",
+      "factor_name": "Numérico",
+      "micro_ids": [
+        "NUM-01"
+      ],
+      "title": "Caja de herramientas para llegar al objetivo",
+      "priority": "A",
+      "status": "CONSERVADA_AUDITADA",
+      "format": "16:9 · 1920×1080 recomendado",
+      "source_version": "INVENTARIO_25_LAMINAS_MICROTEMARIOS_BASE12-production"
+    },
+    {
+      "lamina_id": "LAM-010",
+      "factor_name": "Numérico",
+      "micro_ids": [
+        "NUM-02"
+      ],
+      "title": "Estimación en cinco movimientos",
+      "priority": "A",
+      "status": "CONSERVADA_AUDITADA",
+      "format": "16:9 · 1920×1080 recomendado",
+      "source_version": "INVENTARIO_25_LAMINAS_MICROTEMARIOS_BASE12-production"
+    },
+    {
+      "lamina_id": "LAM-011",
+      "factor_name": "Numérico",
+      "micro_ids": [
+        "NUM-03"
+      ],
+      "title": "Árbol de búsqueda de series",
+      "priority": "A",
+      "status": "CONSERVADA_AUDITADA",
+      "format": "16:9 · 1920×1080 recomendado",
+      "source_version": "INVENTARIO_25_LAMINAS_MICROTEMARIOS_BASE12-production"
+    },
+    {
+      "lamina_id": "LAM-012",
+      "factor_name": "Numérico",
+      "micro_ids": [
+        "NUM-03"
+      ],
+      "title": "Verifica antes de responder",
+      "priority": "A",
+      "status": "CONSERVADA_AUDITADA",
+      "format": "16:9 · 1920×1080 recomendado",
+      "source_version": "INVENTARIO_25_LAMINAS_MICROTEMARIOS_BASE12-production"
+    },
+    {
+      "lamina_id": "LAM-013",
+      "factor_name": "Perceptivo",
+      "micro_ids": [
+        "PER-01"
+      ],
+      "title": "Barrido que no pierde posición",
+      "priority": "B",
+      "status": "CONSERVADA_AUDITADA",
+      "format": "16:9 · 1920×1080 recomendado",
+      "source_version": "INVENTARIO_25_LAMINAS_MICROTEMARIOS_BASE12-production"
+    },
+    {
+      "lamina_id": "LAM-014",
+      "factor_name": "Perceptivo",
+      "micro_ids": [
+        "PER-02"
+      ],
+      "title": "Mayoría → atributo → segundo chequeo",
+      "priority": "B",
+      "status": "CONSERVADA_AUDITADA",
+      "format": "16:9 · 1920×1080 recomendado",
+      "source_version": "INVENTARIO_25_LAMINAS_MICROTEMARIOS_BASE12-production"
+    },
+    {
+      "lamina_id": "LAM-015",
+      "factor_name": "Perceptivo",
+      "micro_ids": [
+        "PER-03"
+      ],
+      "title": "Longitud, bloques e índice bloqueado",
+      "priority": "B",
+      "status": "CONSERVADA_AUDITADA",
+      "format": "16:9 · 1920×1080 recomendado",
+      "source_version": "INVENTARIO_25_LAMINAS_MICROTEMARIOS_BASE12-production"
+    },
+    {
+      "lamina_id": "LAM-016",
+      "factor_name": "Verbal",
+      "micro_ids": [
+        "VER-01"
+      ],
+      "title": "Construye la categoría antes del intruso",
+      "priority": "C",
+      "status": "CONSERVADA_AUDITADA",
+      "format": "16:9 · 1920×1080 recomendado",
+      "source_version": "INVENTARIO_25_LAMINAS_MICROTEMARIOS_BASE12-production"
+    },
+    {
+      "lamina_id": "LAM-017",
+      "factor_name": "Verbal",
+      "micro_ids": [
+        "VER-02"
+      ],
+      "title": "SIN / ANT y eje semántico",
+      "priority": "C",
+      "status": "CONSERVADA_AUDITADA",
+      "format": "16:9 · 1920×1080 recomendado",
+      "source_version": "INVENTARIO_25_LAMINAS_MICROTEMARIOS_BASE12-production"
+    },
+    {
+      "lamina_id": "LAM-018",
+      "factor_name": "Verbal",
+      "micro_ids": [
+        "VER-03"
+      ],
+      "title": "Frase puente y dirección",
+      "priority": "C",
+      "status": "CONSERVADA_AUDITADA",
+      "format": "16:9 · 1920×1080 recomendado",
+      "source_version": "INVENTARIO_25_LAMINAS_MICROTEMARIOS_BASE12-production"
+    },
+    {
+      "lamina_id": "LAM-019",
+      "factor_name": "Abstracto",
+      "micro_ids": [
+        "ABS-01"
+      ],
+      "title": "Escáner de atributos",
+      "priority": "A",
+      "status": "CONSERVADA_AUDITADA",
+      "format": "16:9 · 1920×1080 recomendado",
+      "source_version": "INVENTARIO_25_LAMINAS_MICROTEMARIOS_BASE12-production"
+    },
+    {
+      "lamina_id": "LAM-020",
+      "factor_name": "Abstracto",
+      "micro_ids": [
+        "ABS-02"
+      ],
+      "title": "Dos direcciones, dos filtros",
+      "priority": "A",
+      "status": "CONSERVADA_AUDITADA",
+      "format": "16:9 · 1920×1080 recomendado",
+      "source_version": "INVENTARIO_25_LAMINAS_MICROTEMARIOS_BASE12-production"
+    },
+    {
+      "lamina_id": "LAM-021",
+      "factor_name": "Abstracto",
+      "micro_ids": [
+        "ABS-03"
+      ],
+      "title": "Hipótesis que intenta sobrevivir",
+      "priority": "A",
+      "status": "CONSERVADA_AUDITADA",
+      "format": "16:9 · 1920×1080 recomendado",
+      "source_version": "INVENTARIO_25_LAMINAS_MICROTEMARIOS_BASE12-production"
+    },
+    {
+      "lamina_id": "LAM-022",
+      "factor_name": "Espacial",
+      "micro_ids": [
+        "ESP-01"
+      ],
+      "title": "Ancla y giros por cuartos",
+      "priority": "A",
+      "status": "CONSERVADA_AUDITADA",
+      "format": "16:9 · 1920×1080 recomendado",
+      "source_version": "INVENTARIO_25_LAMINAS_MICROTEMARIOS_BASE12-production"
+    },
+    {
+      "lamina_id": "LAM-023",
+      "factor_name": "Espacial",
+      "micro_ids": [
+        "ESP-02"
+      ],
+      "title": "La «mano» del objeto",
+      "priority": "A",
+      "status": "CONSERVADA_AUDITADA",
+      "format": "16:9 · 1920×1080 recomendado",
+      "source_version": "INVENTARIO_25_LAMINAS_MICROTEMARIOS_BASE12-production"
+    },
+    {
+      "lamina_id": "LAM-024",
+      "factor_name": "Espacial",
+      "micro_ids": [
+        "ESP-03"
+      ],
+      "title": "Relaciones invariantes del cubo",
+      "priority": "A",
+      "status": "CONSERVADA_AUDITADA",
+      "format": "16:9 · 1920×1080 recomendado",
+      "source_version": "INVENTARIO_25_LAMINAS_MICROTEMARIOS_BASE12-production"
+    },
+    {
+      "lamina_id": "LAM-025",
+      "factor_name": "Espacial",
+      "micro_ids": [
+        "ESP-01",
+        "ESP-02",
+        "ESP-03"
+      ],
+      "title": "Transformaciones encadenadas sin pistas",
+      "priority": "B",
+      "status": "CONSERVADA_AUDITADA",
+      "format": "16:9 · 1920×1080 recomendado",
+      "source_version": "INVENTARIO_25_LAMINAS_MICROTEMARIOS_BASE12-production"
+    }
+  ],
+  "error_patterns": [
+    {
+      "micro_id": "MEC-01",
+      "motor_code": "ME01",
+      "error_code": "E1",
+      "error_type": "Paridad mal aplicada",
+      "detection_rule": "Cuenta correa o eje como rueda, o usa paridad simple en un tren mixto.",
+      "failure_feedback": "Incorrecto. Has aplicado la paridad a elementos que no son engranajes exteriores de una cadena simple. La correa y el mismo eje se tratan aparte.",
+      "correction_sequence": "IDENTIFICA TRANSMISIÓN → aplica par/impar solo a la cadena simple → integra correas/ejes por su regla.",
+      "resource_codes": [
+        "LAM-001",
+        "LAM-002"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "MEC-01",
+      "motor_code": "ME01",
+      "error_code": "E2",
+      "error_type": "Sentido y velocidad mezclados",
+      "detection_rule": "Elige una opción por el tamaño de la rueda aunque el sentido sea incorrecto.",
+      "failure_feedback": "Incorrecto. El tamaño determina velocidad, no la inversión del sentido. Primero resuelve el giro; después la velocidad.",
+      "correction_sequence": "SENTIDO PRIMERO → VELOCIDAD DESPUÉS.",
+      "resource_codes": [
+        "LAM-001",
+        "LAM-002"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "MEC-01",
+      "motor_code": "ME01",
+      "error_code": "E3",
+      "error_type": "Inversión omitida",
+      "detection_rule": "Pierde un contacto o no invierte entre dos engranajes exteriores.",
+      "failure_feedback": "Incorrecto. Entre dos engranajes exteriores en contacto el sentido se invierte.",
+      "correction_sequence": "RECORRE CONTACTO A CONTACTO y comprueba la última rueda.",
+      "resource_codes": [
+        "LAM-001",
+        "LAM-002"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "MEC-02",
+      "motor_code": "ME03",
+      "error_code": "E1",
+      "error_type": "Solo mira la fuerza",
+      "detection_rule": "Escoge el peso mayor sin considerar la distancia.",
+      "failure_feedback": "Incorrecto. Una fuerza menor puede ganar si actúa a mayor distancia del fulcro.",
+      "correction_sequence": "COMPARA F × BRAZO en ambos lados.",
+      "resource_codes": [
+        "LAM-003"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "MEC-02",
+      "motor_code": "ME03",
+      "error_code": "E2",
+      "error_type": "Brazo medido desde punto incorrecto",
+      "detection_rule": "Usa distancia entre pesos o longitud total.",
+      "failure_feedback": "Incorrecto. El brazo se mide desde el fulcro hasta la línea de acción de la fuerza.",
+      "correction_sequence": "FULCRO → DISTANCIA DE CADA FUERZA.",
+      "resource_codes": [
+        "LAM-003"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "MEC-02",
+      "motor_code": "ME03",
+      "error_code": "E3",
+      "error_type": "Sentido de caída invertido",
+      "detection_rule": "Calcula bien momentos pero elige el lado contrario.",
+      "failure_feedback": "Incorrecto. El lado con mayor momento es el que tiende a bajar.",
+      "correction_sequence": "MAYOR MOMENTO → ESE LADO BAJA.",
+      "resource_codes": [
+        "LAM-003"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "MEC-03",
+      "motor_code": "ME05",
+      "error_code": "E1",
+      "error_type": "Cuenta tramo que no sostiene carga",
+      "detection_rule": "Incluye extremo libre o tramo que solo redirige.",
+      "failure_feedback": "Incorrecto. Cuenta solo los tramos que tiran directamente del bloque móvil o la carga.",
+      "correction_sequence": "PARTE DE LA CARGA → identifica cada tramo sustentador.",
+      "resource_codes": [
+        "LAM-004",
+        "LAM-005"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "MEC-03",
+      "motor_code": "ME05",
+      "error_code": "E2",
+      "error_type": "Polea fija como multiplicadora",
+      "detection_rule": "Supone ventaja mecánica con una sola polea fija.",
+      "failure_feedback": "Incorrecto. Una polea fija ideal cambia la dirección de la fuerza, no su magnitud.",
+      "correction_sequence": "FIJA = DIRECCIÓN; MÓVIL = posible ventaja.",
+      "resource_codes": [
+        "LAM-004",
+        "LAM-005"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "MEC-03",
+      "motor_code": "ME05",
+      "error_code": "E3",
+      "error_type": "Salto causal",
+      "detection_rule": "Va de entrada a salida sin seguir piezas intermedias.",
+      "failure_feedback": "Incorrecto. Has omitido una etapa de transmisión; cualquier cambio intermedio puede alterar la salida.",
+      "correction_sequence": "ENTRADA → PIEZA 1 → PIEZA 2 → … → SALIDA.",
+      "resource_codes": [
+        "LAM-004",
+        "LAM-005"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "MEM-01",
+      "motor_code": "MEM01",
+      "error_code": "E1",
+      "error_type": "Barrido aleatorio",
+      "detection_rule": "Recuerda algunos objetos pero deja huecos sistemáticos.",
+      "failure_feedback": "Incorrecto. El problema no es solo memoria: tu recorrido ha sido irregular.",
+      "correction_sequence": "RECORRIDO FIJO → AGRUPA → RECUPERA.",
+      "resource_codes": [
+        "LAM-006"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "MEM-01",
+      "motor_code": "MEM01",
+      "error_code": "E2",
+      "error_type": "Sobrecodificación verbal",
+      "detection_rule": "Intenta describir todo y pierde detalles.",
+      "failure_feedback": "Incorrecto. Estás almacenando demasiadas palabras. Conserva grupos y rasgos discriminantes.",
+      "correction_sequence": "GRUPOS PEQUEÑOS + ETIQUETAS CORTAS.",
+      "resource_codes": [
+        "LAM-006"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "MEM-01",
+      "motor_code": "MEM01",
+      "error_code": "E3",
+      "error_type": "Sin ancla distintiva",
+      "detection_rule": "Confunde elementos similares.",
+      "failure_feedback": "Incorrecto. Te faltó una referencia rara o muy discriminante para organizar la escena.",
+      "correction_sequence": "BUSCA ANCLA RARA → sitúa lo demás respecto a ella.",
+      "resource_codes": [
+        "LAM-006"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "MEM-02",
+      "motor_code": "MEM03",
+      "error_code": "E1",
+      "error_type": "Reconstrucción global",
+      "detection_rule": "Cree recordar una escena completa y compara por impresión.",
+      "failure_feedback": "Incorrecto. Comparar impresiones globales aumenta falsos cambios.",
+      "correction_sequence": "MISMO RECORRIDO → POSICIÓN A POSICIÓN.",
+      "resource_codes": [
+        "LAM-007"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "MEM-02",
+      "motor_code": "MEM03",
+      "error_code": "E2",
+      "error_type": "Tipo de cambio confundido",
+      "detection_rule": "Detecta que algo cambió pero clasifica posición como atributo o viceversa.",
+      "failure_feedback": "Incorrecto. El cambio existe, pero es de otra familia.",
+      "correction_sequence": "CLASIFICA: aparición/desaparición, posición o atributo.",
+      "resource_codes": [
+        "LAM-007"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "MEM-02",
+      "motor_code": "MEM03",
+      "error_code": "E3",
+      "error_type": "Saliencia",
+      "detection_rule": "Elige el elemento más llamativo aunque no sea el que cambió.",
+      "failure_feedback": "Incorrecto. Lo llamativo no es evidencia de cambio.",
+      "correction_sequence": "CONFIRMA A↔B en la misma posición.",
+      "resource_codes": [
+        "LAM-007"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "MEM-03",
+      "motor_code": "MEM04",
+      "error_code": "E1",
+      "error_type": "Posición absoluta",
+      "detection_rule": "Intenta memorizar coordenadas sin origen ni hitos.",
+      "failure_feedback": "Incorrecto. Una posición aislada es frágil; relaciónala con un origen o un hito.",
+      "correction_sequence": "ORIGEN → DIRECCIÓN → HITO.",
+      "resource_codes": [
+        "LAM-008"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "MEM-03",
+      "motor_code": "MEM04",
+      "error_code": "E2",
+      "error_type": "Inversión izquierda/derecha",
+      "detection_rule": "Recuerda la relación pero la invierte.",
+      "failure_feedback": "Incorrecto. Has cambiado la dirección relativa del elemento.",
+      "correction_sequence": "RECUPERA desde el hito más cercano y verbaliza la relación local.",
+      "resource_codes": [
+        "LAM-008"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "MEM-03",
+      "motor_code": "MEM04",
+      "error_code": "E3",
+      "error_type": "Reconstruye ruta completa",
+      "detection_rule": "Falla al final por carga de memoria.",
+      "failure_feedback": "Incorrecto. No necesitas rehacer toda la ruta.",
+      "correction_sequence": "PARTE DEL HITO MÁS CERCANO → reconstruye solo el tramo necesario.",
+      "resource_codes": [
+        "LAM-008"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "NUM-01",
+      "motor_code": "NU01",
+      "error_code": "E1",
+      "error_type": "Operación al azar",
+      "detection_rule": "Empieza por combinar números sin mirar el objetivo.",
+      "failure_feedback": "Incorrecto. Has trabajado hacia delante sin una meta intermedia.",
+      "correction_sequence": "OBJETIVO → deshaz el último paso → busca el número anterior.",
+      "resource_codes": [
+        "LAM-009"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "NUM-01",
+      "motor_code": "NU01",
+      "error_code": "E2",
+      "error_type": "No usa filtros",
+      "detection_rule": "Calcula opciones que ya eran imposibles por signo, paridad o tamaño.",
+      "failure_feedback": "Incorrecto. Podías descartar antes de calcular.",
+      "correction_sequence": "FILTRO RÁPIDO → solo después opera.",
+      "resource_codes": [
+        "LAM-009"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "NUM-01",
+      "motor_code": "NU01",
+      "error_code": "E3",
+      "error_type": "Ruta larga",
+      "detection_rule": "Llega al resultado con demasiados pasos o se bloquea.",
+      "failure_feedback": "Incorrecto. La ruta es válida pero poco eficiente.",
+      "correction_sequence": "BUSCA factores, complementos, dobles o mitades.",
+      "resource_codes": [
+        "LAM-009"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "NUM-02",
+      "motor_code": "NU02",
+      "error_code": "E1",
+      "error_type": "Exactitud innecesaria",
+      "detection_rule": "Hace cálculo completo con opciones muy separadas.",
+      "failure_feedback": "Incorrecto por estrategia: has invertido más tiempo del necesario.",
+      "correction_sequence": "MIDE DISTANCIA ENTRE OPCIONES → estima primero.",
+      "resource_codes": [
+        "LAM-010"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "NUM-02",
+      "motor_code": "NU02",
+      "error_code": "E2",
+      "error_type": "Redondeo sesgado",
+      "detection_rule": "Redondea todos los términos en la misma dirección y exagera.",
+      "failure_feedback": "Incorrecto. El redondeo ha empujado el resultado demasiado lejos.",
+      "correction_sequence": "COMPENSA o ACOTA por arriba y por abajo.",
+      "resource_codes": [
+        "LAM-010"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "NUM-02",
+      "motor_code": "NU02",
+      "error_code": "E3",
+      "error_type": "No afina cuando hace falta",
+      "detection_rule": "Elige entre opciones muy próximas con una estimación gruesa.",
+      "failure_feedback": "Incorrecto. La estimación inicial no tenía precisión suficiente.",
+      "correction_sequence": "ESTIMA → si quedan dos opciones cercanas, AFINA.",
+      "resource_codes": [
+        "LAM-010"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "NUM-03",
+      "motor_code": "NU03",
+      "error_code": "E1",
+      "error_type": "Patrón local",
+      "detection_rule": "Regla funciona en 1–2 saltos pero no en toda la serie.",
+      "failure_feedback": "Incorrecto. Has aceptado una coincidencia local.",
+      "correction_sequence": "PRUEBA LA REGLA EN TODOS LOS SALTOS.",
+      "resource_codes": [
+        "LAM-011",
+        "LAM-012"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "NUM-03",
+      "motor_code": "NU03",
+      "error_code": "E2",
+      "error_type": "Fuerza primera hipótesis",
+      "detection_rule": "Introduce excepciones para mantener una regla.",
+      "failure_feedback": "Incorrecto. Si una regla necesita parches, abandónala.",
+      "correction_sequence": "FALLA → CAMBIA DE FAMILIA DE PATRÓN.",
+      "resource_codes": [
+        "LAM-011",
+        "LAM-012"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "NUM-03",
+      "motor_code": "NU03",
+      "error_code": "E3",
+      "error_type": "Alternancia oculta",
+      "detection_rule": "Analiza una sola serie cuando hay posiciones pares/impares.",
+      "failure_feedback": "Incorrecto. Puede haber dos subseries intercaladas.",
+      "correction_sequence": "SEPARA POSICIONES PARES E IMPARES y vuelve a comprobar.",
+      "resource_codes": [
+        "LAM-011",
+        "LAM-012"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "PER-01",
+      "motor_code": "PE01",
+      "error_code": "E1",
+      "error_type": "Salto de posiciones",
+      "detection_rule": "Deja huecos en el recorrido.",
+      "failure_feedback": "Incorrecto. Has perdido posiciones durante el barrido.",
+      "correction_sequence": "MISMA TRAYECTORIA hasta completar la matriz.",
+      "resource_codes": [
+        "LAM-013"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "PER-01",
+      "motor_code": "PE01",
+      "error_code": "E2",
+      "error_type": "Doble conteo",
+      "detection_rule": "Vuelve atrás sin motivo y cuenta elementos dos veces.",
+      "failure_feedback": "Incorrecto. El retroceso ha duplicado información.",
+      "correction_sequence": "NO RETROCEDAS salvo duda real; usa bloques.",
+      "resource_codes": [
+        "LAM-013"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "PER-01",
+      "motor_code": "PE01",
+      "error_code": "E3",
+      "error_type": "Criterio cambiante",
+      "detection_rule": "Empieza buscando forma y termina fijándose en color.",
+      "failure_feedback": "Incorrecto. Has cambiado el rasgo objetivo durante el barrido.",
+      "correction_sequence": "DEFINE EL RASGO ANTES de empezar.",
+      "resource_codes": [
+        "LAM-013"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "PER-02",
+      "motor_code": "PE02",
+      "error_code": "E1",
+      "error_type": "Saliencia",
+      "detection_rule": "Escoge la figura más vistosa.",
+      "failure_feedback": "Incorrecto. El infiltrado no es necesariamente el más llamativo.",
+      "correction_sequence": "MAYORÍA → ATRIBUTO → CANDIDATO.",
+      "resource_codes": [
+        "LAM-014"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "PER-02",
+      "motor_code": "PE02",
+      "error_code": "E2",
+      "error_type": "Regla demasiado amplia",
+      "detection_rule": "Propone una propiedad que también cumple el candidato.",
+      "failure_feedback": "Incorrecto. La regla no discrimina.",
+      "correction_sequence": "BUSCA QUÉ COMPARTEN EXACTAMENTE TRES.",
+      "resource_codes": [
+        "LAM-014"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "PER-02",
+      "motor_code": "PE02",
+      "error_code": "E3",
+      "error_type": "Sin segundo chequeo",
+      "detection_rule": "El primer candidato parece distinto pero otro atributo lo integra.",
+      "failure_feedback": "Incorrecto. Faltó confirmar la excepción con otro rasgo.",
+      "correction_sequence": "CANDIDATO → SEGUNDO CHEQUEO.",
+      "resource_codes": [
+        "LAM-014"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "PER-03",
+      "motor_code": "PE03",
+      "error_code": "E1",
+      "error_type": "Desalineación",
+      "detection_rule": "Compara carácter i con i+1.",
+      "failure_feedback": "Incorrecto. Las cadenas se han desplazado mentalmente.",
+      "correction_sequence": "ALINEA ÍNDICES antes de comparar.",
+      "resource_codes": [
+        "LAM-015"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "PER-03",
+      "motor_code": "PE03",
+      "error_code": "E2",
+      "error_type": "Reinicio constante",
+      "detection_rule": "Vuelve al inicio tras cada duda.",
+      "failure_feedback": "Incorrecto. Reiniciar aumenta carga y favorece nuevas desalineaciones.",
+      "correction_sequence": "MARCA MENTALMENTE el último bloque seguro.",
+      "resource_codes": [
+        "LAM-015"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "PER-03",
+      "motor_code": "PE03",
+      "error_code": "E3",
+      "error_type": "No comprueba longitud",
+      "detection_rule": "Busca diferencias internas cuando las cadenas ya difieren en longitud.",
+      "failure_feedback": "Incorrecto. La longitud era el primer filtro.",
+      "correction_sequence": "LONGITUD → BLOQUES → ÍNDICES.",
+      "resource_codes": [
+        "LAM-015"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "VER-01",
+      "motor_code": "VB01",
+      "error_code": "E1",
+      "error_type": "Categoría demasiado amplia",
+      "detection_rule": "Elige una clase que incluye las cuatro palabras.",
+      "failure_feedback": "Incorrecto. La categoría elegida no discrimina al intruso.",
+      "correction_sequence": "AJUSTA EL NIVEL: busca la categoría más precisa que una a la mayoría.",
+      "resource_codes": [
+        "LAM-016"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "VER-01",
+      "motor_code": "VB01",
+      "error_code": "E2",
+      "error_type": "Polisemia",
+      "detection_rule": "Usa un sentido de una palabra que rompe artificialmente el grupo.",
+      "failure_feedback": "Incorrecto. Esa palabra tiene otro sentido que encaja con la relación dominante.",
+      "correction_sequence": "REVISA EL SIGNIFICADO EN CONTEXTO.",
+      "resource_codes": [
+        "LAM-016"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "VER-01",
+      "motor_code": "VB01",
+      "error_code": "E3",
+      "error_type": "Palabra rara = intruso",
+      "detection_rule": "Selecciona por familiaridad léxica.",
+      "failure_feedback": "Incorrecto. Ser menos conocida no convierte una palabra en intrusa.",
+      "correction_sequence": "CATEGORÍA PRIMERO → INTRUSO DESPUÉS.",
+      "resource_codes": [
+        "LAM-016"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "VER-02",
+      "motor_code": "VB02",
+      "error_code": "E1",
+      "error_type": "Relacionado ≠ sinónimo",
+      "detection_rule": "Elige palabra del mismo campo pero no equivalente.",
+      "failure_feedback": "Incorrecto. Pertenece al mismo campo semántico, pero no significa lo mismo.",
+      "correction_sequence": "PRUEBA SUSTITUCIÓN EN UNA FRASE.",
+      "resource_codes": [
+        "LAM-017"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "VER-02",
+      "motor_code": "VB02",
+      "error_code": "E2",
+      "error_type": "Intensidad distinta",
+      "detection_rule": "Elige un término demasiado fuerte o débil.",
+      "failure_feedback": "Incorrecto. La dirección semántica es correcta, pero cambia el grado.",
+      "correction_sequence": "COMPARA INTENSIDAD y registro.",
+      "resource_codes": [
+        "LAM-017"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "VER-02",
+      "motor_code": "VB02",
+      "error_code": "E3",
+      "error_type": "Prefijo = antónimo",
+      "detection_rule": "Asume oposición solo por forma morfológica.",
+      "failure_feedback": "Incorrecto. La forma de la palabra no garantiza que sea el contrario exacto.",
+      "correction_sequence": "DEFINE EL EJE SEMÁNTICO y busca el extremo opuesto.",
+      "resource_codes": [
+        "LAM-017"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "VER-03",
+      "motor_code": "VB03",
+      "error_code": "E1",
+      "error_type": "Dirección invertida",
+      "detection_rule": "Usa B→A en vez de A→B.",
+      "failure_feedback": "Incorrecto. Has reconocido la relación, pero en dirección inversa.",
+      "correction_sequence": "ESCRIBE MENTALMENTE LA FRASE A→B y repítela con C→D.",
+      "resource_codes": [
+        "LAM-018"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "VER-03",
+      "motor_code": "VB03",
+      "error_code": "E2",
+      "error_type": "Mismo campo, relación distinta",
+      "detection_rule": "Escoge una palabra relacionada pero con otra función.",
+      "failure_feedback": "Incorrecto. La opción pertenece al mismo tema, pero no reproduce la relación.",
+      "correction_sequence": "NOMBRA LA RELACIÓN: parte-todo, agente-acción, objeto-función, etc.",
+      "resource_codes": [
+        "LAM-018"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "VER-03",
+      "motor_code": "VB03",
+      "error_code": "E3",
+      "error_type": "Cambia frase puente",
+      "detection_rule": "Necesita otra frase para justificar la segunda pareja.",
+      "failure_feedback": "Incorrecto. Si cambias la frase, has cambiado la analogía.",
+      "correction_sequence": "UNA SOLA FRASE debe servir para ambas parejas.",
+      "resource_codes": [
+        "LAM-018"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "ABS-01",
+      "motor_code": "AB01",
+      "error_code": "E1",
+      "error_type": "Impresión global",
+      "detection_rule": "Describe figura completa sin aislar atributos.",
+      "failure_feedback": "Incorrecto. La regla se oculta en atributos concretos.",
+      "correction_sequence": "ESCANEA cantidad, posición, orientación, tamaño, relleno y forma.",
+      "resource_codes": [
+        "LAM-019"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "ABS-01",
+      "motor_code": "AB01",
+      "error_code": "E2",
+      "error_type": "Mezcla atributos",
+      "detection_rule": "Une dos cambios que en realidad son independientes.",
+      "failure_feedback": "Incorrecto. Has combinado variables antes de comprobarlas por separado.",
+      "correction_sequence": "UN ATRIBUTO CADA VEZ → luego combina si hace falta.",
+      "resource_codes": [
+        "LAM-019"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "ABS-01",
+      "motor_code": "AB01",
+      "error_code": "E3",
+      "error_type": "Regla casi válida",
+      "detection_rule": "Acepta una regla que falla en una transición.",
+      "failure_feedback": "Incorrecto. Una excepción basta para invalidar la regla propuesta.",
+      "correction_sequence": "COMPRUEBA TODAS LAS TRANSICIONES.",
+      "resource_codes": [
+        "LAM-019"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "ABS-02",
+      "motor_code": "AB04",
+      "error_code": "E1",
+      "error_type": "Regla global única",
+      "detection_rule": "Fuerza la misma transformación en filas y columnas.",
+      "failure_feedback": "Incorrecto. Fila y columna pueden usar reglas distintas.",
+      "correction_sequence": "FILTRO DE FILA + FILTRO DE COLUMNA.",
+      "resource_codes": [
+        "LAM-020"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "ABS-02",
+      "motor_code": "AB04",
+      "error_code": "E2",
+      "error_type": "Mezcla fila/columna",
+      "detection_rule": "Toma parte de una fila y parte de otra columna como una sola secuencia.",
+      "failure_feedback": "Incorrecto. Has mezclado direcciones de análisis.",
+      "correction_sequence": "TERMINA UNA DIRECCIÓN antes de pasar a la otra.",
+      "resource_codes": [
+        "LAM-020"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "ABS-02",
+      "motor_code": "AB04",
+      "error_code": "E3",
+      "error_type": "Complejidad prematura",
+      "detection_rule": "Busca superposición o rotación sin revisar cantidad/posición.",
+      "failure_feedback": "Incorrecto. Has empezado por una regla cara.",
+      "correction_sequence": "CUENTA Y POSICIÓN primero; reglas complejas solo después.",
+      "resource_codes": [
+        "LAM-020"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "ABS-03",
+      "motor_code": "AB05",
+      "error_code": "E1",
+      "error_type": "Primera idea",
+      "detection_rule": "Acepta hipótesis sin intentar falsarla.",
+      "failure_feedback": "Incorrecto. Has confirmado tu primera intuición sin someterla a prueba.",
+      "correction_sequence": "BUSCA EL CASO MÁS DIFÍCIL y trata de romper la hipótesis.",
+      "resource_codes": [
+        "LAM-021"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "ABS-03",
+      "motor_code": "AB05",
+      "error_code": "E2",
+      "error_type": "Ajuste local",
+      "detection_rule": "Hipótesis solo explica una fila o columna.",
+      "failure_feedback": "Incorrecto. Una buena regla debe sobrevivir en las dos direcciones relevantes.",
+      "correction_sequence": "CRUZA FILA Y COLUMNA.",
+      "resource_codes": [
+        "LAM-021"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "ABS-03",
+      "motor_code": "AB05",
+      "error_code": "E3",
+      "error_type": "Opciones dirigen la regla",
+      "detection_rule": "Construye una explicación a partir de una alternativa atractiva.",
+      "failure_feedback": "Incorrecto. La opción no debe crear la regla.",
+      "correction_sequence": "FORMULA Y PREDICE ANTES de mirar las opciones.",
+      "resource_codes": [
+        "LAM-021"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "ESP-01",
+      "motor_code": "ES01",
+      "error_code": "E1",
+      "error_type": "Ancla fija en pantalla",
+      "detection_rule": "Espera que la marca quede en el mismo lugar absoluto.",
+      "failure_feedback": "Incorrecto. El ancla se mueve con la figura.",
+      "correction_sequence": "SIGUE LA REFERENCIA dentro de la figura tras cada cuarto de vuelta.",
+      "resource_codes": [
+        "LAM-022",
+        "LAM-025"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "ESP-01",
+      "motor_code": "ES01",
+      "error_code": "E2",
+      "error_type": "Espejo por giro",
+      "detection_rule": "Invierte lateralidad durante la rotación.",
+      "failure_feedback": "Incorrecto. Un giro cambia orientación, no la mano del objeto.",
+      "correction_sequence": "GIRO POR CUARTOS → conserva relaciones internas.",
+      "resource_codes": [
+        "LAM-022",
+        "LAM-025"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "ESP-01",
+      "motor_code": "ES01",
+      "error_code": "E3",
+      "error_type": "Número de cuartos",
+      "detection_rule": "Hace 90° cuando eran 180°/270°.",
+      "failure_feedback": "Incorrecto. La dirección puede ser correcta, pero el número de cuartos no.",
+      "correction_sequence": "CONVIERTE EL ÁNGULO a 1, 2 o 3 cuartos.",
+      "resource_codes": [
+        "LAM-022",
+        "LAM-025"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "ESP-02",
+      "motor_code": "ES02",
+      "error_code": "E1",
+      "error_type": "Mira solo arriba/abajo",
+      "detection_rule": "Decide por verticalidad sin lateralidad.",
+      "failure_feedback": "Incorrecto. Arriba/abajo puede cambiar por un giro.",
+      "correction_sequence": "SIGUE una relación izquierda-derecha interna.",
+      "resource_codes": [
+        "LAM-023",
+        "LAM-025"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "ESP-02",
+      "motor_code": "ES02",
+      "error_code": "E2",
+      "error_type": "Punto de vista variable",
+      "detection_rule": "Cambia mentalmente de observador.",
+      "failure_feedback": "Incorrecto. Has alterado el punto de vista además del objeto.",
+      "correction_sequence": "MANTÉN EL MISMO OBSERVADOR y compara la mano.",
+      "resource_codes": [
+        "LAM-023",
+        "LAM-025"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "ESP-02",
+      "motor_code": "ES02",
+      "error_code": "E3",
+      "error_type": "Referencia simétrica",
+      "detection_rule": "Usa un detalle que no distingue espejo de giro.",
+      "failure_feedback": "Incorrecto. Esa referencia es demasiado simétrica.",
+      "correction_sequence": "BUSCA un gancho, abertura, marca o secuencia asimétrica.",
+      "resource_codes": [
+        "LAM-023",
+        "LAM-025"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "ESP-03",
+      "motor_code": "ES03",
+      "error_code": "E1",
+      "error_type": "Opuestas como vecinas",
+      "detection_rule": "Acepta una opción donde dos caras opuestas comparten arista.",
+      "failure_feedback": "Incorrecto. Las caras opuestas nunca pueden tocarse por una arista.",
+      "correction_sequence": "DEDUCE OPUESTAS primero y descarta la opción.",
+      "resource_codes": [
+        "LAM-024"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "ESP-03",
+      "motor_code": "ES03",
+      "error_code": "E2",
+      "error_type": "Parejas opuestas mal deducidas",
+      "detection_rule": "Construye una pareja opuesta incorrecta desde la red.",
+      "failure_feedback": "Incorrecto. La relación de oposición se ha deducido mal.",
+      "correction_sequence": "CARA CENTRAL → cuatro vecinas → cara restante opuesta; comprueba la red.",
+      "resource_codes": [
+        "LAM-024"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "micro_id": "ESP-03",
+      "motor_code": "ES03",
+      "error_code": "E3",
+      "error_type": "Plegado total prematuro",
+      "detection_rule": "Intenta visualizar todas las caras y pierde orientación.",
+      "failure_feedback": "Incorrecto por estrategia: has cargado demasiada información.",
+      "correction_sequence": "OPUESTAS/ADYACENTES → ORIENTACIÓN → solo pliega si aún quedan candidatas.",
+      "resource_codes": [
+        "LAM-024"
+      ],
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    }
+  ],
+  "feedback_rules": [
+    {
+      "code": "OK_1",
+      "state_name": "Acierto normal",
+      "trigger_rule": "Respuesta correcta, sin patrón de error activo",
+      "ui_template": "Correcto. {justificación_breve} Secuencia: {secuencia}.",
+      "system_action": "1 frase de confirmación + secuencia; no abrir lámina automáticamente.",
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "code": "OK_MASTERED",
+      "state_name": "Acierto con dominio",
+      "trigger_rule": "3 aciertos consecutivos del mismo tipo sin ayuda",
+      "ui_template": "Correcto. Secuencia: {secuencia}.",
+      "system_action": "Reducir explicación para no sobrecargar; mantener solo la secuencia.",
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "code": "WRONG_TYPED",
+      "state_name": "Error diagnosticable",
+      "trigger_rule": "La opción elegida corresponde a un distractor etiquetado",
+      "ui_template": "Incorrecto. {diagnóstico}. Secuencia correcta: {secuencia}.",
+      "system_action": "Mostrar diagnóstico específico + secuencia + truco; registrar código de error.",
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "code": "WRONG_UNKNOWN",
+      "state_name": "Error no diagnosticable",
+      "trigger_rule": "La opción no está asociada a un error semántico concreto",
+      "ui_template": "Incorrecto. La opción no cumple {regla_clave}. Secuencia correcta: {secuencia}.",
+      "system_action": "No inventar causa; explicar solo por qué no encaja y mostrar el procedimiento.",
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "code": "REPEAT_ERROR",
+      "state_name": "Error recurrente",
+      "trigger_rule": "Mismo código de error aparece 2 veces en las últimas 5 preguntas de esa familia",
+      "ui_template": "Patrón de error detectado: {tipo_error}. Repasa {truco}.",
+      "system_action": "Mostrar lámina vinculada y recomendar 2–3 ejercicios de nivel inferior o guiado.",
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "code": "RECOVERY",
+      "state_name": "Recuperación",
+      "trigger_rule": "Tras REPEAT_ERROR, 3 aciertos consecutivos del mismo tipo",
+      "ui_template": "Procedimiento recuperado. Mantén esta secuencia: {secuencia}.",
+      "system_action": "Retirar ayuda automática y volver al nivel de dificultad previsto.",
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "code": "TIME_PASS",
+      "state_name": "Decisión de pasar",
+      "trigger_rule": "El alumno pasa por tiempo antes de responder",
+      "ui_template": "Has decidido pasar. No se registra como error conceptual. Si vuelve a repetirse, revisaremos la gestión de tiempo.",
+      "system_action": "Registrar tiempo/abandono por separado; no asociar distractor ni lámina salvo patrón recurrente.",
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "code": "TIME_OVER",
+      "state_name": "Tiempo excesivo",
+      "trigger_rule": "Acierta pero supera de forma reiterada el umbral del nivel",
+      "ui_template": "Correcto, pero el procedimiento aún consume demasiado tiempo. Secuencia corta: {secuencia}.",
+      "system_action": "Marcar necesidad de automatización; no bajar conocimiento, sí entrenar fluidez.",
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    },
+    {
+      "code": "HINT_USED",
+      "state_name": "Acierto con ayuda",
+      "trigger_rule": "Respuesta correcta después de pista/lámina",
+      "ui_template": "Correcto con ayuda. La secuencia que debes automatizar es: {secuencia}.",
+      "system_action": "No contar como dominio pleno; mantener práctica guiada hasta aciertos sin ayuda.",
+      "source_version": "BASE12_TROP_RETROALIMENTACION_TESTS_MASTER-2026-08-25"
+    }
+  ]
+}

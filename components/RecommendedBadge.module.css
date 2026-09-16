@@ -1,0 +1,25 @@
+.badge {
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14px;
+  border: 1px solid #166534;
+  border-radius: 999px;
+  background: #15803d;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@media (max-width: 560px) {
+  .badge {
+    min-height: 26px;
+    padding-inline: 12px;
+    font-size: 9px;
+  }
+}

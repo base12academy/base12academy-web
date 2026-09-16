@@ -5,6 +5,7 @@ import {
   createNotifySignature,
   normalizeSignature,
   safeEqual,
+  getRedsysCredentials,
 } from "@/lib/redsys";
 import { courses, type CourseSlug } from "@/lib/courses";
 
@@ -26,10 +27,12 @@ function decodeMerchantData(value?: string) {
 
 export async function POST(req: NextRequest) {
   try {
-    const signingKey = process.env.REDSYS_SIGNING_KEY;
+    let signingKey: string;
 
-    if (!signingKey) {
-      console.error("Falta REDSYS_SIGNING_KEY");
+    try {
+      signingKey = getRedsysCredentials().signingKey;
+    } catch (error) {
+      console.error("Configuración de Redsys no válida", error);
 
       return NextResponse.json(
         {
@@ -69,7 +72,7 @@ export async function POST(req: NextRequest) {
      * Conservamos el sistema de verificación
      * que ya utilizaba la notificación Redsys.
      */
-    if (dsSignatureVersion !== "HMAC_SHA512_V2") {
+    if (dsSignatureVersion !== "HMAC_SHA256_V1") {
       console.error(
         "Versión de firma Redsys no admitida:",
         dsSignatureVersion
@@ -150,6 +153,11 @@ export async function POST(req: NextRequest) {
 
     const course = courses[catalogSlug];
 
+    const isClassBono =
+      course != null &&
+      "accessType" in course &&
+      course.accessType === "class_bono";
+
     const amount = Number(
       decoded.Ds_Amount ||
         decoded.DS_AMOUNT ||
@@ -181,7 +189,7 @@ export async function POST(req: NextRequest) {
             order_id: String(order),
 
             course_slug:
-              course && "courseSlug" in course
+              course
                 ? course.courseSlug
                 : catalogSlug,
 
@@ -389,6 +397,45 @@ export async function POST(req: NextRequest) {
         },
         { status: 400 }
       );
+    }
+
+    /*
+     * CLASES ONLINE.
+     *
+     * Redsys ya ha confirmado el cobro.
+     * La retenci?n deja de depender de los 60 minutos
+     * y queda protegida hasta convertirse en la primera clase.
+     */
+    if (isClassBono) {
+      const {
+        error: classHoldPaidError,
+      } = await supabase.rpc(
+        "mark_class_booking_hold_paid",
+        {
+          p_checkout_order_id:
+            checkoutOrder.id,
+        }
+      );
+
+      if (classHoldPaidError) {
+        console.error(
+          "Pago aprobado pero no se pudo proteger la hora de Clases Online",
+          {
+            checkoutId: checkoutOrder.id,
+            catalogSlug,
+            error: classHoldPaidError,
+          }
+        );
+
+        return NextResponse.json(
+          {
+            ok: false,
+            error:
+              "class_hold_payment_protection_failed",
+          },
+          { status: 500 }
+        );
+      }
     }
 
     /*

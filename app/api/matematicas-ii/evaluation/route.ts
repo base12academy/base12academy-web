@@ -1,0 +1,132 @@
+import { NextRequest, NextResponse } from "next/server";
+import { getSupabase } from "@/lib/supabase/server";
+import { isCourseAdministrator } from "@/lib/course-access";
+import { getMatematicasIIEntitlement } from "@/lib/matematicas-ii/entitlement";
+import { getMatematicasIIUnit } from "@/lib/matematicas-ii/content";
+import { getRocioQuestions, getShortQuestions } from "@/lib/matematicas-ii/evaluation";
+import { getPauProblems, getPauSimulation, MATEMATICAS_II_PAU_PROFILES, type PauSimulation } from "@/lib/matematicas-ii/pau";
+
+const PREVIEW_UNIT = "T01";
+
+type AccessResult = {
+  authenticated: boolean;
+  administrator: boolean;
+  hasCourse: boolean;
+  hasPau: boolean;
+  error?: boolean;
+};
+
+async function getAccess(req: NextRequest): Promise<AccessResult> {
+  const token = req.headers.get("authorization")?.replace(/^Bearer\s+/i, "");
+  if (!token) return { authenticated: false, administrator: false, hasCourse: false, hasPau: false };
+
+  const supabase = getSupabase();
+  const { data, error } = await supabase.auth.getUser(token);
+  if (error || !data.user) return { authenticated: false, administrator: false, hasCourse: false, hasPau: false };
+
+  if (isCourseAdministrator(data.user.email)) {
+    return { authenticated: true, administrator: true, hasCourse: true, hasPau: true };
+  }
+
+  const now = new Date().toISOString();
+  const { data: enrollments, error: enrollmentError } = await supabase
+    .from("course_enrollments")
+    .select("plan_slug,expires_at")
+    .eq("user_id", data.user.id)
+    .eq("course_slug", "matematicas-ii")
+    .eq("status", "active")
+    .lte("starts_at", now);
+
+  if (enrollmentError) {
+    return { authenticated: true, administrator: false, hasCourse: false, hasPau: false, error: true };
+  }
+
+  const plans = (enrollments || [])
+    .filter((item) => !item.expires_at || item.expires_at >= now)
+    .map((item) => item.plan_slug);
+  const entitlement = getMatematicasIIEntitlement(plans);
+
+  return {
+    authenticated: true,
+    administrator: false,
+    hasCourse: entitlement.hasCourse,
+    hasPau: entitlement.hasPau,
+  };
+}
+
+function denied(access: AccessResult) {
+  return NextResponse.json(
+    { error: access.authenticated ? "matriculation_required" : "authentication_required" },
+    { status: access.authenticated ? 403 : 401 },
+  );
+}
+
+function simulationForClient(simulation: PauSimulation) {
+  const exercises = [];
+  for (let index = 0; index + 3 < simulation.content.length; index += 4) {
+    exercises.push({
+      label: simulation.content[index],
+      statement: simulation.content[index + 1],
+      solution: simulation.content[index + 2].replace(/^Solución docente:\s*/i, ""),
+      rubric: simulation.content[index + 3].replace(/^Criterio Base12 ajustado:\s*/i, ""),
+    });
+  }
+  return {
+    code: simulation.code,
+    community: simulation.title.replace(/^Simulacro PAU MAT2 ·\s*/i, ""),
+    profile: simulation.profile,
+    exercises,
+  };
+}
+
+export async function GET(req: NextRequest) {
+  const type = req.nextUrl.searchParams.get("type");
+  const access = await getAccess(req);
+  if (access.error) return NextResponse.json({ error: "access_check_failed" }, { status: 500 });
+
+  if (type === "short" && req.nextUrl.searchParams.get("all") === "1") {
+    if (!access.administrator && !access.hasPau) return denied(access);
+    const items = getShortQuestions();
+    return NextResponse.json({ type, all: true, count: items.length, items });
+  }
+
+  if (type === "rocio" || type === "short") {
+    const unit = req.nextUrl.searchParams.get("unit") || "";
+    if (!getMatematicasIIUnit(unit)) return NextResponse.json({ error: "invalid_unit" }, { status: 400 });
+
+    const preview = unit === PREVIEW_UNIT;
+    if (!preview && !access.administrator && !access.hasCourse && !access.hasPau) return denied(access);
+
+    const items = type === "rocio" ? getRocioQuestions(unit) : getShortQuestions(unit);
+    return NextResponse.json({ type, unit, preview, count: items.length, items });
+  }
+
+  if (type === "problems") {
+    if (!access.administrator && !access.hasPau) return denied(access);
+    const block = req.nextUrl.searchParams.get("block") || undefined;
+    const items = getPauProblems(block);
+    return NextResponse.json({ type, block: block || null, count: items.length, items });
+  }
+
+  if (type === "profiles") {
+    if (!access.administrator && !access.hasPau) return denied(access);
+    const items = MATEMATICAS_II_PAU_PROFILES.map((profile) => ({
+      code: profile.code,
+      community: profile.name,
+      status: profile.state,
+      format: profile.description,
+      source: profile.source,
+    }));
+    return NextResponse.json({ type, count: items.length, items });
+  }
+
+  if (type === "simulation") {
+    if (!access.administrator && !access.hasPau) return denied(access);
+    const code = (req.nextUrl.searchParams.get("code") || "").toUpperCase();
+    const simulation = getPauSimulation(code);
+    if (!simulation || Array.isArray(simulation)) return NextResponse.json({ error: "invalid_community" }, { status: 404 });
+    return NextResponse.json({ type, code, simulation: simulationForClient(simulation) });
+  }
+
+  return NextResponse.json({ error: "invalid_request" }, { status: 400 });
+}

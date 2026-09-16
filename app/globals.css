@@ -36,6 +36,8 @@ button, input, select { font: inherit; }
 .pwa-help-dialog p { margin: 10px 0; color: #475569; font-size: 14px; line-height: 1.55; }
 .pwa-help-close { position: absolute; top: 12px; right: 12px; width: 36px; height: 36px; border: 0; border-radius: 50%; background: #f1f5f9; color: #0f172a; font-size: 22px; cursor: pointer; }
 .pwa-help-understood { margin-top: 10px; padding: 10px 16px; border: 0; border-radius: 999px; background: #0b4ea2; color: #fff; font-weight: 900; cursor: pointer; }
+.pwa-help-open-browser { display: inline-flex; margin: 4px 0 8px; padding: 11px 16px; border-radius: 999px; background: #0b4ea2; color: #fff; font-size: 14px; font-weight: 900; text-decoration: none; }
+@media (display-mode: standalone) { .pwa-install-button { display: none; } }
 
 .legal-page {
   width: min(860px, calc(100% - 32px));
@@ -169,7 +171,8 @@ button, input, select { font: inherit; }
 .original-course-grid h3 { margin: 5px 0 10px; color: #020617; font-size: 17px; line-height: 1.28; }
 .original-course-grid p { margin: 0; color: #64748b; font-size: 12px; }
 .original-course-grid p b { color: #0f172a; font-size: 19px; }
-.original-course-grid article > button {
+.original-course-grid article > button,
+.original-course-grid article > a {
   align-self: flex-start;
   padding: 8px 13px;
   border: 1px solid rgba(37,99,235,.18);
@@ -243,10 +246,27 @@ button, input, select { font: inherit; }
   text-align: left;
 }
 .original-plan-option.active { border: 2px solid #1d4ed8; background: #eff6ff; }
+.original-plan-option.recommended {
+  border: 2px solid #15803d;
+  box-shadow: 0 12px 28px rgba(21,128,61,.22);
+}
+.original-plan-option.recommended.active {
+  background: #f0fdf4;
+}
 .original-plan-select { flex: 1; align-self: stretch; padding: 0; border: 0; background: transparent; color: inherit; text-align: left; cursor: pointer; }
 .original-plan-select > span { display: flex; flex-direction: column; }
 .original-plan-grid small { color: #64748b; font-size: 11px; }
 .original-plan-grid strong { color: #1e3a8a; white-space: nowrap; }
+.original-plan-meta { display: flex; flex: 0 0 auto; flex-direction: column; align-items: flex-end; gap: 8px; }
+.original-plan-option.recommended .original-plan-meta > strong { color: #166534; }
+.chemistry-periodic-inclusion { display: grid; grid-template-columns: 58px minmax(0,1fr) auto; gap: 15px; align-items: center; margin: 16px 0 0; padding: 16px; border: 1px solid #99d5c3; border-radius: 18px; background: linear-gradient(135deg,#f0fdf8,#eef7ff); }
+.chemistry-periodic-logo { display: block; width: 58px; height: 58px; border-radius: 13px; background: #fff; object-fit: contain; box-shadow: 0 10px 24px rgba(23,79,67,.16); }
+.chemistry-periodic-inclusion > div > small { color: #166534; font-size: 10px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+.chemistry-periodic-inclusion h3 { margin: 3px 0 5px; color: #133b35; font-size: 18px; }
+.chemistry-periodic-inclusion p { margin: 0; color: #365a54; font-size: 12px; line-height: 1.5; }
+.chemistry-periodic-actions { display: flex; flex-direction: column; gap: 7px; }
+.chemistry-periodic-actions a { padding: 9px 12px; border: 1px solid #174f43; border-radius: 999px; background: #174f43; color: #fff; font-size: 11px; font-weight: 900; text-align: center; text-decoration: none; white-space: nowrap; }
+.chemistry-periodic-actions a.secondary { background: #fff; color: #174f43; }
 .original-plan-video-button { flex: 0 0 auto; padding: 7px 10px; border: 1px solid #93c5fd; border-radius: 999px; background: #fff; color: #174da1; font-size: 11px; font-weight: 800; white-space: nowrap; cursor: pointer; }
 .original-plan-video-button:hover { background: #dbeafe; }
 .original-plan-video-player { display: flex; justify-content: center; margin: 14px 0 4px; }
@@ -303,6 +323,9 @@ button, input, select { font: inherit; }
   .original-catalog { padding: 20px; border-radius: 22px; }
   .original-catalog-heading h2 { font-size: 24px; }
   .original-plan-grid { grid-template-columns: 1fr; }
+  .chemistry-periodic-inclusion { grid-template-columns: 52px minmax(0,1fr); }
+  .chemistry-periodic-logo { width: 52px; height: 52px; }
+  .chemistry-periodic-actions { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; }
   .original-plan-includes ul { grid-template-columns: 1fr; }
   .original-modal { padding: 24px 18px; }
   .commercial-course-hero { grid-template-columns: 1fr; padding: 18px; }
@@ -319,33 +342,90 @@ button, input, select { font: inherit; }
 
 
 
-@media (max-width: 720px) {
+@media (max-width: 900px) {
   .b12-header-inner {
-    flex-wrap: wrap !important;
-    gap: 8px 10px !important;
-    padding: 6px 12px !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    grid-template-areas:
+      "brand login"
+      "nav nav"
+      "install admin" !important;
+    gap: 6px 10px !important;
+    padding: 5px 12px 7px !important;
   }
 
-  .b12-header-inner > nav {
-    order: 3;
+  .b12-header-brand {
+    grid-area: brand;
+    min-width: 0;
+  }
+
+  .b12-header-brand img {
+    width: 112px !important;
+    height: 48px !important;
+    padding: 2px !important;
+    border-radius: 8px !important;
+  }
+
+  .b12-header-nav {
+    grid-area: nav;
     width: 100%;
-    gap: 12px !important;
-    overflow-x: auto;
-    padding-bottom: 4px;
-    scrollbar-width: none;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px !important;
   }
 
-  .b12-header-inner > nav::-webkit-scrollbar {
-    display: none;
+  .b12-header-nav a {
+    min-width: 0;
+    min-height: 44px;
+    padding: 7px 5px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 11px !important;
+    line-height: 1.15;
+    white-space: normal !important;
+    border-radius: 12px !important;
   }
 
-  .b12-header-inner > div:last-child {
-    margin-left: auto;
+  .b12-header-access {
+    display: contents !important;
+  }
+
+  .b12-header-login {
+    grid-area: login;
+    align-self: center;
+    min-height: 44px;
+    padding: 9px 12px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px !important;
+    white-space: nowrap;
+  }
+
+  .pwa-install-button {
+    grid-area: install;
+    justify-self: end;
+  }
+
+  .b12-header-admin {
+    grid-area: admin;
+    justify-self: start;
+  }
+
+  .pwa-install-button,
+  .b12-header-admin {
+    min-height: 40px;
+    padding: 7px 12px !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .b12-home-layout {
     grid-template-columns: minmax(0, 1fr) !important;
-    padding: 150px 12px 48px !important;
+    padding: 164px 12px 48px !important;
     gap: 20px !important;
   }
 
@@ -361,6 +441,79 @@ button, input, select { font: inherit; }
     position: static !important;
     top: auto !important;
     width: 100% !important;
+  }
+}
+
+/* Portada en tres columnas: hero intacto, servicios y confianza. */
+.b12-home-layout > section:first-child { grid-column: 1; grid-row: 1 / span 6; }
+.b12-home-services { grid-column: 2; grid-row: 1; display: flex; flex-direction: column; gap: 10px; align-self: start; }
+.b12-home-services > p { margin: 0 0 2px; color: #1d4ed8; font-size: 11px; font-weight: 950; letter-spacing: .08em; text-transform: uppercase; }
+.b12-home-services > a { position: relative; min-height: 150px; display: grid; grid-template-columns: 52px 1fr; align-content: center; gap: 10px; padding: 15px; overflow: hidden; border: 1px solid rgba(15,23,42,.11); border-radius: 22px; background: #fff; color: #0f172a; text-decoration: none; box-shadow: 0 16px 38px rgba(15,23,42,.06); }
+.b12-home-services > a.featured { min-height: 178px; border-color: rgba(113,7,25,.28); background: linear-gradient(145deg,#fff 0%,#fbf1f2 100%); box-shadow: 0 20px 48px rgba(113,7,25,.11); }
+.b12-home-services img { width: 52px; height: 52px; object-fit: cover; border-radius: 12px; mix-blend-mode: multiply; }
+.b12-home-services img.periodic-service-logo { background: #fff; object-fit: contain; mix-blend-mode: normal; box-shadow: 0 8px 20px rgba(15,47,101,.12); }
+.b12-home-services span { min-width: 0; display: grid; align-content: center; gap: 5px; }
+.b12-home-services b { font-size: 14px; line-height: 1.2; }
+.b12-home-services small { color: #64748b; font-size: 11px; line-height: 1.4; }
+.b12-home-services i { position: absolute; right: 13px; bottom: 10px; color: #1d4ed8; font-style: normal; font-weight: 950; }
+.b12-home-services .featured b, .b12-home-services .featured i { color: #710719; }
+.b12-home-aside { display: contents !important; }
+.b12-home-aside > div:nth-child(1) { grid-column: 3; grid-row: 1; align-self: start; }
+.b12-home-aside > div:nth-child(2) { grid-column: 2 / 4; grid-row: 2; }
+.b12-home-aside > div:nth-child(3) { grid-column: 2 / 4; grid-row: 3; }
+
+@media (max-width: 1180px) and (min-width: 901px) {
+  .b12-home-layout { grid-template-columns: minmax(600px,1fr) 200px 250px !important; }
+}
+
+@media (max-width: 900px) {
+  .b12-home-layout > section:first-child { display: contents !important; }
+  .b12-home-hero { order: 1; grid-column: 1 !important; grid-row: auto !important; }
+  .b12-home-services { order: 2; grid-column: 1 !important; grid-row: auto !important; display: grid; grid-template-columns: 1fr; }
+  .b12-home-services > p { margin-top: 4px; }
+  .b12-home-services > a, .b12-home-services > a.featured { min-height: 112px; }
+  .b12-home-aside > div:nth-child(1) { order: 3; grid-column: 1 !important; grid-row: auto !important; }
+  .b12-home-aside > div:nth-child(2) { order: 4; grid-column: 1 !important; grid-row: auto !important; }
+  .b12-home-aside > div:nth-child(3) { order: 5; grid-column: 1 !important; grid-row: auto !important; }
+  .original-catalog { order: 6; grid-column: 1 !important; grid-row: auto !important; }
+  #videos-presentacion { order: 7; grid-column: 1 !important; grid-row: auto !important; }
+  .b12-home-layout footer { order: 8; grid-column: 1 !important; grid-row: auto !important; }
+}
+.original-course-grid article > a { text-decoration: none; }
+.original-course-grid p del { margin-right: 7px; color: #94a3b8; font-weight: 700; }
+
+@media (max-width: 359px) {
+  .b12-header-inner {
+    padding-inline: 8px !important;
+    gap: 5px 6px !important;
+  }
+
+  .b12-header-brand img {
+    width: 102px !important;
+  }
+
+  .b12-header-login {
+    padding-inline: 9px !important;
+  }
+
+  .b12-header-nav a {
+    font-size: 10px !important;
+    padding-inline: 3px !important;
+  }
+}
+
+@media (min-width: 721px) and (max-width: 1024px) {
+  .b12-header-inner {
+    gap: 14px !important;
+    padding-inline: 18px !important;
+  }
+
+  .b12-header-inner > nav {
+    gap: 12px !important;
+  }
+
+  .b12-header-inner > div:last-child {
+    gap: 7px !important;
   }
 }
 

@@ -3,6 +3,8 @@ import type { CSSProperties } from "react";
 import LeadChatBot from "@/components/LeadChatBot";
 import CourseCatalog from "@/components/CourseCatalog";
 import PwaInstallButton from "@/components/PwaInstallButton";
+import AdminHeaderLink from "@/components/AdminHeaderLink";
+import HomeServiceCards from "@/components/HomeServiceCards";
 
 const videos = [
   {
@@ -31,7 +33,7 @@ export default function HomePage() {
       <main style={styles.page}>
         <header style={styles.header}>
           <div className="b12-header-inner" style={styles.headerInner}>
-            <Link href="/" style={styles.brand}>
+            <Link href="/" className="b12-header-brand" style={styles.brand}>
               <img
                 src="/images/base12-logo.png"
                 alt="Base12 Academy"
@@ -39,7 +41,7 @@ export default function HomePage() {
               />
             </Link>
 
-            <nav style={styles.nav}>
+            <nav className="b12-header-nav" aria-label="Navegación principal" style={styles.nav}>
               <a href="#videos-presentacion" style={styles.navLink}>
                 Presentación
               </a>
@@ -58,10 +60,10 @@ export default function HomePage() {
               </a>
             </nav>
 
-            <div style={styles.accessLinks}>
+            <div className="b12-header-access" style={styles.accessLinks}>
               <PwaInstallButton />
-              <Link href="/admin" style={styles.adminLink}>Administración</Link>
-              <Link href="/login" style={styles.loginButton}>Acceso alumnos</Link>
+              <AdminHeaderLink className="b12-header-admin" style={styles.adminLink} />
+              <Link href="/login" className="b12-header-login" style={styles.loginButton}>Acceso alumnos</Link>
             </div>
           </div>
         </header>
@@ -71,18 +73,15 @@ export default function HomePage() {
             <section className="b12-home-hero" style={styles.hero}>
               <div style={styles.heroTextColumn}>
                 <div style={styles.label}>
-                  Bachillerato · PAU · Oposiciones · Cursos online
+                  Tropa y Marinería · Clases Online · Oposiciones · Cursos Online · Bachillerato y PAU
                 </div>
 
                 <h1 style={styles.h1}>
-                  Aprende con estructura. Avanza con seguridad.
+                  Aprende con método. Avanza acompañado. Domina con seguridad.
                 </h1>
 
                 <p style={styles.heroText}>
-                  Base12 Academy reúne distintas líneas de formación: Bachillerato
-                  y PAU, Oposiciones y Cursos online. Cada aula tendrá su propio
-                  método, sus propios recursos y una preparación adaptada al
-                  objetivo del estudiante.
+                  Base12 Academy reúne formación, entrenamiento y apoyo académico para objetivos distintos. Prepárate para Tropa y Marinería, recibe apoyo personalizado con nuestras Clases Online, entrena tu oposición, mejora tus competencias con nuestros Cursos Online o prepara Bachillerato y PAU. En cada opción encontrarás un método definido, recursos específicos y acompañamiento adaptado a tu objetivo.
                 </p>
 
                 <div style={styles.heroButtons}>
@@ -170,6 +169,8 @@ export default function HomePage() {
               </div>
             </footer>
           </section>
+
+          <HomeServiceCards />
 
           <aside className="b12-home-aside" style={styles.aside}>
   <div style={styles.trustBox}>
@@ -298,7 +299,7 @@ const styles: Record<string, CSSProperties> = {
     backdropFilter: "blur(10px)",
   },
   headerInner: {
-    maxWidth: 1200,
+    maxWidth: 1560,
     margin: "0 auto",
     padding: "7px 24px",
     display: "flex",
@@ -362,12 +363,12 @@ const styles: Record<string, CSSProperties> = {
     fontWeight: 700,
   },
   layout: {
-    maxWidth: 1200,
+    maxWidth: 1560,
     margin: "0 auto",
     padding: "100px 24px 64px",
     display: "grid",
-    gridTemplateColumns: "1fr 280px",
-    gap: 28,
+    gridTemplateColumns: "minmax(720px, 1fr) 220px 280px",
+    gap: 20,
   },
   content: {
     display: "flex",

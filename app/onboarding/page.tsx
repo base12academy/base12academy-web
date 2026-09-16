@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 
 type Step = 1 | 2 | 3 | 4;
@@ -10,13 +10,42 @@ export default function OnboardingPage() {
   const [saving, setSaving] = useState(false);
   const [pageError, setPageError] = useState("");
   const [telegramMessage, setTelegramMessage] = useState("");
+  const [periodicProduct, setPeriodicProduct] = useState(false);
+  const [invoiceChoice, setInvoiceChoice] = useState<"yes" | "no" | "">("");
+
+  useEffect(() => {
+    let cancelled = false;
+    const hintedProduct = new URLSearchParams(window.location.search).get("product") === "tabla-periodica";
+    setPeriodicProduct(hintedProduct);
+
+    async function detectEnrollmentProduct() {
+      try {
+        const { data: sessionData } = await supabase.auth.getSession();
+        const token = sessionData.session?.access_token;
+        if (!token) return;
+        const response = await fetch("/api/onboarding", {
+          headers: { Authorization: `Bearer ${token}` },
+          cache: "no-store",
+        });
+        const data = await response.json().catch(() => ({}));
+        if (!cancelled && response.ok) {
+          setPeriodicProduct(data.enrollment?.course_slug === "tabla-periodica");
+        }
+      } catch {
+        // Conserva la pista de la URL si la sesión aún no está disponible.
+      }
+    }
+
+    void detectEnrollmentProduct();
+    return () => { cancelled = true; };
+  }, []);
 
   async function saveOnboardingStep(payload: Record<string, unknown>) {
   const { data: sessionData } = await supabase.auth.getSession();
   const accessToken = sessionData.session?.access_token;
 
   if (!accessToken) {
-    throw new Error("Debes iniciar sesiÃ³n para continuar.");
+    throw new Error("Debes iniciar sesión para continuar.");
   }
 
   const response = await fetch("/api/onboarding", {
@@ -51,9 +80,9 @@ export default function OnboardingPage() {
     postalCode: "",
     city: "",
     province: "",
-    country: "EspaÃ±a",
+    country: "España",
     billingEmail: "",
-    nominativeInvoice: true,
+    nominativeInvoice: false,
   });
 
   const [planning, setPlanning] = useState({
@@ -95,10 +124,16 @@ export default function OnboardingPage() {
       setSaving(true);
       setPageError("");
 
-      await saveOnboardingStep({
+      if (periodicProduct && !invoiceChoice) {
+        throw new Error("Indica si deseas recibir una factura exenta de IVA.");
+      }
+
+      const result = await saveOnboardingStep({
         step: "billing",
         billingType: billing.type,
-        nominativeInvoice: billing.nominativeInvoice,
+        nominativeInvoice: periodicProduct
+          ? invoiceChoice === "yes"
+          : billing.nominativeInvoice,
         billingName: billing.billingName,
         taxId: billing.taxId,
         address: billing.address,
@@ -109,13 +144,23 @@ export default function OnboardingPage() {
         billingEmail: billing.billingEmail,
       });
 
+      if (result.nextStep === "classes") {
+        window.location.href = "/dashboard/clases";
+        return;
+      }
+
+      if (result.nextStep === "periodic-table") {
+        window.location.href = "/apps/tabla-periodica";
+        return;
+      }
+
       setStep(3);
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (error) {
       setPageError(
         error instanceof Error
           ? error.message
-          : "No se pudieron guardar los datos de facturaciÃ³n."
+          : "No se pudieron guardar los datos de facturación."
       );
     } finally {
       setSaving(false);
@@ -134,7 +179,7 @@ export default function OnboardingPage() {
 
       if (!sessionDurationMinutes) {
         throw new Error(
-          "Indica la duraciÃ³n habitual de las sesiones en minutos."
+          "Indica la duración habitual de las sesiones en minutos."
         );
       }
 
@@ -154,7 +199,7 @@ export default function OnboardingPage() {
       setPageError(
         error instanceof Error
           ? error.message
-          : "No se pudo guardar la planificaciÃ³n."
+          : "No se pudo guardar la planificación."
       );
     } finally {
       setSaving(false);
@@ -175,7 +220,7 @@ export default function OnboardingPage() {
     const accessToken = sessionData.session?.access_token;
 
     if (!accessToken) {
-      throw new Error("Debes iniciar sesiÃ³n para continuar.");
+      throw new Error("Debes iniciar sesión para continuar.");
     }
 
     const linkResponse = await fetch("/api/telegram/link", {
@@ -204,7 +249,7 @@ export default function OnboardingPage() {
     }
 
     if (!linkData.url) {
-      throw new Error("No se recibiÃ³ el enlace de Telegram.");
+      throw new Error("No se recibió el enlace de Telegram.");
     }
 
     if (telegramWindow) {
@@ -215,7 +260,7 @@ export default function OnboardingPage() {
     }
 
     setTelegramMessage(
-      "Telegram se ha abierto en otra ventana. Pulsa Â«IniciarÂ» en el bot. Esta pantalla continuarÃ¡ automÃ¡ticamente cuando la cuenta quede vinculada."
+      "Telegram se ha abierto en otra ventana. Pulsa «Iniciar» en el bot. Esta pantalla continuará automáticamente cuando la cuenta quede vinculada."
     );
 
     for (let attempt = 0; attempt < 60; attempt++) {
@@ -239,7 +284,7 @@ export default function OnboardingPage() {
         });
 
         setTelegramMessage(
-          "Telegram estÃ¡ vinculado correctamente."
+          "Telegram está vinculado correctamente."
         );
 
         window.location.href = "/onboarding/videos";
@@ -248,7 +293,7 @@ export default function OnboardingPage() {
     }
 
     setTelegramMessage(
-      "La vinculaciÃ³n sigue pendiente. Si ya has pulsado Â«IniciarÂ» en Telegram, vuelve a pulsar Â«Vincular TelegramÂ»."
+      "La vinculación sigue pendiente. Si ya has pulsado «Iniciar» en Telegram, vuelve a pulsar «Vincular Telegram»."
     );
   } catch (error) {
     telegramWindow?.close();
@@ -256,7 +301,7 @@ export default function OnboardingPage() {
     setTelegramMessage(
       error instanceof Error
         ? error.message
-        : "No se pudo completar la vinculaciÃ³n con Telegram."
+        : "No se pudo completar la vinculación con Telegram."
     );
   } finally {
     setSaving(false);
@@ -302,12 +347,14 @@ export default function OnboardingPage() {
     opacity: saving ? 0.7 : 1,
   };
 
-  const steps = [
+  const allSteps = [
     ["Datos personales", 1],
-    ["FacturaciÃ³n", 2],
-    ["Tu planificaciÃ³n con Fernando", 3],
-    ["VinculaciÃ³n con Telegram", 4],
+    ["Facturación", 2],
+    ["Tu planificación con Fernando", 3],
+    ["Vinculación con Telegram", 4],
   ] as const;
+  const steps = periodicProduct ? allSteps.slice(0, 2) : allSteps;
+  const totalSteps = steps.length;
 
   return (
     <main
@@ -360,7 +407,9 @@ export default function OnboardingPage() {
           maxWidth: "1500px",
           margin: "0 auto",
           display: "grid",
-          gridTemplateColumns: "235px minmax(0, 1fr) 285px",
+          gridTemplateColumns: periodicProduct
+            ? "235px minmax(0, 1fr)"
+            : "235px minmax(0, 1fr) 285px",
           gap: "28px",
           padding: "32px 28px 70px",
         }}
@@ -387,7 +436,7 @@ export default function OnboardingPage() {
           >
             <div
               style={{
-                width: `${step * 25}%`,
+                width: `${(step / totalSteps) * 100}%`,
                 height: "100%",
                 background: "#155eef",
               }}
@@ -401,7 +450,7 @@ export default function OnboardingPage() {
               marginBottom: "28px",
             }}
           >
-            Paso {step} de 4
+            Paso {step} de {totalSteps}
           </div>
 
           <div style={{ display: "grid", gap: "12px" }}>
@@ -460,7 +509,7 @@ export default function OnboardingPage() {
               color: "#102d62",
             }}
           >
-            Completa tu onboarding
+            {periodicProduct ? "Activa tu Tabla Periódica" : "Completa tu onboarding"}
           </h1>
 
           <p
@@ -469,7 +518,9 @@ export default function OnboardingPage() {
               color: "#50617e",
             }}
           >
-            Sigue estos pasos para empezar tu formaciÃ³n con buen pie.
+            {periodicProduct
+              ? "Confirma tus datos y decide si deseas factura antes de entrar en la aplicación."
+              : "Sigue estos pasos para empezar tu formación con buen pie."}
           </p>
 
           {pageError && (
@@ -508,7 +559,7 @@ export default function OnboardingPage() {
             </h2>
 
             <p style={{ color: "#607089" }}>
-              Actualiza tu informaciÃ³n para personalizar tu experiencia.
+              Actualiza tu información para personalizar tu experiencia.
             </p>
 
             {step === 1 && (
@@ -534,13 +585,13 @@ export default function OnboardingPage() {
                           fullName: e.target.value,
                         })
                       }
-                      placeholder="Ej.: Ana MartÃ­n GarcÃ­a"
+                      placeholder="Ej.: Ana Martín García"
                     />
                   </div>
 
                   <div>
                     <label style={labelStyle}>
-                      Correo electrÃ³nico
+                      Correo electrónico
                     </label>
                     <input
                       type="email"
@@ -558,7 +609,7 @@ export default function OnboardingPage() {
 
                   <div>
                     <label style={labelStyle}>
-                      NÂº de mÃ³vil
+                      Nº de móvil
                     </label>
                     <input
                       style={inputStyle}
@@ -587,7 +638,7 @@ export default function OnboardingPage() {
                     disabled={saving}
                     onClick={handlePersonalContinue}
                   >
-                    {saving ? "Guardando..." : "Guardar y continuar â†’"}
+                    {saving ? "Guardando..." : "Guardar y continuar →"}
                   </button>
                 </div>
               </>
@@ -609,15 +660,90 @@ export default function OnboardingPage() {
                 color: "#102d62",
               }}
             >
-              2. FacturaciÃ³n
+              2. Facturación
             </h2>
 
             <p style={{ color: "#607089" }}>
-              Completa los datos necesarios para la emisiÃ³n de tu factura.
+              {periodicProduct
+                ? "¿Deseas recibir una factura exenta de IVA por esta compra?"
+                : "Indica si deseas recibir una factura nominativa de tu compra."}
             </p>
 
             {step === 2 && (
               <>
+                {periodicProduct ? (
+                  <fieldset
+                    style={{
+                      margin: "20px 0 0",
+                      padding: "16px",
+                      border: "1px solid #c8d8f0",
+                      borderRadius: "12px",
+                      background: "#eef4ff",
+                    }}
+                  >
+                    <legend style={{ ...labelStyle, marginBottom: "10px" }}>
+                      Factura exenta de IVA
+                    </legend>
+                    <div style={{ display: "flex", gap: "22px", flexWrap: "wrap" }}>
+                      <label style={{ display: "flex", gap: "8px", alignItems: "center", fontWeight: 700 }}>
+                        <input
+                          type="radio"
+                          name="periodic-invoice"
+                          checked={invoiceChoice === "yes"}
+                          onChange={() => {
+                            setInvoiceChoice("yes");
+                            setBilling({ ...billing, nominativeInvoice: true });
+                          }}
+                        />
+                        Sí, quiero factura
+                      </label>
+                      <label style={{ display: "flex", gap: "8px", alignItems: "center", fontWeight: 700 }}>
+                        <input
+                          type="radio"
+                          name="periodic-invoice"
+                          checked={invoiceChoice === "no"}
+                          onChange={() => {
+                            setInvoiceChoice("no");
+                            setBilling({ ...billing, nominativeInvoice: false });
+                          }}
+                        />
+                        No quiero factura
+                      </label>
+                    </div>
+                    <p style={{ margin: "12px 0 0", color: "#50617e", fontSize: "13px" }}>
+                      En ambos casos comunicaremos la venta a Facturación Base12.
+                    </p>
+                  </fieldset>
+                ) : (
+                <label
+                  style={{
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: "10px",
+                    marginTop: "20px",
+                    padding: "16px",
+                    borderRadius: "12px",
+                    background: "#eef4ff",
+                    color: "#29436f",
+                    fontWeight: 700,
+                  }}
+                >
+                  <input
+                    type="checkbox"
+                    checked={billing.nominativeInvoice}
+                    onChange={(e) =>
+                      setBilling({
+                        ...billing,
+                        nominativeInvoice: e.target.checked,
+                      })
+                    }
+                    style={{ width: "18px", height: "18px", marginTop: "1px" }}
+                  />
+                  Quiero recibir una factura nominativa por correo electrónico.
+                </label>
+                )}
+
+                {(periodicProduct ? invoiceChoice === "yes" : billing.nominativeInvoice) && (
                 <div
                   style={{
                     display: "grid",
@@ -628,7 +754,7 @@ export default function OnboardingPage() {
                 >
                   <div>
                     <label style={labelStyle}>
-                      Tipo de facturaciÃ³n
+                      Tipo de facturación
                     </label>
                     <select
                       style={inputStyle}
@@ -644,14 +770,14 @@ export default function OnboardingPage() {
                         Particular
                       </option>
                       <option value="empresa">
-                        Empresa o autÃ³nomo
+                        Empresa o autónomo
                       </option>
                     </select>
                   </div>
 
                   <div>
                     <label style={labelStyle}>
-                      Nombre o razÃ³n social
+                      Nombre o razón social
                     </label>
                     <input
                       style={inputStyle}
@@ -683,7 +809,7 @@ export default function OnboardingPage() {
 
                   <div>
                     <label style={labelStyle}>
-                      Correo de facturaciÃ³n
+                      Correo de facturación
                     </label>
                     <input
                       type="email"
@@ -700,7 +826,7 @@ export default function OnboardingPage() {
 
                   <div style={{ gridColumn: "1 / -1" }}>
                     <label style={labelStyle}>
-                      DirecciÃ³n fiscal
+                      Dirección fiscal
                     </label>
                     <input
                       style={inputStyle}
@@ -716,7 +842,7 @@ export default function OnboardingPage() {
 
                   <div>
                     <label style={labelStyle}>
-                      CÃ³digo postal
+                      Código postal
                     </label>
                     <input
                       style={inputStyle}
@@ -764,7 +890,7 @@ export default function OnboardingPage() {
 
                   <div>
                     <label style={labelStyle}>
-                      PaÃ­s
+                      País
                     </label>
                     <input
                       style={inputStyle}
@@ -778,29 +904,28 @@ export default function OnboardingPage() {
                     />
                   </div>
                 </div>
+                )}
 
-                <label
+                <p
                   style={{
-                    display: "flex",
-                    gap: "10px",
-                    alignItems: "center",
                     marginTop: "20px",
                     color: "#29436f",
                     fontSize: "14px",
+                    background: "#eef4ff",
+                    borderRadius: "10px",
+                    padding: "12px 14px",
                   }}
                 >
-                  <input
-                    type="checkbox"
-                    checked={!billing.nominativeInvoice}
-                    onChange={(e) =>
-                      setBilling({
-                        ...billing,
-                        nominativeInvoice: !e.target.checked,
-                      })
-                    }
-                  />
-                  No necesito factura nominativa
-                </label>
+                  {periodicProduct
+                    ? invoiceChoice === "yes"
+                      ? "La factura exenta de IVA se emitirá con estos datos, se enviará al correo de facturación y Facturación Base12 recibirá una copia privada."
+                      : invoiceChoice === "no"
+                        ? "No se emitirá factura. Facturación Base12 recibirá la comunicación de la venta y de esta decisión."
+                        : "Selecciona una opción para continuar."
+                    : billing.nominativeInvoice
+                      ? "La factura se emitirá con los datos indicados y se enviará al correo de facturación."
+                      : "No se emitirá una factura nominativa. Puedes continuar con el alta sin completar datos fiscales."}
+                </p>
 
                 <div
                   style={{
@@ -812,10 +937,14 @@ export default function OnboardingPage() {
                   <button
                     type="button"
                     style={primaryButton}
-                    disabled={saving}
+                    disabled={saving || (periodicProduct && !invoiceChoice)}
                     onClick={handleBillingContinue}
                   >
-                    {saving ? "Guardando..." : "Guardar y continuar â†’"}
+                    {saving
+                      ? "Guardando..."
+                      : periodicProduct
+                        ? "Confirmar y entrar →"
+                        : "Guardar y continuar →"}
                   </button>
                 </div>
               </>
@@ -826,6 +955,7 @@ export default function OnboardingPage() {
           <div
             style={{
               ...cardStyle,
+              display: periodicProduct ? "none" : undefined,
               marginBottom: "18px",
               opacity: step === 3 ? 1 : 0.72,
             }}
@@ -837,7 +967,7 @@ export default function OnboardingPage() {
                 color: "#102d62",
               }}
             >
-              3. Tu planificaciÃ³n con Fernando
+              3. Tu planificación con Fernando
             </h2>
 
             <p style={{ color: "#607089" }}>
@@ -856,7 +986,7 @@ export default function OnboardingPage() {
                 >
                   <div>
                     <label style={labelStyle}>
-                      DÃ­as de estudio
+                      Días de estudio
                     </label>
                     <input
                       style={inputStyle}
@@ -867,7 +997,7 @@ export default function OnboardingPage() {
                           studyDays: e.target.value,
                         })
                       }
-                      placeholder="Ej.: lunes, miÃ©rcoles y viernes"
+                      placeholder="Ej.: lunes, miércoles y viernes"
                     />
                   </div>
 
@@ -884,13 +1014,13 @@ export default function OnboardingPage() {
                           studyTime: e.target.value,
                         })
                       }
-                      placeholder="Ej.: 18:00 â€“ 20:00"
+                      placeholder="Ej.: 18:00 – 20:00"
                     />
                   </div>
 
                   <div>
                     <label style={labelStyle}>
-                      DuraciÃ³n de las sesiones
+                      Duración de las sesiones
                     </label>
                     <input
                       style={inputStyle}
@@ -951,7 +1081,7 @@ export default function OnboardingPage() {
                           objective: e.target.value,
                         })
                       }
-                      placeholder="Â¿QuÃ© quieres conseguir?"
+                      placeholder="¿Qué quieres conseguir?"
                     />
                   </div>
                 </div>
@@ -967,8 +1097,8 @@ export default function OnboardingPage() {
                     lineHeight: 1.6,
                   }}
                 >
-                  Fernando utilizarÃ¡ esta informaciÃ³n para organizar tu
-                  planificaciÃ³n y preparar tus recordatorios.
+                  Fernando utilizará esta información para organizar tu
+                  planificación y preparar tus recordatorios.
                 </div>
 
                 <div
@@ -984,7 +1114,7 @@ export default function OnboardingPage() {
                     disabled={saving}
                     onClick={handlePlanningContinue}
                   >
-                    {saving ? "Guardando..." : "Guardar y continuar â†’"}
+                    {saving ? "Guardando..." : "Guardar y continuar →"}
                   </button>
                 </div>
               </>
@@ -995,6 +1125,7 @@ export default function OnboardingPage() {
           <div
             style={{
               ...cardStyle,
+              display: periodicProduct ? "none" : undefined,
               opacity: step === 4 ? 1 : 0.72,
             }}
           >
@@ -1005,12 +1136,12 @@ export default function OnboardingPage() {
                 color: "#102d62",
               }}
             >
-              4. VinculaciÃ³n con Telegram
+              4. Vinculación con Telegram
             </h2>
 
             <p style={{ color: "#607089", lineHeight: 1.6 }}>
               Vincula tu cuenta para recibir avisos, comunicaciones y
-              seguimiento relacionado con tu formaciÃ³n.
+              seguimiento relacionado con tu formación.
             </p>
 
             {step === 4 && (
@@ -1036,7 +1167,7 @@ export default function OnboardingPage() {
                       fontSize: "14px",
                     }}
                   >
-                    La vinculaciÃ³n quedarÃ¡ asociada a tu cuenta de alumno.
+                    La vinculación quedará asociada a tu cuenta de alumno.
                   </p>
                 </div>
 
@@ -1072,7 +1203,7 @@ export default function OnboardingPage() {
         </section>
 
         {/* COLUMNA DERECHA */}
-        <aside>
+        <aside style={{ display: periodicProduct ? "none" : undefined }}>
           <div style={cardStyle}>
             <h3
               style={{
@@ -1081,7 +1212,7 @@ export default function OnboardingPage() {
                 color: "#102d62",
               }}
             >
-              Te acompaÃ±amos en cada paso
+              Te acompañamos en cada paso
             </h3>
 
             <p
@@ -1091,30 +1222,30 @@ export default function OnboardingPage() {
                 fontSize: "14px",
               }}
             >
-              Nuestros asistentes y servicios estÃ¡n disponibles durante tu
-              formaciÃ³n.
+              Nuestros asistentes y servicios están disponibles durante tu
+              formación.
             </p>
 
             {[
-              ["RocÃ­o", "Profesora IA", "Contenidos y explicaciones"],
+              ["Rocío", "Profesora IA", "Contenidos y explicaciones"],
               [
                 "Fernando",
                 "Tutor IA",
-                "Progreso, planificaciÃ³n y organizaciÃ³n",
+                "Progreso, planificación y organización",
               ],
               [
-                "SecretarÃ­a",
+                "Secretaría",
                 "Servicio virtual",
-                "Pagos, facturas y cuestiones econÃ³micas",
+                "Pagos, facturas y cuestiones económicas",
               ],
               [
                 "Jefe de Estudios",
                 "Servicio virtual",
-                "OrganizaciÃ³n general",
+                "Organización general",
               ],
               [
-                "Director AcadÃ©mico",
-                "AtenciÃ³n humana",
+                "Director Académico",
+                "Atención humana",
                 "Respuesta por correo hasta 24 h",
               ],
             ].map(([name, role, description]) => (
