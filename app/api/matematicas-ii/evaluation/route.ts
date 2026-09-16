@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { getSupabase } from "@/lib/supabase/server";
 import { isCourseAdministrator } from "@/lib/course-access";
 import { getMatematicasIIEntitlement } from "@/lib/matematicas-ii/entitlement";
-import { getRocioQuestions, getShortQuestions, hasEvaluationUnit } from "@/lib/matematicas-ii/evaluation.server";
+import { getMatematicasIIUnit } from "@/lib/matematicas-ii/content";
+import { getRocioQuestions, getShortQuestions } from "@/lib/matematicas-ii/evaluation";
 import { getPauProblems } from "@/lib/matematicas-ii/pau-problems.server";
 import { MAT2_PAU_PROFILES } from "@/lib/matematicas-ii/pau-profiles.server";
 import { getPauSimulation } from "@/lib/matematicas-ii/simulations.server";
@@ -67,9 +68,15 @@ export async function GET(req: NextRequest) {
   const access = await getAccess(req);
   if (access.error) return NextResponse.json({ error: "access_check_failed" }, { status: 500 });
 
+  if (type === "short" && req.nextUrl.searchParams.get("all") === "1") {
+    if (!access.administrator && !access.hasPau) return denied(access);
+    const items = getShortQuestions();
+    return NextResponse.json({ type, all: true, count: items.length, items });
+  }
+
   if (type === "rocio" || type === "short") {
     const unit = req.nextUrl.searchParams.get("unit") || "";
-    if (!hasEvaluationUnit(unit)) return NextResponse.json({ error: "invalid_unit" }, { status: 400 });
+    if (!getMatematicasIIUnit(unit)) return NextResponse.json({ error: "invalid_unit" }, { status: 400 });
 
     const preview = unit === PREVIEW_UNIT;
     if (!preview && !access.administrator && !access.hasCourse && !access.hasPau) return denied(access);
