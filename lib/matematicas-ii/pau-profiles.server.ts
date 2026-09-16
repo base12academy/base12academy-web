@@ -1,0 +1,31 @@
+export type PauProfile = {
+  code: string;
+  community: string;
+  status: string;
+  format: string;
+  source: string;
+};
+
+export const MAT2_PAU_PROFILES: PauProfile[] = [
+  { code: "AND", community: "Andalucía", status: "2026 verificado; actualizar 2027", format: "6 ejercicios; 2 obligatorios + dos bloques optativos de 2 ejercicios; se responden 4; 2,5 puntos c/u. Incluye Álgebra, Geometría, Análisis y Probabilidad/Estadística.", source: "https://www.juntadeandalucia.es/economiaconocimientoempresasyuniversidad/sguit/" },
+  { code: "ARA", community: "Aragón", status: "2026 oficial verificado", format: "5 preguntas de 2 puntos. Tres primeras obligatorias; dos últimas con opción 1/2. Dos preguntas de Análisis, una de Álgebra, una de Probabilidad y una de Geometría.", source: "https://academico.unizar.es/pau/modelos-orientativos-de-examen-pau-2026" },
+  { code: "AST", community: "Principado de Asturias", status: "2026 perfil armonizado provisional", format: "Modelo armonizado Base12: 5 tareas de 2 puntos, cubriendo Análisis, Álgebra, Geometría y Probabilidad; opcionalidad interna sin reducir bloques.", source: "https://www.uniovi.es/estudia/grados/acceso/pau" },
+  { code: "BAL", community: "Illes Balears", status: "2026 oficial verificado", format: "Parte A: Geometría 2 + Análisis 2 + Probabilidad/Estadística 2 obligatorias. Parte B: elegir 1 de 2 Análisis (2) y 1 de 2 Álgebra (2).", source: "https://estudis.uib.es/estudis-de-grau/com-hi-pots-accedir/acces/batxiller/" },
+  { code: "CAN", community: "Canarias", status: "2026 oficial verificado", format: "Parte I: 3 problemas obligatorios (Análisis, Álgebra, Geometría). Parte II: elegir 1 de 2 de Análisis y 1 de 2 de Probabilidad.", source: "https://www.gobiernodecanarias.org/educacion/web/bachillerato/pau/" },
+  { code: "CNT", community: "Cantabria", status: "2026 estructura base 2025/26; revisar 2027", format: "Modelo único por apartados; Base12 reproduce 4 bloques (Álgebra, Geometría, Análisis, Probabilidad) con opcionalidad interna y justificación obligatoria.", source: "https://web.unican.es/admision/Paginas/Materia-EBAU.aspx" },
+  { code: "CLM", community: "Castilla-La Mancha", status: "2026 oficial verificado", format: "5 preguntas de 2 puntos. P1–P3 obligatorias (Análisis/medida, Probabilidad, Álgebra); P4–P5 con elección interna (Análisis y Geometría).", source: "https://www.uclm.es/perfiles/preuniversitario/acceso/pau" },
+  { code: "CYL", community: "Castilla y León", status: "2026 perfil oficial disponible; estructura fina provisional", format: "Modelo único con bloques de Análisis, Álgebra, Geometría y Probabilidad y opcionalidad interna. Base12 conserva 90 min y exige operaciones no triviales explícitas.", source: "https://www.educa.jcyl.es/universidad/es/pau" },
+  { code: "CAT", community: "Cataluña", status: "2026 oficial verificado", format: "4 ejercicios obligatorios de 2,5. Los tres primeros cubren Análisis, Álgebra/Geometría y Probabilidad (1,5+1 en una combinación); el cuarto ofrece alternativa A/B.", source: "https://universitats.gencat.cat/ca/proves-acces-PAU-PAP/" },
+  { code: "CVA", community: "Comunitat Valenciana", status: "2026 perfil oficial; estructura fina provisional", format: "Modelo único con tareas de los cuatro sentidos; opcionalidad interna. Base12 usa patrón 5×2 armonizado hasta confirmar guía específica 2027.", source: "https://www.uv.es/pau/es" },
+  { code: "EXT", community: "Extremadura", status: "TRANSICIÓN: 2026-27 exige nueva comprobación", format: "La armonización completa se aplazó en 2025-26; Base12 usa perfil 5×2 (Análisis, Álgebra, Geometría, Probabilidad) solo como plantilla provisional 2027.", source: "https://www.unex.es/organizacion/servicios-universitarios/servicios/alumnado/funciones/selectividad" },
+  { code: "GAL", community: "Galicia", status: "2026 oficial verificado parcialmente", format: "4 preguntas de respuesta obligatoria; Q1 Probabilidad/Estadística (2 puntos); Q2–Q4 contienen opcionalidad interna y completan Álgebra, Análisis y Geometría.", source: "https://ciug.gal/pau" },
+  { code: "MAD", community: "Comunidad de Madrid", status: "2026 oficial verificado MAT2; MACS según modelo 2026", format: "7 problemas distribuidos en 4 bloques. Se responden 5: 3 obligatorios (uno Análisis) + 1 de 2 Análisis + 1 de 2 del bloque restante. Pesos: Análisis 40%, Álgebra/Geometría/Probabilidad 20% cada uno.", source: "https://www.uam.es/uam/estudios/modelos-examen-2026" },
+  { code: "MUR", community: "Región de Murcia", status: "2026 estructura pendiente de fuente oficial directa", format: "Perfil 2026 usado por Base12: cuatro secciones (Álgebra, Análisis, Geometría, Probabilidad) con elección interna.", source: "https://www.um.es/web/estudios/contenido/acceso/pau" },
+  { code: "NAV", community: "Navarra", status: "2026 perfil armonizado provisional", format: "5 tareas de 2 puntos Base12, cubriendo dos de Análisis y una de Álgebra, Geometría y Probabilidad; opcionalidad interna.", source: "https://www.unavarra.es/estudios/acceso-y-admision/pau" },
+  { code: "PVA", community: "País Vasco", status: "2026 examen oficial disponible", format: "Modelo 2026 basado en examen EHU: cobertura de Álgebra, Geometría, Análisis y Probabilidad, con opcionalidad interna según documento de materia.", source: "https://www.ehu.eus/es/web/unibertsitaterako-sarbidea/pau-2026" },
+  { code: "RIO", community: "La Rioja", status: "2026 oficial: misma estructura que 2025; detalle por materia revisable", format: "Modelo único por bloques con opcionalidad interna. Base12 usa 5 tareas de 2 puntos cubriendo Análisis, Álgebra, Geometría y Probabilidad.", source: "https://www.unirioja.es/administracion-y-servicios/oficina-de-estudiantes/pau/examenes-y-criterios/" },
+];
+
+export function getPauProfile(code: string) {
+  return MAT2_PAU_PROFILES.find((item) => item.code === code) ?? null;
+}
