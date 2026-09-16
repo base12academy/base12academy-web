@@ -4,9 +4,7 @@ import { isCourseAdministrator } from "@/lib/course-access";
 import { getMatematicasIIEntitlement } from "@/lib/matematicas-ii/entitlement";
 import { getMatematicasIIUnit } from "@/lib/matematicas-ii/content";
 import { getRocioQuestions, getShortQuestions } from "@/lib/matematicas-ii/evaluation";
-import { getPauProblems } from "@/lib/matematicas-ii/pau-problems.server";
-import { MAT2_PAU_PROFILES } from "@/lib/matematicas-ii/pau-profiles.server";
-import { getPauSimulation } from "@/lib/matematicas-ii/simulations.server";
+import { getPauProblems, getPauSimulation, MATEMATICAS_II_PAU_PROFILES } from "@/lib/matematicas-ii/pau";
 
 const PREVIEW_UNIT = "T01";
 
@@ -63,6 +61,24 @@ function denied(access: AccessResult) {
   );
 }
 
+function simulationForClient(simulation: NonNullable<ReturnType<typeof getPauSimulation>>) {
+  const exercises = [];
+  for (let index = 0; index + 3 < simulation.content.length; index += 4) {
+    exercises.push({
+      label: simulation.content[index],
+      statement: simulation.content[index + 1],
+      solution: simulation.content[index + 2].replace(/^Solución docente:\s*/i, ""),
+      rubric: simulation.content[index + 3].replace(/^Criterio Base12 ajustado:\s*/i, ""),
+    });
+  }
+  return {
+    code: simulation.code,
+    community: simulation.title.replace(/^Simulacro PAU MAT2 ·\s*/i, ""),
+    profile: simulation.profile,
+    exercises,
+  };
+}
+
 export async function GET(req: NextRequest) {
   const type = req.nextUrl.searchParams.get("type");
   const access = await getAccess(req);
@@ -94,15 +110,22 @@ export async function GET(req: NextRequest) {
 
   if (type === "profiles") {
     if (!access.administrator && !access.hasPau) return denied(access);
-    return NextResponse.json({ type, count: MAT2_PAU_PROFILES.length, items: MAT2_PAU_PROFILES });
+    const items = MATEMATICAS_II_PAU_PROFILES.map((profile) => ({
+      code: profile.code,
+      community: profile.name,
+      status: profile.state,
+      format: profile.description,
+      source: profile.source,
+    }));
+    return NextResponse.json({ type, count: items.length, items });
   }
 
   if (type === "simulation") {
     if (!access.administrator && !access.hasPau) return denied(access);
     const code = (req.nextUrl.searchParams.get("code") || "").toUpperCase();
     const simulation = getPauSimulation(code);
-    if (!simulation) return NextResponse.json({ error: "invalid_community" }, { status: 404 });
-    return NextResponse.json({ type, code, simulation });
+    if (!simulation || Array.isArray(simulation)) return NextResponse.json({ error: "invalid_community" }, { status: 404 });
+    return NextResponse.json({ type, code, simulation: simulationForClient(simulation) });
   }
 
   return NextResponse.json({ error: "invalid_request" }, { status: 400 });
