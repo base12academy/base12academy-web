@@ -16,7 +16,9 @@ export default function DashboardLayout({
   const isHistoria = pathname.startsWith("/dashboard/historia-espana");
   const isOfimatica = pathname.startsWith("/dashboard/ofimatica");
   const isTropa = pathname.startsWith("/dashboard/tropa-y-marineria");
+  const isTraining = pathname.startsWith("/dashboard/base12-training");
   const isFilosofia = pathname.startsWith("/dashboard/filosofia");
+  const fullWidthCourse = isOfimatica || isTropa || isTraining || isFilosofia || isHistoria;
 
   const linkStyle = (path: string) => ({
     color: pathname === path ? "white" : "#9ca3af",
@@ -83,8 +85,8 @@ export default function DashboardLayout({
         </aside>
       ) : null}
 
-      <main style={{ flex: 1, padding: isOfimatica || isTropa || isFilosofia || isHistoria ? 0 : "40px" }}>
-        {!isOfimatica && !isTropa && !isFilosofia && !isHistoria && (
+      <main style={{ flex: 1, padding: fullWidthCourse ? 0 : "40px" }}>
+        {!fullWidthCourse && (
           <div style={{ maxWidth: "1200px", margin: "0 auto 18px", textAlign: "right" }}>
             <Link href="/dashboard/facturas" style={{ color: "#15294b", fontWeight: 600 }}>
               Mis facturas
@@ -92,7 +94,7 @@ export default function DashboardLayout({
           </div>
         )}
         {children}
-        {!isOfimatica && !isTropa && !isFilosofia && !isHistoria && <ChatBot />}
+        {!fullWidthCourse && <ChatBot />}
       </main>
     </div>
   );
