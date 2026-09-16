@@ -12,6 +12,11 @@ export function GET() {
     background_color: "#eef9f1",
     theme_color: "#176b45",
     orientation: "any",
+    shortcuts: [
+      { name: "Plan", short_name: "Plan", url: "/apps/base12-training/plan" },
+      { name: "Biblioteca", short_name: "Biblioteca", url: "/apps/base12-training/biblioteca" },
+      { name: "Progreso", short_name: "Progreso", url: "/apps/base12-training/progreso" }
+    ],
     icons: [
       {
         src: "/images/banco-opositores/logo-base12-training.png",
