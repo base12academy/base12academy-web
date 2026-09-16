@@ -1,6 +1,7 @@
 export type TrainingTestSlug = "flexiones" | "plancha" | "carrera-2000" | "agilidad";
 export type TrainingSex = "male" | "female";
 export type TrainingDirection = "higher_is_better" | "lower_is_better";
+export type TrainingProgressState = "Sin marca inicial" | "No alcanza" | "Cerca" | "Superada" | "Consolidada";
 
 export type TrainingExercise = {
   slug: string;
@@ -151,4 +152,20 @@ export function nextTrainingTarget(test: TrainingTest, latest: number | null, se
 export function hasPassedOfficial(test: TrainingTest, value: number, sex: TrainingSex) {
   const official = getOfficialTarget(test, sex);
   return test.direction === "higher_is_better" ? value >= official : value <= official;
+}
+
+export function getBestTrainingValue(test: TrainingTest, values: number[]) {
+  if (!values.length) return null;
+  return test.direction === "higher_is_better" ? Math.max(...values) : Math.min(...values);
+}
+
+export function getTrainingProgressState(test: TrainingTest, valuesNewestFirst: number[], sex: TrainingSex): TrainingProgressState {
+  if (!valuesNewestFirst.length) return "Sin marca inicial";
+  const latest = valuesNewestFirst[0];
+  const official = getOfficialTarget(test, sex);
+  const lastThree = valuesNewestFirst.slice(0, 3);
+  if (lastThree.length === 3 && lastThree.every((value) => hasPassedOfficial(test, value, sex))) return "Consolidada";
+  if (hasPassedOfficial(test, latest, sex)) return "Superada";
+  if (nextTrainingTarget(test, latest, sex) === official) return "Cerca";
+  return "No alcanza";
 }
