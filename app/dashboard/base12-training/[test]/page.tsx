@@ -1,6 +1,6 @@
-import TrainingApp from "@/components/training/TrainingApp";
+import { redirect } from "next/navigation";
 
-export default async function Base12TrainingTestPage({ params }: { params: Promise<{ test: string }> }) {
+export default async function Base12TrainingLegacyTestPage({ params }: { params: Promise<{ test: string }> }) {
   const { test } = await params;
-  return <TrainingApp testSlug={test} />;
+  redirect(`/apps/base12-training/${test}`);
 }
