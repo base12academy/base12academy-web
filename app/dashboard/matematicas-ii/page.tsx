@@ -135,7 +135,11 @@ export default function MatematicasIIPage() {
     setResourceLoading(true);
 
     const params = new URLSearchParams({ type: kind });
-    if (kind === "rocio" || kind === "short") params.set("unit", selected.id);
+    if (kind === "rocio") params.set("unit", selected.id);
+    if (kind === "short") {
+      if (mode === "pau") params.set("all", "1");
+      else params.set("unit", selected.id);
+    }
     if (kind === "simulation" && code) params.set("code", code);
 
     const { data } = await supabase.auth.getSession();
@@ -246,7 +250,7 @@ export default function MatematicasIIPage() {
 
           {resourceKind ? <section id="mat2-resource-panel" style={panelStyle}>
             <div style={{ display: "flex", justifyContent: "space-between", gap: 16, alignItems: "flex-start", marginBottom: 18 }}>
-              <div><span style={{ fontSize: 11, fontWeight: 900, color: "#cc8300", letterSpacing: ".08em" }}>RECURSO BASE12</span><h3 style={{ margin: "6px 0 0", fontSize: 24 }}>{resourceTitle(resourceKind, selected.title)}</h3></div>
+              <div><span style={{ fontSize: 11, fontWeight: 900, color: "#cc8300", letterSpacing: ".08em" }}>RECURSO BASE12</span><h3 style={{ margin: "6px 0 0", fontSize: 24 }}>{resourceTitle(resourceKind, selected.title, mode)}</h3></div>
               <button type="button" onClick={() => { setResourceKind(null); setResourceData(null); }} style={closeButtonStyle}>Cerrar ×</button>
             </div>
             {resourceLoading ? <p>Cargando recurso…</p> : resourceError ? <p style={{ color: "#9a3412", fontWeight: 700 }}>{resourceError}</p> : resourceData ? <ResourceContent payload={resourceData} onSimulation={(code) => openResource("simulation", code)} /> : null}
@@ -264,9 +268,9 @@ export default function MatematicasIIPage() {
   );
 }
 
-function resourceTitle(kind: ResourceKind, unitTitle: string) {
+function resourceTitle(kind: ResourceKind, unitTitle: string, currentMode: "curso" | "pau") {
   if (kind === "rocio") return `Rocío · ${unitTitle}`;
-  if (kind === "short") return `Preguntas cortas · ${unitTitle}`;
+  if (kind === "short") return currentMode === "pau" ? `Banco de preguntas cortas · ${MATEMATICAS_II_STATS.shortQuestions}` : `Preguntas cortas · ${unitTitle}`;
   if (kind === "problems") return "Banco de problemas PAU";
   if (kind === "profiles") return "PAU por comunidades autónomas";
   return "Simulacro PAU";
