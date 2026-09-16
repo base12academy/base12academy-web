@@ -73,7 +73,7 @@ function ProductCard({ plan }: { plan: TropaPlan }) {
       </Link>
 
       {plan.kind === "training" && (
-        <Link className={styles.link} href="/dashboard/base12-training">
+        <Link className={styles.link} href="/apps/base12-training">
           Entrar en Base12 Training
         </Link>
       )}
@@ -149,7 +149,7 @@ export function TropaPlanPage({ plan }: { plan: TropaPlan }) {
           <p className={styles.intro}>{plan.description}</p>
           <Price plan={plan} />
           {plan.kind === "training" && (
-            <p><Link className={styles.link} href="/dashboard/base12-training">Ya lo tengo · Entrar en Base12 Training</Link></p>
+            <p><Link className={styles.link} href="/apps/base12-training">Ya lo tengo · Entrar en Base12 Training</Link></p>
           )}
         </section>
 
