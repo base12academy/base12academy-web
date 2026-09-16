@@ -12,7 +12,7 @@
     "chemistry:sync": "node scripts/sync-periodic-table.mjs",
     "chemistry:validate": "node scripts/validate-periodic-table.mjs",
     "test:chemistry": "node --experimental-strip-types --test tests/periodic-table-access.test.mjs tests/periodic-table-gift.test.mjs tests/periodic-table-payment.test.mjs tests/periodic-table-valences.test.mjs tests/redsys.test.mjs && npm run chemistry:validate",
-    "test:training": "node --experimental-strip-types --test tests/training-config.test.mjs",
+    "test:training": "node --experimental-strip-types --test tests/training-config.test.mjs tests/training-gift.test.mjs",
     "test:text": "node --test tests/text-encoding.test.mjs && npm run text:validate",
     "text:validate": "node scripts/validate-text-encoding.mjs"
   },
