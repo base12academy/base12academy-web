@@ -24,6 +24,7 @@ function courseName(slug: string) {
   return ({
     "historia-espana": "Historia de España",
     "historia-filosofia": "Historia de la Filosofía",
+    "matematicas-ii": "Matemáticas II",
     ofimatica: "Ofimática y competencias digitales",
     "administrativo-ja": "Administrativo de la Junta de Andalucía",
     "auxiliar-administrativo-ja": "Auxiliar Administrativo de la Junta de Andalucía",
