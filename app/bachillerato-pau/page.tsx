@@ -28,7 +28,7 @@ const subjects = [
     description: "Entrenamiento progresivo para dominar procedimientos, razonamiento matemático y resolución de problemas.",
     status: "Disponible",
     href: "/bachillerato-pau/matematicas-ii",
-    video: "/videos/presentacion-matematicas.mp4",
+    video: "",
   },
   {
     title: "Matemáticas Aplicadas",
