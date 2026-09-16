@@ -4,7 +4,7 @@ import { isCourseAdministrator } from "@/lib/course-access";
 import { getMatematicasIIEntitlement } from "@/lib/matematicas-ii/entitlement";
 import { getMatematicasIIUnit } from "@/lib/matematicas-ii/content";
 import { getRocioQuestions, getShortQuestions } from "@/lib/matematicas-ii/evaluation";
-import { getPauProblems, getPauSimulation, MATEMATICAS_II_PAU_PROFILES } from "@/lib/matematicas-ii/pau";
+import { getPauProblems, getPauSimulation, MATEMATICAS_II_PAU_PROFILES, type PauSimulation } from "@/lib/matematicas-ii/pau";
 
 const PREVIEW_UNIT = "T01";
 
@@ -61,7 +61,7 @@ function denied(access: AccessResult) {
   );
 }
 
-function simulationForClient(simulation: NonNullable<ReturnType<typeof getPauSimulation>>) {
+function simulationForClient(simulation: PauSimulation) {
   const exercises = [];
   for (let index = 0; index + 3 < simulation.content.length; index += 4) {
     exercises.push({
