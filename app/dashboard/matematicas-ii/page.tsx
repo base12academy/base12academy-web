@@ -16,6 +16,11 @@ type AccessState = {
   previewUnit: string;
 };
 
+type VideoState = {
+  embedUrl: string;
+  url: string;
+};
+
 const INITIAL_ACCESS: AccessState = {
   authenticated: false,
   administrator: false,
@@ -32,6 +37,8 @@ export default function MatematicasIIPage() {
   const [mode, setMode] = useState<"curso" | "pau">("curso");
   const [access, setAccess] = useState<AccessState>(INITIAL_ACCESS);
   const [checkingAccess, setCheckingAccess] = useState(true);
+  const [video, setVideo] = useState<VideoState>({ embedUrl: "", url: "" });
+  const [videoLoading, setVideoLoading] = useState(false);
 
   useEffect(() => {
     let alive = true;
@@ -62,6 +69,36 @@ export default function MatematicasIIPage() {
 
   const canOpenSelected = access.administrator || access.hasCourse || selected.id === access.previewUnit;
   const canUsePau = access.administrator || access.hasPau;
+
+  useEffect(() => {
+    let alive = true;
+
+    async function loadVideo() {
+      if (!canOpenSelected) {
+        setVideo({ embedUrl: "", url: "" });
+        return;
+      }
+
+      setVideoLoading(true);
+      const { data } = await supabase.auth.getSession();
+      const token = data.session?.access_token;
+      const response = await fetch(`/api/matematicas-ii/video?unit=${encodeURIComponent(selected.id)}`, {
+        headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+      });
+      const payload = await response.json().catch(() => ({}));
+
+      if (alive) {
+        setVideo(response.ok ? {
+          embedUrl: typeof payload.embedUrl === "string" ? payload.embedUrl : "",
+          url: typeof payload.url === "string" ? payload.url : "",
+        } : { embedUrl: "", url: "" });
+        setVideoLoading(false);
+      }
+    }
+
+    loadVideo();
+    return () => { alive = false; };
+  }, [selected.id, canOpenSelected]);
 
   return (
     <div className={styles.page}>
@@ -119,7 +156,7 @@ export default function MatematicasIIPage() {
                 <h2>{selected.title}</h2>
                 <p>Comprende el procedimiento, aplícalo paso a paso, detecta los errores frecuentes y comprueba que puedes resolver un caso nuevo.</p>
                 {canOpenSelected ? <div className={styles.heroActions}>
-                  <button type="button" className={styles.primary}>Ver explicación</button>
+                  <button type="button" className={styles.primary} onClick={() => document.getElementById("mat2-video")?.scrollIntoView({ behavior: "smooth", block: "start" })}>Ver explicación</button>
                   <button type="button" className={styles.secondary}>Abrir recursos</button>
                 </div> : <LockedCourse authenticated={access.authenticated} />}
               </div>
@@ -127,6 +164,16 @@ export default function MatematicasIIPage() {
                 <span>f(x)</span><b>∫</b><em>Σ</em><i>√x</i><small>A · x = b</small>
               </div>
             </section>
+
+            {canOpenSelected ? <section id="mat2-video" style={{ marginTop: 24, borderRadius: 20, border: "1px solid #dbe4f0", background: "#ffffff", overflow: "hidden", boxShadow: "0 16px 45px rgba(15,23,42,0.08)" }}>
+              <div style={{ padding: "18px 20px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
+                <div><strong style={{ display: "block", color: "#0a2a59", fontSize: 18 }}>{selected.id} · {selected.title}</strong><span style={{ color: "#64748b", fontSize: 13 }}>Vídeo principal de la unidad</span></div>
+                {video.url ? <a href={video.url} target="_blank" rel="noreferrer" style={{ color: "#0a2a59", fontWeight: 800, textDecoration: "none", whiteSpace: "nowrap" }}>Abrir en YouTube ↗</a> : null}
+              </div>
+              <div style={{ aspectRatio: "16 / 9", background: "#07152d", display: "grid", placeItems: "center" }}>
+                {videoLoading ? <p style={{ color: "white", fontWeight: 700 }}>Cargando vídeo…</p> : video.embedUrl ? <iframe src={video.embedUrl} title={`${selected.id} · ${selected.title}`} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen style={{ width: "100%", height: "100%", border: 0 }} /> : <p style={{ color: "white", fontWeight: 700 }}>No se ha podido cargar el vídeo de esta unidad.</p>}
+              </div>
+            </section> : null}
 
             <h3 className={styles.sectionTitle}>Trabaja esta unidad</h3>
             <div className={styles.resourceGrid}>
