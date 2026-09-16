@@ -1,0 +1,50 @@
+[
+  {
+    "id": "COM01-R01",
+    "unit": "T01",
+    "scope": "COMÚN MAT2+MACS",
+    "title": "Matrices: significado, dimensiones y tipos",
+    "question": "¿Cuál es el criterio de trabajo más seguro en «Matrices: significado, dimensiones y tipos»?",
+    "options": {
+      "A": "Reconocer qué representa una matriz, su orden y tipos básicos.",
+      "B": "Aplicar cualquier fórmula que contenga los mismos símbolos.",
+      "C": "Dar el resultado sin justificar para ahorrar tiempo.",
+      "D": "Sustituir números antes de identificar qué se pide."
+    },
+    "correct": "A",
+    "feedback": "La respuesta correcta resume el procedimiento Base12: Reconocer qué representa una matriz, su orden y tipos básicos..",
+    "recovery": "Vuelve a identificar la pregunta, las condiciones del método y el primer paso. No empieces por la cuenta."
+  },
+  {
+    "id": "COM01-R02",
+    "unit": "T01",
+    "scope": "COMÚN MAT2+MACS",
+    "title": "Matrices: significado, dimensiones y tipos",
+    "question": "¿Qué error debe evitarse especialmente en «Matrices: significado, dimensiones y tipos»?",
+    "options": {
+      "A": "Escribir las unidades cuando existen.",
+      "B": "Confundir filas con columnas.",
+      "C": "Comprobar el resultado al final.",
+      "D": "Separar casos si el procedimiento lo exige."
+    },
+    "correct": "B",
+    "feedback": "El error característico es Confundir filas con columnas..",
+    "recovery": "Localiza qué condición o interpretación se está saltando. Un procedimiento correcto no depende solo de operar."
+  },
+  {
+    "id": "COM01-R03",
+    "unit": "T01",
+    "scope": "COMÚN MAT2+MACS",
+    "title": "Matrices: significado, dimensiones y tipos",
+    "question": "Después de resolver «Matrices: significado, dimensiones y tipos», ¿qué comprobación final es la más sólida?",
+    "options": {
+      "A": "Aceptar el resultado si coincide con la calculadora, aunque no se ajuste a las condiciones.",
+      "B": "Redondear la respuesta hasta que parezca razonable.",
+      "C": "Volver a los datos y condiciones y verificar que el resultado es coherente con el procedimiento: Reconocer qué representa una matriz, su orden y tipos básicos..",
+      "D": "Eliminar cualquier caso que complique la solución."
+    },
+    "correct": "C",
+    "feedback": "La verificación debe volver al problema y al criterio usado en «Matrices: significado, dimensiones y tipos»; no basta con que la cuenta produzca un número.",
+    "recovery": "Revisa las condiciones de «Matrices: significado, dimensiones y tipos» y comprueba el resultado por sustitución, propiedad independiente o interpretación, según corresponda."
+  }
+]
