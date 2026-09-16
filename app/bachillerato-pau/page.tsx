@@ -4,56 +4,49 @@ import LeadChatBot from "@/components/LeadChatBot";
 const subjects = [
   {
     title: "Historia de España",
-    description:
-      "Comprende los grandes procesos históricos, entrena comentarios de textos e imágenes y prepara la PAU con método.",
+    description: "Comprende los grandes procesos históricos, entrena comentarios de textos e imágenes y prepara la PAU con método.",
     status: "Disponible",
     href: "/dashboard/historia-espana",
     video: "/videos/presentacion-historia-espana.mp4",
   },
   {
     title: "Historia de la Filosofía",
-    description:
-      "Estudia autores, problemas filosóficos, textos y comparaciones con una preparación pensada para Bachillerato y PAU.",
+    description: "Estudia autores, problemas filosóficos, textos y comparaciones con una preparación pensada para Bachillerato y PAU.",
     status: "Disponible",
     href: "/dashboard/filosofia",
     video: "/videos/presentacion-historia-filosofia.mp4",
   },
   {
     title: "Lengua y Literatura",
-    description:
-      "Refuerza comprensión, comentario, literatura, sintaxis y expresión escrita para mejorar el rendimiento académico.",
+    description: "Refuerza comprensión, comentario, literatura, sintaxis y expresión escrita para mejorar el rendimiento académico.",
     status: "Próximamente",
     href: "#",
     video: "/videos/presentacion-lengua-literatura.mp4",
   },
   {
     title: "Matemáticas II",
-    description:
-      "Entrenamiento progresivo para dominar procedimientos, razonamiento matemático y resolución de problemas.",
-    status: "Próximamente",
-    href: "#",
+    description: "Entrenamiento progresivo para dominar procedimientos, razonamiento matemático y resolución de problemas.",
+    status: "Disponible",
+    href: "/bachillerato-pau/matematicas-ii",
     video: "/videos/presentacion-matematicas.mp4",
   },
   {
     title: "Matemáticas Aplicadas",
-    description:
-      "Preparación orientada a economía, ciencias sociales, interpretación de datos y ejercicios tipo PAU.",
+    description: "Preparación orientada a economía, ciencias sociales, interpretación de datos y ejercicios tipo PAU.",
     status: "Próximamente",
     href: "#",
     video: "/videos/presentacion-matematicas.mp4",
   },
   {
     title: "Física",
-    description:
-      "Explicaciones claras, práctica guiada y entrenamiento de problemas para comprender y aplicar los conceptos.",
+    description: "Explicaciones claras, práctica guiada y entrenamiento de problemas para comprender y aplicar los conceptos.",
     status: "En actualización",
     href: "#",
     video: "/videos/presentacion-fisica.mp4",
   },
   {
     title: "Química",
-    description:
-      "Comprende los conceptos clave, practica problemas paso a paso y prepárate para Bachillerato y la PAU con un método claro.",
+    description: "Comprende los conceptos clave, practica problemas paso a paso y prepárate para Bachillerato y la PAU con un método claro.",
     status: "En actualización",
     href: "/?curso=quimica#catalogo",
     video: "/videos/presentacion-quimica.mp4",
@@ -66,169 +59,44 @@ export default function BachilleratoPauPage() {
       <section style={styles.hero}>
         <p style={styles.kicker}>Base12 Academy</p>
         <h1 style={styles.title}>Bachillerato y PAU</h1>
-        <p style={styles.subtitle}>
-          Elige la asignatura que quieres preparar. Cada aula o herramienta
-          identifica con claridad sus propios recursos y modalidad de acceso.
-        </p>
+        <p style={styles.subtitle}>Elige la asignatura que quieres preparar. Cada aula o herramienta identifica con claridad sus propios recursos y modalidad de acceso.</p>
       </section>
 
       <section style={styles.grid}>
         {subjects.map((subject) => (
           <article key={subject.title} id={subject.title === "Química" ? "quimica" : undefined} style={styles.card}>
             <div style={styles.videoBox}>
-              {subject.video ? (
-                <video
-                  src={subject.video}
-                  controls
-                  playsInline
-                  style={styles.video}
-                />
-              ) : (
-                <div style={styles.videoPlaceholder}>
-                  Vídeo de presentación
-                </div>
-              )}
+              {subject.video ? <video src={subject.video} controls playsInline style={styles.video} /> : <div style={styles.videoPlaceholder}>Vídeo de presentación</div>}
             </div>
-
             <div style={styles.cardBody}>
               <p style={styles.status}>{subject.status}</p>
               <h2 style={styles.cardTitle}>{subject.title}</h2>
               <p style={styles.description}>{subject.description}</p>
-
-              {subject.href === "#" ? (
-  <button style={styles.disabledButton} disabled>
-    Próximamente
-  </button>
-) : (
-  <Link href={subject.href} style={styles.button}>
-    Ver asignatura
-  </Link>
-)}
+              {subject.href === "#" ? <button style={styles.disabledButton} disabled>Próximamente</button> : <Link href={subject.href} style={styles.button}>Ver asignatura</Link>}
             </div>
           </article>
         ))}
       </section>
-       <LeadChatBot />     
+      <LeadChatBot />
     </main>
   );
 }
 
 const styles: Record<string, React.CSSProperties> = {
-  page: {
-    minHeight: "100vh",
-    background: "#f8fafc",
-    color: "#1f2937",
-    fontFamily:
-      "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-    padding: "80px 24px 56px",
-  },
-  hero: {
-    maxWidth: 1100,
-    margin: "0 auto 42px",
-    textAlign: "center",
-  },
-  kicker: {
-    margin: 0,
-    color: "#2563eb",
-    fontWeight: 800,
-    letterSpacing: "0.12em",
-    textTransform: "uppercase",
-    fontSize: 13,
-  },
-  title: {
-    margin: "12px 0 16px",
-    fontSize: "clamp(42px, 6vw, 72px)",
-    lineHeight: 1,
-    color: "#111827",
-  },
-  subtitle: {
-    maxWidth: 760,
-    margin: "0 auto",
-    fontSize: 19,
-    lineHeight: 1.7,
-    color: "#4b5563",
-  },
-  grid: {
-    maxWidth: 1180,
-    margin: "0 auto",
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(290px, 1fr))",
-    gap: 24,
-  },
-  card: {
-    background: "#ffffff",
-    border: "1px solid #e5e7eb",
-    borderRadius: 24,
-    overflow: "hidden",
-    boxShadow: "0 18px 45px rgba(15, 23, 42, 0.08)",
-  },
-  videoBox: {
-    background: "#e5e7eb",
-    aspectRatio: "16 / 9",
-  },
-  video: {
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-    display: "block",
-  },
-  videoPlaceholder: {
-    width: "100%",
-    height: "100%",
-    minHeight: 170,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    color: "#64748b",
-    fontWeight: 800,
-    background:
-      "linear-gradient(135deg, rgba(219,234,254,1), rgba(241,245,249,1))",
-  },
-  cardBody: {
-    padding: 24,
-  },
-  status: {
-    margin: "0 0 10px",
-    color: "#2563eb",
-    fontSize: 13,
-    fontWeight: 900,
-    textTransform: "uppercase",
-    letterSpacing: "0.08em",
-  },
-  cardTitle: {
-    margin: "0 0 12px",
-    fontSize: 25,
-    color: "#111827",
-  },
-  description: {
-    margin: "0 0 22px",
-    color: "#4b5563",
-    lineHeight: 1.6,
-    fontSize: 15,
-  },
-  button: {
-    display: "inline-flex",
-    alignItems: "center",
-    justifyContent: "center",
-    background: "#2563eb",
-    color: "#ffffff",
-    textDecoration: "none",
-    padding: "12px 18px",
-    borderRadius: 999,
-    fontWeight: 900,
-    fontSize: 14,
-  },
-  disabledButton: {
-    display: "inline-flex",
-    alignItems: "center",
-    justifyContent: "center",
-    background: "#e5e7eb",
-    color: "#6b7280",
-    padding: "12px 18px",
-    borderRadius: 999,
-    fontWeight: 900,
-    fontSize: 14,
-    border: "none",
-    cursor: "not-allowed",
-  },
+  page: { minHeight: "100vh", background: "#f8fafc", color: "#1f2937", fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif", padding: "80px 24px 56px" },
+  hero: { maxWidth: 1100, margin: "0 auto 42px", textAlign: "center" },
+  kicker: { margin: 0, color: "#2563eb", fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", fontSize: 13 },
+  title: { margin: "12px 0 16px", fontSize: "clamp(42px, 6vw, 72px)", lineHeight: 1, color: "#111827" },
+  subtitle: { maxWidth: 760, margin: "0 auto", fontSize: 19, lineHeight: 1.7, color: "#4b5563" },
+  grid: { maxWidth: 1180, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(290px, 1fr))", gap: 24 },
+  card: { background: "#ffffff", border: "1px solid #e5e7eb", borderRadius: 24, overflow: "hidden", boxShadow: "0 18px 45px rgba(15, 23, 42, 0.08)" },
+  videoBox: { background: "#e5e7eb", aspectRatio: "16 / 9" },
+  video: { width: "100%", height: "100%", objectFit: "cover", display: "block" },
+  videoPlaceholder: { width: "100%", height: "100%", minHeight: 170, display: "flex", alignItems: "center", justifyContent: "center", color: "#64748b", fontWeight: 800, background: "linear-gradient(135deg, rgba(219,234,254,1), rgba(241,245,249,1))" },
+  cardBody: { padding: 24 },
+  status: { margin: "0 0 10px", color: "#2563eb", fontSize: 13, fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.08em" },
+  cardTitle: { margin: "0 0 12px", fontSize: 25, color: "#111827" },
+  description: { margin: "0 0 22px", color: "#4b5563", lineHeight: 1.6, fontSize: 15 },
+  button: { display: "inline-flex", alignItems: "center", justifyContent: "center", background: "#2563eb", color: "#ffffff", textDecoration: "none", padding: "12px 18px", borderRadius: 999, fontWeight: 900, fontSize: 14 },
+  disabledButton: { display: "inline-flex", alignItems: "center", justifyContent: "center", background: "#e5e7eb", color: "#6b7280", padding: "12px 18px", borderRadius: 999, fontWeight: 900, fontSize: 14, border: "none", cursor: "not-allowed" },
 };
