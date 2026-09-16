@@ -159,7 +159,7 @@ function ResourceCard({ title, text, icon, locked }: { title: string; text: stri
 }
 
 function LockedCourse({ authenticated }: { authenticated: boolean }) {
-  return <div className={styles.lockNotice}><strong>Esta unidad forma parte del curso.</strong><p>{authenticated ? "Elige una modalidad con acceso al curso para continuar." : "Inicia sesión si ya estás matriculado o elige una modalidad."}</p><div><Link href={authenticated ? "/cursos/bachillerato-pau#catalogo" : "/login"}>{authenticated ? "Ver modalidades" : "Iniciar sesión"}</Link></div></div>;
+  return <div className={styles.lockNotice}><strong>Esta unidad forma parte del curso.</strong><p>{authenticated ? "Elige una modalidad con acceso al curso para continuar." : "Inicia sesión si ya estás matriculado o elige una modalidad."}</p><div><Link href={authenticated ? "/bachillerato-pau/matematicas-ii#modalidades" : "/login"}>{authenticated ? "Ver modalidades" : "Iniciar sesión"}</Link></div></div>;
 }
 
 function PauMenu({ locked }: { locked: boolean }) {
@@ -167,7 +167,7 @@ function PauMenu({ locked }: { locked: boolean }) {
 }
 
 function PauWorkspace({ allowed, authenticated }: { allowed: boolean; authenticated: boolean }) {
-  if (!allowed) return <section className={styles.pauLocked}><span>PAU</span><h2>Entrenamiento específico para la prueba</h2><p>Problemas, preguntas y simulacros quedan disponibles con Estándar o con la modalidad PAU.</p><Link href={authenticated ? "/cursos/bachillerato-pau#catalogo" : "/login"}>{authenticated ? "Ver modalidades" : "Iniciar sesión"}</Link></section>;
+  if (!allowed) return <section className={styles.pauLocked}><span>PAU</span><h2>Entrenamiento específico para la prueba</h2><p>Problemas, preguntas y simulacros quedan disponibles con Estándar o con la modalidad PAU.</p><Link href={authenticated ? "/bachillerato-pau/matematicas-ii#modalidades" : "/login"}>{authenticated ? "Ver modalidades" : "Iniciar sesión"}</Link></section>;
   return <><div className={styles.breadcrumb}>Matemáticas II / PAU</div><header className={styles.pauHeader}><span>ENTRENAMIENTO PAU</span><h2>Practica la prueba con método</h2><p>Trabaja problemas, preguntas y simulacros sin mezclar el entrenamiento específico con el temario del curso.</p></header><div className={styles.pauGrid}><ResourceCard title="Problemas PAU" text="Resolución y transferencia por bloques." icon="∫" locked={false} /><ResourceCard title="Preguntas cortas" text="Comprueba procedimientos, decisiones y resultados." icon="?" locked={false} /><ResourceCard title={`${MATEMATICAS_II_STATS.simulations} simulacros`} text="Práctica completa de examen." icon="▣" locked={false} /><ResourceCard title="PAU por comunidades" text="Modelos y criterios organizados por territorio." icon="⌂" locked={false} /></div></>;
 }
 
