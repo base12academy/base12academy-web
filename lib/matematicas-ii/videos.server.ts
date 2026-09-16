@@ -44,10 +44,10 @@ export const MATEMATICAS_II_VIDEO_URLS: Record<string, string> = {
   T43: "https://youtu.be/aq-bZXq2F40",
   T44: "https://youtu.be/C8TAAlD7OGA",
   T45: "https://youtu.be/iksqADrxMPw",
-  PROB01: "https://youtu.be/wBPLTFFlu4k",
-  PROB02: "https://youtu.be/MhFah_k6d44",
-  PROB03: "https://youtu.be/PYsa_1iRrHw",
-  PROB04: "https://youtu.be/1JgvwJjJcrk",
+  "MAT2-PROB-01": "https://youtu.be/wBPLTFFlu4k",
+  "MAT2-PROB-02": "https://youtu.be/MhFah_k6d44",
+  "MAT2-PROB-03": "https://youtu.be/PYsa_1iRrHw",
+  "MAT2-PROB-04": "https://youtu.be/1JgvwJjJcrk",
 };
 
 export function toYouTubeEmbedUrl(url: string) {
