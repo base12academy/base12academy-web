@@ -130,178 +130,32 @@ function plansFor(course: Course): Plan[] {
   }
   if (course.name === "Tropa y Marinería") {
     return [
-      {
-        name: "Esencial",
-        price: "139 €",
-        detail: "Entrenamiento esencial · 14.000 preguntas",
-        includes: [
-          "14.000 preguntas de entrenamiento",
-          "Acceso al itinerario Tropa y Marinería",
-          "Rocío · Profesora IA",
-          "Fernando · Tutor IA",
-        ],
-      },
-      {
-        name: "Operativa",
-        price: "209 €",
-        detail: "Entrenamiento ampliado · 21.000 preguntas",
-        includes: [
-          "21.000 preguntas de entrenamiento",
-          "Acceso ampliado al itinerario Tropa y Marinería",
-          "Rocío · Profesora IA",
-          "Fernando · Tutor IA",
-        ],
-      },
-      {
-        name: "Integral",
-        price: "279 €",
-        detail: "Preparación completa · 28.000 preguntas",
-        includes: [
-          "28.000 preguntas de entrenamiento",
-          "Acceso completo al itinerario Tropa y Marinería",
-          "Rocío · Profesora IA",
-          "Fernando · Tutor IA",
-        ],
-      },
+      { name: "Esencial", price: "139 €", detail: "Entrenamiento esencial · 14.000 preguntas", includes: ["14.000 preguntas de entrenamiento", "Acceso al itinerario Tropa y Marinería", "Rocío · Profesora IA", "Fernando · Tutor IA"] },
+      { name: "Operativa", price: "209 €", detail: "Entrenamiento ampliado · 21.000 preguntas", includes: ["21.000 preguntas de entrenamiento", "Acceso ampliado al itinerario Tropa y Marinería", "Rocío · Profesora IA", "Fernando · Tutor IA"] },
+      { name: "Integral", price: "279 €", detail: "Preparación completa · 28.000 preguntas", includes: ["28.000 preguntas de entrenamiento", "Acceso completo al itinerario Tropa y Marinería", "Rocío · Profesora IA", "Fernando · Tutor IA"] },
     ];
   }
 
   if (course.name === "Historia · Universidad") {
     return [
-      {
-        name: "5 horas",
-        price: "125 €",
-        detail: "5 clases online de 1 hora · Historia universitaria",
-        includes: [
-          "5 horas de clases individuales online de Historia",
-          "Reserva mediante agenda según disponibilidad",
-          "Clases mediante Google Meet",
-          "Classroom individual por alumno y asignatura",
-          "WhatsApp de Base12 Academy para mensajería rápida",
-          "Bono válido durante 2 meses desde la compra",
-        ],
-      },
-      {
-        name: "10 horas",
-        price: "230 €",
-        detail: "10 clases online de 1 hora · Historia universitaria",
-        includes: [
-          "10 horas de clases individuales online de Historia",
-          "Reserva mediante agenda según disponibilidad",
-          "Clases mediante Google Meet",
-          "Classroom individual por alumno y asignatura",
-          "WhatsApp de Base12 Academy para mensajería rápida",
-          "Bono válido durante 2 meses desde la compra",
-        ],
-      },
-      {
-        name: "15 horas",
-        price: "300 €",
-        detail: "15 clases online de 1 hora · Historia universitaria",
-        includes: [
-          "15 horas de clases individuales online de Historia",
-          "Reserva mediante agenda según disponibilidad",
-          "Clases mediante Google Meet",
-          "Classroom individual por alumno y asignatura",
-          "WhatsApp de Base12 Academy para mensajería rápida",
-          "Bono válido durante 2 meses desde la compra",
-        ],
-      },
-      {
-        name: "20 horas",
-        price: "400 €",
-        detail: "20 clases online de 1 hora · Historia universitaria",
-        includes: [
-          "20 horas de clases individuales online de Historia",
-          "Reserva mediante agenda según disponibilidad",
-          "Clases mediante Google Meet",
-          "Classroom individual por alumno y asignatura",
-          "WhatsApp de Base12 Academy para mensajería rápida",
-          "Bono válido durante 2 meses desde la compra",
-        ],
-      },
+      { name: "5 horas", price: "125 €", detail: "5 clases online de 1 hora · Historia universitaria", includes: ["5 horas de clases individuales online de Historia", "Reserva mediante agenda según disponibilidad", "Clases mediante Google Meet", "Classroom individual por alumno y asignatura", "WhatsApp de Base12 Academy para mensajería rápida", "Bono válido durante 2 meses desde la compra"] },
+      { name: "10 horas", price: "230 €", detail: "10 clases online de 1 hora · Historia universitaria", includes: ["10 horas de clases individuales online de Historia", "Reserva mediante agenda según disponibilidad", "Clases mediante Google Meet", "Classroom individual por alumno y asignatura", "WhatsApp de Base12 Academy para mensajería rápida", "Bono válido durante 2 meses desde la compra"] },
+      { name: "15 horas", price: "300 €", detail: "15 clases online de 1 hora · Historia universitaria", includes: ["15 horas de clases individuales online de Historia", "Reserva mediante agenda según disponibilidad", "Clases mediante Google Meet", "Classroom individual por alumno y asignatura", "WhatsApp de Base12 Academy para mensajería rápida", "Bono válido durante 2 meses desde la compra"] },
+      { name: "20 horas", price: "400 €", detail: "20 clases online de 1 hora · Historia universitaria", includes: ["20 horas de clases individuales online de Historia", "Reserva mediante agenda según disponibilidad", "Clases mediante Google Meet", "Classroom individual por alumno y asignatura", "WhatsApp de Base12 Academy para mensajería rápida", "Bono válido durante 2 meses desde la compra"] },
     ];
   }
 
   if (course.name === "Historia y Filosofía · ESO y Bachillerato") {
     return [
-      {
-        name: "5 horas",
-        price: "100 €",
-        detail: "5 clases online de 1 hora · Historia y Filosofía",
-        includes: [
-          "5 horas para Historia y/o Filosofía",
-          "4.º ESO, 1.º y 2.º de Bachillerato",
-          "Reserva mediante agenda según disponibilidad",
-          "Clases mediante Google Meet",
-          "Classroom individual por alumno y asignatura",
-          "WhatsApp de Base12 Academy para mensajería rápida",
-          "Bono válido durante 2 meses desde la compra",
-        ],
-      },
-      {
-        name: "10 horas",
-        price: "190 €",
-        detail: "10 clases online de 1 hora · Historia y Filosofía",
-        includes: [
-          "10 horas para Historia y/o Filosofía",
-          "4.º ESO, 1.º y 2.º de Bachillerato",
-          "Reserva mediante agenda según disponibilidad",
-          "Clases mediante Google Meet",
-          "Classroom individual por alumno y asignatura",
-          "WhatsApp de Base12 Academy para mensajería rápida",
-          "Bono válido durante 2 meses desde la compra",
-        ],
-      },
-      {
-        name: "15 horas",
-        price: "280 €",
-        detail: "15 clases online de 1 hora · Historia y Filosofía",
-        includes: [
-          "15 horas para Historia y/o Filosofía",
-          "4.º ESO, 1.º y 2.º de Bachillerato",
-          "Reserva mediante agenda según disponibilidad",
-          "Clases mediante Google Meet",
-          "Classroom individual por alumno y asignatura",
-          "WhatsApp de Base12 Academy para mensajería rápida",
-          "Bono válido durante 2 meses desde la compra",
-        ],
-      },
-      {
-        name: "20 horas",
-        price: "340 €",
-        detail: "20 clases online de 1 hora · Historia y Filosofía",
-        includes: [
-          "20 horas para Historia y/o Filosofía",
-          "4.º ESO, 1.º y 2.º de Bachillerato",
-          "Reserva mediante agenda según disponibilidad",
-          "Clases mediante Google Meet",
-          "Classroom individual por alumno y asignatura",
-          "WhatsApp de Base12 Academy para mensajería rápida",
-          "Bono válido durante 2 meses desde la compra",
-        ],
-      },
+      { name: "5 horas", price: "100 €", detail: "5 clases online de 1 hora · Historia y Filosofía", includes: ["5 horas para Historia y/o Filosofía", "4.º ESO, 1.º y 2.º de Bachillerato", "Reserva mediante agenda según disponibilidad", "Clases mediante Google Meet", "Classroom individual por alumno y asignatura", "WhatsApp de Base12 Academy para mensajería rápida", "Bono válido durante 2 meses desde la compra"] },
+      { name: "10 horas", price: "190 €", detail: "10 clases online de 1 hora · Historia y Filosofía", includes: ["10 horas para Historia y/o Filosofía", "4.º ESO, 1.º y 2.º de Bachillerato", "Reserva mediante agenda según disponibilidad", "Clases mediante Google Meet", "Classroom individual por alumno y asignatura", "WhatsApp de Base12 Academy para mensajería rápida", "Bono válido durante 2 meses desde la compra"] },
+      { name: "15 horas", price: "280 €", detail: "15 clases online de 1 hora · Historia y Filosofía", includes: ["15 horas para Historia y/o Filosofía", "4.º ESO, 1.º y 2.º de Bachillerato", "Reserva mediante agenda según disponibilidad", "Clases mediante Google Meet", "Classroom individual por alumno y asignatura", "WhatsApp de Base12 Academy para mensajería rápida", "Bono válido durante 2 meses desde la compra"] },
+      { name: "20 horas", price: "340 €", detail: "20 clases online de 1 hora · Historia y Filosofía", includes: ["20 horas para Historia y/o Filosofía", "4.º ESO, 1.º y 2.º de Bachillerato", "Reserva mediante agenda según disponibilidad", "Clases mediante Google Meet", "Classroom individual por alumno y asignatura", "WhatsApp de Base12 Academy para mensajería rápida", "Bono válido durante 2 meses desde la compra"] },
     ];
   }
 
   if (course.name === "Solicitud de clases · Otras asignaturas") {
-    return [
-      {
-        name: "Solicitud",
-        price: "Consultar",
-        detail: "Matemáticas, Lengua, Física y Química",
-        includes: [
-          "Matemáticas II",
-          "Matemáticas Aplicadas a las CCSS",
-          "Lengua y Literatura",
-          "Física y Química",
-          "Física",
-          "Química",
-          "Solicitud previa de disponibilidad",
-          "La contratación se habilitará después de la confirmación de Base12 Academy",
-        ],
-      },
-    ];
+    return [{ name: "Solicitud", price: "Consultar", detail: "Matemáticas, Lengua, Física y Química", includes: ["Matemáticas II", "Matemáticas Aplicadas a las CCSS", "Lengua y Literatura", "Física y Química", "Física", "Química", "Solicitud previa de disponibilidad", "La contratación se habilitará después de la confirmación de Base12 Academy"] }];
   }
 
   if (course.family === "Cursos Online") {
@@ -320,24 +174,10 @@ function plansFor(course: Course): Plan[] {
 
 function isRecommendedPlan(course: Course, plan: Plan) {
   if (course.family === "Tropa y Marinería") return plan.name === "Operativa";
-
-  if (
-    course.name === "Historia · Universidad" ||
-    course.name === "Historia y Filosofía · ESO y Bachillerato"
-  ) {
-    return plan.name === "10 horas";
-  }
-
+  if (course.name === "Historia · Universidad" || course.name === "Historia y Filosofía · ESO y Bachillerato") return plan.name === "10 horas";
   if (course.family === "Oposiciones") return plan.name === "Estándar";
-
-  if (course.name === "Competencias y Productividad Digital, Ofimática e IA") {
-    return plan.name === "Ofimática";
-  }
-
-  if (course.family === "Cursos Online" || course.family === "Bachillerato y PAU") {
-    return plan.name === "Estándar";
-  }
-
+  if (course.name === "Competencias y Productividad Digital, Ofimática e IA") return plan.name === "Ofimática";
+  if (course.family === "Cursos Online" || course.family === "Bachillerato y PAU") return plan.name === "Estándar";
   return false;
 }
 
@@ -356,10 +196,7 @@ export default function CourseCatalog() {
   const [checkoutError, setCheckoutError] = useState("");
   const [classHoldReady, setClassHoldReady] = useState(false);
 
-  const filtered = useMemo(
-    () => allCourses.filter((item) => item.family === family && item.name.toLowerCase().includes(search.toLowerCase())),
-    [family, search],
-  );
+  const filtered = useMemo(() => allCourses.filter((item) => item.family === family && item.name.toLowerCase().includes(search.toLowerCase())), [family, search]);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -373,366 +210,104 @@ export default function CourseCatalog() {
       "clases-online-solicitud": "Solicitud de clases · Otras asignaturas",
       "historia-espana": "Historia de España",
       "historia-filosofia": "Historia de la Filosofía",
-      "matematicas-ii": "Matemáticas II",
       quimica: "Química",
     };
     const requestedName = requestedNames[requested] ?? "";
     if (!requestedName) return;
     const requestedCourse = allCourses.find((item) => item.name === requestedName);
-    if (requestedCourse) {
-      setFamily(requestedCourse.family);
-      open(requestedCourse, requestedBono);
-    }
+    if (requestedCourse) { setFamily(requestedCourse.family); open(requestedCourse, requestedBono); }
   }, []);
 
   useEffect(() => {
-    const purchasableClasses =
-      course?.family === "Clases Online" &&
-      course.name !== "Solicitud de clases · Otras asignaturas";
-
-    if (!purchasableClasses) {
-      setClassHoldReady(false);
-      return;
-    }
-
+    const purchasableClasses = course?.family === "Clases Online" && course.name !== "Solicitud de clases · Otras asignaturas";
+    if (!purchasableClasses) { setClassHoldReady(false); return; }
     const checkHold = () => {
       try {
-        const raw =
-          window.sessionStorage.getItem(
-            "b12_class_booking_hold"
-          );
-
-        if (!raw) {
-          setClassHoldReady(false);
-          return;
-        }
-
-        const parsed = JSON.parse(raw) as {
-          holdId?: unknown;
-          holdToken?: unknown;
-          expiresAt?: unknown;
-        };
-
-        const valid =
-          typeof parsed.holdId === "string" &&
-          parsed.holdId.length > 0 &&
-          typeof parsed.holdToken === "string" &&
-          parsed.holdToken.length > 0 &&
-          typeof parsed.expiresAt === "string" &&
-          Date.parse(parsed.expiresAt) > Date.now();
-
+        const raw = window.sessionStorage.getItem("b12_class_booking_hold");
+        if (!raw) { setClassHoldReady(false); return; }
+        const parsed = JSON.parse(raw) as { holdId?: unknown; holdToken?: unknown; expiresAt?: unknown };
+        const valid = typeof parsed.holdId === "string" && parsed.holdId.length > 0 && typeof parsed.holdToken === "string" && parsed.holdToken.length > 0 && typeof parsed.expiresAt === "string" && Date.parse(parsed.expiresAt) > Date.now();
         setClassHoldReady(valid);
-
-        if (!valid) {
-          window.sessionStorage.removeItem(
-            "b12_class_booking_hold"
-          );
-        }
-      } catch {
-        setClassHoldReady(false);
-        window.sessionStorage.removeItem(
-          "b12_class_booking_hold"
-        );
-      }
+        if (!valid) window.sessionStorage.removeItem("b12_class_booking_hold");
+      } catch { setClassHoldReady(false); window.sessionStorage.removeItem("b12_class_booking_hold"); }
     };
-
     checkHold();
-
-    const timer =
-      window.setInterval(checkHold, 500);
-
-    return () => {
-      window.clearInterval(timer);
-    };
+    const timer = window.setInterval(checkHold, 500);
+    return () => window.clearInterval(timer);
   }, [course]);
 
   function open(item: Course, requestedBono = "") {
     const availablePlans = plansFor(item);
     const requestedHours = requestedBono.replace(/h$/i, "");
-    const requestedPlan = requestedHours
-      ? availablePlans.find((itemPlan) => itemPlan.name.startsWith(`${requestedHours} `))
-      : undefined;
-
-    setCourse(item);
-    setPlan(requestedPlan ?? availablePlans[0]);
-    setTerms(false);
-    setPrivacy(false);
-    setMarketing(false);
-    setImmediateAccess(false);
-    setWithdrawalAcknowledged(false);
+    const requestedPlan = requestedHours ? availablePlans.find((itemPlan) => itemPlan.name.startsWith(`${requestedHours} `)) : undefined;
+    setCourse(item); setPlan(requestedPlan ?? availablePlans[0]); setTerms(false); setPrivacy(false); setMarketing(false); setImmediateAccess(false); setWithdrawalAcknowledged(false);
   }
 
   async function checkout() {
     if (!course || !plan) return;
-
     const purchasableOpposition = course.name === "Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo de la Junta de Andalucía";
-    const purchasableClasses =
-      course.family === "Clases Online" &&
-      course.name !== "Solicitud de clases · Otras asignaturas";
-    const purchasableBachillerato =
-      course.family === "Bachillerato y PAU" &&
-      (course.name === "Historia de España" || course.name === "Historia de la Filosofía" || course.name === "Matemáticas II");
+    const purchasableClasses = course.family === "Clases Online" && course.name !== "Solicitud de clases · Otras asignaturas";
+    const purchasableBachillerato = course.family === "Bachillerato y PAU" && (course.name === "Historia de España" || course.name === "Historia de la Filosofía");
+    if (course.name !== "Competencias y Productividad Digital, Ofimática e IA" && !purchasableOpposition && !purchasableClasses && !purchasableBachillerato) { setCheckoutError("La matrícula online de este curso todavía no está disponible."); return; }
+    if (!terms || !privacy || (immediateAccess && !withdrawalAcknowledged)) { setCheckoutError("Acepta primero los consentimientos obligatorios."); return; }
 
-    if (
-      course.name !== "Competencias y Productividad Digital, Ofimática e IA" &&
-      !purchasableOpposition &&
-      !purchasableClasses &&
-      !purchasableBachillerato
-    ) {
-      setCheckoutError("La matrícula online de este curso todavía no está disponible.");
-      return;
-    }
-
-    if (!terms || !privacy || (immediateAccess && !withdrawalAcknowledged)) {
-      setCheckoutError("Acepta primero los consentimientos obligatorios.");
-      return;
-    }
-
-    const slugByPlan: Record<string, string> = {
-      "Competencias digitales": "ofimatica-esencial",
-      "Ofimática": "ofimatica-estandar",
-      "Productividad Digital e IA": "ofimatica-premium",
-    };
-
+    const slugByPlan: Record<string, string> = { "Competencias digitales": "ofimatica-esencial", "Ofimática": "ofimatica-estandar", "Productividad Digital e IA": "ofimatica-premium" };
     const oppositionPrefix = course.name === "Administrativo de la Junta de Andalucía" ? "administrativo-ja" : course.name === "Auxiliar Administrativo de la Junta de Andalucía" ? "auxiliar-administrativo-ja" : "";
     const oppositionPlan = ({ Esencial: "esencial", "Estándar": "estandar", Premium: "premium" } as Record<string, string>)[plan.name];
-
-    const bachilleratoPrefix = course.name === "Historia de España"
-      ? "historia-espana"
-      : course.name === "Historia de la Filosofía"
-        ? "historia-filosofia"
-        : course.name === "Matemáticas II"
-          ? "matematicas-ii"
-          : "";
+    const bachilleratoPrefix = course.name === "Historia de España" ? "historia-espana" : course.name === "Historia de la Filosofía" ? "historia-filosofia" : "";
     const bachilleratoPlan = ({ Esencial: "esencial", "Estándar": "estandar", Premium: "premium", PAU: "pau" } as Record<string, string>)[plan.name];
+    const classHours = purchasableClasses ? plan.name.match(/\d+/)?.[0] ?? "" : "";
+    const classCourseSlug = purchasableClasses && classHours ? course.name.includes("Universidad") ? `clases-online-universidad-${classHours}h` : `clases-online-eso-bach-${classHours}h` : "";
+    const courseSlug = slugByPlan[plan.name] || (oppositionPrefix && oppositionPlan ? `${oppositionPrefix}-${oppositionPlan}` : "") || (bachilleratoPrefix && bachilleratoPlan ? `${bachilleratoPrefix}-${bachilleratoPlan}` : "") || classCourseSlug;
+    if (!courseSlug) { setCheckoutError("No se ha podido identificar la modalidad seleccionada."); return; }
 
-    const classHours =
-      purchasableClasses
-        ? plan.name.match(/\d+/)?.[0] ?? ""
-        : "";
-
-    const classCourseSlug =
-      purchasableClasses && classHours
-        ? course.name.includes("Universidad")
-          ? `clases-online-universidad-${classHours}h`
-          : `clases-online-eso-bach-${classHours}h`
-        : "";
-
-    const courseSlug =
-      slugByPlan[plan.name] ||
-      (oppositionPrefix && oppositionPlan
-        ? `${oppositionPrefix}-${oppositionPlan}`
-        : "") ||
-      (bachilleratoPrefix && bachilleratoPlan
-        ? `${bachilleratoPrefix}-${bachilleratoPlan}`
-        : "") ||
-      classCourseSlug;
-
-    if (!courseSlug) {
-      setCheckoutError("No se ha podido identificar la modalidad seleccionada.");
-      return;
-    }
-
-    let classHold:
-      | {
-          holdId: string;
-          holdToken: string;
-        }
-      | null = null;
-
+    let classHold: { holdId: string; holdToken: string } | null = null;
     if (purchasableClasses) {
       try {
         const raw = window.sessionStorage.getItem("b12_class_booking_hold");
-
-        if (!raw) {
-          setCheckoutError("Selecciona primero una hora disponible para tu primera clase.");
-          return;
-        }
-
+        if (!raw) { setCheckoutError("Selecciona primero una hora disponible para tu primera clase."); return; }
         const parsed = JSON.parse(raw) as { holdId?: unknown; holdToken?: unknown; expiresAt?: unknown };
-
-        if (
-          typeof parsed.holdId !== "string" ||
-          !parsed.holdId ||
-          typeof parsed.holdToken !== "string" ||
-          !parsed.holdToken ||
-          typeof parsed.expiresAt !== "string" ||
-          Date.parse(parsed.expiresAt) <= Date.now()
-        ) {
-          window.sessionStorage.removeItem("b12_class_booking_hold");
-          setClassHoldReady(false);
-          setCheckoutError("La reserva provisional ha caducado. Selecciona de nuevo una hora.");
-          return;
-        }
-
+        if (typeof parsed.holdId !== "string" || !parsed.holdId || typeof parsed.holdToken !== "string" || !parsed.holdToken || typeof parsed.expiresAt !== "string" || Date.parse(parsed.expiresAt) <= Date.now()) { window.sessionStorage.removeItem("b12_class_booking_hold"); setClassHoldReady(false); setCheckoutError("La reserva provisional ha caducado. Selecciona de nuevo una hora."); return; }
         classHold = { holdId: parsed.holdId, holdToken: parsed.holdToken };
-      } catch {
-        window.sessionStorage.removeItem("b12_class_booking_hold");
-        setClassHoldReady(false);
-        setCheckoutError("No se ha podido recuperar la hora seleccionada. Elige de nuevo una hora.");
-        return;
-      }
+      } catch { window.sessionStorage.removeItem("b12_class_booking_hold"); setClassHoldReady(false); setCheckoutError("No se ha podido recuperar la hora seleccionada. Elige de nuevo una hora."); return; }
     }
 
-    setCheckoutLoading(true);
-    setCheckoutError("");
-
+    setCheckoutLoading(true); setCheckoutError("");
     try {
-      const response = await fetch("/api/redsys", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          courseSlug,
-          termsAccepted: terms,
-          privacyAcknowledged: privacy,
-          immediateAccess,
-          withdrawalAcknowledged,
-          marketingConsent: marketing,
-          ...(classHold ? { holdId: classHold.holdId, holdToken: classHold.holdToken } : {}),
-        }),
-      });
-
+      const response = await fetch("/api/redsys", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ courseSlug, termsAccepted: terms, privacyAcknowledged: privacy, immediateAccess, withdrawalAcknowledged, marketingConsent: marketing, ...(classHold ? { holdId: classHold.holdId, holdToken: classHold.holdToken } : {}) }) });
       const data = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(data.error || "No se pudo preparar el pago.");
       if (!data.redsysUrl || !data.dsSignatureVersion || !data.dsMerchantParameters || !data.signature) throw new Error("La pasarela de pago no ha respondido correctamente.");
-
-      const form = document.createElement("form");
-      form.method = "POST";
-      form.action = data.redsysUrl;
+      const form = document.createElement("form"); form.method = "POST"; form.action = data.redsysUrl;
       const fields = { Ds_SignatureVersion: data.dsSignatureVersion, Ds_MerchantParameters: data.dsMerchantParameters, Ds_Signature: data.signature };
-      Object.entries(fields).forEach(([name, value]) => {
-        const input = document.createElement("input");
-        input.type = "hidden";
-        input.name = name;
-        input.value = String(value);
-        form.appendChild(input);
-      });
-      document.body.appendChild(form);
-      form.submit();
-    } catch (error) {
-      setCheckoutError(error instanceof Error ? error.message : "No se pudo iniciar el pago.");
-      setCheckoutLoading(false);
-    }
+      Object.entries(fields).forEach(([name, value]) => { const input = document.createElement("input"); input.type = "hidden"; input.name = name; input.value = String(value); form.appendChild(input); });
+      document.body.appendChild(form); form.submit();
+    } catch (error) { setCheckoutError(error instanceof Error ? error.message : "No se pudo iniciar el pago."); setCheckoutLoading(false); }
   }
 
   return (
     <section id="catalogo" className="original-catalog">
-      <div className="original-catalog-heading">
-        <p>Tipos de cursos, paquetes y precios</p>
-        <h2>Elige el aula que corresponde a tu objetivo</h2>
-        <span>Consulta cada curso, compara lo que incluye cada modalidad y revisa el precio antes de matricularte.</span>
-      </div>
+      <div className="original-catalog-heading"><p>Tipos de cursos, paquetes y precios</p><h2>Elige el aula que corresponde a tu objetivo</h2><span>Consulta cada curso, compara lo que incluye cada modalidad y revisa el precio antes de matricularte.</span></div>
+      <div className="original-tabs" role="tablist" aria-label="Tipos de cursos">{(["Tropa y Marinería", "Clases Online", "Oposiciones", "Cursos Online", "Bachillerato y PAU"] as Family[]).map((item) => <button key={item} role="tab" aria-selected={family === item} className={family === item ? "active" : ""} onClick={() => { setFamily(item); setSearch(""); }}>{item}</button>)}</div>
+      <label className="original-search"><span>Buscar</span><input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Escribe el nombre del curso" /></label>
+      {family === "Bachillerato y PAU" && <div className="original-discounts"><b>Descuento automático por varias asignaturas</b><span>2 asignaturas: <strong>10%</strong></span><span>3 asignaturas: <strong>15%</strong></span><span>4 o más: <strong>20%</strong></span></div>}
+      {family === "Cursos Online" && <div className="certificate-note"><div className="certificate-icon">✓</div><div><b>Certificado Base12 al superar el curso</b><p>Se emitirá a nombre del alumno cuando haya cumplido los requisitos académicos y no tenga pagos pendientes. El PDF se enviará automáticamente a su correo y contará con código de verificación.</p></div></div>}
+      <div className="original-course-grid">{filtered.map((item) => <article key={item.name}><div><small>{item.region || item.family}{bachilleratoUpdating.has(item.name) && " · En actualización"}</small><h3>{item.name}</h3><p>{item.family === "Tropa y Marinería" ? <><del>179 €</del> Desde <b>139 €</b></> : item.name === "Solicitud de clases · Otras asignaturas" ? <b>Consultar disponibilidad</b> : item.name === "Historia · Universidad" ? <>Desde <b>20 €/hora</b> · Mínimo <b>125 €</b></> : item.name === "Historia y Filosofía · ESO y Bachillerato" ? <>Desde <b>17 €/hora</b> · Mínimo <b>100 €</b></> : item.family === "Bachillerato y PAU" ? <>Desde <b>199 €</b></> : <>Desde <b>{plansFor(item)[0].price}</b></>}</p></div>{item.family === "Tropa y Marinería" ? <Link href="/tropa-y-marineria">Ver modalidades</Link> : <button onClick={() => open(item)}>Ver modalidades</button>}</article>)}</div>
 
-      <div className="original-tabs" role="tablist" aria-label="Tipos de cursos">
-        {(["Tropa y Marinería", "Clases Online", "Oposiciones", "Cursos Online", "Bachillerato y PAU"] as Family[]).map((item) => (
-          <button key={item} role="tab" aria-selected={family === item} className={family === item ? "active" : ""} onClick={() => { setFamily(item); setSearch(""); }}>
-            {item}
-          </button>
-        ))}
-      </div>
+      {course && plan && <div className="original-modal-backdrop" onMouseDown={(event) => event.target === event.currentTarget && setCourse(null)}><section className="original-modal" role="dialog" aria-modal="true" aria-labelledby="modal-course-title"><button className="original-modal-close" onClick={() => setCourse(null)} aria-label="Cerrar">×</button>{course.name === "Competencias y Productividad Digital, Ofimática e IA" ? <div className="commercial-course-hero"><div className="commercial-course-copy"><small>{course.family}</small><h2 id="modal-course-title">{plan.name}</h2><p>{plan.detail}</p><div className="commercial-course-value"><span>Acceso online</span><span>Certificado Base12</span></div><strong className="commercial-course-price">{plan.price}</strong><div className="commercial-course-actions"><a href="#course-checkout">Matricularme</a><a className="secondary" href="/dashboard/ofimatica?contenido=G01_V01">Probar la Unidad 1 gratis</a></div></div><div className="commercial-course-video"><video controls preload="metadata" playsInline poster={officePresentationMedia[plan.name].videoPoster} aria-label={`Vídeo de presentación de ${plan.name}`}><source src={officePresentationMedia[plan.name].videoUrl} type="video/mp4" />Tu navegador no permite reproducir este vídeo.</video></div></div> : <><small>{course.family}{bachilleratoUpdating.has(course.name) && " · En actualización"}</small><h2 id="modal-course-title">{course.name}</h2><p>Selecciona una modalidad y revisa la información antes de continuar.</p></>}
 
-      <label className="original-search">
-        <span>Buscar</span>
-        <input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Escribe el nombre del curso" />
-      </label>
+      <div className="original-plan-grid">{plansFor(course).map((item) => { const recommended = isRecommendedPlan(course, item); return <div key={item.name} className={`original-plan-option ${plan.name === item.name ? "active" : ""} ${recommended ? "recommended" : ""}`}><button className="original-plan-select" onClick={() => setPlan(item)}><span><b>{item.name}</b><small>{item.detail}</small></span></button><div className="original-plan-meta">{recommended && <RecommendedBadge />}<strong>{item.price}</strong></div></div>; })}</div>
+      {course.name === "Química" && <aside className="chemistry-periodic-inclusion" aria-label="Tabla Periódica incluida en Química"><Image src="/images/tabla-periodica-interactiva.png" alt="B12 Tabla Periódica Interactiva" width={72} height={72} className="chemistry-periodic-logo" /><div><small>Aplicación Base12 incluida</small><h3>Tabla Periódica Interactiva</h3><p>Incluida gratuitamente en los paquetes <strong>Esencial</strong> y <strong>Estándar</strong> de Química. También puede adquirirse por separado por 9,99 €, con la misma aplicación y acceso permanente.</p></div><div className="chemistry-periodic-actions"><Link href="/apps/tabla-periodica">Ver aplicación</Link><Link href="/apps/tabla-periodica/licencia" className="secondary">Comprar por separado</Link></div></aside>}
+      <div className="original-plan-includes" aria-live="polite"><div className="original-plan-includes-heading"><div><small>Modalidad seleccionada</small><h3>Qué incluye {plan.name}</h3></div><strong>{plan.price}</strong></div><ul>{plan.includes.map((item) => <li key={item}>{item}</li>)}</ul></div>
+      {course.family === "Clases Online" && course.name !== "Solicitud de clases · Otras asignaturas" && <ClassBookingCalendar />}
+      {course.name === "Solicitud de clases · Otras asignaturas" && <ClassAvailabilityRequestForm />}
+      {course.family !== "Tropa y Marinería" && course.family !== "Clases Online" && <><div className="original-legal"><h3>Información contractual</h3><details><summary>Condiciones de contratación</summary><p>La matrícula da acceso personal y no transferible a {course.name} — paquete {plan.name}, por {plan.price}, durante el periodo indicado. El precio, los impuestos, el contenido incluido, los requisitos y la fecha de activación se mostrarán antes del pago. Ofimática incluye Competencias digitales y Productividad Digital e IA incluye Ofimática.</p><p>El acompañamiento ordinario es virtual: Rocío enseña y resuelve dudas académicas; Fernando realiza seguimiento y recuperación; Jefatura organiza el itinerario; Secretaría atiende pagos y facturas; y Comercial informa sobre modalidades y contratación. No se incluye tutoría humana síncrona ni mentoría individual.</p><p><a href="/terminos-contratacion" target="_blank" rel="noreferrer">Consultar las condiciones generales completas</a>.</p></details><details><summary>Privacidad y tratamiento de datos</summary><p>Imagen Digital Ménace, S. L. U. tratará los datos necesarios para atender la solicitud, gestionar matrícula, pago y factura, crear el acceso, prestar el servicio, habilitar los asistentes IA, registrar progreso y evidencias, emitir certificados, atender incidencias y cumplir obligaciones legales.</p><p><a href="/privacidad" target="_blank" rel="noreferrer">Consultar la política de privacidad completa</a>.</p></details><details><summary>Aviso legal y normas de uso</summary><p>Las credenciales y los materiales son personales. No se permite compartir el acceso, reproducir, distribuir, revender o comunicar públicamente los contenidos sin autorización.</p><p><a href="/aviso-legal" target="_blank" rel="noreferrer">Consultar el aviso legal completo</a>.</p></details><details><summary>Quejas, reclamaciones y contacto</summary><p>Las incidencias técnicas se atienden en base12academy+soporte@gmail.com; pagos y facturas, en base12academy+facturacion@gmail.com; y desistimientos o reclamaciones, en base12academy+administracion@gmail.com.</p></details></div><div className="original-consents"><label><input type="checkbox" checked={terms} onChange={(event) => setTerms(event.target.checked)} /> <span>He leído y acepto las condiciones de contratación y las normas de uso. <b>Obligatorio</b></span></label><label><input type="checkbox" checked={privacy} onChange={(event) => setPrivacy(event.target.checked)} /> <span>He leído la política de privacidad y confirmo que los datos facilitados pueden tratarse para gestionar la matrícula y prestar el servicio. <b>Obligatorio</b></span></label>{(course.family === "Cursos Online" || course.family === "Bachillerato y PAU") && <><label><input type="checkbox" checked={immediateAccess} onChange={(event) => { setImmediateAccess(event.target.checked); if (!event.target.checked) setWithdrawalAcknowledged(false); }} /><span>Solicito expresamente que el acceso al curso y la prestación comiencen antes de que finalice el plazo de desistimiento de 14 días. <em>Opcional; necesario para acceso inmediato</em></span></label>{immediateAccess && <label><input type="checkbox" checked={withdrawalAcknowledged} onChange={(event) => setWithdrawalAcknowledged(event.target.checked)} /><span>Declaro que comprendo las consecuencias de comenzar: si desisto de una prestación de servicios ya iniciada, podrá corresponder el importe proporcional efectivamente prestado. <b>Obligatorio para acceso inmediato</b></span></label>}{!immediateAccess && <p>Si no solicita el inicio inmediato, el acceso se activará una vez finalizado el plazo legal de desistimiento.</p>}</>}<label><input type="checkbox" checked={marketing} onChange={(event) => setMarketing(event.target.checked)} /> <span>Quiero recibir novedades y ofertas. <em>Opcional</em></span></label></div></>}
 
-      {family === "Bachillerato y PAU" && (
-        <div className="original-discounts">
-          <b>Descuento automático por varias asignaturas</b>
-          <span>2 asignaturas: <strong>10%</strong></span>
-          <span>3 asignaturas: <strong>15%</strong></span>
-          <span>4 o más: <strong>20%</strong></span>
-        </div>
-      )}
+      {course.name !== "Solicitud de clases · Otras asignaturas" && <div className="original-checkout" id="course-checkout"><span>{plan.price === "Consultar" ? <b>Precio tras confirmar disponibilidad</b> : <>Total <b>{plan.price}</b></>}</span>{(course.name === "Competencias y Productividad Digital, Ofimática e IA" || course.name === "Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo de la Junta de Andalucía" || course.name === "Historia de España" || course.name === "Historia de la Filosofía" || (course.family === "Clases Online" && course.name !== "Solicitud de clases · Otras asignaturas")) ? <button type="button" onClick={checkout} disabled={checkoutLoading || !terms || !privacy || (immediateAccess && !withdrawalAcknowledged) || (course.family === "Clases Online" && course.name !== "Solicitud de clases · Otras asignaturas" && !classHoldReady)}>{checkoutLoading ? "Conectando con el banco…" : course.family === "Clases Online" ? classHoldReady ? "Continuar con el pago del bono" : "Selecciona primero una hora" : course.name === "Historia de España" || course.name === "Historia de la Filosofía" ? "Suscribirme" : "Continuar con la suscripción"}</button> : <button disabled>{course.family === "Tropa y Marinería" ? "Contratación disponible próximamente" : course.family === "Clases Online" ? course.name === "Solicitud de clases · Otras asignaturas" ? "Solicitud de disponibilidad próximamente" : "Contratación del bono disponible próximamente" : "Matriculación disponible próximamente"}</button>}</div>}
+      {checkoutError && <p className="original-checkout-error" role="alert">{checkoutError}</p>}
+      </section></div>}
 
-      {family === "Cursos Online" && (
-        <div className="certificate-note">
-          <div className="certificate-icon">✓</div>
-          <div>
-            <b>Certificado Base12 al superar el curso</b>
-            <p>Se emitirá a nombre del alumno cuando haya cumplido los requisitos académicos y no tenga pagos pendientes. El PDF se enviará automáticamente a su correo y contará con código de verificación.</p>
-          </div>
-        </div>
-      )}
-
-      <div className="original-course-grid">
-        {filtered.map((item) => (
-          <article key={item.name}>
-            <div>
-              <small>{item.region || item.family}{bachilleratoUpdating.has(item.name) && " · En actualización"}</small>
-              <h3>{item.name}</h3>
-              <p>{item.family === "Tropa y Marinería" ? <><del>179 €</del> Desde <b>139 €</b></> : item.name === "Solicitud de clases · Otras asignaturas" ? <b>Consultar disponibilidad</b> : item.name === "Historia · Universidad" ? <>Desde <b>20 €/hora</b> · Mínimo <b>125 €</b></> : item.name === "Historia y Filosofía · ESO y Bachillerato" ? <>Desde <b>17 €/hora</b> · Mínimo <b>100 €</b></> : item.family === "Bachillerato y PAU" ? <>Desde <b>199 €</b></> : <>Desde <b>{plansFor(item)[0].price}</b></>}</p>
-            </div>
-            {item.family === "Tropa y Marinería" ? <Link href="/tropa-y-marineria">Ver modalidades</Link> : <button onClick={() => open(item)}>Ver modalidades</button>}
-          </article>
-        ))}
-      </div>
-
-      {course && plan && (
-        <div className="original-modal-backdrop" onMouseDown={(event) => event.target === event.currentTarget && setCourse(null)}>
-          <section className="original-modal" role="dialog" aria-modal="true" aria-labelledby="modal-course-title">
-            <button className="original-modal-close" onClick={() => setCourse(null)} aria-label="Cerrar">×</button>
-            {course.name === "Competencias y Productividad Digital, Ofimática e IA" ? (
-              <div className="commercial-course-hero">
-                <div className="commercial-course-copy">
-                  <small>{course.family}</small>
-                  <h2 id="modal-course-title">{plan.name}</h2>
-                  <p>{plan.detail}</p>
-                  <div className="commercial-course-value"><span>Acceso online</span><span>Certificado Base12</span></div>
-                  <strong className="commercial-course-price">{plan.price}</strong>
-                  <div className="commercial-course-actions"><a href="#course-checkout">Matricularme</a><a className="secondary" href="/dashboard/ofimatica?contenido=G01_V01">Probar la Unidad 1 gratis</a></div>
-                </div>
-                <div className="commercial-course-video">
-                  <video controls preload="metadata" playsInline poster={officePresentationMedia[plan.name].videoPoster} aria-label={`Vídeo de presentación de ${plan.name}`}><source src={officePresentationMedia[plan.name].videoUrl} type="video/mp4" />Tu navegador no permite reproducir este vídeo.</video>
-                </div>
-              </div>
-            ) : (
-              <><small>{course.family}{bachilleratoUpdating.has(course.name) && " · En actualización"}</small><h2 id="modal-course-title">{course.name}</h2><p>Selecciona una modalidad y revisa la información antes de continuar.</p></>
-            )}
-
-            <div className="original-plan-grid">
-              {plansFor(course).map((item) => {
-                const recommended = isRecommendedPlan(course, item);
-                return <div key={item.name} className={`original-plan-option ${plan.name === item.name ? "active" : ""} ${recommended ? "recommended" : ""}`}><button className="original-plan-select" onClick={() => setPlan(item)}><span><b>{item.name}</b><small>{item.detail}</small></span></button><div className="original-plan-meta">{recommended && <RecommendedBadge />}<strong>{item.price}</strong></div></div>;
-              })}
-            </div>
-
-            <div className="original-plan-includes" aria-live="polite">
-              <div className="original-plan-includes-heading"><div><small>Modalidad seleccionada</small><h3>Qué incluye {plan.name}</h3></div><strong>{plan.price}</strong></div>
-              <ul>{plan.includes.map((item) => <li key={item}>{item}</li>)}</ul>
-            </div>
-
-            {course.family !== "Tropa y Marinería" && course.family !== "Clases Online" && (<>
-              <div className="original-legal">
-                <h3>Información contractual</h3>
-                <details><summary>Condiciones de contratación</summary><p>La matrícula da acceso personal y no transferible a {course.name} — paquete {plan.name}, por {plan.price}, durante el periodo indicado. El precio, los impuestos, el contenido incluido, los requisitos y la fecha de activación se mostrarán antes del pago.</p><p><a href="/terminos-contratacion" target="_blank" rel="noreferrer">Consultar las condiciones generales completas</a>.</p></details>
-                <details><summary>Privacidad y tratamiento de datos</summary><p>Imagen Digital Ménace, S. L. U. tratará los datos necesarios para atender la solicitud, gestionar matrícula, pago y factura, crear el acceso, prestar el servicio, habilitar los asistentes IA, registrar progreso y evidencias, emitir certificados, atender incidencias y cumplir obligaciones legales.</p><p><a href="/privacidad" target="_blank" rel="noreferrer">Consultar la política de privacidad completa</a>.</p></details>
-                <details><summary>Aviso legal y normas de uso</summary><p>Las credenciales y los materiales son personales. No se permite compartir el acceso, reproducir, distribuir, revender o comunicar públicamente los contenidos sin autorización.</p><p><a href="/aviso-legal" target="_blank" rel="noreferrer">Consultar el aviso legal completo</a>.</p></details>
-                <details><summary>Quejas, reclamaciones y contacto</summary><p>Las incidencias técnicas se atienden en base12academy+soporte@gmail.com; pagos y facturas, en base12academy+facturacion@gmail.com; y desistimientos o reclamaciones, en base12academy+administracion@gmail.com.</p></details>
-              </div>
-
-              <div className="original-consents">
-                <label><input type="checkbox" checked={terms} onChange={(event) => setTerms(event.target.checked)} /> <span>He leído y acepto las condiciones de contratación y las normas de uso. <b>Obligatorio</b></span></label>
-                <label><input type="checkbox" checked={privacy} onChange={(event) => setPrivacy(event.target.checked)} /> <span>He leído la política de privacidad y confirmo que los datos facilitados pueden tratarse para gestionar la matrícula y prestar el servicio. <b>Obligatorio</b></span></label>
-                {(course.family === "Cursos Online" || course.family === "Bachillerato y PAU") && <><label><input type="checkbox" checked={immediateAccess} onChange={(event) => { setImmediateAccess(event.target.checked); if (!event.target.checked) setWithdrawalAcknowledged(false); }} /><span>Solicito expresamente que el acceso al curso y la prestación comiencen antes de que finalice el plazo de desistimiento de 14 días. <em>Opcional; necesario para acceso inmediato</em></span></label>{immediateAccess && <label><input type="checkbox" checked={withdrawalAcknowledged} onChange={(event) => setWithdrawalAcknowledged(event.target.checked)} /><span>Declaro que comprendo las consecuencias de comenzar antes de finalizar el plazo legal. <b>Obligatorio para acceso inmediato</b></span></label>}{!immediateAccess && <p>Si no solicita el inicio inmediato, el acceso se activará una vez finalizado el plazo legal de desistimiento.</p>}</>}
-                <label><input type="checkbox" checked={marketing} onChange={(event) => setMarketing(event.target.checked)} /> <span>Quiero recibir novedades y ofertas. <em>Opcional</em></span></label>
-              </div>
-            </>)}
-
-            {course.name !== "Solicitud de clases · Otras asignaturas" && (
-              <div className="original-checkout" id="course-checkout">
-                <span>{plan.price === "Consultar" ? <b>Precio tras confirmar disponibilidad</b> : <>Total <b>{plan.price}</b></>}</span>
-                {(course.name === "Competencias y Productividad Digital, Ofimática e IA" || course.name === "Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo de la Junta de Andalucía" || course.name === "Historia de España" || course.name === "Historia de la Filosofía" || course.name === "Matemáticas II" || (course.family === "Clases Online" && course.name !== "Solicitud de clases · Otras asignaturas")) ? (
-                  <button type="button" onClick={checkout} disabled={checkoutLoading || !terms || !privacy || (immediateAccess && !withdrawalAcknowledged) || (course.family === "Clases Online" && course.name !== "Solicitud de clases · Otras asignaturas" && !classHoldReady)}>{checkoutLoading ? "Conectando con el banco…" : course.family === "Clases Online" ? classHoldReady ? "Continuar con el pago del bono" : "Selecciona primero una hora" : "Continuar con el pago"}</button>
-                ) : (
-                  <button disabled>{course.family === "Tropa y Marinería" ? "Contratación disponible próximamente" : "Matriculación disponible próximamente"}</button>
-                )}
-              </div>
-            )}
-            {checkoutError && <p className="original-checkout-error" role="alert">{checkoutError}</p>}
-          </section>
-        </div>
-      )}
+      {presentationVideo && <div role="dialog" aria-modal="true" aria-label={`Vídeo de presentación de ${presentationVideo}`} onMouseDown={(event) => { if (event.target === event.currentTarget) setPresentationVideo(null); }} style={{ position: "fixed", inset: 0, zIndex: 10000, display: "flex", alignItems: "center", justifyContent: "center", padding: "24px", background: "rgba(3, 10, 25, 0.88)" }}><div style={{ position: "relative", width: "min(1100px, 96vw)", background: "#000000", borderRadius: "18px", overflow: "hidden", boxShadow: "0 30px 90px rgba(0,0,0,0.5)" }}><button type="button" onClick={() => setPresentationVideo(null)} aria-label="Cerrar vídeo" style={{ position: "absolute", top: "12px", right: "12px", zIndex: 2, width: "42px", height: "42px", border: "none", borderRadius: "50%", background: "rgba(255,255,255,0.94)", color: "#111827", fontSize: "26px", lineHeight: 1, cursor: "pointer", boxShadow: "0 6px 20px rgba(0,0,0,0.25)" }}>×</button><video key={presentationVideo} controls autoPlay preload="metadata" playsInline style={{ width: "100%", display: "block", maxHeight: "86vh", background: "#000000" }}><source src={officePresentationMedia[presentationVideo].videoUrl} type="video/mp4" />Tu navegador no permite reproducir este vídeo.</video></div></div>}
     </section>
   );
 }
