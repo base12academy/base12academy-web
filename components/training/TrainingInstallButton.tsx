@@ -3,6 +3,9 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+const TRAINING_HOST = "training.base12academy.es";
+const TRAINING_URL = `https://${TRAINING_HOST}`;
+
 interface InstallPromptEvent extends Event {
   prompt: () => Promise<void>;
   userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
@@ -14,6 +17,8 @@ export default function TrainingInstallButton() {
   const [installed, setInstalled] = useState(false);
 
   useEffect(() => {
+    if (window.location.hostname !== TRAINING_HOST) return;
+
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.register("/sw.js", { updateViaCache: "none" })
         .then((registration) => registration.update())
@@ -35,6 +40,11 @@ export default function TrainingInstallButton() {
   }, []);
 
   async function install() {
+    if (window.location.hostname !== TRAINING_HOST) {
+      window.location.assign(TRAINING_URL);
+      return;
+    }
+
     if (!promptEvent) {
       setHelp(true);
       return;

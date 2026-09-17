@@ -1,22 +1,28 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export function GET() {
+const TRAINING_HOST = "training.base12academy.es";
+const TRAINING_PATH = "/apps/base12-training";
+
+export function GET(request: NextRequest) {
+  const host = (request.headers.get("host") || "").split(":")[0].toLowerCase();
+  const standaloneOrigin = host === TRAINING_HOST;
+
   return NextResponse.json({
     name: "Base12 Training",
     short_name: "B12 Training",
     description: "Preparación física de las cuatro pruebas de Tropa y Marinería con seguimiento de marcas y Carlos IA.",
-    id: "/apps/base12-training",
-    start_url: "/apps/base12-training",
-    scope: "/apps/base12-training",
+    id: standaloneOrigin ? "/" : TRAINING_PATH,
+    start_url: standaloneOrigin ? "/" : TRAINING_PATH,
+    scope: standaloneOrigin ? "/" : TRAINING_PATH,
     display: "standalone",
     background_color: "#eef9f1",
     theme_color: "#176b45",
     orientation: "any",
     categories: ["sports", "fitness", "education"],
     shortcuts: [
-      { name: "Plan", short_name: "Plan", url: "/apps/base12-training/plan" },
-      { name: "Biblioteca", short_name: "Biblioteca", url: "/apps/base12-training/biblioteca" },
-      { name: "Progreso", short_name: "Progreso", url: "/apps/base12-training/progreso" }
+      { name: "Plan", short_name: "Plan", url: `${TRAINING_PATH}/plan` },
+      { name: "Biblioteca", short_name: "Biblioteca", url: `${TRAINING_PATH}/biblioteca` },
+      { name: "Progreso", short_name: "Progreso", url: `${TRAINING_PATH}/progreso` }
     ],
     icons: [
       {
@@ -41,7 +47,7 @@ export function GET() {
   }, {
     headers: {
       "Content-Type": "application/manifest+json; charset=utf-8",
-      "Cache-Control": "public, max-age=3600"
+      "Cache-Control": "public, max-age=300"
     }
   });
 }
