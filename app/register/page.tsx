@@ -14,7 +14,9 @@ function safeRedirect(value: string | null) {
 function RegisterForm() {
   const searchParams = useSearchParams();
   const redirect = safeRedirect(searchParams.get("redirect"));
-  const isGiftRegistration = redirect.startsWith("/apps/tabla-periodica/regalo");
+  const isGiftRegistration =
+    redirect.startsWith("/apps/tabla-periodica/regalo") ||
+    redirect.startsWith("/apps/base12-training/regalo");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fechaExamen, setFechaExamen] = useState("");
