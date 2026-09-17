@@ -20,8 +20,8 @@ export function GET(request: NextRequest) {
           background: "#ffffff",
         },
       },
-      React.createElement("img", { src: logo, width: 598, height: 598, alt: "" }),
+      React.createElement("img", { src: logo, width: 224, height: 224, alt: "" }),
     ),
-    { width: 512, height: 512 },
+    { width: 192, height: 192 },
   );
 }

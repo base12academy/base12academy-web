@@ -20,14 +20,14 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: `${TRAINING_ORIGIN}/images/training/base12-training-192.png?v=4`, sizes: "192x192", type: "image/png" },
-      { url: `${TRAINING_ORIGIN}/apps/base12-training/icon-512.png?v=4`, sizes: "512x512", type: "image/png" },
+      { url: `${TRAINING_ORIGIN}/apps/base12-training/icon-192.png?v=8`, sizes: "192x192", type: "image/png" },
+      { url: `${TRAINING_ORIGIN}/apps/base12-training/icon-512.png?v=8`, sizes: "512x512", type: "image/png" },
     ],
     shortcut: [
-      { url: `${TRAINING_ORIGIN}/images/training/base12-training-192.png?v=4`, type: "image/png" },
+      { url: `${TRAINING_ORIGIN}/apps/base12-training/icon-192.png?v=8`, type: "image/png" },
     ],
     apple: [
-      { url: `${TRAINING_ORIGIN}/images/training/base12-training-180.png?v=4`, sizes: "180x180", type: "image/png" },
+      { url: `${TRAINING_ORIGIN}/apps/base12-training/icon-192.png?v=8`, sizes: "192x192", type: "image/png" },
     ],
   },
 };
