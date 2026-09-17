@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 const TRAINING_HOST = "training.base12academy.es";
 const TRAINING_URL = `https://${TRAINING_HOST}`;
+const TRAINING_SW = "/training-sw.js";
 
 interface InstallPromptEvent extends Event {
   prompt: () => Promise<void>;
@@ -20,10 +21,23 @@ export default function TrainingInstallButton() {
     if (window.location.hostname !== TRAINING_HOST) return;
 
     if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("/sw.js", { scope: "/", updateViaCache: "none" })
-        .then((registration) => registration.update())
-        .catch(() => undefined);
+      void navigator.serviceWorker.getRegistration("/").then(async (registration) => {
+        const script = registration?.active?.scriptURL || registration?.waiting?.scriptURL || registration?.installing?.scriptURL || "";
+        if (registration && !script.endsWith(TRAINING_SW)) {
+          await registration.unregister();
+          await navigator.serviceWorker.register(TRAINING_SW, { scope: "/", updateViaCache: "none" });
+          return;
+        }
+        if (!registration) {
+          await navigator.serviceWorker.register(TRAINING_SW, { scope: "/", updateViaCache: "none" });
+          return;
+        }
+        await registration.update();
+      }).catch(() => undefined);
     }
+
+    const standalone = window.matchMedia("(display-mode: standalone)").matches;
+    if (standalone) setInstalled(true);
 
     const onPrompt = (event: Event) => {
       event.preventDefault();
@@ -69,10 +83,10 @@ export default function TrainingInstallButton() {
       {help && (
         <div role="dialog" aria-modal="true" aria-label="Instalar Base12 Training" style={{ position: "absolute", right: 0, bottom: 54, width: 310, maxWidth: "calc(100vw - 36px)", padding: 18, borderRadius: 16, background: "white", color: "#17352d", boxShadow: "0 14px 40px rgba(0,0,0,.22)", border: "1px solid #d8e5dc" }}>
           <button type="button" onClick={() => setHelp(false)} aria-label="Cerrar" style={{ position: "absolute", right: 10, top: 8, border: 0, background: "transparent", fontSize: 24, cursor: "pointer" }}>×</button>
-          <Image src="/images/training/base12-training-192.png?v=5" alt="Logotipo oficial de Base12 Training" width={76} height={76} style={{ borderRadius: 16 }} />
+          <Image src="/images/training/base12-training-192.png?v=7" alt="" width={76} height={76} style={{ borderRadius: 16 }} />
           <h2 style={{ fontSize: 19, margin: "10px 0 8px" }}>Instala Base12 Training</h2>
-          <p style={{ margin: 0, lineHeight: 1.45, fontSize: 14 }}>Si ya instalaste una versión anterior que abre Base12 Academy, desinstálala primero. Después recarga esta página y vuelve a instalar Base12 Training.</p>
-          <p style={{ margin: "10px 0 0", lineHeight: 1.45, fontSize: 13 }}>La aplicación correcta se instalará desde training.base12academy.es y quedará vinculada al logotipo oficial de Training.</p>
+          <p style={{ margin: 0, lineHeight: 1.45, fontSize: 14 }}>En Android o en ordenador, abre el menú del navegador y elige <b>Instalar aplicación</b>. En iPhone o iPad, abre la página en Safari, pulsa <b>Compartir</b> y después <b>Añadir a pantalla de inicio</b>.</p>
+          <p style={{ margin: "10px 0 0", lineHeight: 1.45, fontSize: 13 }}>La aplicación se instala desde training.base12academy.es y queda separada del campus de Base12 Academy.</p>
         </div>
       )}
     </div>
