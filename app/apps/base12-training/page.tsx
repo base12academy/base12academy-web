@@ -14,10 +14,11 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/images/banco-opositores/logo-base12-training.png", type: "image/png" },
+      { url: "/images/training/base12-training-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/apps/base12-training/icon-512.png", sizes: "512x512", type: "image/png" },
     ],
     apple: [
-      { url: "/images/banco-opositores/logo-base12-training.png", type: "image/png" },
+      { url: "/images/training/base12-training-180.png", sizes: "180x180", type: "image/png" },
     ],
   },
 };

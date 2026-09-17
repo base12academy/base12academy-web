@@ -20,14 +20,20 @@ export function GET() {
     ],
     icons: [
       {
-        src: "/images/banco-opositores/logo-base12-training.png",
-        sizes: "any",
+        src: "/images/training/base12-training-192.png",
+        sizes: "192x192",
         type: "image/png",
         purpose: "any"
       },
       {
-        src: "/images/banco-opositores/logo-base12-training.png",
-        sizes: "any",
+        src: "/apps/base12-training/icon-512.png",
+        sizes: "512x512",
+        type: "image/png",
+        purpose: "any"
+      },
+      {
+        src: "/apps/base12-training/icon-maskable-512.png",
+        sizes: "512x512",
         type: "image/png",
         purpose: "maskable"
       }
