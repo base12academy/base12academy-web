@@ -135,7 +135,7 @@ function TrainingGiftContent() {
         <div className={styles.content}>
           <p className={styles.eyebrow}>Promoción Base12 · 50 regalos</p>
           <h1>Tu Base12 Training, de regalo</h1>
-          <p className={styles.lead}>Acceso permanente a la preparación de las cuatro pruebas físicas de Tropa y Marinería, con seguimiento de marcas, objetivos progresivos y Carlos como entrenador IA.</p>
+          <p className={styles.lead}>Acceso durante 1 año desde la activación a la preparación de las cuatro pruebas físicas de Tropa y Marinería, con seguimiento de marcas, objetivos progresivos y Carlos como entrenador IA.</p>
 
           <div className={styles.recipientNotice}>
             <strong>Enlace personal e intransferible</strong>
@@ -152,7 +152,7 @@ function TrainingGiftContent() {
           ) : activated ? (
             <div className={styles.successBox}>
               <strong>Base12 Training ya es tuyo</strong>
-              <p>Tu acceso permanente ha quedado asociado a {user?.email}.</p>
+              <p>Tu licencia de 1 año ha quedado asociada a {user?.email}.</p>
               <Link href="/apps/base12-training" className={styles.primaryButton}>Abrir Base12 Training</Link>
             </div>
           ) : !user ? (
@@ -183,8 +183,8 @@ function TrainingGiftContent() {
             </div>
           )}
 
-          {formattedExpiry && !activated && !unavailable && <p className={styles.expiry}>Activa este enlace antes del {formattedExpiry}.</p>}
-          <p className={styles.finePrint}>Promoción gratuita, sin pago ni suscripción. Una licencia permanente por enlace.</p>
+          {formattedExpiry && !activated && !unavailable && <p className={styles.expiry}>Activa este enlace antes del {formattedExpiry}. La licencia durará 1 año desde la activación.</p>}
+          <p className={styles.finePrint}>Promoción gratuita, sin pago ni suscripción. Una licencia de 1 año por enlace.</p>
         </div>
       </section>
     </main>

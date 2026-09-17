@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import TrainingApp from "@/components/training/TrainingApp";
+import TrainingInstallButton from "@/components/training/TrainingInstallButton";
 
 export const metadata: Metadata = {
   title: "Base12 Training | Base12 Academy",
@@ -22,5 +23,10 @@ export const metadata: Metadata = {
 };
 
 export default function Base12TrainingAppPage() {
-  return <TrainingApp />;
+  return (
+    <>
+      <TrainingApp />
+      <TrainingInstallButton />
+    </>
+  );
 }

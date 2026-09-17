@@ -22,7 +22,7 @@ import styles from "./TrainingApp.module.css";
 
 type ResultRow = { id: string; test_slug: TrainingTestSlug; result_value: number | string; perceived_effort?: string | null; performed_at: string };
 type Recommendation = { message: string; target: number; exercises: { slug: string; name: string; dose: string }[]; sessionsBeforeControl: number; status?: string; mode?: string };
-type AccessState = "loading" | "login" | "locked" | "ready" | "error";
+type AccessState = "loading" | "login" | "locked" | "expired" | "ready" | "error";
 
 async function authedFetch(path: string, init?: RequestInit) {
   const { data } = await supabase.auth.getSession();
@@ -70,7 +70,10 @@ export default function TrainingApp({ testSlug }: { testSlug?: string }) {
     const accessCall = await authedFetch("/api/training/access");
     if (!accessCall.response) { setAccess("login"); return; }
     if (accessCall.response.status === 401) { setAccess("login"); return; }
-    if (accessCall.response.status === 403) { setAccess("locked"); return; }
+    if (accessCall.response.status === 403) {
+      setAccess(accessCall.body?.access === "license_expired" ? "expired" : "locked");
+      return;
+    }
     if (!accessCall.response.ok) { setAccess("error"); return; }
     setAccess("ready");
 
@@ -103,8 +106,9 @@ export default function TrainingApp({ testSlug }: { testSlug?: string }) {
   }
 
   if (access === "loading") return <TrainingFrame><div className={styles.loading}>Preparando Base12 Training…</div></TrainingFrame>;
-  if (access === "login") return <TrainingFrame><div className={styles.onboarding}><h1>Accede a Base12 Training</h1><p>Inicia sesión con la cuenta asociada a tu compra.</p><Link className={styles.primaryButton} href="/login?redirect=%2Fapps%2Fbase12-training">Iniciar sesión</Link></div></TrainingFrame>;
-  if (access === "locked") return <TrainingFrame><div className={styles.onboarding}><h1>Base12 Training</h1><p>Esta aplicación requiere una matrícula activa de Base12 Training.</p><Link className={styles.primaryButton} href="/tropa-y-marineria/base12-training">Ver Base12 Training</Link></div></TrainingFrame>;
+  if (access === "login") return <TrainingFrame><div className={styles.onboarding}><h1>Accede a Base12 Training</h1><p>Inicia sesión con la cuenta asociada a tu licencia.</p><Link className={styles.primaryButton} href="/login?redirect=%2Fapps%2Fbase12-training">Iniciar sesión</Link></div></TrainingFrame>;
+  if (access === "locked") return <TrainingFrame><div className={styles.onboarding}><h1>Base12 Training</h1><p>Esta aplicación requiere una licencia activa de Base12 Training vinculada a tu correo.</p><Link className={styles.primaryButton} href="/tropa-y-marineria/base12-training">Conseguir Base12 Training</Link></div></TrainingFrame>;
+  if (access === "expired") return <TrainingFrame><div className={styles.onboarding}><h1>Tu licencia ha caducado</h1><p>Las licencias de Base12 Training tienen una duración de 1 año desde su activación. Renueva el acceso para continuar conservando tu cuenta y tus marcas.</p><Link className={styles.primaryButton} href="/tropa-y-marineria/base12-training">Renovar Base12 Training</Link></div></TrainingFrame>;
   if (access === "error") return <TrainingFrame><div className={styles.onboarding}><h1>No se ha podido comprobar el acceso</h1><p>Inténtalo de nuevo dentro de unos minutos.</p><button className={styles.primaryButton} onClick={() => void load()}>Reintentar</button></div></TrainingFrame>;
   if (!sex) return <TrainingFrame><div className={styles.onboarding}><h1>Configura tus marcas oficiales</h1><p>Las referencias oficiales de ingreso 2026 son diferentes para hombres y mujeres en algunas pruebas. Selecciona la opción que corresponde a tu convocatoria.</p><div className={styles.sexButtons}><button disabled={saving} className={styles.primaryButton} onClick={() => void saveSex("male")}>Hombre</button><button disabled={saving} className={styles.secondaryButton} onClick={() => void saveSex("female")}>Mujer</button></div>{notice && <p className={styles.error}>{notice}</p>}</div></TrainingFrame>;
 

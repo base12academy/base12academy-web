@@ -16,7 +16,7 @@ function escapeHtml(value: string) {
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
-    .replace(/\"/g, "&quot;")
+    .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
 }
 
@@ -42,7 +42,7 @@ async function sendGiftEmail(input: {
   const text = [
     "Hola:",
     "",
-    "Base12 Academy te regala el acceso permanente a Base12 Training.",
+    "Base12 Academy te regala el acceso durante 1 año a Base12 Training.",
     "",
     "Activa tu regalo aquí:",
     input.claimUrl,
@@ -53,7 +53,7 @@ async function sendGiftEmail(input: {
     "Base12 Training prepara las cuatro pruebas físicas de Tropa y Marinería: flexiones, plancha, carrera de 2000 m y agilidad, con seguimiento de marcas y Carlos como entrenador IA.",
     "También podrás instalar la aplicación en la pantalla de inicio de tu móvil.",
     "",
-    `Actívalo en un plazo de ${input.validDays} días. Después, el acceso no caduca.`,
+    `Actívalo en un plazo de ${input.validDays} días. Una vez activado, el acceso dura 1 año.`,
     "",
     "Base12 Academy",
   ].join("\n");
@@ -75,11 +75,11 @@ async function sendGiftEmail(input: {
         <div style="font-family:Arial,Helvetica,sans-serif;max-width:640px;margin:0 auto;color:#17352d;line-height:1.6">
           <p style="font-size:22px;font-weight:800;color:#176b45">Base12 Academy</p>
           <h1 style="font-size:28px;line-height:1.15">Tu Base12 Training, de regalo</h1>
-          <p>Te regalamos el acceso <strong>permanente</strong> a Base12 Training.</p>
+          <p>Te regalamos el acceso <strong>durante 1 año desde la activación</strong> a Base12 Training.</p>
           <p style="margin:28px 0"><a href="${escapeHtml(input.claimUrl)}" style="display:inline-block;padding:13px 20px;border-radius:10px;background:#176b45;color:#fff;text-decoration:none;font-weight:800">Abrir y activar mi aplicación</a></p>
           <p>Este enlace es personal y está reservado para <strong>${escapeHtml(input.assignedEmail)}</strong>. Crea una cuenta gratuita o inicia sesión con ese mismo correo para activar la licencia.</p>
           <p>Entrenarás las cuatro pruebas físicas de Tropa y Marinería con seguimiento de marcas, objetivos progresivos y Carlos como entrenador IA. También podrás instalar la aplicación en la pantalla de inicio de tu móvil.</p>
-          <p>Actívalo en un plazo de <strong>${input.validDays} días</strong>. Después, el acceso no caduca.</p>
+          <p>Actívalo en un plazo de <strong>${input.validDays} días</strong>. Una vez activado, el acceso dura <strong>1 año</strong>.</p>
           <p style="margin-top:28px">Base12 Academy</p>
         </div>`,
     }),

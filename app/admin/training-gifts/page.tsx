@@ -75,7 +75,7 @@ export default function TrainingGiftAdminPage() {
       <Link href="/admin" style={{ color: "#176b45", fontWeight: 800 }}>← Administración</Link>
       <p style={{ margin: "24px 0 6px", color: "#4f8a64", fontSize: 12, fontWeight: 900, textTransform: "uppercase", letterSpacing: ".1em" }}>Base12 Training</p>
       <h1 style={{ marginTop: 0 }}>50 aplicaciones para regalar</h1>
-      <p>Cada enlace queda ligado al correo del destinatario, caduca si no se activa dentro del plazo elegido y, una vez canjeado, concede acceso permanente. La licencia personal del propietario no consume este cupo.</p>
+      <p>Cada enlace queda ligado al correo del destinatario, caduca si no se activa dentro del plazo elegido y, una vez canjeado, concede acceso durante 1 año desde la activación. La licencia personal del propietario no consume este cupo y no caduca.</p>
 
       {stats && <div style={{ display: "flex", flexWrap: "wrap", gap: 12, margin: "24px 0" }}>
         <strong style={{ padding: "12px 16px", borderRadius: 12, background: "#e8f4ec" }}>{stats.remaining} disponibles</strong>
