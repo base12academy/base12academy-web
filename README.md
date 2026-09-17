@@ -1,2 +1,1 @@
-# base12academy
-Plataforma educativa Base12 Academy
+Base12 Academy — plataforma educativa online.
