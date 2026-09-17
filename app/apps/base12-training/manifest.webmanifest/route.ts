@@ -1,44 +1,40 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
-const TRAINING_HOST = "training.base12academy.es";
-const TRAINING_PATH = "/apps/base12-training";
+const TRAINING_ORIGIN = "https://training.base12academy.es";
 
-export function GET(request: NextRequest) {
-  const host = (request.headers.get("host") || "").split(":")[0].toLowerCase();
-  const standaloneOrigin = host === TRAINING_HOST;
-
+export function GET() {
   return NextResponse.json({
     name: "Base12 Training",
     short_name: "B12 Training",
     description: "Preparación física de las cuatro pruebas de Tropa y Marinería con seguimiento de marcas y Carlos IA.",
-    id: standaloneOrigin ? "/" : TRAINING_PATH,
-    start_url: standaloneOrigin ? "/" : TRAINING_PATH,
-    scope: standaloneOrigin ? "/" : TRAINING_PATH,
+    id: `${TRAINING_ORIGIN}/base12-training-v2`,
+    start_url: `${TRAINING_ORIGIN}/`,
+    scope: `${TRAINING_ORIGIN}/`,
     display: "standalone",
     background_color: "#eef9f1",
     theme_color: "#176b45",
     orientation: "any",
     categories: ["sports", "fitness", "education"],
     shortcuts: [
-      { name: "Plan", short_name: "Plan", url: `${TRAINING_PATH}/plan` },
-      { name: "Biblioteca", short_name: "Biblioteca", url: `${TRAINING_PATH}/biblioteca` },
-      { name: "Progreso", short_name: "Progreso", url: `${TRAINING_PATH}/progreso` }
+      { name: "Plan", short_name: "Plan", url: `${TRAINING_ORIGIN}/apps/base12-training/plan` },
+      { name: "Biblioteca", short_name: "Biblioteca", url: `${TRAINING_ORIGIN}/apps/base12-training/biblioteca` },
+      { name: "Progreso", short_name: "Progreso", url: `${TRAINING_ORIGIN}/apps/base12-training/progreso` }
     ],
     icons: [
       {
-        src: "/images/training/base12-training-192.png",
+        src: `${TRAINING_ORIGIN}/images/training/base12-training-192.png?v=5`,
         sizes: "192x192",
         type: "image/png",
         purpose: "any"
       },
       {
-        src: "/apps/base12-training/icon-512.png",
+        src: `${TRAINING_ORIGIN}/apps/base12-training/icon-512.png?v=5`,
         sizes: "512x512",
         type: "image/png",
         purpose: "any"
       },
       {
-        src: "/apps/base12-training/icon-maskable-512.png",
+        src: `${TRAINING_ORIGIN}/apps/base12-training/icon-maskable-512.png?v=5`,
         sizes: "512x512",
         type: "image/png",
         purpose: "maskable"
@@ -47,7 +43,7 @@ export function GET(request: NextRequest) {
   }, {
     headers: {
       "Content-Type": "application/manifest+json; charset=utf-8",
-      "Cache-Control": "public, max-age=300"
+      "Cache-Control": "no-store, max-age=0"
     }
   });
 }
