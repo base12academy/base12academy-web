@@ -1,0 +1,574 @@
+[
+  {
+    "sourceUnit": "COM01",
+    "scope": "COMÚN MAT2+MACS",
+    "title": "Matrices: significado, dimensiones y tipos",
+    "criterion": "Reconocer qué representa una matriz, su orden y tipos básicos",
+    "error": "Confundir filas con columnas",
+    "rocioCorrect": [
+      "A",
+      "B",
+      "C"
+    ],
+    "unit": "T01"
+  },
+  {
+    "sourceUnit": "COM02",
+    "scope": "COMÚN MAT2+MACS",
+    "title": "Suma y resta de matrices",
+    "criterion": "Comprobar igualdad de dimensiones y operar elemento a elemento",
+    "error": "Sumar matrices de distinto orden",
+    "rocioCorrect": [
+      "D",
+      "A",
+      "B"
+    ],
+    "unit": "T02"
+  },
+  {
+    "sourceUnit": "COM03",
+    "scope": "COMÚN MAT2+MACS",
+    "title": "Producto de una matriz por un escalar",
+    "criterion": "Multiplicar todos los elementos por el escalar",
+    "error": "Multiplicar solo una fila o columna",
+    "rocioCorrect": [
+      "C",
+      "D",
+      "A"
+    ],
+    "unit": "T03"
+  },
+  {
+    "sourceUnit": "COM04",
+    "scope": "COMÚN MAT2+MACS",
+    "title": "Producto de matrices",
+    "criterion": "Comprobar columnas de la primera = filas de la segunda y aplicar fila por columna",
+    "error": "Multiplicar elemento a elemento",
+    "rocioCorrect": [
+      "B",
+      "C",
+      "D"
+    ],
+    "unit": "T04"
+  },
+  {
+    "sourceUnit": "COM05",
+    "scope": "COMÚN MAT2+MACS",
+    "title": "Determinantes: significado y cálculo básico",
+    "criterion": "Usar el determinante para invertibilidad y cálculo algebraico",
+    "error": "Tratar el determinante como una matriz",
+    "rocioCorrect": [
+      "A",
+      "B",
+      "C"
+    ],
+    "unit": "T05"
+  },
+  {
+    "sourceUnit": "COM06",
+    "scope": "COMÚN MAT2+MACS",
+    "title": "Determinantes 3×3 y regla de Sarrus",
+    "criterion": "Organizar diagonales positivas y negativas sin perder signos",
+    "error": "Sumar todas las diagonales con el mismo signo",
+    "rocioCorrect": [
+      "D",
+      "A",
+      "B"
+    ],
+    "unit": "T06"
+  },
+  {
+    "sourceUnit": "COM07",
+    "scope": "COMÚN MAT2+MACS",
+    "title": "Propiedades de los determinantes",
+    "criterion": "Aplicar efectos de permutar, escalar o combinar filas/columnas",
+    "error": "Aplicar propiedades de matrices al determinante sin ajuste",
+    "rocioCorrect": [
+      "C",
+      "D",
+      "A"
+    ],
+    "unit": "T07"
+  },
+  {
+    "sourceUnit": "COM08",
+    "scope": "COMÚN MAT2+MACS",
+    "title": "Invertibilidad de una matriz",
+    "criterion": "Decidir A invertible ⇔ det(A)≠0",
+    "error": "Concluir invertibilidad sin comprobar determinante/rango",
+    "rocioCorrect": [
+      "B",
+      "C",
+      "D"
+    ],
+    "unit": "T08"
+  },
+  {
+    "sourceUnit": "COM09",
+    "scope": "COMÚN MAT2+MACS",
+    "title": "Cálculo de la matriz inversa",
+    "criterion": "Calcular A⁻¹ y verificar A·A⁻¹=I",
+    "error": "Olvidar el factor 1/det(A) o no verificar",
+    "rocioCorrect": [
+      "A",
+      "B",
+      "C"
+    ],
+    "unit": "T09"
+  },
+  {
+    "sourceUnit": "COM10",
+    "scope": "COMÚN MAT2+MACS",
+    "title": "Rango de una matriz por menores",
+    "criterion": "Buscar el mayor menor no nulo",
+    "error": "Concluir rango por un menor nulo sin seguir buscando",
+    "rocioCorrect": [
+      "D",
+      "A",
+      "B"
+    ],
+    "unit": "T10"
+  },
+  {
+    "sourceUnit": "COM11",
+    "scope": "COMÚN MAT2+MACS",
+    "title": "Rango por eliminación de Gauss",
+    "criterion": "Reducir por filas y contar filas no nulas/pivotes",
+    "error": "Confundir operaciones elementales válidas",
+    "rocioCorrect": [
+      "C",
+      "D",
+      "A"
+    ],
+    "unit": "T11"
+  },
+  {
+    "sourceUnit": "COM12",
+    "scope": "COMÚN MAT2+MACS",
+    "title": "Ecuaciones matriciales",
+    "criterion": "Aislar la incógnita respetando el orden no conmutativo",
+    "error": "Cambiar el orden de productos como si AB=BA",
+    "rocioCorrect": [
+      "B",
+      "C",
+      "D"
+    ],
+    "unit": "T12"
+  },
+  {
+    "sourceUnit": "COM13",
+    "scope": "COMÚN MAT2+MACS",
+    "title": "Del problema al sistema de ecuaciones",
+    "criterion": "Definir incógnitas y traducir cada relación a una ecuación",
+    "error": "Operar antes de definir qué representa cada incógnita",
+    "rocioCorrect": [
+      "A",
+      "B",
+      "C"
+    ],
+    "unit": "T13"
+  },
+  {
+    "sourceUnit": "COM14",
+    "scope": "COMÚN MAT2+MACS",
+    "title": "Matriz de coeficientes y matriz ampliada",
+    "criterion": "Distinguir A y A* y su papel en la clasificación",
+    "error": "Meter términos independientes en el determinante de A",
+    "rocioCorrect": [
+      "D",
+      "A",
+      "B"
+    ],
+    "unit": "T14"
+  },
+  {
+    "sourceUnit": "COM15",
+    "scope": "COMÚN MAT2+MACS",
+    "title": "Sistemas con solución única",
+    "criterion": "Reconocer rango completo/determinante no nulo y resolver",
+    "error": "Dar solución sin comprobar sustitución",
+    "rocioCorrect": [
+      "C",
+      "D",
+      "A"
+    ],
+    "unit": "T15"
+  },
+  {
+    "sourceUnit": "COM16",
+    "scope": "COMÚN MAT2+MACS",
+    "title": "Resolución de sistemas por Gauss",
+    "criterion": "Escalonar sin cambiar el conjunto de soluciones",
+    "error": "Hacer operaciones de fila incoherentes en ambos lados",
+    "rocioCorrect": [
+      "B",
+      "C",
+      "D"
+    ],
+    "unit": "T16"
+  },
+  {
+    "sourceUnit": "COM17",
+    "scope": "COMÚN MAT2+MACS",
+    "title": "Teorema de Rouché–Frobenius",
+    "criterion": "Comparar rangos de A y A* con número de incógnitas",
+    "error": "Usar det=0 como conclusión final",
+    "rocioCorrect": [
+      "A",
+      "B",
+      "C"
+    ],
+    "unit": "T17"
+  },
+  {
+    "sourceUnit": "COM18",
+    "scope": "COMÚN MAT2+MACS",
+    "title": "Sistemas compatibles indeterminados e incompatibles",
+    "criterion": "Parametrizar cuando faltan pivotes o detectar contradicción",
+    "error": "Confundir infinitas soluciones con ausencia de solución",
+    "rocioCorrect": [
+      "D",
+      "A",
+      "B"
+    ],
+    "unit": "T18"
+  },
+  {
+    "sourceUnit": "COM19",
+    "scope": "COMÚN MAT2+MACS",
+    "title": "Sistemas con parámetros: valores críticos",
+    "criterion": "Calcular valores donde cambia rango/determinante",
+    "error": "Resolver solo el caso general",
+    "rocioCorrect": [
+      "C",
+      "D",
+      "A"
+    ],
+    "unit": "T19"
+  },
+  {
+    "sourceUnit": "COM20",
+    "scope": "COMÚN MAT2+MACS",
+    "title": "Discusión completa de sistemas con parámetros",
+    "criterion": "Separar casos, comparar rangos y resolver/parametrizar cada uno",
+    "error": "No sustituir los valores críticos en A y A*",
+    "rocioCorrect": [
+      "B",
+      "C",
+      "D"
+    ],
+    "unit": "T20"
+  },
+  {
+    "sourceUnit": "MACS-T21",
+    "scope": "MACS",
+    "title": "Cómo traducir un problema de programación lineal y construir la región factible",
+    "criterion": "variables → restricciones → fronteras → semiplanos → vértices",
+    "error": "dibujar antes de traducir restricciones",
+    "rocioCorrect": [
+      "A",
+      "B",
+      "C"
+    ],
+    "unit": "T21"
+  },
+  {
+    "sourceUnit": "MACS-T22",
+    "scope": "MACS",
+    "title": "Cómo evaluar una función objetivo y decidir el óptimo",
+    "criterion": "evaluar la función objetivo en los vértices y contextualizar",
+    "error": "elegir un punto por intuición",
+    "rocioCorrect": [
+      "D",
+      "A",
+      "B"
+    ],
+    "unit": "T22"
+  },
+  {
+    "sourceUnit": "MACS-T23",
+    "scope": "MACS",
+    "title": "Cómo calcular límites: sustitución, laterales e indeterminación cero entre cero",
+    "criterion": "clasificar el límite y resolver 0/0 mediante transformación válida",
+    "error": "decir que 0/0 vale cero",
+    "rocioCorrect": [
+      "C",
+      "D",
+      "A"
+    ],
+    "unit": "T23"
+  },
+  {
+    "sourceUnit": "MACS-T24",
+    "scope": "MACS",
+    "title": "Cómo encontrar asíntotas y describir el comportamiento infinito",
+    "criterion": "vertical mediante límite lateral; horizontal/oblicua mediante infinito",
+    "error": "declarar asíntota solo porque se anula el denominador",
+    "rocioCorrect": [
+      "B",
+      "C",
+      "D"
+    ],
+    "unit": "T24"
+  },
+  {
+    "sourceUnit": "MACS-T25",
+    "scope": "MACS",
+    "title": "Cómo comprobar continuidad y clasificar una discontinuidad",
+    "criterion": "comparar laterales, límite y valor de la función",
+    "error": "confundir f(a) con el límite",
+    "rocioCorrect": [
+      "A",
+      "B",
+      "C"
+    ],
+    "unit": "T25"
+  },
+  {
+    "sourceUnit": "MACS-T26",
+    "scope": "MACS",
+    "title": "Cómo derivar una función y dar sentido al signo de la derivada",
+    "criterion": "derivar y leer el signo como comportamiento local/intervalar",
+    "error": "confundir f(a) con f′(a)",
+    "rocioCorrect": [
+      "D",
+      "A",
+      "B"
+    ],
+    "unit": "T26"
+  },
+  {
+    "sourceUnit": "MACS-T27",
+    "scope": "MACS",
+    "title": "Cómo construir la recta tangente y la normal a una curva",
+    "criterion": "punto + pendiente f′(a); normal perpendicular",
+    "error": "usar f(a) como pendiente",
+    "rocioCorrect": [
+      "C",
+      "D",
+      "A"
+    ],
+    "unit": "T27"
+  },
+  {
+    "sourceUnit": "MACS-T28",
+    "scope": "MACS",
+    "title": "Cómo estudiar crecimiento, decrecimiento y extremos con la primera derivada",
+    "criterion": "puntos críticos + tabla de signos + coordenadas",
+    "error": "llamar extremo a todo punto con f′=0",
+    "rocioCorrect": [
+      "B",
+      "C",
+      "D"
+    ],
+    "unit": "T28"
+  },
+  {
+    "sourceUnit": "MACS-T29",
+    "scope": "MACS",
+    "title": "Cómo resolver un problema de optimización en un intervalo",
+    "criterion": "modelizar, dominio, derivar y comparar críticos con extremos",
+    "error": "olvidar extremos del intervalo cerrado",
+    "rocioCorrect": [
+      "A",
+      "B",
+      "C"
+    ],
+    "unit": "T29"
+  },
+  {
+    "sourceUnit": "MACS-T30",
+    "scope": "MACS",
+    "title": "Cómo representar una función a partir de su estudio analítico",
+    "criterion": "dominio → cortes → límites/asíntotas → derivadas → gráfica",
+    "error": "dibujar antes de justificar",
+    "rocioCorrect": [
+      "D",
+      "A",
+      "B"
+    ],
+    "unit": "T30"
+  },
+  {
+    "sourceUnit": "MACS-T31",
+    "scope": "MACS",
+    "title": "Cómo calcular primitivas y comprobar una integral indefinida",
+    "criterion": "reglas inmediatas + C y comprobación derivando",
+    "error": "olvidar la constante C",
+    "rocioCorrect": [
+      "C",
+      "D",
+      "A"
+    ],
+    "unit": "T31"
+  },
+  {
+    "sourceUnit": "MACS-T32",
+    "scope": "MACS",
+    "title": "Cómo calcular una integral definida y distinguir área con signo de área geométrica",
+    "criterion": "Barrow y separación por cambios de signo",
+    "error": "identificar integral negativa con área negativa",
+    "rocioCorrect": [
+      "B",
+      "C",
+      "D"
+    ],
+    "unit": "T32"
+  },
+  {
+    "sourceUnit": "MACS-T33",
+    "scope": "MACS",
+    "title": "Cómo elegir la herramienta correcta en un problema PAU de análisis",
+    "criterion": "verbo del apartado → límite/derivada/integral → cálculo → interpretación",
+    "error": "operar antes de identificar la pregunta",
+    "rocioCorrect": [
+      "A",
+      "B",
+      "C"
+    ],
+    "unit": "T33"
+  },
+  {
+    "sourceUnit": "MACS-T34",
+    "scope": "MACS",
+    "title": "Cómo construir el espacio muestral y trabajar con sucesos",
+    "criterion": "definir Ω, sucesos y operaciones",
+    "error": "contar casos sin asegurar equiprobabilidad",
+    "rocioCorrect": [
+      "D",
+      "A",
+      "B"
+    ],
+    "unit": "T34"
+  },
+  {
+    "sourceUnit": "MACS-T35",
+    "scope": "MACS",
+    "title": "Cómo aplicar Laplace, la unión y el complementario",
+    "criterion": "casos favorables/posibles y reglas de unión/complementario",
+    "error": "sumar probabilidades sin restar intersección",
+    "rocioCorrect": [
+      "C",
+      "D",
+      "A"
+    ],
+    "unit": "T35"
+  },
+  {
+    "sourceUnit": "MACS-T36",
+    "scope": "MACS",
+    "title": "Cómo calcular probabilidad condicionada y comprobar independencia",
+    "criterion": "P(A|B)=P(A∩B)/P(B); independencia por producto",
+    "error": "invertir condicionada",
+    "rocioCorrect": [
+      "B",
+      "C",
+      "D"
+    ],
+    "unit": "T36"
+  },
+  {
+    "sourceUnit": "MACS-T37",
+    "scope": "MACS",
+    "title": "Cómo usar probabilidad total y Bayes con un árbol de causas",
+    "criterion": "partición → total → posterior de Bayes",
+    "error": "confundir causa con efecto",
+    "rocioCorrect": [
+      "A",
+      "B",
+      "C"
+    ],
+    "unit": "T37"
+  },
+  {
+    "sourceUnit": "MACS-T38",
+    "scope": "MACS",
+    "title": "Cómo reconocer y calcular una distribución binomial",
+    "criterion": "comprobar ensayos, independencia, p constante y contar éxitos",
+    "error": "usar binomial si p cambia",
+    "rocioCorrect": [
+      "D",
+      "A",
+      "B"
+    ],
+    "unit": "T38"
+  },
+  {
+    "sourceUnit": "MACS-T39",
+    "scope": "MACS",
+    "title": "Cómo tipificar una normal y localizar el área que representa la probabilidad",
+    "criterion": "z=(x−μ)/σ y elegir cola/intervalo",
+    "error": "leer la tabla sin dibujar/identificar área",
+    "rocioCorrect": [
+      "C",
+      "D",
+      "A"
+    ],
+    "unit": "T39"
+  },
+  {
+    "sourceUnit": "MACS-T40",
+    "scope": "MACS",
+    "title": "Cómo elegir una muestra y distinguir parámetro, estadístico y estimación",
+    "criterion": "población/muestra/parámetro/estadístico y representatividad",
+    "error": "confundir media muestral con media poblacional",
+    "rocioCorrect": [
+      "B",
+      "C",
+      "D"
+    ],
+    "unit": "T40"
+  },
+  {
+    "sourceUnit": "MACS-T41",
+    "scope": "MACS",
+    "title": "Cómo construir e interpretar un intervalo de confianza para la media",
+    "criterion": "x̄ ± z·σ/√n e interpretación",
+    "error": "afirmar probabilidad posterior del parámetro fijo",
+    "rocioCorrect": [
+      "A",
+      "B",
+      "C"
+    ],
+    "unit": "T41"
+  },
+  {
+    "sourceUnit": "MACS-T42",
+    "scope": "MACS",
+    "title": "Cómo construir un intervalo de confianza para una proporción",
+    "criterion": "p̂ ± z√(p̂(1−p̂)/n)",
+    "error": "usar porcentaje como entero",
+    "rocioCorrect": [
+      "D",
+      "A",
+      "B"
+    ],
+    "unit": "T42"
+  },
+  {
+    "sourceUnit": "MACS-T43",
+    "scope": "MACS",
+    "title": "Cómo plantear y decidir un contraste de hipótesis para una media",
+    "criterion": "H0/H1 → estadístico → región/p-valor → decisión contextual",
+    "error": "decir “aceptamos H0” sin matiz",
+    "rocioCorrect": [
+      "C",
+      "D",
+      "A"
+    ],
+    "unit": "T43"
+  },
+  {
+    "sourceUnit": "MACS-T44",
+    "scope": "MACS",
+    "title": "Cómo reconocer y resolver el modelo estadístico correcto en un ejercicio PAU",
+    "criterion": "clasificar: sucesos/binomial/normal/inferencia/contraste",
+    "error": "elegir fórmula por palabras sueltas sin revisar condiciones",
+    "rocioCorrect": [
+      "B",
+      "C",
+      "D"
+    ],
+    "unit": "T44"
+  }
+]
