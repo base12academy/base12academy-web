@@ -78,7 +78,7 @@ export default function CourseAssistantChat({entryPoint,courseSlug,contextTitle=
    setMessage("");setSending(true);setMessages(v=>[...v,{from:"user",text}]);
    try{
      const {data}=await supabase.auth.getSession();const token=data.session?.access_token;
-     const response=await fetch("/api/base12-assistant",{method:"POST",headers:{"Content-Type":"application/json",...(token?{Authorization:"Bearer "+token}:{})},body:JSON.stringify({entryPoint,courseSlug,contextTitle,message:text})});
+     const response=await fetch("/api/base12-assistant",{method:"POST",headers:{"Content-Type":"application/json",...(token?{Authorization:"Bearer "+token}:{})},body:JSON.stringify({entryPoint,courseSlug,contextTitle,message:text,history:messages.slice(-8)})});
      const payload=await response.json().catch(()=>({}));
      setMessages(v=>[...v,{from:"assistant",text:response.ok?(payload.answer||"No he podido responder."):"Ahora mismo no he podido resolver la consulta.",role:payload.role}]);
    }catch{setMessages(v=>[...v,{from:"assistant",text:"Ahora mismo no he podido resolver la consulta."}]);}

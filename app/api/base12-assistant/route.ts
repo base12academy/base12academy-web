@@ -2,6 +2,7 @@ import OpenAI from "openai";
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabase } from "@/lib/supabase/server";
 import { courses } from "@/lib/courses";
+import { isCourseAdministrator } from "@/lib/course-access";
 
 type EntryPoint="commercial"|"rocio"|"fernando";
 type Role="commercial"|"rocio"|"fernando"|"secretaria"|"jefatura"|"direccion";
@@ -30,6 +31,15 @@ async function authenticatedUser(req:NextRequest){
  const {data}=await supabase.auth.getUser(token);
  return {user:data.user||null,supabase};
 }
+async function courseAccess(req:NextRequest,courseSlug:string){
+ const {user,supabase}=await authenticatedUser(req);
+ if(!user)return {allowed:false,user:null,supabase,reason:"authentication_required"};
+ if(isCourseAdministrator(user.email))return {allowed:true,user,supabase,reason:"administrator"};
+ if(!courseSlug)return {allowed:false,user,supabase,reason:"course_required"};
+ const now=new Date().toISOString();
+ const {data:enrollment}=await supabase.from("course_enrollments").select("id").eq("user_id",user.id).eq("course_slug",courseSlug).in("status",["active","pending"]).lte("starts_at",now).or("expires_at.is.null,expires_at.gte."+now).order("created_at",{ascending:false}).limit(1).maybeSingle();
+ return {allowed:Boolean(enrollment),user,supabase,reason:enrollment?"enrollment":"matriculation_required"};
+}
 async function secretaryAnswer(req:NextRequest){
  const {user,supabase}=await authenticatedUser(req);
  if(!user)return "Secretaría atiende pagos, matrículas, justificantes y facturas. Para consultar una compra concreta debes iniciar sesión con la cuenta vinculada a la matrícula.";
@@ -54,25 +64,46 @@ async function studyPlanContext(req:NextRequest,courseSlug:string){
  if(!plan)return "No hay plan de estudio guardado todavía.";
  return "Plan actual: días "+((plan.study_days||[]) as string[]).join(", ")+"; horario "+String(plan.study_time||"no indicado")+"; sesión "+String(plan.session_duration_minutes||"no indicada")+" minutos; examen "+String(plan.exam_date||"no indicado")+"; objetivo "+String(plan.objective||"no indicado")+".";
 }
-async function aiAnswer(role:Role,message:string,entryPoint:EntryPoint,courseSlug:string,contextTitle:string,req:NextRequest){
+async function aiAnswer(role:Role,message:string,entryPoint:EntryPoint,courseSlug:string,contextTitle:string,history:{from:string;text:string;role?:string}[],req:NextRequest){
  if(!process.env.OPENAI_API_KEY)return "Ahora mismo el asistente IA no está disponible.";
  let roleInstruction="";let privateContext="";
  if(role==="rocio")roleInstruction="Actúas como Rocío, Profesora IA de Base12 Academy. Enseñas y explicas contenidos, procedimientos y errores. No amplíes innecesariamente el temario.";
  else if(role==="fernando"){roleInstruction="Actúas como Fernando, Tutor IA de Base12 Academy. Organizas el estudio, haces seguimiento, detectas interrupciones y propones repasos y recuperación usando el progreso real del alumno.";privateContext=(await studyPlanContext(req,courseSlug))+"\n"+(await progressContext(req,courseSlug));}
  else if(role==="commercial"){roleInstruction="Actúas como el área Comercial de Base12 Academy. Informas sobre cursos, modalidades, precios, contratación y descuentos únicamente con los datos proporcionados. No inventes promociones.";privateContext=courseCatalogSummary();}
  else if(role==="jefatura"){roleInstruction="Actúas como Jefatura de Estudios de Base12 Academy. Resuelves organización académica, itinerarios y compatibilidad entre cursos. No inventes condiciones.";privateContext=courseCatalogSummary();}
- else if(role==="direccion")roleInstruction="Actúas como Dirección Académica de Base12 Academy. Atiendes escalados y solicitudes de revisión humana. No prometas resoluciones ni plazos no confirmados.";
+ else if(role==="direccion")return "Tu consulta requiere revisión de Dirección Académica. La conversación puede recoger aquí los datos necesarios, pero la decisión o respuesta que corresponda a Dirección debe realizarla una persona del equipo; no voy a presentarme como si fuera esa persona.";
  const client=new OpenAI({apiKey:process.env.OPENAI_API_KEY});
  const system=roleInstruction+"\nEl alumno ha entrado por el punto visible "+entryPoint+". La respuesta debe aparecer en ese mismo chat; no le pidas abrir otro asistente.\nCurso actual: "+(courseSlug||"no especificado")+".\nContexto visible: "+(contextTitle||"no especificado")+".\n"+privateContext+"\nResponde en español con claridad y sin inventar datos.";
- const response=await client.responses.create({model:"gpt-4.1-mini",input:[{role:"system",content:system},{role:"user",content:message}]});
+ const prior=history.slice(-8).map(item=>({role:item.from==="user"?"user" as const:"assistant" as const,content:String(item.text||"").slice(0,2500)}));
+ const response=await client.responses.create({model:"gpt-4.1-mini",input:[{role:"system",content:system},...prior,{role:"user",content:message}]});
  return response.output_text||"No he podido generar una respuesta.";
 }
 export async function POST(req:NextRequest){
  const body=await req.json().catch(()=>({}));
- const raw=String(body.entryPoint||"commercial");const entryPoint=(raw==="rocio"||raw==="fernando"?"rocio"===raw?"rocio":"fernando":"commercial") as EntryPoint;
- const message=String(body.message||body.mensaje||"").trim().slice(0,2500);const courseSlug=String(body.courseSlug||"").trim().slice(0,100);const contextTitle=String(body.contextTitle||"").trim().slice(0,500);
+ const raw=String(body.entryPoint||"commercial");
+ const entryPoint:EntryPoint=raw==="rocio"?"rocio":raw==="fernando"?"fernando":"commercial";
+ const message=String(body.message||body.mensaje||"").trim().slice(0,2500);
+ const courseSlug=String(body.courseSlug||"").trim().slice(0,100);
+ const contextTitle=String(body.contextTitle||"").trim().slice(0,500);
+ const history=Array.isArray(body.history)?body.history.slice(-8).map((item:Record<string,unknown>)=>({from:String(item.from||""),text:String(item.text||"").slice(0,2500),role:String(item.role||"")})):[];
  if(!message)return NextResponse.json({error:"invalid_request"},{status:400});
+
+ if(entryPoint==="rocio"||entryPoint==="fernando"){
+   const access=await courseAccess(req,courseSlug);
+   if(!access.allowed)return NextResponse.json({error:access.reason},{status:access.reason==="authentication_required"?401:403});
+ }
+
  const role=classify(message,entryPoint);
- try{const answer=role==="secretaria"?await secretaryAnswer(req):await aiAnswer(role,message,entryPoint,courseSlug,contextTitle,req);return NextResponse.json({answer,role,entryPoint});}
- catch(error){console.error("Base12 assistant error",error);return NextResponse.json({error:"assistant_unavailable"},{status:503});}
+ if(entryPoint==="commercial"&&(role==="rocio"||role==="fernando")){
+   const access=await courseAccess(req,courseSlug);
+   if(!access.allowed)return NextResponse.json({answer:"Puedo orientarte desde aquí, pero para consultar contenido académico, progreso o planificación de un curso concreto necesitas iniciar sesión y tener acceso activo a ese curso.",role,entryPoint});
+ }
+
+ try{
+   const answer=role==="secretaria"?await secretaryAnswer(req):await aiAnswer(role,message,entryPoint,courseSlug,contextTitle,history,req);
+   return NextResponse.json({answer,role,entryPoint});
+ }catch(error){
+   console.error("Base12 assistant error",error);
+   return NextResponse.json({error:"assistant_unavailable"},{status:503});
+ }
 }
