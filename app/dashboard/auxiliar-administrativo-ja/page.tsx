@@ -8,6 +8,8 @@ import { supabase } from "@/lib/supabaseClient";
 import styles from "../administrativo-ja/administrativo-ja.module.css";
 import layout from "../administrativo-ja/course-layout.module.css";
 import { OpenQuestion, OppositionTest, TutoringCalendar } from "@/components/OppositionTools";
+import CourseAssistantChat from "@/components/CourseAssistantChat";
+import CourseProgressSummary from "@/components/learning/CourseProgressSummary";
 
 type Tab = "explicacion" | "glosario" | "rocio" | "fernando" | "test" | "tutoria";
 type TestQuestion = { question: string; options: string[]; answer: number; explanation: string };
@@ -28,6 +30,8 @@ function Course() {
   const [canNavigateAll, setCanNavigateAll] = useState(false);
   const [checking, setChecking] = useState(true);
   const [planSlug, setPlanSlug] = useState("esencial");
+  const [rocioChatOpen,setRocioChatOpen]=useState(false);
+  const [fernandoChatOpen,setFernandoChatOpen]=useState(false);
 
   useEffect(() => {
     let active = true;
@@ -103,16 +107,18 @@ function Course() {
             <section className={styles.contentCard}>
               {tab === "explicacion" && <><p className={styles.sectionLabel}>EXPLICACIÓN DEL TEMA</p><h2>{theme.title}</h2><div className={styles.pre}>{content.explanation}</div></>}
               {tab === "glosario" && <Glossary items={content.glossary} />}
-              {tab === "rocio" && <><Rocio items={content.rocio} /><OpenQuestion courseSlug="auxiliar-administrativo-ja" themeId={theme.id} /></>}
-              {tab === "fernando" && <Assistant name="Fernando" role="Tutor IA" text={`Te ayuda a organizar el estudio del Tema ${theme.number}, comprobar tu avance y retomar el itinerario cuando lo necesites.`} />}
+              {tab === "rocio" && <><Rocio items={content.rocio} onChat={()=>setRocioChatOpen(true)} /><OpenQuestion courseSlug="auxiliar-administrativo-ja" themeId={theme.id} /></>}
+              {tab === "fernando" && <><Assistant name="Fernando" role="Tutor IA" text={`Te ayuda a organizar el estudio del Tema ${theme.number}, comprobar tu avance y retomar el itinerario cuando lo necesites.`} onAction={()=>setFernandoChatOpen(true)} /><CourseProgressSummary courseSlug="auxiliar-administrativo-ja"/></>}
               {tab === "test" && <OppositionTest questions={content.tests} courseSlug="auxiliar-administrativo-ja" themeId={theme.id} planSlug={planSlug} />}
               {tab === "tutoria" && planSlug === "premium" && <TutoringCalendar courseSlug="auxiliar-administrativo-ja" courseName="Auxiliar Administrativo de la Junta de Andalucía" themeId={theme.id} themeName={theme.title} />}
             </section>
             </div>
-            <RightRail theme={content} onSelect={setTab} />
+            <RightRail theme={content} onSelect={setTab} onRocio={()=>setRocioChatOpen(true)} onFernando={()=>setFernandoChatOpen(true)} />
           </div>
         )}
       </main>
+      <CourseAssistantChat entryPoint="rocio" courseSlug="auxiliar-administrativo-ja" contextTitle={theme.id+" · "+theme.title} open={rocioChatOpen} onClose={()=>setRocioChatOpen(false)}/>
+      <CourseAssistantChat entryPoint="fernando" courseSlug="auxiliar-administrativo-ja" contextTitle={theme.id+" · "+theme.title} open={fernandoChatOpen} onClose={()=>setFernandoChatOpen(false)}/>
     </div>
   );
 }
@@ -121,21 +127,21 @@ function Glossary({ items }: { items: { term: string; definition: string }[] }) 
   return <><p className={styles.sectionLabel}>CONCEPTOS CLAVE</p><h2>Glosario del tema</h2><div className={styles.glossary}>{items.map((item) => <article key={item.term}><h3>{item.term}</h3><p>{item.definition}</p></article>)}</div></>;
 }
 
-function Rocio({ items }: { items: { question: string; answer: string }[] }) {
+function Rocio({ items, onChat }: { items: { question: string; answer: string }[]; onChat?:()=>void }) {
   const [open, setOpen] = useState<number | null>(null);
-  return <><Assistant name="Rocío" role="Profesora IA" text="Te explica el contenido, resuelve dudas académicas y te ayuda a comprobar las ideas esenciales." /><div className={styles.qa}>{items.map((item, index) => <article key={item.question}><button onClick={() => setOpen(open === index ? null : index)}><span>{item.question}</span><b>{open === index ? "−" : "+"}</b></button>{open === index && <p>{item.answer}</p>}</article>)}</div></>;
+  return <><Assistant name="Rocío" role="Profesora IA" text="Te explica el contenido, resuelve dudas académicas y te ayuda a comprobar las ideas esenciales." onAction={onChat} /><div className={styles.qa}>{items.map((item, index) => <article key={item.question}><button onClick={() => setOpen(open === index ? null : index)}><span>{item.question}</span><b>{open === index ? "−" : "+"}</b></button>{open === index && <p>{item.answer}</p>}</article>)}</div></>;
 }
 
-function Assistant({ name, role, text }: { name: string; role: string; text: string }) {
+function Assistant({ name, role, text, onAction }: { name: string; role: string; text: string; onAction?:()=>void }) {
   const avatar = name === "Rocío" ? "/images/rocio-profesora-ia.png" : "/images/fernando-tutor-ia.png";
-  return <div className={layout.assistant}><img className={layout.avatar} src={avatar} alt={`Avatar de ${name}`} /><div><p className={styles.sectionLabel}>{role}</p><h2>{name}</h2><p>{text}</p><button>Preguntar sobre este tema</button></div></div>;
+  return <div className={layout.assistant}><img className={layout.avatar} src={avatar} alt={`Avatar de ${name}`} /><div><p className={styles.sectionLabel}>{role}</p><h2>{name}</h2><p>{text}</p><button type="button" onClick={onAction}>Preguntar sobre este tema</button></div></div>;
 }
 
-function RightRail({ theme, onSelect }: { theme: ThemeContent; onSelect: (tab: Tab) => void }) {
+function RightRail({ theme, onSelect, onRocio, onFernando }: { theme: ThemeContent; onSelect: (tab: Tab) => void; onRocio?:()=>void; onFernando?:()=>void }) {
   return <aside className={layout.rightRail}>
     <section><div className={layout.railTitle}><span>◫</span><h3>Glosario</h3><button onClick={() => onSelect("glosario")}>Ver todo</button></div>{theme.glossary.slice(0, 3).map((item) => <div className={layout.railEntry} key={item.term}><b>{item.term}</b><p>{item.definition}</p></div>)}</section>
-    <section><div className={layout.railTitle}><img className={layout.miniAvatar} src="/images/rocio-profesora-ia.png" alt="Rocío" /><h3>Rocío</h3><small>Profesora IA</small></div><p>Pregunta tus dudas sobre este tema y repasa sus ideas esenciales.</p><button className={layout.railAction} onClick={() => onSelect("rocio")}>Hablar con Rocío</button></section>
-    <section><div className={layout.railTitle}><img className={layout.miniAvatar} src="/images/fernando-tutor-ia.png" alt="Fernando" /><h3>Fernando</h3><small>Tutor IA</small></div><p>Organiza tu estudio, tu progreso y el siguiente paso del itinerario.</p><button className={layout.railAction} onClick={() => onSelect("fernando")}>Planificar con Fernando</button></section>
+    <section><div className={layout.railTitle}><img className={layout.miniAvatar} src="/images/rocio-profesora-ia.png" alt="Rocío" /><h3>Rocío</h3><small>Profesora IA</small></div><p>Pregunta tus dudas sobre este tema y repasa sus ideas esenciales.</p><button className={layout.railAction} onClick={onRocio}>Hablar con Rocío</button></section>
+    <section><div className={layout.railTitle}><img className={layout.miniAvatar} src="/images/fernando-tutor-ia.png" alt="Fernando" /><h3>Fernando</h3><small>Tutor IA</small></div><p>Organiza tu estudio, tu progreso y el siguiente paso del itinerario.</p><button className={layout.railAction} onClick={onFernando}>Planificar con Fernando</button></section>
     <section><div className={layout.railTitle}><span>✓</span><h3>Simulacro</h3><small>20 de 50</small></div><p>Practica con 20 preguntas aleatorias del banco del tema.</p><button className={layout.railAction} onClick={() => onSelect("test")}>Comenzar simulacro</button></section>
   </aside>;
 }

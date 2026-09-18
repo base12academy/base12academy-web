@@ -7,6 +7,8 @@ import course from "@/lib/ofimatica-content.json";
 import { supabase } from "@/lib/supabaseClient";
 import styles from "./ofimatica.module.css";
 import quizStyles from "./rocio.module.css";
+import CourseAssistantChat from "@/components/CourseAssistantChat";
+import CourseProgressSummary from "@/components/learning/CourseProgressSummary";
 
 type Tab = "explicacion" | "glosario" | "rocio" | "fernando" | "actividad";
 
@@ -23,6 +25,8 @@ function OfimaticaCourse() {
   const [allowed, setAllowed] = useState(selected.publicPreview);
   const [access, setAccess] = useState(selected.publicPreview ? "public_preview" : "checking");
   const [showVideo, setShowVideo] = useState(false);
+  const [rocioChatOpen,setRocioChatOpen]=useState(false);
+  const [fernandoChatOpen,setFernandoChatOpen]=useState(false);
 
   useEffect(() => {
     let active = true;
@@ -111,13 +115,15 @@ function OfimaticaCourse() {
                   {tab === "explicacion" && <TextContent title="Explicación del contenido" text={selected.explanation} />}
                   {tab === "glosario" && <TextContent title="Glosario" text={selected.glossary} />}
                   {tab === "actividad" && <TextContent title="Pruebas, retos y prácticas" text={selected.activities} />}
-                  {tab === "rocio" && <RocioQuiz lesson={selected.id} />}
-                  {tab === "fernando" && <Assistant name="Fernando" role="Tutor IA" text="Te ayuda a organizar el estudio, comprueba tu avance y te orienta para retomar el curso si te has despistado." />}
+                  {tab === "rocio" && <><Assistant name="Rocío" role="Profesora IA" text="Resuelve dudas sobre este contenido y te ayuda a comprenderlo antes de entrenar." onAction={()=>setRocioChatOpen(true)} /><RocioQuiz lesson={selected.id} /></>}
+                  {tab === "fernando" && <><Assistant name="Fernando" role="Tutor IA" text="Te ayuda a organizar el estudio, comprueba tu avance y te orienta para retomar el curso si te has despistado." onAction={()=>setFernandoChatOpen(true)} /><CourseProgressSummary courseSlug="ofimatica"/></>}
                 </section>
 
           </>
         )}
       </main>
+      <CourseAssistantChat entryPoint="rocio" courseSlug="ofimatica" contextTitle={selected.id+" · "+selected.title} open={rocioChatOpen} onClose={()=>setRocioChatOpen(false)}/>
+      <CourseAssistantChat entryPoint="fernando" courseSlug="ofimatica" contextTitle={selected.id+" · "+selected.title} open={fernandoChatOpen} onClose={()=>setFernandoChatOpen(false)}/>
     </div>
   );
 }
@@ -126,8 +132,8 @@ function TextContent({ title, text }: { title: string; text: string }) {
   return <><h2>{title}</h2><div className={styles.pre}>{text || "Contenido en preparación."}</div></>;
 }
 
-function Assistant({ name, role, text }: { name: string; role: string; text: string }) {
-  return <div className={styles.assistant}><div className={styles.avatar}>{name[0]}</div><div><p className={styles.eyebrow}>{role}</p><h2>{name}</h2><p>{text}</p><button>Preguntar sobre este contenido</button></div></div>;
+function Assistant({ name, role, text, onAction }: { name: string; role: string; text: string; onAction?:()=>void }) {
+  return <div className={styles.assistant}><div className={styles.avatar}>{name[0]}</div><div><p className={styles.eyebrow}>{role}</p><h2>{name}</h2><p>{text}</p><button type="button" onClick={onAction}>Preguntar sobre este contenido</button></div></div>;
 }
 
 type RocioQuestion = {
