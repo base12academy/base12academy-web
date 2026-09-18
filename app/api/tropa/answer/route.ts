@@ -4,6 +4,7 @@ import {
   canAccessTropaQuestion,
   isTropaAuthorizationError,
 } from "@/lib/tropa-access";
+import { TROP_COURSE_SLUG } from "@/lib/tropa-config";
 
 const validAnswers = new Set(["A", "B", "C", "D"]);
 
@@ -56,6 +57,21 @@ export async function POST(request: NextRequest) {
   if (attemptError) {
     console.error("No se pudo guardar el intento TROP", attemptError);
     return NextResponse.json({ error: "progress_not_saved" }, { status: 503 });
+  }
+
+  const enrollmentId=access.enrollmentIds[0]||null;
+  if(enrollmentId){
+    const {error:learningError}=await supabase.from("course_learning_events").insert({
+      user_id:user.id,
+      enrollment_id:enrollmentId,
+      course_slug:TROP_COURSE_SLUG,
+      content_id:question.question_id,
+      event_type:"assessment_submitted",
+      progress_percent:correct?100:0,
+      metadata:{activityType:"tropa_question",aptitude:question.aptitude_slug,motor:question.motor_code,family:question.family_id,level:question.level,errorCode:errorCode?String(errorCode):null,responseMs:Math.round(responseMs)},
+      occurred_at:answeredAt,
+    });
+    if(learningError)console.error("No se pudo registrar la respuesta TROP en el progreso común",learningError);
   }
 
   return NextResponse.json({
