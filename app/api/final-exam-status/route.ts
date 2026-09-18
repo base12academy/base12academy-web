@@ -4,15 +4,12 @@ import { getSupabase } from "@/lib/supabase/server";
 export async function POST(req: Request) {
   try {
     const supabase = getSupabase();
-    const body = await req.json();
-    const userId = body.userId;
-
-    if (!userId) {
-      return NextResponse.json(
-        { error: "Falta userId" },
-        { status: 400 }
-      );
-    }
+    const token=req.headers.get("authorization")?.replace(/^Bearer\s+/i,"");
+        if(!token)return NextResponse.json({error:"authentication_required"},{status:401});
+        const {data:authData,error:authError}=await supabase.auth.getUser(token);
+        if(authError||!authData.user)return NextResponse.json({error:"authentication_required"},{status:401});
+        const userId=authData.user.id;
+    
 
     const { data, error } = await supabase
       .from("final_exam_progress")

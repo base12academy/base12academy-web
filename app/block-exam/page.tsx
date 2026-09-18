@@ -17,7 +17,7 @@ type SourceData = {
   description: string | null;
   content: string | null;
   asset_url: string | null;
-  explicacion: string;
+  sourceId: string;
 };
 
 type DevelopmentData = {
@@ -220,10 +220,14 @@ export default function BlockExamPage() {
     setResult(null);
 
     try {
+      const {data:sessionData}=await supabase.auth.getSession();
+      const token=sessionData.session?.access_token;
+      if(!token){setError("Debes iniciar sesión para generar el examen");return;}
       const res = await fetch("/api/generate-block-exam", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization:"Bearer "+token,
         },
         body: JSON.stringify({
           blockId: "bloque-1",

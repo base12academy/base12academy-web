@@ -6,16 +6,13 @@ export async function POST(req: Request) {
   try {
     const supabase = getSupabase();
     const body = await req.json();
+    const token=req.headers.get("authorization")?.replace(/^Bearer\s+/i,"");
+    if(!token)return NextResponse.json({error:"authentication_required"},{status:401});
+    const {data:authData,error:authError}=await supabase.auth.getUser(token);
+    if(authError||!authData.user)return NextResponse.json({error:"authentication_required"},{status:401});
+    const userId=authData.user.id;
 
-    const userId = body.userId;
     const selectedTopicSlugs = body.selectedTopicSlugs || [];
-
-    if (!userId) {
-      return NextResponse.json(
-        { error: "Falta userId" },
-        { status: 400 }
-      );
-    }
 
     if (!Array.isArray(selectedTopicSlugs) || selectedTopicSlugs.length === 0) {
       return NextResponse.json(
