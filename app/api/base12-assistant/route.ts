@@ -46,16 +46,18 @@ async function secretaryAnswer(req:NextRequest){
  if(!user)return "Secretaría atiende pagos, matrículas, justificantes y facturas. Para consultar una compra concreta debes iniciar sesión con la cuenta vinculada a la matrícula.";
  const {data:invoices}=await supabase.from("base12_invoices").select("invoice_number,description,total_amount_cents,currency").eq("user_id",user.id).order("issued_at",{ascending:false}).limit(5);
  const {data:enrollments}=await supabase.from("course_enrollments").select("course_slug,plan_slug,status").eq("user_id",user.id).order("created_at",{ascending:false}).limit(10);
- const inv=(invoices||[]).map(i=>String(i.invoice_number)+": "+String(i.description)+" · "+(Number(i.total_amount_cents||0)/100).toFixed(2)+" "+String(i.currency||"EUR")).join("; ");
- const enr=(enrollments||[]).map(e=>String(e.course_slug)+" · "+String(e.plan_slug)+" · "+String(e.status)).join("; ");
+ const inv=((invoices||[]) as {invoice_number:unknown;description:unknown;total_amount_cents:unknown;currency:unknown}[]).map((i)=>String(i.invoice_number)+": "+String(i.description)+" · "+(Number(i.total_amount_cents||0)/100).toFixed(2)+" "+String(i.currency||"EUR")).join("; ");
+ const enr=((enrollments||[]) as {course_slug:unknown;plan_slug:unknown;status:unknown}[]).map((e)=>String(e.course_slug)+" · "+String(e.plan_slug)+" · "+String(e.status)).join("; ");
  return "Secretaría ha consultado tu cuenta. Matrículas: "+(enr||"no constan matrículas accesibles")+". Facturas recientes: "+(inv||"no constan facturas emitidas")+".";
 }
 async function progressContext(req:NextRequest,courseSlug:string){
  const {user,supabase}=await authenticatedUser(req);if(!user||!courseSlug)return "";
  const {data:events}=await supabase.from("course_learning_events").select("content_id,event_type,progress_percent,metadata,occurred_at").eq("user_id",user.id).eq("course_slug",courseSlug).order("occurred_at",{ascending:false}).limit(100);
- const assessments=(events||[]).filter(e=>e.event_type==="assessment_submitted");const scored=assessments.filter(e=>typeof e.progress_percent==="number");
- const avg=scored.length?Math.round(scored.reduce((s,e)=>s+Number(e.progress_percent||0),0)/scored.length):null;
- return "Progreso registrado: "+assessments.length+" entregas; "+scored.length+" valoradas"+(avg==null?"":"; media orientativa "+avg+"%")+". Últimos resultados: "+assessments.slice(0,8).map(e=>String(e.content_id)+" "+(e.progress_percent==null?"sin puntuación":String(e.progress_percent)+"%")+" "+String((e.metadata as any)?.feedback||"")).join(" | ");
+ type ProgressEvent={content_id:string;event_type:string;progress_percent:number|null;metadata:Record<string,unknown>|null;occurred_at:string};
+ const eventRows=(events||[]) as ProgressEvent[];
+ const assessments=eventRows.filter((e:ProgressEvent)=>e.event_type==="assessment_submitted");const scored=assessments.filter((e:ProgressEvent)=>typeof e.progress_percent==="number");
+ const avg=scored.length?Math.round(scored.reduce((s:number,e:ProgressEvent)=>s+Number(e.progress_percent||0),0)/scored.length):null;
+ return "Progreso registrado: "+assessments.length+" entregas; "+scored.length+" valoradas"+(avg==null?"":"; media orientativa "+avg+"%")+". Últimos resultados: "+assessments.slice(0,8).map((e:ProgressEvent)=>String(e.content_id)+" "+(e.progress_percent==null?"sin puntuación":String(e.progress_percent)+"%")+" "+String(e.metadata?.feedback||"")).join(" | ");
 }
 async function studyPlanContext(req:NextRequest,courseSlug:string){
  const {user,supabase}=await authenticatedUser(req);if(!user||!courseSlug)return "";const now=new Date().toISOString();

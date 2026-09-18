@@ -42,8 +42,8 @@ export async function POST(req:NextRequest){
   const bank=(historiaTests[theme as keyof typeof historiaTests]||[]) as Question[];
   const selected=questionIds.map((id:string)=>bank.find((q:Question)=>q.id===id)).filter((item:Question|undefined):item is Question=>Boolean(item));
   if(!selected.length)return NextResponse.json({error:"invalid_submission"},{status:400});
-  const corrections=selected.map(q=>({id:q.id,correctAnswer:q.correctAnswer,selected:answers[q.id],correct:answers[q.id]===q.correctAnswer}));
-  const correct=corrections.filter(x=>x.correct).length;
+  const corrections=selected.map((q:Question)=>({id:q.id,correctAnswer:q.correctAnswer,selected:answers[q.id],correct:answers[q.id]===q.correctAnswer}));
+  const correct=corrections.filter((x:{correct:boolean})=>x.correct).length;
   const percentage=Math.round(correct/selected.length*100);
   const number=themeNumber(theme);
   const now=new Date().toISOString();

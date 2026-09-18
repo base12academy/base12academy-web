@@ -38,7 +38,7 @@ export async function POST(req:NextRequest){
   const source=bank(theme);const selected=ids.map((id:string)=>source.find((q:ShortQuestion)=>q.id===id)).filter((item:ShortQuestion|undefined):item is ShortQuestion=>Boolean(item));
   if(!selected.length)return NextResponse.json({error:"invalid_submission"},{status:400});
   const results=selected.map(q=>{
-    const normalized=normalizeText(String(answers[q.id]||""));const keywords=Array.isArray(q.keywords)?q.keywords:[];const matched=keywords.filter((k:string)=>normalized.includes(normalizeText(k)));const min=Math.max(1,Math.ceil(keywords.length*.6));const correct=keywords.length>0&&matched.length>=min;
+    const normalized=normalizeText(String(answers[q.id]||""));const keywords:string[]=Array.isArray(q.keywords)?q.keywords:[];const matched=keywords.filter((k:string)=>normalized.includes(normalizeText(k)));const min=Math.max(1,Math.ceil(keywords.length*.6));const correct=keywords.length>0&&matched.length>=min;
     return {id:q.id,correct,matchedKeywords:matched,totalKeywords:keywords.length,keywords,answerGuide:q.answerGuide};
   });
   const correct=results.filter((r:{correct:boolean})=>r.correct).length;const score=Math.round(correct/selected.length*100);const now=new Date().toISOString();const n=themeNumber(theme);
