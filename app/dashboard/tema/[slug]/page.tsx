@@ -2,14 +2,12 @@
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import {
   temasHistoria,
   IMAGENES_BLOQUES,
   TEXTOS_BLOQUES,
-  getInitialTopicProgressMap,
-  isTopicUnlocked,
   isLastTopicOfBlock,
 } from "@/lib/temas";
 
@@ -30,18 +28,9 @@ export default function TemaPage() {
   const [openTemario, setOpenTemario] = useState(false);
   const [openIndice, setOpenIndice] = useState(false);
   const [hasAccess, setHasAccess] = useState(false);
-  const [bestScores, setBestScores] = useState<Record<string, number>>({});
+  const [currentBest,setCurrentBest]=useState(0);
+  const [previousBest,setPreviousBest]=useState(0);
   const [temasActivos, setTemasActivos] = useState<string[]>([]);
-
-  // 🔥 CARGA PROGRESO LOCAL
-  useEffect(() => {
-    const saved = localStorage.getItem("historia-best-scores");
-    if (saved) {
-      setBestScores(JSON.parse(saved));
-    }
-  }, []);
-
-  const topicProgressMap = useMemo(() => getInitialTopicProgressMap(), []);
 
   const indiceActual = temasHistoria.findIndex((t) => t.slug === slug);
   const temaData = temasHistoria[indiceActual];
@@ -52,9 +41,7 @@ export default function TemaPage() {
 
   // 🔥 DESBLOQUEO REAL
   const prevTema = temasHistoria[indiceActual - 1];
-  const unlocked =
-    indiceActual === 0 ||
-    (prevTema && (bestScores[prevTema.slug] || 0) >= 80);
+  const unlocked = indiceActual === 0 || previousBest >= 80;
 
   const bloque = `bloque-${Math.floor(indiceActual / 4) + 1}`;
   const imagenes = IMAGENES_BLOQUES[bloque as keyof typeof IMAGENES_BLOQUES] || [];
@@ -64,7 +51,10 @@ export default function TemaPage() {
   const checkAccess = async () => {
     const { data: userData } = await supabase.auth.getUser();
     const user = userData?.user;
-
+    const {data:sessionData}=await supabase.auth.getSession();
+    const token=sessionData.session?.access_token;
+    const progressResponse=await fetch("/api/history-topic-progress?tema="+encodeURIComponent(slug),{headers:token?{Authorization:"Bearer "+token}:{}});
+    if(progressResponse.ok){const progress=await progressResponse.json();setCurrentBest(Number(progress.currentBest||0));setPreviousBest(Number(progress.previousBest||0));}
     if (!user) return;
 
     const { data } = await supabase
@@ -83,7 +73,7 @@ export default function TemaPage() {
   };
 
   checkAccess();
-}, []);
+}, [slug]);
 
   const temaElegido = temasActivos.includes(slug);
   const isFreeTopic = slug === "tema-1";
@@ -208,10 +198,10 @@ if (!unlocked && !isFreeTopic) {
       <section style={{ marginTop: "24px" }}>
         <h3>Progreso</h3>
 
-        <p>Mejor nota: {bestScores[slug] || 0}%</p>
+        <p>Mejor resultado registrado: {currentBest}%</p>
 
-        {bestScores[slug] >= 80 && (
-          <p style={{ color: "green" }}>🏅 Tema superado</p>
+        {currentBest >= 80 && (
+          <p style={{ color: "green" }}>Tema superado</p>
         )}
       </section>
 
