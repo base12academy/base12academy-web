@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import CourseAssistantChat from "@/components/CourseAssistantChat";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import catalog from "@/data/filosofia/catalog.json";
@@ -21,6 +22,8 @@ const sections: { id: Section; label: string; icon: string }[] = [
 const periods = ["Filosofía antigua", "Filosofía medieval", "Filosofía moderna", "Filosofía contemporánea"];
 
 export default function FilosofiaPage() {
+  const [rocioChatOpen,setRocioChatOpen]=useState(false);
+  const [fernandoChatOpen,setFernandoChatOpen]=useState(false);
   const [section, setSection] = useState<Section>("inicio");
   const [period, setPeriod] = useState("Filosofía contemporánea");
   const [search, setSearch] = useState("");
@@ -84,7 +87,9 @@ export default function FilosofiaPage() {
           {section === "inicio" ? <PhilosophyHome featured={featured} onOpen={setSection} /> : <SectionView section={section} period={period} search={search} setSearch={setSearch} cards={cards} />}
         </main>
 
-        <PhilosophyRightRail featured={featured} />
+        <PhilosophyRightRail featured={featured} onRocio={()=>setRocioChatOpen(true)} onFernando={()=>setFernandoChatOpen(true)} />
+      <CourseAssistantChat entryPoint="rocio" courseSlug="historia-filosofia" contextTitle={featured.title} open={rocioChatOpen} onClose={()=>setRocioChatOpen(false)}/>
+      <CourseAssistantChat entryPoint="fernando" courseSlug="historia-filosofia" contextTitle={featured.title} open={fernandoChatOpen} onClose={()=>setFernandoChatOpen(false)}/>
       </div>
     </div>
   );
@@ -129,11 +134,11 @@ function SectionView({ section, period, search, setSearch, cards }: { section: S
   return <><div className={styles.breadcrumb}>⌂ &nbsp;/&nbsp; Historia de la Filosofía &nbsp;/&nbsp; {label}</div><header className={styles.sectionHeader}><div><h1>{label}</h1><p>Todos los recursos del paquete maestro, organizados para estudiar y entrenar.</p></div>{["autores", "corrientes", "comparaciones", "glosario"].includes(section) ? <input className={styles.sectionSearch} value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Buscar autor, concepto o problema" /> : null}</header>{cards.length ? <div className={styles.resourceGrid}>{cards.map((item) => <Link href={item.href} className={styles.resourceListCard} key={item.href}><small>{item.eyebrow}</small><h3>{item.title}</h3><p>{item.text}</p><b>Consultar →</b></Link>)}</div> : <p className={styles.empty}>No hay resultados para esta búsqueda.</p>}</>;
 }
 
-function PhilosophyRightRail({ featured }: { featured: (typeof catalog.authors)[number] }) {
+function PhilosophyRightRail({ featured,onRocio,onFernando }: { featured: (typeof catalog.authors)[number];onRocio:()=>void;onFernando:()=>void }) {
   return <aside className={styles.rightRail}>
     <section className={styles.sideCard}><div className={styles.sideHeader}><span>▤ Glosario contextual</span><Link href="/dashboard/filosofia/concepto-nihilismo">Ver todo</Link></div><dl className={styles.glossaryList}><Term name="Nihilismo" text="Pérdida de fuerza de los valores supremos y problema de crear nuevos valores." /><Term name="Ressentiment" text="Afecto reactivo que invierte los valores y condena moralmente al fuerte." /><Term name="Superhombre" text="Figura de superación y creación afirmativa de nuevos valores." /><Term name="Transvaloración" text="Revisión radical de los valores heredados tras la crisis de la moral tradicional." /></dl></section>
-    <section className={styles.sideCard}><div className={styles.assistantHead}><Image src="/images/rocio-profesora-ia.png" alt="Rocío, profesora IA" width={1536} height={1024} /><div><h3>Profesora IA · Rocío</h3><p>Pregúntame sobre {featured.title} y su filosofía.</p></div><span className={styles.badge}>Beta</span></div><div className={styles.assistantPrompts}><span>Explícame el nihilismo</span><span>Compáralo con Platón</span><span>No entiendo el eterno retorno</span></div><Link className={`${styles.secondaryLink} ${styles.assistantAction}`} href="/dashboard/filosofia/entrenamiento">Practicar con Rocío →</Link></section>
-    <section className={styles.sideCard}><div className={styles.assistantHead}><Image src="/images/fernando-tutor-ia.png" alt="Fernando, tutor IA" width={1536} height={1024} /><div><h3>Tutor IA · Fernando</h3><p>Te ayuda a planificar el estudio y mantener el ritmo.</p></div><span className={styles.badge}>Beta</span></div><div className={styles.assistantPrompts}><span>Plan de estudio</span><span>Repaso de temas</span><span>Siguientes pasos</span></div><Link className={`${styles.secondaryLink} ${styles.assistantAction}`} href="/dashboard/plan-estudio?course=historia-filosofia">Abrir plan de estudio →</Link></section>
+    <section className={styles.sideCard}><div className={styles.assistantHead}><Image src="/images/rocio-profesora-ia.png" alt="Rocío, profesora IA" width={1536} height={1024} /><div><h3>Profesora IA · Rocío</h3><p>Pregúntame sobre {featured.title} y su filosofía.</p></div><span className={styles.badge}>Beta</span></div><div className={styles.assistantPrompts}><span>Explícame el nihilismo</span><span>Compáralo con Platón</span><span>No entiendo el eterno retorno</span></div><button className={`${styles.secondaryLink} ${styles.assistantAction}`} type="button" onClick={onRocio}>Preguntar a Rocío →</button></section>
+    <section className={styles.sideCard}><div className={styles.assistantHead}><Image src="/images/fernando-tutor-ia.png" alt="Fernando, tutor IA" width={1536} height={1024} /><div><h3>Tutor IA · Fernando</h3><p>Te ayuda a planificar el estudio y mantener el ritmo.</p></div><span className={styles.badge}>Beta</span></div><div className={styles.assistantPrompts}><span>Plan de estudio</span><span>Repaso de temas</span><span>Siguientes pasos</span></div><button className={`${styles.secondaryLink} ${styles.assistantAction}`} type="button" onClick={onFernando}>Hablar con Fernando →</button></section>
     <section className={styles.sideCard}><div className={styles.sideHeader}><span>▥ Tu progreso</span><Link href="/dashboard">Ver detalle</Link></div><ul className={styles.progressList}><li className={styles.completeItem}><span>✓</span><span>Vídeo</span><b>Completado</b></li><li className={styles.completeItem}><span>✓</span><span>Explicación</span><b>Completado</b></li><li><span>◔</span><span>Conceptos clave</span><b>8 / 12</b></li><li><span>◔</span><span>Test de conceptos</span><b>78%</b></li><li><span>○</span><span>Desarrollo</span><b>Pendiente</b></li></ul></section>
   </aside>;
 }

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import WrittenAssessment from "@/components/learning/WrittenAssessment";
+import CourseAssistantChat from "@/components/CourseAssistantChat";
 import ChoiceAssessment from "@/components/learning/ChoiceAssessment";
 import {
   MATEMATICAS_APLICADAS_BLOCKS,
@@ -43,6 +44,8 @@ export default function MatematicasAplicadasPage(){
   const [video,setVideo]=useState<VideoState>({embedUrl:"",url:""});
   const [videoLoading,setVideoLoading]=useState(false);
   const [videoOpen,setVideoOpen]=useState(false);
+  const [rocioChatOpen,setRocioChatOpen]=useState(false);
+  const [fernandoChatOpen,setFernandoChatOpen]=useState(false);
   const [resource,setResource]=useState<"rocio"|"short"|"problems"|"profiles"|"simulation"|"glossary"|null>(null);
   const [resourceData,setResourceData]=useState<ResourcePayload|null>(null);
   const [resourceLoading,setResourceLoading]=useState(false);
@@ -184,9 +187,9 @@ export default function MatematicasAplicadasPage(){
           <button onClick={()=>openResource("glossary")} className={styles.glossaryCard}>
             <span className={styles.cardIcon}>Aᶻ</span><strong>3. GLOSARIO</strong><small>Términos y conceptos clave</small><b>Abrir glosario →</b>
           </button>
-          <button onClick={()=>openResource("rocio")} className={styles.rocioCard}>
+          <button onClick={()=>setRocioChatOpen(true)} className={styles.rocioCard}>
             <Image className={styles.miniAvatar} src="/images/rocio-profesora-ia.png" alt="" width={90} height={90}/>
-            <strong>4. ROCÍO</strong><small>Comprueba que has entendido antes de entrenar</small><b>Practicar con Rocío →</b>
+            <strong>4. ROCÍO</strong><small>Pregunta directamente tus dudas sobre la explicación</small><b>Preguntar a Rocío →</b>
           </button>
         </section>:<section className={styles.lockNotice}><strong>Vista previa</strong><p>La primera explicación está abierta. El resto requiere una modalidad con curso completo.</p><Link href="/bachillerato-pau/matematicas-aplicadas-ccss#modalidades">Ver modalidades</Link></section>}
 
@@ -201,6 +204,7 @@ export default function MatematicasAplicadasPage(){
           <div className={styles.checksPanel}>
             <h3>Entrenamiento</h3>
             <div className={styles.trainingCards}>
+              <button onClick={()=>openResource("rocio")}><span>✓</span><strong>Comprobación con Rocío</strong><small>3 preguntas cerradas por explicación</small><b>Comprobar →</b></button>
               <button onClick={()=>openResource("short")}><span>◯</span><strong>Preguntas cortas</strong><small>2 por explicación</small><b>Resolver →</b></button>
               <button onClick={()=>openResource("problems")} disabled={!canPau}><span>▤</span><strong>Preguntas tipo PAU</strong><small>48 con solución y rúbrica</small><b>Practicar →</b></button>
               <button onClick={()=>openResource("profiles")} disabled={!canPau}><span>▥</span><strong>Simulacros</strong><small>17 territoriales</small><b>Empezar →</b></button>
@@ -218,6 +222,9 @@ export default function MatematicasAplicadasPage(){
         </section>:null}
       </main>
 
+
+      <CourseAssistantChat entryPoint="rocio" courseSlug="matematicas-aplicadas-ccss" contextTitle={selected.id+" · "+selected.title} open={rocioChatOpen} onClose={()=>setRocioChatOpen(false)}/>
+      <CourseAssistantChat entryPoint="fernando" courseSlug="matematicas-aplicadas-ccss" contextTitle={selected.id+" · "+selected.title} open={fernandoChatOpen} onClose={()=>setFernandoChatOpen(false)}/>
 
       {videoOpen?<div className={styles.videoModalBackdrop} role="presentation" onMouseDown={closeVideo}>
         <section className={styles.videoModal} role="dialog" aria-modal="true" aria-label="Vídeo de apoyo" onMouseDown={e=>e.stopPropagation()}>
@@ -264,13 +271,13 @@ export default function MatematicasAplicadasPage(){
           <Image src="/images/rocio-profesora-ia.png" alt="Rocío, profesora IA" width={1536} height={1024}/>
           <h3>Rocío</h3><strong>Profesora IA</strong>
           <p>Te explica los conceptos y procedimientos de forma clara y te ayuda a localizar el primer paso que falla.</p>
-          <button type="button" onClick={()=>openResource("rocio")}>Preguntar a Rocío</button>
+          <button type="button" onClick={()=>setRocioChatOpen(true)}>Preguntar a Rocío</button>
         </section>
         <section className={styles.assistant}>
           <Image src="/images/fernando-tutor-ia.png" alt="Fernando, tutor IA" width={1536} height={1024}/>
           <h3>Fernando</h3><strong>Tutor IA</strong>
           <p>Te ayuda a planificar, mantener el ritmo y organizar repasos hasta la PAU.</p>
-          <Link href="/dashboard/plan-estudio?course=matematicas-aplicadas-ccss">Hablar con Fernando</Link>
+          <button type="button" onClick={()=>setFernandoChatOpen(true)}>Hablar con Fernando</button>
         </section>
         <section className={styles.objective}><span>◎</span><div><strong>Tu objetivo</strong><p>Comprender los procedimientos, entrenarlos y mejorar tus resultados.</p></div></section>
         <p className={styles.accessNote}>{checking?"Comprobando acceso…":access.administrator?"Acceso administrador":access.plans.length?`Modalidad: ${access.plans.join(" · ")}`:"Vista previa de T01"}</p>

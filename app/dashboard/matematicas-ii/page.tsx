@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import WrittenAssessment from "@/components/learning/WrittenAssessment";
+import CourseAssistantChat from "@/components/CourseAssistantChat";
 import ChoiceAssessment from "@/components/learning/ChoiceAssessment";
 import { MATEMATICAS_II_BLOCKS, MATEMATICAS_II_STATS, MATEMATICAS_II_UNITS } from "@/lib/matematicas-ii/content";
 import styles from "./matematicas-ii.module.css";
@@ -62,6 +63,8 @@ export default function MatematicasIIPage() {
   const [video, setVideo] = useState<VideoState>({ embedUrl: "", url: "" });
   const [videoLoading, setVideoLoading] = useState(false);
   const [resourceKind, setResourceKind] = useState<ResourceKind | null>(null);
+  const [rocioChatOpen,setRocioChatOpen]=useState(false);
+  const [fernandoChatOpen,setFernandoChatOpen]=useState(false);
   const [resourceData, setResourceData] = useState<EvaluationPayload | null>(null);
   const [resourceLoading, setResourceLoading] = useState(false);
   const [resourceError, setResourceError] = useState("");
@@ -260,11 +263,13 @@ export default function MatematicasIIPage() {
         </main>
 
         <aside className={styles.rightbar}>
-          <AssistantCard image="/images/rocio-profesora-ia.png" name="Rocío" role="Profesora IA" text="Te ayuda a entender conceptos, procedimientos y errores de Matemáticas II." action="Practicar con Rocío" onAction={() => openResource("rocio")} />
-          <AssistantCard image="/images/fernando-tutor-ia.png" name="Fernando" role="Tutor IA" text="Organiza tus sesiones, repasos y progresión hasta la PAU." action="Plan de estudio" onAction={() => { window.location.href = "/dashboard/plan-estudio?course=matematicas-ii"; }} />
+          <AssistantCard image="/images/rocio-profesora-ia.png" name="Rocío" role="Profesora IA" text="Te ayuda a entender conceptos, procedimientos y errores de Matemáticas II." action="Preguntar a Rocío" onAction={() => setRocioChatOpen(true)} />
+          <AssistantCard image="/images/fernando-tutor-ia.png" name="Fernando" role="Tutor IA" text="Organiza tus sesiones, repasos y progresión hasta la PAU." action="Hablar con Fernando" onAction={() => setFernandoChatOpen(true)} />
           <section className={styles.sideInfo}><strong>Tu objetivo</strong><p>Dominar los procedimientos y ser capaz de elegirlos correctamente cuando cambia el ejercicio.</p></section>
           {checkingAccess ? <p className={styles.accessNote}>Comprobando acceso…</p> : <p className={styles.accessNote}>{access.administrator ? "Acceso administrador" : access.plans.length ? `Modalidad: ${access.plans.join(" · ")}` : "Vista previa de la primera unidad"}</p>}
         </aside>
+      <CourseAssistantChat entryPoint="rocio" courseSlug="matematicas-ii" contextTitle={selected.id+" · "+selected.title} open={rocioChatOpen} onClose={()=>setRocioChatOpen(false)}/>
+      <CourseAssistantChat entryPoint="fernando" courseSlug="matematicas-ii" contextTitle={selected.id+" · "+selected.title} open={fernandoChatOpen} onClose={()=>setFernandoChatOpen(false)}/>
       </div>
     </div>
   );
