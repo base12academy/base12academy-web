@@ -15,7 +15,7 @@ async function access(req:NextRequest){
   if(error||!data.user)return {authenticated:false,administrator:false,hasCourse:false,hasPau:false};
   if(isCourseAdministrator(data.user.email))return {authenticated:true,administrator:true,hasCourse:true,hasPau:true};
   const now=new Date().toISOString();
-  const {data:enrollments,error:enrollmentError}=await supabase.from("course_enrollments").select("plan_slug,expires_at").eq("user_id",data.user.id).eq("course_slug","matematicas-aplicadas-ccss").eq("status","active").lte("starts_at",now);
+  const {data:enrollments,error:enrollmentError}=await supabase.from("course_enrollments").select("plan_slug,expires_at").eq("user_id",data.user.id).eq("course_slug","matematicas-aplicadas-ccss").in("status",["active","pending"]).lte("starts_at",now);
   if(enrollmentError)return {authenticated:true,administrator:false,hasCourse:false,hasPau:false,error:true};
   const plans=(enrollments||[]).filter(i=>!i.expires_at||i.expires_at>=now).map(i=>i.plan_slug);
   return {authenticated:true,administrator:false,...getMatematicasAplicadasEntitlement(plans)};

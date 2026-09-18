@@ -23,7 +23,7 @@ export async function GET(req: NextRequest) {
     .select("plan_slug,expires_at")
     .eq("user_id", data.user.id)
     .eq("course_slug", "matematicas-aplicadas-ccss")
-    .eq("status", "active")
+    .in("status", ["active", "pending"])
     .lte("starts_at", now);
 
   if (enrollmentError) return NextResponse.json({ error:"access_check_failed" }, { status:500 });
