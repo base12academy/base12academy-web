@@ -8,10 +8,29 @@ import officeProgram from "../lib/ofimatica-content.json";
 import ClassBookingCalendar from "./ClassBookingCalendar";
 import RecommendedBadge from "./RecommendedBadge";
 import { isPeriodicTableIncludedPlan } from "@/lib/chemistry/periodic-table-product";
+import { supabase } from "@/lib/supabaseClient";
 
 type Family = "Tropa y Marinería" | "Clases Online" | "Oposiciones" | "Cursos Online" | "Bachillerato y PAU";
 type Course = { family: Family; name: string; region?: string };
 type Plan = { name: string; price: string; detail: string; includes: string[] };
+type EnrollmentAccess = {
+  course_slug: string;
+  plan_slug: string;
+  status: string;
+  starts_at: string;
+  expires_at: string | null;
+};
+
+const COURSE_ACCESS: Record<string,{slug:string;href:string}> = {
+  "Historia de España": { slug:"historia-espana", href:"/dashboard/historia-espana" },
+  "Historia de la Filosofía": { slug:"historia-filosofia", href:"/dashboard/filosofia" },
+  "Matemáticas II": { slug:"matematicas-ii", href:"/dashboard/matematicas-ii" },
+  "Matemáticas Aplicadas a las CCSS": { slug:"matematicas-aplicadas-ccss", href:"/dashboard/matematicas-aplicadas-ccss" },
+  "Competencias y Productividad Digital, Ofimática e IA": { slug:"ofimatica", href:"/dashboard/ofimatica" },
+  "Administrativo de la Junta de Andalucía": { slug:"administrativo-ja", href:"/dashboard/administrativo-ja" },
+  "Auxiliar Administrativo de la Junta de Andalucía": { slug:"auxiliar-administrativo-ja", href:"/dashboard/auxiliar-administrativo-ja" },
+  "Tropa y Marinería": { slug:"tropa-y-marineria", href:"/dashboard/tropa-y-marineria" },
+};
 
 const officePresentationMedia: Record<string, { videoUrl: string; videoPoster: string }> = {
   "Competencias digitales": {
@@ -399,11 +418,41 @@ export default function CourseCatalog() {
   const [checkoutLoading, setCheckoutLoading] = useState(false);
   const [checkoutError, setCheckoutError] = useState("");
   const [classHoldReady, setClassHoldReady] = useState(false);
+  const [enrollments, setEnrollments] = useState<EnrollmentAccess[]>([]);
 
   const filtered = useMemo(
     () => allCourses.filter((item) => item.family === family && item.name.toLowerCase().includes(search.toLowerCase())),
     [family, search],
   );
+
+  useEffect(() => {
+    let alive = true;
+    void (async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        if (alive) setEnrollments([]);
+        return;
+      }
+      const { data } = await supabase
+        .from("course_enrollments")
+        .select("course_slug,plan_slug,status,starts_at,expires_at")
+        .eq("user_id", user.id)
+        .in("status", ["active", "pending"]);
+      if (alive) setEnrollments((data || []) as EnrollmentAccess[]);
+    })();
+    return () => { alive = false; };
+  }, []);
+
+  const selectedAccess = course ? COURSE_ACCESS[course.name] : undefined;
+  const selectedEnrollment = selectedAccess
+    ? enrollments.find((enrollment) => {
+        if (enrollment.course_slug !== selectedAccess.slug) return false;
+        const now = Date.now();
+        const starts = Date.parse(enrollment.starts_at);
+        const expires = enrollment.expires_at ? Date.parse(enrollment.expires_at) : null;
+        return starts <= now && (expires === null || expires >= now);
+      }) ?? null
+    : null;
 
   const purchasableBachillerato =
     course?.family === "Bachillerato y PAU" &&
@@ -1088,52 +1137,59 @@ export default function CourseCatalog() {
             )}
 
             {course.name !== "Solicitud de clases · Otras asignaturas" && (
-            <div className="original-checkout" id="course-checkout">
-              <span>
-                {plan.price === "Consultar"
-                  ? <b>Precio tras confirmar disponibilidad</b>
-                  : <>Total <b>{plan.price}</b></>}
-              </span>
-              {(course.name === "Competencias y Productividad Digital, Ofimática e IA" || course.name === "Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo de la Junta de Andalucía" || purchasableBachillerato || (course.family === "Clases Online" && course.name !== "Solicitud de clases · Otras asignaturas")) ? (
-                <button
-                  type="button"
-                  onClick={checkout}
-                  disabled={
-                    checkoutLoading ||
-                    !terms ||
-                    !privacy ||
-                    (immediateAccess && !withdrawalAcknowledged) ||
-                    (
-                      course.family === "Clases Online" &&
-                      course.name !== "Solicitud de clases · Otras asignaturas" &&
-                      !classHoldReady
-                    )
-                  }
-                >
-                  {checkoutLoading
-                    ? "Conectando con el banco…"
-                    : course.family === "Clases Online"
-                      ? classHoldReady
-                        ? "Continuar con el pago del bono"
-                        : "Selecciona primero una hora"
-                      : course.name === "Historia de España" || course.name === "Historia de la Filosofía"
-                        ? "Suscribirme"
-                        : course.name === "Matemáticas II" || course.name === "Matemáticas Aplicadas a las CCSS"
-                          ? "Continuar con el pago"
-                          : "Continuar con la suscripción"}
-                </button>
-              ) : (
-                <button disabled>
-                  {course.family === "Tropa y Marinería"
-                    ? "Contratación disponible próximamente"
-                    : course.family === "Clases Online"
-                      ? course.name === "Solicitud de clases · Otras asignaturas"
-                        ? "Solicitud de disponibilidad próximamente"
-                        : "Contratación del bono disponible próximamente"
-                      : "Matriculación disponible próximamente"}
-                </button>
-              )}
-            </div>
+            selectedEnrollment && selectedAccess ? (
+              <div className="original-checkout" id="course-checkout">
+                <span><b>Ya tienes acceso</b> · {selectedEnrollment.plan_slug === "estandar" ? "Estándar" : selectedEnrollment.plan_slug === "esencial" ? "Esencial" : selectedEnrollment.plan_slug.toUpperCase()}</span>
+                <Link href={selectedAccess.href}>Entrar al aula</Link>
+              </div>
+            ) : (
+              <div className="original-checkout" id="course-checkout">
+                <span>
+                  {plan.price === "Consultar"
+                    ? <b>Precio tras confirmar disponibilidad</b>
+                    : <>Total <b>{plan.price}</b></>}
+                </span>
+                {(course.name === "Competencias y Productividad Digital, Ofimática e IA" || course.name === "Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo de la Junta de Andalucía" || purchasableBachillerato || (course.family === "Clases Online" && course.name !== "Solicitud de clases · Otras asignaturas")) ? (
+                  <button
+                    type="button"
+                    onClick={checkout}
+                    disabled={
+                      checkoutLoading ||
+                      !terms ||
+                      !privacy ||
+                      (immediateAccess && !withdrawalAcknowledged) ||
+                      (
+                        course.family === "Clases Online" &&
+                        course.name !== "Solicitud de clases · Otras asignaturas" &&
+                        !classHoldReady
+                      )
+                    }
+                  >
+                    {checkoutLoading
+                      ? "Conectando con el banco…"
+                      : course.family === "Clases Online"
+                        ? classHoldReady
+                          ? "Continuar con el pago del bono"
+                          : "Selecciona primero una hora"
+                        : course.name === "Historia de España" || course.name === "Historia de la Filosofía"
+                          ? "Suscribirme"
+                          : course.name === "Matemáticas II" || course.name === "Matemáticas Aplicadas a las CCSS"
+                            ? "Continuar con el pago"
+                            : "Continuar con la suscripción"}
+                  </button>
+                ) : (
+                  <button disabled>
+                    {course.family === "Tropa y Marinería"
+                      ? "Contratación disponible próximamente"
+                      : course.family === "Clases Online"
+                        ? course.name === "Solicitud de clases · Otras asignaturas"
+                          ? "Solicitud de disponibilidad próximamente"
+                          : "Contratación del bono disponible próximamente"
+                        : "Matriculación disponible próximamente"}
+                  </button>
+                )}
+              </div>
+            )
             )}
             {checkoutError && (
               <p className="original-checkout-error" role="alert">
