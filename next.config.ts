@@ -7,13 +7,6 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: process.cwd(),
   },
-  images: {
-    localPatterns: [
-      {
-        pathname: "/images/training/**",
-      },
-    ],
-  },
   async rewrites() {
     return {
       beforeFiles: [
