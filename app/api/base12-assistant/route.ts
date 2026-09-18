@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getSupabase } from "@/lib/supabase/server";
 import { courses } from "@/lib/courses";
 import { isCourseAdministrator } from "@/lib/course-access";
+import { commercialAnswer } from "@/lib/commercial-assistant";
 
 type EntryPoint="commercial"|"rocio"|"fernando";
 type Role="commercial"|"rocio"|"fernando"|"secretaria"|"jefatura"|"direccion";
@@ -83,6 +84,7 @@ export async function POST(req:NextRequest){
  const raw=String(body.entryPoint||"commercial");
  const entryPoint:EntryPoint=raw==="rocio"?"rocio":raw==="fernando"?"fernando":"commercial";
  const message=String(body.message||body.mensaje||"").trim().slice(0,2500);
+ const community=String(body.community||body.comunidad||"").trim().slice(0,100);
  const courseSlug=String(body.courseSlug||"").trim().slice(0,100);
  const contextTitle=String(body.contextTitle||"").trim().slice(0,500);
  const history=Array.isArray(body.history)?body.history.slice(-8).map((item:Record<string,unknown>)=>({from:String(item.from||""),text:String(item.text||"").slice(0,2500),role:String(item.role||"")})):[];
@@ -100,7 +102,7 @@ export async function POST(req:NextRequest){
  }
 
  try{
-   const answer=role==="secretaria"?await secretaryAnswer(req):await aiAnswer(role,message,entryPoint,courseSlug,contextTitle,history,req);
+   const answer=role==="secretaria"?await secretaryAnswer(req):role==="commercial"?commercialAnswer(message,community):await aiAnswer(role,message,entryPoint,courseSlug,contextTitle,history,req);
    return NextResponse.json({answer,role,entryPoint});
  }catch(error){
    console.error("Base12 assistant error",error);

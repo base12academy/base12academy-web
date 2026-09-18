@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
+import { supabase } from "@/lib/supabaseClient";
 
 const initialMessage =
   "Asistente Base12: Hola 👋\n\nEstoy aquí para ayudarte a elegir bien.\n\nPuedo orientarte sobre:\n• Competencias, Productividad, Ofimática e IA\n• Bachillerato y PAU\n• Oposiciones\n• Modalidades, precios y duración\n• Acceso gratuito y contratación\n\nElige una pregunta o escríbeme lo que necesites.";
@@ -87,14 +88,26 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
     setMensaje("");
 
     try {
-      const res = await fetch("/api/lead-chat", {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const token = sessionData.session?.access_token;
+      const history = chat
+        .filter((item) => !item.endsWith("pensando..."))
+        .slice(-8)
+        .map((item) => ({
+          from: item.startsWith("Interesado:") ? "user" : "assistant",
+          text: item.replace("Interesado: ", "").replace(/^Asistente Base12: /, "").replace(/^(Secretaría|Jefatura de Estudios|Dirección Académica|Rocío|Fernando|Comercial):\s*/, ""),
+        }));
+      const res = await fetch("/api/base12-assistant", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          ...(token ? { Authorization: "Bearer " + token } : {}),
         },
         body: JSON.stringify({
-          mensaje: textoUsuario,
+          entryPoint: "commercial",
+          message: textoUsuario,
           comunidad,
+          history,
         }),
       });
 
@@ -104,7 +117,14 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
         const copia = [...prev];
         copia[copia.length - 1] =
           "Asistente Base12: " +
-          (data.respuesta || "Ahora mismo no puedo responder.");
+          ((data.role && data.role !== "commercial" ? ({
+            secretaria: "Secretaría",
+            jefatura: "Jefatura de Estudios",
+            direccion: "Dirección Académica",
+            rocio: "Rocío",
+            fernando: "Fernando",
+          } as Record<string,string>)[data.role] + ": " : "") +
+          (data.answer || "Ahora mismo no puedo responder."));
         return copia;
       });
     } catch {
@@ -206,7 +226,7 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
 
       <button
         onClick={() => setAbierto(!abierto)}
-        aria-label={abierto ? "Cerrar asistente Base12" : "Abrir asistente Base12"}
+        aria-label={abierto ? "Cerrar Comercial" : "Abrir Comercial"}
         className={showAttention ? "b12-commercial-attention" : undefined}
         style={{
           position: "fixed",
@@ -256,7 +276,7 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
               fontSize: "18px",
             }}
           >
-            Asistente Base12
+            Comercial
           </div>
 
           <div
@@ -422,7 +442,7 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
                   enviarMensaje();
                 }
               }}
-              placeholder="Pregúntame por accesos, precios o qué te conviene..."
+              placeholder="Pregunta por cursos, pagos, planificación o cualquier cuestión de Base12..."
               style={{
                 flex: 1,
                 border: "1px solid #d1d5db",
