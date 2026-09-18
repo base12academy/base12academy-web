@@ -173,8 +173,8 @@ export default function MatematicasAplicadasPage(){
           <button onClick={()=>openResource("glossary")} className={styles.glossaryCard}>
             <span className={styles.cardIcon}>Aᶻ</span><strong>3. GLOSARIO</strong><small>Términos y conceptos clave</small><b>Abrir glosario →</b>
           </button>
-          <button onClick={()=>openResource("short")} className={styles.checkCard}>
-            <span className={styles.cardIcon}>✓</span><strong>4. COMPROBACIONES</strong><small>Comprueba el procedimiento</small><b>Acceder →</b>
+          <button onClick={()=>openResource("rocio")} className={styles.rocioCard}>
+            <span className={styles.cardIcon}>R</span><strong>4. ROCÍO</strong><small>Comprueba que has entendido antes de entrenar</small><b>Practicar con Rocío →</b>
           </button>
         </section>:<section className={styles.lockNotice}><strong>Vista previa</strong><p>La primera explicación está abierta. El resto requiere una modalidad con curso completo.</p><Link href="/bachillerato-pau/matematicas-aplicadas-ccss#modalidades">Ver modalidades</Link></section>}
 
@@ -182,6 +182,12 @@ export default function MatematicasAplicadasPage(){
           <div className={styles.videoHeading}><div><strong>{selected.id} · {selected.title}</strong><span>Vídeo de apoyo paso a paso</span></div>{video.url?<a href={video.url} target="_blank" rel="noreferrer">Abrir en YouTube ↗</a>:null}</div>
           <div className={styles.videoFrame}>{videoLoading?<p>Cargando vídeo…</p>:video.embedUrl?<iframe src={video.embedUrl} title={`${selected.id} · ${selected.title}`} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen/>:<p>No se ha podido cargar el vídeo.</p>}</div>
         </section>:null}
+
+        <div className={styles.hierarchyNote}>
+          <strong>Orden recomendado de trabajo</strong>
+          <span>Explicación → Vídeo de apoyo → Glosario → Rocío</span>
+          <small>Después, pasa al entrenamiento y a la preparación PAU.</small>
+        </div>
 
         <section className={styles.trainingArea} id="comprobaciones">
           <div className={styles.explanationsPanel}>
@@ -198,7 +204,7 @@ export default function MatematicasAplicadasPage(){
               <button onClick={()=>openResource("short")}><span>▤</span><strong>Preguntas cortas</strong><small>2 por explicación</small></button>
               <button onClick={()=>openResource("problems")} disabled={!canPau}><span>✎</span><strong>Preguntas tipo PAU</strong><small>48 con solución y rúbrica</small></button>
               <button onClick={()=>openResource("profiles")} disabled={!canPau}><span>▥</span><strong>Simulacros</strong><small>17 territoriales</small></button>
-              <button onClick={()=>openResource("rocio")}><span>R</span><strong>Practicar con Rocío</strong><small>Comprobación guiada</small></button>
+              <button onClick={()=>openResource("short")}><span>✓</span><strong>Comprobación adicional</strong><small>Preguntas cortas de procedimiento</small></button>
             </div>
           </div>
 
