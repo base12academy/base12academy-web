@@ -35,12 +35,12 @@ export async function POST(req:NextRequest){
   const body=await req.json().catch(()=>({}));
   const theme=String(body.tema||"tema-1");
   const answers=body.answers&&typeof body.answers==="object"?body.answers as Record<string,number>:{};
-  const questionIds=Array.isArray(body.questionIds)?body.questionIds.map(String):[];
+  const questionIds:string[]=Array.isArray(body.questionIds)?body.questionIds.map((value:unknown)=>String(value)):[];
   const ctx=await context(req);
   if(!ctx)return NextResponse.json({error:"authentication_required"},{status:401});
   if(!ctx.enrollment)return NextResponse.json({error:"matriculation_required"},{status:403});
   const bank=(historiaTests[theme as keyof typeof historiaTests]||[]) as Question[];
-  const selected=questionIds.map(id=>bank.find(q=>q.id===id)).filter(Boolean) as Question[];
+  const selected=questionIds.map((id:string)=>bank.find((q:Question)=>q.id===id)).filter((item:Question|undefined):item is Question=>Boolean(item));
   if(!selected.length)return NextResponse.json({error:"invalid_submission"},{status:400});
   const corrections=selected.map(q=>({id:q.id,correctAnswer:q.correctAnswer,selected:answers[q.id],correct:answers[q.id]===q.correctAnswer}));
   const correct=corrections.filter(x=>x.correct).length;
@@ -59,7 +59,7 @@ export async function POST(req:NextRequest){
   let unlocked=false;
   if(number>0){
     const {data:intentos}=await ctx.supabase.from("intentos_test").select("score").eq("usuario_id",ctx.user.id).eq("tema_id",number);
-    const approved=(intentos||[]).filter(item=>Number(item.score)>=80).length;
+    const approved=((intentos||[]) as {score:number|null}[]).filter((item:{score:number|null})=>Number(item.score)>=80).length;
     if(approved>=5){
       const nextTheme="tema-"+String(number+1);
       const {data:profile}=await ctx.supabase.from("perfiles").select("temas_activos").eq("user_id",ctx.user.id).maybeSingle();

@@ -15,7 +15,7 @@ export async function GET(req:NextRequest){
   const prev=index>0?temasHistoria[index-1].slug:null;
   const ids=[slug,...(prev?[prev]:[])];
   const {data:events}=await supabase.from("course_learning_events").select("content_id,progress_percent").eq("user_id",data.user.id).eq("course_slug","historia-espana").eq("event_type","assessment_submitted").in("content_id",ids);
-  const best=(id:string)=>Math.max(0,...(events||[]).filter(e=>e.content_id===id).map(e=>Number(e.progress_percent)||0));
+  const eventRows=(events||[]) as {content_id:string;progress_percent:number|null}[]; const best=(id:string)=>Math.max(0,...eventRows.filter((e:{content_id:string;progress_percent:number|null})=>e.content_id===id).map((e:{content_id:string;progress_percent:number|null})=>Number(e.progress_percent)||0));
 
   async function legacyBest(id:string|null){
     if(!id)return 100;
@@ -24,7 +24,7 @@ export async function GET(req:NextRequest){
       supabase.from("intentos_test").select("score").eq("usuario_id",data.user!.id).eq("tema_id",n),
       supabase.from("intentos-cortas").select("score").eq("usuario_id",data.user!.id).eq("tema_id",n),
     ]);
-    return Math.max(0,...(tests.data||[]).map(x=>Number(x.score)||0),...(shorts.data||[]).map(x=>Number(x.score)||0));
+    return Math.max(0,...((tests.data||[]) as {score:number|null}[]).map((x:{score:number|null})=>Number(x.score)||0),...((shorts.data||[]) as {score:number|null}[]).map((x:{score:number|null})=>Number(x.score)||0));
   }
   const currentBest=Math.max(best(slug),await legacyBest(slug));
   const previousBest=prev?Math.max(best(prev),await legacyBest(prev)):100;

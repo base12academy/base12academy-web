@@ -33,21 +33,21 @@ export async function GET(req:NextRequest){
 
 export async function POST(req:NextRequest){
   const body=await req.json().catch(()=>({}));
-  const theme=String(body.tema||"tema-1");const answers=body.answers&&typeof body.answers==="object"?body.answers as Record<string,string>:{};const ids=Array.isArray(body.questionIds)?body.questionIds.map(String):[];
+  const theme=String(body.tema||"tema-1");const answers=body.answers&&typeof body.answers==="object"?body.answers as Record<string,string>:{};const ids:string[]=Array.isArray(body.questionIds)?body.questionIds.map((value:unknown)=>String(value)):[];
   const c=await ctx(req);if(!c)return NextResponse.json({error:"authentication_required"},{status:401});if(!c.enrollment)return NextResponse.json({error:"matriculation_required"},{status:403});
-  const source=bank(theme);const selected=ids.map(id=>source.find(q=>q.id===id)).filter(Boolean) as ShortQuestion[];
+  const source=bank(theme);const selected=ids.map((id:string)=>source.find((q:ShortQuestion)=>q.id===id)).filter((item:ShortQuestion|undefined):item is ShortQuestion=>Boolean(item));
   if(!selected.length)return NextResponse.json({error:"invalid_submission"},{status:400});
   const results=selected.map(q=>{
-    const normalized=normalizeText(String(answers[q.id]||""));const keywords=Array.isArray(q.keywords)?q.keywords:[];const matched=keywords.filter(k=>normalized.includes(normalizeText(k)));const min=Math.max(1,Math.ceil(keywords.length*.6));const correct=keywords.length>0&&matched.length>=min;
+    const normalized=normalizeText(String(answers[q.id]||""));const keywords=Array.isArray(q.keywords)?q.keywords:[];const matched=keywords.filter((k:string)=>normalized.includes(normalizeText(k)));const min=Math.max(1,Math.ceil(keywords.length*.6));const correct=keywords.length>0&&matched.length>=min;
     return {id:q.id,correct,matchedKeywords:matched,totalKeywords:keywords.length,keywords,answerGuide:q.answerGuide};
   });
-  const correct=results.filter(r=>r.correct).length;const score=Math.round(correct/selected.length*100);const now=new Date().toISOString();const n=themeNumber(theme);
+  const correct=results.filter((r:{correct:boolean})=>r.correct).length;const score=Math.round(correct/selected.length*100);const now=new Date().toISOString();const n=themeNumber(theme);
   if(n>0)await c.supabase.from("intentos-cortas").insert({usuario_id:c.user.id,tema_id:n,score,fecha:now});
   await c.supabase.from("course_learning_events").insert({user_id:c.user.id,enrollment_id:c.enrollment.id,course_slug:"historia-espana",content_id:theme,event_type:"assessment_submitted",progress_percent:score,metadata:{activityType:"legacy_short_questions",correct,total:selected.length},occurred_at:now});
   let unlocked=false;
   if(n>0){
     const {data:attempts}=await c.supabase.from("intentos-cortas").select("score").eq("usuario_id",c.user.id).eq("tema_id",n);
-    const approved=(attempts||[]).filter(i=>Number(i.score)>=80).length;
+    const approved=((attempts||[]) as {score:number|null}[]).filter((i:{score:number|null})=>Number(i.score)>=80).length;
     if(approved>=4&&nextTheme[theme]){
       const {data:profile}=await c.supabase.from("perfiles").select("temas_activos").eq("user_id",c.user.id).maybeSingle();const active=Array.isArray(profile?.temas_activos)?profile.temas_activos:[];
       if(!active.includes(nextTheme[theme]))await c.supabase.from("perfiles").update({temas_activos:[...active,nextTheme[theme]]}).eq("user_id",c.user.id);
