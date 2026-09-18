@@ -95,6 +95,12 @@ function bankRows(type: string) {
   return sources[type] || [];
 }
 
+function sanitizeBankItem(item:JsonRecord){
+  const clean={...item};
+  for(const key of ["Correcta","Respuesta correcta","Elementos esperados","Feedback","Retroalimentación"]) delete clean[key];
+  return clean;
+}
+
 function bankGroup(item: JsonRecord, type: string) {
   if (type === "rocio-authors") return String(item["Autor / bloque"] || "");
   if (type === "rocio-pau") return String(item.Recurso || "");
@@ -130,7 +136,7 @@ export async function GET(req: NextRequest) {
     const limit = Math.min(20, Math.max(1, Number(req.nextUrl.searchParams.get("limit") || 10)));
     const filtered = group ? rows.filter((item) => bankGroup(item, bankType) === group) : rows;
     const page = filtered.slice(offset, offset + limit);
-    return NextResponse.json({ allowed: true, access: access.reason, plan: access.plan, type: bankType, group, total: filtered.length, offset, items: page });
+    return NextResponse.json({ allowed: true, access: access.reason, plan: access.plan, type: bankType, group, total: filtered.length, offset, items: page.map(sanitizeBankItem) });
   }
 
   return NextResponse.json({ error: "Petición incompleta" }, { status: 400 });

@@ -111,7 +111,7 @@ function QuestionSet({ type, items }: { type: BankType; items: Record<string, un
     return <article key={itemId}>
       <div className={styles.questionMeta}><span>{String(item.Dificultad || item.Destreza || item.Tipo || "Práctica")}</span><b>{itemId}</b></div>
       <h2>{prompt}</h2>
-      {options.length && correctLetter ? <ChoiceAssessment courseSlug="historia-espana" contentId={itemId} activityType={type==="rocio"?"rocio_closed":"test"} prompt={prompt} options={options} correctAnswer={correctLetter} feedback={guidance} recovery={guidance} group={type}/>
+      {options.length && (type==="test"||type==="rocio") ? <ChoiceAssessment courseSlug="historia-espana" contentId={itemId} activityType={type==="rocio"?"rocio_closed":"test"} prompt={prompt} options={options} group={type}/>
       : <WrittenAssessment courseSlug="historia-espana" contentId={itemId} activityType={type} prompt={prompt} expectedAnswer={answer} rubric={guidance} group={type} rows={type==="development"||type==="source"||type==="territorial"?10:6}/>}
       <QuestionDetails item={item} />
     </article>;

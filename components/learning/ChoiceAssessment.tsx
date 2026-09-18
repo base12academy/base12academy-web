@@ -3,7 +3,7 @@ import { useState } from "react";
 import { submitAssessment } from "@/lib/learning-progress-client";
 
 type Option={value:string;label:string};
-type Props={courseSlug:string;contentId:string;activityType:string;prompt:string;options:Option[];correctAnswer:string;feedback?:string;recovery?:string;unit?:string;group?:string};
+type Props={courseSlug:string;contentId:string;activityType:string;prompt:string;options:Option[];correctAnswer?:string;feedback?:string;recovery?:string;unit?:string;group?:string};
 export default function ChoiceAssessment({courseSlug,contentId,activityType,prompt,options,correctAnswer,feedback="",recovery="",unit="",group=""}:Props){
  const [selected,setSelected]=useState(""); const [sending,setSending]=useState(false); const [result,setResult]=useState<{score:number|null;feedback:string}|null>(null); const [error,setError]=useState("");
  async function submit(){if(!selected||sending)return;setSending(true);setError("");try{const data=await submitAssessment({courseSlug,contentId,activityType,prompt,answer:selected,unit,group});setResult({score:data.score,feedback:data.feedback});}catch{setError("No se ha podido guardar el intento.");}finally{setSending(false);}}

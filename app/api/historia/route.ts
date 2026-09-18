@@ -75,6 +75,12 @@ function bankRows(type: string) {
   return sourcesByType[type] || [];
 }
 
+function sanitizeBankItem(item:JsonRecord){
+  const clean={...item};
+  for(const key of ["Correcta","Letra correcta","Respuesta modelo","Respuesta modelo / correcta","Respuesta orientativa","Esquema de respuesta","Corrección correcta","Orden correcto","Feedback pedagógico","Feedback / rúbrica","Criterio de corrección","Explicación pedagógica","Explicación causal","Rúbrica Base12","Criterio","Criterio 1"]) delete clean[key];
+  return clean;
+}
+
 function bankGroup(item: JsonRecord, type: string) {
   if (type === "chronology") return String(item["Cronología"] || "");
   if (type === "territorial") return String(item.Comunidad || "");
@@ -101,7 +107,7 @@ export async function GET(req: NextRequest) {
     const offset = Math.max(0, Number(req.nextUrl.searchParams.get("offset") || 0));
     const limit = Math.min(20, Math.max(1, Number(req.nextUrl.searchParams.get("limit") || 10)));
     const filtered = group ? rows.filter((item) => bankGroup(item, bankType) === group) : rows;
-    return NextResponse.json({ allowed: true, access: access.reason, plan: access.plan, type: bankType, group, total: filtered.length, offset, items: filtered.slice(offset, offset + limit) });
+    return NextResponse.json({ allowed: true, access: access.reason, plan: access.plan, type: bankType, group, total: filtered.length, offset, items: filtered.slice(offset, offset + limit).map(sanitizeBankItem) });
   }
   return NextResponse.json({ error: "Petición incompleta" }, { status: 400 });
 }

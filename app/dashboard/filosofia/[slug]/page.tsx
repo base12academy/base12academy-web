@@ -141,7 +141,7 @@ function QuestionSet({ type, items }: { type: BankType; items: Record<string, un
     return <article key={itemId}>
       <div className={styles.questionMeta}><span>{String(item.Dificultad || item["Tipo diagnóstico"] || item["Tipo de tarea"] || "Práctica")}</span><b>{itemId}</b></div>
       <h2>{prompt}</h2>
-      {options.length && correctLetter ? <ChoiceAssessment courseSlug="historia-filosofia" contentId={itemId} activityType={type.startsWith("rocio")?"rocio_closed":"test"} prompt={prompt} options={options} correctAnswer={correctLetter} feedback={guidance} recovery={guidance} group={type}/>
+      {options.length && (type==="test"||type==="rocio-authors") ? <ChoiceAssessment courseSlug="historia-filosofia" contentId={itemId} activityType={type.startsWith("rocio")?"rocio_closed":"test"} prompt={prompt} options={options} group={type}/>
       : <WrittenAssessment courseSlug="historia-filosofia" contentId={itemId} activityType={type} prompt={prompt} expectedAnswer={answer} rubric={guidance} group={type} rows={type==="long"||type==="rocio-pau"?10:6}/>}
     </article>;
   })}</div>;
