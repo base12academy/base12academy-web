@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { getSupabase } from "@/lib/supabase/server";
 import { parseSessionDuration, parseStudyDays } from "@/lib/fernando-telegram";
 
-const ALLOWED = new Set(["matematicas-aplicadas-ccss","matematicas-ii","historia-espana","historia-filosofia"]);
 async function ctx(req:NextRequest,course:string){
  const token=req.headers.get("authorization")?.replace(/^Bearer\s+/i,""); if(!token)return null;
  const supabase=getSupabase(); const {data}=await supabase.auth.getUser(token); if(!data.user)return null;
@@ -11,13 +10,13 @@ async function ctx(req:NextRequest,course:string){
  return {supabase,user:data.user,enrollment:enrollment||null};
 }
 export async function GET(req:NextRequest){
- const course=String(req.nextUrl.searchParams.get("course")||""); if(!ALLOWED.has(course))return NextResponse.json({error:"invalid_course"},{status:400});
+ const course=String(req.nextUrl.searchParams.get("course")||"").trim(); if(!course)return NextResponse.json({error:"invalid_course"},{status:400});
  const c=await ctx(req,course); if(!c)return NextResponse.json({error:"authentication_required"},{status:401}); if(!c.enrollment)return NextResponse.json({error:"matriculation_required"},{status:403});
  const {data,error}=await c.supabase.from("study_plans").select("study_days,study_time,session_duration_minutes,exam_date,exam_place,objective,reminder_30_minutes,reminder_5_minutes").eq("user_id",c.user.id).eq("enrollment_id",c.enrollment.id).maybeSingle();
  if(error)return NextResponse.json({error:"plan_load_failed"},{status:500}); return NextResponse.json({plan:data||null});
 }
 export async function POST(req:NextRequest){
- const body=await req.json().catch(()=>({})); const course=String(body.courseSlug||""); if(!ALLOWED.has(course))return NextResponse.json({error:"invalid_course"},{status:400});
+ const body=await req.json().catch(()=>({})); const course=String(body.courseSlug||"").trim(); if(!course)return NextResponse.json({error:"invalid_course"},{status:400});
  const c=await ctx(req,course); if(!c)return NextResponse.json({error:"authentication_required"},{status:401}); if(!c.enrollment)return NextResponse.json({error:"matriculation_required"},{status:403});
  const studyDays=parseStudyDays(body.studyDays); const studyTime=String(body.studyTime||"").trim(); const duration=parseSessionDuration(body.sessionDurationMinutes??body.sessionDuration);
  if(!studyDays.length||!studyTime||!Number.isFinite(duration)||duration<=0)return NextResponse.json({error:"planning_required"},{status:400});

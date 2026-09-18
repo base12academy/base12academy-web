@@ -1,15 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabase } from "@/lib/supabase/server";
 
-const ALLOWED_COURSES = new Set(["matematicas-aplicadas-ccss","matematicas-ii","historia-espana","historia-filosofia"]);
-
 export async function GET(req:NextRequest){
-  const courseSlug=String(req.nextUrl.searchParams.get("course")||"");
-  if(!ALLOWED_COURSES.has(courseSlug))return NextResponse.json({error:"invalid_course"},{status:400});
+  const courseSlug=String(req.nextUrl.searchParams.get("course")||"").trim();
+  if(!courseSlug)return NextResponse.json({error:"invalid_course"},{status:400});
   const token=req.headers.get("authorization")?.replace(/^Bearer\s+/i,"");
   if(!token)return NextResponse.json({error:"authentication_required"},{status:401});
   const supabase=getSupabase(); const {data}=await supabase.auth.getUser(token);
   if(!data.user)return NextResponse.json({error:"authentication_required"},{status:401});
+  const now=new Date().toISOString();
+  const {data:enrollment}=await supabase.from("course_enrollments").select("id").eq("user_id",data.user.id).eq("course_slug",courseSlug).in("status",["active","pending"]).lte("starts_at",now).or("expires_at.is.null,expires_at.gte."+now).order("created_at",{ascending:false}).limit(1).maybeSingle();
+  if(!enrollment)return NextResponse.json({error:"matriculation_required"},{status:403});
   const {data:events,error}=await supabase.from("course_learning_events").select("content_id,event_type,progress_percent,metadata,occurred_at").eq("user_id",data.user.id).eq("course_slug",courseSlug).order("occurred_at",{ascending:false}).limit(1000);
   if(error)return NextResponse.json({error:"progress_load_failed"},{status:500});
   const all=events||[];
