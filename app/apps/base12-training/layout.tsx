@@ -14,7 +14,7 @@ export default function TrainingLayout({ children }: { children: ReactNode }) {
           mix-blend-mode: multiply;
         }
         header img[alt="Base12 Training"] {
-          width: 104px !important;
+          width: 140px !important;
           height: auto !important;
           max-height: none !important;
           display: block !important;

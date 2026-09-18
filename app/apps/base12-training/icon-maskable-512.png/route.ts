@@ -5,7 +5,7 @@ import { NextRequest } from "next/server";
 export const runtime = "edge";
 
 export function GET(request: NextRequest) {
-  const logo = new URL("/images/training/base12-training-192.png", request.nextUrl.origin).toString();
+  const logo = new URL("/images/training/base12-training-192.png?v=11", request.nextUrl.origin).toString();
   return new ImageResponse(
     React.createElement(
       "div",
@@ -19,24 +19,7 @@ export function GET(request: NextRequest) {
           background: "#ffffff",
         },
       },
-      React.createElement(
-        "div",
-        {
-          style: {
-            width: 384,
-            height: 265,
-            overflow: "hidden",
-            position: "relative",
-          },
-        },
-        React.createElement("img", {
-          src: logo,
-          width: 508,
-          height: 508,
-          alt: "",
-          style: { position: "absolute", left: -66, top: -22 },
-        }),
-      ),
+      React.createElement("img", { src: logo, width: 360, height: 360, alt: "" }),
     ),
     { width: 512, height: 512 },
   );

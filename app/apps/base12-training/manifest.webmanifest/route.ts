@@ -7,7 +7,7 @@ export function GET() {
     name: "Base12 Training",
     short_name: "B12 Training",
     description: "Preparación física de las cuatro pruebas de Tropa y Marinería con seguimiento de marcas y Carlos IA.",
-    id: `${TRAINING_ORIGIN}/base12-training-v10`,
+    id: `${TRAINING_ORIGIN}/base12-training-v11`,
     start_url: `${TRAINING_ORIGIN}/`,
     scope: `${TRAINING_ORIGIN}/`,
     display: "standalone",
@@ -22,19 +22,19 @@ export function GET() {
     ],
     icons: [
       {
-        src: `${TRAINING_ORIGIN}/apps/base12-training/icon-192.png?v=10`,
+        src: `${TRAINING_ORIGIN}/images/training/base12-training-192.png?v=11`,
         sizes: "192x192",
         type: "image/png",
         purpose: "any"
       },
       {
-        src: `${TRAINING_ORIGIN}/apps/base12-training/icon-512.png?v=10`,
+        src: `${TRAINING_ORIGIN}/apps/base12-training/icon-512.png?v=11`,
         sizes: "512x512",
         type: "image/png",
         purpose: "any"
       },
       {
-        src: `${TRAINING_ORIGIN}/apps/base12-training/icon-maskable-512.png?v=10`,
+        src: `${TRAINING_ORIGIN}/apps/base12-training/icon-maskable-512.png?v=11`,
         sizes: "512x512",
         type: "image/png",
         purpose: "maskable"

@@ -6,9 +6,9 @@ const SHELL = IS_TRAINING
   ? [
       "/",
       "/manifest.webmanifest",
-      "/images/training/base12-training-192.png?v=4",
-      "/apps/base12-training/icon-512.png?v=4",
-      "/images/training/base12-training-180.png?v=4",
+      "/images/training/base12-training-192.png?v=11",
+      "/apps/base12-training/icon-512.png?v=11",
+      "/images/training/base12-training-192.png?v=11",
     ]
   : [
       "/",
