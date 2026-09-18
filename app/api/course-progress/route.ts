@@ -3,7 +3,7 @@ import { getSupabase } from "@/lib/supabase/server";
 
 const allowedEvents = new Set([
   "opened", "video_started", "video_completed", "activity_started",
-  "activity_completed", "content_completed", "assessment_submitted",
+  "activity_completed", "content_completed",
 ]);
 
 export async function POST(req: NextRequest) {
