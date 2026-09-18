@@ -1,10 +1,10 @@
-const CACHE_NAME = "base12-training-shell-v8";
+const CACHE_NAME = "base12-training-shell-v10";
 const SHELL = [
   "/",
   "/manifest.webmanifest",
-  "/apps/base12-training/icon-192.png?v=8",
-  "/apps/base12-training/icon-512.png?v=8",
-  "/apps/base12-training/icon-maskable-512.png?v=8",
+  "/apps/base12-training/icon-192.png?v=10",
+  "/apps/base12-training/icon-512.png?v=10",
+  "/apps/base12-training/icon-maskable-512.png?v=10",
 ];
 
 self.addEventListener("install", (event) => {

@@ -28,6 +28,11 @@ const nextConfig: NextConfig = {
           destination: "/apps/base12-training/manifest.webmanifest",
         },
         {
+          source: "/favicon.ico",
+          has: trainingHost,
+          destination: "/icons/base12-training.ico",
+        },
+        {
           source: "/sw.js",
           has: trainingHost,
           destination: "/training-sw.js",
