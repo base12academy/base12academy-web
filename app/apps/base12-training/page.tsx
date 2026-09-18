@@ -20,15 +20,15 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: `${TRAINING_ORIGIN}/icons/base12-training.ico?v=13`, type: "image/x-icon" },
-      { url: `${TRAINING_ORIGIN}/apps/base12-training/pwa-icon-192-v13.png`, sizes: "192x192", type: "image/png" },
-      { url: `${TRAINING_ORIGIN}/apps/base12-training/pwa-icon-512-v13.png`, sizes: "512x512", type: "image/png" },
+      { url: `${TRAINING_ORIGIN}/icons/base12-training.ico?v=15`, type: "image/x-icon" },
+      { url: `${TRAINING_ORIGIN}/images/training/base12-training-app-192-v15.png`, sizes: "192x192", type: "image/png" },
+      { url: `${TRAINING_ORIGIN}/images/training/base12-training-app-512-v15.svg`, sizes: "512x512", type: "image/svg+xml" },
     ],
     shortcut: [
-      { url: `${TRAINING_ORIGIN}/apps/base12-training/pwa-icon-192-v13.png`, type: "image/png" },
+      { url: `${TRAINING_ORIGIN}/images/training/base12-training-app-192-v15.png`, type: "image/png" },
     ],
     apple: [
-      { url: `${TRAINING_ORIGIN}/apps/base12-training/pwa-icon-192-v13.png`, sizes: "192x192", type: "image/png" },
+      { url: `${TRAINING_ORIGIN}/images/training/base12-training-180.png`, sizes: "180x180", type: "image/png" },
     ],
   },
 };

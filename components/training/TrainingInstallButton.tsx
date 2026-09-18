@@ -83,7 +83,7 @@ export default function TrainingInstallButton() {
       {help && (
         <div role="dialog" aria-modal="true" aria-label="Instalar Base12 Training" style={{ position: "absolute", right: 0, bottom: 54, width: 310, maxWidth: "calc(100vw - 36px)", padding: 18, borderRadius: 16, background: "white", color: "#17352d", boxShadow: "0 14px 40px rgba(0,0,0,.22)", border: "1px solid #d8e5dc" }}>
           <button type="button" onClick={() => setHelp(false)} aria-label="Cerrar" style={{ position: "absolute", right: 10, top: 8, border: 0, background: "transparent", fontSize: 24, cursor: "pointer" }}>×</button>
-          <Image src="/apps/base12-training/pwa-icon-192-v13.png" alt="" width={92} height={92} style={{ borderRadius: 16 }} />
+          <Image src="/images/training/base12-training-app-192-v15.png" alt="" width={92} height={92} style={{ borderRadius: 16 }} />
           <h2 style={{ fontSize: 19, margin: "10px 0 8px" }}>Instala Base12 Training</h2>
           <p style={{ margin: 0, lineHeight: 1.45, fontSize: 14 }}>En Android o en ordenador, abre el menú del navegador y elige <b>Instalar aplicación</b>. En iPhone o iPad, abre la página en Safari, pulsa <b>Compartir</b> y después <b>Añadir a pantalla de inicio</b>.</p>
           <p style={{ margin: "10px 0 0", lineHeight: 1.45, fontSize: 13 }}>La aplicación se instala desde training.base12academy.es y queda separada del campus de Base12 Academy.</p>
