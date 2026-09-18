@@ -92,6 +92,7 @@ export default function MatematicasAplicadasPage(){
   }
 
   const scrollTo=(id:string)=>document.getElementById(id)?.scrollIntoView({behavior:"smooth",block:"start"});
+  const openVideo=()=>{if(video.url) window.open(video.url,"_blank","noopener,noreferrer");};
 
   return <div className={styles.page}>
     <header className={styles.topbar}>
@@ -145,7 +146,7 @@ export default function MatematicasAplicadasPage(){
       </aside>
 
       <main className={styles.main} id="inicio">
-        <div className={styles.breadcrumb}>Matemáticas Aplicadas a las CCSS II <span>›</span> {selected.block} <span>›</span> {selected.id}</div>
+        <div className={styles.breadcrumb}>Matemáticas Aplicadas a las CCSS II <span>›</span> Explicación {selected.order} de 44</div>
 
         <section className={styles.hero}>
           <div className={styles.heroCopy}>
@@ -164,11 +165,11 @@ export default function MatematicasAplicadasPage(){
         </section>
 
         {canOpen?<section className={styles.primaryResources}>
-          <button onClick={()=>scrollTo("video")} className={styles.primaryCard}>
-            <span className={styles.cardIcon}>▤</span><strong>1. EXPLICACIÓN</strong><small>Procedimiento y comprensión</small><b>Trabajar explicación →</b>
+          <button onClick={()=>scrollTo("inicio")} className={styles.primaryCard}>
+            <span className={styles.cardIcon}>▤</span><strong>1. EXPLICACIÓN</strong><small>Desarrollo completo de la explicación</small><b>Leer explicación →</b>
           </button>
-          <button onClick={()=>scrollTo("video")} className={styles.videoCard}>
-            <span className={styles.cardIcon}>▶</span><strong>2. VÍDEO DE APOYO</strong><small>Vídeo de la explicación en YouTube</small><b>Ver vídeo →</b>
+          <button onClick={openVideo} className={styles.videoCard} disabled={!video.url || videoLoading}>
+            <span className={styles.cardIcon}>▶</span><strong>2. VÍDEO DE APOYO</strong><small>Vídeo de la explicación en YouTube</small><b>{videoLoading?"Cargando…":"Ver vídeo →"}</b>
           </button>
           <button onClick={()=>openResource("glossary")} className={styles.glossaryCard}>
             <span className={styles.cardIcon}>Aᶻ</span><strong>3. GLOSARIO</strong><small>Términos y conceptos clave</small><b>Abrir glosario →</b>
@@ -178,10 +179,6 @@ export default function MatematicasAplicadasPage(){
           </button>
         </section>:<section className={styles.lockNotice}><strong>Vista previa</strong><p>La primera explicación está abierta. El resto requiere una modalidad con curso completo.</p><Link href="/bachillerato-pau/matematicas-aplicadas-ccss#modalidades">Ver modalidades</Link></section>}
 
-        {canOpen?<section id="video" className={styles.videoSection}>
-          <div className={styles.videoHeading}><div><strong>{selected.id} · {selected.title}</strong><span>Vídeo de apoyo paso a paso</span></div>{video.url?<a href={video.url} target="_blank" rel="noreferrer">Abrir en YouTube ↗</a>:null}</div>
-          <div className={styles.videoFrame}>{videoLoading?<p>Cargando vídeo…</p>:video.embedUrl?<iframe src={video.embedUrl} title={`${selected.id} · ${selected.title}`} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen/>:<p>No se ha podido cargar el vídeo.</p>}</div>
-        </section>:null}
 
         <div className={styles.hierarchyNote}>
           <strong>Orden recomendado de trabajo</strong>
@@ -190,28 +187,14 @@ export default function MatematicasAplicadasPage(){
         </div>
 
         <section className={styles.trainingArea} id="comprobaciones">
-          <div className={styles.explanationsPanel}>
-            <div className={styles.panelTitle}><h3>Explicaciones</h3><span>44</span></div>
-            <div className={styles.compactList}>
-              {MATEMATICAS_APLICADAS_UNITS.slice(Math.max(0,selected.order-3),Math.min(44,selected.order+4)).map(unit=><button key={unit.id} className={selected.id===unit.id?styles.currentCompact:""} onClick={()=>setSelectedId(unit.id)}><span>{unit.order}</span><b>{unit.title}</b></button>)}
-            </div>
-            <button className={styles.showAll} onClick={()=>scrollTo("explicaciones")}>Ver las 44 explicaciones</button>
-          </div>
-
           <div className={styles.checksPanel}>
-            <h3>Entrenamiento y comprobaciones</h3>
+            <h3>Entrenamiento</h3>
             <div className={styles.trainingCards}>
-              <button onClick={()=>openResource("short")}><span>▤</span><strong>Preguntas cortas</strong><small>2 por explicación</small></button>
-              <button onClick={()=>openResource("problems")} disabled={!canPau}><span>✎</span><strong>Preguntas tipo PAU</strong><small>48 con solución y rúbrica</small></button>
-              <button onClick={()=>openResource("profiles")} disabled={!canPau}><span>▥</span><strong>Simulacros</strong><small>17 territoriales</small></button>
-              <button onClick={()=>openResource("short")}><span>✓</span><strong>Comprobación adicional</strong><small>Preguntas cortas de procedimiento</small></button>
+              <button onClick={()=>openResource("short")}><span>◯</span><strong>Preguntas cortas</strong><small>2 por explicación</small><b>Resolver →</b></button>
+              <button onClick={()=>openResource("problems")} disabled={!canPau}><span>▤</span><strong>Preguntas tipo PAU</strong><small>48 con solución y rúbrica</small><b>Practicar →</b></button>
+              <button onClick={()=>openResource("profiles")} disabled={!canPau}><span>▥</span><strong>Simulacros</strong><small>17 territoriales</small><b>Empezar →</b></button>
+              <button id="pau" onClick={()=>openResource("profiles")} disabled={!canPau}><span>ES</span><strong>PAU por comunidades</strong><small>Perfiles y criterios territoriales</small><b>Seleccionar →</b></button>
             </div>
-          </div>
-
-          <div className={styles.pauPanel} id="pau">
-            <div className={styles.mapShape} aria-hidden="true">ES</div>
-            <div><h3>PAU por comunidades</h3><p>Perfiles, criterios y simulacros diferenciados por comunidad autónoma.</p></div>
-            <button onClick={()=>openResource("profiles")} disabled={!canPau}>Selecciona tu comunidad →</button>
           </div>
         </section>
 
