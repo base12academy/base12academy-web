@@ -40,5 +40,10 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ allowed: false, access: token ? "subscription_required" : "login_required", canNavigateAll: false }, { status: token ? 403 : 401 });
   }
   const questionLimit = planSlug === "esencial" ? 10 : 50;
-  return NextResponse.json({ allowed: true, access, planSlug, enrollmentId, canNavigateAll, theme: { ...theme, tests: theme.tests.slice(0, questionLimit) } });
+  const publicTests=theme.tests.slice(0,questionLimit).map((question,index)=>({
+    id: themeId+"-Q"+String(index+1).padStart(2,"0"),
+    question: question.question,
+    options: question.options,
+  }));
+  return NextResponse.json({ allowed: true, access, planSlug, enrollmentId, canNavigateAll, theme: { ...theme, tests: publicTests } });
 }

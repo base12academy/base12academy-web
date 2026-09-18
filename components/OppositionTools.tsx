@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 
-type Question = { question:string; options:string[]; answer:number; explanation:string };
+type Question = { id?:string; question:string; options:string[] };
 async function token(){ return (await supabase.auth.getSession()).data.session?.access_token || ""; }
 
 export function OpenQuestion({courseSlug,themeId}:{courseSlug:string;themeId:string}){
@@ -16,14 +16,45 @@ export function OpenQuestion({courseSlug,themeId}:{courseSlug:string;themeId:str
 
 export function OppositionTest({questions,courseSlug,themeId,planSlug}:{questions:Question[];courseSlug:string;themeId:string;planSlug:string}){
   const [attempt,setAttempt]=useState(0),[position,setPosition]=useState(0),[selected,setSelected]=useState<number|null>(null),[score,setScore]=useState(0),[history,setHistory]=useState<any[]>([]);
+  const [feedback,setFeedback]=useState<{correct:boolean;correctAnswer:number;explanation:string}|null>(null);
+  const [answers,setAnswers]=useState<Record<string,number>>({});
+  const [saving,setSaving]=useState(false);
   const size=planSlug==="esencial"?Math.min(10,questions.length):Math.min(20,questions.length);
   const sample=useMemo(()=>{const a=[...questions];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a.slice(0,size)},[questions,attempt,size]);
   const load=async()=>{const t=await token();if(!t)return;const r=await fetch(`/api/opposition-progress?course=${courseSlug}&theme=${themeId}`,{headers:{Authorization:`Bearer ${t}`}});if(r.ok)setHistory((await r.json()).attempts||[])};
-  useEffect(()=>{load()},[courseSlug,themeId]); const finished=position>=sample.length,q=sample[position];
-  useEffect(()=>{if(!finished||!sample.length)return; (async()=>{const t=await token();if(!t)return;await fetch("/api/course-progress",{method:"POST",headers:{"Content-Type":"application/json",Authorization:`Bearer ${t}`},body:JSON.stringify({courseSlug,contentId:themeId,eventType:"assessment_submitted",progressPercent:Math.round(score/sample.length*100),metadata:{score,total:sample.length,plan:planSlug,type:planSlug==="esencial"?"theme_check":"simulation"}})});load()})()},[finished]);
+  useEffect(()=>{load()},[courseSlug,themeId]);
+  const finished=position>=sample.length,q=sample[position];
+
+  const choose=async(index:number)=>{
+    if(selected!==null||!q?.id)return;
+    setSelected(index);setFeedback(null);
+    const t=await token();
+    const r=await fetch("/api/opposition-assessment",{method:"POST",headers:{"Content-Type":"application/json",...(t?{Authorization:`Bearer ${t}`}:{})},body:JSON.stringify({mode:"question",courseSlug,themeId,questionId:q.id,selected:index})});
+    const d=await r.json().catch(()=>({}));
+    if(r.ok){
+      setFeedback({correct:Boolean(d.correct),correctAnswer:Number(d.correctAnswer),explanation:String(d.explanation||"")});
+      if(d.correct)setScore(v=>v+1);
+      setAnswers(v=>({...v,[q.id as string]:index}));
+    }
+  };
+
+  const next=async()=>{
+    if(selected===null||!feedback)return;
+    if(position+1===sample.length){
+      const t=await token();
+      if(t){
+        setSaving(true);
+        await fetch("/api/opposition-assessment",{method:"POST",headers:{"Content-Type":"application/json",Authorization:`Bearer ${t}`},body:JSON.stringify({mode:"attempt",courseSlug,themeId,answers})});
+        setSaving(false);
+        await load();
+      }
+    }
+    setPosition(v=>v+1);setSelected(null);setFeedback(null);
+  };
+
   if(!sample.length)return <p>El test está en preparación.</p>;
-  if(finished)return <div><h2>{planSlug==="esencial"?"Comprobación terminada":"Simulacro terminado"}</h2><p>Has acertado {score} de {sample.length} ({Math.round(score/sample.length*100)} %).</p><button onClick={()=>{setAttempt(v=>v+1);setPosition(0);setSelected(null);setScore(0)}}>Nuevo intento</button><Progress history={history}/></div>;
-  return <div><p style={{fontWeight:800,color:"#28643b"}}>{planSlug==="esencial"?"COMPROBACIÓN DEL TEMA · 10 PREGUNTAS":"SIMULACRO · 20 PREGUNTAS ALEATORIAS"}</p><h2>Comprueba lo aprendido</h2><p>{position+1} / {sample.length}</p><h3>{q.question}</h3><div style={{display:"grid",gap:9}}>{q.options.map((o,i)=><button key={o} disabled={selected!==null} onClick={()=>{setSelected(i);if(i===q.answer)setScore(v=>v+1)}} style={{padding:12,textAlign:"left",border:"1px solid #b8c9b2",borderRadius:9,background:selected===null?"white":i===q.answer?"#dcfce7":i===selected?"#fee2e2":"white"}}><b>{String.fromCharCode(65+i)}.</b> {o}</button>)}</div>{selected!==null&&<div style={{marginTop:14}}><p>{q.explanation}</p><button onClick={()=>{setPosition(v=>v+1);setSelected(null)}}>{position+1===sample.length?"Ver resultado":"Siguiente pregunta"}</button></div>}<Progress history={history}/></div>;
+  if(finished)return <div><h2>{planSlug==="esencial"?"Comprobación terminada":"Simulacro terminado"}</h2><p>Has acertado {score} de {sample.length} ({Math.round(score/sample.length*100)} %).</p><button onClick={()=>{setAttempt(v=>v+1);setPosition(0);setSelected(null);setFeedback(null);setScore(0);setAnswers({})}}>Nuevo intento</button><Progress history={history}/></div>;
+  return <div><p style={{fontWeight:800,color:"#28643b"}}>{planSlug==="esencial"?"COMPROBACIÓN DEL TEMA · 10 PREGUNTAS":"SIMULACRO · 20 PREGUNTAS ALEATORIAS"}</p><h2>Comprueba lo aprendido</h2><p>{position+1} / {sample.length}</p><h3>{q.question}</h3><div style={{display:"grid",gap:9}}>{q.options.map((o,i)=><button key={o} disabled={selected!==null||saving} onClick={()=>void choose(i)} style={{padding:12,textAlign:"left",border:"1px solid #b8c9b2",borderRadius:9,background:selected===null?"white":feedback&&i===feedback.correctAnswer?"#dcfce7":i===selected?"#fee2e2":"white"}}><b>{String.fromCharCode(65+i)}.</b> {o}</button>)}</div>{selected!==null&&feedback&&<div style={{marginTop:14}}><p><strong>{feedback.correct?"Correcto.":"Vamos a revisarlo."}</strong> {feedback.explanation}</p><button disabled={saving} onClick={()=>void next()}>{saving?"Guardando…":position+1===sample.length?"Ver resultado":"Siguiente pregunta"}</button></div>}</div>;
 }
 function Progress({history}:{history:any[]}){if(!history.length)return <p style={{marginTop:20}}>Tu progresión aparecerá aquí después del primer intento.</p>;const best=Math.max(...history.map(x=>Number(x.progress_percent)||0));return <section style={{marginTop:24,padding:16,background:"#f3f7f0",borderRadius:12}}><h3>Tu progresión</h3><p><b>Mejor resultado: {best} %</b> · {history.length} intento{history.length===1?"":"s"}</p><div style={{display:"flex",gap:6,alignItems:"end",height:70}}>{history.slice().reverse().map((x,i)=><span key={i} title={`${x.progress_percent}%`} style={{width:18,height:`${Math.max(4,Number(x.progress_percent)||0)}%`,background:"#28643b",borderRadius:4}}/>)}</div></section>}
 
