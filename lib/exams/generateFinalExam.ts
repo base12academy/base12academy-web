@@ -28,6 +28,7 @@ export async function generateFinalExam({
   }
 
   const shortQuestions = pickRandomItems(allShortQuestions, 5);
+  const publicShortQuestions=shortQuestions.map((q:any)=>({id:q.id,question:q.question,topicSlug:q.topicSlug}));
 
   const developmentPool = temasHistoria.filter(
     (t: any) =>
@@ -52,7 +53,7 @@ export async function generateFinalExam({
 
   return {
     selectedTopicSlugs,
-    shortQuestions,
+    shortQuestions: publicShortQuestions,
     source: publicExamSource(source),
     development: {
       slug: development.slug,

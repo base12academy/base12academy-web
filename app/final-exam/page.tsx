@@ -339,7 +339,7 @@ if (selectedTopicSlugs.length === 0) {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: "Bearer "+token },
         body: JSON.stringify({
-          selectedTopicSlugs,
+          shortQuestionIds: exam.shortQuestions?.map((q)=>q.id) || [],
           topicSlug: exam.development?.slug,
           shortAnswers,
           sourceAnswer,

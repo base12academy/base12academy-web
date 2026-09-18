@@ -6,8 +6,6 @@ import { supabase } from "@/lib/supabaseClient";
 type ShortQuestion = {
   id: string;
   question: string;
-  answerGuide: string;
-  keywords: string[];
   topicSlug: string;
 };
 
@@ -281,6 +279,7 @@ export default function BlockExamPage() {
         body: JSON.stringify({
           blockId: exam.blockId,
           topicSlug: exam.development.slug,
+          shortQuestionIds: exam.shortQuestions.map((q)=>q.id),
           shortAnswers,
           sourceAnswer,
           sourceId: exam.source.sourceId,

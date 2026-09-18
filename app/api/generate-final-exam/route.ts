@@ -12,9 +12,11 @@ export async function POST(req: Request) {
     if(authError||!authData.user)return NextResponse.json({error:"authentication_required"},{status:401});
     const userId=authData.user.id;
 
-    const selectedTopicSlugs = body.selectedTopicSlugs || [];
+    const {data:profile,error:profileError}=await supabase.from("perfiles").select("temas_activos").eq("user_id",userId).maybeSingle();
+    if(profileError)return NextResponse.json({error:profileError.message},{status:500});
+    const selectedTopicSlugs=Array.isArray(profile?.temas_activos)?profile.temas_activos.map(String):[];
 
-    if (!Array.isArray(selectedTopicSlugs) || selectedTopicSlugs.length === 0) {
+    if (selectedTopicSlugs.length === 0) {
       return NextResponse.json(
         { error: "Faltan selectedTopicSlugs" },
         { status: 400 }

@@ -3,7 +3,7 @@ import { getSupabase } from "@/lib/supabase/server";
 import { getShortQuestionsByTopic } from "@/lib/exams/getShortQuestions";
 import { gradeShorts } from "@/lib/exams/gradeShorts";
 import { gradeDevelopment } from "@/lib/exams/gradeDevelopment";
-import { temasHistoria } from "@/lib/temas";
+import { temasHistoria, BLOQUES_HISTORIA } from "@/lib/temas";
 import { getExamSourceById } from "@/lib/exams/sourceCatalog";
 
 export async function POST(req: Request) {
@@ -22,6 +22,7 @@ export async function POST(req: Request) {
     const blockId = body.blockId || "bloque_1";
     const topicSlug = body.topicSlug || "tema-3";
     const shortAnswers = body.shortAnswers || {};
+    const shortQuestionIds=Array.isArray(body.shortQuestionIds)?body.shortQuestionIds.map(String):[];
     const sourceAnswer = body.sourceAnswer || "";
     const sourceId = String(body.sourceId || "");
     const developmentAnswer = body.developmentAnswer || "";
@@ -35,8 +36,16 @@ export async function POST(req: Request) {
       );
     }
 
-    const shortFileSlug = topicSlug.replace("-", "");
-    const shortQuestions = getShortQuestionsByTopic(shortFileSlug).slice(0, 5);
+    const normalizeBlockId=(value:string)=>value.replace("-","_");
+    const block=BLOQUES_HISTORIA.find((item:any)=>normalizeBlockId(item.id)===normalizeBlockId(blockId));
+    if(!block)return NextResponse.json({error:"Bloque no válido"},{status:400});
+    const allowedTopics=(block.temas||[]) as string[];
+    const pool=allowedTopics.flatMap((slug:string)=>{
+      const fileSlug=slug.replace("-","");
+      try{return getShortQuestionsByTopic(fileSlug).map((q:any)=>({...q,topicSlug:slug}));}catch{return [];}
+    });
+    const shortQuestions=shortQuestionIds.map((id:string)=>pool.find((q:any)=>q.id===id)).filter(Boolean);
+    if(shortQuestions.length!==5||new Set(shortQuestionIds).size!==5)return NextResponse.json({error:"Preguntas cortas no válidas"},{status:400});
 
     const shortResult = gradeShorts(shortAnswers, shortQuestions);
 
@@ -76,6 +85,7 @@ const sourceResult = {
         user_id: userId,
         answer: JSON.stringify({
           topicSlug,
+shortQuestionIds,
 shortAnswers,
 sourceAnswer,
 sourceId,

@@ -128,10 +128,12 @@ export async function generateBlockExam({
   const shuffledSources = pickRandomItems(allSources, allSources.length);
   const source = shuffledSources[0];
 
+  const publicShortQuestions=shortQuestions.map((q:any)=>({id:q.id,question:q.question,topicSlug:q.topicSlug}));
+
   return {
     blockId: block.id,
     selectedTopicSlugs: blockTopics,
-    shortQuestions,
+    shortQuestions: publicShortQuestions,
     source: publicExamSource(source),
     development: {
       slug: development.slug,

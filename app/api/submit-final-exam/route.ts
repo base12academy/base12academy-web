@@ -20,9 +20,12 @@ export async function POST(req: Request) {
     const {data:courseEnrollment}=await supabase.from("course_enrollments").select("id").eq("user_id",userId).eq("course_slug","historia-espana").in("status",["active","pending"]).lte("starts_at",now).or("expires_at.is.null,expires_at.gte."+now).order("created_at",{ascending:false}).limit(1).maybeSingle();
     if(!courseEnrollment)return NextResponse.json({error:"matriculation_required"},{status:403});
 
-    const selectedTopicSlugs = body.selectedTopicSlugs || [];
+    const {data:profile,error:profileError}=await supabase.from("perfiles").select("temas_activos").eq("user_id",userId).maybeSingle();
+    if(profileError)return NextResponse.json({error:profileError.message},{status:500});
+    const selectedTopicSlugs=Array.isArray(profile?.temas_activos)?profile.temas_activos.map(String):[];
     const topicSlug = body.topicSlug || "";
     const shortAnswers = body.shortAnswers || {};
+    const shortQuestionIds=Array.isArray(body.shortQuestionIds)?body.shortQuestionIds.map(String):[];
     const sourceAnswer = body.sourceAnswer || "";
     const sourceId = String(body.sourceId || "");
     const developmentAnswer = body.developmentAnswer || "";
@@ -74,16 +77,12 @@ export async function POST(req: Request) {
       }));
     });
 
-    const firstFive = shortQuestionsPool.slice(0, 5);
-
-    if (firstFive.length < 5) {
-      return NextResponse.json(
-        { error: "No hay suficientes preguntas cortas" },
-        { status: 500 }
-      );
+    const selectedShortQuestions=shortQuestionIds.map((id:string)=>shortQuestionsPool.find((q:any)=>q.id===id)).filter(Boolean);
+    if(selectedShortQuestions.length!==5||new Set(shortQuestionIds).size!==5){
+      return NextResponse.json({error:"Preguntas cortas no válidas"},{status:400});
     }
 
-    const shortResult = gradeShorts(shortAnswers, firstFive);
+    const shortResult = gradeShorts(shortAnswers, selectedShortQuestions);
 
     const sourceWordCount = sourceAnswer.split(" ").filter(Boolean).length;
     const canonicalSource=getExamSourceById(sourceId);
@@ -122,6 +121,7 @@ const sourceScore=sourceWordCount>=20?Number(Math.min(4,(sourceGrade.score/3)*4)
           examType: "final",
           selectedTopicSlugs,
           topicSlug,
+          shortQuestionIds,
           shortAnswers,
           sourceAnswer,
           sourceId,
