@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import WrittenAssessment from "@/components/learning/WrittenAssessment";
+import ChoiceAssessment from "@/components/learning/ChoiceAssessment";
 import { MATEMATICAS_II_BLOCKS, MATEMATICAS_II_STATS, MATEMATICAS_II_UNITS } from "@/lib/matematicas-ii/content";
 import styles from "./matematicas-ii.module.css";
 
@@ -227,10 +229,10 @@ export default function MatematicasIIPage() {
             {canOpenSelected ? <section id="mat2-video" style={{ marginTop: 24, borderRadius: 20, border: "1px solid #dbe4f0", background: "#ffffff", overflow: "hidden", boxShadow: "0 16px 45px rgba(15,23,42,0.08)" }}>
               <div style={{ padding: "18px 20px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
                 <div><strong style={{ display: "block", color: "#0a2a59", fontSize: 18 }}>{selected.id} · {selected.title}</strong><span style={{ color: "#64748b", fontSize: 13 }}>Vídeo principal de la unidad</span></div>
-                {video.url ? <a href={video.url} target="_blank" rel="noreferrer" style={{ color: "#0a2a59", fontWeight: 800, textDecoration: "none", whiteSpace: "nowrap" }}>Abrir en YouTube ↗</a> : null}
+                
               </div>
               <div style={{ aspectRatio: "16 / 9", background: "#07152d", display: "grid", placeItems: "center" }}>
-                {videoLoading ? <p style={{ color: "white", fontWeight: 700 }}>Cargando vídeo…</p> : video.embedUrl ? <iframe src={video.embedUrl} title={`${selected.id} · ${selected.title}`} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen style={{ width: "100%", height: "100%", border: 0 }} /> : <p style={{ color: "white", fontWeight: 700 }}>No se ha podido cargar el vídeo de esta unidad.</p>}
+                {videoLoading ? <p style={{ color: "white", fontWeight: 700 }}>Cargando vídeo…</p> : video.embedUrl ? <iframe src={video.embedUrl+(video.embedUrl.includes("?")?"&":"?")+"rel=0&modestbranding=1&playsinline=1"} title={`${selected.id} · ${selected.title}`} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen style={{ width: "100%", height: "100%", border: 0 }} /> : <p style={{ color: "white", fontWeight: 700 }}>No se ha podido cargar el vídeo de esta unidad.</p>}
               </div>
             </section> : null}
 
@@ -285,40 +287,30 @@ function ResourceContent({ payload, onSimulation }: { payload: EvaluationPayload
 }
 
 function RocioPanel({ items }: { items: RocioItem[] }) {
-  const [answers, setAnswers] = useState<Record<string, string>>({});
-  return <div style={{ display: "grid", gap: 16 }}>{items.map((item, index) => {
-    const answer = answers[item.id];
-    const correct = answer === item.correct;
-    return <article key={item.id} style={cardStyle}>
-      <strong style={{ color: "#0b2c5d" }}>Pregunta {index + 1}</strong>
-      <p style={{ lineHeight: 1.55 }}>{item.question}</p>
-      <div style={{ display: "grid", gap: 8 }}>{(["A", "B", "C", "D"] as const).map((letter) => <button key={letter} type="button" onClick={() => setAnswers((current) => ({ ...current, [item.id]: letter }))} style={{ ...optionButtonStyle, borderColor: answer === letter ? "#0c4a8a" : "#d7e0ea", background: answer === letter ? "#eef6ff" : "#fff" }}><b>{letter}</b> {item.options[letter]}</button>)}</div>
-      {answer ? <div style={{ marginTop: 12, padding: 12, borderRadius: 8, background: correct ? "#ecfdf5" : "#fff7ed", color: correct ? "#166534" : "#9a3412" }}><strong>{correct ? "Correcto." : `La respuesta correcta es ${item.correct}.`}</strong><p style={{ margin: "6px 0 0", lineHeight: 1.45 }}>{correct ? item.feedback : item.recovery}</p></div> : null}
-    </article>;
-  })}</div>;
+  return <div style={{ display: "grid", gap: 16 }}>{items.map((item, index) => <article key={item.id} style={cardStyle}>
+    <strong style={{ color: "#0b2c5d" }}>Pregunta {index + 1}</strong>
+    <p style={{ lineHeight: 1.55 }}>{item.question}</p>
+    <ChoiceAssessment courseSlug="matematicas-ii" contentId={item.id} activityType="rocio_closed" prompt={item.question} options={(["A","B","C","D"] as const).map(letter=>({value:letter,label:item.options[letter]}))} correctAnswer={item.correct} feedback={item.feedback} recovery={item.recovery}/>
+  </article>)}</div>;
 }
-
 function ShortPanel({ items }: { items: ShortItem[] }) {
   return <div style={{ display: "grid", gap: 16 }}>{items.map((item, index) => <article key={item.id} style={cardStyle}>
     <strong>Pregunta {index + 1}</strong><p style={{ lineHeight: 1.55 }}>{item.question}</p>
-    <details><summary style={summaryStyle}>Ver respuesta esperada y rúbrica</summary><p style={{ lineHeight: 1.5 }}>{item.expectedAnswer}</p><p style={{ color: "#60758d", fontSize: 13 }}>{item.rubric}</p></details>
+    <WrittenAssessment courseSlug="matematicas-ii" contentId={item.id} activityType="short" prompt={item.question} expectedAnswer={item.expectedAnswer} rubric={item.rubric}/>
   </article>)}</div>;
 }
-
 function ProblemsPanel({ items }: { items: ProblemItem[] }) {
   const [filter, setFilter] = useState("Todos");
   const visible = filter === "Todos" ? items : items.filter((item) => item.block === filter);
-  return <><div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 16 }}>{["Todos", "Álgebra", "Geometría", "Análisis", "Probabilidad"].map((item) => <button key={item} type="button" onClick={() => setFilter(item)} style={{ ...pillStyle, background: filter === item ? "#0c4a8a" : "#eef3f8", color: filter === item ? "#fff" : "#0b2c5d" }}>{item}</button>)}</div><div style={{ display: "grid", gap: 14 }}>{visible.map((item) => <article key={item.id} style={cardStyle}><div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}><strong>{item.id}</strong><span style={{ fontSize: 12, color: "#cc8300", fontWeight: 800 }}>{item.block}</span></div><p style={{ lineHeight: 1.55 }}>{item.statement}</p><details><summary style={summaryStyle}>Ver solución y rúbrica</summary><p style={{ lineHeight: 1.5 }}>{item.solution}</p><p style={{ color: "#60758d", fontSize: 13 }}>{item.rubric}</p></details></article>)}</div></>;
+  return <><div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 16 }}>{["Todos", "Álgebra", "Geometría", "Análisis", "Probabilidad"].map((item) => <button key={item} type="button" onClick={() => setFilter(item)} style={{ ...pillStyle, background: filter === item ? "#0c4a8a" : "#eef3f8", color: filter === item ? "#fff" : "#0b2c5d" }}>{item}</button>)}</div><div style={{ display: "grid", gap: 14 }}>{visible.map((item) => <article key={item.id} style={cardStyle}><div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}><strong>{item.id}</strong><span style={{ fontSize: 12, color: "#cc8300", fontWeight: 800 }}>{item.block}</span></div><p style={{ lineHeight: 1.55 }}>{item.statement}</p><WrittenAssessment courseSlug="matematicas-ii" contentId={item.id} activityType="pau_problem" prompt={item.statement} expectedAnswer={item.solution} rubric={item.rubric} rows={9}/></article>)}</div></>;
 }
-
 function ProfilesPanel({ items, onSimulation }: { items: ProfileItem[]; onSimulation: (code: string) => void }) {
   return <div style={{ display: "grid", gap: 14 }}>{items.map((item) => <article key={item.code} style={cardStyle}><div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}><strong>{item.code} · {item.community}</strong><button type="button" onClick={() => onSimulation(item.code)} style={smallButtonStyle}>Abrir simulacro</button></div><p style={{ color: "#526d89", fontSize: 13 }}>{item.status}</p><p style={{ lineHeight: 1.5 }}>{item.format}</p><a href={item.source} target="_blank" rel="noreferrer" style={{ color: "#0c4a8a", fontWeight: 700, fontSize: 12 }}>Fuente de coordinación/PAU ↗</a></article>)}</div>;
 }
 
 function SimulationPanel({ simulation }: { simulation: Simulation }) {
-  return <div><p style={{ marginTop: 0, color: "#526d89", fontWeight: 700 }}>{simulation.community} · {simulation.profile}</p><div style={{ display: "grid", gap: 14 }}>{simulation.exercises.map((exercise, index) => <article key={`${simulation.code}-${index}`} style={cardStyle}><strong>{exercise.label}</strong><p style={{ lineHeight: 1.55 }}>{exercise.statement}</p><details><summary style={summaryStyle}>Ver solución docente y criterio Base12</summary><p style={{ lineHeight: 1.5 }}>{exercise.solution}</p><p style={{ color: "#60758d", fontSize: 13 }}>{exercise.rubric}</p></details></article>)}</div></div>;
+  return <div><p style={{ marginTop: 0, color: "#526d89", fontWeight: 700 }}>{simulation.community} · {simulation.profile}</p><div style={{ display: "grid", gap: 14 }}>{simulation.exercises.map((exercise, index) => <article key={simulation.code+"-"+index} style={cardStyle}><strong>{exercise.label}</strong><p style={{ lineHeight: 1.55 }}>{exercise.statement}</p><WrittenAssessment courseSlug="matematicas-ii" contentId={simulation.code+":"+String(index+1)} activityType="simulation" prompt={exercise.statement} expectedAnswer={exercise.solution} rubric={exercise.rubric} group={simulation.code} rows={10}/></article>)}</div></div>;
 }
-
 function ResourceCard({ title, text, icon, locked, onOpen }: { title: string; text: string; icon: string; locked: boolean; onOpen?: () => void }) {
   return <button type="button" className={locked ? `${styles.resourceCard} ${styles.locked}` : styles.resourceCard} disabled={locked} onClick={locked ? undefined : onOpen} style={{ textAlign: "left", cursor: locked ? "not-allowed" : "pointer" }}><span>{icon}</span><h4>{title}</h4><p>{text}</p><b>{locked ? "Requiere tu modalidad" : "Abrir →"}</b></button>;
 }
