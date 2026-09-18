@@ -54,7 +54,7 @@ export async function POST(req:NextRequest){
   }
 
   const now=new Date().toISOString();
-  const metadata={activityType,prompt,answer,expectedAnswer:expected,rubric,feedback,gradingMode,attemptId:String(body.attemptId||""),group:String(body.group||""),unit:String(body.unit||"")};
+  const metadata={activityType,prompt,answer,feedback,gradingMode,attemptId:String(body.attemptId||""),group:String(body.group||""),unit:String(body.unit||"")};
   const {error}=await ctx.supabase.from("course_learning_events").insert({user_id:ctx.user.id,enrollment_id:ctx.enrollment.id,course_slug:courseSlug,content_id:contentId,event_type:"assessment_submitted",progress_percent:score,metadata,occurred_at:now});
   if(error){console.error("assessment save failed",error);return NextResponse.json({error:"progress_not_saved"},{status:500});}
   return NextResponse.json({ok:true,score,feedback,gradingMode});
