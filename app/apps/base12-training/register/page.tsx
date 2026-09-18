@@ -48,7 +48,7 @@ export default function TrainingRegisterPage() {
   return (
     <main style={{ minHeight: "100vh", display: "grid", placeItems: "center", background: "#eef9f1", padding: 24 }}>
       <section style={{ width: "100%", maxWidth: 430, background: "#fff", border: "1px solid #d7e8dd", borderRadius: 20, padding: 32 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 20 }}><Image src="/images/training/base12-training-192.png?v=7" alt="Base12 Training" width={68} height={68} style={{ borderRadius: 16 }} /><h1 style={{ margin: 0, color: "#143c2c" }}>Crear cuenta de Training</h1></div>
+        <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 20 }}><Image src="/images/training/base12-training-192.png" alt="Base12 Training" width={88} height={88} style={{ borderRadius: 16 }} /><h1 style={{ margin: 0, color: "#143c2c" }}>Crear cuenta de Training</h1></div>
         <p style={{ color: "#4b635b", lineHeight: 1.55 }}>Usa el correo al que quedará vinculada tu licencia. Compartir la aplicación no da acceso a otra cuenta.</p>
         <input type="email" placeholder="Correo electrónico" value={email} onChange={(event) => setEmail(event.target.value)} autoComplete="email" style={{ width: "100%", padding: 12, marginBottom: 12, borderRadius: 10, border: "1px solid #cfe0d5" }} />
         <input type="password" placeholder="Contraseña" value={password} onChange={(event) => setPassword(event.target.value)} autoComplete="new-password" style={{ width: "100%", padding: 12, marginBottom: 10, borderRadius: 10, border: "1px solid #cfe0d5" }} />

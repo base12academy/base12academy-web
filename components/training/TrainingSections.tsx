@@ -48,7 +48,7 @@ function testStyle(test: TrainingTest) {
 }
 
 function Header({ active }: { active: Section }) {
-  return <header className={styles.header}><div className={styles.headerInner}><Link href="/apps/base12-training" className={styles.brand}><Image src="/images/banco-opositores/logo-base12-training.png" alt="Base12 Training" width={70} height={70} priority /><span>Base12 Training</span></Link><nav className={styles.nav}><Link href="/apps/base12-training">Inicio</Link><Link href="/apps/base12-training/plan" aria-current={active === "plan" ? "page" : undefined}>Plan</Link><Link href="/apps/base12-training/biblioteca" aria-current={active === "biblioteca" ? "page" : undefined}>Biblioteca</Link><Link href="/apps/base12-training/progreso" aria-current={active === "progreso" ? "page" : undefined}>Progreso</Link><Link href="/dashboard/facturas">Mi cuenta</Link></nav></div></header>;
+  return <header className={styles.header}><div className={styles.headerInner}><Link href="/apps/base12-training" className={styles.brand}><Image src="/images/training/base12-training-192.png" alt="Base12 Training" width={70} height={70} priority /><span>Base12 Training</span></Link><nav className={styles.nav}><Link href="/apps/base12-training">Inicio</Link><Link href="/apps/base12-training/plan" aria-current={active === "plan" ? "page" : undefined}>Plan</Link><Link href="/apps/base12-training/biblioteca" aria-current={active === "biblioteca" ? "page" : undefined}>Biblioteca</Link><Link href="/apps/base12-training/progreso" aria-current={active === "progreso" ? "page" : undefined}>Progreso</Link><Link href="/dashboard/facturas">Mi cuenta</Link></nav></div></header>;
 }
 
 export default function TrainingSections({ section }: { section: Section }) {
