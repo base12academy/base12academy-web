@@ -1,6 +1,6 @@
 import { supabase } from "@/lib/supabaseClient";
 
-export type AssessmentSubmission={courseSlug:string;contentId:string;activityType:string;prompt:string;answer:string;expectedAnswer?:string;rubric?:string;correct?:boolean;feedback?:string;attemptId?:string;group?:string;unit?:string};
+export type AssessmentSubmission={courseSlug:string;contentId:string;activityType:string;prompt:string;answer:string;attemptId?:string;group?:string;unit?:string};
 
 export async function submitAssessment(payload:AssessmentSubmission){
   const {data}=await supabase.auth.getSession();

@@ -9,7 +9,7 @@ export default function WrittenAssessment({courseSlug,contentId,activityType,pro
   const [result,setResult]=useState<{score:number|null;feedback:string}|null>(null); const [error,setError]=useState("");
   async function submit(){
     if(!answer.trim()||sending)return; setSending(true); setError("");
-    try{const data=await submitAssessment({courseSlug,contentId,activityType,prompt,answer,expectedAnswer,rubric,unit,group});setResult({score:data.score,feedback:data.feedback});}
+    try{const data=await submitAssessment({courseSlug,contentId,activityType,prompt,answer,unit,group});setResult({score:data.score,feedback:data.feedback});}
     catch{setError("No se ha podido guardar la respuesta. Comprueba que has iniciado sesión y tienes acceso al curso.");}
     finally{setSending(false);}
   }
