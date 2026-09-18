@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { authorizeTropaRequest, isTropaAuthorizationError } from "@/lib/tropa-access";
-import { tropaPlanAccess, type TropaPlanSlug } from "@/lib/tropa-config";
+import { TROP_COURSE_SLUG, tropaPlanAccess, type TropaPlanSlug } from "@/lib/tropa-config";
 
 const validAnswers = new Set(["A", "B", "C", "D"]);
 const planOrder: TropaPlanSlug[] = ["esencial", "operativa", "integral"];
@@ -102,5 +102,20 @@ export async function POST(request: NextRequest) {
     completed_at: completedAt,
   });
   if (attemptError) return NextResponse.json({ error: "progress_not_saved" }, { status: 503 });
+  const enrollmentId=access.enrollmentIds[0]||null;
+  if(enrollmentId){
+    const progressPercent=results.length?Math.round(score/results.length*100):0;
+    const {error:learningError}=await supabase.from("course_learning_events").insert({
+      user_id:user.id,
+      enrollment_id:enrollmentId,
+      course_slug:TROP_COURSE_SLUG,
+      content_id:formCode,
+      event_type:"assessment_submitted",
+      progress_percent:progressPercent,
+      metadata:{activityType:"tropa_operation",score,total:results.length,usageType:questions[0].usage_type,aptitudeScope:access.aptitudeSlugs},
+      occurred_at:completedAt,
+    });
+    if(learningError)console.error("No se pudo registrar el progreso común de Tropa",learningError);
+  }
   return NextResponse.json({ formCode, score, total: results.length, completedAt, results });
 }
