@@ -1,135 +1,40 @@
 "use client";
-
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 
-type Plan = {
-  study_days: string[] | null;
-  study_time: string | null;
-  session_duration_minutes: number | null;
-  exam_date: string | null;
-  exam_place: string | null;
-  objective: string | null;
-  reminder_30_minutes: boolean;
-  reminder_5_minutes: boolean;
+type Form={studyDays:string;studyTime:string;sessionDuration:string;examDate:string;examPlace:string;objective:string};
+type Summary={events:number;assessments:number;scored:number;average:number|null;recent:{contentId:string;score:number|null;activityType:string;unit:string;feedback:string;occurredAt:string}[];breakdown:{type:string;attempts:number;average:number|null}[]};
+const COURSES:Record<string,{title:string;back:string}>={
+ "matematicas-aplicadas-ccss":{title:"Matemáticas Aplicadas a las Ciencias Sociales II",back:"/dashboard/matematicas-aplicadas-ccss"},
+ "matematicas-ii":{title:"Matemáticas II",back:"/dashboard/matematicas-ii"},
+ "historia-espana":{title:"Historia de España",back:"/dashboard/historia-espana"},
+ "historia-filosofia":{title:"Historia de la Filosofía",back:"/dashboard/filosofia"}
 };
-
-const COURSE_SLUG = "matematicas-aplicadas-ccss";
-
-export default function StudyPlanPage() {
-  const [plan, setPlan] = useState<Plan | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    let alive = true;
-
-    void (async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-
-      if (!user) {
-        if (alive) {
-          setError("Debes iniciar sesión para consultar tu plan.");
-          setLoading(false);
-        }
-        return;
-      }
-
-      const { data: enrollment, error: enrollmentError } = await supabase
-        .from("course_enrollments")
-        .select("id")
-        .eq("user_id", user.id)
-        .eq("course_slug", COURSE_SLUG)
-        .in("status", ["active", "pending"])
-        .order("created_at", { ascending: false })
-        .limit(1)
-        .maybeSingle();
-
-      if (enrollmentError || !enrollment) {
-        if (alive) {
-          setError("No se ha encontrado una matrícula de Matemáticas Aplicadas.");
-          setLoading(false);
-        }
-        return;
-      }
-
-      const { data: studyPlan, error: planError } = await supabase
-        .from("study_plans")
-        .select("study_days,study_time,session_duration_minutes,exam_date,exam_place,objective,reminder_30_minutes,reminder_5_minutes")
-        .eq("user_id", user.id)
-        .eq("enrollment_id", enrollment.id)
-        .maybeSingle();
-
-      if (!alive) return;
-
-      if (planError) {
-        setError("No se ha podido cargar tu plan de estudio.");
-      } else if (!studyPlan) {
-        setError("Todavía no hay un plan de estudio guardado para esta matrícula.");
-      } else {
-        setPlan(studyPlan as Plan);
-      }
-
-      setLoading(false);
-    })();
-
-    return () => { alive = false; };
-  }, []);
-
-  const duration = plan?.session_duration_minutes
-    ? String(plan.session_duration_minutes) + " minutos"
-    : "No indicada";
-
-  const reminders = plan
-    ? [
-        plan.reminder_30_minutes ? "30 min" : "",
-        plan.reminder_5_minutes ? "5 min" : "",
-      ].filter(Boolean).join(" y ") || "Desactivados"
-    : "";
-
-  return (
-    <main style={{ minHeight: "100vh", background: "#f6f9fd", padding: "40px 24px", color: "#102447" }}>
-      <section style={{ maxWidth: 900, margin: "0 auto" }}>
-        <Link href="/dashboard/matematicas-aplicadas-ccss" style={{ color: "#155eef", fontWeight: 700, textDecoration: "none" }}>
-          ← Volver al aula
-        </Link>
-
-        <div style={{ marginTop: 18, background: "#fff", border: "1px solid #dbe5f3", borderRadius: 18, padding: 28, boxShadow: "0 8px 28px rgba(15,49,92,.06)" }}>
-          <span style={{ fontSize: 11, fontWeight: 900, letterSpacing: ".08em", color: "#cc8300" }}>FERNANDO · TUTOR IA</span>
-          <h1 style={{ margin: "8px 0 6px", fontSize: 32, color: "#102d62" }}>Mi plan de estudio</h1>
-          <p style={{ margin: "0 0 24px", color: "#607089" }}>Matemáticas Aplicadas a las Ciencias Sociales II</p>
-
-          {loading ? (
-            <p>Cargando tu planificación…</p>
-          ) : error ? (
-            <div style={{ padding: 14, borderRadius: 10, background: "#fff7ed", color: "#9a3412", fontWeight: 700 }}>{error}</div>
-          ) : plan ? (
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 14 }}>
-              <Card title="Días de estudio" value={(plan.study_days || []).join(", ") || "No indicados"} />
-              <Card title="Horario habitual" value={plan.study_time || "No indicado"} />
-              <Card title="Duración de sesión" value={duration} />
-              <Card title="Fecha de examen" value={plan.exam_date ? new Date(plan.exam_date + "T00:00:00").toLocaleDateString("es-ES") : "No indicada"} />
-              <Card title="Lugar del examen" value={plan.exam_place || "No indicado"} />
-              <Card title="Objetivo" value={plan.objective || "No indicado"} />
-              <Card title="Recordatorios" value={reminders} />
-            </div>
-          ) : null}
-
-          <p style={{ marginTop: 22, color: "#607089", fontSize: 13, lineHeight: 1.55 }}>
-            Fernando utiliza esta planificación para generar tus recordatorios de estudio vinculados a Telegram.
-          </p>
-        </div>
-      </section>
-    </main>
-  );
+export default function StudyPlanPage(){
+ const [course,setCourse]=useState("matematicas-aplicadas-ccss"); const [form,setForm]=useState<Form>({studyDays:"",studyTime:"",sessionDuration:"",examDate:"",examPlace:"",objective:""});
+ const [summary,setSummary]=useState<Summary|null>(null); const [loading,setLoading]=useState(true); const [saving,setSaving]=useState(false); const [message,setMessage]=useState("");
+ useEffect(()=>{const value=new URLSearchParams(window.location.search).get("course")||"matematicas-aplicadas-ccss";setCourse(COURSES[value]?value:"matematicas-aplicadas-ccss");},[]);
+ useEffect(()=>{let alive=true;void(async()=>{setLoading(true);setMessage("");const {data}=await supabase.auth.getSession();const token=data.session?.access_token;if(!token){if(alive){setMessage("Debes iniciar sesión para crear o consultar tu plan.");setLoading(false);}return;}
+ const headers={Authorization:"Bearer "+token};
+ const [planRes,sumRes]=await Promise.all([fetch("/api/study-plan?course="+encodeURIComponent(course),{headers}),fetch("/api/course-progress/summary?course="+encodeURIComponent(course),{headers})]);
+ const planData=await planRes.json().catch(()=>({})); const sumData=await sumRes.json().catch(()=>({}));
+ if(alive){if(planRes.ok&&planData.plan){const p=planData.plan;setForm({studyDays:(p.study_days||[]).join(", "),studyTime:p.study_time||"",sessionDuration:p.session_duration_minutes?String(p.session_duration_minutes):"",examDate:p.exam_date||"",examPlace:p.exam_place||"",objective:p.objective||""});}if(sumRes.ok)setSummary(sumData);if(!planRes.ok)setMessage(planData.error==="matriculation_required"?"No se ha encontrado una matrícula activa de esta asignatura.":"No se ha podido cargar el plan.");setLoading(false);}})();return()=>{alive=false}},[course]);
+ async function save(){setSaving(true);setMessage("");const duration=Number((form.sessionDuration.match(/\d+/)||["0"])[0]);if(!form.studyDays.trim()||!form.studyTime.trim()||!duration){setMessage("Fernando necesita al menos tus días de estudio, horario habitual y duración de las sesiones.");setSaving(false);return;}const {data}=await supabase.auth.getSession();const token=data.session?.access_token;if(!token){setMessage("Debes iniciar sesión.");setSaving(false);return;}const response=await fetch("/api/study-plan",{method:"POST",headers:{"Content-Type":"application/json",Authorization:"Bearer "+token},body:JSON.stringify({courseSlug:course,...form,sessionDurationMinutes:duration})});const result=await response.json().catch(()=>({}));setMessage(response.ok?"Plan guardado. Fernando utilizará estos datos junto con tus resultados para ajustar el seguimiento.":result.error==="matriculation_required"?"No se ha encontrado una matrícula activa.":"No se ha podido guardar el plan.");setSaving(false);}
+ const meta=COURSES[course];
+ return <main style={{minHeight:"100vh",background:"#f6f9fd",padding:"32px 22px",color:"#102447"}}><section style={{maxWidth:1050,margin:"0 auto"}}><Link href={meta.back} style={{color:"#155eef",fontWeight:700,textDecoration:"none"}}>← Volver al aula</Link>
+ <div style={{marginTop:16,background:"#fff",border:"1px solid #dbe5f3",borderRadius:18,padding:26,boxShadow:"0 8px 28px rgba(15,49,92,.06)"}}><span style={{fontSize:11,fontWeight:900,letterSpacing:".08em",color:"#cc8300"}}>FERNANDO · TUTOR IA</span><h1 style={{margin:"8px 0 5px",fontSize:31,color:"#102d62"}}>Tu plan de estudio</h1><p style={{margin:"0 0 20px",color:"#607089"}}>{meta.title}</p>
+ {loading?<p>Cargando tu planificación…</p>:<><p style={{color:"#425f7d",lineHeight:1.55}}>Para organizar tu estudio, Fernando necesita estas respuestas. Puedes modificarlas cuando cambie tu disponibilidad o tu objetivo.</p><div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(240px,1fr))",gap:14}}>
+ <Field label="1. ¿Qué días puedes estudiar?" value={form.studyDays} onChange={v=>setForm({...form,studyDays:v})} placeholder="Lunes, miércoles y viernes"/>
+ <Field label="2. ¿A qué hora sueles estudiar?" value={form.studyTime} onChange={v=>setForm({...form,studyTime:v})} placeholder="18:00"/>
+ <Field label="3. ¿Cuánto dura cada sesión?" value={form.sessionDuration} onChange={v=>setForm({...form,sessionDuration:v})} placeholder="90 minutos"/>
+ <Field label="4. ¿Cuándo es tu examen o PAU?" value={form.examDate} onChange={v=>setForm({...form,examDate:v})} type="date"/>
+ <Field label="5. ¿Dónde será el examen, si lo sabes?" value={form.examPlace} onChange={v=>setForm({...form,examPlace:v})} placeholder="Opcional"/>
+ <Field label="6. ¿Qué objetivo quieres conseguir?" value={form.objective} onChange={v=>setForm({...form,objective:v})} placeholder="Ej.: llegar con seguridad a la PAU y sacar un 8"/>
+ </div><button type="button" onClick={save} disabled={saving} style={{marginTop:16,border:0,borderRadius:9,background:"#155eef",color:"#fff",padding:"11px 16px",fontWeight:800,cursor:"pointer"}}>{saving?"Guardando…":"Crear / actualizar mi plan"}</button>{message?<p style={{marginTop:12,padding:11,borderRadius:9,background:"#eef5ff",color:"#214f82",fontWeight:700}}>{message}</p>:null}</>}
+ </div>
+ <div style={{marginTop:18,background:"#fff",border:"1px solid #dbe5f3",borderRadius:18,padding:24}}><h2 style={{marginTop:0,color:"#102d62"}}>Progreso que Fernando puede utilizar</h2>{summary?<><div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(160px,1fr))",gap:12}}><Metric label="Entregas" value={String(summary.assessments)}/><Metric label="Resultados valorados" value={String(summary.scored)}/><Metric label="Media orientativa" value={summary.average==null?"Sin datos":summary.average+"%"}/><Metric label="Eventos registrados" value={String(summary.events)}/></div>{summary.breakdown.length?<div style={{marginTop:16}}>{summary.breakdown.map(item=><div key={item.type} style={{display:"flex",justifyContent:"space-between",gap:12,padding:"8px 0",borderBottom:"1px solid #edf1f5"}}><span>{item.type}</span><strong>{item.attempts} intento(s){item.average==null?"":" · "+item.average+"%"}</strong></div>)}</div>:<p style={{color:"#607089"}}>Todavía no hay actividades entregadas en esta asignatura.</p>}</>:<p style={{color:"#607089"}}>Todavía no hay datos de progreso registrados.</p>}</div>
+ </section></main>;
 }
-
-function Card({ title, value }: { title: string; value: string }) {
-  return (
-    <article style={{ border: "1px solid #e1e8f1", borderRadius: 12, padding: 16, background: "#fbfdff" }}>
-      <strong style={{ display: "block", fontSize: 12, color: "#526d89", marginBottom: 7 }}>{title}</strong>
-      <span style={{ fontSize: 16, fontWeight: 700, color: "#123766" }}>{value}</span>
-    </article>
-  );
-}
+function Field({label,value,onChange,placeholder="",type="text"}:{label:string;value:string;onChange:(v:string)=>void;placeholder?:string;type?:string}){return <label style={{display:"block"}}><span style={{display:"block",fontSize:12,fontWeight:800,color:"#173f70",marginBottom:6}}>{label}</span><input type={type} value={value} onChange={e=>onChange(e.target.value)} placeholder={placeholder} style={{width:"100%",boxSizing:"border-box",border:"1px solid #c8d7e7",borderRadius:9,padding:"10px 11px",font:"inherit",color:"#173f70"}}/></label>}
+function Metric({label,value}:{label:string;value:string}){return <article style={{border:"1px solid #e1e8f1",borderRadius:11,padding:14,background:"#fbfdff"}}><small style={{display:"block",color:"#607089",fontWeight:800}}>{label}</small><strong style={{display:"block",marginTop:5,fontSize:21,color:"#123766"}}>{value}</strong></article>}

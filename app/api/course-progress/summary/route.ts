@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabase } from "@/lib/supabase/server";
 
-const ALLOWED_COURSES = new Set(["matematicas-aplicadas-ccss","matematicas-ii","historia-espana","filosofia"]);
+const ALLOWED_COURSES = new Set(["matematicas-aplicadas-ccss","matematicas-ii","historia-espana","historia-filosofia"]);
 
 export async function GET(req:NextRequest){
   const courseSlug=String(req.nextUrl.searchParams.get("course")||"");

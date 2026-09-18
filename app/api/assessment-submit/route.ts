@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getSupabase } from "@/lib/supabase/server";
 import { isCourseAdministrator } from "@/lib/course-access";
 
-const ALLOWED_COURSES = new Set(["matematicas-aplicadas-ccss","matematicas-ii","historia-espana","filosofia"]);
+const ALLOWED_COURSES = new Set(["matematicas-aplicadas-ccss","matematicas-ii","historia-espana","historia-filosofia"]);
 
 async function context(req: NextRequest, courseSlug: string) {
   const token=req.headers.get("authorization")?.replace(/^Bearer\s+/i,"");
