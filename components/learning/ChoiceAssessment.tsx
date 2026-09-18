@@ -1,0 +1,11 @@
+"use client";
+import { useState } from "react";
+import { submitAssessment } from "@/lib/learning-progress-client";
+
+type Option={value:string;label:string};
+type Props={courseSlug:string;contentId:string;activityType:string;prompt:string;options:Option[];correctAnswer:string;feedback?:string;recovery?:string;unit?:string;group?:string};
+export default function ChoiceAssessment({courseSlug,contentId,activityType,prompt,options,correctAnswer,feedback="",recovery="",unit="",group=""}:Props){
+ const [selected,setSelected]=useState(""); const [sending,setSending]=useState(false); const [result,setResult]=useState<{score:number|null;feedback:string}|null>(null); const [error,setError]=useState("");
+ async function submit(){if(!selected||sending)return;setSending(true);setError("");const ok=selected.trim().toUpperCase()===correctAnswer.trim().toUpperCase();try{const data=await submitAssessment({courseSlug,contentId,activityType,prompt,answer:selected,correct:ok,feedback:ok?(feedback||"Respuesta correcta."):(recovery||"Revisa la respuesta y vuelve a intentarlo."),unit,group});setResult({score:data.score,feedback:data.feedback});}catch{setError("No se ha podido guardar el intento.");}finally{setSending(false);}}
+ return <div><div style={{display:"grid",gap:8,marginTop:10}}>{options.map(o=><button type="button" key={o.value} disabled={Boolean(result)} onClick={()=>setSelected(o.value)} style={{textAlign:"left",border:"1px solid "+(selected===o.value?"#176fd6":"#d6e0ea"),background:selected===o.value?"#eef6ff":"#fff",borderRadius:9,padding:"10px 12px",cursor:"pointer",color:"#173f70"}}><b>{o.value}</b> {o.label}</button>)}</div>{!result?<button type="button" onClick={submit} disabled={!selected||sending} style={{marginTop:10,border:"1px solid #176fd6",background:"#176fd6",color:"#fff",borderRadius:9,padding:"9px 14px",fontWeight:800,cursor:"pointer",opacity:!selected||sending?.55:1}}>{sending?"Guardando…":"Entregar respuesta"}</button>:null}{error?<p style={{color:"#9f1239",fontWeight:700,fontSize:13}}>{error}</p>:null}{result?<div style={{marginTop:10,padding:11,borderRadius:9,background:result.score===100?"#ecfdf5":"#fff7ed",color:result.score===100?"#166534":"#9a3412"}}><strong>{result.score===100?"Correcto.":"Necesita revisión."}</strong><p style={{margin:"5px 0 0"}}>{result.feedback}</p></div>:null}</div>;
+}
