@@ -1,9 +1,5 @@
-import {
-  temasHistoria,
-  BLOQUES_HISTORIA,
-  IMAGENES_BLOQUES,
-  TEXTOS_BLOQUES,
-} from "@/lib/temas";
+import { temasHistoria, BLOQUES_HISTORIA } from "@/lib/temas";
+import { getExamSourceCatalog, publicExamSource } from "./sourceCatalog";
 import { getShortQuestionsByTopic } from "./getShortQuestions";
 import { getShortFileSlug } from "./getShortFileSlug";
 import { pickRandomItems, pickRandomOne } from "./pickRandom";
@@ -122,33 +118,8 @@ export async function generateBlockExam({
 
   const development = shuffledDevelopment[0];
 
-  const images =
-    IMAGENES_BLOQUES[blockId] ||
-    IMAGENES_BLOQUES[block.id] ||
-    [];
-  const texts =
-    TEXTOS_BLOQUES[blockId] ||
-    TEXTOS_BLOQUES[block.id] ||
-    [];
-
-  const allSources = [
-    ...images.map((img: any) => ({
-      source_type: "image" as const,
-      title: img.titulo,
-      description: img.descripcion,
-      content: null,
-      asset_url: img.imagen,
-      explicacion: img.explicacion,
-    })),
-    ...texts.map((txt: any) => ({
-      source_type: "text" as const,
-      title: txt.titulo,
-      description: txt.descripcion,
-      content: txt.texto,
-      asset_url: null,
-      explicacion: txt.explicacion,
-    })),
-  ];
+  const normalizedBlockId=block.id.replace("_","-");
+  const allSources=getExamSourceCatalog().filter(source=>source.sourceId.startsWith(normalizedBlockId+":"));
 
   if (!allSources.length) {
     throw new Error("No se encontró ninguna fuente para este bloque");
@@ -161,7 +132,7 @@ export async function generateBlockExam({
     blockId: block.id,
     selectedTopicSlugs: blockTopics,
     shortQuestions,
-    source,
+    source: publicExamSource(source),
     development: {
       slug: development.slug,
       titulo: development.titulo,

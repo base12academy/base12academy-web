@@ -4,6 +4,7 @@ import { getShortQuestionsByTopic } from "@/lib/exams/getShortQuestions";
 import { gradeShorts } from "@/lib/exams/gradeShorts";
 import { gradeDevelopment } from "@/lib/exams/gradeDevelopment";
 import { temasHistoria } from "@/lib/temas";
+import { getExamSourceById } from "@/lib/exams/sourceCatalog";
 
 export async function POST(req: Request) {
   try {
@@ -22,7 +23,7 @@ export async function POST(req: Request) {
     const topicSlug = body.topicSlug || "tema-3";
     const shortAnswers = body.shortAnswers || {};
     const sourceAnswer = body.sourceAnswer || "";
-    const sourceExpectedContent = body.sourceExpectedContent || "";
+    const sourceId = String(body.sourceId || "");
     const developmentAnswer = body.developmentAnswer || "";
 
     const tema = temasHistoria.find((t: any) => t.slug === topicSlug);
@@ -41,7 +42,10 @@ export async function POST(req: Request) {
 
     const sourceWordCount = sourceAnswer.split(" ").filter(Boolean).length;
 
-const sourceScore = sourceWordCount >= 20 && sourceExpectedContent ? 4 : 0;
+const canonicalSource=getExamSourceById(sourceId);
+if(!canonicalSource)return NextResponse.json({error:"Fuente no válida"},{status:400});
+const sourceGrade=gradeDevelopment(sourceAnswer,canonicalSource.explanation);
+const sourceScore=sourceWordCount>=20?Number(Math.min(4,(sourceGrade.score/3)*4).toFixed(2)):0;
 
 const sourceResult = {
   score: sourceScore,
@@ -74,7 +78,7 @@ const sourceResult = {
           topicSlug,
 shortAnswers,
 sourceAnswer,
-sourceExpectedContent,
+sourceId,
 developmentAnswer,
         }),
         score: total,

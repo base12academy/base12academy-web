@@ -279,7 +279,7 @@ export default function BlockExamPage() {
           topicSlug: exam.development.slug,
           shortAnswers,
           sourceAnswer,
-          sourceExpectedContent: exam.source.explicacion || "",
+          sourceId: exam.source.sourceId,
           developmentAnswer,
         }),
       });

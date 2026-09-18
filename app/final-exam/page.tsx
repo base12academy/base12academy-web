@@ -339,7 +339,7 @@ if (selectedTopicSlugs.length === 0) {
           topicSlug: exam.development?.slug,
           shortAnswers,
           sourceAnswer,
-          sourceExpectedContent: exam.source?.explicacion || "",
+          sourceId: exam.source?.sourceId || "",
           developmentAnswer,
         }),
       });
