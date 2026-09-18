@@ -20,6 +20,8 @@ const sections: { id: Section; label: string; icon: string }[] = [
 ];
 
 export default function HistoriaEspanaPage() {
+  const [rocioChatOpen,setRocioChatOpen]=useState(false);
+  const [fernandoChatOpen,setFernandoChatOpen]=useState(false);
   const [section, setSection] = useState<Section>("inicio");
   const [search, setSearch] = useState("");
   const query = search.trim().toLocaleLowerCase("es");
@@ -58,6 +60,8 @@ export default function HistoriaEspanaPage() {
 
       <main className={styles.main}>{section === "inicio" ? <HistoryHome featured={featured} onOpen={setSection} /> : <SectionView section={section} search={search} setSearch={setSearch} cards={cards} />}</main>
       <HistoryRightRail onRocio={()=>setRocioChatOpen(true)} onFernando={()=>setFernandoChatOpen(true)} />
+      <CourseAssistantChat entryPoint="rocio" courseSlug="historia-espana" contextTitle={"Historia de España · Tema "+featured.number+" · "+featured.title} open={rocioChatOpen} onClose={()=>setRocioChatOpen(false)}/>
+      <CourseAssistantChat entryPoint="fernando" courseSlug="historia-espana" contextTitle={"Historia de España · Tema "+featured.number+" · "+featured.title} open={fernandoChatOpen} onClose={()=>setFernandoChatOpen(false)}/>
     </div>
   </div>;
 }
