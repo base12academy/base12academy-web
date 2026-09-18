@@ -40,6 +40,7 @@ export default function ComprarPage({ params }: Props) {
   }, [params]);
 
   const course = courses[courseSlug];
+  const isMatematicasAplicadas = course.courseSlug === "matematicas-aplicadas-ccss";
 
   const handlePago = async () => {
     if (!userId) {
@@ -206,8 +207,9 @@ export default function ComprarPage({ params }: Props) {
               marginBottom: "24px",
             }}
           >
-            Temario estructurado, índices de estudio, pruebas por tema,
-            imágenes, textos históricos y preparación enfocada a PAU.
+            {isMatematicasAplicadas
+              ? "44 explicaciones operativas, vídeos paso a paso, práctica, comprobaciones y entrenamiento PAU según la modalidad contratada."
+              : "Temario estructurado, índices de estudio, pruebas por tema, imágenes, textos históricos y preparación enfocada a PAU."}
           </p>
 
           <div
@@ -239,11 +241,23 @@ export default function ComprarPage({ params }: Props) {
             </p>
 
             <div style={{ display: "grid", gap: "10px" }}>
-              <p>✅ Acceso al contenido completo de los temas</p>
-              <p>✅ Índices y estructura de estudio</p>
-              <p>✅ Tests y pruebas por tema</p>
-              <p>✅ Imágenes y textos históricos por bloques</p>
-              <p>✅ Preparación orientada a examen</p>
+              {isMatematicasAplicadas ? (
+                <>
+                  <p>✅ 44 explicaciones construidas desde problemas y procedimientos</p>
+                  <p>✅ Vídeos y ejemplos paso a paso</p>
+                  <p>✅ Preguntas de Rocío y comprobaciones por explicación</p>
+                  <p>✅ Glosario operativo</p>
+                  <p>✅ Banco y simulacros PAU según la modalidad contratada</p>
+                </>
+              ) : (
+                <>
+                  <p>✅ Acceso al contenido completo de los temas</p>
+                  <p>✅ Índices y estructura de estudio</p>
+                  <p>✅ Tests y pruebas por tema</p>
+                  <p>✅ Imágenes y textos históricos por bloques</p>
+                  <p>✅ Preparación orientada a examen</p>
+                </>
+              )}
             </div>
           </div>
 
@@ -261,8 +275,9 @@ export default function ComprarPage({ params }: Props) {
             </p>
 
             <p style={{ lineHeight: "1.7" }}>
-              Quedan pocas semanas para la PAU. Este acceso está pensado
-              para aprovechar al máximo el tramo final de preparación.
+              {isMatematicasAplicadas
+                ? "Base12 no añade un segundo temario: refuerza lo que ya trabajas en tu centro y te entrena para resolver los ejercicios que determinan tu nota."
+                : "Quedan pocas semanas para la PAU. Este acceso está pensado para aprovechar al máximo el tramo final de preparación."}
             </p>
           </div>
 
