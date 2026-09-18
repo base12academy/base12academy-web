@@ -32,9 +32,9 @@ const subjects = [
   },
   {
     title: "Matemáticas Aplicadas",
-    description: "Preparación orientada a economía, ciencias sociales, interpretación de datos y ejercicios tipo PAU.",
-    status: "Próximamente",
-    href: "#",
+    description: "44 explicaciones operativas para comprender y entrenar los problemas y procedimientos que el alumno ya trabaja en su centro, con preparación PAU.",
+    status: "Disponible",
+    href: "/bachillerato-pau/matematicas-aplicadas-ccss",
     video: "/videos/presentacion-matematicas.mp4",
   },
   {
