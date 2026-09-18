@@ -117,7 +117,7 @@ function TrainingGiftContent() {
         <div className={styles.visual}>
           <Image
             className={styles.appIcon}
-            src="/images/training/base12-training-logo.png"
+            src="/images/banco-opositores/logo-base12-training.png"
             alt="Base12 Training"
             width={260}
             height={260}

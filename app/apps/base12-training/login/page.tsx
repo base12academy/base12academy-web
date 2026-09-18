@@ -27,7 +27,7 @@ export default function TrainingLoginPage() {
     <main style={{ minHeight: "100vh", display: "grid", placeItems: "center", background: "#eef9f1", padding: 24 }}>
       <section style={{ width: "100%", maxWidth: 420, background: "#fff", border: "1px solid #d7e8dd", borderRadius: 20, padding: 32, boxShadow: "0 16px 44px rgba(23,107,69,.12)" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 22 }}>
-          <Image src="/images/training/base12-training-logo.png" alt="Base12 Training" width={110} height={125} style={{ objectFit: "contain" }} priority />
+          <Image src="/images/banco-opositores/logo-base12-training.png" alt="Base12 Training" width={110} height={125} style={{ objectFit: "contain" }} priority />
           <div><h1 style={{ margin: 0, fontSize: 26, color: "#143c2c" }}>Base12 Training</h1><p style={{ margin: "4px 0 0", color: "#557066" }}>Acceso a tu licencia</p></div>
         </div>
         <p style={{ color: "#4b635b", lineHeight: 1.55 }}>Inicia sesión con el correo al que está vinculada tu licencia de Training.</p>

@@ -118,7 +118,7 @@ export default function TrainingApp({ testSlug }: { testSlug?: string }) {
 }
 
 function TrainingFrame({ children }: { children: React.ReactNode }) {
-  return <div className={styles.page}><header className={styles.header}><div className={styles.headerInner}><Link href="/apps/base12-training" className={styles.brand}><Image src="/images/training/base12-training-logo.png" alt="Base12 Training" width={140} height={159} priority /><span>Base12 Training</span></Link><nav className={styles.nav}><Link href="/apps/base12-training">Inicio</Link><Link href="/apps/base12-training#pruebas">Pruebas</Link><Link href="/dashboard/facturas">Mi cuenta</Link></nav></div></header>{children}</div>;
+  return <div className={styles.page}><header className={styles.header}><div className={styles.headerInner}><Link href="/apps/base12-training" className={styles.brand}><Image src="/images/banco-opositores/logo-base12-training.png" alt="Base12 Training" width={140} height={159} priority /><span>Base12 Training</span></Link><nav className={styles.nav}><Link href="/apps/base12-training">Inicio</Link><Link href="/apps/base12-training#pruebas">Pruebas</Link><Link href="/dashboard/facturas">Mi cuenta</Link></nav></div></header>{children}</div>;
 }
 
 function TrainingDashboard({ sex, results }: { sex: TrainingSex; results: ResultRow[] }) {

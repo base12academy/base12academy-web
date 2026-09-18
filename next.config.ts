@@ -48,17 +48,17 @@ const nextConfig: NextConfig = {
         {
           source: "/icons/base12-192.png",
           has: trainingHost,
-          destination: "/images/training/base12-training-192.png",
+          destination: "/apps/base12-training/pwa-icon-192-v13.png",
         },
         {
           source: "/icons/base12-512.png",
           has: trainingHost,
-          destination: "/apps/base12-training/icon-512.png",
+          destination: "/apps/base12-training/pwa-icon-512-v13.png",
         },
         {
           source: "/icons/apple-touch-icon.png",
           has: trainingHost,
-          destination: "/images/training/base12-training-180.png",
+          destination: "/apps/base12-training/pwa-icon-192-v13.png",
         },
       ],
       afterFiles: [],
