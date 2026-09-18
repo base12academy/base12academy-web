@@ -11,7 +11,7 @@ export async function GET(req:NextRequest){
  if(error||!data.user)return NextResponse.json({error:"authentication_required"},{status:401});
  if(!isCourseAdministrator(data.user.email)){
   const now=new Date().toISOString();
-  const {data:enrollments,error:enrollmentError}=await supabase.from("course_enrollments").select("plan_slug,expires_at").eq("user_id",data.user.id).eq("course_slug","matematicas-aplicadas-ccss").eq("status","active").lte("starts_at",now);
+  const {data:enrollments,error:enrollmentError}=await supabase.from("course_enrollments").select("plan_slug,expires_at").eq("user_id",data.user.id).eq("course_slug","matematicas-aplicadas-ccss").in("status",["active","pending"]).lte("starts_at",now);
   if(enrollmentError)return NextResponse.json({error:"access_check_failed"},{status:500});
   const plans=(enrollments||[]).filter(i=>!i.expires_at||i.expires_at>=now).map(i=>i.plan_slug);
   const entitlement=getMatematicasAplicadasEntitlement(plans);

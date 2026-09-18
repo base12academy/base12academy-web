@@ -18,7 +18,9 @@ export default function DashboardLayout({
   const isTropa = pathname.startsWith("/dashboard/tropa-y-marineria");
   const isTraining = pathname.startsWith("/dashboard/base12-training");
   const isFilosofia = pathname.startsWith("/dashboard/filosofia");
-  const fullWidthCourse = isOfimatica || isTropa || isTraining || isFilosofia || isHistoria;
+  const isMatematicasII = pathname.startsWith("/dashboard/matematicas-ii");
+  const isMatematicasAplicadas = pathname.startsWith("/dashboard/matematicas-aplicadas-ccss");
+  const fullWidthCourse = isOfimatica || isTropa || isTraining || isFilosofia || isHistoria || isMatematicasII || isMatematicasAplicadas;
 
   const linkStyle = (path: string) => ({
     color: pathname === path ? "white" : "#9ca3af",

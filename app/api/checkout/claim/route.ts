@@ -1776,6 +1776,8 @@ export async function POST(request: NextRequest) {
               "administrativo-ja": "Administrativo de la Junta de Andalucía",
               "auxiliar-administrativo-ja": "Auxiliar Administrativo de la Junta de Andalucía",
               "tabla-periodica": "Tabla Periódica Interactiva",
+              "matematicas-ii": "Matemáticas II",
+              "matematicas-aplicadas-ccss": "Matemáticas Aplicadas a las Ciencias Sociales II",
             } as Record<string, string>)[checkout.course_slug] || courses[checkout.catalog_slug as keyof typeof courses]?.title || checkout.course_slug,
             planSlug: checkout.plan_slug,
             amountCents:
