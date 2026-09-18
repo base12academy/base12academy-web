@@ -40,6 +40,7 @@ export default function MatematicasAplicadasPage(){
   const [checking,setChecking]=useState(true);
   const [video,setVideo]=useState<VideoState>({embedUrl:"",url:""});
   const [videoLoading,setVideoLoading]=useState(false);
+  const [videoOpen,setVideoOpen]=useState(false);
   const [resource,setResource]=useState<"rocio"|"short"|"problems"|"profiles"|"simulation"|"glossary"|null>(null);
   const [resourceData,setResourceData]=useState<ResourcePayload|null>(null);
   const [resourceLoading,setResourceLoading]=useState(false);
@@ -92,7 +93,9 @@ export default function MatematicasAplicadasPage(){
   }
 
   const scrollTo=(id:string)=>document.getElementById(id)?.scrollIntoView({behavior:"smooth",block:"start"});
-  const openVideo=()=>{if(video.url) window.open(video.url,"_blank","noopener,noreferrer");};
+  const openVideo=()=>{if(canOpen)setVideoOpen(true);};
+  const closeVideo=()=>setVideoOpen(false);
+  const embedWithPreferences=video.embedUrl?video.embedUrl+(video.embedUrl.includes("?")?"&":"?")+"rel=0&modestbranding=1&playsinline=1":"";
 
   return <div className={styles.page}>
     <header className={styles.topbar}>
@@ -173,8 +176,8 @@ export default function MatematicasAplicadasPage(){
           <button onClick={()=>scrollTo("inicio")} className={styles.primaryCard}>
             <span className={styles.cardIcon}>▤</span><strong>1. EXPLICACIÓN</strong><small>Desarrollo completo de la explicación</small><b>Leer explicación →</b>
           </button>
-          <button onClick={openVideo} className={styles.videoCard} disabled={!video.url || videoLoading}>
-            <span className={styles.cardIcon}>▶</span><strong>2. VÍDEO DE APOYO</strong><small>Vídeo de la explicación en YouTube</small><b>{videoLoading?"Cargando…":"Ver vídeo →"}</b>
+          <button onClick={openVideo} className={styles.videoCard} disabled={!canOpen}>
+            <span className={styles.cardIcon}>▶</span><strong>2. VÍDEO DE APOYO</strong><small>Reproduce el vídeo sin salir de Base12</small><b>{videoLoading?"Cargando…":"Ver vídeo →"}</b>
           </button>
           <button onClick={()=>openResource("glossary")} className={styles.glossaryCard}>
             <span className={styles.cardIcon}>Aᶻ</span><strong>3. GLOSARIO</strong><small>Términos y conceptos clave</small><b>Abrir glosario →</b>
@@ -212,6 +215,47 @@ export default function MatematicasAplicadasPage(){
           {resourceLoading?<p>Cargando…</p>:resourceError?<p className={styles.error}>{resourceError}</p>:resourceData?.type==="rocio"?<RocioPanel items={resourceData.items}/>:resourceData?.type==="short"?<ShortPanel items={resourceData.items}/>:resourceData?.type==="problems"?<ProblemsPanel items={resourceData.items}/>:resourceData?.type==="profiles"?<ProfilesPanel items={resourceData.items} onSimulation={(code)=>openResource("simulation",code)}/>:resourceData?.type==="simulation"?<SimulationPanel simulation={resourceData.simulation}/>:resourceData?.type==="glossary"?<GlossaryPanel count={resourceData.count} sections={resourceData.sections}/>:null}
         </section>:null}
       </main>
+
+
+      {videoOpen?<div className={styles.videoModalBackdrop} role="presentation" onMouseDown={closeVideo}>
+        <section className={styles.videoModal} role="dialog" aria-modal="true" aria-label="Vídeo de apoyo" onMouseDown={e=>e.stopPropagation()}>
+          <header className={styles.videoModalHeader}>
+            <div>
+              <span>VÍDEO DE APOYO · EXPLICACIÓN {selected.order} DE 44</span>
+              <h2>{selected.title}</h2>
+            </div>
+            <button type="button" onClick={closeVideo} aria-label="Cerrar vídeo">×</button>
+          </header>
+          <div className={styles.videoModalBody}>
+            <div className={styles.videoPlayerArea}>
+              <div className={styles.videoPlayer}>
+                {videoLoading?<p>Cargando vídeo…</p>:embedWithPreferences?<iframe src={embedWithPreferences} title={selected.id+" · "+selected.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen/>:<p>No se ha podido cargar el vídeo.</p>}
+              </div>
+              <div className={styles.videoNav}>
+                <button type="button" disabled={selected.order===1} onClick={()=>setSelectedId("T"+String(selected.order-1).padStart(2,"0"))}>← Anterior</button>
+                <span>{selected.id} · {selected.order} / 44</span>
+                <button type="button" disabled={selected.order===44} onClick={()=>setSelectedId("T"+String(selected.order+1).padStart(2,"0"))}>Siguiente →</button>
+              </div>
+            </div>
+            <aside className={styles.courseVideos}>
+              <div className={styles.courseVideosHeading}>
+                <strong>Otros vídeos de Matemáticas Aplicadas</strong>
+                <span>44 explicaciones Base12</span>
+              </div>
+              <div className={styles.courseVideosList}>
+                {MATEMATICAS_APLICADAS_UNITS.map(unit=>{
+                  const locked=!access.administrator&&!access.hasCourse&&unit.id!==access.previewUnit;
+                  return <button type="button" key={unit.id} disabled={locked} className={selected.id===unit.id?styles.activeCourseVideo:""} onClick={()=>setSelectedId(unit.id)}>
+                    <span>{unit.order}</span>
+                    <div><strong>{unit.id}</strong><small>{unit.title}</small></div>
+                    <b>{locked?"◇":"▶"}</b>
+                  </button>
+                })}
+              </div>
+            </aside>
+          </div>
+        </section>
+      </div>:null}
 
       <aside className={styles.rightbar}>
         <section className={styles.assistant}>
