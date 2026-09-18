@@ -97,6 +97,50 @@ const allCourses: Course[] = [
 ];
 
 function plansFor(course: Course): Plan[] {
+  if (course.name === "Matemáticas Aplicadas a las CCSS") {
+    return [
+      {
+        name: "Esencial",
+        price: "249 €",
+        detail: "Bachillerato · explicación y entrenamiento",
+        includes: [
+          "44 explicaciones construidas desde problemas y procedimientos",
+          "44 vídeos explicativos paso a paso",
+          "Preguntas de Rocío y comprobaciones por explicación",
+          "Glosario operativo",
+          "Apoyo Inteligente con Rocío y Fernando",
+          "Sin entrenamiento específico PAU",
+        ],
+      },
+      {
+        name: "Estándar",
+        price: "299 €",
+        detail: "Bachillerato + entrenamiento PAU",
+        includes: [
+          "Todo lo incluido en Esencial",
+          "Banco PAU con problemas y soluciones",
+          "Simulacros por comunidad autónoma",
+          "Perfiles PAU territoriales",
+          "Entrenamiento específico para la prueba",
+          "Apoyo Inteligente con Rocío y Fernando",
+        ],
+      },
+      {
+        name: "PAU",
+        price: "199 €",
+        detail: "Entrenamiento específico PAU",
+        includes: [
+          "Banco PAU con problemas y soluciones",
+          "Simulacros por comunidad autónoma",
+          "Perfiles PAU territoriales",
+          "Práctica de procedimientos y decisiones de examen",
+          "Apoyo Inteligente",
+          "Sin añadir un temario paralelo",
+        ],
+      },
+    ];
+  }
+
   if (course.family === "Bachillerato y PAU") {
     const plans = [
       { name: "Esencial", price: "249 €", detail: "Comprende y domina 2.º de Bachillerato", includes: ["Curso completo y temario estructurado", "Vídeos explicativos y texto de cada contenido", "Pruebas tipo test", "Banco de textos, imágenes y recursos", "Asistente virtual de apoyo", "Sin entrenamiento específico PAU"] },
@@ -373,6 +417,8 @@ export default function CourseCatalog() {
       "clases-online-solicitud": "Solicitud de clases · Otras asignaturas",
       "historia-espana": "Historia de España",
       "historia-filosofia": "Historia de la Filosofía",
+      "matematicas-ii": "Matemáticas II",
+      "matematicas-aplicadas-ccss": "Matemáticas Aplicadas a las CCSS",
       quimica: "Química",
     };
     const requestedName = requestedNames[requested] ?? "";
@@ -470,7 +516,12 @@ export default function CourseCatalog() {
       course.name !== "Solicitud de clases · Otras asignaturas";
     const purchasableBachillerato =
       course.family === "Bachillerato y PAU" &&
-      (course.name === "Historia de España" || course.name === "Historia de la Filosofía");
+      (
+        course.name === "Historia de España" ||
+        course.name === "Historia de la Filosofía" ||
+        course.name === "Matemáticas II" ||
+        course.name === "Matemáticas Aplicadas a las CCSS"
+      );
 
     if (
       course.name !== "Competencias y Productividad Digital, Ofimática e IA" &&
@@ -500,7 +551,11 @@ export default function CourseCatalog() {
       ? "historia-espana"
       : course.name === "Historia de la Filosofía"
         ? "historia-filosofia"
-        : "";
+        : course.name === "Matemáticas II"
+          ? "matematicas-ii"
+          : course.name === "Matemáticas Aplicadas a las CCSS"
+            ? "matematicas-aplicadas-ccss"
+            : "";
     const bachilleratoPlan = ({ Esencial: "esencial", "Estándar": "estandar", Premium: "premium", PAU: "pau" } as Record<string, string>)[plan.name];
 
     const classHours =
@@ -1039,7 +1094,7 @@ export default function CourseCatalog() {
                   ? <b>Precio tras confirmar disponibilidad</b>
                   : <>Total <b>{plan.price}</b></>}
               </span>
-              {(course.name === "Competencias y Productividad Digital, Ofimática e IA" || course.name === "Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo de la Junta de Andalucía" || course.name === "Historia de España" || course.name === "Historia de la Filosofía" || (course.family === "Clases Online" && course.name !== "Solicitud de clases · Otras asignaturas")) ? (
+              {(course.name === "Competencias y Productividad Digital, Ofimática e IA" || course.name === "Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo de la Junta de Andalucía" || purchasableBachillerato || (course.family === "Clases Online" && course.name !== "Solicitud de clases · Otras asignaturas")) ? (
                 <button
                   type="button"
                   onClick={checkout}
@@ -1063,7 +1118,9 @@ export default function CourseCatalog() {
                         : "Selecciona primero una hora"
                       : course.name === "Historia de España" || course.name === "Historia de la Filosofía"
                         ? "Suscribirme"
-                        : "Continuar con la suscripción"}
+                        : course.name === "Matemáticas II" || course.name === "Matemáticas Aplicadas a las CCSS"
+                          ? "Continuar con el pago"
+                          : "Continuar con la suscripción"}
                 </button>
               ) : (
                 <button disabled>
