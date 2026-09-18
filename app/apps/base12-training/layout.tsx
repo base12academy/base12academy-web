@@ -11,7 +11,6 @@ export default function TrainingLayout({ children }: { children: ReactNode }) {
           object-position: center !important;
           clip-path: none !important;
           overflow: visible !important;
-          mix-blend-mode: multiply;
         }
         header img[alt="Base12 Training"] {
           width: 140px !important;

@@ -5,7 +5,7 @@ import { NextRequest } from "next/server";
 export const runtime = "edge";
 
 export function GET(request: NextRequest) {
-  const logo = new URL("/images/training/base12-training-192.png?v=11", request.nextUrl.origin).toString();
+  const logo = new URL("/images/training/base12-training-192.png?v=12", request.nextUrl.origin).toString();
   return new ImageResponse(
     React.createElement(
       "div",
