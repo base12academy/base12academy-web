@@ -405,6 +405,15 @@ export default function CourseCatalog() {
     [family, search],
   );
 
+  const purchasableBachillerato =
+    course?.family === "Bachillerato y PAU" &&
+    (
+      course.name === "Historia de España" ||
+      course.name === "Historia de la Filosofía" ||
+      course.name === "Matemáticas II" ||
+      course.name === "Matemáticas Aplicadas a las CCSS"
+    );
+
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const requested = params.get("curso") ?? "";
@@ -514,15 +523,6 @@ export default function CourseCatalog() {
     const purchasableClasses =
       course.family === "Clases Online" &&
       course.name !== "Solicitud de clases · Otras asignaturas";
-    const purchasableBachillerato =
-      course.family === "Bachillerato y PAU" &&
-      (
-        course.name === "Historia de España" ||
-        course.name === "Historia de la Filosofía" ||
-        course.name === "Matemáticas II" ||
-        course.name === "Matemáticas Aplicadas a las CCSS"
-      );
-
     if (
       course.name !== "Competencias y Productividad Digital, Ofimática e IA" &&
       !purchasableOpposition &&
