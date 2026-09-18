@@ -87,13 +87,14 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
     setMensaje("");
 
     try {
-      const res = await fetch("/api/lead-chat", {
+      const res = await fetch("/api/base12-assistant", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          mensaje: textoUsuario,
+          entryPoint: "commercial",
+          message: textoUsuario,
           comunidad,
         }),
       });
@@ -104,7 +105,7 @@ export default function LeadChatBot({ attention = false }: { attention?: boolean
         const copia = [...prev];
         copia[copia.length - 1] =
           "Asistente Base12: " +
-          (data.respuesta || "Ahora mismo no puedo responder.");
+          (data.answer || "Ahora mismo no puedo responder.");
         return copia;
       });
     } catch {
