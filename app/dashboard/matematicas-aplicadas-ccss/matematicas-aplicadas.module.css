@@ -13,3 +13,94 @@
   .explanationPicker{padding:12px}
   .unitList{max-height:300px}
 }
+
+/* Acabado visual aprobado · Matemáticas Aplicadas CCSS II */
+.page{background:#f6f9fd}
+.topbar{box-shadow:0 1px 0 rgba(20,62,112,.05)}
+.sidebar{background:linear-gradient(180deg,#f7fbff 0%,#eef6fd 100%)}
+.courseIdentity{background:#f7fbff}
+.courseIdentity h1{color:#0b2f6c}
+.progressTrack{background:#cbdced}
+.progressTrack span{background:#18b58d}
+.sideNav button{color:#123d7a}
+.sideNav button:hover,.sideNav .activeNav{background:linear-gradient(90deg,#d9ecff,#edf6ff);color:#0752ad;border-left-color:#1f79e0}
+.explanationPicker{background:#f7fbff;border-top:1px solid #dce8f3}
+.blockFilters button{background:#fff;box-shadow:0 1px 2px rgba(25,66,111,.04)}
+.blockFilters .filterActive{background:#196fd1;border-color:#196fd1}
+.unitList .activeUnit{background:#dcedff;box-shadow:inset 0 0 0 1px #c7e0fb}
+.unitList .activeUnit>span{background:#1972d5}
+
+.hero{border-color:#d3e0ed;box-shadow:0 12px 32px rgba(16,53,94,.09)}
+.heroCopy{background:linear-gradient(180deg,#ffffff,#fbfdff)}
+.eyebrow{background:#d9eafd;color:#0d5daf}
+.hero h2{color:#082d6a;letter-spacing:-.02em}
+.heroSubtitle{margin:0 0 8px;color:#174c91;font-size:18px;font-weight:750}
+.heroCopy>p{color:#284f7d}
+.hero blockquote{background:linear-gradient(90deg,#eaf5ff,#f4f9ff);border-left:4px solid #1d70cf;color:#16477f}
+
+.heroVisual{background:
+  radial-gradient(circle at 38% 18%,rgba(68,179,235,.28),transparent 35%),
+  linear-gradient(145deg,#0b426a 0%,#0a5c8b 52%,#073b60 100%);
+  isolation:isolate;
+}
+.heroGrid{position:absolute;left:30px;top:28px;width:285px;height:165px;opacity:.18;background:
+ linear-gradient(rgba(255,255,255,.55) 1px,transparent 1px),
+ linear-gradient(90deg,rgba(255,255,255,.55) 1px,transparent 1px);
+ background-size:36px 30px;border-radius:8px}
+.chart{z-index:2;left:54px;top:43px;width:230px;height:136px;border-color:rgba(255,255,255,.85)}
+.chart i{background:linear-gradient(180deg,#62c9ff,#2a85bd);box-shadow:0 0 16px rgba(107,208,255,.18)}
+.chart span{border-top-color:#ffffff;filter:drop-shadow(0 0 5px rgba(255,255,255,.28))}
+.heroWords{z-index:4;right:23px;top:28px;font-size:25px;text-shadow:0 2px 7px rgba(0,0,0,.18)}
+.heroDesk{position:absolute;z-index:1;left:0;right:0;bottom:0;height:77px;background:
+ linear-gradient(180deg,#c99a6f 0%,#a86f43 100%);
+ box-shadow:0 -10px 30px rgba(0,0,0,.12)}
+.heroCup{position:absolute;z-index:5;left:47%;bottom:18px;width:62px;height:68px;border-radius:7px 7px 13px 13px;background:#f6f3ea;box-shadow:0 8px 17px rgba(0,0,0,.23);display:grid;place-items:center}
+.heroCup:after{content:"";position:absolute;right:-17px;top:16px;width:22px;height:28px;border:6px solid #efe8da;border-left:0;border-radius:0 17px 17px 0}
+.heroCup img{width:44px;height:44px;object-fit:contain}
+.heroPencils{position:absolute;z-index:5;left:39%;bottom:43px;width:50px;height:80px}
+.heroPencils i{position:absolute;bottom:0;width:7px;height:72px;border-radius:6px;background:linear-gradient(#e9c36d 0 76%,#3b4651 77% 100%);transform-origin:bottom}
+.heroPencils i:nth-child(1){left:6px;transform:rotate(-12deg)}
+.heroPencils i:nth-child(2){left:18px;transform:rotate(-4deg)}
+.heroPencils i:nth-child(3){left:30px;transform:rotate(7deg)}
+.heroPencils i:nth-child(4){left:40px;transform:rotate(14deg)}
+.books{z-index:5;right:18px;bottom:11px;gap:3px}
+.books b{background:linear-gradient(90deg,#0c3d72,#155894);border-color:rgba(255,255,255,.3);box-shadow:0 3px 7px rgba(0,0,0,.16);padding:6px 15px;min-width:178px}
+
+.primaryResources{gap:9px}
+.primaryResources button{border-color:#d7e3ee;box-shadow:0 5px 15px rgba(25,59,100,.05);transition:transform .15s ease,box-shadow .15s ease}
+.primaryResources button:hover{transform:translateY(-2px);box-shadow:0 9px 22px rgba(25,59,100,.1)}
+.primaryCard{background:linear-gradient(180deg,#eef7ff,#e6f2ff);color:#0b4da4}
+.primaryCard b{background:#176fd6}
+.videoCard{background:linear-gradient(180deg,#f4edff,#eee5fb);color:#6730a6}
+.videoCard b{background:#6930a8}
+.glossaryCard{background:linear-gradient(180deg,#fff6de,#ffefc9);color:#9a5700}
+.glossaryCard b{background:#a85b00}
+.rocioCard{background:linear-gradient(180deg,#eefaf5,#e3f5ed);color:#075f55}
+.rocioCard b{background:#00685d}
+.miniAvatar{width:45px!important;height:45px!important;border-radius:50%;object-fit:cover;object-position:top;box-shadow:0 3px 9px rgba(0,0,0,.12)}
+.hierarchyNote{background:linear-gradient(90deg,#f7fbff,#eef7ff);border-color:#cbdff3}
+.hierarchyNote span{color:#0c58ad}
+
+.checksPanel{background:#fff;border-color:#d8e4ef}
+.trainingCards button{box-shadow:0 3px 11px rgba(20,55,95,.04);border:1px solid transparent}
+.trainingCards button:nth-child(1){background:#fff0f5;border-color:#f7dce7}
+.trainingCards button:nth-child(2){background:#ecf6ff;border-color:#d9eaf9}
+.trainingCards button:nth-child(3){background:#eaf8f2;border-color:#d9eee4}
+.trainingCards button:nth-child(4){background:#fff3df;border-color:#f3e1bf}
+.trainingCards button:nth-child(1) span{color:#b21b5a}
+.trainingCards button:nth-child(2) span{color:#0e63b8}
+.trainingCards button:nth-child(3) span{color:#0c7562}
+.trainingCards button:nth-child(4) span{color:#9a5700}
+.trainingCards b{font-weight:900}
+.spainIcon{width:36px;height:27px;border:2px solid currentColor;border-radius:45% 55% 50% 42%;display:grid!important;place-items:center;transform:rotate(-5deg);font-size:11px!important}
+
+.rightbar{background:linear-gradient(180deg,#fbfdff,#f5f9fd)}
+.assistant{box-shadow:0 6px 18px rgba(16,52,91,.05);border-color:#d5e2ee;padding:12px}
+.assistant img{width:98px;height:98px;border:5px solid #f4f8fc}
+.assistant h3{color:#082d6a;font-size:23px}
+.assistant strong{color:#0b56ac}
+.assistant p{font-size:11px;color:#355b83}
+.assistant button,.assistant a{border-width:1.5px;border-color:#176fd6;color:#0b59b6;background:#fff}
+.assistant button:hover,.assistant a:hover{background:#edf6ff}
+.objective{background:linear-gradient(90deg,#edf7ff,#e7f2fc);border:1px solid #d6e7f5}
+.objective>span{color:#0b5cb7}

@@ -152,15 +152,20 @@ export default function MatematicasAplicadasPage(){
           <div className={styles.heroCopy}>
             <span className={styles.eyebrow}>EXPLICACIÓN {selected.order} DE {MATEMATICAS_APLICADAS_STATS.explanations}</span>
             <h2>{selected.title}</h2>
+            <h3 className={styles.heroSubtitle}>{selected.block} · procedimiento y aplicación</h3>
             <p>Comprende el procedimiento, reconoce cuándo utilizarlo y entrénalo con ejercicios del mismo tipo que trabajas en tu centro.</p>
             <blockquote>Comprende qué te pide el ejercicio, decide el procedimiento y comprueba el resultado.</blockquote>
           </div>
           <div className={styles.heroVisual} aria-hidden="true">
+            <div className={styles.heroGrid}/>
             <div className={styles.chart}>
               <i/><i/><i/><i/><i/><i/><span/>
             </div>
             <div className={styles.heroWords}>Analiza<br/>Interpreta<br/>Decide<br/>Domina</div>
-            <div className={styles.books}><b>Estadística</b><b>Probabilidad</b><b>Funciones</b><b>Economía matemática</b></div>
+            <div className={styles.heroDesk}/>
+            <div className={styles.heroCup}><Image src="/images/base12-logo.png" alt="" width={60} height={60}/></div>
+            <div className={styles.heroPencils}><i/><i/><i/><i/></div>
+            <div className={styles.books}><b>Estadística</b><b>Probabilidad</b><b>Funciones</b><b>Aplicaciones a las CCSS</b></div>
           </div>
         </section>
 
@@ -175,7 +180,8 @@ export default function MatematicasAplicadasPage(){
             <span className={styles.cardIcon}>Aᶻ</span><strong>3. GLOSARIO</strong><small>Términos y conceptos clave</small><b>Abrir glosario →</b>
           </button>
           <button onClick={()=>openResource("rocio")} className={styles.rocioCard}>
-            <span className={styles.cardIcon}>R</span><strong>4. ROCÍO</strong><small>Comprueba que has entendido antes de entrenar</small><b>Practicar con Rocío →</b>
+            <Image className={styles.miniAvatar} src="/images/rocio-profesora-ia.png" alt="" width={90} height={90}/>
+            <strong>4. ROCÍO</strong><small>Comprueba que has entendido antes de entrenar</small><b>Practicar con Rocío →</b>
           </button>
         </section>:<section className={styles.lockNotice}><strong>Vista previa</strong><p>La primera explicación está abierta. El resto requiere una modalidad con curso completo.</p><Link href="/bachillerato-pau/matematicas-aplicadas-ccss#modalidades">Ver modalidades</Link></section>}
 
@@ -193,7 +199,7 @@ export default function MatematicasAplicadasPage(){
               <button onClick={()=>openResource("short")}><span>◯</span><strong>Preguntas cortas</strong><small>2 por explicación</small><b>Resolver →</b></button>
               <button onClick={()=>openResource("problems")} disabled={!canPau}><span>▤</span><strong>Preguntas tipo PAU</strong><small>48 con solución y rúbrica</small><b>Practicar →</b></button>
               <button onClick={()=>openResource("profiles")} disabled={!canPau}><span>▥</span><strong>Simulacros</strong><small>17 territoriales</small><b>Empezar →</b></button>
-              <button id="pau" onClick={()=>openResource("profiles")} disabled={!canPau}><span>ES</span><strong>PAU por comunidades</strong><small>Perfiles y criterios territoriales</small><b>Seleccionar →</b></button>
+              <button id="pau" onClick={()=>openResource("profiles")} disabled={!canPau}><span className={styles.spainIcon}>ES</span><strong>PAU por comunidades</strong><small>Perfiles y criterios territoriales</small><b>Seleccionar →</b></button>
             </div>
           </div>
         </section>
