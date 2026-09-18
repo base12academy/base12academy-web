@@ -21,17 +21,21 @@ async function access(req:NextRequest){
   return {authenticated:true,administrator:false,...getMatematicasAplicadasEntitlement(plans)};
 }
 function denied(a:{authenticated:boolean}){return NextResponse.json({error:a.authenticated?"matriculation_required":"authentication_required"},{status:a.authenticated?403:401});}
+function publicRocio(items:ReturnType<typeof getRocioQuestions>){return items.map(({correct,feedback,recovery,...item})=>item);}
+function publicShort(items:ReturnType<typeof getShortQuestions>){return items.map(({expectedAnswer,rubric,...item})=>item);}
+function publicProblems(items:ReturnType<typeof getPauProblems>){return items.map(({solution,rubric,...item})=>item);}
+function publicSimulation(simulation:NonNullable<ReturnType<typeof getPauSimulation>>){return {...simulation,groups:simulation.groups.map(group=>({...group,problems:group.problems.map(({solution,rubric,...problem})=>problem)}))};}
 export async function GET(req:NextRequest){
   const type=req.nextUrl.searchParams.get("type"); const a=await access(req);
   if("error" in a&&a.error)return NextResponse.json({error:"access_check_failed"},{status:500});
-  if(type==="problems"){if(!a.administrator&&!a.hasPau)return denied(a);const block=req.nextUrl.searchParams.get("block")||undefined;const items=getPauProblems(block);return NextResponse.json({type,block:block||null,count:items.length,items});}
+  if(type==="problems"){if(!a.administrator&&!a.hasPau)return denied(a);const block=req.nextUrl.searchParams.get("block")||undefined;const items=publicProblems(getPauProblems(block));return NextResponse.json({type,block:block||null,count:items.length,items});}
   if(type==="profiles"){if(!a.administrator&&!a.hasPau)return denied(a);return NextResponse.json({type,count:MATEMATICAS_APLICADAS_PAU_PROFILES.length,items:MATEMATICAS_APLICADAS_PAU_PROFILES});}
-  if(type==="simulation"){if(!a.administrator&&!a.hasPau)return denied(a);const code=(req.nextUrl.searchParams.get("code")||"").toUpperCase();const simulation=getPauSimulation(code);if(!simulation)return NextResponse.json({error:"invalid_community"},{status:404});return NextResponse.json({type,simulation});}
+  if(type==="simulation"){if(!a.administrator&&!a.hasPau)return denied(a);const code=(req.nextUrl.searchParams.get("code")||"").toUpperCase();const simulation=getPauSimulation(code);if(!simulation)return NextResponse.json({error:"invalid_community"},{status:404});return NextResponse.json({type,simulation:publicSimulation(simulation)});}
   if(type!=="rocio"&&type!=="short")return NextResponse.json({error:"invalid_request"},{status:400});
   const unit=req.nextUrl.searchParams.get("unit")||"";
   if(!getMatematicasAplicadasUnit(unit))return NextResponse.json({error:"invalid_unit"},{status:400});
   const preview=unit===PREVIEW_UNIT;
   if(!preview&&!a.administrator&&!a.hasCourse&&!a.hasPau)return denied(a);
-  const items=type==="rocio"?getRocioQuestions(unit):getShortQuestions(unit);
+  const items=type==="rocio"?publicRocio(getRocioQuestions(unit)):publicShort(getShortQuestions(unit));
   return NextResponse.json({type,unit,preview,count:items.length,items});
 }

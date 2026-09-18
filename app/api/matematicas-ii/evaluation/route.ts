@@ -54,6 +54,10 @@ async function getAccess(req: NextRequest): Promise<AccessResult> {
   };
 }
 
+function publicRocio(items:ReturnType<typeof getRocioQuestions>){return items.map(({correct,feedback,recovery,...item})=>item);}
+function publicShort(items:ReturnType<typeof getShortQuestions>){return items.map(({expectedAnswer,rubric,...item})=>item);}
+function publicProblems(items:ReturnType<typeof getPauProblems>){return items.map(({solution,rubric,...item})=>item);}
+
 function denied(access: AccessResult) {
   return NextResponse.json(
     { error: access.authenticated ? "matriculation_required" : "authentication_required" },
@@ -67,8 +71,6 @@ function simulationForClient(simulation: PauSimulation) {
     exercises.push({
       label: simulation.content[index],
       statement: simulation.content[index + 1],
-      solution: simulation.content[index + 2].replace(/^Solución docente:\s*/i, ""),
-      rubric: simulation.content[index + 3].replace(/^Criterio Base12 ajustado:\s*/i, ""),
     });
   }
   return {
@@ -86,7 +88,7 @@ export async function GET(req: NextRequest) {
 
   if (type === "short" && req.nextUrl.searchParams.get("all") === "1") {
     if (!access.administrator && !access.hasPau) return denied(access);
-    const items = getShortQuestions();
+    const items = publicShort(getShortQuestions());
     return NextResponse.json({ type, all: true, count: items.length, items });
   }
 
@@ -97,14 +99,14 @@ export async function GET(req: NextRequest) {
     const preview = unit === PREVIEW_UNIT;
     if (!preview && !access.administrator && !access.hasCourse && !access.hasPau) return denied(access);
 
-    const items = type === "rocio" ? getRocioQuestions(unit) : getShortQuestions(unit);
+    const items = type === "rocio" ? publicRocio(getRocioQuestions(unit)) : publicShort(getShortQuestions(unit));
     return NextResponse.json({ type, unit, preview, count: items.length, items });
   }
 
   if (type === "problems") {
     if (!access.administrator && !access.hasPau) return denied(access);
     const block = req.nextUrl.searchParams.get("block") || undefined;
-    const items = getPauProblems(block);
+    const items = publicProblems(getPauProblems(block));
     return NextResponse.json({ type, block: block || null, count: items.length, items });
   }
 

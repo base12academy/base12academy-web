@@ -8,5 +8,5 @@ export async function submitAssessment(payload:AssessmentSubmission){
   const response=await fetch("/api/assessment-submit",{method:"POST",headers:{"Content-Type":"application/json",...(token?{Authorization:"Bearer "+token}:{})},body:JSON.stringify(payload)});
   const result=await response.json().catch(()=>({}));
   if(!response.ok)throw new Error(result.error||"assessment_failed");
-  return result as {ok:boolean;score:number|null;feedback:string;gradingMode:string};
+  return result as {ok:boolean;score:number|null;feedback:string;gradingMode:string;expectedAnswer?:string;rubric?:string;correctAnswer?:string};
 }
