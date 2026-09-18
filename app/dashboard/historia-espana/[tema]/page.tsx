@@ -5,6 +5,8 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import HistoriaBlocks, { type HistoriaBlock } from "@/components/historia/HistoriaBlocks";
 import { supabase } from "@/lib/supabaseClient";
+import WrittenAssessment from "@/components/learning/WrittenAssessment";
+import ChoiceAssessment from "@/components/learning/ChoiceAssessment";
 import catalog from "@/data/historia/catalog.json";
 import rocioRules from "@/data/historia/rocio-rules.json";
 import baseStyles from "../../filosofia/filosofia.module.css";
@@ -95,8 +97,25 @@ function TrainingPage({ initialType, showRules = false }: { initialType: BankTyp
 }
 
 function QuestionSet({ type, items }: { type: BankType; items: Record<string, unknown>[] }) {
-  const [revealed, setRevealed] = useState<Record<number, boolean>>({});
-  return <div className={styles.questions}>{items.map((item, index) => { const prompt = questionPrompt(item, type); const options = type === "test" || type === "rocio" ? ["A", "B", "C", "D"].map((letter) => String(item[`Opción ${letter}`] || item[letter] || "")).filter(Boolean) : []; const answer = answerText(item, type); const guidance = guidanceText(item); return <article key={String(item.ID || item.Corpus_ID || index)}><div className={styles.questionMeta}><span>{String(item.Dificultad || item.Destreza || item.Tipo || "Práctica")}</span><b>{String(item.ID || item.Corpus_ID || "")}</b></div><h2>{prompt}</h2>{options.length ? <ol type="A">{options.map((option, optionIndex) => <li key={`${optionIndex}-${option.slice(0, 30)}`}>{option}</li>)}</ol> : null}<button onClick={() => setRevealed((state) => ({ ...state, [index]: !state[index] }))}>{revealed[index] ? "Ocultar pauta" : "Ver respuesta y pauta"}</button>{revealed[index] && <div className={styles.answer}>{answer ? <p><b>Respuesta:</b> {answer}</p> : null}<p>{guidance}</p><QuestionDetails item={item} /></div>}</article>; })}</div>;
+  return <div className={styles.questions}>{items.map((item, index) => {
+    const prompt = questionPrompt(item, type);
+    const options = type === "test" || type === "rocio" ? ["A", "B", "C", "D"].map((letter) => ({ value: letter, label: String(item["Opción "+letter] || item[letter] || "") })).filter((option) => option.label) : [];
+    const answer = answerText(item, type);
+    const guidance = guidanceText(item);
+    const itemId = String(item.ID || item.Corpus_ID || type+"-"+index);
+    let correctLetter = /^[ABCD]$/i.test(answer.trim()) ? answer.trim().toUpperCase() : "";
+    if (!correctLetter && options.length) {
+      const found = options.find((option) => option.label.trim().toLocaleLowerCase("es") === answer.trim().toLocaleLowerCase("es"));
+      correctLetter = found?.value || "";
+    }
+    return <article key={itemId}>
+      <div className={styles.questionMeta}><span>{String(item.Dificultad || item.Destreza || item.Tipo || "Práctica")}</span><b>{itemId}</b></div>
+      <h2>{prompt}</h2>
+      {options.length && correctLetter ? <ChoiceAssessment courseSlug="historia-espana" contentId={itemId} activityType={type==="rocio"?"rocio_closed":"test"} prompt={prompt} options={options} correctAnswer={correctLetter} feedback={guidance} recovery={guidance} group={type}/>
+      : <WrittenAssessment courseSlug="historia-espana" contentId={itemId} activityType={type} prompt={prompt} expectedAnswer={answer} rubric={guidance} group={type} rows={type==="development"||type==="source"||type==="territorial"?10:6}/>}
+      <QuestionDetails item={item} />
+    </article>;
+  })}</div>;
 }
 function questionPrompt(item: Record<string, unknown>, type: BankType) { if (type === "error") return String(item["Afirmación incorrecta"] || ""); if (type === "chronology") return String(item.Ejercicio || item.Proceso || "Ordena los elementos"); if (type === "source") return `${String(item["Fuente / material"] || "Fuente histórica")}: ${String(item["Pregunta 1"] || "")}`; return String(item.Pregunta || item.Enunciado || item["Ejercicio 2,5 pt"] || item["Pregunta 1 pt"] || item["Apartado 1"] || "Actividad de Historia de España"); }
 function answerText(item: Record<string, unknown>, type: BankType) { if (type === "test") return String(item.Correcta || ""); if (type === "error") return String(item["Corrección correcta"] || ""); if (type === "chronology") return String(item["Orden correcto"] || ""); return String(item["Respuesta modelo"] || item["Respuesta modelo / correcta"] || item["Respuesta orientativa"] || item["Esquema de respuesta"] || item["Letra correcta"] || ""); }

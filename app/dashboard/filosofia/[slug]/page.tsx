@@ -5,6 +5,8 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import FilosofiaBlocks, { type FilosofiaBlock } from "@/components/filosofia/FilosofiaBlocks";
 import { supabase } from "@/lib/supabaseClient";
+import WrittenAssessment from "@/components/learning/WrittenAssessment";
+import ChoiceAssessment from "@/components/learning/ChoiceAssessment";
 import catalog from "@/data/filosofia/catalog.json";
 import baseStyles from "../filosofia.module.css";
 import videoStyles from "../video.module.css";
@@ -124,10 +126,26 @@ function TrainingPage() {
 }
 
 function QuestionSet({ type, items }: { type: BankType; items: Record<string, unknown>[] }) {
-  const [revealed, setRevealed] = useState<Record<number, boolean>>({});
-  return <div className={styles.questions}>{items.map((item, index) => { const prompt = String(item.Pregunta || item["Pregunta corta"] || item["Pregunta larga"] || ""); const options = type === "rocio-authors" ? String(item["Opciones A-D"] || "").split(" / ") : ["A", "B", "C", "D"].map((letter) => String(item[letter] || "")).filter(Boolean); const answer = String(item.Correcta || ""); const guidance = String(item.Feedback || item.Retroalimentación || item["Elementos esperados"] || item["Respuesta correcta"] || ""); return <article key={String(item.ID || index)}><div className={styles.questionMeta}><span>{String(item.Dificultad || item["Tipo diagnóstico"] || item["Tipo de tarea"] || "Práctica")}</span><b>{String(item.ID || "")}</b></div><h2>{prompt}</h2>{options.length ? <ol type="A">{options.map((option) => <li key={option}>{option}</li>)}</ol> : null}<button onClick={() => setRevealed((state) => ({ ...state, [index]: !state[index] }))}>{revealed[index] ? "Ocultar pauta" : "Ver respuesta y pauta"}</button>{revealed[index] && <div className={styles.answer}>{answer && <p><b>Respuesta:</b> {answer}</p>}<p>{guidance}</p></div>}</article>; })}</div>;
+  return <div className={styles.questions}>{items.map((item, index) => {
+    const prompt = String(item.Pregunta || item["Pregunta corta"] || item["Pregunta larga"] || "");
+    const rawOptions = type === "rocio-authors" ? String(item["Opciones A-D"] || "").split(" / ").filter(Boolean) : ["A","B","C","D"].map((letter)=>String(item[letter]||"")).filter(Boolean);
+    const options = rawOptions.map((label, optionIndex)=>({value:["A","B","C","D"][optionIndex] || String(optionIndex+1),label}));
+    const answer = String(item.Correcta || item["Respuesta correcta"] || "");
+    const guidance = String(item.Feedback || item.Retroalimentación || item["Elementos esperados"] || item["Respuesta correcta"] || "");
+    const itemId = String(item.ID || type+"-"+index);
+    let correctLetter = /^[ABCD]$/i.test(answer.trim()) ? answer.trim().toUpperCase() : "";
+    if (!correctLetter && options.length) {
+      const found=options.find((option)=>option.label.trim().toLocaleLowerCase("es")===answer.trim().toLocaleLowerCase("es"));
+      correctLetter=found?.value||"";
+    }
+    return <article key={itemId}>
+      <div className={styles.questionMeta}><span>{String(item.Dificultad || item["Tipo diagnóstico"] || item["Tipo de tarea"] || "Práctica")}</span><b>{itemId}</b></div>
+      <h2>{prompt}</h2>
+      {options.length && correctLetter ? <ChoiceAssessment courseSlug="filosofia" contentId={itemId} activityType={type.startsWith("rocio")?"rocio_closed":"test"} prompt={prompt} options={options} correctAnswer={correctLetter} feedback={guidance} recovery={guidance} group={type}/>
+      : <WrittenAssessment courseSlug="filosofia" contentId={itemId} activityType={type} prompt={prompt} expectedAnswer={answer} rubric={guidance} group={type} rows={type==="long"||type==="rocio-pau"?10:6}/>}
+    </article>;
+  })}</div>;
 }
-
 function Loading({ compact = false }: { compact?: boolean }) { return <div className={compact ? styles.loadingCompact : styles.loading}>Preparando el contenido de Filosofía…</div>; }
 
 function Locked({ reason, message, compact = false }: { reason?: string; message?: string; compact?: boolean }) {
