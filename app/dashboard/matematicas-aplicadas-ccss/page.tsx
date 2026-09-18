@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import WrittenAssessment from "@/components/learning/WrittenAssessment";
 import CourseAssistantChat from "@/components/CourseAssistantChat";
+import CourseProgressSummary from "@/components/learning/CourseProgressSummary";
 import ChoiceAssessment from "@/components/learning/ChoiceAssessment";
 import {
   MATEMATICAS_APLICADAS_BLOCKS,
@@ -123,7 +124,7 @@ export default function MatematicasAplicadasPage(){
         <div className={styles.courseIdentity}>
           <h1>Matemáticas Aplicadas a las CCSS II</h1>
           <p>2.º Bachillerato · PAU</p>
-          <div className={styles.progressHeader}><span>Explicaciones</span><b>{selected.order} / 44</b></div>
+          <div className={styles.progressHeader}><span>Explicación seleccionada</span><b>{selected.order} / 44</b></div>
           <div className={styles.progressTrack}><span style={{width:`${Math.max(3,(selected.order/44)*100)}%`}}/></div>
         </div>
 
@@ -206,7 +207,7 @@ export default function MatematicasAplicadasPage(){
             <div className={styles.trainingCards}>
               <button onClick={()=>openResource("rocio")}><span>✓</span><strong>Comprobación con Rocío</strong><small>3 preguntas cerradas por explicación</small><b>Comprobar →</b></button>
               <button onClick={()=>openResource("short")}><span>◯</span><strong>Preguntas cortas</strong><small>2 por explicación</small><b>Resolver →</b></button>
-              <button onClick={()=>openResource("problems")} disabled={!canPau}><span>▤</span><strong>Preguntas tipo PAU</strong><small>48 con solución y rúbrica</small><b>Practicar →</b></button>
+              <button onClick={()=>openResource("problems")} disabled={!canPau}><span>▤</span><strong>Preguntas tipo PAU</strong><small>48 para responder, corregir y registrar</small><b>Practicar →</b></button>
               <button onClick={()=>openResource("profiles")} disabled={!canPau}><span>▥</span><strong>Simulacros</strong><small>17 territoriales</small><b>Empezar →</b></button>
               <button id="pau" onClick={()=>openResource("profiles")} disabled={!canPau}><span className={styles.spainIcon}>ES</span><strong>PAU por comunidades</strong><small>Perfiles y criterios territoriales</small><b>Seleccionar →</b></button>
             </div>
@@ -279,7 +280,7 @@ export default function MatematicasAplicadasPage(){
           <p>Te ayuda a planificar, mantener el ritmo y organizar repasos hasta la PAU.</p>
           <button type="button" onClick={()=>setFernandoChatOpen(true)}>Hablar con Fernando</button>
         </section>
-        <section className={styles.objective}><span>◎</span><div><strong>Tu objetivo</strong><p>Comprender los procedimientos, entrenarlos y mejorar tus resultados.</p></div></section>
+        <section className={styles.objective}><span>◎</span><div><strong>Tu objetivo</strong><p>Comprender los procedimientos, entrenarlos y mejorar tus resultados.</p></div></section><CourseProgressSummary courseSlug="matematicas-aplicadas-ccss"/>
         <p className={styles.accessNote}>{checking?"Comprobando acceso…":access.administrator?"Acceso administrador":access.plans.length?`Modalidad: ${access.plans.join(" · ")}`:"Vista previa de T01"}</p>
       </aside>
     </div>

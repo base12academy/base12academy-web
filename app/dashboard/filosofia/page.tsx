@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import CourseAssistantChat from "@/components/CourseAssistantChat";
+import CourseProgressSummary from "@/components/learning/CourseProgressSummary";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import catalog from "@/data/filosofia/catalog.json";
@@ -69,8 +70,7 @@ export default function FilosofiaPage() {
       <div className={styles.layout}>
         <aside className={styles.leftRail}>
           <h2 className={styles.courseTitle}><span>▤</span> Historia de la Filosofía</h2>
-          <div className={styles.progressLabel}><span>Progreso del curso</span><strong>62%</strong></div>
-          <div className={styles.progress} aria-label="Progreso del curso: 62%"><span style={{ width: "62%" }} /></div>
+          <CourseProgressSummary courseSlug="historia-filosofia" compact/>
           <div className={styles.railRule} />
           <nav className={styles.railNav} aria-label="Temario">
             {periods.map((item, index) => <button key={item} type="button" className={section === "autores" && period === item ? styles.activeRail : ""} onClick={() => openPeriod(item)}><span className={styles.navIcon}>{["♜", "†", "✎", "♟"][index]}</span><span>{item}</span></button>)}
@@ -139,7 +139,7 @@ function PhilosophyRightRail({ featured,onRocio,onFernando }: { featured: (typeo
     <section className={styles.sideCard}><div className={styles.sideHeader}><span>▤ Glosario contextual</span><Link href="/dashboard/filosofia/concepto-nihilismo">Ver todo</Link></div><dl className={styles.glossaryList}><Term name="Nihilismo" text="Pérdida de fuerza de los valores supremos y problema de crear nuevos valores." /><Term name="Ressentiment" text="Afecto reactivo que invierte los valores y condena moralmente al fuerte." /><Term name="Superhombre" text="Figura de superación y creación afirmativa de nuevos valores." /><Term name="Transvaloración" text="Revisión radical de los valores heredados tras la crisis de la moral tradicional." /></dl></section>
     <section className={styles.sideCard}><div className={styles.assistantHead}><Image src="/images/rocio-profesora-ia.png" alt="Rocío, profesora IA" width={1536} height={1024} /><div><h3>Profesora IA · Rocío</h3><p>Pregúntame sobre {featured.title} y su filosofía.</p></div><span className={styles.badge}>Beta</span></div><div className={styles.assistantPrompts}><span>Explícame el nihilismo</span><span>Compáralo con Platón</span><span>No entiendo el eterno retorno</span></div><button className={`${styles.secondaryLink} ${styles.assistantAction}`} type="button" onClick={onRocio}>Preguntar a Rocío →</button></section>
     <section className={styles.sideCard}><div className={styles.assistantHead}><Image src="/images/fernando-tutor-ia.png" alt="Fernando, tutor IA" width={1536} height={1024} /><div><h3>Tutor IA · Fernando</h3><p>Te ayuda a planificar el estudio y mantener el ritmo.</p></div><span className={styles.badge}>Beta</span></div><div className={styles.assistantPrompts}><span>Plan de estudio</span><span>Repaso de temas</span><span>Siguientes pasos</span></div><button className={`${styles.secondaryLink} ${styles.assistantAction}`} type="button" onClick={onFernando}>Hablar con Fernando →</button></section>
-    <section className={styles.sideCard}><div className={styles.sideHeader}><span>▥ Tu progreso</span><Link href="/dashboard">Ver detalle</Link></div><ul className={styles.progressList}><li className={styles.completeItem}><span>✓</span><span>Vídeo</span><b>Completado</b></li><li className={styles.completeItem}><span>✓</span><span>Explicación</span><b>Completado</b></li><li><span>◔</span><span>Conceptos clave</span><b>8 / 12</b></li><li><span>◔</span><span>Test de conceptos</span><b>78%</b></li><li><span>○</span><span>Desarrollo</span><b>Pendiente</b></li></ul></section>
+    <CourseProgressSummary courseSlug="historia-filosofia"/>
   </aside>;
 }
 
