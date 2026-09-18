@@ -45,6 +45,7 @@ export default function MatematicasAplicadasPage(){
   const [video,setVideo]=useState<VideoState>({embedUrl:"",url:""});
   const [videoLoading,setVideoLoading]=useState(false);
   const [videoOpen,setVideoOpen]=useState(false);
+  const [explanationOpen,setExplanationOpen]=useState(false);
   const [rocioChatOpen,setRocioChatOpen]=useState(false);
   const [fernandoChatOpen,setFernandoChatOpen]=useState(false);
   const [resource,setResource]=useState<"rocio"|"short"|"problems"|"profiles"|"simulation"|"glossary"|null>(null);
@@ -179,7 +180,7 @@ export default function MatematicasAplicadasPage(){
         </section>
 
         {canOpen?<section className={styles.primaryResources}>
-          <button onClick={()=>scrollTo("inicio")} className={styles.primaryCard}>
+          <button onClick={()=>{setExplanationOpen(true);setTimeout(()=>document.getElementById("macs-explanation")?.scrollIntoView({behavior:"smooth",block:"start"}),60)}} className={styles.primaryCard}>
             <span className={styles.cardIcon}>▤</span><strong>1. EXPLICACIÓN</strong><small>Desarrollo completo de la explicación</small><b>Leer explicación →</b>
           </button>
           <button onClick={openVideo} className={styles.videoCard} disabled={!canOpen}>
@@ -194,6 +195,8 @@ export default function MatematicasAplicadasPage(){
           </button>
         </section>:<section className={styles.lockNotice}><strong>Vista previa</strong><p>La primera explicación está abierta. El resto requiere una modalidad con curso completo.</p><Link href="/bachillerato-pau/matematicas-aplicadas-ccss#modalidades">Ver modalidades</Link></section>}
 
+
+        {explanationOpen?<ExplanationPanel unitId={selected.id} onClose={()=>setExplanationOpen(false)}/>:null}
 
         <div className={styles.hierarchyNote}>
           <strong>Orden recomendado de trabajo</strong>
@@ -285,6 +288,16 @@ export default function MatematicasAplicadasPage(){
       </aside>
     </div>
   </div>
+}
+
+function ExplanationPanel({unitId,onClose}:{unitId:string;onClose:()=>void}){
+  const item=(explanations as {id:string;title:string;paragraphs:string[]}[]).find(entry=>entry.id===unitId);
+  if(!item)return null;
+  const headings=new Set(["Explicación pedagógica","La dificultad real","Dificultad que resolvemos","De dónde procede la operación","De dónde procede la operación o el método","Qué hay que comprobar antes de empezar","Procedimiento Base12","Ejemplo completamente desarrollado","Por qué funciona","Controles durante la resolución","Errores previsibles","Errores previsibles y cómo diagnosticarlos","Práctica guiada con datos completos","Transferencia","Criterio de dominio"]);
+  return <section id="macs-explanation" className={styles.resourcePanel}>
+    <div className={styles.resourceHeader}><div><span>EXPLICACIÓN BASE12 · {item.id}</span><h3>{item.title}</h3></div><button type="button" onClick={onClose}>Cerrar ×</button></div>
+    <div style={{maxWidth:900,lineHeight:1.68,color:"#29445f"}}>{item.paragraphs.map((paragraph,index)=>headings.has(paragraph)?<h4 key={index} style={{fontSize:18,color:"#123c70",margin:"24px 0 8px"}}>{paragraph}</h4>:<p key={index} style={{margin:"8px 0",whiteSpace:"pre-wrap"}}>{paragraph}</p>)}</div>
+  </section>;
 }
 
 function RocioPanel({items}:{items:RocioItem[]}){return <div className={styles.panelGrid}>{items.map((item,index)=><article key={item.id} className={styles.panelItem}><strong>Pregunta {index+1}</strong><p>{item.question}</p><ChoiceAssessment courseSlug="matematicas-aplicadas-ccss" contentId={item.id} activityType="rocio_closed" prompt={item.question} options={(["A","B","C","D"] as Letter[]).map(letter=>({value:letter,label:item.options[letter]}))} correctAnswer={item.correct} feedback={item.feedback} recovery={item.recovery}/></article>)}</div>}
