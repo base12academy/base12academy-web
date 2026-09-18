@@ -4,18 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 
-function destinationForCourse(courseSlug: string) {
-  return ({
-    "historia-espana": "/dashboard/historia-espana",
-    "historia-filosofia": "/dashboard/filosofia",
-    "matematicas-ii": "/dashboard/matematicas-ii",
-    "matematicas-aplicadas-ccss": "/dashboard/matematicas-aplicadas-ccss",
-    ofimatica: "/dashboard/ofimatica",
-    "administrativo-ja": "/dashboard/administrativo-ja",
-    "auxiliar-administrativo-ja": "/dashboard/auxiliar-administrativo-ja",
-  } as Record<string, string>)[courseSlug] || "/dashboard";
-}
-
 const onboardingVideos = [
   {
     step: "vb01",
@@ -43,7 +31,6 @@ export default function OnboardingVideosPage() {
   const [saving, setSaving] = useState(false);
   const [autoplayBlocked, setAutoplayBlocked] = useState(false);
   const [error, setError] = useState("");
-  const [courseSlug, setCourseSlug] = useState<string>("");
 
   async function getAccessToken() {
     const { data } = await supabase.auth.getSession();
@@ -81,14 +68,12 @@ export default function OnboardingVideosPage() {
 
         if (!active) return;
 
-        setCourseSlug(String(data.enrollment?.course_slug || ""));
-
         if (data.currentStep === "vb02") {
           setIndex(1);
         } else if (data.currentStep === "vb03") {
           setIndex(2);
         } else if (data.currentStep === "completed") {
-          router.replace(destinationForCourse(String(data.enrollment?.course_slug || "")));
+          router.replace("/dashboard/mis-cursos");
           return;
         } else {
           setIndex(0);
@@ -174,7 +159,7 @@ export default function OnboardingVideosPage() {
       if (index < onboardingVideos.length - 1) {
         setIndex((current) => current + 1);
       } else {
-        router.replace(destinationForCourse(courseSlug));
+        router.replace("/dashboard/mis-cursos");
       }
     } catch (err) {
       setError(

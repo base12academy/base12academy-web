@@ -172,14 +172,14 @@ export default function MatematicasIIPage() {
         <div className={styles.motto}>CONSTRUYE · COMPRENDE · DOMINA</div>
         <nav className={styles.topnav}>
           <Link href="/">Inicio</Link>
-          <Link href="/dashboard">Mis cursos</Link>
+          <Link href="/dashboard/mis-cursos">Mis cursos</Link>
           <Link href="/dashboard">Mi cuenta</Link>
         </nav>
       </header>
 
       <div className={styles.layout}>
         <aside className={styles.sidebar}>
-          <Link href="/dashboard" className={styles.back}>← Volver a mis cursos</Link>
+          <Link href="/dashboard/mis-cursos" className={styles.back}>← Volver a mis cursos</Link>
           <h1>MATEMÁTICAS II</h1>
           <p className={styles.meta}>49 unidades operativas</p>
           <div className={styles.modeSwitch}>
