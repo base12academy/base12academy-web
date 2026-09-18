@@ -5,6 +5,7 @@ import { getMatematicasAplicadasEntitlement } from "@/lib/matematicas-aplicadas-
 import { getMatematicasAplicadasUnit } from "@/lib/matematicas-aplicadas-ccss/content";
 import { getRocioQuestions, getShortQuestions } from "@/lib/matematicas-aplicadas-ccss/evaluation";
 import { getPauProblems, MATEMATICAS_APLICADAS_PAU_PROFILES } from "@/lib/matematicas-aplicadas-ccss/pau";
+import { getPauSimulation } from "@/lib/matematicas-aplicadas-ccss/pau-simulations";
 
 const PREVIEW_UNIT="T01";
 async function access(req:NextRequest){
@@ -25,6 +26,7 @@ export async function GET(req:NextRequest){
   if("error" in a&&a.error)return NextResponse.json({error:"access_check_failed"},{status:500});
   if(type==="problems"){if(!a.administrator&&!a.hasPau)return denied(a);const block=req.nextUrl.searchParams.get("block")||undefined;const items=getPauProblems(block);return NextResponse.json({type,block:block||null,count:items.length,items});}
   if(type==="profiles"){if(!a.administrator&&!a.hasPau)return denied(a);return NextResponse.json({type,count:MATEMATICAS_APLICADAS_PAU_PROFILES.length,items:MATEMATICAS_APLICADAS_PAU_PROFILES});}
+  if(type==="simulation"){if(!a.administrator&&!a.hasPau)return denied(a);const code=(req.nextUrl.searchParams.get("code")||"").toUpperCase();const simulation=getPauSimulation(code);if(!simulation)return NextResponse.json({error:"invalid_community"},{status:404});return NextResponse.json({type,simulation});}
   if(type!=="rocio"&&type!=="short")return NextResponse.json({error:"invalid_request"},{status:400});
   const unit=req.nextUrl.searchParams.get("unit")||"";
   if(!getMatematicasAplicadasUnit(unit))return NextResponse.json({error:"invalid_unit"},{status:400});
