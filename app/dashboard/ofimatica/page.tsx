@@ -4,7 +4,6 @@ import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import course from "@/lib/ofimatica-content.json";
-import rocioQuestions from "@/lib/rocio-questions.json";
 import { supabase } from "@/lib/supabaseClient";
 import styles from "./ofimatica.module.css";
 import quizStyles from "./rocio.module.css";
@@ -138,97 +137,70 @@ type RocioQuestion = {
   difficulty: string;
   prompt: string;
   options: string[];
-  answer: number;
-  explanation: string;
-  criterion: string;
-  recovery: string;
 };
 
 function RocioQuiz({ lesson }: { lesson: string }) {
-  const questions = useMemo(
-    () => (rocioQuestions as RocioQuestion[]).filter((question) => question.lesson === lesson),
-    [lesson],
-  );
-  const ordinary = useMemo(() => questions.filter((question) => question.type !== "Recuperación"), [questions]);
-  const recovery = questions.find((question) => question.type === "Recuperación");
-  const [queue, setQueue] = useState<RocioQuestion[]>(ordinary);
-  const [position, setPosition] = useState(0);
-  const [selectedOption, setSelectedOption] = useState<number | null>(null);
-  const [correct, setCorrect] = useState(0);
+  const [questions,setQuestions]=useState<RocioQuestion[]>([]);
+  const [loading,setLoading]=useState(true);
+  const ordinary=useMemo(()=>questions.filter(q=>q.type!=="Recuperación"),[questions]);
+  const recovery=questions.find(q=>q.type==="Recuperación");
+  const [queue,setQueue]=useState<RocioQuestion[]>([]);
+  const [position,setPosition]=useState(0);
+  const [selectedOption,setSelectedOption]=useState<number|null>(null);
+  const [feedback,setFeedback]=useState<{correct:boolean;correctAnswer:number;explanation:string;criterion:string;recovery:string}|null>(null);
+  const [correct,setCorrect]=useState(0);
 
-  useEffect(() => {
-    setQueue(ordinary);
-    setPosition(0);
-    setSelectedOption(null);
-    setCorrect(0);
-  }, [lesson, ordinary]);
+  useEffect(()=>{
+    let active=true;
+    void(async()=>{
+      setLoading(true);
+      const {data}=await supabase.auth.getSession();
+      const response=await fetch("/api/ofimatica-rocio?lesson="+encodeURIComponent(lesson),{headers:data.session?.access_token?{Authorization:"Bearer "+data.session.access_token}:{}});
+      const result=await response.json().catch(()=>({}));
+      if(active){setQuestions(response.ok?(result.items||[]):[]);setLoading(false);}
+    })();
+    return()=>{active=false};
+  },[lesson]);
 
-  const question = queue[position];
-  const finished = position >= queue.length;
+  useEffect(()=>{setQueue(ordinary);setPosition(0);setSelectedOption(null);setFeedback(null);setCorrect(0)},[lesson,ordinary]);
 
-  const choose = (option: number) => {
-    if (selectedOption !== null || !question) return;
-    setSelectedOption(option);
-    if (option === question.answer) setCorrect((value) => value + 1);
+  const question=queue[position];
+  const finished=position>=queue.length;
+
+  const choose=async(option:number)=>{
+    if(selectedOption!==null||!question)return;
+    setSelectedOption(option);setFeedback(null);
+    const {data}=await supabase.auth.getSession();
+    const response=await fetch("/api/ofimatica-rocio",{method:"POST",headers:{"Content-Type":"application/json",...(data.session?.access_token?{Authorization:"Bearer "+data.session.access_token}:{})},body:JSON.stringify({lesson,code:question.code,selected:option})});
+    const result=await response.json().catch(()=>({}));
+    if(!response.ok){setSelectedOption(null);return;}
+    const nextFeedback={correct:Boolean(result.correct),correctAnswer:Number(result.correctAnswer),explanation:String(result.explanation||""),criterion:String(result.criterion||""),recovery:String(result.recovery||"")};
+    setFeedback(nextFeedback);
+    if(nextFeedback.correct)setCorrect(v=>v+1);
   };
 
-  const next = () => {
-    if (!question || selectedOption === null) return;
-    if (selectedOption !== question.answer && recovery && !queue.some((item) => item.code === recovery.code)) {
-      setQueue((items) => [...items.slice(0, position + 1), recovery, ...items.slice(position + 1)]);
-    }
-    setPosition((value) => value + 1);
-    setSelectedOption(null);
+  const next=()=>{
+    if(!question||selectedOption===null||!feedback)return;
+    if(!feedback.correct&&recovery&&!queue.some(item=>item.code===recovery.code))setQueue(items=>[...items.slice(0,position+1),recovery,...items.slice(position+1)]);
+    setPosition(v=>v+1);setSelectedOption(null);setFeedback(null);
   };
 
-  const restart = () => {
-    setQueue(ordinary);
-    setPosition(0);
-    setSelectedOption(null);
-    setCorrect(0);
-  };
+  const restart=()=>{setQueue(ordinary);setPosition(0);setSelectedOption(null);setFeedback(null);setCorrect(0)};
 
-  if (!questions.length) {
-    return <Assistant name="Rocío" role="Profesora IA" text="Las preguntas de comprobación de este contenido están en preparación." />;
-  }
+  if(loading)return <p>Preparando la comprobación…</p>;
+  if(!questions.length)return <Assistant name="Rocío" role="Profesora IA" text="Las preguntas de comprobación de este contenido están en preparación." />;
 
-  if (finished) {
-    return (
-      <div className={quizStyles.quiz}>
-        <p className={styles.eyebrow}>ROCÍO · PROFESORA IA</p>
-        <h2>Comprobación terminada</h2>
-        <p>Has respondido correctamente {correct} de {queue.length} preguntas realizadas.</p>
-        <p>Estas preguntas sirven para practicar y recuperar conceptos; no sustituyen las evidencias certificables del curso.</p>
-        <button className={quizStyles.primaryButton} onClick={restart}>Repetir comprobación</button>
-      </div>
-    );
-  }
+  if(finished)return <div className={quizStyles.quiz}><p className={styles.eyebrow}>ROCÍO · PROFESORA IA</p><h2>Comprobación terminada</h2><p>Has respondido correctamente {correct} de {queue.length} preguntas realizadas.</p><p>El resultado queda registrado para el seguimiento cuando existe una matrícula activa.</p><button className={quizStyles.primaryButton} onClick={restart}>Repetir comprobación</button></div>;
 
-  const isCorrect = selectedOption === question.answer;
-  return (
-    <div className={quizStyles.quiz}>
-      <div className={quizStyles.quizHeader}>
-        <div><p className={styles.eyebrow}>ROCÍO · PROFESORA IA</p><h2>Comprueba lo aprendido</h2></div>
-        <span>{position + 1} / {queue.length}</span>
-      </div>
-      <p className={quizStyles.quizMeta}>{question.type} · {question.difficulty}</p>
-      <h3>{question.prompt}</h3>
-      <div className={quizStyles.options}>
-        {question.options.map((option, index) => {
-          const state = selectedOption === null ? "" : index === question.answer ? quizStyles.correct : index === selectedOption ? quizStyles.incorrect : "";
-          return <button key={option} className={state} onClick={() => choose(index)} disabled={selectedOption !== null}><b>{String.fromCharCode(65 + index)}</b>{option}</button>;
-        })}
-      </div>
-      {selectedOption !== null && (
-        <div className={isCorrect ? quizStyles.feedbackCorrect : quizStyles.feedbackIncorrect}>
-          <strong>{isCorrect ? "Correcto." : "Vamos a revisarlo."}</strong> {question.explanation}
-          <p><b>Criterio:</b> {question.criterion}</p>
-          {!isCorrect && <p><b>Recuperación:</b> {question.recovery}</p>}
-          <button className={quizStyles.primaryButton} onClick={next}>{position + 1 === queue.length ? "Ver resultado" : "Siguiente pregunta"}</button>
-        </div>
-      )}
-    </div>
-  );
+  return <div className={quizStyles.quiz}>
+    <div className={quizStyles.quizHeader}><div><p className={styles.eyebrow}>ROCÍO · PROFESORA IA</p><h2>Comprueba lo aprendido</h2></div><span>{position+1} / {queue.length}</span></div>
+    <p className={quizStyles.quizMeta}>{question.type} · {question.difficulty}</p><h3>{question.prompt}</h3>
+    <div className={quizStyles.options}>{question.options.map((option,index)=>{
+      const state=selectedOption===null?"":feedback&&index===feedback.correctAnswer?quizStyles.correct:index===selectedOption?quizStyles.incorrect:"";
+      return <button key={option} className={state} onClick={()=>void choose(index)} disabled={selectedOption!==null}><b>{String.fromCharCode(65+index)}</b>{option}</button>;
+    })}</div>
+    {selectedOption!==null&&feedback?<div className={feedback.correct?quizStyles.feedbackCorrect:quizStyles.feedbackIncorrect}><strong>{feedback.correct?"Correcto.":"Vamos a revisarlo."}</strong> {feedback.explanation}<p><b>Criterio:</b> {feedback.criterion}</p>{!feedback.correct?<p><b>Recuperación:</b> {feedback.recovery}</p>:null}<button className={quizStyles.primaryButton} onClick={next}>{position+1===queue.length?"Ver resultado":"Siguiente pregunta"}</button></div>:null}
+  </div>;
 }
 
 
