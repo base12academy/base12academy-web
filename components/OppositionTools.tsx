@@ -39,17 +39,18 @@ export function OppositionTest({questions,courseSlug,themeId,planSlug}:{question
   };
 
   const next=async()=>{
-    if(selected===null||!feedback)return;
+    if(selected===null||!feedback||!q?.id)return;
+    const finalAnswers={...answers,[q.id]:selected};
     if(position+1===sample.length){
       const t=await token();
       if(t){
         setSaving(true);
-        await fetch("/api/opposition-assessment",{method:"POST",headers:{"Content-Type":"application/json",Authorization:`Bearer ${t}`},body:JSON.stringify({mode:"attempt",courseSlug,themeId,answers})});
+        await fetch("/api/opposition-assessment",{method:"POST",headers:{"Content-Type":"application/json",Authorization:`Bearer ${t}`},body:JSON.stringify({mode:"attempt",courseSlug,themeId,answers:finalAnswers})});
         setSaving(false);
         await load();
       }
     }
-    setPosition(v=>v+1);setSelected(null);setFeedback(null);
+    setAnswers(finalAnswers);setPosition(v=>v+1);setSelected(null);setFeedback(null);
   };
 
   if(!sample.length)return <p>El test está en preparación.</p>;
