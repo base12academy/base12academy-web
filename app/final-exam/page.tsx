@@ -277,7 +277,6 @@ if (selectedTopicSlugs.length === 0) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          userId: user.id,
           selectedTopicSlugs,
         }),
       });
@@ -328,9 +327,12 @@ if (selectedTopicSlugs.length === 0) {
   return;
 }
 
+      const {data:sessionData}=await supabase.auth.getSession();
+      const token=sessionData.session?.access_token;
+      if(!token){setError("Debes iniciar sesión para enviar el examen final");return;}
       const res = await fetch("/api/submit-final-exam", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", Authorization: "Bearer "+token },
         body: JSON.stringify({
           userId: user.id,
           selectedTopicSlugs,

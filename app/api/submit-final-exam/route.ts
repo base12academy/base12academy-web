@@ -9,22 +9,22 @@ import { temasHistoria } from "@/lib/temas";
 export async function POST(req: Request) {
   try {
     const supabase = getSupabase();
+    const token=req.headers.get("authorization")?.replace(/^Bearer\s+/i,"");
+    if(!token)return NextResponse.json({error:"authentication_required"},{status:401});
+    const {data:authData,error:authError}=await supabase.auth.getUser(token);
+    if(authError||!authData.user)return NextResponse.json({error:"authentication_required"},{status:401});
+    const userId=authData.user.id;
     const body = await req.json();
+    const now=new Date().toISOString();
+    const {data:courseEnrollment}=await supabase.from("course_enrollments").select("id").eq("user_id",userId).eq("course_slug","historia-espana").in("status",["active","pending"]).lte("starts_at",now).or("expires_at.is.null,expires_at.gte."+now).order("created_at",{ascending:false}).limit(1).maybeSingle();
+    if(!courseEnrollment)return NextResponse.json({error:"matriculation_required"},{status:403});
 
-    const userId = body.userId;
     const selectedTopicSlugs = body.selectedTopicSlugs || [];
     const topicSlug = body.topicSlug || "";
     const shortAnswers = body.shortAnswers || {};
     const sourceAnswer = body.sourceAnswer || "";
     const sourceExpectedContent = body.sourceExpectedContent || "";
     const developmentAnswer = body.developmentAnswer || "";
-
-    if (!userId) {
-      return NextResponse.json(
-        { error: "Falta userId" },
-        { status: 400 }
-      );
-    }
 
     if (!Array.isArray(selectedTopicSlugs) || selectedTopicSlugs.length === 0) {
       return NextResponse.json(
@@ -172,6 +172,13 @@ export async function POST(req: Request) {
         { status: 500 }
       );
     }
+
+    const commonScore=Math.max(0,Math.min(100,Math.round((total/10)*100)));
+    const {error:learningError}=await supabase.from("course_learning_events").insert({
+      user_id:userId,enrollment_id:courseEnrollment.id,course_slug:"historia-espana",content_id:"final-exam",event_type:"assessment_submitted",progress_percent:commonScore,
+      metadata:{activityType:"legacy_final_exam",attemptId:String(attemptData.id),topicSlug,passed,score:Number(total.toFixed(2)),maxScore:10},occurred_at:new Date().toISOString()
+    });
+    if(learningError)console.error("No se pudo registrar el examen final en el progreso común",learningError);
 
     return NextResponse.json({
       saved: true,

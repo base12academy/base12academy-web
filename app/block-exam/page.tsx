@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { supabase } from "@/lib/supabaseClient";
 
 type ShortQuestion = {
   id: string;
@@ -264,13 +265,16 @@ export default function BlockExamPage() {
     setResult(null);
 
     try {
+      const {data:sessionData}=await supabase.auth.getSession();
+      const token=sessionData.session?.access_token;
+      if(!token){setError("Debes iniciar sesión para enviar el examen");return;}
       const res = await fetch("/api/submit-block-exam", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: "Bearer "+token,
         },
         body: JSON.stringify({
-          userId: "11111111-1111-1111-1111-111111111111",
           blockId: exam.blockId,
           topicSlug: exam.development.slug,
           shortAnswers,
