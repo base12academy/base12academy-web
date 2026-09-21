@@ -35,7 +35,7 @@ export async function GET(req:NextRequest){
   const unit=req.nextUrl.searchParams.get("unit")||"";
   if(!getMatematicasAplicadasUnit(unit))return NextResponse.json({error:"invalid_unit"},{status:400});
   const preview=unit===PREVIEW_UNIT;
-  if(!preview&&!a.administrator&&!a.hasCourse&&!a.hasPau)return denied(a);
+  if(!preview&&!a.administrator&&!a.hasCourse)return denied(a);
   const items=type==="rocio"?publicRocio(getRocioQuestions(unit)):publicShort(getShortQuestions(unit));
   return NextResponse.json({type,unit,preview,count:items.length,items});
 }
