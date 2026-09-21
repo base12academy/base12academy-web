@@ -22,7 +22,7 @@ export default function TestPage(){
   useEffect(()=>{const params=new URLSearchParams(window.location.search);setTema(params.get("tema")||"tema-1")},[]);
   useEffect(()=>{const saved=localStorage.getItem("historia-badges");if(saved)setEarnedBadges(JSON.parse(saved))},[]);
 
-  async function authHeaders(){
+  async function authHeaders():Promise<Record<string,string>>{
     const {data}=await supabase.auth.getSession();
     const token=data.session?.access_token;
     return token?{Authorization:"Bearer "+token}:{};
