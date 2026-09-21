@@ -26,7 +26,7 @@ export default function HistoriaEspanaPage() {
   const [section, setSection] = useState<Section>("inicio");
   const [search, setSearch] = useState("");
   const query = search.trim().toLocaleLowerCase("es");
-  const featured = catalog.units.find((item) => item.number === 8) ?? catalog.units[0];
+  const featured = catalog.units[0];
 
   const cards = useMemo(() => {
     const matches = (value: string) => !query || value.toLocaleLowerCase("es").includes(query);

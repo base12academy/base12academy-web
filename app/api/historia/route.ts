@@ -48,7 +48,7 @@ async function accessFor(req: NextRequest) {
   if (error || !data.user) return { allowed: false, reason: "login_required", plan: null, plans: [] as string[] };
   if (isCourseAdministrator(data.user.email)) return { allowed: true, reason: "administrator", plan: "premium", plans: ["premium"] };
   const now = new Date().toISOString();
-  const { data: enrollments } = await supabase.from("course_enrollments").select("plan_slug,expires_at").eq("user_id", data.user.id).eq("course_slug", "historia-espana").eq("status", "active").lte("starts_at", now);
+  const { data: enrollments } = await supabase.from("course_enrollments").select("plan_slug,expires_at").eq("user_id", data.user.id).eq("course_slug", "historia-espana").in("status", ["active", "pending"]).lte("starts_at", now);
   const plans = (enrollments || []).filter((item) => !item.expires_at || item.expires_at >= now).map((item) => String(item.plan_slug || "estandar"));
   return plans.length ? { allowed: true, reason: "enrollment", plan: bestPlan(plans), plans } : { allowed: false, reason: "subscription_required", plan: null, plans: [] as string[] };
 }
