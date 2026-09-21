@@ -22,7 +22,7 @@ export async function POST(req: Request) {
     const blockId = body.blockId || "bloque_1";
     const topicSlug = body.topicSlug || "tema-3";
     const shortAnswers = body.shortAnswers || {};
-    const shortQuestionIds=Array.isArray(body.shortQuestionIds)?body.shortQuestionIds.map(String):[];
+    const shortQuestionIds:string[]=Array.isArray(body.shortQuestionIds)?body.shortQuestionIds.map((value:unknown)=>String(value)):[];
     const sourceAnswer = body.sourceAnswer || "";
     const sourceId = String(body.sourceId || "");
     const developmentAnswer = body.developmentAnswer || "";
@@ -39,7 +39,12 @@ export async function POST(req: Request) {
     const normalizeBlockId=(value:string)=>value.replace("-","_");
     const block=BLOQUES_HISTORIA.find((item:any)=>normalizeBlockId(item.id)===normalizeBlockId(blockId));
     if(!block)return NextResponse.json({error:"Bloque no válido"},{status:400});
-    const allowedTopics=(block.temas||[]) as string[];
+    const blockTopics=(block.temas||[]) as string[];
+    const {data:profile,error:profileError}=await supabase.from("perfiles").select("temas_activos").eq("user_id",userId).maybeSingle();
+    if(profileError)return NextResponse.json({error:profileError.message},{status:500});
+    const profileTopics:string[]=Array.isArray(profile?.temas_activos)?profile.temas_activos.map((value:unknown)=>String(value)):[];
+    const allowedTopics=blockTopics.filter((slug:string)=>profileTopics.includes(slug));
+    if(!allowedTopics.includes(topicSlug))return NextResponse.json({error:"Tema no permitido para este bloque"},{status:400});
     const pool=allowedTopics.flatMap((slug:string)=>{
       const fileSlug=slug.replace("-","");
       try{return getShortQuestionsByTopic(fileSlug).map((q:any)=>({...q,topicSlug:slug}));}catch{return [];}
@@ -53,6 +58,8 @@ export async function POST(req: Request) {
 
 const canonicalSource=getExamSourceById(sourceId);
 if(!canonicalSource)return NextResponse.json({error:"Fuente no válida"},{status:400});
+const expectedSourcePrefix=block.id.replace("_","-")+":";
+if(!canonicalSource.sourceId.startsWith(expectedSourcePrefix))return NextResponse.json({error:"Fuente no válida para este bloque"},{status:400});
 const sourceGrade=gradeDevelopment(sourceAnswer,canonicalSource.explanation);
 const sourceScore=sourceWordCount>=20?Number(Math.min(4,(sourceGrade.score/3)*4).toFixed(2)):0;
 

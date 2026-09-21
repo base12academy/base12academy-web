@@ -14,7 +14,6 @@ export async function POST(req: Request) {
     const body = await req.json();
 
     const blockId = body.blockId;
-    const selectedTopicSlugs = body.selectedTopicSlugs || [];
 
     if (!blockId) {
       return NextResponse.json(
@@ -23,21 +22,16 @@ export async function POST(req: Request) {
       );
     }
 
-    if (!Array.isArray(selectedTopicSlugs) || selectedTopicSlugs.length === 0) {
-      return NextResponse.json(
-        { error: "Faltan selectedTopicSlugs" },
-        { status: 400 }
-      );
-    }
 
     const now=new Date().toISOString();
     const {data:enrollment}=await supabase.from("course_enrollments").select("id").eq("user_id",userId).eq("course_slug","historia-espana").in("status",["active","pending"]).lte("starts_at",now).or("expires_at.is.null,expires_at.gte."+now).limit(1).maybeSingle();
     if(!enrollment)return NextResponse.json({error:"matriculation_required"},{status:403});
+    const {data:profile,error:profileError}=await supabase.from("perfiles").select("temas_activos").eq("user_id",userId).maybeSingle();
+    if(profileError)return NextResponse.json({error:profileError.message},{status:500});
+    const selectedTopicSlugs:string[]=Array.isArray(profile?.temas_activos)?profile.temas_activos.map((value:unknown)=>String(value)):[];
+    if(!selectedTopicSlugs.length)return NextResponse.json({error:"no_active_topics"},{status:400});
 
-    const exam = await generateBlockExam({
-      blockId,
-      selectedTopicSlugs,
-    });
+    const exam = await generateBlockExam({blockId,selectedTopicSlugs});
 
     return NextResponse.json(exam);
   } catch (error: any) {
