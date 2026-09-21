@@ -47,7 +47,7 @@ export async function GET(req: NextRequest) {
     .select("plan_slug,expires_at")
     .eq("user_id", data.user.id)
     .eq("course_slug", "matematicas-ii")
-    .eq("status", "active")
+    .in("status", ["active", "pending"])
     .lte("starts_at", now);
 
   if (enrollmentError) {

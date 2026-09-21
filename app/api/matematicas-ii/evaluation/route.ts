@@ -34,7 +34,7 @@ async function getAccess(req: NextRequest): Promise<AccessResult> {
     .select("plan_slug,expires_at")
     .eq("user_id", data.user.id)
     .eq("course_slug", "matematicas-ii")
-    .eq("status", "active")
+    .in("status", ["active", "pending"])
     .lte("starts_at", now);
 
   if (enrollmentError) {
@@ -97,7 +97,7 @@ export async function GET(req: NextRequest) {
     if (!getMatematicasIIUnit(unit)) return NextResponse.json({ error: "invalid_unit" }, { status: 400 });
 
     const preview = unit === PREVIEW_UNIT;
-    if (!preview && !access.administrator && !access.hasCourse && !access.hasPau) return denied(access);
+    if (!preview && !access.administrator && !access.hasCourse) return denied(access);
 
     const items = type === "rocio" ? publicRocio(getRocioQuestions(unit)) : publicShort(getShortQuestions(unit));
     return NextResponse.json({ type, unit, preview, count: items.length, items });
