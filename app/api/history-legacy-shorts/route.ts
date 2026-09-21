@@ -3,15 +3,9 @@ import { getSupabase } from "@/lib/supabase/server";
 import { getShortQuestionsByTopic } from "@/lib/exams/getShortQuestions";
 import { getShortFileSlug } from "@/lib/exams/getShortFileSlug";
 import { normalizeText } from "@/lib/exams/normalizeText";
+import { getNextTopic } from "@/lib/temas";
 
 type ShortQuestion={id:string;question:string;answerGuide:string;keywords:string[]};
-
-const nextTheme:Record<string,string>={
-  "tema-1":"tema-2","tema-2":"tema-3","tema-3":"tema-4","tema-4":"tema-5","tema-5":"tema-6","tema-6":"tema-7","tema-7":"tema-8","tema-8":"tema-9","tema-9":"tema-10",
-  "tema-10":"tema-11","tema-11":"tema-12","tema-12":"tema-13","tema-13":"tema-14","tema-14":"tema-15","tema-15":"tema-16","tema-16":"tema-17","tema-17":"tema-18","tema-18":"tema-18bis",
-  "tema-18bis":"tema-19","tema-19":"tema-20","tema-20":"tema-21","tema-21":"tema-22","tema-22":"tema-23","tema-23":"tema-23bis","tema-23bis":"tema-24","tema-24":"tema-24bis",
-  "tema-24bis":"tema-25","tema-25":"tema-26","tema-26":"tema-26bis","tema-26bis":"tema-26ter","tema-26ter":"tema-27","tema-27":"tema-28","tema-28":"tema-29","tema-29":"tema-30"
-};
 
 function themeNumber(theme:string){const m=theme.match(/^tema-(\d+)/);return m?Number(m[1]):0;}
 function bank(theme:string):ShortQuestion[]{try{return getShortQuestionsByTopic(getShortFileSlug(theme)) as ShortQuestion[]}catch{return []}}
@@ -48,11 +42,12 @@ export async function POST(req:NextRequest){
   if(n>0){
     const {data:attempts}=await c.supabase.from("intentos-cortas").select("score").eq("usuario_id",c.user.id).eq("tema_id",n);
     const approved=((attempts||[]) as {score:number|null}[]).filter((i:{score:number|null})=>Number(i.score)>=80).length;
-    if(approved>=4&&nextTheme[theme]){
+    const next=getNextTopic(theme);
+    if(approved>=4&&next){
       const {data:profile}=await c.supabase.from("perfiles").select("temas_activos").eq("user_id",c.user.id).maybeSingle();const active=Array.isArray(profile?.temas_activos)?profile.temas_activos:[];
-      if(!active.includes(nextTheme[theme]))await c.supabase.from("perfiles").update({temas_activos:[...active,nextTheme[theme]]}).eq("user_id",c.user.id);
+      if(!active.includes(next))await c.supabase.from("perfiles").update({temas_activos:[...active,next]}).eq("user_id",c.user.id);
       unlocked=true;
     }
   }
-  return NextResponse.json({ok:true,score,correct,total:selected.length,results,unlocked,nextTheme:nextTheme[theme]||null});
+  return NextResponse.json({ok:true,score,correct,total:selected.length,results,unlocked,nextTheme:getNextTopic(theme)});
 }

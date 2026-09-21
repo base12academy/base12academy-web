@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabase } from "@/lib/supabase/server";
 import { historiaTests } from "@/src/data/historia/tests";
+import { getNextTopic } from "@/lib/temas";
 
 type Question={id:string;question:string;options:string[];correctAnswer:number};
 
@@ -61,13 +62,13 @@ export async function POST(req:NextRequest){
     const {data:intentos}=await ctx.supabase.from("intentos_test").select("score").eq("usuario_id",ctx.user.id).eq("tema_id",number);
     const approved=((intentos||[]) as {score:number|null}[]).filter((item:{score:number|null})=>Number(item.score)>=80).length;
     if(approved>=5){
-      const nextTheme="tema-"+String(number+1);
-      const {data:profile}=await ctx.supabase.from("perfiles").select("temas_activos").eq("user_id",ctx.user.id).maybeSingle();
-      const active=Array.isArray(profile?.temas_activos)?profile.temas_activos:[];
-      if(!active.includes(nextTheme)){
-        await ctx.supabase.from("perfiles").update({temas_activos:[...active,nextTheme]}).eq("user_id",ctx.user.id);
+      const nextTheme=getNextTopic(theme);
+      if(nextTheme){
+        const {data:profile}=await ctx.supabase.from("perfiles").select("temas_activos").eq("user_id",ctx.user.id).maybeSingle();
+        const active=Array.isArray(profile?.temas_activos)?profile.temas_activos:[];
+        if(!active.includes(nextTheme))await ctx.supabase.from("perfiles").update({temas_activos:[...active,nextTheme]}).eq("user_id",ctx.user.id);
+        unlocked=true;
       }
-      unlocked=true;
     }
   }
   return NextResponse.json({ok:true,score:percentage,correct,total:selected.length,corrections,unlocked});
