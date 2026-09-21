@@ -8,6 +8,7 @@ import WrittenAssessment from "@/components/learning/WrittenAssessment";
 import CourseAssistantChat from "@/components/CourseAssistantChat";
 import CourseProgressSummary from "@/components/learning/CourseProgressSummary";
 import ChoiceAssessment from "@/components/learning/ChoiceAssessment";
+import explanations from "@/lib/matematicas-aplicadas-ccss/explanations.json";
 import {
   MATEMATICAS_APLICADAS_BLOCKS,
   MATEMATICAS_APLICADAS_STATS,
