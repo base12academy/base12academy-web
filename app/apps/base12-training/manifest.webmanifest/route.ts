@@ -22,16 +22,22 @@ export function GET() {
     ],
     icons: [
       {
-        src: `${TRAINING_ORIGIN}/images/training/base12-training-app-192-v15.png`,
+        src: `${TRAINING_ORIGIN}/images/training/base12-training-app-192-v16.png`,
         sizes: "192x192",
         type: "image/png",
         purpose: "any"
       },
       {
-        src: `${TRAINING_ORIGIN}/images/training/base12-training-app-512-v15.svg`,
+        src: `${TRAINING_ORIGIN}/images/training/base12-training-app-512-v16.png`,
         sizes: "512x512",
-        type: "image/svg+xml",
+        type: "image/png",
         purpose: "any"
+      },
+      {
+        src: `${TRAINING_ORIGIN}/images/training/base12-training-app-maskable-512-v16.png`,
+        sizes: "512x512",
+        type: "image/png",
+        purpose: "maskable"
       }
     ]
   }, {

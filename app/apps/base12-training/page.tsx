@@ -20,15 +20,15 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: `${TRAINING_ORIGIN}/icons/base12-training.ico?v=15`, type: "image/x-icon" },
-      { url: `${TRAINING_ORIGIN}/images/training/base12-training-app-192-v15.png`, sizes: "192x192", type: "image/png" },
-      { url: `${TRAINING_ORIGIN}/images/training/base12-training-app-512-v15.svg`, sizes: "512x512", type: "image/svg+xml" },
+      { url: `${TRAINING_ORIGIN}/icons/base12-training.ico?v=16`, type: "image/x-icon" },
+      { url: `${TRAINING_ORIGIN}/images/training/base12-training-app-192-v16.png`, sizes: "192x192", type: "image/png" },
+      { url: `${TRAINING_ORIGIN}/images/training/base12-training-app-512-v16.png`, sizes: "512x512", type: "image/png" },
     ],
     shortcut: [
-      { url: `${TRAINING_ORIGIN}/images/training/base12-training-app-192-v15.png`, type: "image/png" },
+      { url: `${TRAINING_ORIGIN}/images/training/base12-training-app-192-v16.png`, type: "image/png" },
     ],
     apple: [
-      { url: `${TRAINING_ORIGIN}/images/training/base12-training-180.png`, sizes: "180x180", type: "image/png" },
+      { url: `${TRAINING_ORIGIN}/images/training/base12-training-180-v16.png`, sizes: "180x180", type: "image/png" },
     ],
   },
 };
