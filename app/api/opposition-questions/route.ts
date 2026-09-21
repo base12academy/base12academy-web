@@ -8,7 +8,7 @@ async function context(req: NextRequest, courseSlug: string) {
   const { data } = await supabase.auth.getUser(token);
   if (!data.user) return null;
   const now = new Date().toISOString();
-  const { data: enrollment } = await supabase.from("course_enrollments").select("id").eq("user_id", data.user.id).eq("course_slug", courseSlug).eq("status", "active").lte("starts_at", now).or(`expires_at.is.null,expires_at.gte.${now}`).limit(1).maybeSingle();
+  const { data: enrollment } = await supabase.from("course_enrollments").select("id").eq("user_id", data.user.id).eq("course_slug", courseSlug).in("status", ["active", "pending"]).lte("starts_at", now).or(`expires_at.is.null,expires_at.gte.${now}`).limit(1).maybeSingle();
   return enrollment ? { supabase, user: data.user, enrollment } : null;
 }
 
