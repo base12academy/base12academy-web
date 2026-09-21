@@ -53,7 +53,7 @@ export async function resolveTropaAccess(
       .select("id, plan_slug")
       .eq("user_id", user.id)
       .eq("course_slug", TROP_COURSE_SLUG)
-      .eq("status", "active")
+      .in("status", ["active", "pending"])
       .lte("starts_at", now)
       .or(`expires_at.is.null,expires_at.gte.${now}`);
 
