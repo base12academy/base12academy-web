@@ -57,7 +57,7 @@ async function accessFor(req: NextRequest) {
     .select("plan_slug,expires_at")
     .eq("user_id", data.user.id)
     .eq("course_slug", "historia-filosofia")
-    .eq("status", "active")
+    .in("status", ["active", "pending"])
     .lte("starts_at", now);
 
   const plans = (enrollments || []).filter((item) => !item.expires_at || item.expires_at >= now).map((item) => String(item.plan_slug || "estandar"));

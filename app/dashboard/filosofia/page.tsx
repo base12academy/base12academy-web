@@ -29,7 +29,7 @@ export default function FilosofiaPage() {
   const [period, setPeriod] = useState("Filosofía contemporánea");
   const [search, setSearch] = useState("");
   const query = search.trim().toLocaleLowerCase("es");
-  const featured = catalog.authors.find((item) => item.id === "friedrich-nietzsche") ?? catalog.authors[0];
+  const featured = catalog.authors.find((item) => item.id === "socrates") ?? catalog.authors[0];
 
   const cards = useMemo(() => {
     const matches = (value: string) => !query || value.toLocaleLowerCase("es").includes(query);
