@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { authorizeTropaRequest, isTropaAuthorizationError } from "@/lib/tropa-access";
+import { TROP_COURSE_SLUG } from "@/lib/tropa-config";
 
 const validAnswers = new Set(["A", "B", "C", "D"]);
 
@@ -72,6 +73,21 @@ export async function POST(request: NextRequest) {
   if (attemptError) {
     console.error("No se pudo guardar el simulacro TROP", attemptError);
     return NextResponse.json({ error: "progress_not_saved" }, { status: 503 });
+  }
+  const enrollmentId=access.enrollmentIds[0]||null;
+  if(enrollmentId){
+    const progressPercent=results.length?Math.round(score/results.length*100):0;
+    const {error:learningError}=await supabase.from("course_learning_events").insert({
+      user_id:user.id,
+      enrollment_id:enrollmentId,
+      course_slug:TROP_COURSE_SLUG,
+      content_id:simulacroId,
+      event_type:"assessment_submitted",
+      progress_percent:progressPercent,
+      metadata:{activityType:"tropa_simulacro",score,total:results.length,aptitudeScope:access.aptitudeSlugs},
+      occurred_at:completedAt,
+    });
+    if(learningError)console.error("No se pudo registrar el simulacro TROP en el progreso común",learningError);
   }
   return NextResponse.json({ simulacroId, score, total: results.length, completedAt, results });
 }
