@@ -38,7 +38,7 @@ export async function GET(req: NextRequest) {
     .select("plan_slug,expires_at")
     .eq("user_id", data.user.id)
     .eq("course_slug", courseSlug)
-    .eq("status", "active")
+    .in("status", ["active", "pending"])
     .lte("starts_at", now);
 
   const valid = (enrollments || []).filter((item) => !item.expires_at || item.expires_at >= now);

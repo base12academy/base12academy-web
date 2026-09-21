@@ -18,7 +18,7 @@ async function resolveAccess(req:NextRequest,lesson:string){
   if(!data.user)return {allowed:publicPreview,user:null,enrollment:null,administrator:false,supabase,publicPreview};
   if(isCourseAdministrator(data.user.email))return {allowed:true,user:data.user,enrollment:null,administrator:true,supabase,publicPreview};
   const now=new Date().toISOString();
-  const {data:enrollment}=await supabase.from("course_enrollments").select("id,plan_slug").eq("user_id",data.user.id).eq("course_slug","ofimatica").eq("status","active").lte("starts_at",now).or("expires_at.is.null,expires_at.gte."+now).order("created_at",{ascending:false}).limit(1).maybeSingle();
+  const {data:enrollment}=await supabase.from("course_enrollments").select("id,plan_slug").eq("user_id",data.user.id).eq("course_slug","ofimatica").in("status",["active","pending"]).lte("starts_at",now).or("expires_at.is.null,expires_at.gte."+now).order("created_at",{ascending:false}).limit(1).maybeSingle();
   const group=Number(lesson.slice(1,3));
   const rank:Record<string,number>={esencial:6,estandar:9,standard:9,premium:11};
   const allowed=publicPreview||Boolean(enrollment&&rank[String(enrollment.plan_slug||"")]>=group);
