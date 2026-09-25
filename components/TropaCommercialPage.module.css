@@ -5,6 +5,7 @@
 .nav { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
 .nav a { min-height: 44px; display: inline-flex; align-items: center; padding: 9px 14px; border-radius: 999px; color: #1e293b; text-decoration: none; font-size: 13px; font-weight: 800; }
 .nav .login { border: 1px solid rgba(15,23,42,.18); background: #fff; }
+.nav .tropaAccess { background: #0b4ea2; color: #fff; box-shadow: 0 8px 20px rgba(11,78,162,.18); }
 
 .main { width: min(1240px, calc(100% - 32px)); margin: 0 auto; padding: 42px 0 72px; }
 
@@ -19,6 +20,7 @@
 .sectionHeading h2 { margin: 0; font-size: clamp(25px, 3vw, 34px); }
 
 .plans { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 16px; }
+.primaryPlans { grid-template-columns: repeat(3,minmax(0,1fr)); }
 
 .card {
   display: flex;
@@ -98,9 +100,29 @@
 .trainingLogo { width: 112px; height: 112px; margin: 12px auto 2px; object-fit: contain; }
 .trainingHeroLogo { display: block; width: 180px; height: 180px; margin: 20px 0 0; object-fit: contain; }
 
+.aptitudePrompt { margin-top: 18px; padding: 20px 22px; display: flex; align-items: center; justify-content: space-between; gap: 18px; border: 1px solid #bfdbfe; border-radius: 20px; background: #eff6ff; }
+.aptitudePrompt strong,.aptitudePrompt span { display: block; }
+.aptitudePrompt strong { color: #172554; font-size: 17px; }
+.aptitudePrompt span { margin-top: 5px; color: #475569; font-size: 13px; }
+.aptitudeButton { min-height: 44px; display: inline-flex; flex: none; align-items: center; justify-content: center; padding: 10px 17px; border-radius: 999px; background: #0b4ea2; color: #fff; text-align: center; text-decoration: none; font-size: 13px; font-weight: 900; }
+.aptitudeSection { scroll-margin-top: 104px; padding-top: 16px; }
+.aptitudeSection .sectionHeading p:last-child { max-width: 720px; margin: 8px 0 0; color: #64748b; line-height: 1.5; }
+.aptitudeGrid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+.aptitudeCard { min-width: 0; padding: 17px 18px; display: flex; align-items: center; justify-content: space-between; gap: 18px; border: 1px solid #dbe5f0; border-radius: 16px; background: rgba(255,255,255,.74); }
+.aptitudeCard h3 { margin: 8px 0 3px; font-size: 18px; }
+.aptitudeCard p { margin: 0; color: #64748b; font-size: 12px; line-height: 1.45; }
+.aptitudeAction { display: grid; flex: none; gap: 8px; justify-items: end; }
+.aptitudeAction strong { color: #0b4ea2; font-size: 22px; }
+.aptitudeAction a { color: #0b4ea2; font-size: 12px; font-weight: 900; text-decoration: none; white-space: nowrap; }
+
 .detailGrid { display: grid; grid-template-columns: minmax(0,1fr) 330px; gap: 24px; margin-top: 28px; }
 .panel { padding: 28px; border: 1px solid #dbe5f0; border-radius: 24px; background: #fff; }
 .panel h2 { margin-top: 0; }
+.academicIntro { margin-top: -3px; color: #475569; font-size: 14px; line-height: 1.55; }
+.asideOption { margin-top: 10px; min-height: 52px; padding: 10px 12px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 1px solid #dbe5f0; border-radius: 14px; background: #f8fafc; color: #1e293b; text-decoration: none; }
+.asideOption span { font-weight: 850; }
+.asideOption strong { color: #0b4ea2; }
+.asideAllPlans { min-height: 44px; margin-top: 15px; display: inline-flex; align-items: center; justify-content: center; width: 100%; border-radius: 999px; background: #0b4ea2; color: #fff; font-size: 13px; font-weight: 900; text-decoration: none; }
 
 .back { display: inline-flex; min-height: 44px; align-items: center; margin-bottom: 16px; color: #1d4ed8; font-weight: 800; text-decoration: none; }
 
@@ -124,8 +146,11 @@
 
 @media (max-width: 820px) {
   .plans { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .primaryPlans { grid-template-columns: 1fr; }
   .detailGrid { grid-template-columns: 1fr; }
   .headerInner { min-height: 72px; }
+  .aptitudePrompt { align-items: stretch; flex-direction: column; }
+  .aptitudeButton { width: 100%; }
 }
 
 @media (max-width: 560px) {
@@ -136,5 +161,9 @@
   .main { width: calc(100% - 24px); padding-top: 18px; }
   .hero,.card,.panel { border-radius: 20px; padding: 20px; }
   .plans { grid-template-columns: 1fr; }
+  .aptitudeGrid { grid-template-columns: 1fr; }
+  .aptitudeCard { align-items: flex-start; flex-direction: column; }
+  .aptitudeAction { width: 100%; grid-template-columns: auto 1fr; align-items: center; justify-items: start; }
+  .aptitudeAction a { justify-self: end; }
   .current { font-size: 30px; }
 }

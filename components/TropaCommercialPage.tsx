@@ -6,7 +6,7 @@ import TropaCheckoutForm from "./TropaCheckoutForm";
 import RecommendedBadge from "./RecommendedBadge";
 import styles from "./TropaCommercialPage.module.css";
 
-function Header() {
+function Header({ showTropaAccess = false }: { showTropaAccess?: boolean }) {
   return (
     <header className={styles.header}>
       <div className={styles.headerInner}>
@@ -14,11 +14,34 @@ function Header() {
           <Image className={styles.logo} src="/images/base12-logo.png" alt="Base12 Academy" width={126} height={58} />
         </Link>
         <nav className={styles.nav} aria-label="Navegación principal">
+          {showTropaAccess && (
+            <Link className={styles.tropaAccess} href="/tropa-y-marineria">
+              Preparación Tropa y Marinería
+            </Link>
+          )}
           <Link href="/#catalogo">Catálogo</Link>
           <Link className={styles.login} href="/login">Acceso alumnos</Link>
         </nav>
       </div>
     </header>
+  );
+}
+
+function AptitudeCard({ plan }: { plan: TropaPlan }) {
+  return (
+    <article className={styles.aptitudeCard}>
+      <div>
+        <span className={styles.productType}>Aptitud concreta</span>
+        <h3>{plan.name}</h3>
+        <p>{plan.description}</p>
+      </div>
+      <div className={styles.aptitudeAction}>
+        <strong>{plan.currentPrice}</strong>
+        <Link href={`/tropa-y-marineria/${plan.slug}`}>
+          Ver aptitud y contratar →
+        </Link>
+      </div>
+    </article>
   );
 }
 
@@ -86,6 +109,9 @@ function ProductCard({ plan }: { plan: TropaPlan }) {
 }
 
 export function TropaLanding() {
+  const completePlans = tropaPlans.filter((plan) => plan.kind === "plan");
+  const aptitudes = tropaPlans.filter((plan) => plan.kind === "aptitude");
+
   return (
     <div className={styles.page}>
       <Header />
@@ -95,19 +121,43 @@ export function TropaLanding() {
           <p className={styles.eyebrow}>Tropa y Marinería</p>
           <h1>Elige cómo quieres prepararte</h1>
           <p className={styles.intro}>
-            Puedes elegir una preparación completa o entrenar únicamente la aptitud que necesites reforzar.
+            Compara los tres planes de preparación completa y elige el nivel de entrenamiento que mejor encaja contigo.
           </p>
         </section>
 
         <section className={styles.sectionBlock}>
           <div className={styles.sectionHeading}>
             <p className={styles.eyebrow}>Preparación psicotécnica</p>
-            <h2>Paquetes y aptitudes</h2>
+            <h2>Tres planes para preparar las siete aptitudes</h2>
           </div>
 
-          <div className={styles.plans} aria-label="Paquetes y aptitudes de Tropa y Marinería">
-            {tropaPlans.map((plan) => (
+          <div className={`${styles.plans} ${styles.primaryPlans}`} aria-label="Planes de preparación de Tropa y Marinería">
+            {completePlans.map((plan) => (
               <ProductCard key={plan.slug} plan={plan} />
+            ))}
+          </div>
+
+          <div className={styles.aptitudePrompt}>
+            <div>
+              <strong>¿Solo necesitas reforzar una parte del examen?</strong>
+              <span>También puedes elegir una aptitud individual sin contratar un plan completo.</span>
+            </div>
+            <Link className={styles.aptitudeButton} href="#aptitudes-concretas">
+              Entrenar aptitudes concretas
+            </Link>
+          </div>
+        </section>
+
+        <section className={`${styles.sectionBlock} ${styles.aptitudeSection}`} id="aptitudes-concretas">
+          <div className={styles.sectionHeading}>
+            <p className={styles.eyebrow}>Entrenamiento individual</p>
+            <h2>Aptitudes concretas</h2>
+            <p>Entra aquí solo si prefieres trabajar una aptitud específica por separado.</p>
+          </div>
+
+          <div className={styles.aptitudeGrid} aria-label="Aptitudes individuales de Tropa y Marinería">
+            {aptitudes.map((plan) => (
+              <AptitudeCard key={plan.slug} plan={plan} />
             ))}
           </div>
         </section>
@@ -122,11 +172,15 @@ export function TropaLanding() {
 }
 
 export function TropaPlanPage({ plan }: { plan: TropaPlan }) {
-  const others = tropaPlans.filter((item) => item.slug !== plan.slug);
+  const others = tropaPlans.filter((item) => {
+    if (item.slug === plan.slug || item.kind === "training") return false;
+    if (plan.kind === "aptitude") return item.kind === "aptitude";
+    return item.kind === "plan";
+  });
 
   return (
     <div className={styles.page}>
-      <Header />
+      <Header showTropaAccess={plan.kind === "training"} />
 
       <main className={styles.main}>
         <Link className={styles.back} href="/tropa-y-marineria">
@@ -178,14 +232,23 @@ export function TropaPlanPage({ plan }: { plan: TropaPlan }) {
           </section>
 
           <aside className={styles.panel}>
-            <h2>Otras modalidades</h2>
-            {others.map((item) => (
-              <p key={item.slug}>
-                <Link href={`/tropa-y-marineria/${item.slug}`}>
-                  {item.name} · {item.currentPrice}
-                </Link>
+            <h2>{plan.kind === "training" ? "Preparación académica completa" : plan.kind === "aptitude" ? "Otras aptitudes" : "Otros planes"}</h2>
+            {plan.kind === "training" && (
+              <p className={styles.academicIntro}>
+                Training prepara las pruebas físicas. Para los psicotécnicos, Base12 Academy ofrece estos tres planes completos de Tropa y Marinería.
               </p>
+            )}
+            {others.map((item) => (
+              <Link className={styles.asideOption} href={`/tropa-y-marineria/${item.slug}`} key={item.slug}>
+                <span>{item.name}</span>
+                <strong>{item.currentPrice}</strong>
+              </Link>
             ))}
+            {plan.kind === "training" && (
+              <Link className={styles.asideAllPlans} href="/tropa-y-marineria">
+                Comparar los tres planes →
+              </Link>
+            )}
           </aside>
         </div>
       </main>

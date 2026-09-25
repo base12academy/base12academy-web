@@ -41,7 +41,6 @@ export default async function TropaAdsLanding({
   const campaign = getCampaignParams(await searchParams);
   const plans = tropaPlans.filter((product) => product.kind === "plan");
   const aptitudes = tropaPlans.filter((product) => product.kind === "aptitude");
-  const training = tropaPlans.find((product) => product.kind === "training");
 
   return (
     <div className={styles.page}>
@@ -96,8 +95,8 @@ export default async function TropaAdsLanding({
         </section>
 
         <section className={styles.section} id="modalidades">
-          <div className={styles.sectionHeader}><h2>Paquetes y aptitudes</h2></div>
-          <div className={styles.grid4}>
+          <div className={styles.sectionHeader}><h2>Elige uno de los tres planes</h2><p>Todos preparan las siete aptitudes; cambia la profundidad y el volumen de entrenamiento.</p></div>
+          <div className={styles.grid3}>
             {plans.map((plan) => (
               <article className={styles.priceCard} key={plan.slug}>
                 <p className={styles.cardLabel}>Preparación completa</p>
@@ -116,23 +115,13 @@ export default async function TropaAdsLanding({
               </article>
             ))}
 
-            {training ? (
-              <article className={`${styles.priceCard} ${styles.trainingCard}`}>
-                <p className={styles.cardLabel}>Aplicación de preparación física</p>
-                <Image className={styles.trainingLogo} src="/images/banco-opositores/logo-base12-training.png" alt="Base12 Training" width={120} height={110} />
-                <h3>{training.name}</h3>
-                <span className={styles.price}>{training.currentPrice}</span>
-                <p>{training.description}</p>
-                <ul className={styles.checkList}>{training.includes.slice(0, 3).map((item) => <li key={item}>{item}</li>)}</ul>
-                <div className={styles.cardActions}>
-                  <CampaignLink campaign={campaign} className={styles.cardCta} href={`/tropa-y-marineria/${training.slug}`}>Ver contenido</CampaignLink>
-                  <CampaignLink campaign={campaign} className={styles.cardCtaOutline} href={`/tropa-y-marineria/${training.slug}#contratar`}>Contratar ahora</CampaignLink>
-                </div>
-              </article>
-            ) : null}
           </div>
 
-          <div className={styles.sectionHeader} style={{ marginTop: 34 }}><h2>Entrena por aptitud</h2></div>
+          <div className={styles.actions} style={{ marginTop: 24 }}>
+            <Link className={styles.secondaryCta} href="#aptitudes-concretas">Entrenar aptitudes concretas</Link>
+          </div>
+
+          <div className={styles.sectionHeader} id="aptitudes-concretas" style={{ marginTop: 44, scrollMarginTop: 24 }}><h2>Entrena por aptitud</h2><p>Elige esta opción solo si quieres trabajar una aptitud específica por separado.</p></div>
           <div className={styles.aptitudeGrid}>
             {aptitudes.map((aptitude) => (
               <article className={`${styles.priceCard} ${styles.compactCard}`} key={aptitude.slug}>
