@@ -13,8 +13,8 @@ type Props = {
 export default function TropaCheckoutForm({ courseSlug, productName }: Props) {
   const [terms, setTerms] = useState(false);
   const [privacy, setPrivacy] = useState(false);
-  const [immediateAccess, setImmediateAccess] = useState(true);
-  const [withdrawal, setWithdrawal] = useState(true);
+  const [immediateAccess, setImmediateAccess] = useState(false);
+  const [withdrawal, setWithdrawal] = useState(false);
   const [marketing, setMarketing] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");

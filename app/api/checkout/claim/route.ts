@@ -1813,6 +1813,8 @@ export async function POST(request: NextRequest) {
       nextStep:
         checkout.course_slug === "tabla-periodica"
           ? "periodic-table"
+          : checkout.course_slug === "base12-training"
+            ? "training"
           : "billing",
       confirmationEmailSent,
     });

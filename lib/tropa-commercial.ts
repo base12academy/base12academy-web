@@ -170,8 +170,11 @@ export const tropaPlans = [
     description: "Aplicación independiente de preparación física para las cuatro pruebas de acceso de Tropa y Marinería, con seguimiento de marcas y entrenador IA.",
     includes: [
       "Las 4 pruebas físicas: flexiones, plancha, 2.000 m y agilidad",
+      "Vídeo de bienvenida y 4 vídeos prácticos de entrenamiento",
+      "Vídeo oficial del Ministerio de Defensa como referencia",
       "Registro de marcas, objetivos y evolución",
       "Carlos · entrenador IA con planes específicos",
+      "Pago único y 1 año de acceso, sin suscripción mensual",
       "Compra independiente, sin requisitos previos",
     ],
   },

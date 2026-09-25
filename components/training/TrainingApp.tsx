@@ -12,6 +12,9 @@ import {
   getTrainingProgressState,
   isTrainingTestSlug,
   nextTrainingTarget,
+  TRAINING_ACCOUNT_URL,
+  TRAINING_ACADEMIC_URL,
+  TRAINING_SALES_URL,
   trainingTestMap,
   trainingTests,
   type TrainingSex,
@@ -108,8 +111,8 @@ export default function TrainingApp({ testSlug }: { testSlug?: string }) {
 
   if (access === "loading") return <TrainingFrame><div className={styles.loading}>Preparando Base12 Training…</div></TrainingFrame>;
   if (access === "login") return <TrainingFrame><div className={styles.onboarding}><h1>Accede a Base12 Training</h1><p>Inicia sesión con la cuenta asociada a tu licencia.</p><Link className={styles.primaryButton} href="/login?redirect=%2Fapps%2Fbase12-training">Iniciar sesión</Link></div></TrainingFrame>;
-  if (access === "locked") return <TrainingFrame><div className={styles.onboarding}><h1>Base12 Training</h1><p>Esta aplicación requiere una licencia activa de Base12 Training vinculada a tu correo.</p><Link className={styles.primaryButton} href="/tropa-y-marineria/base12-training">Conseguir Base12 Training</Link></div></TrainingFrame>;
-  if (access === "expired") return <TrainingFrame><div className={styles.onboarding}><h1>Tu licencia ha caducado</h1><p>Las licencias de Base12 Training tienen una duración de 1 año desde su activación. Renueva el acceso para continuar conservando tu cuenta y tus marcas.</p><Link className={styles.primaryButton} href="/tropa-y-marineria/base12-training">Renovar Base12 Training</Link></div></TrainingFrame>;
+  if (access === "locked") return <TrainingFrame><div className={styles.onboarding}><h1>Base12 Training</h1><p>Esta aplicación requiere una licencia activa de Base12 Training vinculada a tu correo.</p><Link className={styles.primaryButton} href={TRAINING_SALES_URL}>Conseguir Base12 Training</Link></div></TrainingFrame>;
+  if (access === "expired") return <TrainingFrame><div className={styles.onboarding}><h1>Tu licencia ha caducado</h1><p>Las licencias de Base12 Training tienen una duración de 1 año desde su activación. Renueva el acceso para continuar conservando tu cuenta y tus marcas.</p><Link className={styles.primaryButton} href={TRAINING_SALES_URL}>Renovar Base12 Training</Link></div></TrainingFrame>;
   if (access === "error") return <TrainingFrame><div className={styles.onboarding}><h1>No se ha podido comprobar el acceso</h1><p>Inténtalo de nuevo dentro de unos minutos.</p><button className={styles.primaryButton} onClick={() => void load()}>Reintentar</button></div></TrainingFrame>;
   if (!sex) return <TrainingFrame><div className={styles.onboarding}><h1>Configura tus marcas oficiales</h1><p>Las referencias oficiales de ingreso 2026 son diferentes para hombres y mujeres en algunas pruebas. Selecciona la opción que corresponde a tu convocatoria.</p><div className={styles.sexButtons}><button disabled={saving} className={styles.primaryButton} onClick={() => void saveSex("male")}>Hombre</button><button disabled={saving} className={styles.secondaryButton} onClick={() => void saveSex("female")}>Mujer</button></div>{notice && <p className={styles.error}>{notice}</p>}</div></TrainingFrame>;
 
@@ -119,7 +122,7 @@ export default function TrainingApp({ testSlug }: { testSlug?: string }) {
 }
 
 function TrainingFrame({ children }: { children: React.ReactNode }) {
-  return <div className={styles.page}><header className={styles.header}><div className={styles.headerInner}><Link href="/apps/base12-training" className={styles.brand}><Image src="/images/banco-opositores/logo-base12-training.png" alt="Base12 Training" width={140} height={159} priority /><span>Base12 Training</span></Link><nav className={styles.nav}><Link className={headerStyles.academicLink} href="/tropa-y-marineria">Preparación Tropa y Marinería</Link><Link href="/apps/base12-training">Inicio</Link><Link href="/apps/base12-training#pruebas">Pruebas</Link><Link href="/dashboard/facturas">Mi cuenta</Link></nav></div></header>{children}</div>;
+  return <div className={styles.page}><header className={styles.header}><div className={`${styles.headerInner} ${headerStyles.compactHeader}`}><Link href="/apps/base12-training" className={`${styles.brand} ${headerStyles.compactBrand}`}><Image src="/images/banco-opositores/logo-base12-training.png" alt="Base12 Training" width={140} height={159} priority /><span>Training</span></Link><nav className={`${styles.nav} ${headerStyles.compactNav}`} aria-label="Navegación de Training"><Link className={headerStyles.academicLink} href={TRAINING_ACADEMIC_URL}>Preparación Tropa y Marinería</Link><Link href="/apps/base12-training">Inicio</Link><Link href="/apps/base12-training#pruebas">Pruebas</Link><Link href={TRAINING_ACCOUNT_URL}>Mi cuenta</Link></nav></div></header>{children}</div>;
 }
 
 function TrainingDashboard({ sex, results }: { sex: TrainingSex; results: ResultRow[] }) {

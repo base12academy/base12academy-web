@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import type { FormEvent } from "react";
 import { supabase } from "@/lib/supabaseClient";
 
 const SPECIAL_CHARACTERS = "!@#$%^&*()_+-=[]{};'\\:\"|<>?,./`~";
@@ -18,7 +19,8 @@ export default function TrainingRegisterPage() {
   const hasNumber = /\d/.test(password);
   const hasSpecial = [...password].some((character) => SPECIAL_CHARACTERS.includes(character));
 
-  const handleRegister = async () => {
+  const handleRegister = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     setMessage("");
     const normalizedEmail = email.trim().toLowerCase();
     if (!normalizedEmail.includes("@")) { setMessage("Introduce un correo válido."); return; }
@@ -50,10 +52,14 @@ export default function TrainingRegisterPage() {
       <section style={{ width: "100%", maxWidth: 430, background: "#fff", border: "1px solid #d7e8dd", borderRadius: 20, padding: 32 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 20 }}><Image src="/images/banco-opositores/logo-base12-training.png" alt="Base12 Training" width={104} height={118} style={{ objectFit: "contain" }} /><h1 style={{ margin: 0, color: "#143c2c" }}>Crear cuenta de Training</h1></div>
         <p style={{ color: "#4b635b", lineHeight: 1.55 }}>Usa el correo al que quedará vinculada tu licencia. Compartir la aplicación no da acceso a otra cuenta.</p>
-        <input type="email" placeholder="Correo electrónico" value={email} onChange={(event) => setEmail(event.target.value)} autoComplete="email" style={{ width: "100%", padding: 12, marginBottom: 12, borderRadius: 10, border: "1px solid #cfe0d5" }} />
-        <input type="password" placeholder="Contraseña" value={password} onChange={(event) => setPassword(event.target.value)} autoComplete="new-password" style={{ width: "100%", padding: 12, marginBottom: 10, borderRadius: 10, border: "1px solid #cfe0d5" }} />
-        <div style={{ marginBottom: 14, fontSize: 14, color: "#445b52" }}><div>{hasMinLength ? "✓" : "○"} Al menos 8 caracteres</div><div>{hasUppercase ? "✓" : "○"} Una mayúscula</div><div>{hasLowercase ? "✓" : "○"} Una minúscula</div><div>{hasNumber ? "✓" : "○"} Un número</div><div>{hasSpecial ? "✓" : "○"} Un carácter especial</div></div>
-        <button type="button" onClick={handleRegister} disabled={done} style={{ width: "100%", padding: 12, border: 0, borderRadius: 10, background: "#176b45", color: "#fff", fontWeight: 800, cursor: "pointer", opacity: done ? .6 : 1 }}>Crear cuenta</button>
+        <form onSubmit={handleRegister}>
+          <label htmlFor="training-register-email" style={{ display: "block", fontWeight: 700, color: "#334b42" }}>Correo electrónico</label>
+          <input id="training-register-email" name="email" type="email" required placeholder="tu@correo.es" value={email} onChange={(event) => setEmail(event.target.value)} autoComplete="email" style={{ width: "100%", padding: 12, marginTop: 6, marginBottom: 12, borderRadius: 10, border: "1px solid #cfe0d5" }} />
+          <label htmlFor="training-register-password" style={{ display: "block", fontWeight: 700, color: "#334b42" }}>Contraseña</label>
+          <input id="training-register-password" name="password" type="password" required placeholder="Crea una contraseña" value={password} onChange={(event) => setPassword(event.target.value)} autoComplete="new-password" style={{ width: "100%", padding: 12, marginTop: 6, marginBottom: 10, borderRadius: 10, border: "1px solid #cfe0d5" }} />
+          <div style={{ marginBottom: 14, fontSize: 14, color: "#445b52" }}><div>{hasMinLength ? "✓" : "○"} Al menos 8 caracteres</div><div>{hasUppercase ? "✓" : "○"} Una mayúscula</div><div>{hasLowercase ? "✓" : "○"} Una minúscula</div><div>{hasNumber ? "✓" : "○"} Un número</div><div>{hasSpecial ? "✓" : "○"} Un carácter especial</div></div>
+          <button type="submit" disabled={done} style={{ width: "100%", padding: 12, border: 0, borderRadius: 10, background: "#176b45", color: "#fff", fontWeight: 800, cursor: "pointer", opacity: done ? .6 : 1 }}>Crear cuenta</button>
+        </form>
         {message && <p role="status" style={{ marginTop: 14, color: done ? "#166534" : "#7a271a", lineHeight: 1.5 }}>{message}</p>}
         <p style={{ marginTop: 18, marginBottom: 0 }}>¿Ya tienes cuenta? <Link href="/login" style={{ color: "#176b45", fontWeight: 700 }}>Iniciar sesión</Link></p>
       </section>

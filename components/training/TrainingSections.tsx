@@ -11,6 +11,10 @@ import {
   getOfficialTarget,
   getTrainingProgressState,
   nextTrainingTarget,
+  TRAINING_ACCOUNT_URL,
+  TRAINING_ACADEMIC_URL,
+  TRAINING_OFFICIAL_VIDEO_URL,
+  TRAINING_SALES_URL,
   trainingTests,
   type TrainingSex,
   type TrainingTest,
@@ -49,7 +53,7 @@ function testStyle(test: TrainingTest) {
 }
 
 function Header({ active }: { active: Section }) {
-  return <header className={styles.header}><div className={styles.headerInner}><Link href="/apps/base12-training" className={styles.brand}><Image src="/images/banco-opositores/logo-base12-training.png" alt="Base12 Training" width={140} height={159} priority /><span>Base12 Training</span></Link><nav className={styles.nav}><Link className={headerStyles.academicLink} href="/tropa-y-marineria">Preparación Tropa y Marinería</Link><Link href="/apps/base12-training">Inicio</Link><Link href="/apps/base12-training/plan" aria-current={active === "plan" ? "page" : undefined}>Plan</Link><Link href="/apps/base12-training/biblioteca" aria-current={active === "biblioteca" ? "page" : undefined}>Biblioteca</Link><Link href="/apps/base12-training/progreso" aria-current={active === "progreso" ? "page" : undefined}>Progreso</Link><Link href="/dashboard/facturas">Mi cuenta</Link></nav></div></header>;
+  return <header className={styles.header}><div className={`${styles.headerInner} ${headerStyles.compactHeader}`}><Link href="/apps/base12-training" className={`${styles.brand} ${headerStyles.compactBrand}`}><Image src="/images/banco-opositores/logo-base12-training.png" alt="Base12 Training" width={140} height={159} priority /><span>Training</span></Link><nav className={`${styles.nav} ${headerStyles.compactNav}`} aria-label="Navegación de Training"><Link className={headerStyles.academicLink} href={TRAINING_ACADEMIC_URL}>Preparación Tropa y Marinería</Link><Link href="/apps/base12-training">Inicio</Link><Link href="/apps/base12-training/plan" aria-current={active === "plan" ? "page" : undefined}>Plan</Link><Link href="/apps/base12-training/biblioteca" aria-current={active === "biblioteca" ? "page" : undefined}>Biblioteca</Link><Link href="/apps/base12-training/progreso" aria-current={active === "progreso" ? "page" : undefined}>Progreso</Link><Link href={TRAINING_ACCOUNT_URL}>Mi cuenta</Link></nav></div></header>;
 }
 
 export default function TrainingSections({ section }: { section: Section }) {
@@ -86,7 +90,7 @@ export default function TrainingSections({ section }: { section: Section }) {
 
   if (access === "loading") return <div className={styles.page}><Header active={section} /><div className={styles.loading}>Preparando Base12 Training…</div></div>;
   if (access === "login") return <Gate section={section} title="Accede a Base12 Training" text="Inicia sesión con la cuenta asociada a tu compra." href="/login?redirect=%2Fapps%2Fbase12-training" button="Iniciar sesión" />;
-  if (access === "locked") return <Gate section={section} title="Base12 Training" text="Esta aplicación requiere una matrícula activa de Base12 Training." href="/tropa-y-marineria/base12-training" button="Ver Base12 Training" />;
+  if (access === "locked") return <Gate section={section} title="Base12 Training" text="Esta aplicación requiere una matrícula activa de Base12 Training." href={TRAINING_SALES_URL} button="Ver Base12 Training" />;
   if (access === "error") return <Gate section={section} title="No se ha podido comprobar el acceso" text="Inténtalo de nuevo dentro de unos minutos." href="/apps/base12-training" button="Volver al inicio" />;
   if (!sex && section !== "biblioteca") return <Gate section={section} title="Completa primero tu perfil" text="Entra en la pantalla principal de Training y selecciona la referencia oficial que corresponde a tu convocatoria." href="/apps/base12-training" button="Ir a Training" />;
 
@@ -104,7 +108,27 @@ function Plan({ sex, results, recommendations }: { sex: TrainingSex; results: Re
 
 function Library() {
   const warmupGeneral = ["Trote suave", "Carrera lateral", "Skipping bajo y medio", "Talones al glúteo", "Carrera hacia atrás", "Progresiones", "Movilidad de tobillo, rodilla y cadera", "Balanceos de pierna", "Movilidad de tronco y tórax", "Rotaciones de hombros y círculos de brazos", "Movilidad de muñeca"];
-  return <><section className={styles.testHero}><p className={styles.eyebrow}>Repertorio validado</p><h1>Biblioteca de ejercicios</h1><p>Carlos solo puede seleccionar ejercicios de esta biblioteca. El calentamiento es transversal: se realiza antes del trabajo específico y no constituye una quinta prueba.</p></section><section className={styles.panel}><h2>Calentamiento transversal</h2><div className={styles.exerciseList}>{warmupGeneral.map((name) => <div className={styles.exercise} key={name}><strong>{name}</strong><span>Previo</span></div>)}</div></section>{trainingTests.map((test) => <section className={styles.panel} style={testStyle(test)} key={test.slug}><div className={styles.sectionTitle}><h2>{test.name}</h2><Link href={`/apps/base12-training/${test.slug}`}>Abrir prueba</Link></div><div className={styles.exerciseList}>{test.exercises.map((exercise) => <div className={styles.exercise} key={exercise.slug}><strong>{exercise.name}</strong><span>{exercise.defaultDose}</span></div>)}</div></section>)}</>;
+  return <>
+    <section className={styles.testHero}>
+      <p className={styles.eyebrow}>Repertorio validado</p>
+      <h1>Biblioteca de ejercicios</h1>
+      <p>Carlos solo puede seleccionar ejercicios de esta biblioteca. El calentamiento es transversal: se realiza antes del trabajo específico y no constituye una quinta prueba.</p>
+    </section>
+    <section className={styles.panel}>
+      <h2>Calentamiento transversal</h2>
+      <div className={styles.exerciseList}>{warmupGeneral.map((name) => <div className={styles.exercise} key={name}><strong>{name}</strong><span>Previo</span></div>)}</div>
+    </section>
+    <section className={styles.panel}>
+      <h2>Referencia oficial del Ministerio de Defensa</h2>
+      <p>Consulta la explicación oficial de las pruebas físicas. Complementa los vídeos prácticos de Base12 Training.</p>
+      <div className={styles.videoBox}><iframe src={TRAINING_OFFICIAL_VIDEO_URL} title="Pruebas físicas de Tropa y Marinería · Ministerio de Defensa" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen /></div>
+    </section>
+    {trainingTests.map((test) => <section className={styles.panel} style={testStyle(test)} key={test.slug}>
+      <div className={styles.sectionTitle}><h2>{test.name}</h2><Link href={`/apps/base12-training/${test.slug}`}>Abrir prueba</Link></div>
+      <div className={styles.videoBox}><iframe src={test.videoUrl} title={`Entrenamiento ${test.name}`} allowFullScreen /></div>
+      <div className={styles.exerciseList}>{test.exercises.map((exercise) => <div className={styles.exercise} key={exercise.slug}><strong>{exercise.name}</strong><span>{exercise.defaultDose}</span></div>)}</div>
+    </section>)}
+  </>;
 }
 
 function Progress({ sex, results }: { sex: TrainingSex; results: ResultRow[] }) {

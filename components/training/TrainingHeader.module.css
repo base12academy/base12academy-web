@@ -2,16 +2,60 @@
   background: #176b45;
   color: #fff !important;
   box-shadow: 0 7px 18px rgba(23, 107, 69, 0.2);
+  text-align: center;
 }
 
 .academicLink:hover {
   background: #105c3a !important;
 }
 
+:global(img[alt="Carlos, entrenador IA de Base12 Training"]),
+:global(img[alt="Carlos"]) {
+  object-position: center top !important;
+}
+
 @media (max-width: 560px) {
+  .compactHeader {
+    padding: 8px 10px;
+    display: grid;
+    grid-template-columns: 140px minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .compactBrand img {
+    width: 60px;
+  }
+
+  .compactBrand span {
+    display: inline;
+    margin-left: -6px;
+    font-size: 20px;
+    font-weight: 950;
+    letter-spacing: -.02em;
+    color: #176b45;
+  }
+
+  .compactNav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4px;
+  }
+
+  .compactNav a {
+    min-height: 38px;
+    padding: 5px 6px;
+    justify-content: center;
+    text-align: center;
+    font-size: 11px;
+  }
+
   .academicLink {
     width: 100%;
     justify-content: center;
+    align-items: center;
     order: -1;
+    grid-column: 1 / -1;
+    text-align: center;
+    line-height: 1.2;
   }
 }

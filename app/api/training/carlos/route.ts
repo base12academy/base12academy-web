@@ -23,14 +23,14 @@ export async function POST(request: NextRequest) {
 
   const [profileResult, resultsResult, sessionsResult] = await Promise.all([
     supabase.from("training_profiles").select("sex").eq("user_id", user.id).maybeSingle(),
-    supabase.from("training_results").select("result_value,performed_at").eq("user_id", user.id).eq("test_slug", testSlug).order("performed_at", { ascending: false }).limit(8),
+    supabase.from("training_results").select("result_value,perceived_effort,performed_at").eq("user_id", user.id).eq("test_slug", testSlug).order("performed_at", { ascending: false }).limit(8),
     supabase.from("training_sessions").select("completed_at").eq("user_id", user.id).eq("test_slug", testSlug).order("completed_at", { ascending: false }).limit(20),
   ]);
 
   const sex = profileResult.data?.sex as TrainingSex | undefined;
   if (sex !== "male" && sex !== "female") return NextResponse.json({ error: "profile_required" }, { status: 409 });
 
-  const results = (resultsResult.data ?? []).map((row) => ({ result_value: Number(row.result_value), performed_at: row.performed_at }));
+  const results = (resultsResult.data ?? []).map((row) => ({ result_value: Number(row.result_value), perceived_effort: row.perceived_effort, performed_at: row.performed_at }));
   const latestDate = results[0]?.performed_at ? new Date(results[0].performed_at).getTime() : 0;
   const sessionsSinceControl = (sessionsResult.data ?? []).filter((row) => new Date(row.completed_at).getTime() > latestDate).length;
   const fallback = buildLocalTrainingRecommendation({ testSlug, sex, results, sessionsSinceControl });

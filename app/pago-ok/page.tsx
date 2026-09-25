@@ -8,6 +8,7 @@ export default function PagoOkPage() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const [checkoutToken, setCheckoutToken] = useState("");
+  const [courseSlug, setCourseSlug] = useState("");
   const [paymentReady, setPaymentReady] = useState(false);
   const [checkingPayment, setCheckingPayment] = useState(true);
   const [autoplayBlocked, setAutoplayBlocked] = useState(false);
@@ -58,6 +59,8 @@ export default function PagoOkPage() {
           router.replace(
             data.courseSlug === "tabla-periodica"
               ? "/onboarding?product=tabla-periodica"
+              : data.courseSlug === "base12-training"
+                ? "https://training.base12academy.es/login?redirect=%2Fapps%2Fbase12-training"
               : "/onboarding"
           );
           return;
@@ -65,6 +68,7 @@ export default function PagoOkPage() {
 
         if (data.paid) {
           setCheckingPayment(false);
+          setCourseSlug(data.courseSlug || "");
 
           /*
            * Clases Online no utiliza el v?deo general
@@ -321,7 +325,9 @@ export default function PagoOkPage() {
       >
         <video
           ref={videoRef}
-          src="/videos/VB00_Bienvenida_Comunicaciones.mp4"
+          src={courseSlug === "base12-training"
+            ? "/videos/training/bienvenida.mp4"
+            : "/videos/VB00_Bienvenida_Comunicaciones.mp4"}
           autoPlay
           playsInline
           controls

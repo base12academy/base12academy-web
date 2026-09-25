@@ -50,6 +50,7 @@ function AltaContent() {
   function destinationFor(step?: string) {
     if (step === "classes") return "/dashboard/clases";
     if (step === "periodic-table") return "/onboarding?product=tabla-periodica";
+    if (step === "training") return "https://training.base12academy.es/login?redirect=%2Fapps%2Fbase12-training";
     return "/onboarding";
   }
 

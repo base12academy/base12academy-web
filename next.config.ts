@@ -31,6 +31,16 @@ const nextConfig: NextConfig = {
           destination: "/training-sw.js",
         },
         {
+          source: "/robots.txt",
+          has: trainingHost,
+          destination: "/apps/base12-training/robots.txt",
+        },
+        {
+          source: "/sitemap.xml",
+          has: trainingHost,
+          destination: "/apps/base12-training/sitemap.xml",
+        },
+        {
           source: "/login",
           has: trainingHost,
           destination: "/apps/base12-training/login",
@@ -72,6 +82,19 @@ const nextConfig: NextConfig = {
         has: trainingHost,
         destination: `https://${TRAINING_HOST}/`,
         permanent: false,
+      },
+    ];
+  },
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+        ],
       },
     ];
   },

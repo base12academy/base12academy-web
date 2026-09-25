@@ -9,6 +9,7 @@ import {
 
 export type TrainingResultSnapshot = {
   result_value: number;
+  perceived_effort?: string | null;
   performed_at?: string | null;
 };
 
@@ -75,6 +76,7 @@ export function buildLocalTrainingRecommendation(input: {
   const formattedTarget = formatTrainingValue(test, target);
   const formattedLatest = formatTrainingValue(test, latest);
   const officialText = formatTrainingValue(test, official);
+  const highEffort = results[0]?.perceived_effort === "hard" || results[0]?.perceived_effort === "max";
 
   let message: string;
   if (latest === null) {
@@ -93,11 +95,15 @@ export function buildLocalTrainingRecommendation(input: {
     message = `Tomamos ${formattedLatest} como punto de partida. El siguiente objetivo será ${formattedTarget} y trabajaremos los ejercicios indicados antes de repetir el control.`;
   }
 
+  if (highEffort) {
+    message += " Como la última marca exigió un esfuerzo alto, prioriza la recuperación y no repitas un control máximo en la siguiente sesión.";
+  }
+
   return {
     message,
     target,
     exercises,
-    sessionsBeforeControl: 2,
+    sessionsBeforeControl: highEffort ? 3 : 2,
     status,
   };
 }

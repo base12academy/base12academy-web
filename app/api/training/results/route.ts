@@ -1,8 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { authorizeTrainingRequest, isTrainingAuthorizationError } from "@/lib/training-access";
-import { isTrainingTestSlug } from "@/lib/training-config";
+import { isTrainingTestSlug, type TrainingTestSlug } from "@/lib/training-config";
 
 export const dynamic = "force-dynamic";
+
+function isPlausibleResult(test: TrainingTestSlug, value: number) {
+  if (test === "flexiones") return Number.isInteger(value) && value <= 200;
+  if (test === "plancha") return value <= 3600;
+  if (test === "carrera-2000") return value >= 300 && value <= 3600;
+  return value >= 5 && value <= 60;
+}
 
 export async function GET(request: NextRequest) {
   const authorization = await authorizeTrainingRequest(request);
@@ -27,7 +34,7 @@ export async function POST(request: NextRequest) {
   const testSlug = String(body.test || "");
   const resultValue = Number(body.value);
   const effort = body.effort ? String(body.effort) : null;
-  if (!isTrainingTestSlug(testSlug) || !Number.isFinite(resultValue) || resultValue <= 0) {
+  if (!isTrainingTestSlug(testSlug) || !Number.isFinite(resultValue) || resultValue <= 0 || !isPlausibleResult(testSlug, resultValue)) {
     return NextResponse.json({ error: "invalid_result" }, { status: 400 });
   }
   if (effort && !["easy", "normal", "hard", "max"].includes(effort)) {

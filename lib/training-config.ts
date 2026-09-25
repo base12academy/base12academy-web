@@ -20,12 +20,18 @@ export type TrainingTest = {
   accentSoft: string;
   official: Record<TrainingSex, number>;
   step: number;
-  videoUrl: string | null;
+  videoUrl: string;
   exercises: TrainingExercise[];
 };
 
 export const TRAINING_COURSE_SLUG = "tropa-y-marineria";
 export const TRAINING_PLAN_SLUG = "base12-training";
+export const TRAINING_APP_URL = "https://training.base12academy.es";
+export const TRAINING_SALES_URL = "https://base12academy.es/tropa-y-marineria/base12-training";
+export const TRAINING_ACADEMIC_URL = "https://base12academy.es/tropa-y-marineria";
+export const TRAINING_ACCOUNT_URL = "https://base12academy.es/dashboard/facturas";
+export const TRAINING_WELCOME_VIDEO_URL = "/videos/training/bienvenida.mp4";
+export const TRAINING_OFFICIAL_VIDEO_URL = "https://www.youtube-nocookie.com/embed/nTk5DApohT8";
 
 export const trainingTests: TrainingTest[] = [
   {
@@ -39,7 +45,7 @@ export const trainingTests: TrainingTest[] = [
     accentSoft: "#EEF8FC",
     official: { male: 9, female: 5 },
     step: 1,
-    videoUrl: null,
+    videoUrl: "/videos/training/flexiones.mp4",
     exercises: [
       { slug: "scapular-push-up", name: "Scapular Push-Up", defaultDose: "3 × 10" },
       { slug: "flexion-inclinada", name: "Flexión inclinada", defaultDose: "3 × 8" },
@@ -61,7 +67,7 @@ export const trainingTests: TrainingTest[] = [
     accentSoft: "#EFF8F2",
     official: { male: 40, female: 40 },
     step: 5,
-    videoUrl: null,
+    videoUrl: "/videos/training/plancha.mp4",
     exercises: [
       { slug: "bird-dog", name: "Bird-Dog", defaultDose: "3 × 8/lado" },
       { slug: "dead-bug", name: "Dead Bug", defaultDose: "3 × 8/lado" },
@@ -82,13 +88,16 @@ export const trainingTests: TrainingTest[] = [
     accentSoft: "#F7F4E9",
     official: { male: 714, female: 778 },
     step: 15,
-    videoUrl: null,
+    videoUrl: "/videos/training/carrera-2000.mp4",
     exercises: [
       { slug: "skipping-a", name: "Skipping A", defaultDose: "3 × 20 m" },
       { slug: "skipping-b", name: "Skipping B", defaultDose: "3 × 20 m" },
       { slug: "talones-gluteo", name: "Talones al glúteo", defaultDose: "3 × 20 m" },
       { slug: "gemelo", name: "Elevaciones de gemelo", defaultDose: "3 × 15" },
       { slug: "progresivos", name: "Progresivos", defaultDose: "4 × 60 m" },
+      { slug: "rodaje-suave", name: "Rodaje suave", defaultDose: "20–30 min" },
+      { slug: "series-400", name: "Series de 400 m", defaultDose: "5 × 400 m · 2 min pausa" },
+      { slug: "tempo-controlado", name: "Ritmo controlado", defaultDose: "2 × 8 min · 3 min pausa" },
       { slug: "aceleracion-20-30", name: "Aceleración 20–30 m", defaultDose: "5 × 30 m" },
       { slug: "multisaltos", name: "Multisaltos suaves", defaultDose: "3 × 8" },
     ],
@@ -104,7 +113,7 @@ export const trainingTests: TrainingTest[] = [
     accentSoft: "#EFF4F7",
     official: { male: 15.4, female: 17.1 },
     step: 0.3,
-    videoUrl: null,
+    videoUrl: "/videos/training/agilidad.mp4",
     exercises: [
       { slug: "desplazamiento-lateral", name: "Desplazamiento lateral", defaultDose: "3 × 20 m" },
       { slug: "cambio-direccion", name: "Cambio de dirección", defaultDose: "4 × 20 m" },
