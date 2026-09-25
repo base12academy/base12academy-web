@@ -1,0 +1,20 @@
+.wrapper { position: fixed; right: 18px; bottom: 18px; z-index: 50; display: grid; justify-items: end; gap: 10px; font-family: Arial, Helvetica, sans-serif; }
+.trigger { min-height: 48px; padding: 12px 18px; border: 0; border-radius: 999px; background: #176b45; color: #fff; box-shadow: 0 12px 30px rgba(18,77,49,.28); font-size: 14px; font-weight: 900; cursor: pointer; }
+.panel { width: min(390px, calc(100vw - 24px)); max-height: min(650px, calc(100vh - 92px)); overflow: hidden; display: grid; grid-template-rows: auto minmax(90px,1fr) auto auto; border: 1px solid #cfe2d5; border-radius: 20px; background: #fff; box-shadow: 0 22px 60px rgba(16,34,53,.24); }
+.heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 15px 16px; background: #eaf5ee; color: #14392a; }
+.heading strong,.heading span { display: block; }
+.heading strong { font-size: 19px; }
+.heading span { margin-top: 2px; color: #557066; font-size: 12px; }
+.heading button { width: 38px; height: 38px; border: 0; border-radius: 50%; background: #fff; color: #176b45; font-size: 24px; cursor: pointer; }
+.messages { min-height: 110px; max-height: 260px; overflow-y: auto; padding: 14px; background: #f8fbf9; }
+.messages p { margin: 0 0 9px; padding: 10px 12px; border-radius: 14px; line-height: 1.45; font-size: 14px; }
+.intro,.carlosMessage { background: #e8f4ec; color: #244b38; }
+.userMessage { margin-left: 34px !important; background: #176b45; color: #fff; }
+.form { display: grid; gap: 7px; padding: 14px 14px 10px; }
+.form label { color: #334b42; font-size: 12px; font-weight: 850; }
+.form select,.form textarea { width: 100%; box-sizing: border-box; border: 1px solid #c9dbcf; border-radius: 11px; padding: 9px 10px; background: #fff; color: #102235; font: inherit; }
+.form textarea { resize: vertical; }
+.form button { min-height: 42px; border: 0; border-radius: 11px; background: #176b45; color: #fff; font-weight: 900; cursor: pointer; }
+.form button:disabled { opacity: .55; cursor: not-allowed; }
+.safety { margin: 0; padding: 0 14px 13px; color: #6b4e25; font-size: 11px; line-height: 1.4; }
+@media (max-width: 560px) { .wrapper { right: 12px; bottom: 12px; } .panel { max-height: calc(100vh - 78px); } .trigger { min-height: 46px; } }

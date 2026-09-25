@@ -22,6 +22,7 @@ import {
 } from "@/lib/training-config";
 import styles from "./TrainingApp.module.css";
 import headerStyles from "./TrainingHeader.module.css";
+import TrainingCarlosChat from "./TrainingCarlosChat";
 
 type Section = "plan" | "biblioteca" | "progreso";
 type AccessState = "loading" | "login" | "locked" | "ready" | "error";
@@ -94,7 +95,7 @@ export default function TrainingSections({ section }: { section: Section }) {
   if (access === "error") return <Gate section={section} title="No se ha podido comprobar el acceso" text="Inténtalo de nuevo dentro de unos minutos." href="/apps/base12-training" button="Volver al inicio" />;
   if (!sex && section !== "biblioteca") return <Gate section={section} title="Completa primero tu perfil" text="Entra en la pantalla principal de Training y selecciona la referencia oficial que corresponde a tu convocatoria." href="/apps/base12-training" button="Ir a Training" />;
 
-  return <div className={styles.page}><Header active={section} /><main className={styles.main}>{section === "plan" && sex ? <Plan sex={sex} results={results} recommendations={recommendations} /> : null}{section === "biblioteca" ? <Library /> : null}{section === "progreso" && sex ? <Progress sex={sex} results={results} /> : null}</main></div>;
+  return <div className={styles.page}><Header active={section} /><main className={styles.main}>{section === "plan" && sex ? <Plan sex={sex} results={results} recommendations={recommendations} /> : null}{section === "biblioteca" ? <Library /> : null}{section === "progreso" && sex ? <Progress sex={sex} results={results} /> : null}</main><TrainingCarlosChat /></div>;
 }
 
 function Gate({ section, title, text, href, button }: { section: Section; title: string; text: string; href: string; button: string }) {

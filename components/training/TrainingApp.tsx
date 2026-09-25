@@ -23,6 +23,7 @@ import {
 } from "@/lib/training-config";
 import styles from "./TrainingApp.module.css";
 import headerStyles from "./TrainingHeader.module.css";
+import TrainingCarlosChat from "./TrainingCarlosChat";
 
 type ResultRow = { id: string; test_slug: TrainingTestSlug; result_value: number | string; perceived_effort?: string | null; performed_at: string };
 type Recommendation = { message: string; target: number; exercises: { slug: string; name: string; dose: string }[]; sessionsBeforeControl: number; status?: string; mode?: string };
@@ -122,7 +123,7 @@ export default function TrainingApp({ testSlug }: { testSlug?: string }) {
 }
 
 function TrainingFrame({ children }: { children: React.ReactNode }) {
-  return <div className={styles.page}><header className={styles.header}><div className={`${styles.headerInner} ${headerStyles.compactHeader}`}><Link href="/apps/base12-training" className={`${styles.brand} ${headerStyles.compactBrand}`}><Image src="/images/banco-opositores/logo-base12-training.png" alt="Base12 Training" width={140} height={159} priority /><span>Training</span></Link><nav className={`${styles.nav} ${headerStyles.compactNav}`} aria-label="Navegación de Training"><Link className={headerStyles.academicLink} href={TRAINING_ACADEMIC_URL}>Preparación Tropa y Marinería</Link><Link href="/apps/base12-training">Inicio</Link><Link href="/apps/base12-training#pruebas">Pruebas</Link><Link href={TRAINING_ACCOUNT_URL}>Mi cuenta</Link></nav></div></header>{children}</div>;
+  return <div className={styles.page}><header className={styles.header}><div className={`${styles.headerInner} ${headerStyles.compactHeader}`}><Link href="/apps/base12-training" className={`${styles.brand} ${headerStyles.compactBrand}`}><Image src="/images/banco-opositores/logo-base12-training.png" alt="Base12 Training" width={140} height={159} priority /><span>Training</span></Link><nav className={`${styles.nav} ${headerStyles.compactNav}`} aria-label="Navegación de Training"><Link className={headerStyles.academicLink} href={TRAINING_ACADEMIC_URL}>Preparación Tropa y Marinería</Link><Link href="/apps/base12-training">Inicio</Link><Link href="/apps/base12-training#pruebas">Pruebas</Link><Link href={TRAINING_ACCOUNT_URL}>Mi cuenta</Link></nav></div></header>{children}<TrainingCarlosChat /></div>;
 }
 
 function TrainingDashboard({ sex, results }: { sex: TrainingSex; results: ResultRow[] }) {

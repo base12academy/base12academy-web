@@ -19,6 +19,7 @@ export async function POST(request: NextRequest) {
   const { supabase, user } = authorization;
   const body = await request.json().catch(() => ({}));
   const testSlug = String(body.test || "");
+  const question = typeof body.question === "string" ? body.question.trim().slice(0, 800) : "";
   if (!isTrainingTestSlug(testSlug)) return NextResponse.json({ error: "invalid_test" }, { status: 400 });
 
   const [profileResult, resultsResult, sessionsResult] = await Promise.all([
@@ -48,6 +49,37 @@ export async function POST(request: NextRequest) {
     verifiedFallback: fallback,
     allowedExercises: allowed,
   };
+
+  if (question) {
+    if (!process.env.OPENAI_API_KEY) {
+      return NextResponse.json({
+        answer: `Para ${test.name}, trabaja únicamente los ejercicios indicados en tu plan y registra una nueva marca después de ${fallback.sessionsBeforeControl} sesiones específicas. Si notas dolor, detén el ejercicio y consulta a un profesional sanitario.`,
+        mode: "verified-local",
+      });
+    }
+
+    try {
+      const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+      const response = await client.responses.create({
+        model: process.env.OPENAI_TRAINING_MODEL || "gpt-4.1-mini",
+        input: [
+          {
+            role: "system",
+            content: "Eres Carlos, entrenador IA de Base12 Training. Responde en español y de forma breve exclusivamente sobre flexiones, plancha, carrera de 2000 m, circuito de agilidad y sus entrenamientos. Tu prioridad es aclarar el nombre correcto de los ejercicios, para qué sirven dentro de la prueba elegida y cómo encajan en la sesión. Usa exactamente los nombres del repertorio permitido recibido en el contexto: no inventes, renombres ni añadas ejercicios. Rechaza amablemente cualquier pregunta que no trate sobre estas pruebas físicas o sus entrenamientos. No diagnostiques lesiones ni prescribas nutrición o medicación. Si hay dolor, lesión, mareo o síntomas, indica que se detenga el ejercicio y consulte a un profesional sanitario. No sustituyes a un entrenador presencial ni a un profesional sanitario.",
+          },
+          { role: "user", content: JSON.stringify({ question, context }) },
+        ],
+      });
+      const answer = response.output_text.trim().slice(0, 1400);
+      return NextResponse.json({ answer: answer || "No he podido preparar una respuesta. Prueba a formular la pregunta de otra manera.", mode: "openai" });
+    } catch (error) {
+      console.error("No se pudo consultar el chat de Carlos IA", error);
+      return NextResponse.json({
+        answer: `Para ${test.name}, sigue la sesión propuesta y evita repetir un esfuerzo máximo sin recuperación. Si notas dolor, detén el ejercicio y consulta a un profesional sanitario.`,
+        mode: "verified-local",
+      });
+    }
+  }
 
   try {
     const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
