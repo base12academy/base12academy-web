@@ -9,6 +9,7 @@ import ClassBookingCalendar from "./ClassBookingCalendar";
 import RecommendedBadge from "./RecommendedBadge";
 import { isPeriodicTableIncludedPlan } from "@/lib/chemistry/periodic-table-product";
 import { supabase } from "@/lib/supabaseClient";
+import tehaloStyles from "./TehaloOppositionCard.module.css";
 
 type Family = "Tropa y Marinería" | "Clases Online" | "Oposiciones" | "Cursos Online" | "Bachillerato y PAU";
 type Course = { family: Family; name: string; region?: string };
@@ -85,6 +86,10 @@ const clasesOnline = [
 ];
 
 const oposiciones = [
+  ["Haciendas Locales", "Administrativos Haciendas Locales"],
+  ["Haciendas Locales", "Auxiliares Administrativos Haciendas Locales"],
+  ["Universidades", "Administrativos de Universidades"],
+  ["Universidades", "Auxiliares Administrativos de Universidades"],
   ["Andalucía", "Administrativo de la Junta de Andalucía"],
   ["Andalucía", "Auxiliar Administrativo de la Junta de Andalucía"],
   ["Andalucía", "Administrativo del Servicio Andaluz de Salud"],
@@ -419,6 +424,7 @@ export default function CourseCatalog() {
   const [checkoutError, setCheckoutError] = useState("");
   const [classHoldReady, setClassHoldReady] = useState(false);
   const [enrollments, setEnrollments] = useState<EnrollmentAccess[]>([]);
+  const [tehaloOpen, setTehaloOpen] = useState(false);
 
   const filtered = useMemo(
     () => allCourses.filter((item) => item.family === family && item.name.toLowerCase().includes(search.toLowerCase())),
@@ -803,6 +809,25 @@ export default function CourseCatalog() {
       )}
 
       <div className="original-course-grid">
+        {family === "Oposiciones" && (
+          <article className={tehaloStyles.card}>
+            <Image
+              src="/images/tehalo/tehalo-pruebas-opositores.png"
+              alt="Tehalo Pruebas"
+              width={2048}
+              height={768}
+              className={tehaloStyles.logo}
+            />
+            <div>
+              <small>Preparación personalizada</small>
+              <h3>¿No encuentras tu oposición?</h3>
+              <p className={tehaloStyles.lead}>Tehalo la personaliza para ti.</p>
+              <p>Adaptamos temario, explicaciones, test y simulacros a tu convocatoria.</p>
+            </div>
+            <button type="button" onClick={() => setTehaloOpen(true)}>Ver Tehalo Pruebas Opositores</button>
+          </article>
+        )}
+
         {filtered.map((item) => (
           <article key={item.name}>
             <div>
@@ -1276,6 +1301,25 @@ export default function CourseCatalog() {
             </div>
           )}
 
+        </div>
+      )}
+
+      {tehaloOpen && (
+        <div className="original-modal-backdrop" onMouseDown={(event) => event.target === event.currentTarget && setTehaloOpen(false)}>
+          <section className={`original-modal ${tehaloStyles.modal}`} role="dialog" aria-modal="true" aria-labelledby="tehalo-modal-title">
+            <button className="original-modal-close" type="button" onClick={() => setTehaloOpen(false)} aria-label="Cerrar">×</button>
+            <Image
+              src="/images/tehalo/tehalo-pruebas-opositores.png"
+              alt="Tehalo Pruebas"
+              width={2048}
+              height={768}
+              className={tehaloStyles.detailLogo}
+            />
+            <small>Tehalo Pruebas Opositores</small>
+            <h2 id="tehalo-modal-title">¿No encuentras tu oposición?</h2>
+            <h3 className={tehaloStyles.modalLead}>Tehalo la personaliza para ti.</h3>
+            <p className={tehaloStyles.modalText}>Adaptamos temario, explicaciones, test y simulacros a tu convocatoria.</p>
+          </section>
         </div>
       )}
     </section>

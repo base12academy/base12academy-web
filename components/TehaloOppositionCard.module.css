@@ -1,0 +1,75 @@
+.card {
+  grid-column: 1 / -1;
+  min-height: 0 !important;
+  display: grid !important;
+  grid-template-columns: minmax(180px, 0.75fr) minmax(260px, 1.25fr) auto;
+  align-items: center;
+  gap: 20px !important;
+  background: linear-gradient(135deg, #ffffff 0%, #edfafa 100%) !important;
+  border-color: rgba(4, 120, 120, 0.24) !important;
+}
+
+.logo {
+  width: 100%;
+  height: 108px;
+  object-fit: contain;
+  border-radius: 15px;
+  background: #020b0d;
+}
+
+.lead {
+  margin: 0 0 7px !important;
+  color: #075985 !important;
+  font-size: 16px !important;
+  font-weight: 900;
+}
+
+.card > button {
+  white-space: nowrap;
+}
+
+.modal {
+  max-width: 620px;
+}
+
+.detailLogo {
+  width: 100%;
+  height: auto;
+  max-height: 190px;
+  margin-bottom: 22px;
+  object-fit: contain;
+  border-radius: 20px;
+  background: #020b0d;
+}
+
+.modalLead {
+  margin: 10px 0 6px;
+  color: #075985;
+  font-size: 21px;
+}
+
+.modalText {
+  color: #475569;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+@media (max-width: 980px) {
+  .card {
+    grid-template-columns: minmax(160px, 0.75fr) minmax(230px, 1.25fr);
+  }
+
+  .card > button {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 720px) {
+  .card {
+    grid-template-columns: 1fr;
+  }
+
+  .logo {
+    height: 96px;
+  }
+}
