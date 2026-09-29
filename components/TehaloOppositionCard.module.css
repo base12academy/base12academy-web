@@ -54,6 +54,41 @@
   line-height: 1.65;
 }
 
+.modalSubtitle {
+  margin: 8px 0 0;
+  color: #0f766e;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.45;
+}
+
+.discoverLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: #087f83;
+  color: #ffffff;
+  font-weight: 900;
+  text-decoration: none;
+  transition: transform 160ms ease, background 160ms ease;
+}
+
+.discoverLink:hover {
+  background: #05666a;
+  transform: translateY(-1px);
+}
+
+.legalFoot {
+  margin: 22px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid #dbe7e7;
+  color: #64748b;
+  font-size: 12px;
+}
+
 @media (max-width: 980px) {
   .card {
     grid-template-columns: minmax(160px, 0.75fr) minmax(230px, 1.25fr);

@@ -1318,7 +1318,12 @@ export default function CourseCatalog() {
             <small>Tehalo Pruebas Opositores</small>
             <h2 id="tehalo-modal-title">¿No encuentras tu oposición?</h2>
             <h3 className={tehaloStyles.modalLead}>Tehalo la personaliza para ti.</h3>
-            <p className={tehaloStyles.modalText}>Adaptamos temario, explicaciones, test y simulacros a tu convocatoria.</p>
+            <p className={tehaloStyles.modalSubtitle}>Material adaptado a tu convocatoria, administración y territorio.</p>
+            <p className={tehaloStyles.modalText}>Temario, explicaciones, test y simulacros personalizados para tu oposición.</p>
+            <Link href="/tehalo-pruebas-opositores" className={tehaloStyles.discoverLink} onClick={() => setTehaloOpen(false)}>
+              Descubrir cómo funciona
+            </Link>
+            <p className={tehaloStyles.legalFoot}>Tehalo Pruebas Opositores · Una aplicación de Editorial EC Libros, S. L.</p>
           </section>
         </div>
       )}
