@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useState } from "react";
 import TurnstileWidget from "@/components/TurnstileWidget";
 import styles from "./TehaloConfigurator.module.css";
 
@@ -24,12 +24,12 @@ type MaterialId = "syllabus_glossary" | "explanations_ai" | "simulations" | "tes
 const administrations = ["Estado", "Comunidad Autónoma", "Ayuntamiento", "Diputación", "Universidad", "Sanidad", "Justicia", "Seguridad Social", "Otra"];
 const positions = ["Administrativo", "Auxiliar Administrativo", "Gestión", "Celador", "Técnico", "Personal laboral", "Otro"];
 const levels = ["A1", "A2", "C1", "C2", "AP", "Personal laboral"];
-const materials: { id: MaterialId; label: string; price: string; cents: number; detail: string }[] = [
-  { id: "syllabus_glossary", label: "Temario + Glosario", price: "desde 119 €", cents: 11900, detail: "Programa oficial organizado y vocabulario esencial." },
-  { id: "explanations_ai", label: "Explicaciones + asistente IA", price: "desde 159 €", cents: 15900, detail: "Explicaciones construidas para comprender y relacionar contenidos." },
-  { id: "simulations", label: "Simulacros", price: "desde 29 €", cents: 2900, detail: "Pruebas completas adaptadas al formato de la convocatoria." },
-  { id: "tests", label: "Test · 2.500 preguntas", price: "desde 49 €", cents: 4900, detail: "Entrenamiento por bloques, repaso y control del progreso." },
-  { id: "complete", label: "Curso completo", price: "desde 319 €", cents: 31900, detail: "Temario, glosario, explicaciones, test y simulacros." },
+const materials: { id: MaterialId; label: string; price: string; cents: number }[] = [
+  { id: "syllabus_glossary", label: "Temario + Glosario", price: "desde 119 €", cents: 11900 },
+  { id: "explanations_ai", label: "Explicaciones + asistente IA", price: "desde 159 €", cents: 15900 },
+  { id: "simulations", label: "Simulacros", price: "desde 29 €", cents: 2900 },
+  { id: "tests", label: "Test · 2.500 preguntas", price: "desde 49 €", cents: 4900 },
+  { id: "complete", label: "Curso completo", price: "desde 319 €", cents: 31900 },
 ];
 
 const stepTitles = [
@@ -44,6 +44,7 @@ const stepTitles = [
 ];
 
 export default function TehaloConfigurator() {
+  const [open, setOpen] = useState(false);
   const [step, setStep] = useState(0);
   const [opposition, setOpposition] = useState("");
   const [administration, setAdministration] = useState("");
@@ -54,11 +55,8 @@ export default function TehaloConfigurator() {
   const [officialUrl, setOfficialUrl] = useState("");
   const [latestAuthorization, setLatestAuthorization] = useState(false);
   const [selectedMaterials, setSelectedMaterials] = useState<MaterialId[]>([]);
-  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
-  const [physicalPersonConfirmed, setPhysicalPersonConfirmed] = useState(false);
-  const [marketingAccepted, setMarketingAccepted] = useState(false);
   const [selectedCall, setSelectedCall] = useState<OfficialCall | null>(null);
   const [calls, setCalls] = useState<OfficialCall[]>([]);
   const [searching, setSearching] = useState(false);
@@ -73,6 +71,20 @@ export default function TehaloConfigurator() {
     if (selectedMaterials.includes("complete")) return 31900;
     return materials.filter((item) => selectedMaterials.includes(item.id)).reduce((total, item) => total + item.cents, 0);
   }, [selectedMaterials]);
+
+  useEffect(() => {
+    if (!open) return;
+    const previousOverflow = document.body.style.overflow;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && !busy) setOpen(false);
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [open, busy]);
 
   async function searchCalls() {
     if (opposition.trim().length < 3) {
@@ -132,8 +144,8 @@ export default function TehaloConfigurator() {
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setError("");
-    if (!privacyAccepted || !physicalPersonConfirmed) {
-      setError("Acepta la privacidad y confirma que realizas la solicitud como persona física.");
+    if (!privacyAccepted) {
+      setError("Acepta la privacidad para enviar la solicitud.");
       return;
     }
     if (!turnstileToken) {
@@ -156,11 +168,10 @@ export default function TehaloConfigurator() {
           officialUrl,
           latestAuthorization,
           materials: selectedMaterials,
-          fullName,
           email,
           privacyAccepted,
-          physicalPersonConfirmed,
-          marketingAccepted,
+          physicalPersonConfirmed: true,
+          marketingAccepted: false,
           turnstileToken,
         }),
       });
@@ -176,29 +187,33 @@ export default function TehaloConfigurator() {
     }
   }
 
-  if (reference) {
-    return (
-      <section id="personalizar" className={styles.success}>
-        <p className={styles.kicker}>Solicitud registrada</p>
-        <h2>Vamos a preparar tu propuesta personalizada.</h2>
-        <p>Referencia: <strong>{reference}</strong></p>
-        <p>Revisaremos la convocatoria y los materiales solicitados. Recibirás por correo el precio final, el plazo y, si aceptas, el acceso al pago seguro mediante Redsys.</p>
-        <p><strong>No se ha realizado ningún pago.</strong></p>
-        <Link href="/">Volver a Base12 Academy</Link>
-      </section>
-    );
-  }
-
   return (
-    <section id="personalizar" className={styles.configurator}>
-      <header className={styles.configHeader}>
-        <div>
-          <p className={styles.kicker}>Configurador personalizado</p>
-          <h2>{stepTitles[step]}</h2>
-        </div>
-        <span>Paso {step + 1} de {stepTitles.length}</span>
-      </header>
-      <div className={styles.progress}><span style={{ width: `${((step + 1) / stepTitles.length) * 100}%` }} /></div>
+    <>
+      <button type="button" className={styles.launchButton} onClick={() => setOpen(true)}>
+        Personalizar una oposición
+      </button>
+
+      {open && (
+        <div className={styles.backdrop} onMouseDown={(event) => event.target === event.currentTarget && !busy && setOpen(false)}>
+          <section className={styles.modal} role="dialog" aria-modal="true" aria-labelledby="tehalo-config-title">
+            <button type="button" className={styles.closeButton} onClick={() => setOpen(false)} aria-label="Cerrar" disabled={busy}>×</button>
+
+            {reference ? (
+              <div className={styles.success}>
+                <h2 id="tehalo-config-title">Propuesta personalizada</h2>
+                <p>Referencia: <strong>{reference}</strong></p>
+                <p>El usuario recibe una propuesta personalizada por correo.</p>
+                <button type="button" className={styles.primary} onClick={() => setOpen(false)}>Cerrar</button>
+              </div>
+            ) : (
+              <>
+                <header className={styles.configHeader}>
+                  <div>
+                    <h2 id="tehalo-config-title">{stepTitles[step]}</h2>
+                  </div>
+                  <span>{step + 1} / {stepTitles.length}</span>
+                </header>
+                <div className={styles.progress}><span style={{ width: `${((step + 1) / stepTitles.length) * 100}%` }} /></div>
 
       {step === 0 && (
         <div className={styles.step}>
@@ -221,7 +236,6 @@ export default function TehaloConfigurator() {
               ))}
             </div>
           )}
-          <p className={styles.officialNote}>No te pediremos documentos. Trabajamos con el Banco de Opositores, enlaces y fuentes oficiales.</p>
         </div>
       )}
 
@@ -235,11 +249,10 @@ export default function TehaloConfigurator() {
       {step === 5 && (
         <div className={styles.step}>
           <div className={styles.optionList}>
-            <label><input type="radio" name="reference" checked={referenceKind === "current"} onChange={() => setReferenceKind("current")} /><span><strong>Convocatoria vigente</strong><small>{selectedCall ? "Usaremos la convocatoria oficial seleccionada." : "Indica el enlace oficial si no aparece en el Banco."}</small></span></label>
-            <label><input type="radio" name="reference" checked={referenceKind === "bank"} onChange={() => setReferenceKind("bank")} /><span><strong>Consultar el Banco de Opositores</strong><small>Validaremos la convocatoria oficial antes de preparar el material.</small></span></label>
-            <label><input type="radio" name="reference" checked={referenceKind === "latest"} onChange={() => setReferenceKind("latest")} /><span><strong>Última convocatoria oficial disponible</strong><small>Solo se utilizará con tu autorización expresa.</small></span></label>
+            <label><input type="radio" name="reference" checked={referenceKind === "current"} onChange={() => setReferenceKind("current")} /><span><strong>Convocatoria vigente</strong></span></label>
+            <label><input type="radio" name="reference" checked={referenceKind === "bank"} onChange={() => setReferenceKind("bank")} /><span><strong>Consultar Banco de Opositores</strong></span></label>
+            <label><input type="radio" name="reference" checked={referenceKind === "latest"} onChange={() => setReferenceKind("latest")} /><span><strong>Última convocatoria oficial disponible</strong></span></label>
           </div>
-          <label className={styles.field}><span>Enlace oficial, si lo tienes</span><input type="url" value={officialUrl} onChange={(event) => setOfficialUrl(event.target.value)} placeholder="https://…" /></label>
           {referenceKind === "latest" && <label className={styles.check}><input type="checkbox" checked={latestAuthorization} onChange={(event) => setLatestAuthorization(event.target.checked)} /><span>Autorizo expresamente el uso de la última convocatoria oficial disponible mientras no exista una nueva.</span></label>}
         </div>
       )}
@@ -252,7 +265,6 @@ export default function TehaloConfigurator() {
                 <span>{selectedMaterials.includes(item.id) ? "✓" : "+"}</span>
                 <strong>{item.label}</strong>
                 <b>{item.price}</b>
-                <small>{item.detail}</small>
               </button>
             ))}
           </div>
@@ -263,17 +275,11 @@ export default function TehaloConfigurator() {
 
       {step === 7 && (
         <form className={styles.step} onSubmit={submit}>
-          <div className={styles.contactGrid}>
-            <label className={styles.field}><span>Nombre y apellidos</span><input value={fullName} onChange={(event) => setFullName(event.target.value)} autoComplete="name" required /></label>
-            <label className={styles.field}><span>Correo electrónico</span><input type="email" value={email} onChange={(event) => setEmail(event.target.value)} autoComplete="email" required /></label>
-          </div>
-          <label className={styles.check}><input type="checkbox" checked={physicalPersonConfirmed} onChange={(event) => setPhysicalPersonConfirmed(event.target.checked)} required /><span>Confirmo que realizo esta solicitud como persona física.</span></label>
+          <label className={styles.field}><span>Correo electrónico</span><input type="email" value={email} onChange={(event) => setEmail(event.target.value)} autoComplete="email" required /></label>
           <label className={styles.check}><input type="checkbox" checked={privacyAccepted} onChange={(event) => setPrivacyAccepted(event.target.checked)} required /><span>He leído la <Link href="/privacidad" target="_blank">Política de privacidad</Link> y autorizo el tratamiento necesario para preparar y enviar mi propuesta. <strong>Obligatorio</strong></span></label>
-          <label className={styles.check}><input type="checkbox" checked={marketingAccepted} onChange={(event) => setMarketingAccepted(event.target.checked)} /><span>Quiero recibir novedades de Tehalo Pruebas. Opcional.</span></label>
           <TurnstileWidget onTokenChange={setTurnstileToken} resetKey={turnstileResetKey} />
           {error && <p className={styles.error} role="alert">{error}</p>}
           <div className={styles.formActions}><button type="button" className={styles.secondary} onClick={() => setStep(6)}>Anterior</button><button type="submit" className={styles.primary} disabled={busy}>{busy ? "Registrando…" : "Solicitar propuesta personalizada"}</button></div>
-          <p className={styles.officialNote}>No se solicita tarjeta ni se realiza ningún pago en este paso.</p>
         </form>
       )}
 
@@ -283,7 +289,12 @@ export default function TehaloConfigurator() {
           <button type="button" className={styles.primary} onClick={() => setStep((value) => Math.min(7, value + 1))} disabled={!canContinue()}>Continuar</button>
         </div>
       )}
-    </section>
+              </>
+            )}
+          </section>
+        </div>
+      )}
+    </>
   );
 }
 

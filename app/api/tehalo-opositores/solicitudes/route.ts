@@ -109,8 +109,8 @@ export async function POST(request: NextRequest) {
         ))
       : [];
 
-    if (fullName.length < 3 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      return NextResponse.json({ ok: false, error: "Indica tu nombre y un correo electrónico válido." }, { status: 400 });
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return NextResponse.json({ ok: false, error: "Indica un correo electrónico válido." }, { status: 400 });
     }
     if ([oppositionName, administration, positionName, level, territory].some((value) => value.length < 2)) {
       return NextResponse.json({ ok: false, error: "Completa todos los datos de la oposición." }, { status: 400 });
@@ -174,7 +174,7 @@ export async function POST(request: NextRequest) {
         .from("tehalo_opposition_requests")
         .insert({
         reference,
-        full_name: fullName,
+        full_name: fullName || "No facilitado",
         email,
         person_type: "physical",
         opposition_name: oppositionName,
@@ -221,13 +221,13 @@ export async function POST(request: NextRequest) {
 
     const materialText = materialLabels.join(", ");
     const customerText = [
-      `Hola ${fullName},`, "", "Hemos recibido tu solicitud de Tehalo Pruebas Opositores.", "",
+      "Hemos recibido tu solicitud de Tehalo Pruebas Opositores.", "",
       `Referencia: ${reference}`, `Oposición: ${oppositionName}`, `Material solicitado: ${materialText}`, "",
       "Revisaremos la convocatoria y te enviaremos por correo un presupuesto con el precio final y el plazo de entrega.",
       "Si decides aceptarlo, ese correo incluirá la posibilidad de pagar de forma segura mediante Redsys.",
       "En este formulario no se ha realizado ningún pago.", "", "Tehalo Pruebas Opositores · Editorial EC Libros, S. L.",
     ].join("\n");
-    const customerHtml = `<div style="font-family:Arial,Helvetica,sans-serif;max-width:680px;margin:auto;color:#16343a;line-height:1.6"><h2 style="color:#087f83">Solicitud recibida</h2><p>Hola ${escapeHtml(fullName)},</p><p>Hemos recibido tu solicitud de <strong>Tehalo Pruebas Opositores</strong>.</p><div style="padding:16px;border:1px solid #b8dede;border-radius:12px;background:#f2fbfa"><div><strong>Referencia:</strong> ${escapeHtml(reference)}</div><div><strong>Oposición:</strong> ${escapeHtml(oppositionName)}</div><div><strong>Material:</strong> ${escapeHtml(materialText)}</div></div><p>Revisaremos la convocatoria y te enviaremos por correo un presupuesto con el precio final y el plazo de entrega.</p><p>Si decides aceptarlo, ese correo incluirá la posibilidad de pagar de forma segura mediante Redsys.</p><p><strong>En este formulario no se ha realizado ningún pago.</strong></p><p style="color:#567176">Tehalo Pruebas Opositores · Editorial EC Libros, S. L.</p></div>`;
+    const customerHtml = `<div style="font-family:Arial,Helvetica,sans-serif;max-width:680px;margin:auto;color:#16343a;line-height:1.6"><h2 style="color:#087f83">Solicitud recibida</h2><p>Hemos recibido tu solicitud de <strong>Tehalo Pruebas Opositores</strong>.</p><div style="padding:16px;border:1px solid #b8dede;border-radius:12px;background:#f2fbfa"><div><strong>Referencia:</strong> ${escapeHtml(reference)}</div><div><strong>Oposición:</strong> ${escapeHtml(oppositionName)}</div><div><strong>Material:</strong> ${escapeHtml(materialText)}</div></div><p>Revisaremos la convocatoria y te enviaremos por correo un presupuesto con el precio final y el plazo de entrega.</p><p>Si decides aceptarlo, ese correo incluirá la posibilidad de pagar de forma segura mediante Redsys.</p><p><strong>En este formulario no se ha realizado ningún pago.</strong></p><p style="color:#567176">Tehalo Pruebas Opositores · Editorial EC Libros, S. L.</p></div>`;
 
     const customerEmailSent = await sendEmail({
       to: email,
@@ -238,7 +238,7 @@ export async function POST(request: NextRequest) {
 
     const internalEmail = process.env.TEHALO_REQUEST_EMAIL?.trim() || "eclibros@gmail.com";
     const internalText = [
-      "Nueva solicitud de Tehalo Pruebas Opositores.", "", `Referencia: ${reference}`, `Nombre: ${fullName}`,
+      "Nueva solicitud de Tehalo Pruebas Opositores.", "", `Referencia: ${reference}`, `Nombre: ${fullName || "No facilitado"}`,
       `Email: ${email}`, `Oposición: ${oppositionName}`, `Administración: ${administration}`, `Puesto: ${positionName}`,
       `Nivel: ${level}`, `Territorio: ${territory}`, `Referencia normativa: ${referenceKind}`,
       `Convocatoria oficial: ${officialUrl || "Pendiente de localizar"}`, `Materiales: ${materialText}`,

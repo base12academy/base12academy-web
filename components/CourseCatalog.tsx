@@ -10,6 +10,7 @@ import RecommendedBadge from "./RecommendedBadge";
 import { isPeriodicTableIncludedPlan } from "@/lib/chemistry/periodic-table-product";
 import { supabase } from "@/lib/supabaseClient";
 import tehaloStyles from "./TehaloOppositionCard.module.css";
+import TehaloConfigurator from "./tehalo-opositores/TehaloConfigurator";
 
 type Family = "Tropa y Marinería" | "Clases Online" | "Oposiciones" | "Cursos Online" | "Bachillerato y PAU";
 type Course = { family: Family; name: string; region?: string };
@@ -425,6 +426,7 @@ export default function CourseCatalog() {
   const [classHoldReady, setClassHoldReady] = useState(false);
   const [enrollments, setEnrollments] = useState<EnrollmentAccess[]>([]);
   const [tehaloOpen, setTehaloOpen] = useState(false);
+  const [tehaloStage, setTehaloStage] = useState<1 | 2>(1);
 
   const filtered = useMemo(
     () => allCourses.filter((item) => item.family === family && item.name.toLowerCase().includes(search.toLowerCase())),
@@ -824,7 +826,7 @@ export default function CourseCatalog() {
               <p className={tehaloStyles.lead}>Tehalo la personaliza para ti.</p>
               <p>Adaptamos temario, explicaciones, test y simulacros a tu convocatoria.</p>
             </div>
-            <button type="button" onClick={() => setTehaloOpen(true)}>Ver Tehalo Pruebas Opositores</button>
+            <button type="button" onClick={() => { setTehaloStage(1); setTehaloOpen(true); }}>Ver Tehalo Pruebas Opositores</button>
           </article>
         )}
 
@@ -1315,15 +1317,21 @@ export default function CourseCatalog() {
               height={768}
               className={tehaloStyles.detailLogo}
             />
-            <small>Tehalo Pruebas Opositores</small>
-            <h2 id="tehalo-modal-title">¿No encuentras tu oposición?</h2>
-            <h3 className={tehaloStyles.modalLead}>Tehalo la personaliza para ti.</h3>
-            <p className={tehaloStyles.modalSubtitle}>Material adaptado a tu convocatoria, administración y territorio.</p>
-            <p className={tehaloStyles.modalText}>Temario, explicaciones, test y simulacros personalizados para tu oposición.</p>
-            <Link href="/tehalo-pruebas-opositores" className={tehaloStyles.discoverLink} onClick={() => setTehaloOpen(false)}>
-              Descubrir cómo funciona
-            </Link>
-            <p className={tehaloStyles.legalFoot}>Tehalo Pruebas Opositores · Una aplicación de Editorial EC Libros, S. L.</p>
+            {tehaloStage === 1 ? (
+              <>
+                <p id="tehalo-modal-title" className={tehaloStyles.modalSubtitle}>Material adaptado a tu convocatoria, administración y territorio.</p>
+                <p className={tehaloStyles.modalText}>Temario, explicaciones, test y simulacros personalizados para tu oposición.</p>
+                <button type="button" className={tehaloStyles.discoverLink} onClick={() => setTehaloStage(2)}>
+                  Descubrir cómo funciona
+                </button>
+                <p className={tehaloStyles.legalFoot}>Tehalo Pruebas Opositores · Una aplicación de Editorial EC Libros, S. L.</p>
+              </>
+            ) : (
+              <>
+                <h2 id="tehalo-modal-title" className={tehaloStyles.salesMessage}>En menos de 24 h diseñamos, personalizamos y adaptamos el curso a tu oposición.</h2>
+                <TehaloConfigurator />
+              </>
+            )}
           </section>
         </div>
       )}
