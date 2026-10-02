@@ -29,12 +29,6 @@ const services: HomeService[] = [
     href: "/tropa-y-marineria/base12-training",
     image: "/images/banco-opositores/logo-base12-training.png",
   },
-  {
-    name: "Tabla Periódica Interactiva",
-    description: "118 elementos y sus datos, con apoyo de IA.",
-    href: "/apps/tabla-periodica",
-    image: "/images/tabla-periodica-interactiva.png",
-  },
 ];
 
 export default function HomeServiceCards() {
@@ -48,7 +42,6 @@ export default function HomeServiceCards() {
             alt=""
             width={52}
             height={52}
-            className={service.href === "/apps/tabla-periodica" ? "periodic-service-logo" : undefined}
           />
           <span><b>{service.name}</b><small>{service.description}</small></span>
           <i aria-hidden="true">→</i>
