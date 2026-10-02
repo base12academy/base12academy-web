@@ -7,6 +7,7 @@ type HomeService = {
   href: string;
   featured?: boolean;
   image: string;
+  imageClass?: string;
 };
 
 const services: HomeService[] = [
@@ -29,6 +30,20 @@ const services: HomeService[] = [
     href: "/tropa-y-marineria/base12-training",
     image: "/images/banco-opositores/logo-base12-training.png",
   },
+  {
+    name: "Tehalo Pruebas",
+    description: "Preparación personalizada para oposiciones.",
+    href: "https://eclibros.es/tehalo",
+    image: "/images/tehalo/tehalo-pruebas-opositores.png",
+    imageClass: "publishing-service-logo",
+  },
+  {
+    name: "EC Libros",
+    description: "Material Base12 Academy: textos y test en papel.",
+    href: "https://eclibros.es/base12-academy/",
+    image: "/images/tehalo/ec-libros.png",
+    imageClass: "publishing-service-logo",
+  },
 ];
 
 export default function HomeServiceCards() {
@@ -36,12 +51,19 @@ export default function HomeServiceCards() {
     <aside className="b12-home-services" aria-label="Servicios Base12">
       <p>Servicios Base12</p>
       {services.map((service) => (
-        <Link key={service.name} href={service.href} className={service.featured ? "featured" : undefined}>
+        <Link
+          key={service.name}
+          href={service.href}
+          className={service.featured ? "featured" : undefined}
+          target={service.href.startsWith("https://") ? "_blank" : undefined}
+          rel={service.href.startsWith("https://") ? "noreferrer" : undefined}
+        >
           <Image
             src={service.image}
             alt=""
             width={52}
             height={52}
+            className={service.imageClass}
           />
           <span><b>{service.name}</b><small>{service.description}</small></span>
           <i aria-hidden="true">→</i>
