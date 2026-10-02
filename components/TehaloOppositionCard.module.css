@@ -17,6 +17,38 @@
   background: #ffffff;
 }
 
+.brandStack,
+.detailBrandStack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brandStack {
+  gap: 8px;
+}
+
+.brandStack a,
+.detailBrandStack a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-radius: 15px;
+}
+
+.brandStack a:focus-visible,
+.detailBrandStack a:focus-visible {
+  outline: 3px solid #087f83;
+  outline-offset: 3px;
+}
+
+.publisherLogo {
+  width: 82px;
+  height: 82px;
+  object-fit: contain;
+}
+
 .lead {
   margin: 0 0 7px !important;
   color: #075985 !important;
@@ -36,10 +68,20 @@
   width: 100%;
   height: auto;
   max-height: 190px;
-  margin-bottom: 22px;
   object-fit: contain;
   border-radius: 20px;
   background: #ffffff;
+}
+
+.detailBrandStack {
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.detailPublisherLogo {
+  width: 108px;
+  height: 108px;
+  object-fit: contain;
 }
 
 .modalLead {

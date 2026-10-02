@@ -813,13 +813,26 @@ export default function CourseCatalog() {
       <div className="original-course-grid">
         {family === "Oposiciones" && (
           <article className={tehaloStyles.card}>
-            <Image
-              src="/images/tehalo/tehalo-pruebas-opositores.png"
-              alt="Tehalo Pruebas"
-              width={2048}
-              height={768}
-              className={tehaloStyles.logo}
-            />
+            <div className={tehaloStyles.brandStack}>
+              <a href="https://eclibros.es/tehalo" target="_blank" rel="noreferrer" aria-label="Visitar Tehalo Pruebas">
+                <Image
+                  src="/images/tehalo/tehalo-pruebas-opositores.png"
+                  alt="Tehalo Pruebas"
+                  width={2048}
+                  height={768}
+                  className={tehaloStyles.logo}
+                />
+              </a>
+              <a href="https://eclibros.es/base12-academy/" target="_blank" rel="noreferrer" aria-label="Visitar EC Libros">
+                <Image
+                  src="/images/tehalo/ec-libros.png"
+                  alt="EC Libros"
+                  width={1254}
+                  height={1254}
+                  className={tehaloStyles.publisherLogo}
+                />
+              </a>
+            </div>
             <div>
               <small>Preparación personalizada</small>
               <h3>¿No encuentras tu oposición?</h3>
@@ -1310,13 +1323,26 @@ export default function CourseCatalog() {
         <div className="original-modal-backdrop" onMouseDown={(event) => event.target === event.currentTarget && setTehaloOpen(false)}>
           <section className={`original-modal ${tehaloStyles.modal}`} role="dialog" aria-modal="true" aria-labelledby="tehalo-modal-title">
             <button className="original-modal-close" type="button" onClick={() => setTehaloOpen(false)} aria-label="Cerrar">×</button>
-            <Image
-              src="/images/tehalo/tehalo-pruebas-opositores.png"
-              alt="Tehalo Pruebas"
-              width={2048}
-              height={768}
-              className={tehaloStyles.detailLogo}
-            />
+            <div className={tehaloStyles.detailBrandStack}>
+              <a href="https://eclibros.es/tehalo" target="_blank" rel="noreferrer" aria-label="Visitar Tehalo Pruebas">
+                <Image
+                  src="/images/tehalo/tehalo-pruebas-opositores.png"
+                  alt="Tehalo Pruebas"
+                  width={2048}
+                  height={768}
+                  className={tehaloStyles.detailLogo}
+                />
+              </a>
+              <a href="https://eclibros.es/base12-academy/" target="_blank" rel="noreferrer" aria-label="Visitar EC Libros">
+                <Image
+                  src="/images/tehalo/ec-libros.png"
+                  alt="EC Libros"
+                  width={1254}
+                  height={1254}
+                  className={tehaloStyles.detailPublisherLogo}
+                />
+              </a>
+            </div>
             {tehaloStage === 1 ? (
               <>
                 <p id="tehalo-modal-title" className={tehaloStyles.modalSubtitle}>Material adaptado a tu convocatoria, administración y territorio.</p>
