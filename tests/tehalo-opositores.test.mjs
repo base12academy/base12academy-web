@@ -37,9 +37,10 @@ test("Tehalo respeta las ventanas y los textos del Plan Maestro", () => {
 
 test("la solicitud se valida, guarda y confirma por correo", () => {
   const route = read("app/api/tehalo-opositores/solicitudes/route.ts");
-  const migration = read("supabase/migrations/20260929090000_tehalo_opposition_requests.sql");
+  const migration = read("supabase-ec/migrations/20261005090000_tehalo_opposition_requests.sql");
 
   assert.match(route, /verifyTurnstileToken/);
+  assert.match(route, /getTehaloSupabase/);
   assert.match(route, /tehalo_opposition_requests/);
   assert.match(route, /TEHALO_REQUEST_EMAIL/);
   assert.match(route, /ese correo incluirá la posibilidad de pagar de forma segura mediante Redsys/);
