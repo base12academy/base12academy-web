@@ -1,6 +1,7 @@
 import { createHash, randomBytes } from "crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabase } from "@/lib/supabase/server";
+import { getTehaloSupabase } from "@/lib/supabase/tehalo-server";
 import { requestClientIp, verifyTurnstileToken } from "@/lib/turnstile";
 
 export const runtime = "nodejs";
@@ -125,12 +126,13 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ ok: false, error: "Selecciona los materiales y acepta las condiciones necesarias." }, { status: 400 });
     }
 
-    const supabase = getSupabase();
+    const base12Supabase = getSupabase();
+    const tehaloSupabase = getTehaloSupabase();
     const ipHash = hashIp(remoteIp);
     let storageReady = true;
     if (ipHash) {
       const since = new Date(Date.now() - 60 * 60 * 1000).toISOString();
-      const { count, error: rateError } = await supabase
+      const { count, error: rateError } = await tehaloSupabase
         .from("tehalo_opposition_requests")
         .select("id", { count: "exact", head: true })
         .eq("ip_hash", ipHash)
@@ -146,7 +148,7 @@ export async function POST(request: NextRequest) {
 
     let officialCall: { id: string; title: string; official_url: string; base12_course_slug: string | null } | null = null;
     if (officialCallId) {
-      const { data, error } = await supabase
+      const { data, error } = await base12Supabase
         .from("opposition_calls")
         .select("id,title,official_url,base12_course_slug")
         .eq("id", officialCallId)
@@ -170,7 +172,7 @@ export async function POST(request: NextRequest) {
 
     let requestId: string | null = null;
     if (storageReady) {
-      const { data: created, error: insertError } = await supabase
+      const { data: created, error: insertError } = await tehaloSupabase
         .from("tehalo_opposition_requests")
         .insert({
         reference,
