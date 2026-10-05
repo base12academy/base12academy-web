@@ -50,7 +50,8 @@ create index if not exists tehalo_opposition_requests_ip_idx
 create or replace function public.set_tehalo_updated_at()
 returns trigger
 language plpgsql
-as $$
+set search_path = ''
+as $
 begin
   new.updated_at = now();
   return new;
@@ -64,7 +65,8 @@ for each row execute function public.set_tehalo_updated_at();
 
 alter table public.tehalo_opposition_requests enable row level security;
 revoke all on public.tehalo_opposition_requests from anon, authenticated;
-grant all on public.tehalo_opposition_requests to service_role;
+grant select, insert, update, delete on public.tehalo_opposition_requests to service_role;
+revoke execute on function public.set_tehalo_updated_at() from public, anon, authenticated;
 
 comment on table public.tehalo_opposition_requests is
   'Solicitudes privadas de Tehalo Pruebas Opositores, propiedad de Editorial EC Libros, S. L.';
