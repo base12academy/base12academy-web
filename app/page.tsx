@@ -1,685 +1,176 @@
-﻿import Link from "next/link";
-import type { CSSProperties } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import LeadChatBot from "@/components/LeadChatBot";
 import CourseCatalog from "@/components/CourseCatalog";
 import PwaInstallButton from "@/components/PwaInstallButton";
 import AdminHeaderLink from "@/components/AdminHeaderLink";
-import HomeServiceCards from "@/components/HomeServiceCards";
+import HomeCatalogLink from "@/components/HomeCatalogLink";
+import HomeMobileMenu from "@/components/HomeMobileMenu";
+import styles from "./home.module.css";
+
+const formation = [
+  { family: "oposiciones", title: "Oposiciones", text: "Preparación organizada por oposición y convocatoria.", action: "Ver oposiciones", icon: "01" },
+  { family: "bachillerato", title: "Bachillerato y PAU", text: "Comprende tu asignatura y prepara la prueba.", action: "Ver asignaturas", icon: "02" },
+  { family: "clases", title: "Clases online", text: "Historia y Filosofía con profesor. Otras materias según disponibilidad.", action: "Consultar clases", icon: "03" },
+  { family: "tropa", title: "Tropa y Marinería", text: "Entrenamiento psicotécnico y preparación física.", action: "Ver preparación", icon: "04" },
+  { family: "cursos", title: "Cursos online", text: "Competencias digitales, protocolo y desarrollo profesional.", action: "Explorar cursos", icon: "05" },
+];
+
+const apps = [
+  { name: "Banco de Opositores", text: "Consulta convocatorias oficiales y configura tus alertas.", href: "/banco-opositores", image: "/images/banco-opositores/logo-banco-opositores.png", action: "Buscar convocatorias" },
+  { name: "Base12 App", text: "Accede a tu formación y continúa donde lo dejaste.", href: "/login", image: "/images/base12-logo.png", action: "Entrar al campus" },
+  { name: "Base12 Training", text: "Conoce la aplicación de preparación física para Tropa y Marinería.", href: "/tropa-y-marineria/base12-training", image: "/images/banco-opositores/logo-base12-training.png", action: "Conocer Training" },
+  { name: "Tabla Periódica Interactiva", text: "Explora los elementos y conoce las opciones de acceso a la aplicación.", href: "/apps/tabla-periodica", image: "/images/tabla-periodica-icon.png", action: "Ver la aplicación" },
+];
 
 const videos = [
-  {
-    title: "Qué es Base12",
-    text: "Una presentación general de la plataforma y de sus aulas de formación.",
-    src: "/videos/que-es-base12.mp4",
-    poster: "/images/que-es-base12.jpg",
-  },
-  {
-    title: "Método Base12",
-    text: "Cómo Base12 organiza el aprendizaje para avanzar con estructura, comprensión y seguridad.",
-    src: "/videos/metodo-base12.mp4",
-    poster: "/images/metodo-base12.jpg",
-  },
-  {
-    title: "Cómo funciona",
-    text: "Una explicación sencilla del funcionamiento de la plataforma, las aulas, los recursos y el acceso.",
-    src: "/videos/como-funciona-base12.mp4",
-    poster: "/images/como-funciona-base12.jpg",
-  },
+  { title: "Qué es Base12", text: "Conoce nuestras aulas y las distintas líneas de formación.", src: "/videos/que-es-base12.mp4", poster: "/images/que-es-base12.jpg" },
+  { title: "Método Base12", text: "Contenido organizado, comprensión y práctica para avanzar.", src: "/videos/metodo-base12.mp4", poster: "/images/metodo-base12.jpg" },
+  { title: "Cómo funciona", text: "Descubre los recursos, el acceso y el funcionamiento del aula.", src: "/videos/como-funciona-base12.mp4", poster: "/images/como-funciona-base12.jpg" },
+];
+
+const faqs = [
+  ["¿Qué puedo estudiar en Base12?", "Puedes preparar oposiciones y Tropa y Marinería, trabajar asignaturas de Bachillerato y PAU, recibir clases online y realizar cursos de competencias profesionales. Consulta el catálogo para conocer la oferta de cada línea."],
+  ["¿En qué se diferencian un curso y las clases online?", "Los cursos organizan contenidos y recursos para estudiar según la modalidad elegida. Las clases online son sesiones con profesor, con reserva de horario y disponibilidad. Revisa la información de la opción que te interese antes de contratar."],
+  ["¿El acompañamiento es humano o de inteligencia artificial?", "Depende del servicio y de la modalidad. Los asistentes de IA ofrecen apoyo académico y de organización. Las clases online son con profesor y algunas modalidades incluyen seguimiento humano. Comprueba qué incluye tu elección."],
+  ["¿Puedo conocer el aula antes de matricularme?", "Sí. Puedes ver los vídeos de presentación y acceder al Tema 1 abierto de Administrativo de la Junta de Andalucía desde esta página. Es una muestra de esa formación; los recursos de otros cursos pueden variar."],
+  ["¿Cómo accedo si ya soy alumno?", "Utiliza el botón Acceso alumnos de la cabecera o la tarjeta Base12 App para entrar con tu cuenta. Desde la pantalla de acceso también puedes recuperar tu contraseña."],
+  ["¿Cómo elijo mi formación?", "Empieza por tu objetivo, consulta los cursos de esa línea y revisa sus contenidos y modalidades. Si necesitas orientación antes de matricularte, escríbenos indicando la asignatura, oposición o competencia que quieres preparar."],
 ];
 
 export default function HomePage() {
   return (
-    <>
-      <main style={styles.page}>
-        <header style={styles.header}>
-          <div className="b12-header-inner" style={styles.headerInner}>
-            <Link href="/" className="b12-header-brand" style={styles.brand}>
-              <img
-                src="/images/base12-logo.png"
-                alt="Base12 Academy"
-                style={styles.logoImage}
-              />
-            </Link>
+    <div className={styles.page}>
+      <a className={styles.skipLink} href="#contenido">Saltar al contenido</a>
+      <header className={styles.header}>
+        <div className={styles.headerInner}>
+          <Link href="/" aria-label="Base12 Academy · Inicio" className={styles.brand}>
+            <Image src="/images/base12-logo.png" alt="Base12 Academy · Construye · Comprende · Domina" width={1024} height={1024} priority />
+          </Link>
+          <nav className={styles.desktopNav} aria-label="Navegación principal">
+            <a href="#formacion">Formación</a>
+            <a href="#aplicaciones">Aplicaciones</a>
+            <a href="#metodo">Cómo funciona</a>
+            <a href="#equipo">Sobre Base12</a>
+            <a href="#contacto">Contacto</a>
+          </nav>
+          <div className={styles.headerActions}>
+            <AdminHeaderLink className={styles.adminLink} />
+            <Link href="/login" className={styles.login}>Acceso alumnos</Link>
+            <HomeMobileMenu />
+          </div>
+        </div>
+      </header>
 
-            <nav className="b12-header-nav" aria-label="Navegación principal" style={styles.nav}>
-              <a href="#videos-presentacion" style={styles.navLink}>
-                Presentación
-              </a>
-
-              <a href="#catalogo" style={styles.navLink}>
-                Cursos y precios
-              </a>
-
-              <a
-                href="https://discord.gg/CJ2CKEFvc"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={styles.communityLink}
-              >
-                Comunidad B12
-              </a>
-            </nav>
-
-            <div className="b12-header-access" style={styles.accessLinks}>
-              <PwaInstallButton />
-              <AdminHeaderLink className="b12-header-admin" style={styles.adminLink} />
-              <Link href="/login" className="b12-header-login" style={styles.loginButton}>Acceso alumnos</Link>
+      <main id="contenido" className={styles.main}>
+        <section className={styles.hero} aria-labelledby="hero-title">
+          <div>
+            <p className={styles.eyebrow}>Formación online · Base12 Academy</p>
+            <h1 id="hero-title">Oposiciones, Bachillerato y <span>clases online.</span></h1>
+            <p className={styles.heroText}>Elige tu objetivo. Descubre cómo estudiar con estructura, práctica y acompañamiento.</p>
+            <div className={styles.actions}>
+              <a className={styles.primary} href="#formacion">Explorar formación <span aria-hidden="true">→</span></a>
+              <a className={styles.textAction} href="#metodo">Ver cómo funciona <span aria-hidden="true">↗</span></a>
             </div>
           </div>
-        </header>
+          <figure className={styles.heroMedia}>
+            <video src="/videos/presentacion-base12.mp4" poster="/images/posters/base12-academy.png" controls playsInline preload="none" aria-label="Presentación de Base12 Academy" />
+            <figcaption>Conoce Base12 antes de empezar.</figcaption>
+          </figure>
+        </section>
 
-        <div className="b12-home-layout" style={styles.layout}>
-          <section style={styles.content}>
-            <section className="b12-home-hero" style={styles.hero}>
-              <div style={styles.heroTextColumn}>
-                <div style={styles.label}>
-                  Tropa y Marinería · Clases Online · Oposiciones · Cursos Online · Bachillerato y PAU
-                </div>
+        <section id="formacion" className={styles.section} aria-labelledby="formation-title">
+          <p className={styles.eyebrow}>Tu objetivo, tu formación</p>
+          <h2 id="formation-title">¿Qué quieres preparar?</h2>
+          <p className={styles.intro}>Elige una línea y descubre los cursos y modalidades disponibles.</p>
+          <div className={styles.formationGrid}>
+            {formation.map((item) => (
+              <HomeCatalogLink family={item.family} key={item.family} className={styles.formationCard}>
+                <span className={styles.cardNumber} aria-hidden="true">{item.icon}</span>
+                <h3>{item.title}</h3><p>{item.text}</p>
+                <span className={styles.cardAction}>{item.action} <span aria-hidden="true">→</span></span>
+              </HomeCatalogLink>
+            ))}
+          </div>
+        </section>
 
-                <h1 style={styles.h1}>
-                  Aprende con método. Avanza acompañado. Domina con seguridad.
-                </h1>
+        <section id="aplicaciones" className={`${styles.section} ${styles.appsSection}`} aria-labelledby="apps-title">
+          <div className={styles.sectionHeading}>
+            <div><p className={styles.eyebrow}>Herramientas para avanzar</p><h2 id="apps-title">Aplicaciones y recursos</h2></div>
+            <p>Encuentra tu convocatoria, entra al campus o descubre nuestras aplicaciones.</p>
+          </div>
+          <div className={styles.appsGrid}>
+            {apps.map((app) => (
+              <Link href={app.href} key={app.name} className={styles.appCard}>
+                <Image src={app.image} width={76} height={76} alt="" />
+                <div><h3>{app.name}</h3><p>{app.text}</p><span className={styles.cardAction}>{app.action} <span aria-hidden="true">→</span></span></div>
+              </Link>
+            ))}
+          </div>
+          <div className={styles.installRow}><p>¿Quieres tener Base12 a mano? Instala el acceso en tu dispositivo.</p><PwaInstallButton /></div>
+        </section>
 
-                <p style={styles.heroText}>
-                  Base12 Academy reúne formación, entrenamiento y apoyo académico para objetivos distintos. Prepárate para Tropa y Marinería, recibe apoyo personalizado con nuestras Clases Online, entrena tu oposición, mejora tus competencias con nuestros Cursos Online o prepara Bachillerato y PAU. En cada opción encontrarás un método definido, recursos específicos y acompañamiento adaptado a tu objetivo.
-                </p>
+        <section id="metodo" className={styles.method} aria-labelledby="method-title">
+          <div className={styles.sample}>
+            <p className={styles.eyebrow}>Una muestra real</p>
+            <h3>Entra en el aula antes de decidir.</h3>
+            <p>Conoce el Tema 1 de Administrativo de la Junta de Andalucía: vídeo, explicación y recursos para practicar.</p>
+            <div className={styles.resourceLabels}><span>Explicación</span><span>Glosario</span><span>Práctica</span></div>
+            <Link href="/dashboard/administrativo-ja?tema=T01" className={styles.secondary}>Ver el tema abierto <span aria-hidden="true">→</span></Link>
+            <small>Los contenidos y recursos dependen de la formación y modalidad.</small>
+          </div>
+          <div>
+            <p className={styles.eyebrow}>El método Base12</p>
+            <h2 id="method-title">Comprende. Practica. Avanza.</h2>
+            <p className={styles.intro}>Contenido, práctica y apoyo con una estructura clara.</p>
+            <ol className={styles.steps}>
+              <li><span aria-hidden="true">1</span><div><h3>Comprende el contenido</h3><p>Trabaja con los materiales y recursos de tu formación.</p></div></li>
+              <li><span aria-hidden="true">2</span><div><h3>Practica y comprueba</h3><p>Utiliza las actividades y pruebas incluidas para revisar lo aprendido.</p></div></li>
+              <li><span aria-hidden="true">3</span><div><h3>Resuelve tus dudas</h3><p>Asistentes de IA y acompañamiento según el servicio y la modalidad.</p></div></li>
+            </ol>
+          </div>
+        </section>
 
-                <div style={styles.heroButtons}>
-                  <a href="#videos-presentacion" style={styles.secondaryButton}>
-                    Ver presentación
-                  </a>
-                </div>
-              </div>
+        <section id="catalogo-contenedor" className={styles.section} aria-label="Catálogo completo de formación"><CourseCatalog /></section>
 
-              <div style={styles.heroVideoBox}>
-                <video
-                  src="/videos/presentacion-base12.mp4"
-                  poster="/images/posters/base12-academy.png"
-                  controls
-                  playsInline
-                  style={styles.heroVideo}
-                />
-                <div style={styles.videoFallback}>
-                  Vídeo de presentación Base12
-                </div>
-              </div>
-            </section>
+        <section id="videos-presentacion" className={styles.section} aria-labelledby="videos-title">
+          <p className={styles.eyebrow}>Mira cómo trabajamos</p><h2 id="videos-title">Descubre Base12 por dentro</h2>
+          <div className={styles.videoGrid}>{videos.map((video) => (
+            <article className={styles.videoCard} key={video.title}>
+              <video src={video.src} poster={video.poster} controls preload="none" playsInline aria-label={video.title} />
+              <div><h3>{video.title}</h3><p>{video.text}</p></div>
+            </article>
+          ))}</div>
+        </section>
 
-            <CourseCatalog />
+        <section id="equipo" className={styles.about} aria-labelledby="about-title">
+          <p className={styles.eyebrow}>Sobre Base12</p><h2 id="about-title">Una experiencia docente convertida en método.</h2>
+          <p>Base12 Academy nace de la enseñanza y del acompañamiento académico. Reúne formación, práctica y herramientas digitales para ayudarte a trabajar con un objetivo definido.</p>
+          <p>En cada servicio se explica cómo estudiarás y qué apoyo incluye tu modalidad: clases con profesor, seguimiento humano o asistentes de inteligencia artificial.</p>
+          <a href="#contacto" className={styles.textAction}>Habla con Base12 <span aria-hidden="true">→</span></a>
+        </section>
 
-            <section id="videos-presentacion" style={styles.videoSection}>
-              <h2 style={styles.h2}>Vídeos de presentación</h2>
-              <p style={styles.subtitle}>
-                Conoce qué es Base12 Academy, cómo funciona y cuál es su método
-                de trabajo.
-              </p>
+        <section className={`${styles.section} ${styles.faq}`} aria-labelledby="faq-title">
+          <p className={styles.eyebrow}>Antes de empezar</p><h2 id="faq-title">Resolvemos tus primeras dudas</h2>
+          {faqs.map(([question, answer]) => <details key={question}><summary>{question}</summary><p>{answer}</p></details>)}
+        </section>
 
-              <div className="b12-home-video-grid" style={styles.cards}>
-                {videos.map((video) => (
-                  <article key={video.title} style={styles.videoCard}>
-                    <video
-                      src={video.src}
-                      poster={video.poster}
-                      controls
-                      preload="metadata"
-                      playsInline
-                      style={styles.presentationVideo}
-                    />
-                    <div style={styles.videoContent}>
-                      <h3 style={styles.h3}>{video.title}</h3>
-                      <p style={styles.cardText}>{video.text}</p>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </section>
-
-            <footer style={styles.footer}>
-              <div style={styles.footerInner}>
-                <p style={styles.footerBrand}>Base12 Academy</p>
-
-                <p style={styles.footerText}>Imagen Digital Ménace, S. L. U.</p>
-                <p style={styles.footerText}>CIF: B21746086</p>
-                <p style={styles.footerText}>Calle Lanuza, 8 · 29009 Málaga</p>
-                <p style={styles.footerText}>
-                  Contacto técnico: base12academy@gmail.com
-                </p>
-
-                <div style={styles.footerLinks}>
-                  <Link href="/aviso-legal" style={styles.footerLink}>
-                    Aviso legal
-                  </Link>
-                  <Link href="/privacidad" style={styles.footerLink}>
-                    Política de privacidad
-                  </Link>
-                  <Link href="/cookies" style={styles.footerLink}>
-                    Política de cookies
-                  </Link>
-                  <Link
-                    href="/terminos-contratacion"
-                    style={styles.footerLink}
-                  >
-                    Términos de contratación
-                  </Link>
-                </div>
-
-                <p style={styles.footerCopy}>
-                  © 2026 Base12 Academy. Todos los derechos reservados.
-                </p>
-              </div>
-            </footer>
-          </section>
-
-          <HomeServiceCards />
-
-          <aside className="b12-home-aside" style={styles.aside}>
-  <div style={styles.trustBox}>
-    <p style={styles.sideLabel}>Decide con seguridad</p>
-
-    <h3 style={styles.sideTitle}>
-      Una experiencia docente real convertida en método
-    </h3>
-
-    <p style={styles.sideIntro}>
-      Base12 Academy nace de años de enseñanza, acompañamiento académico y
-      trabajo con alumnos reales.
-    </p>
-
-    <div style={styles.trustList}>
-      <div style={styles.trustItem}>
-        <strong style={styles.trustNumber}>3.200</strong>
-        <span style={styles.trustText}>alumnos formados</span>
-      </div>
-
-      <div style={styles.trustItem}>
-        <strong style={styles.trustNumber}>11 años</strong>
-        <span style={styles.trustText}>de experiencia docente</span>
-      </div>
-
-      <div style={styles.trustItem}>
-        <strong style={styles.trustNumber}>Doctor</strong>
-        <span style={styles.trustText}>
-          con formación en Historia, Teología, Pedagogía y Alta Dirección
-        </span>
-      </div>
-    </div>
-  </div>
-
-  <div style={styles.faqBox}>
-    <p style={styles.sideLabel}>Preguntas frecuentes</p>
-
-    <details style={styles.faqItem}>
-      <summary style={styles.faqQuestion}>¿Qué es Base12 Academy?</summary>
-      <p style={styles.faqAnswer}>
-        Una plataforma de formación pensada para estudiar con estructura,
-        avanzar con seguridad y comprender mejor lo que se aprende.
-      </p>
-    </details>
-
-    <details style={styles.faqItem}>
-      <summary style={styles.faqQuestion}>
-        ¿Base12 sustituye a mi profesor?
-      </summary>
-      <p style={styles.faqAnswer}>
-        No. Base12 complementa las clases, ordena los contenidos y ayuda al
-        alumno a estudiar con más método.
-      </p>
-    </details>
-
-    <details style={styles.faqItem}>
-      <summary style={styles.faqQuestion}>
-        ¿Qué diferencia hay con estudiar solo?
-      </summary>
-      <p style={styles.faqAnswer}>
-        Base12 ofrece orientación, vídeos de apoyo, materiales organizados y
-        pruebas para comprobar si realmente se avanza.
-      </p>
-    </details>
-
-    <details style={styles.faqItem}>
-      <summary style={styles.faqQuestion}>
-        ¿Tengo que estudiar más temario?
-      </summary>
-      <p style={styles.faqAnswer}>
-        No se trata de añadir carga sin sentido, sino de comprender mejor el
-        contexto, las causas, las consecuencias y las relaciones importantes.
-      </p>
-    </details>
-
-    <details style={styles.faqItem}>
-      <summary style={styles.faqQuestion}>
-        ¿Qué paquete debería elegir?
-      </summary>
-      <p style={styles.faqAnswer}>
-        Depende de tu situación: apoyo para la asignatura, preparación PAU o
-        acompañamiento más completo. La idea es elegir según la necesidad real.
-      </p>
-    </details>
-
-    <details style={styles.faqItem}>
-      <summary style={styles.faqQuestion}>
-        ¿Qué significa “Consigue tu libertad”?
-      </summary>
-      <p style={styles.faqAnswer}>
-        Significa que aprender bien abre posibilidades. Cuando entiendes y
-        avanzas con seguridad, dependes menos del miedo y de la improvisación.
-      </p>
-    </details>
-  </div>
-
-  <div style={styles.quickBox}>
-    <p style={styles.sideLabel}>Acceso rápido</p>
-    <a href="#catalogo" style={styles.quickPrimary}>Ver cursos y precios</a>
-  </div>
-</aside>
-        </div>
+        <section id="contacto" className={styles.contact} aria-labelledby="contact-title">
+          <div><p className={styles.eyebrow}>Te ayudamos a elegir</p><h2 id="contact-title">¿Qué quieres preparar?</h2><p>Cuéntanos tu objetivo, la asignatura o la oposición que te interesa.</p></div>
+          <div className={styles.contactActions}><a href="mailto:base12academy@gmail.com?subject=Orientaci%C3%B3n%20sobre%20formaci%C3%B3n%20Base12" className={styles.primary}>Solicitar información <span aria-hidden="true">→</span></a><a href="mailto:base12academy@gmail.com">base12academy@gmail.com</a></div>
+        </section>
       </main>
 
-      <LeadChatBot attention />
-    </>
+      <footer className={styles.footer}>
+        <div className={styles.footerTop}>
+          <div><Image src="/images/base12-logo.png" width={1024} height={1024} alt="Base12 Academy" className={styles.footerLogo} /><p>Imagen Digital Ménace, S. L. U.<br />CIF: B21746086<br />Calle Lanuza, 8 · 29009 Málaga</p></div>
+          <nav aria-label="Formación"><h3>Formación</h3>{formation.map((item) => <HomeCatalogLink key={item.family} family={item.family}>{item.title}</HomeCatalogLink>)}</nav>
+          <nav aria-label="Accesos y recursos"><h3>Accesos y recursos</h3><Link href="/login">Acceso alumnos</Link><a href="#aplicaciones">Aplicaciones</a><a href="#contacto">Contacto</a><a href="https://discord.gg/CJ2CKEFvc" target="_blank" rel="noopener noreferrer">Comunidad B12 ↗</a></nav>
+          <nav aria-label="Recursos relacionados"><h3>Recursos relacionados</h3><a href="https://eclibros.es/base12-academy/" target="_blank" rel="noopener noreferrer">Manuales y test · EC Libros ↗</a><a href="https://eclibros.es/tehalo" target="_blank" rel="noopener noreferrer">Preparación a medida · Tehalo ↗</a><p>Estos enlaces abren otras webs.</p></nav>
+        </div>
+        <div className={styles.footerBottom}><small>© {new Date().getFullYear()} Base12 Academy</small><nav aria-label="Información legal"><Link href="/aviso-legal">Aviso legal</Link><Link href="/privacidad">Privacidad</Link><Link href="/cookies">Cookies</Link><Link href="/terminos-contratacion">Condiciones de contratación</Link></nav></div>
+      </footer>
+      <LeadChatBot />
+    </div>
   );
 }
-
-const styles: Record<string, CSSProperties> = {
-  page: {
-    minHeight: "100vh",
-    background: "#f4f7fb",
-    color: "#0f172a",
-    fontFamily:
-      "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-  },
-  header: {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    width: "100%",
-    zIndex: 50,
-    background: "rgba(255, 255, 255, 0.96)",
-    borderBottom: "1px solid rgba(15, 23, 42, 0.10)",
-    backdropFilter: "blur(10px)",
-  },
-  headerInner: {
-    maxWidth: 1560,
-    margin: "0 auto",
-    padding: "7px 24px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: 24,
-  },
-  brand: {
-    display: "flex",
-    alignItems: "center",
-    textDecoration: "none",
-  },
-  logoImage: {
-    width: 180,
-    height: 76,
-    objectFit: "contain",
-    borderRadius: 12,
-    background: "#ffffff",
-    padding: 4,
-  },
-  nav: {
-    display: "flex",
-    alignItems: "center",
-    gap: 22,
-    fontSize: 14,
-  },
-  navLink: {
-    color: "#1e293b",
-    textDecoration: "none",
-    fontWeight: 600,
-  },
-  communityLink: {
-    color: "#1d4ed8",
-    background: "#eff6ff",
-    border: "1px solid rgba(37, 99, 235, 0.20)",
-    textDecoration: "none",
-    fontWeight: 800,
-    padding: "9px 14px",
-    borderRadius: 999,
-    whiteSpace: "nowrap",
-  },
-  loginButton: {
-    border: "1px solid rgba(15, 23, 42, 0.18)",
-    color: "#0f172a",
-    background: "#ffffff",
-    textDecoration: "none",
-    padding: "10px 16px",
-    borderRadius: 999,
-    fontSize: 14,
-    fontWeight: 800,
-  },
-  accessLinks: {
-    display: "flex",
-    alignItems: "center",
-    gap: 10,
-  },
-  adminLink: {
-    color: "#475569",
-    textDecoration: "none",
-    fontSize: 12,
-    fontWeight: 700,
-  },
-  layout: {
-    maxWidth: 1560,
-    margin: "0 auto",
-    padding: "100px 24px 64px",
-    display: "grid",
-    gridTemplateColumns: "minmax(720px, 1fr) 220px 280px",
-    gap: 20,
-  },
-  content: {
-    display: "flex",
-    flexDirection: "column",
-    gap: 26,
-  },
-  hero: {
-    border: "1px solid rgba(15, 23, 42, 0.10)",
-    borderRadius: 32,
-    padding: 26,
-    background:
-      "linear-gradient(135deg, #ffffff 0%, #eaf1fb 55%, #dbeafe 100%)",
-    boxShadow: "0 24px 70px rgba(15, 23, 42, 0.10)",
-    display: "grid",
-    gridTemplateColumns: "1.1fr 0.9fr",
-    gap: 24,
-    alignItems: "center",
-  },
-  heroTextColumn: {
-    minWidth: 0,
-  },
-  label: {
-    display: "inline-block",
-    border: "1px solid rgba(15, 23, 42, 0.16)",
-    borderRadius: 999,
-    padding: "7px 14px",
-    color: "#1e3a8a",
-    background: "#ffffff",
-    fontSize: 14,
-    fontWeight: 700,
-    marginBottom: 14,
-  },
-  h1: {
-    margin: 0,
-    fontSize: 41,
-    lineHeight: 1.05,
-    letterSpacing: "-0.04em",
-    maxWidth: 760,
-    color: "#020617",
-  },
-  heroText: {
-    maxWidth: 720,
-    color: "#334155",
-    fontSize: 16,
-    lineHeight: 1.58,
-    marginTop: 16,
-  },
-  heroButtons: {
-    display: "flex",
-    gap: 12,
-    marginTop: 18,
-    flexWrap: "wrap",
-  },
-  secondaryButton: {
-    border: "1px solid rgba(37, 99, 235, 0.35)",
-    color: "#1d4ed8",
-    background: "#ffffff",
-    padding: "13px 22px",
-    borderRadius: 999,
-    fontWeight: 900,
-    textDecoration: "none",
-    fontSize: 14,
-  },
-  heroVideoBox: {
-    position: "relative",
-    overflow: "hidden",
-    borderRadius: 28,
-    minHeight: 275,
-    background: "linear-gradient(135deg, #dbeafe, #e2e8f0)",
-    border: "1px solid rgba(15, 23, 42, 0.10)",
-    boxShadow: "0 20px 50px rgba(15, 23, 42, 0.12)",
-  },
-  heroVideo: {
-    position: "absolute",
-    inset: 0,
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-    zIndex: 2,
-  },
-  videoFallback: {
-    position: "absolute",
-    inset: 0,
-    zIndex: 1,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    color: "#64748b",
-    fontWeight: 800,
-    textAlign: "center",
-    padding: 24,
-  },
-  h2: {
-    margin: 0,
-    fontSize: 28,
-    lineHeight: 1.2,
-    letterSpacing: "-0.02em",
-    color: "#020617",
-  },
-  subtitle: {
-    color: "#475569",
-    marginTop: 8,
-    marginBottom: 20,
-  },
-  cards: {
-    display: "grid",
-    gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-    gap: 18,
-  },
-  card: {
-    border: "1px solid rgba(15, 23, 42, 0.10)",
-    background: "#ffffff",
-    borderRadius: 28,
-    padding: 22,
-    minHeight: 270,
-    boxShadow: "0 18px 45px rgba(15, 23, 42, 0.08)",
-  },
-  cardImage: {
-    height: 110,
-    borderRadius: 20,
-    background: "linear-gradient(135deg, #e2e8f0, #dbeafe)",
-    border: "1px solid rgba(15, 23, 42, 0.08)",
-    marginBottom: 20,
-  },
-  h3: {
-    margin: 0,
-    fontSize: 20,
-    lineHeight: 1.25,
-    color: "#020617",
-  },
-  cardText: {
-    color: "#475569",
-    fontSize: 14,
-    lineHeight: 1.65,
-    marginTop: 12,
-  },
-  cardButton: {
-    display: "inline-block",
-    marginTop: 18,
-    color: "#1d4ed8",
-    background: "#eff6ff",
-    border: "1px solid rgba(37, 99, 235, 0.18)",
-    borderRadius: 999,
-    padding: "9px 14px",
-    textDecoration: "none",
-    fontSize: 14,
-    fontWeight: 900,
-  },
-  videoSection: {
-    border: "1px solid rgba(15, 23, 42, 0.10)",
-    borderRadius: 30,
-    padding: 24,
-    background: "#ffffff",
-    boxShadow: "0 18px 45px rgba(15, 23, 42, 0.08)",
-  },
-  videoCard: {
-    overflow: "hidden",
-    borderRadius: 24,
-    background: "#ffffff",
-    border: "1px solid rgba(15, 23, 42, 0.10)",
-  },
-  presentationVideo: {
-    width: "100%",
-    aspectRatio: "16 / 9",
-    background: "#e2e8f0",
-    display: "block",
-    objectFit: "cover",
-  },
-  videoContent: {
-    padding: 18,
-  },
-  footer: {
-    borderTop: "1px solid #e5e7eb",
-    paddingTop: 34,
-    marginTop: 12,
-  },
-  footerInner: {
-    color: "#475569",
-    fontSize: 14,
-    lineHeight: 1.7,
-  },
-  footerBrand: {
-    margin: "0 0 18px",
-    color: "#111827",
-    fontWeight: 900,
-  },
-  footerText: {
-    margin: "2px 0",
-  },
-  footerLinks: {
-    display: "flex",
-    flexWrap: "wrap",
-    gap: 18,
-    marginTop: 18,
-  },
-  footerLink: {
-    color: "#004aad",
-    textDecoration: "none",
-    fontWeight: 600,
-  },
-  footerCopy: {
-    marginTop: 22,
-    color: "#94a3b8",
-  },
-  aside: {
-    display: "flex",
-    flexDirection: "column",
-    gap: 18,
-    position: "sticky",
-    top: 100,
-    alignSelf: "start",
-  },
-  trustBox: {
-  border: "1px solid rgba(37, 99, 235, 0.16)",
-  borderRadius: 28,
-  padding: 18,
-  background: "linear-gradient(180deg, #ffffff 0%, #eff6ff 100%)",
-  boxShadow: "0 18px 45px rgba(15, 23, 42, 0.07)",
-},
-faqBox: {
-  border: "1px solid rgba(15, 23, 42, 0.10)",
-  borderRadius: 28,
-  padding: 18,
-  background: "#ffffff",
-  boxShadow: "0 18px 45px rgba(15, 23, 42, 0.07)",
-},
-sideLabel: {
-  color: "#1d4ed8",
-  fontSize: 12,
-  fontWeight: 900,
-  textTransform: "uppercase",
-  letterSpacing: "0.08em",
-  margin: 0,
-  marginBottom: 12,
-},
-sideTitle: {
-  margin: 0,
-  color: "#0f172a",
-  fontSize: 19,
-  lineHeight: 1.25,
-  letterSpacing: "-0.02em",
-},
-sideIntro: {
-  color: "#475569",
-  fontSize: 14,
-  lineHeight: 1.65,
-  marginTop: 12,
-  marginBottom: 16,
-},
-trustList: {
-  display: "flex",
-  flexDirection: "column",
-  gap: 12,
-},
-trustItem: {
-  border: "1px solid rgba(37, 99, 235, 0.12)",
-  borderRadius: 20,
-  padding: 14,
-  background: "rgba(255, 255, 255, 0.78)",
-},
-trustNumber: {
-  display: "block",
-  color: "#1e3a8a",
-  fontSize: 22,
-  lineHeight: 1.1,
-  fontWeight: 950,
-  marginBottom: 4,
-},
-trustText: {
-  display: "block",
-  color: "#334155",
-  fontSize: 13,
-  lineHeight: 1.45,
-  fontWeight: 650,
-},
-faqItem: {
-  borderTop: "1px solid rgba(15, 23, 42, 0.08)",
-  paddingTop: 12,
-  paddingBottom: 12,
-},
-faqQuestion: {
-  cursor: "pointer",
-  color: "#0f172a",
-  fontSize: 14,
-  lineHeight: 1.35,
-  fontWeight: 850,
-},
-faqAnswer: {
-  color: "#475569",
-  fontSize: 13,
-  lineHeight: 1.6,
-  marginTop: 10,
-  marginBottom: 0,
-},
-    quickBox: {
-    border: "1px solid rgba(15, 23, 42, 0.10)",
-    borderRadius: 28,
-    padding: 18,
-    background: "#ffffff",
-    boxShadow: "0 18px 45px rgba(15, 23, 42, 0.07)",
-  },
-  quickPrimary: {
-    display: "block",
-    background: "#1d4ed8",
-    color: "#ffffff",
-    textAlign: "center",
-    textDecoration: "none",
-    fontWeight: 900,
-    padding: "12px 14px",
-    borderRadius: 18,
-  },
-};
-
-
