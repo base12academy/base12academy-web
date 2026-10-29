@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import ClassAvailabilityRequestForm from "@/components/ClassAvailabilityRequestForm";
 import Image from "next/image";
@@ -451,6 +451,17 @@ export default function CourseCatalog() {
     return () => { alive = false; };
   }, []);
 
+  useEffect(() => {
+    const selectFamily = (event: Event) => {
+      const selected = (event as CustomEvent<Family>).detail;
+      if (!["Oposiciones", "Bachillerato y PAU", "Clases Online", "Tropa y Marinería", "Cursos Online"].includes(selected)) return;
+      setFamily(selected);
+      setSearch("");
+    };
+    window.addEventListener("b12:select-family", selectFamily);
+    return () => window.removeEventListener("b12:select-family", selectFamily);
+  }, []);
+
   const selectedAccess = course ? COURSE_ACCESS[course.name] : undefined;
   const selectedEnrollment = selectedAccess
     ? enrollments.find((enrollment) => {
@@ -473,6 +484,15 @@ export default function CourseCatalog() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
+    const families: Record<string, Family> = {
+      oposiciones: "Oposiciones",
+      bachillerato: "Bachillerato y PAU",
+      clases: "Clases Online",
+      tropa: "Tropa y Marinería",
+      cursos: "Cursos Online",
+    };
+    const requestedFamily = families[params.get("familia") ?? ""];
+    if (requestedFamily) setFamily(requestedFamily);
     const requested = params.get("curso") ?? "";
     const requestedBono = params.get("bono") ?? "";
     const requestedNames: Record<string, string> = {
@@ -771,7 +791,7 @@ export default function CourseCatalog() {
     }
   }
   return (
-    <section id="catalogo" className="original-catalog">
+    <section id="catalogo" className="original-catalog" tabIndex={-1}>
       <div className="original-catalog-heading">
         <p>Tipos de cursos, paquetes y precios</p>
         <h2>Elige el aula que corresponde a tu objetivo</h2>
