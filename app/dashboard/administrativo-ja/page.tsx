@@ -11,7 +11,7 @@ import { OpenQuestion, OppositionTest, TutoringCalendar } from "@/components/Opp
 
 type Tab = "explicacion" | "glosario" | "rocio" | "fernando" | "test" | "tutoria";
 type TestQuestion = { question: string; options: string[]; answer: number; explanation: string };
-type ThemeContent = { id: string; number: number; title: string; videoUrl: string; explanation: string; glossary: { term: string; definition: string }[]; rocio: { question: string; answer: string }[]; tests: TestQuestion[]; publicPreview: boolean };
+type ThemeContent = { id: string; number: number; title: string; videoUrl: string; explanation: string; studyHeadings?: string[]; studyEdition?: string; glossary: { term: string; definition: string }[]; rocio: { question: string; answer: string }[]; tests: TestQuestion[]; publicPreview: boolean };
 
 export default function AdministrativoJaPage() {
   return <Suspense fallback={<div className={styles.loading}>Preparando el aula…</div>}><Course /></Suspense>;
@@ -87,21 +87,21 @@ function Course() {
         ) : (
           <div className={layout.learningGrid}>
             <div className={layout.lessonColumn}>
-            <section className={styles.videoCard}>
+            <details className={styles.videoSummary}><summary>Vídeo · síntesis del tema</summary><p>El vídeo ofrece una explicación resumida. El material principal de estudio es el temario desarrollado que aparece debajo.</p><section className={styles.videoCard}>
               <iframe src={`${content.videoUrl}?rel=0`} title={`Vídeo del tema ${theme.number}: ${theme.title}`} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
-            </section>
+            </section></details>
 
             <div className={styles.tabs} role="tablist" aria-label="Recursos del tema">
               {(["explicacion", "glosario", "rocio", "fernando", "test", ...(planSlug === "premium" ? ["tutoria" as Tab] : [])] as Tab[]).map((name) => (
                 <button key={name} onClick={() => setTab(name)} className={tab === name ? styles.selectedTab : ""}>
                   {name !== "rocio" && name !== "fernando" && <span>{name === "explicacion" ? "▤" : name === "glosario" ? "◫" : "✓"}</span>}
-                  {name === "explicacion" ? "Explicación" : name === "glosario" ? "Glosario" : name === "rocio" ? "Rocío · Profesora IA" : name === "fernando" ? "Fernando · Tutor IA" : name === "tutoria" ? "Tutoría humana" : planSlug === "esencial" ? "Comprobación" : "Simulacro"}
+                  {name === "explicacion" ? "Temario de estudio" : name === "glosario" ? "Glosario" : name === "rocio" ? "Rocío · Profesora IA" : name === "fernando" ? "Fernando · Tutor IA" : name === "tutoria" ? "Tutoría humana" : planSlug === "esencial" ? "Comprobación" : "Simulacro"}
                 </button>
               ))}
             </div>
 
             <section className={styles.contentCard}>
-              {tab === "explicacion" && <><p className={styles.sectionLabel}>EXPLICACIÓN DEL TEMA</p><h2>{theme.title}</h2><div className={styles.pre}>{content.explanation}</div></>}
+              {tab === "explicacion" && <><p className={styles.sectionLabel}>TEMARIO DESARROLLADO · MATERIAL PRINCIPAL DE ESTUDIO</p><h2>{theme.title}</h2><p className={styles.edition}>{content.studyEdition}</p><StudyMaterial text={content.explanation} headings={content.studyHeadings} /></>}
               {tab === "glosario" && <Glossary items={content.glossary} />}
               {tab === "rocio" && <><Rocio items={content.rocio} /><OpenQuestion courseSlug="administrativo-ja" themeId={theme.id} /></>}
               {tab === "fernando" && <Assistant name="Fernando" role="Tutor IA" text={`Te ayuda a organizar el estudio del Tema ${theme.number}, comprobar tu avance y retomar el itinerario cuando lo necesites.`} />}
@@ -171,4 +171,12 @@ function QuickTest({ questions }: { questions: TestQuestion[] }) {
     <div className={styles.options}>{question.options.map((option, index) => <button key={option} disabled={selected !== null} onClick={() => choose(index)} className={selected === null ? "" : index === question.answer ? styles.correct : index === selected ? styles.incorrect : ""}><b>{String.fromCharCode(65 + index)}</b><span>{option}</span></button>)}</div>
     {selected !== null && <div className={styles.feedback}><strong>{selected === question.answer ? "Correcto." : "Vamos a revisarlo."}</strong> {question.explanation}<button onClick={() => { setPosition((value) => value + 1); setSelected(null); }}>{position + 1 === sample.length ? "Ver resultado" : "Siguiente pregunta"}</button></div>}
   </div>;
+}
+
+function StudyMaterial({ text, headings = [] }: { text: string; headings?: string[] }) {
+  const titles = new Set(headings);
+  return <div className={styles.studyText}>{text.split(/\n\n+/).filter(Boolean).map((paragraph, index) => {
+    if (titles.has(paragraph)) return <h3 key={index}>{paragraph}</h3>;
+    return <p key={index}>{paragraph.split(/(https?:\/\/[^\s]+)/g).map((part, partIndex) => /^https?:\/\//.test(part) ? <a key={partIndex} href={part} target="_blank" rel="noopener noreferrer">Consultar fuente oficial ↗</a> : part)}</p>;
+  })}</div>;
 }
