@@ -7,6 +7,8 @@ export default function PrivacidadPage() {
       <h1>Política de privacidad</h1>
       <p><strong>Responsable:</strong> Imagen Digital Ménace, S. L. U. · CIF B21746086 · Calle Lanuza, 8, 29009 Málaga · <a href="mailto:base12academy+privacidad@gmail.com">base12academy+privacidad@gmail.com</a>.</p>
 
+      <p>Si aceptas la medición publicitaria en el panel de cookies, Google Ads (Google Ireland Limited) podrá relacionar los clics en nuestros anuncios con compras confirmadas, utilizando cookies e identificadores publicitarios. Comunicamos el importe, la moneda y una referencia de pedido, sin incluir nombres ni correos electrónicos en el evento. No activamos publicidad personalizada ni conversiones mejoradas. Puedes retirar esta elección desde «Configurar cookies». Consulta los proveedores y sus condiciones en la <a href="/cookies">política de cookies</a>.</p>
+
       <h2>1. Datos tratados</h2>
       <p>Según la relación con Base12, pueden tratarse datos identificativos y de contacto, datos de facturación y transacción, credenciales y registros de acceso, curso y modalidad contratados, progreso, actividades, resultados, certificados, consultas, incidencias y comunicaciones. No se solicitan por correo datos completos de tarjeta ni contraseñas.</p>
 
