@@ -1,11 +1,12 @@
 # Prueba Google Search: Administrativo Junta de Andalucía
 
-Configuración revisada el 29/10/2026. Cuenta 905-906-4115.
+Configuración revisada el 30/10/2026. Cuenta 905-906-4115.
 Campaña 24412310309: `Search | Administrativo JA | Sin marca`.
 
-- Estado comprobado: EN PAUSA. No habilitar hasta verificar medición y revisar fechas.
+- Estado comprobado el 30/10/2026: HABILITADA, pendiente de inicio el 31/10/2026.
+- Gasto comprobado al habilitar: 0 EUR.
 - Presupuesto total 150 EUR, no presupuesto diario ni renovación mensual.
-- Fechas provisionales: 31/10/2026–28/11/2026, sujetas a la fecha de activación.
+- Fechas: 31/10/2026–28/11/2026.
 - Solo Búsqueda Google; socios, Display e IA Max desactivados.
 - España, presencia física/habitual; idioma español.
 - Maximizar clics con límite CPC 0,80 EUR.
@@ -31,8 +32,11 @@ adicional contra repeticiones en la misma sesión de página. No se transmiten p
 ni fragmentos de URL (pueden contener tokens). El callback firmado de Redsys no cambia.
 
 Verificación automática: `npm run test:ads`, `npx tsc --noEmit`, `npm run test:text`.
-Pendiente antes de activar: verificar la etiqueta instalada y comprobar con una operación
-controlada que Google recibe importe y referencia correctos sin duplicar. No se ha hecho
+Publicada mediante PR #20 (6a5b4ab), despliegue de producción AGamorEXGTMqRr6MroJjPJ6zitWu listo.
+Comprobación en producción: no se añade la etiqueta antes de aceptar ni al rechazar;
+se añade AW-18544997331 al aceptar; se elimina tras retirar el consentimiento y recargar.
+Pruebas de Ads (4), TypeScript, texto y Training (12) correctas.
+Pendiente: comprobar con la primera compra real que Google recibe el importe y referencia sin duplicar. No se ha hecho
 ningún pago de prueba ni enviado una conversión ficticia desde esta implementación.
 
 Referencias:
