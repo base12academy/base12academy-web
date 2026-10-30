@@ -62,6 +62,9 @@ export async function GET(request: NextRequest) {
     }
 
     return NextResponse.json({
+      receipt: checkout.status === "paid" || checkout.status === "linked"
+        ? { transactionId: checkout.order_id, amountCents: checkout.amount_cents }
+        : null,
       status: checkout.status,
       paid: checkout.status === "paid" || checkout.status === "linked",
       linked: checkout.status === "linked",

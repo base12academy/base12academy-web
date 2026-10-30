@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { reportConfirmedPurchase } from "@/lib/google-ads";
 
 export default function PagoOkPage() {
   const router = useRouter();
@@ -52,6 +53,10 @@ export default function PagoOkPage() {
             data.error ||
               "No se ha podido comprobar el pago."
           );
+        }
+
+        if (data.paid && data.receipt) {
+          reportConfirmedPurchase(data.receipt);
         }
 
         if (data.linked) {
