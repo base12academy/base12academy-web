@@ -5,6 +5,10 @@ Campaña 24412310309: `Search | Administrativo JA | Sin marca`.
 
 - Estado comprobado el 30/10/2026: HABILITADA, pendiente de inicio el 31/10/2026.
 - Gasto comprobado al habilitar: 0 EUR.
+- Google solicitó verificación del anunciante al habilitar. Se enviaron nombre y
+  dirección públicos de Imagen Digital Ménace, S. L. U. sin D-U-N-S (opcional),
+  y se confirmó el uso no político de la cuenta. Ambas tareas constan completadas;
+  el aviso de cuenta en pausa desapareció. Afiliación a la organización es opcional.
 - Presupuesto total 150 EUR, no presupuesto diario ni renovación mensual.
 - Fechas: 31/10/2026–28/11/2026.
 - Solo Búsqueda Google; socios, Display e IA Max desactivados.
