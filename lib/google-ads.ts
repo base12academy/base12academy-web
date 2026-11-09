@@ -40,7 +40,8 @@ export function readMeasurementConsent(): MeasurementConsent | null {
       return { analytics: choice.analytics, ads: choice.ads };
     }
     if (typeof choice.accepted === "boolean") {
-      return { analytics: choice.accepted, ads: choice.accepted };
+      // The previous choice covered advertising, not the newly added analytics purpose.
+      return { analytics: false, ads: choice.accepted };
     }
     return null;
   } catch {
@@ -171,7 +172,15 @@ export function saveMeasurementConsent(choice: MeasurementConsent) {
   }
 }
 
-// Compatibility for callers that set both optional purposes together.
+// Legacy callers manage advertising only; they must not grant analytics consent.
 export function saveAdConsent(accepted: boolean) {
-  return saveMeasurementConsent({ analytics: accepted, ads: accepted });
+  const previous = readMeasurementConsent();
+  const saved = saveMeasurementConsent({ analytics: previous?.analytics ?? false, ads: accepted });
+  if (saved) startGoogleMeasurement();
+  return saved;
+}
+
+// Compatibility for existing purchase/reporting callers.
+export function startAdMeasurement() {
+  startGoogleMeasurement();
 }
