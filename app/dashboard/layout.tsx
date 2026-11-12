@@ -22,7 +22,7 @@ export default function DashboardLayout({
   const isMatematicasAplicadas = pathname.startsWith("/dashboard/matematicas-aplicadas-ccss");
   const isMisCursos = pathname.startsWith("/dashboard/mis-cursos");
   const isAuxiliarEstado = pathname.startsWith("/dashboard/auxiliar-administrativo-estado");
-  const fullWidthCourse = ["administrativo-seguridad-social", "auxiliar-administrativo-seguridad-social", "administrativo-comunidad-madrid", "auxiliar-administrativo-comunidad-madrid"].some(slug=>pathname.startsWith("/dashboard/"+slug)) || pathname.startsWith("/dashboard/administrativo-estado") || isAuxiliarEstado || isOfimatica || isTropa || isTraining || isFilosofia || isHistoria || isMatematicasII || isMatematicasAplicadas || isMisCursos;
+  const fullWidthCourse = ["administrativo-ja", "auxiliar-administrativo-ja", "administrativo-seguridad-social", "auxiliar-administrativo-seguridad-social", "administrativo-comunidad-madrid", "auxiliar-administrativo-comunidad-madrid"].some(slug=>pathname.startsWith("/dashboard/"+slug)) || pathname.startsWith("/dashboard/administrativo-estado") || isAuxiliarEstado || isOfimatica || isTropa || isTraining || isFilosofia || isHistoria || isMatematicasII || isMatematicasAplicadas || isMisCursos;
 
   const linkStyle = (path: string) => ({
     color: pathname === path ? "white" : "#9ca3af",
@@ -89,7 +89,7 @@ export default function DashboardLayout({
         </aside>
       ) : null}
 
-      <main style={{ flex: 1, padding: fullWidthCourse ? 0 : "40px" }}>
+      <main style={{ flex: 1, minWidth: 0, padding: fullWidthCourse ? 0 : "40px" }}>
         {!fullWidthCourse && (
           <div style={{ maxWidth: "1200px", margin: "0 auto 18px", textAlign: "right" }}>
             <Link href="/dashboard/facturas" style={{ color: "#15294b", fontWeight: 600 }}>
