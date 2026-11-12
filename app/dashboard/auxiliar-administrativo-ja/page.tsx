@@ -93,7 +93,6 @@ function Course() {
               {id:"glosario",label:"Glosario",description:"Conceptos del tema.",onOpen:()=>setTab("glosario")},
               {id:"rocio",label:"Rocío",description:"Preguntas de repaso y dudas abiertas.",icon:"chat",onOpen:()=>setTab("rocio")},
               {id:"test",label:"Test del tema",description:"Comprobación y práctica según tu modalidad.",icon:"test",onOpen:()=>setTab("test")},
-              {id:"fernando",label:"Fernando",description:"Organiza el estudio y los repasos.",icon:"calendar",onOpen:()=>setTab("fernando")},
               ...(planSlug==="premium"?[{id:"tutoria",label:"Tutoría humana",description:"Reserva tu sesión individual.",icon:"calendar",onOpen:()=>setTab("tutoria")}]:[])
             ]}/>}
 
@@ -102,7 +101,7 @@ function Course() {
             </section>
 
             <div className={styles.tabs} role="tablist" aria-label="Recursos del tema">
-              {(["inicio", "explicacion", "glosario", "rocio", "fernando", "test", ...(planSlug === "premium" ? ["tutoria" as Tab] : [])] as Tab[]).map((name) => (
+              {(["inicio", "explicacion", "glosario", "rocio", "test", ...(planSlug === "premium" ? ["tutoria" as Tab] : [])] as Tab[]).map((name) => (
                 <button key={name} onClick={() => setTab(name)} className={tab === name ? styles.selectedTab : ""}>
                   {name !== "inicio" && name !== "rocio" && name !== "fernando" && <span>{name === "explicacion" ? "▤" : name === "glosario" ? "◫" : "✓"}</span>}
                   {name === "inicio" ? "Inicio del tema" : name === "explicacion" ? "Explicación" : name === "glosario" ? "Glosario" : name === "rocio" ? "Rocío · Profesora IA" : name === "fernando" ? "Fernando · Tutor IA" : name === "tutoria" ? "Tutoría humana" : planSlug === "esencial" ? "Comprobación" : "Simulacro"}
@@ -138,14 +137,13 @@ function Rocio({ items }: { items: { question: string; answer: string }[] }) {
 
 function Assistant({ name, role, text }: { name: string; role: string; text: string }) {
   const avatar = name === "Rocío" ? "/images/rocio-profesora-ia.png" : "/images/fernando-tutor-ia.png";
-  return <div className={layout.assistant}><img className={layout.avatar} src={avatar} alt={`Avatar de ${name}`} /><div><p className={styles.sectionLabel}>{role}</p><h2>{name}</h2><p>{text}</p><button>Preguntar sobre este tema</button></div></div>;
+  return <div className={layout.assistant}><img className={layout.avatar} src={avatar} alt={`Avatar de ${name}`} /><div><p className={styles.sectionLabel}>{role}</p><h2>{name}</h2><p>{text}</p></div></div>;
 }
 
 function RightRail({ theme, onSelect }: { theme: ThemeContent; onSelect: (tab: Tab) => void }) {
   return <aside className={layout.rightRail}>
     <section><div className={layout.railTitle}><span>◫</span><h3>Glosario</h3><button onClick={() => onSelect("glosario")}>Ver todo</button></div>{theme.glossary.slice(0, 3).map((item) => <div className={layout.railEntry} key={item.term}><b>{item.term}</b><p>{item.definition}</p></div>)}</section>
     <section><div className={layout.railTitle}><img className={layout.miniAvatar} src="/images/rocio-profesora-ia.png" alt="Rocío" /><h3>Rocío</h3><small>Profesora IA</small></div><p>Pregunta tus dudas sobre este tema y repasa sus ideas esenciales.</p><button className={layout.railAction} onClick={() => onSelect("rocio")}>Hablar con Rocío</button></section>
-    <section><div className={layout.railTitle}><img className={layout.miniAvatar} src="/images/fernando-tutor-ia.png" alt="Fernando" /><h3>Fernando</h3><small>Tutor IA</small></div><p>Organiza tu estudio, tu progreso y el siguiente paso del itinerario.</p><button className={layout.railAction} onClick={() => onSelect("fernando")}>Planificar con Fernando</button></section>
     <section><div className={layout.railTitle}><span>✓</span><h3>Simulacro</h3><small>20 de 50</small></div><p>Practica con 20 preguntas aleatorias del banco del tema.</p><button className={layout.railAction} onClick={() => onSelect("test")}>Comenzar simulacro</button></section>
   </aside>;
 }
