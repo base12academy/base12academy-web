@@ -96,9 +96,9 @@ function Course() {
               ...(planSlug==="premium"?[{id:"tutoria",label:"Tutoría humana",description:"Reserva tu sesión individual.",icon:"calendar",onOpen:()=>setTab("tutoria")}]:[])
             ]}/>}
 
-            <section className={styles.videoCard}>
+            {tab!=="inicio" && content.videoUrl && <section className={styles.videoCard}>
               <iframe src={`${content.videoUrl}?rel=0`} title={`Vídeo del tema ${theme.number}: ${theme.title}`} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
-            </section>
+            </section>}
 
             <div className={styles.tabs} role="tablist" aria-label="Recursos del tema">
               {(["inicio", "explicacion", "glosario", "rocio", "test", ...(planSlug === "premium" ? ["tutoria" as Tab] : [])] as Tab[]).map((name) => (
@@ -144,7 +144,7 @@ function RightRail({ theme, onSelect }: { theme: ThemeContent; onSelect: (tab: T
   return <aside className={layout.rightRail}>
     <section><div className={layout.railTitle}><span>◫</span><h3>Glosario</h3><button onClick={() => onSelect("glosario")}>Ver todo</button></div>{theme.glossary.slice(0, 3).map((item) => <div className={layout.railEntry} key={item.term}><b>{item.term}</b><p>{item.definition}</p></div>)}</section>
     <section><div className={layout.railTitle}><img className={layout.miniAvatar} src="/images/rocio-profesora-ia.png" alt="Rocío" /><h3>Rocío</h3><small>Profesora IA</small></div><p>Pregunta tus dudas sobre este tema y repasa sus ideas esenciales.</p><button className={layout.railAction} onClick={() => onSelect("rocio")}>Hablar con Rocío</button></section>
-    <section><div className={layout.railTitle}><span>✓</span><h3>Simulacro</h3><small>20 de 50</small></div><p>Practica con 20 preguntas aleatorias del banco del tema.</p><button className={layout.railAction} onClick={() => onSelect("test")}>Comenzar simulacro</button></section>
+    <section><div className={layout.railTitle}><span>✓</span><h3>Test del tema</h3><small>{theme.tests.length} preguntas</small></div><p>Comprueba lo aprendido con las preguntas disponibles para este tema.</p><button className={layout.railAction} onClick={() => onSelect("test")}>Abrir test</button></section>
   </aside>;
 }
 

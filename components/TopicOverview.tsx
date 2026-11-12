@@ -7,7 +7,7 @@ type Props = {number:number;title:string;loading?:boolean;available:boolean;head
 
 /** A topic hub contains only resources supplied by the course, never mockup data. */
 export default function TopicOverview({number,title,loading,available,headings=[],glossaryCount,questionCount,onRead,onIndex,resources,accent="green",videoUrl}:Props){
- const sections=Array.from(new Set(headings.map(t=>t.trim()).filter(t=>t&&t!==title&&!/^Artículo\s+\d|^Lectura del articulado$/i.test(t)))).slice(0,4);
+ const sections=Array.from(new Set(headings.map(t=>t.trim()).filter(t=>t&&t!==title&&!/^Artículo\s+\d|^Lectura del articulado$|^Explicación$/i.test(t)))).slice(0,4);
  const video=videoUrl&&/^https:\/\/(?:www\.)?(?:youtube(?:-nocookie)?\.com|youtu\.be|vimeo\.com|player\.vimeo\.com)\//i.test(videoUrl)?videoUrl:undefined;
  return <div className={`${styles.hub} ${accent==="amber"?styles.amber:""}`}>
   <div className={`${styles.lessonGrid} ${video?styles.withVideo:""}`}>
