@@ -21,7 +21,8 @@ export default function DashboardLayout({
   const isMatematicasII = pathname.startsWith("/dashboard/matematicas-ii");
   const isMatematicasAplicadas = pathname.startsWith("/dashboard/matematicas-aplicadas-ccss");
   const isMisCursos = pathname.startsWith("/dashboard/mis-cursos");
-  const fullWidthCourse = isOfimatica || isTropa || isTraining || isFilosofia || isHistoria || isMatematicasII || isMatematicasAplicadas || isMisCursos;
+  const isAuxiliarEstado = pathname.startsWith("/dashboard/auxiliar-administrativo-estado");
+  const fullWidthCourse = isAuxiliarEstado || isOfimatica || isTropa || isTraining || isFilosofia || isHistoria || isMatematicasII || isMatematicasAplicadas || isMisCursos;
 
   const linkStyle = (path: string) => ({
     color: pathname === path ? "white" : "#9ca3af",
@@ -102,3 +103,4 @@ export default function DashboardLayout({
     </div>
   );
 }
+
