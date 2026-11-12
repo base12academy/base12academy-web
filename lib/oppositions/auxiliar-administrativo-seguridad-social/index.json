@@ -1,0 +1,249 @@
+{
+  "course": "Auxiliar Administrativo de la Seguridad Social",
+  "courseSlug": "auxiliar-administrativo-seguridad-social",
+  "level": "C2",
+  "themes": [
+    {
+      "id": "T01",
+      "number": 1,
+      "code": "1",
+      "title": "Constitución Española de 1978: características, principios, valores, derechos fundamentales e igualdad",
+      "publicPreview": true
+    },
+    {
+      "id": "T02",
+      "number": 2,
+      "code": "2",
+      "title": "Órganos constitucionales: Corona, Cortes Generales, Poder Judicial, Poder Ejecutivo y Tribunal Constitucional",
+      "publicPreview": false
+    },
+    {
+      "id": "T03",
+      "number": 3,
+      "code": "3",
+      "title": "Administración General del Estado: Gobierno, órganos, Administración territorial y organismos públicos",
+      "publicPreview": false
+    },
+    {
+      "id": "T04",
+      "number": 4,
+      "code": "4",
+      "title": "Personal al servicio de las Administraciones Públicas: clases, derechos, deberes y régimen disciplinario",
+      "publicPreview": false
+    },
+    {
+      "id": "T05",
+      "number": 5,
+      "code": "5",
+      "title": "Procedimiento administrativo: principios, fases, recursos y jurisdicción contencioso-administrativa",
+      "publicPreview": false
+    },
+    {
+      "id": "T06",
+      "number": 6,
+      "code": "6",
+      "title": "Atención al público y atención a las personas con discapacidad",
+      "publicPreview": false
+    },
+    {
+      "id": "T07",
+      "number": 7,
+      "code": "7",
+      "title": "Servicios de información administrativa: información, iniciativas, reclamaciones, quejas y peticiones",
+      "publicPreview": false
+    },
+    {
+      "id": "T08",
+      "number": 8,
+      "code": "8",
+      "title": "Documentos, registros y archivos administrativos",
+      "publicPreview": false
+    },
+    {
+      "id": "T09",
+      "number": 9,
+      "code": "9",
+      "title": "Informática básica: hardware, software, almacenamiento, sistemas operativos y seguridad",
+      "publicPreview": false
+    },
+    {
+      "id": "T10",
+      "number": 10,
+      "code": "10",
+      "title": "Administración electrónica y servicios a la ciudadanía",
+      "publicPreview": false
+    },
+    {
+      "id": "T11",
+      "number": 11,
+      "code": "11",
+      "title": "Aplicaciones informáticas para la gestión de prestaciones de la Seguridad Social",
+      "publicPreview": false
+    },
+    {
+      "id": "T12",
+      "number": 12,
+      "code": "12",
+      "title": "CEPROSS, DELT@ y ATRIUM: comunicaciones de contingencias y unidades médicas",
+      "publicPreview": false
+    },
+    {
+      "id": "T13",
+      "number": 13,
+      "code": "13",
+      "title": "Sistema de Remisión Electrónica de Datos (RED)",
+      "publicPreview": false
+    },
+    {
+      "id": "T14",
+      "number": 14,
+      "code": "14",
+      "title": "Seguridad Social en la Constitución, LGSS, régimen económico, campo de aplicación y estructura del sistema",
+      "publicPreview": false
+    },
+    {
+      "id": "T15",
+      "number": 15,
+      "code": "15",
+      "title": "Inscripción, afiliación, altas y bajas, convenio especial, situaciones asimiladas y contingencias profesionales",
+      "publicPreview": false
+    },
+    {
+      "id": "T16",
+      "number": 16,
+      "code": "16",
+      "title": "Incapacidad temporal, nacimiento y cuidado, riesgos durante embarazo y lactancia y asistencia sanitaria",
+      "publicPreview": false
+    },
+    {
+      "id": "T17",
+      "number": 17,
+      "code": "17",
+      "title": "Incapacidad permanente contributiva, lesiones permanentes e incapacidad no contributiva",
+      "publicPreview": false
+    },
+    {
+      "id": "T18",
+      "number": 18,
+      "code": "18",
+      "title": "Jubilación contributiva, jubilación no contributiva y SOVI",
+      "publicPreview": false
+    },
+    {
+      "id": "T19",
+      "number": 19,
+      "code": "19",
+      "title": "Protección por muerte y supervivencia",
+      "publicPreview": false
+    },
+    {
+      "id": "T20",
+      "number": 20,
+      "code": "20",
+      "title": "Prestaciones familiares",
+      "publicPreview": false
+    },
+    {
+      "id": "T21",
+      "number": 21,
+      "code": "21",
+      "title": "Protección por desempleo",
+      "publicPreview": false
+    },
+    {
+      "id": "T22",
+      "number": 22,
+      "code": "22",
+      "title": "Cotización y recaudación de la Seguridad Social",
+      "publicPreview": false
+    },
+    {
+      "id": "T23",
+      "number": 23,
+      "code": "23",
+      "title": "Entidades gestoras, Instituto Social de la Marina y colaboración en la gestión",
+      "publicPreview": false
+    },
+    {
+      "id": "T24",
+      "number": 24,
+      "code": "24",
+      "title": "Tesorería General, Intervención General y Gerencia de Informática de la Seguridad Social",
+      "publicPreview": false
+    },
+    {
+      "id": "T25",
+      "number": 25,
+      "code": "25",
+      "title": "RETA y sistemas especiales agrario y de empleados de hogar",
+      "publicPreview": false
+    },
+    {
+      "id": "T26",
+      "number": 26,
+      "code": "26",
+      "title": "Régimen Especial de los Trabajadores del Mar y Régimen Especial de la Minería del Carbón",
+      "publicPreview": false
+    }
+  ],
+  "counts": {
+    "themes": 26,
+    "questions": 1300,
+    "glossary": 254,
+    "closedRocio": 562,
+    "simulations": 10,
+    "replacedDuplicateQuestions": 0
+  },
+  "simulations": [
+    {
+      "id": "1",
+      "title": "Simulacro 01",
+      "count": 90
+    },
+    {
+      "id": "2",
+      "title": "Simulacro 02",
+      "count": 90
+    },
+    {
+      "id": "3",
+      "title": "Simulacro 03",
+      "count": 90
+    },
+    {
+      "id": "4",
+      "title": "Simulacro 04",
+      "count": 90
+    },
+    {
+      "id": "5",
+      "title": "Simulacro 05",
+      "count": 90
+    },
+    {
+      "id": "6",
+      "title": "Simulacro 06",
+      "count": 90
+    },
+    {
+      "id": "7",
+      "title": "Simulacro 07",
+      "count": 90
+    },
+    {
+      "id": "8",
+      "title": "Simulacro 08",
+      "count": 90
+    },
+    {
+      "id": "9",
+      "title": "Simulacro 09",
+      "count": 90
+    },
+    {
+      "id": "10",
+      "title": "Simulacro 10",
+      "count": 90
+    }
+  ]
+}

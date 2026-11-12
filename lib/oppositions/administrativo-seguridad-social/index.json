@@ -1,0 +1,268 @@
+{
+  "course": "Administrativo de la Seguridad Social",
+  "courseSlug": "administrativo-seguridad-social",
+  "level": "C1",
+  "themes": [
+    {
+      "id": "T01",
+      "number": 1,
+      "code": "1",
+      "title": "La Constitución Española de 1978: Estructura y contenido. La reforma de la Constitución.",
+      "publicPreview": true
+    },
+    {
+      "id": "T02",
+      "number": 2,
+      "code": "2",
+      "title": "Derechos y deberes fundamentales. Su garantía y suspensión.",
+      "publicPreview": false
+    },
+    {
+      "id": "T03",
+      "number": 3,
+      "code": "3",
+      "title": "El Tribunal Constitucional. Organización, composición y atribuciones.",
+      "publicPreview": false
+    },
+    {
+      "id": "T04",
+      "number": 4,
+      "code": "4",
+      "title": "La Corona. Funciones constitucionales del Rey. Sucesión y regencia. El refrendo.",
+      "publicPreview": false
+    },
+    {
+      "id": "T05",
+      "number": 5,
+      "code": "5",
+      "title": "El poder legislativo. Las Cortes Generales: Composición, atribuciones y funcionamiento. El Defensor del Pueblo.",
+      "publicPreview": false
+    },
+    {
+      "id": "T06",
+      "number": 6,
+      "code": "6",
+      "title": "El Poder Judicial. El principio de unidad jurisdiccional. El Consejo General del Poder Judicial. La organización judicial española.",
+      "publicPreview": false
+    },
+    {
+      "id": "T07",
+      "number": 7,
+      "code": "7",
+      "title": "El poder ejecutivo. El presidente del Gobierno y el Consejo de Ministros. Relaciones entre el Gobierno y las Cortes Generales. Designación, causas de cese y responsabilidad del Gobierno. El Consejo de Estado.",
+      "publicPreview": false
+    },
+    {
+      "id": "T08",
+      "number": 8,
+      "code": "8",
+      "title": "La Administración General del Estado. Principios de organización y funcionamiento. Órganos centrales. Órganos superiores y órganos directivos: creación, nombramiento, cese y funciones. Los servicios comunes de los ministerios. Órganos territoriales. La Administración del Estado en el Exterior.",
+      "publicPreview": false
+    },
+    {
+      "id": "T09",
+      "number": 9,
+      "code": "9",
+      "title": "La organización territorial del Estado. Las Comunidades Autónomas. Los Estatutos de Autonomía. La delimitación de competencias entre el Estado y las Comunidades Autónomas en la Constitución y en los Estatutos de Autonomía. La Administración local: El municipio. La provincia.",
+      "publicPreview": false
+    },
+    {
+      "id": "T10",
+      "number": 10,
+      "code": "10",
+      "title": "Las Instituciones de la Unión Europea: El Consejo, el Parlamento Europeo, la Comisión, el Tribunal de Justicia.",
+      "publicPreview": false
+    },
+    {
+      "id": "T11",
+      "number": 11,
+      "code": "11",
+      "title": "Las fuentes del derecho de la Unión Europea. Derecho originario. Derecho derivado: Reglamentos, directivas y decisiones. Otras fuentes. Las relaciones entre el Derecho de la Unión Europea y el ordenamiento jurídico de los Estados miembros.",
+      "publicPreview": false
+    },
+    {
+      "id": "T12",
+      "number": 12,
+      "code": "12",
+      "title": "El Ministerio de Inclusión, Seguridad Social y Migraciones. Organización. Estructura y funciones.",
+      "publicPreview": false
+    },
+    {
+      "id": "T13",
+      "number": 13,
+      "code": "13",
+      "title": "Las fuentes del Derecho Administrativo. Concepto y clases. La jerarquía de las fuentes.",
+      "publicPreview": false
+    },
+    {
+      "id": "T14",
+      "number": 14,
+      "code": "14",
+      "title": "La Ley. Tipos de leyes. Disposiciones del Gobierno con fuerza de ley: decreto-ley y decreto legislativo. El Reglamento: concepto, clases y límites. Los principios generales del Derecho.",
+      "publicPreview": false
+    },
+    {
+      "id": "T15",
+      "number": 15,
+      "code": "15",
+      "title": "Los actos administrativos. Concepto y clases. Motivación, forma y eficacia de los actos administrativos. Notificación y publicación. Nulidad y anulabilidad. La revisión de oficio.",
+      "publicPreview": false
+    },
+    {
+      "id": "T16",
+      "number": 16,
+      "code": "16",
+      "title": "El procedimiento administrativo común. La capacidad de obrar y el concepto de interesado. Representación. Identificación y firma de los interesados. Derechos del interesado en el procedimiento administrativo. Obligación de resolver y silencio administrativo. Términos y plazos.",
+      "publicPreview": false
+    },
+    {
+      "id": "T17",
+      "number": 17,
+      "code": "17",
+      "title": "Las fases del procedimiento administrativo: Iniciación, ordenación, instrucción y finalización. La ejecución de los actos y resoluciones administrativas.",
+      "publicPreview": false
+    },
+    {
+      "id": "T18",
+      "number": 18,
+      "code": "18",
+      "title": "Los recursos administrativos: concepto y clases. Recurso de alzada. Recurso potestativo de reposición. Recurso extraordinario de revisión. La jurisdicción contencioso-administrativa: objeto y plazos de interposición del recurso contencioso administrativo.",
+      "publicPreview": false
+    },
+    {
+      "id": "T19",
+      "number": 19,
+      "code": "19",
+      "title": "El personal al servicio de las Administraciones Públicas: concepto y clases. Derechos y deberes de los funcionarios. La carrera administrativa. Las incompatibilidades. Régimen disciplinario: faltas, sanciones y procedimiento.",
+      "publicPreview": false
+    },
+    {
+      "id": "T20",
+      "number": 20,
+      "code": "20",
+      "title": "Atención al público. Atención de personas con discapacidad. Los servicios de información administrativa. Información general y particular al ciudadano. Iniciativas. Reclamaciones. Quejas. Peticiones.",
+      "publicPreview": false
+    },
+    {
+      "id": "T21",
+      "number": 21,
+      "code": "21",
+      "title": "Políticas de igualdad y contra la violencia de género. Discapacidad y dependencia: régimen jurídico. La Ley 4/2023, de 28 de febrero, para la igualdad real y efectiva de las personas trans y para la garantía de los derechos de las personas LGTBI.",
+      "publicPreview": false
+    },
+    {
+      "id": "T22",
+      "number": 22,
+      "code": "22",
+      "title": "Normativa reguladora de la protección de datos personales: principios, derechos de las personas y ejercicios de los derechos.",
+      "publicPreview": false
+    },
+    {
+      "id": "T23",
+      "number": 23,
+      "code": "23",
+      "title": "El funcionamiento electrónico del sector público. Derecho y obligación de relacionarse electrónicamente con las Administraciones Públicas, registros y archivo electrónico.",
+      "publicPreview": false
+    },
+    {
+      "id": "T24",
+      "number": 24,
+      "code": "24",
+      "title": "La Seguridad Social en la Constitución española de 1978. El texto refundido de la Ley General de la Seguridad Social.",
+      "publicPreview": false
+    },
+    {
+      "id": "T25",
+      "number": 25,
+      "code": "25",
+      "title": "Campo de aplicación y composición del sistema de la Seguridad Social. Régimen general: ámbito subjetivo de aplicación, inclusiones y exclusiones. Regímenes especiales: enumeración, características generales, altas, bajas y cotización. Particularidades de la acción protectora. Sistemas especiales: enumeración y características generales. Altas, bajas y cotización. Particularidades de la acción protectora.",
+      "publicPreview": false
+    },
+    {
+      "id": "T26",
+      "number": 26,
+      "code": "26",
+      "title": "Normas sobre afiliación. Altas y bajas en el régimen general. Procedimiento y efectos. El convenio especial y otras situaciones asimiladas a la del alta. Encuadramiento e inscripción.",
+      "publicPreview": false
+    },
+    {
+      "id": "T27",
+      "number": 27,
+      "code": "27",
+      "title": "La cotización a la Seguridad Social: normas comunes del sistema. La liquidación de cuotas. El régimen general de la Seguridad Social. Supuestos especiales. Bases y tipos de cotización. Liquidación de otras deudas.",
+      "publicPreview": false
+    },
+    {
+      "id": "T28",
+      "number": 28,
+      "code": "28",
+      "title": "La gestión recaudatoria: concepto, competencia y objeto. Responsables del pago. Requisitos para el pago. Medios de pago. Control de recaudación. Revisión de los actos de gestión recaudatoria. La recaudación en periodo voluntario. Efectos de la falta de cotización en período reglamentario. Recaudación de otros recursos. Aplazamientos. Devolución de ingresos indebidos. Capital coste de pensiones.",
+      "publicPreview": false
+    },
+    {
+      "id": "T29",
+      "number": 29,
+      "code": "29",
+      "title": "La recaudación en vía ejecutiva. Normas generales. Iniciación y título ejecutivo. La providencia de apremio. Oposición y efectos. El embargo de bienes. Enajenación de bienes: modalidades. Créditos incobrables. Tercerías.",
+      "publicPreview": false
+    },
+    {
+      "id": "T30",
+      "number": 30,
+      "code": "30",
+      "title": "Acción protectora. Contenido y clasificación de las prestaciones. Caracteres de las prestaciones. Incompatibilidades. Reintegro de las prestaciones indebidas. Requisitos generales del derecho a las prestaciones. Responsabilidades en orden a las prestaciones por incumplimiento de las obligaciones de afiliación, altas, bajas y cotización. Automaticidad y anticipo de prestaciones. Riesgo protegido: contingencias comunes y profesionales.",
+      "publicPreview": false
+    },
+    {
+      "id": "T31",
+      "number": 31,
+      "code": "31",
+      "title": "Incapacidad temporal: concepto y causas que motivan esta situación. Beneficiarios. Prestación económica: determinación y cuantía. Nacimiento, duración y extinción del derecho al subsidio. Reconocimiento y pago. Control de la incapacidad. Incapacidad permanente contributiva: concepto. Grados de incapacidad. Prestaciones. Determinación y cuantía. Beneficiarios. Nacimiento, duración y extinción del derecho. Lesiones permanentes no incapacitantes. La calificación y revisión de la incapacidad permanente.",
+      "publicPreview": false
+    },
+    {
+      "id": "T32",
+      "number": 32,
+      "code": "32",
+      "title": "Nacimiento y cuidado de menor. Ejercicio corresponsable del cuidado del lactante. Prestación por riesgo durante el embarazo. Prestación por riesgo durante la lactancia natural. Asignación económica por hijo o menor acogido a cargo. Prestación económica por nacimiento o adopción de hijo en supuestos de familias numerosas o monoparentales y en los casos de madres o padres con discapacidad. Prestación por parto o adopción. Subsidio por cuidado de menores afectados por cáncer u otra enfermedad grave.",
+      "publicPreview": false
+    },
+    {
+      "id": "T33",
+      "number": 33,
+      "code": "33",
+      "title": "Jubilación en la modalidad contributiva: concepto. Jubilación ordinaria: requisitos: especial referencia a la edad de jubilación. Determinación de la cuantía de la prestación: base reguladora y porcentaje. Jubilación anticipada, jubilación parcial y jubilación flexible. Compatibilidad de la pensión de jubilación y el trabajo. Suspensión y extinción de la prestación. Especial referencia a la aplicación de la normativa anterior a la Ley 27/2011.",
+      "publicPreview": false
+    },
+    {
+      "id": "T34",
+      "number": 34,
+      "code": "34",
+      "title": "La protección por muerte y supervivencia. Hecho causante. Requisitos para las prestaciones de viudedad, orfandad y en favor de familiares. Cuantía de las prestaciones. Compatibilidad. Suspensión y extinción. Normas específicas en caso de muerte derivada de accidente de trabajo o enfermedad profesional. Efectividad económica de las prestaciones. El auxilio por defunción.",
+      "publicPreview": false
+    },
+    {
+      "id": "T35",
+      "number": 35,
+      "code": "35",
+      "title": "Prestaciones no contributivas y asistenciales. El ingreso mínimo vital: beneficiarios, requisitos y duración. Obligaciones de las personas beneficiarias. Cuantía, pago, reintegro de prestaciones indebidas. Prestaciones familiares múltiples. Prestaciones familiares en la modalidad contributiva. Las pensiones no contributivas: invalidez no contributiva y jubilación no contributiva.",
+      "publicPreview": false
+    },
+    {
+      "id": "T36",
+      "number": 36,
+      "code": "36",
+      "title": "Recursos generales del sistema de la Seguridad Social. El patrimonio único de la Seguridad Social: titularidad, adscripción, administración y custodia. Los negocios jurídicos patrimoniales: adquisición, enajenación, arrendamiento y cesión. El Fondo de Reserva de la Seguridad Social: constitución, dotación y disposición. Gestión de los recursos financieros: atribución de funciones. Pago de prestaciones de la Seguridad Social.",
+      "publicPreview": false
+    }
+  ],
+  "counts": {
+    "themes": 36,
+    "questions": 1800,
+    "glossary": 159,
+    "closedRocio": 216,
+    "simulations": 0,
+    "replacedDuplicateQuestions": 3
+  },
+  "simulations": []
+}

@@ -1,0 +1,214 @@
+{
+  "course": "Auxiliar Administrativo de la Comunidad de Madrid",
+  "courseSlug": "auxiliar-administrativo-comunidad-madrid",
+  "level": "C2",
+  "themes": [
+    {
+      "id": "T01",
+      "number": 1,
+      "code": "1",
+      "title": "La Constitución Española de 1978",
+      "publicPreview": true
+    },
+    {
+      "id": "T02",
+      "number": 2,
+      "code": "2",
+      "title": "El Estatuto de Autonomía de la Comunidad de Madrid",
+      "publicPreview": false
+    },
+    {
+      "id": "T03",
+      "number": 3,
+      "code": "3",
+      "title": "La Ley de Gobierno y Administración de la Comunidad de Madrid",
+      "publicPreview": false
+    },
+    {
+      "id": "T04",
+      "number": 4,
+      "code": "4",
+      "title": "Las fuentes del ordenamiento jurídico",
+      "publicPreview": false
+    },
+    {
+      "id": "T05",
+      "number": 5,
+      "code": "5",
+      "title": "El acto administrativo, los recursos y la responsabilidad",
+      "publicPreview": false
+    },
+    {
+      "id": "T06",
+      "number": 6,
+      "code": "6",
+      "title": "El procedimiento administrativo común",
+      "publicPreview": false
+    },
+    {
+      "id": "T07",
+      "number": 7,
+      "code": "7",
+      "title": "La Jurisdicción Contencioso Administrativa",
+      "publicPreview": false
+    },
+    {
+      "id": "T08",
+      "number": 8,
+      "code": "8",
+      "title": "Transparencia y protección de datos",
+      "publicPreview": false
+    },
+    {
+      "id": "T09",
+      "number": 9,
+      "code": "9",
+      "title": "Los contratos en el sector público",
+      "publicPreview": false
+    },
+    {
+      "id": "T10",
+      "number": 10,
+      "code": "10",
+      "title": "El Estatuto Básico del Empleado Público",
+      "publicPreview": false
+    },
+    {
+      "id": "T11",
+      "number": 11,
+      "code": "11",
+      "title": "La Seguridad Social",
+      "publicPreview": false
+    },
+    {
+      "id": "T12",
+      "number": 12,
+      "code": "12",
+      "title": "La Ley de Hacienda de la Comunidad de Madrid",
+      "publicPreview": false
+    },
+    {
+      "id": "T13",
+      "number": 13,
+      "code": "13",
+      "title": "Igualdad, no discriminación y protección frente a la violencia",
+      "publicPreview": false
+    },
+    {
+      "id": "T14",
+      "number": 14,
+      "code": "14",
+      "title": "Información administrativa y Administración electrónica",
+      "publicPreview": false
+    },
+    {
+      "id": "T15",
+      "number": 15,
+      "code": "15",
+      "title": "Documentos, registro y archivo administrativos",
+      "publicPreview": false
+    },
+    {
+      "id": "T16",
+      "number": 16,
+      "code": "16",
+      "title": "El explorador de Windows",
+      "publicPreview": false
+    },
+    {
+      "id": "T17",
+      "number": 17,
+      "code": "17",
+      "title": "Microsoft Word",
+      "publicPreview": false
+    },
+    {
+      "id": "T18",
+      "number": 18,
+      "code": "18",
+      "title": "Microsoft Excel",
+      "publicPreview": false
+    },
+    {
+      "id": "T19",
+      "number": 19,
+      "code": "19",
+      "title": "Microsoft Access y Power BI",
+      "publicPreview": false
+    },
+    {
+      "id": "T20",
+      "number": 20,
+      "code": "20",
+      "title": "Microsoft Outlook",
+      "publicPreview": false
+    },
+    {
+      "id": "T21",
+      "number": 21,
+      "code": "21",
+      "title": "Trabajo colaborativo en Microsoft 365",
+      "publicPreview": false
+    }
+  ],
+  "counts": {
+    "themes": 21,
+    "questions": 1050,
+    "glossary": 91,
+    "closedRocio": 126,
+    "simulations": 10,
+    "replacedDuplicateQuestions": 1
+  },
+  "simulations": [
+    {
+      "id": "1",
+      "title": "Simulacro 1 ejercicio 1",
+      "count": 45
+    },
+    {
+      "id": "2",
+      "title": "Simulacro 1 ejercicio 2",
+      "count": 35
+    },
+    {
+      "id": "3",
+      "title": "Simulacro 2 ejercicio 1",
+      "count": 45
+    },
+    {
+      "id": "4",
+      "title": "Simulacro 2 ejercicio 2",
+      "count": 35
+    },
+    {
+      "id": "5",
+      "title": "Simulacro 3 ejercicio 1",
+      "count": 45
+    },
+    {
+      "id": "6",
+      "title": "Simulacro 3 ejercicio 2",
+      "count": 35
+    },
+    {
+      "id": "7",
+      "title": "Simulacro 4 ejercicio 1",
+      "count": 45
+    },
+    {
+      "id": "8",
+      "title": "Simulacro 4 ejercicio 2",
+      "count": 35
+    },
+    {
+      "id": "9",
+      "title": "Simulacro 5 ejercicio 1",
+      "count": 45
+    },
+    {
+      "id": "10",
+      "title": "Simulacro 5 ejercicio 2",
+      "count": 35
+    }
+  ]
+}

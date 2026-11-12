@@ -1,0 +1,421 @@
+{
+  "course": "Administrativo de la Comunidad de Madrid",
+  "courseSlug": "administrativo-comunidad-madrid",
+  "level": "C1",
+  "themes": [
+    {
+      "id": "T01",
+      "number": 1,
+      "code": "1",
+      "title": "La Constitución Española de 1978: Estructura y características. Los principios constitucionales y los valores superiores. Derechos y deberes fundamentales. Su garantía y suspensión.",
+      "publicPreview": true
+    },
+    {
+      "id": "T02",
+      "number": 2,
+      "code": "2",
+      "title": "La Corona: Funciones del Rey. Las Cortes Generales: Composición, atribuciones y funcionamiento del Congreso de los Diputados y del Senado.",
+      "publicPreview": false
+    },
+    {
+      "id": "T03",
+      "number": 3,
+      "code": "3",
+      "title": "El Poder Judicial: La organización judicial española. El Consejo General del Poder Judicial. El Tribunal Constitucional.",
+      "publicPreview": false
+    },
+    {
+      "id": "T04",
+      "number": 4,
+      "code": "4",
+      "title": "El Gobierno y la Administración: Principios constitucionales reguladores de la Administración Pública. La Administración General del Estado: Órganos superiores de la misma. La Administración Periférica del Estado: Delegados del Gobierno y Subdelegados del Gobierno.",
+      "publicPreview": false
+    },
+    {
+      "id": "T05",
+      "number": 5,
+      "code": "5",
+      "title": "Organización territorial del Estado. Las Comunidades Autónomas: Organización y competencias. Los Estatutos de Autonomía. La Administración Local.",
+      "publicPreview": false
+    },
+    {
+      "id": "T06",
+      "number": 6,
+      "code": "6",
+      "title": "La Comunidad de Madrid (I). El Estatuto de Autonomía: Estructura y contenido. Las competencias de la Comunidad de Madrid: Potestad legislativa, potestad reglamentaria y función ejecutiva. La Asamblea de Madrid: Composición, funciones y potestades.",
+      "publicPreview": false
+    },
+    {
+      "id": "T07",
+      "number": 7,
+      "code": "7",
+      "title": "La Comunidad de Madrid (II): La Ley de Gobierno y Administración de la Comunidad de Madrid: Estructura y contenido. La Presidencia y el Gobierno de la Comunidad de Madrid. La Administración Autonómica: Organización y estructura básica. Las Consejerías, Organismos Autónomos y Entes que integran la misma.",
+      "publicPreview": false
+    },
+    {
+      "id": "T08",
+      "number": 8,
+      "code": "8",
+      "title": "Referencia a los Tratados originarios y modificativos de la Unión Europea. Instituciones principales: El Consejo Europeo, el Consejo de la Unión Europea, la Comisión Europea, el Parlamento Europeo y el Tribunal de Justicia de la Unión Europea. La participación de las Comunidades Autónomas en el ámbito comunitario.",
+      "publicPreview": false
+    },
+    {
+      "id": "T09",
+      "number": 9,
+      "code": "9",
+      "title": "El principio de legalidad y la jerarquía normativa. Las fuentes del Derecho Administrativo. La Ley: tipos de leyes y reserva de ley. Disposiciones del Ejecutivo con fuerza de ley: decreto-ley y decreto legislativo. El Reglamento: concepto, clases y límites de la potestad reglamentaria. Las fuentes del Derecho Comunitario Europeo. Derecho originario y Derecho derivado: Reglamentos, Directivas y Decisiones.",
+      "publicPreview": false
+    },
+    {
+      "id": "T10",
+      "number": 10,
+      "code": "10",
+      "title": "El órgano administrativo: Concepto, naturaleza y clases. Los órganos colegiados. Principios de la organización administrativa. La competencia. Centralización y descentralización. Concentración y desconcentración.",
+      "publicPreview": false
+    },
+    {
+      "id": "T11",
+      "number": 11,
+      "code": "11",
+      "title": "La Ley del Procedimiento Administrativo Común de las Administraciones Públicas: objeto y ámbito de aplicación. Los interesados en el procedimiento. Identificación y firma de los interesados. La actividad de las Administraciones Públicas: derechos y obligaciones de las personas en sus relaciones con las Administraciones Públicas. Responsabilidad de la tramitación. Obligación de resolver. Suspensión y ampliación de plazos. El silencio administrativo. Términos y plazos.",
+      "publicPreview": false
+    },
+    {
+      "id": "T12",
+      "number": 12,
+      "code": "12",
+      "title": "El acto administrativo: Concepto, clases y requisitos. Eficacia de los actos. Nulidad y anulabilidad. Límites de la invalidez. La ejecución de los actos administrativos. La revisión de oficio.",
+      "publicPreview": false
+    },
+    {
+      "id": "T13",
+      "number": 13,
+      "code": "13",
+      "title": "Garantías del Procedimiento Administrativo Común de las Administraciones Públicas. Las fases del procedimiento: iniciación, ordenación, instrucción y finalización. Referencia a la tramitación simplificada del procedimiento administrativo común.",
+      "publicPreview": false
+    },
+    {
+      "id": "T14",
+      "number": 14,
+      "code": "14",
+      "title": "Los recursos administrativos: concepto y clases. Las reclamaciones económico-administrativas: especial referencia a las que se susciten en el ámbito de la gestión económico-financiera de la Comunidad de Madrid. La Jurisdicción Contencioso- Administrativa: Su organización. Las partes. Actos impugnables. Las fases principales del procedimiento contencioso-administrativo.",
+      "publicPreview": false
+    },
+    {
+      "id": "T15",
+      "number": 15,
+      "code": "15",
+      "title": "La responsabilidad patrimonial de las Administraciones Públicas. Concepto y clases. Requisitos generales y efectos. Procedimiento de responsabilidad patrimonial.",
+      "publicPreview": false
+    },
+    {
+      "id": "T16",
+      "number": 16,
+      "code": "16",
+      "title": "La potestad sancionadora de las Administraciones Públicas. Procedimiento sancionador.",
+      "publicPreview": false
+    },
+    {
+      "id": "T17",
+      "number": 17,
+      "code": "17",
+      "title": "La expropiación forzosa: concepto, naturaleza y elementos. El procedimiento general de expropiación.",
+      "publicPreview": false
+    },
+    {
+      "id": "T18",
+      "number": 18,
+      "code": "18",
+      "title": "Ley de contratos del sector público: disposiciones generales. Contratos del sector público. Racionalidad y consistencia de la contratación del sector público. Partes en el contrato. Objeto, presupuesto base de licitación, valor estimado, precio del contrato y su revisión. Garantías. De la preparación de los contratos. De la adjudicación de los contratos. Prerrogativas de la Administración.",
+      "publicPreview": false
+    },
+    {
+      "id": "T19",
+      "number": 19,
+      "code": "19",
+      "title": "Subvenciones públicas: Disposiciones generales y procedimientos de concesión.",
+      "publicPreview": false
+    },
+    {
+      "id": "T20",
+      "number": 20,
+      "code": "20",
+      "title": "La Ley de Transparencia, acceso a la información pública y buen gobierno: objeto y ámbito de aplicación. Publicidad activa. Derecho de acceso a la información pública. El Consejo de Transparencia y Buen Gobierno. La transparencia y el acceso a la información en las Comunidades Autónomas y Entidades Locales. Ley 10/2019, de 10 de abril, de Transparencia y de Participación de la Comunidad de Madrid. disposiciones generales, publicidad activa, derecho de acceso a la información pública, participación y colaboración ciudadana.",
+      "publicPreview": false
+    },
+    {
+      "id": "T21",
+      "number": 21,
+      "code": "21",
+      "title": "El principio de igualdad entre mujeres y hombres. La tutela contra la discriminación. El marco normativo de la igualdad de género, la protección integral contra la violencia de género y no discriminación de las personas LGTBI. Especial referencia a la Comunidad de Madrid.",
+      "publicPreview": false
+    },
+    {
+      "id": "T22",
+      "number": 22,
+      "code": "22",
+      "title": "Información administrativa y atención al ciudadano en la Comunidad de Madrid. La Administración electrónica. Real Decreto 203/2021, de 30 de marzo, por el que se aprueba el Reglamento de actuación y funcionamiento del sector público por medios electrónicos. La identificación y autenticación de las personas físicas y jurídicas para las diferentes actuaciones en la gestión electrónica. Decreto 188/2021, de 21 de julio, del Consejo de Gobierno, por el que se regula la obligación de relacionarse por medios electrónicos con la Administración de la Comunidad de Madrid del personal a su servicio y de los participantes en procesos selectivos.",
+      "publicPreview": false
+    },
+    {
+      "id": "T23",
+      "number": 23,
+      "code": "23",
+      "title": "Los documentos administrativos: concepto, funciones, clasificación y características. El documento electrónico y el expediente electrónico. Especial referencia a la Administración electrónica en la Comunidad de Madrid. El registro de documentos: Concepto y funciones. Presentación, recepción, entrada y salida de documentos. El archivo de documentos: Concepto y funciones. Clases de archivos y criterios de ordenación. El acceso a los documentos administrativos: sus limitaciones y formas de acceso.",
+      "publicPreview": false
+    },
+    {
+      "id": "T24",
+      "number": 24,
+      "code": "24",
+      "title": "Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales: Estructura y contenido. Especialidades en el Sector Público. Reglamento General de Protección de Datos 2016/679 del Parlamento Europeo y del Consejo de 27 de abril de 2016 (RGPD): Definiciones. Principios. Legitimación para el tratamiento de datos personales. Derechos de los interesados. Obligaciones de los responsables y encargados. Delegado de protección de datos.",
+      "publicPreview": false
+    },
+    {
+      "id": "T25",
+      "number": 25,
+      "code": "25",
+      "title": "El Texto Refundido del Estatuto Básico del Empleado Público: objeto y ámbito de aplicación, personal al servicio de las Administraciones Públicas. La Ley de Función Pública de la Comunidad de Madrid: del personal al servicio de la Comunidad de Madrid. Clases de personal al servicio de las Administraciones Públicas. Decreto por el que se regula la modalidad de prestación de servicios en régimen de teletrabajo en la Administración de la Comunidad de Madrid.",
+      "publicPreview": false
+    },
+    {
+      "id": "T26",
+      "number": 26,
+      "code": "26",
+      "title": "La selección del personal: la Oferta de Empleo Público y los procesos de selección. Adquisición y pérdida de la condición de funcionario. La estructuración del empleo público. Provisión de puestos de trabajo y movilidad.",
+      "publicPreview": false
+    },
+    {
+      "id": "T27",
+      "number": 27,
+      "code": "27",
+      "title": "Derechos y deberes. Código de conducta de los empleados públicos.",
+      "publicPreview": false
+    },
+    {
+      "id": "T28",
+      "number": 28,
+      "code": "28",
+      "title": "Las situaciones administrativas de los funcionarios. Características principales y efectos. Régimen de incompatibilidades de los empleados públicos. Responsabilidad y régimen disciplinario.",
+      "publicPreview": false
+    },
+    {
+      "id": "T29",
+      "number": 29,
+      "code": "29",
+      "title": "El personal laboral al servicio de la Comunidad de Madrid. El Convenio Colectivo para el Personal Laboral de la Comunidad de Madrid: disposiciones generales y clasificación profesional. Derechos y deberes.",
+      "publicPreview": false
+    },
+    {
+      "id": "T30",
+      "number": 30,
+      "code": "30",
+      "title": "El contrato de trabajo: Concepto y naturaleza. Forma. Contenido y régimen jurídico. Modalidades. Duración. Modificación, suspensión y extinción.",
+      "publicPreview": false
+    },
+    {
+      "id": "T31",
+      "number": 31,
+      "code": "31",
+      "title": "La Seguridad Social (I): afiliación, altas y bajas. Cotización y recaudación. Las Entidades Gestoras. Los regímenes especiales.",
+      "publicPreview": false
+    },
+    {
+      "id": "T32",
+      "number": 32,
+      "code": "32",
+      "title": "La Seguridad Social (II). Acción protectora: contingencias y prestaciones.",
+      "publicPreview": false
+    },
+    {
+      "id": "T33",
+      "number": 33,
+      "code": "33",
+      "title": "Los ingresos públicos: concepto y características. El sistema tributario español: Líneas generales. Especial referencia a los impuestos gestionados por la Comunidad de Madrid.",
+      "publicPreview": false
+    },
+    {
+      "id": "T34",
+      "number": 34,
+      "code": "34",
+      "title": "Ley de Hacienda de la Comunidad de Madrid (I): Estabilidad presupuestaria y sostenibilidad financiera. Presupuestos Generales de la Comunidad de Madrid.",
+      "publicPreview": false
+    },
+    {
+      "id": "T35",
+      "number": 35,
+      "code": "35",
+      "title": "Ley de Hacienda de la Comunidad de Madrid (II): Gastos plurianuales. Modificaciones presupuestarias.",
+      "publicPreview": false
+    },
+    {
+      "id": "T36",
+      "number": 36,
+      "code": "36",
+      "title": "Ley de Hacienda de la Comunidad de Madrid (III): ejecución y liquidación de los presupuestos de carácter limitativo.",
+      "publicPreview": false
+    },
+    {
+      "id": "T37",
+      "number": 37,
+      "code": "37",
+      "title": "Ley de Hacienda de la Comunidad de Madrid (IV): Intervención General de la Comunidad de Madrid y control interno: disposiciones generales y función interventora.",
+      "publicPreview": false
+    },
+    {
+      "id": "T38",
+      "number": 38,
+      "code": "38",
+      "title": "Las retribuciones de los funcionarios públicos al servicio de la Comunidad de Madrid. Retribuciones de los funcionarios. Retribuciones básicas. Retribuciones complementarias. Otras remuneraciones. Indemnizaciones. Régimen retributivo del personal laboral al servicio de la Comunidad de Madrid.",
+      "publicPreview": false
+    },
+    {
+      "id": "T39",
+      "number": 39,
+      "code": "39",
+      "title": "El Plan General de Contabilidad Pública: Primera parte: marco conceptual de la contabilidad pública. Quinta parte: definiciones a nivel de grupo.",
+      "publicPreview": false
+    },
+    {
+      "id": "T40",
+      "number": 40,
+      "code": "40",
+      "title": "Informática básica: conceptos fundamentales sobre el hardware y el software. Sistemas de almacenamiento de datos. Sistemas operativos. Nociones básicas de seguridad informática.",
+      "publicPreview": false
+    },
+    {
+      "id": "T41",
+      "number": 41,
+      "code": "41",
+      "title": "Introducción al sistema operativo: el entorno Windows. Fundamentos. Trabajo en el entorno gráfico de Windows: ventanas, iconos, menús contextuales, cuadros de diálogo. El escritorio y sus elementos. El menú inicio. Copilot.",
+      "publicPreview": false
+    },
+    {
+      "id": "T42",
+      "number": 42,
+      "code": "42",
+      "title": "El explorador de Windows. Gestión de carpetas y archivos. Operaciones de búsqueda. Herramientas «Este equipo» y «Acceso rápido». Accesorios. Herramientas del sistema.",
+      "publicPreview": false
+    },
+    {
+      "id": "T43",
+      "number": 43,
+      "code": "43",
+      "title": "Procesadores de texto: Word. Principales funciones y utilidades. Creación y estructuración del documento. Gestión, grabación, recuperación e impresión de ficheros. Personalización del entorno de trabajo.",
+      "publicPreview": false
+    },
+    {
+      "id": "T44",
+      "number": 44,
+      "code": "44",
+      "title": "Hojas de cálculo: Excel. Principales funciones y utilidades. Libros, hojas y celdas. Configuración. Introducción y edición de datos. Fórmulas y funciones. Tablas dinámicas. Gráficos. Gestión de datos. Personalización del entorno de trabajo.",
+      "publicPreview": false
+    },
+    {
+      "id": "T45",
+      "number": 45,
+      "code": "45",
+      "title": "Bases de datos: Access. Principales funciones y utilidades. Tablas. Consultas. Formularios. Informes. Relaciones. Importación, vinculación y exportación de datos. Power BI.",
+      "publicPreview": false
+    },
+    {
+      "id": "T46",
+      "number": 46,
+      "code": "46",
+      "title": "Correo electrónico: Outlook. Conceptos elementales y funcionamiento. Enviar, recibir, responder y reenviar mensajes. Creación de mensajes. Reglas de mensaje. Libreta de direcciones. Agenda: convocatorias y citas.",
+      "publicPreview": false
+    },
+    {
+      "id": "T47",
+      "number": 47,
+      "code": "47",
+      "title": "Trabajo colaborativo: herramientas y funcionalidades. Microsoft 365: Teams, Sharepoint, OneDrive y Outlook. Videoconferencias.",
+      "publicPreview": false
+    }
+  ],
+  "counts": {
+    "themes": 47,
+    "questions": 2350,
+    "glossary": 267,
+    "closedRocio": 282,
+    "simulations": 15,
+    "replacedDuplicateQuestions": 72
+  },
+  "simulations": [
+    {
+      "id": "1",
+      "title": "Primer ejercicio simulacro 1",
+      "count": 45
+    },
+    {
+      "id": "2",
+      "title": "Primer ejercicio simulacro 2",
+      "count": 45
+    },
+    {
+      "id": "3",
+      "title": "Primer ejercicio simulacro 3",
+      "count": 45
+    },
+    {
+      "id": "4",
+      "title": "Primer ejercicio simulacro 4",
+      "count": 45
+    },
+    {
+      "id": "5",
+      "title": "Primer ejercicio simulacro 5",
+      "count": 45
+    },
+    {
+      "id": "6",
+      "title": "Segundo ejercicio simulacro 1",
+      "count": 30
+    },
+    {
+      "id": "7",
+      "title": "Segundo ejercicio simulacro 2",
+      "count": 30
+    },
+    {
+      "id": "8",
+      "title": "Segundo ejercicio simulacro 3",
+      "count": 30
+    },
+    {
+      "id": "9",
+      "title": "Segundo ejercicio simulacro 4",
+      "count": 30
+    },
+    {
+      "id": "10",
+      "title": "Segundo ejercicio simulacro 5",
+      "count": 30
+    },
+    {
+      "id": "11",
+      "title": "Tercer ejercicio simulacro 1",
+      "count": 45
+    },
+    {
+      "id": "12",
+      "title": "Tercer ejercicio simulacro 2",
+      "count": 45
+    },
+    {
+      "id": "13",
+      "title": "Tercer ejercicio simulacro 3",
+      "count": 45
+    },
+    {
+      "id": "14",
+      "title": "Tercer ejercicio simulacro 4",
+      "count": 45
+    },
+    {
+      "id": "15",
+      "title": "Tercer ejercicio simulacro 5",
+      "count": 45
+    }
+  ]
+}

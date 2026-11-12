@@ -33,6 +33,10 @@ const COURSE_ACCESS: Record<string,{slug:string;href:string}> = {
   "Auxiliar Administrativo de la Junta de Andalucía": { slug:"auxiliar-administrativo-ja", href:"/dashboard/auxiliar-administrativo-ja" },
   "Administrativo del Estado": { slug:"administrativo-estado", href:"/dashboard/administrativo-estado" },
   "Auxiliar Administrativo del Estado": { slug:"auxiliar-administrativo-estado", href:"/dashboard/auxiliar-administrativo-estado" },
+  "Administrativo de la Seguridad Social": { slug:"administrativo-seguridad-social", href:"/dashboard/administrativo-seguridad-social" },
+  "Auxiliar Administrativo de la Seguridad Social": { slug:"auxiliar-administrativo-seguridad-social", href:"/dashboard/auxiliar-administrativo-seguridad-social" },
+  "Administrativo de la Comunidad de Madrid": { slug:"administrativo-comunidad-madrid", href:"/dashboard/administrativo-comunidad-madrid" },
+  "Auxiliar Administrativo de la Comunidad de Madrid": { slug:"auxiliar-administrativo-comunidad-madrid", href:"/dashboard/auxiliar-administrativo-comunidad-madrid" },
   "Tropa y Marinería": { slug:"tropa-y-marineria", href:"/dashboard/tropa-y-marineria" },
 };
 
@@ -502,6 +506,10 @@ export default function CourseCatalog() {
       "auxiliar-administrativo-ja": "Auxiliar Administrativo de la Junta de Andalucía",
       "auxiliar-administrativo-estado": "Auxiliar Administrativo del Estado",
       "administrativo-estado": "Administrativo del Estado",
+      "administrativo-seguridad-social": "Administrativo de la Seguridad Social",
+      "auxiliar-administrativo-seguridad-social": "Auxiliar Administrativo de la Seguridad Social",
+      "administrativo-comunidad-madrid": "Administrativo de la Comunidad de Madrid",
+      "auxiliar-administrativo-comunidad-madrid": "Auxiliar Administrativo de la Comunidad de Madrid",
       "clases-online-eso-bach": "Historia y Filosofía · ESO y Bachillerato",
       "clases-online-universidad": "Historia · Universidad",
       "clases-online-solicitud": "Solicitud de clases · Otras asignaturas",
@@ -941,6 +949,10 @@ export default function CourseCatalog() {
                 <p>Selecciona una modalidad y revisa la información antes de continuar.</p>
               </>
             )}
+            {course.name === "Administrativo de la Seguridad Social" && <p><Link href="/dashboard/administrativo-seguridad-social?tema=T01">Probar gratis el tema 1</Link></p>}
+            {course.name === "Auxiliar Administrativo de la Seguridad Social" && <p><Link href="/dashboard/auxiliar-administrativo-seguridad-social?tema=T01">Probar gratis el tema 1</Link></p>}
+            {course.name === "Administrativo de la Comunidad de Madrid" && <p><Link href="/dashboard/administrativo-comunidad-madrid?tema=T01">Probar gratis el tema 1</Link></p>}
+            {course.name === "Auxiliar Administrativo de la Comunidad de Madrid" && <p><Link href="/dashboard/auxiliar-administrativo-comunidad-madrid?tema=T01">Probar gratis el tema 1</Link></p>}
             {course.name === "Administrativo del Estado" && <p><Link href="/dashboard/administrativo-estado?tema=T01">Probar gratis el tema 1</Link></p>}
             {course.name === "Auxiliar Administrativo del Estado" && <p><Link href="/dashboard/auxiliar-administrativo-estado?tema=T01">Probar gratis el tema 1</Link></p>}
             {course.name === "Administrativo de la Junta de Andalucía" && (
