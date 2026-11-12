@@ -52,5 +52,5 @@ export async function POST(req:NextRequest){
   const answer=result.output_text||"No he podido elaborar una respuesta. Inténtalo de nuevo.";
   if(reservedId)await ctx.db.from("opposition_assistant_turns").update({answer}).eq("id",reservedId);
   return NextResponse.json({answer});
- }catch{return NextResponse.json({error:"assistant_unavailable"},{status:503});}
+ }catch(error){const e=error as {status?:number;code?:string;type?:string};console.error("OPPOSITION_ASSISTANT_FAILURE",{status:typeof e?.status==="number"?e.status:null,code:typeof e?.code==="string"?e.code.replace(/[^a-zA-Z0-9_]/g,"").slice(0,70):null,type:typeof e?.type==="string"?e.type.replace(/[^a-zA-Z0-9_]/g,"").slice(0,70):null});return NextResponse.json({error:"assistant_unavailable"},{status:503});}
 }
