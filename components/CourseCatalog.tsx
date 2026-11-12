@@ -33,6 +33,8 @@ const COURSE_ACCESS: Record<string,{slug:string;href:string}> = {
   "Auxiliar Administrativo de la Junta de Andalucía": { slug:"auxiliar-administrativo-ja", href:"/dashboard/auxiliar-administrativo-ja" },
   "Administrativo del Estado": { slug:"administrativo-estado", href:"/dashboard/administrativo-estado" },
   "Auxiliar Administrativo del Estado": { slug:"auxiliar-administrativo-estado", href:"/dashboard/auxiliar-administrativo-estado" },
+  "Administrativo del Servicio Andaluz de Salud": { slug:"administrativo-sas", href:"/dashboard/administrativo-sas" },
+  "Auxiliar Administrativo del Servicio Andaluz de Salud": { slug:"auxiliar-administrativo-sas", href:"/dashboard/auxiliar-administrativo-sas" },
   "Administrativo de la Seguridad Social": { slug:"administrativo-seguridad-social", href:"/dashboard/administrativo-seguridad-social" },
   "Auxiliar Administrativo de la Seguridad Social": { slug:"auxiliar-administrativo-seguridad-social", href:"/dashboard/auxiliar-administrativo-seguridad-social" },
   "Administrativo de la Comunidad de Madrid": { slug:"administrativo-comunidad-madrid", href:"/dashboard/administrativo-comunidad-madrid" },
@@ -506,6 +508,8 @@ export default function CourseCatalog() {
       "auxiliar-administrativo-ja": "Auxiliar Administrativo de la Junta de Andalucía",
       "auxiliar-administrativo-estado": "Auxiliar Administrativo del Estado",
       "administrativo-estado": "Administrativo del Estado",
+      "administrativo-sas": "Administrativo del Servicio Andaluz de Salud",
+      "auxiliar-administrativo-sas": "Auxiliar Administrativo del Servicio Andaluz de Salud",
       "administrativo-seguridad-social": "Administrativo de la Seguridad Social",
       "auxiliar-administrativo-seguridad-social": "Auxiliar Administrativo de la Seguridad Social",
       "administrativo-comunidad-madrid": "Administrativo de la Comunidad de Madrid",
@@ -949,6 +953,8 @@ export default function CourseCatalog() {
                 <p>Selecciona una modalidad y revisa la información antes de continuar.</p>
               </>
             )}
+            {course.name === "Administrativo del Servicio Andaluz de Salud" && <p><Link href="/dashboard/administrativo-sas?tema=T01">Probar gratis el tema 1</Link></p>}
+            {course.name === "Auxiliar Administrativo del Servicio Andaluz de Salud" && <p><Link href="/dashboard/auxiliar-administrativo-sas?tema=T01">Probar gratis el tema 1</Link></p>}
             {course.name === "Administrativo de la Seguridad Social" && <p><Link href="/dashboard/administrativo-seguridad-social?tema=T01">Probar gratis el tema 1</Link></p>}
             {course.name === "Auxiliar Administrativo de la Seguridad Social" && <p><Link href="/dashboard/auxiliar-administrativo-seguridad-social?tema=T01">Probar gratis el tema 1</Link></p>}
             {course.name === "Administrativo de la Comunidad de Madrid" && <p><Link href="/dashboard/administrativo-comunidad-madrid?tema=T01">Probar gratis el tema 1</Link></p>}

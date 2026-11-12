@@ -1,0 +1,404 @@
+{
+  "course": "Administrativo del Servicio Andaluz de Salud",
+  "courseSlug": "administrativo-sas",
+  "level": "C1",
+  "themes": [
+    {
+      "id": "T01",
+      "number": 1,
+      "code": "1",
+      "title": "La Constitución Española de 1978",
+      "publicPreview": true
+    },
+    {
+      "id": "T02",
+      "number": 2,
+      "code": "2",
+      "title": "Estatuto de Autonomía para Andalucía",
+      "publicPreview": false
+    },
+    {
+      "id": "T03",
+      "number": 3,
+      "code": "3",
+      "title": "Organización sanitaria (I)",
+      "publicPreview": false
+    },
+    {
+      "id": "T04",
+      "number": 4,
+      "code": "4",
+      "title": "Organización sanitaria (II)",
+      "publicPreview": false
+    },
+    {
+      "id": "T05",
+      "number": 5,
+      "code": "5",
+      "title": "PROTECCIÓN DE DATOS PERSONALES Y TRANSPARENCIA PÚBLICA",
+      "publicPreview": false
+    },
+    {
+      "id": "T06",
+      "number": 6,
+      "code": "6",
+      "title": "Prevención de riesgos laborales",
+      "publicPreview": false
+    },
+    {
+      "id": "T07",
+      "number": 7,
+      "code": "7",
+      "title": "Igualdad de género, violencia de género y Plan de Igualdad de la Junta de Andalucía",
+      "publicPreview": false
+    },
+    {
+      "id": "T08",
+      "number": 8,
+      "code": "8",
+      "title": "Ley 55/2003, de 16 de diciembre, del Estatuto Marco del personal estatutario de los servicios de salud",
+      "publicPreview": false
+    },
+    {
+      "id": "T09",
+      "number": 9,
+      "code": "9",
+      "title": "Autonomía del paciente, documentación clínica y tarjeta sanitaria de Andalucía",
+      "publicPreview": false
+    },
+    {
+      "id": "T10",
+      "number": 10,
+      "code": "10",
+      "title": "Tecnologías de la información y las comunicaciones",
+      "publicPreview": false
+    },
+    {
+      "id": "T11",
+      "number": 11,
+      "code": "11",
+      "title": "Calidad en el SSPA, evaluación, acreditación y ACSA",
+      "publicPreview": false
+    },
+    {
+      "id": "T12",
+      "number": 12,
+      "code": "12",
+      "title": "Derechos y garantías de la ciudadanía en el SSPA",
+      "publicPreview": false
+    },
+    {
+      "id": "T13",
+      "number": 13,
+      "code": "13",
+      "title": "Prevención de riesgos laborales: riesgos específicos del/la Administrativo/a y medidas preventivas",
+      "publicPreview": false
+    },
+    {
+      "id": "T14",
+      "number": 14,
+      "code": "14",
+      "title": "El Estatuto Básico del Empleado Público",
+      "publicPreview": false
+    },
+    {
+      "id": "T15",
+      "number": 15,
+      "code": "15",
+      "title": "La Administración Pública: concepto, sometimiento al Derecho, legalidad, jerarquía normativa y discrecionalidad",
+      "publicPreview": false
+    },
+    {
+      "id": "T16",
+      "number": 16,
+      "code": "16",
+      "title": "Ley 39/2015, del Procedimiento Administrativo Común",
+      "publicPreview": false
+    },
+    {
+      "id": "T17",
+      "number": 17,
+      "code": "17",
+      "title": "El procedimiento administrativo común",
+      "publicPreview": false
+    },
+    {
+      "id": "T18",
+      "number": 18,
+      "code": "18",
+      "title": "Régimen Jurídico del Sector Público (I)",
+      "publicPreview": false
+    },
+    {
+      "id": "T19",
+      "number": 19,
+      "code": "19",
+      "title": "Responsabilidad patrimonial de las Administraciones Públicas",
+      "publicPreview": false
+    },
+    {
+      "id": "T20",
+      "number": 20,
+      "code": "20",
+      "title": "Documentos administrativos, expediente y derecho de acceso",
+      "publicPreview": false
+    },
+    {
+      "id": "T21",
+      "number": 21,
+      "code": "21",
+      "title": "Atención a la ciudadanía (I)",
+      "publicPreview": false
+    },
+    {
+      "id": "T22",
+      "number": 22,
+      "code": "22",
+      "title": "Atención a la ciudadanía (II)",
+      "publicPreview": false
+    },
+    {
+      "id": "T23",
+      "number": 23,
+      "code": "23",
+      "title": "Ordenación de los recursos humanos del Servicio Andaluz de Salud",
+      "publicPreview": false
+    },
+    {
+      "id": "T24",
+      "number": 24,
+      "code": "24",
+      "title": "Provisión de plazas del personal estatutario del Servicio Andaluz de Salud",
+      "publicPreview": false
+    },
+    {
+      "id": "T25",
+      "number": 25,
+      "code": "25",
+      "title": "Selección de personal temporal en el Servicio Andaluz de Salud",
+      "publicPreview": false
+    },
+    {
+      "id": "T26",
+      "number": 26,
+      "code": "26",
+      "title": "Jornada, descansos, vacaciones, permisos y licencias del personal del SAS",
+      "publicPreview": false
+    },
+    {
+      "id": "T27",
+      "number": 27,
+      "code": "27",
+      "title": "Régimen disciplinario del personal del Servicio Andaluz de Salud",
+      "publicPreview": false
+    },
+    {
+      "id": "T28",
+      "number": 28,
+      "code": "28",
+      "title": "Régimen de incompatibilidades del personal del Servicio Andaluz de Salud",
+      "publicPreview": false
+    },
+    {
+      "id": "T29",
+      "number": 29,
+      "code": "29",
+      "title": "Retribuciones del personal del Servicio Andaluz de Salud. Nóminas y descuentos",
+      "publicPreview": false
+    },
+    {
+      "id": "T30",
+      "number": 30,
+      "code": "30",
+      "title": "Seguridad Social (I). Régimen General, afiliación, altas, bajas y cotización",
+      "publicPreview": false
+    },
+    {
+      "id": "T31",
+      "number": 31,
+      "code": "31",
+      "title": "Seguridad Social (II). Incapacidad, nacimiento y cuidado y jubilación",
+      "publicPreview": false
+    },
+    {
+      "id": "T32",
+      "number": 32,
+      "code": "32",
+      "title": "Gestión presupuestaria (I). El Presupuesto de la Junta de Andalucía",
+      "publicPreview": false
+    },
+    {
+      "id": "T33",
+      "number": 33,
+      "code": "33",
+      "title": "Gestión presupuestaria (II). Ejecución, modificaciones, contabilidad y control",
+      "publicPreview": false
+    },
+    {
+      "id": "T34",
+      "number": 34,
+      "code": "34",
+      "title": "Contratos del sector público. Régimen general",
+      "publicPreview": false
+    },
+    {
+      "id": "T35",
+      "number": 35,
+      "code": "35",
+      "title": "Contratación en el Servicio Andaluz de Salud",
+      "publicPreview": false
+    },
+    {
+      "id": "T36",
+      "number": 36,
+      "code": "36",
+      "title": "Gestión de almacenes, inmovilizado, existencias y stocks",
+      "publicPreview": false
+    },
+    {
+      "id": "T37",
+      "number": 37,
+      "code": "37",
+      "title": "Sistema de contabilidad analítica en el Servicio Andaluz de Salud",
+      "publicPreview": false
+    },
+    {
+      "id": "T38",
+      "number": 38,
+      "code": "38",
+      "title": "Gestión hostelera: alimentación, lencería, lavandería y residuos sanitarios",
+      "publicPreview": false
+    },
+    {
+      "id": "T39",
+      "number": 39,
+      "code": "39",
+      "title": "La gestión de mantenimiento. Concepto, estructura y tipos",
+      "publicPreview": false
+    },
+    {
+      "id": "T40",
+      "number": 40,
+      "code": "40",
+      "title": "Modelo de compras del Servicio Andaluz de Salud",
+      "publicPreview": false
+    },
+    {
+      "id": "T41",
+      "number": 41,
+      "code": "41",
+      "title": "Sistemas de información: GERHONTE, SIGLO, GIRO y SUR",
+      "publicPreview": false
+    },
+    {
+      "id": "T42",
+      "number": 42,
+      "code": "42",
+      "title": "Registros sanitarios, historia clínica, archivos, DIRAYA y BDU",
+      "publicPreview": false
+    },
+    {
+      "id": "T43",
+      "number": 43,
+      "code": "43",
+      "title": "Admisión, documentación clínica, listas de espera y atención a la ciudadanía",
+      "publicPreview": false
+    },
+    {
+      "id": "T44",
+      "number": 44,
+      "code": "44",
+      "title": "Tecnologías sanitarias y AETSA",
+      "publicPreview": false
+    },
+    {
+      "id": "T45",
+      "number": 45,
+      "code": "45",
+      "title": "Sistemas informáticos, mantenimiento, seguridad y dispositivos móviles",
+      "publicPreview": false
+    },
+    {
+      "id": "T46",
+      "number": 46,
+      "code": "46",
+      "title": "Sistemas ofimáticos",
+      "publicPreview": false
+    },
+    {
+      "id": "T47",
+      "number": 47,
+      "code": "47",
+      "title": "Internet, intranet, correo electrónico, web social y teleformación",
+      "publicPreview": false
+    },
+    {
+      "id": "T48",
+      "number": 48,
+      "code": "48",
+      "title": "Administración electrónica, firma, certificados, plataformas y VEC",
+      "publicPreview": false
+    }
+  ],
+  "counts": {
+    "themes": 48,
+    "questions": 2400,
+    "glossary": 738,
+    "closedRocio": 1100,
+    "simulations": 10
+  },
+  "simulations": [
+    {
+      "id": "SIM01",
+      "title": "Modelo de repaso 1 · todo el temario",
+      "count": 50
+    },
+    {
+      "id": "SIM02",
+      "title": "Modelo de repaso 2 · todo el temario",
+      "count": 50
+    },
+    {
+      "id": "SIM03",
+      "title": "Modelo de repaso 3 · todo el temario",
+      "count": 50
+    },
+    {
+      "id": "SIM04",
+      "title": "Modelo de repaso 4 · todo el temario",
+      "count": 50
+    },
+    {
+      "id": "SIM05",
+      "title": "Modelo de repaso 5 · todo el temario",
+      "count": 50
+    },
+    {
+      "id": "SIM06",
+      "title": "Modelo de repaso 6 · todo el temario",
+      "count": 50
+    },
+    {
+      "id": "SIM07",
+      "title": "Modelo de repaso 7 · todo el temario",
+      "count": 50
+    },
+    {
+      "id": "SIM08",
+      "title": "Modelo de repaso 8 · todo el temario",
+      "count": 50
+    },
+    {
+      "id": "SIM09",
+      "title": "Modelo de repaso 9 · todo el temario",
+      "count": 50
+    },
+    {
+      "id": "SIM10",
+      "title": "Modelo de repaso 10 · todo el temario",
+      "count": 50
+    }
+  ],
+  "enrollmentOpen": false,
+  "editorialStatus": "review_in_progress"
+}

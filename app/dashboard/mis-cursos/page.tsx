@@ -23,6 +23,8 @@ const COURSES: Record<string,{title:string;href:string;description:string}> = {
   "tropa-y-marineria": { title:"Tropa y Marinería", href:"/dashboard/tropa-y-marineria", description:"Entrenamiento psicotécnico" },
   "auxiliar-administrativo-estado": { title:"Auxiliar Administrativo del Estado", href:"/dashboard/auxiliar-administrativo-estado", description:"28 temas · test, simulacros y acompañamiento" },
   "administrativo-estado": { title:"Administrativo del Estado", href:"/dashboard/administrativo-estado", description:"45 temas · test, simulacros y supuestos prácticos" },
+  "administrativo-sas": { title:"Administrativo del Servicio Andaluz de Salud", href:"/dashboard/administrativo-sas", description:"48 temas · explicaciones, test y acompañamiento" },
+  "auxiliar-administrativo-sas": { title:"Auxiliar Administrativo del Servicio Andaluz de Salud", href:"/dashboard/auxiliar-administrativo-sas", description:"29 temas · explicaciones, test y acompañamiento" },
   "administrativo-seguridad-social": { title:"Administrativo de la Seguridad Social", href:"/dashboard/administrativo-seguridad-social", description:"36 temas · test y acompañamiento" },
   "auxiliar-administrativo-seguridad-social": { title:"Auxiliar Administrativo de la Seguridad Social", href:"/dashboard/auxiliar-administrativo-seguridad-social", description:"26 temas · test y acompañamiento" },
   "administrativo-comunidad-madrid": { title:"Administrativo de la Comunidad de Madrid", href:"/dashboard/administrativo-comunidad-madrid", description:"47 temas · test y acompañamiento" },

@@ -1,0 +1,271 @@
+{
+  "course": "Auxiliar Administrativo del Servicio Andaluz de Salud",
+  "courseSlug": "auxiliar-administrativo-sas",
+  "level": "C2",
+  "themes": [
+    {
+      "id": "T01",
+      "number": 1,
+      "code": "1",
+      "title": "Constitución Española y protección de la salud",
+      "publicPreview": true
+    },
+    {
+      "id": "T02",
+      "number": 2,
+      "code": "2",
+      "title": "Estatuto de Autonomía para Andalucía",
+      "publicPreview": false
+    },
+    {
+      "id": "T03",
+      "number": 3,
+      "code": "3",
+      "title": "Organización sanitaria (I)",
+      "publicPreview": false
+    },
+    {
+      "id": "T04",
+      "number": 4,
+      "code": "4",
+      "title": "Organización sanitaria (II)",
+      "publicPreview": false
+    },
+    {
+      "id": "T05",
+      "number": 5,
+      "code": "5",
+      "title": "Protección de datos y transparencia",
+      "publicPreview": false
+    },
+    {
+      "id": "T06",
+      "number": 6,
+      "code": "6",
+      "title": "Prevención de riesgos laborales",
+      "publicPreview": false
+    },
+    {
+      "id": "T07",
+      "number": 7,
+      "code": "7",
+      "title": "Igualdad y violencia de género",
+      "publicPreview": false
+    },
+    {
+      "id": "T08",
+      "number": 8,
+      "code": "8",
+      "title": "Estatuto Marco del personal estatutario",
+      "publicPreview": false
+    },
+    {
+      "id": "T09",
+      "number": 9,
+      "code": "9",
+      "title": "Autonomía del paciente y tarjeta sanitaria",
+      "publicPreview": false
+    },
+    {
+      "id": "T10",
+      "number": 10,
+      "code": "10",
+      "title": "Tecnologías de la información en el SAS",
+      "publicPreview": false
+    },
+    {
+      "id": "T11",
+      "number": 11,
+      "code": "11",
+      "title": "Selección de personal temporal en el SAS",
+      "publicPreview": false
+    },
+    {
+      "id": "T12",
+      "number": 12,
+      "code": "12",
+      "title": "Riesgos laborales específicos del Auxiliar Administrativo",
+      "publicPreview": false
+    },
+    {
+      "id": "T13",
+      "number": 13,
+      "code": "13",
+      "title": "Procedimiento administrativo común (I)",
+      "publicPreview": false
+    },
+    {
+      "id": "T14",
+      "number": 14,
+      "code": "14",
+      "title": "Procedimiento administrativo común (II)",
+      "publicPreview": false
+    },
+    {
+      "id": "T15",
+      "number": 15,
+      "code": "15",
+      "title": "Régimen Jurídico del Sector Público",
+      "publicPreview": false
+    },
+    {
+      "id": "T16",
+      "number": 16,
+      "code": "16",
+      "title": "Creación de documentos, copias y archivos",
+      "publicPreview": false
+    },
+    {
+      "id": "T17",
+      "number": 17,
+      "code": "17",
+      "title": "Atención a la ciudadanía (I)",
+      "publicPreview": false
+    },
+    {
+      "id": "T18",
+      "number": 18,
+      "code": "18",
+      "title": "Atención a la ciudadanía (II)",
+      "publicPreview": false
+    },
+    {
+      "id": "T19",
+      "number": 19,
+      "code": "19",
+      "title": "Derechos, garantías y calidad asistencial",
+      "publicPreview": false
+    },
+    {
+      "id": "T20",
+      "number": 20,
+      "code": "20",
+      "title": "Sistema Español de Seguridad Social",
+      "publicPreview": false
+    },
+    {
+      "id": "T21",
+      "number": 21,
+      "code": "21",
+      "title": "Sistema retributivo del personal del SAS",
+      "publicPreview": false
+    },
+    {
+      "id": "T22",
+      "number": 22,
+      "code": "22",
+      "title": "Presupuesto de la Comunidad Autónoma de Andalucía",
+      "publicPreview": false
+    },
+    {
+      "id": "T23",
+      "number": 23,
+      "code": "23",
+      "title": "Contratación administrativa en el sector público",
+      "publicPreview": false
+    },
+    {
+      "id": "T24",
+      "number": 24,
+      "code": "24",
+      "title": "Sistemas de información en el SAS",
+      "publicPreview": false
+    },
+    {
+      "id": "T25",
+      "number": 25,
+      "code": "25",
+      "title": "Sistemas de registro sanitario asistencial",
+      "publicPreview": false
+    },
+    {
+      "id": "T26",
+      "number": 26,
+      "code": "26",
+      "title": "Administración electrónica y utilidades",
+      "publicPreview": false
+    },
+    {
+      "id": "T27",
+      "number": 27,
+      "code": "27",
+      "title": "Sistemas informáticos",
+      "publicPreview": false
+    },
+    {
+      "id": "T28",
+      "number": 28,
+      "code": "28",
+      "title": "Sistemas ofimáticos",
+      "publicPreview": false
+    },
+    {
+      "id": "T29",
+      "number": 29,
+      "code": "29",
+      "title": "Internet, intranet, correo y teleformación",
+      "publicPreview": false
+    }
+  ],
+  "counts": {
+    "themes": 29,
+    "questions": 1450,
+    "glossary": 537,
+    "closedRocio": 788,
+    "simulations": 10
+  },
+  "simulations": [
+    {
+      "id": "SIM01",
+      "title": "Modelo de repaso 1 · todo el temario",
+      "count": 50
+    },
+    {
+      "id": "SIM02",
+      "title": "Modelo de repaso 2 · todo el temario",
+      "count": 50
+    },
+    {
+      "id": "SIM03",
+      "title": "Modelo de repaso 3 · todo el temario",
+      "count": 50
+    },
+    {
+      "id": "SIM04",
+      "title": "Modelo de repaso 4 · todo el temario",
+      "count": 50
+    },
+    {
+      "id": "SIM05",
+      "title": "Modelo de repaso 5 · todo el temario",
+      "count": 50
+    },
+    {
+      "id": "SIM06",
+      "title": "Modelo de repaso 6 · todo el temario",
+      "count": 50
+    },
+    {
+      "id": "SIM07",
+      "title": "Modelo de repaso 7 · todo el temario",
+      "count": 50
+    },
+    {
+      "id": "SIM08",
+      "title": "Modelo de repaso 8 · todo el temario",
+      "count": 50
+    },
+    {
+      "id": "SIM09",
+      "title": "Modelo de repaso 9 · todo el temario",
+      "count": 50
+    },
+    {
+      "id": "SIM10",
+      "title": "Modelo de repaso 10 · todo el temario",
+      "count": 50
+    }
+  ],
+  "enrollmentOpen": false,
+  "editorialStatus": "review_in_progress"
+}
