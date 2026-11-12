@@ -58,6 +58,7 @@ function Course() {
 
   return (
     <div className={styles.shell}>
+      <header className={layout.topHeader}><Link href="/" className={layout.headerBrand}><img src="/images/base12-logo.png" alt=""/><span>Base12<small>ACADEMY</small></span></Link><nav aria-label="Navegación del aula"><button onClick={()=>setTab("inicio")}>Inicio del tema</button><button onClick={()=>setTab("test")}>Práctica</button><button onClick={()=>setTab("glosario")}>Glosario</button></nav><Link href="/dashboard">Mi cuenta</Link></header>
       <aside className={styles.sidebar}>
         <Link href="/" className={styles.brand}><img className={layout.brandLogo} src="/images/base12-logo.png" alt="Base12 Academy" /></Link>
         <p className={styles.eyebrow}>OPOSICIONES · JUNTA DE ANDALUCÍA</p>

@@ -8,3 +8,5 @@
 /* Base12 classroom reference */
 .shell{background:linear-gradient(120deg,#fff,#f3f9ff);color:#142b55;grid-template-columns:242px minmax(0,1fr)}.sidebar{background:#fff;border-color:#dae7f8;padding:24px 16px}.main{max-width:1600px;padding:24px}.main h1{color:#101c67;font:700 clamp(30px,3vw,45px)/1.12 Georgia,serif;letter-spacing:-.03em;overflow-wrap:anywhere}.subtitle{color:#3154a1}.contentCard{background:white;border:1px solid #dae7f8;border-radius:10px}.tabs button{color:#174ee5;border-color:#dae7f8}.tabs .selectedTab{background:#e9f3ff;color:#153d9c}.index a{color:#255198}.index .active{background:#e4f1ff;color:#153d9c}.kicker{color:#168046}.studyText{overflow-wrap:anywhere}.topline{color:#174ee5}
 @media(max-width:1150px){.shell{grid-template-columns:210px minmax(0,1fr)}.main{padding:20px}}@media(max-width:760px){.shell{display:flex;flex-direction:column}.main{order:1;padding:16px}.sidebar{order:2;position:static;height:auto}.index{max-height:300px;overflow:auto}.main h1{font-size:30px}}
+
+.shell{grid-template-rows:auto 1fr}.sidebar{top:72px;height:calc(100vh - 72px)}@media(max-width:760px){.sidebar{height:auto;top:auto}}
