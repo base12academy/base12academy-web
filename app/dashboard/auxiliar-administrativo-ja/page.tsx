@@ -88,7 +88,7 @@ function Course() {
         ) : (
           <div className={layout.learningGrid}>
             <div className={layout.lessonColumn}>
-            {tab === "inicio" && <TopicOverview number={theme.number} title={theme.title} available={Boolean(content)} headings={content.studyHeadings} glossaryCount={content.glossary.length} questionCount={content.tests.length} videoUrl={content.videoUrl} onRead={()=>setTab("explicacion")} onIndex={()=>document.querySelector('nav[aria-label="Temario del curso"]')?.scrollIntoView({behavior:"smooth"})} resources={[
+            {tab === "inicio" && <TopicOverview number={theme.number} title={theme.title} available={Boolean(content)} glossaryCount={content.glossary.length} questionCount={content.tests.length} videoUrl={content.videoUrl} onRead={()=>setTab("explicacion")} onIndex={()=>document.querySelector('nav[aria-label="Temario del curso"]')?.scrollIntoView({behavior:"smooth"})} resources={[
               {id:"temario",label:"Explicación",description:"Temario desarrollado del libro.",onOpen:()=>setTab("explicacion")},
               {id:"glosario",label:"Glosario",description:"Conceptos del tema.",onOpen:()=>setTab("glosario")},
               {id:"rocio",label:"Rocío",description:"Preguntas de repaso y dudas abiertas.",icon:"chat",onOpen:()=>setTab("rocio")},
@@ -105,7 +105,7 @@ function Course() {
               {(["inicio", "explicacion", "glosario", "rocio", "fernando", "test", ...(planSlug === "premium" ? ["tutoria" as Tab] : [])] as Tab[]).map((name) => (
                 <button key={name} onClick={() => setTab(name)} className={tab === name ? styles.selectedTab : ""}>
                   {name !== "inicio" && name !== "rocio" && name !== "fernando" && <span>{name === "explicacion" ? "▤" : name === "glosario" ? "◫" : "✓"}</span>}
-                  {name === "explicacion" ? "Explicación" : name === "glosario" ? "Glosario" : name === "rocio" ? "Rocío · Profesora IA" : name === "fernando" ? "Fernando · Tutor IA" : name === "tutoria" ? "Tutoría humana" : planSlug === "esencial" ? "Comprobación" : "Simulacro"}
+                  {name === "inicio" ? "Inicio del tema" : name === "explicacion" ? "Explicación" : name === "glosario" ? "Glosario" : name === "rocio" ? "Rocío · Profesora IA" : name === "fernando" ? "Fernando · Tutor IA" : name === "tutoria" ? "Tutoría humana" : planSlug === "esencial" ? "Comprobación" : "Simulacro"}
                 </button>
               ))}
             </div>
