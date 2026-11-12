@@ -1,0 +1,203 @@
+{
+  "title": "Auxiliar Administrativo del Estado",
+  "slug": "auxiliar-administrativo-estado",
+  "edition": "2026",
+  "themes": [
+    {
+      "id": "T01",
+      "number": 1,
+      "code": "I-1",
+      "title": "La Constitución Española de 1978. Características. Los principios constitucionales y los valores superiores. Derechos y deberes fundamentales. Su garantía y suspensión.",
+      "publicPreview": true
+    },
+    {
+      "id": "T02",
+      "number": 2,
+      "code": "I-2",
+      "title": "El Tribunal Constitucional. La reforma de la Constitución. La Corona: funciones constitucionales del Rey. Sucesión y regencia.",
+      "publicPreview": false
+    },
+    {
+      "id": "T03",
+      "number": 3,
+      "code": "I-3",
+      "title": "Las Cortes Generales: composición, atribuciones y funcionamiento del Congreso de los Diputados y Senado. El Defensor del Pueblo.",
+      "publicPreview": false
+    },
+    {
+      "id": "T04",
+      "number": 4,
+      "code": "I-4",
+      "title": "El Poder Judicial. El Consejo General del Poder Judicial. El Tribunal Supremo. La organización judicial española.",
+      "publicPreview": false
+    },
+    {
+      "id": "T05",
+      "number": 5,
+      "code": "I-5",
+      "title": "El Gobierno y la Administración. El Presidente del Gobierno. El Consejo de Ministros. Designación, causas de cese y responsabilidad del Gobierno.",
+      "publicPreview": false
+    },
+    {
+      "id": "T06",
+      "number": 6,
+      "code": "I-6",
+      "title": "Gobierno abierto, Agenda 2030 y Objetivos de Desarrollo Sostenible",
+      "publicPreview": false
+    },
+    {
+      "id": "T07",
+      "number": 7,
+      "code": "I-7",
+      "title": "La Ley 19/2013, de 9 de diciembre, de transparencia, acceso a la información pública y buen gobierno.",
+      "publicPreview": false
+    },
+    {
+      "id": "T08",
+      "number": 8,
+      "code": "I-8",
+      "title": "La Administración General del Estado. Órganos centrales. Órganos superiores y directivos. Órganos territoriales. La Administración del Estado en el Exterior.",
+      "publicPreview": false
+    },
+    {
+      "id": "T09",
+      "number": 9,
+      "code": "I-9",
+      "title": "La Organización territorial del Estado. Las Comunidades Autónomas: Constitución y distribución de competencias entre el Estado y las Comunidades Autónomas. La Administración local: entidades que la integran. La provincia, el municipio y la isla.",
+      "publicPreview": false
+    },
+    {
+      "id": "T10",
+      "number": 10,
+      "code": "I-10",
+      "title": "La organización de la Unión Europea. El Consejo Europeo, el Consejo, el Parlamento Europeo, la Comisión Europea y el Tribunal de Justicia de la Unión Europea.",
+      "publicPreview": false
+    },
+    {
+      "id": "T11",
+      "number": 11,
+      "code": "I-11",
+      "title": "Procedimiento administrativo, revisión, recursos y jurisdicción contenciosa",
+      "publicPreview": false
+    },
+    {
+      "id": "T12",
+      "number": 12,
+      "code": "I-12",
+      "title": "Protección de datos personales",
+      "publicPreview": false
+    },
+    {
+      "id": "T13",
+      "number": 13,
+      "code": "I-13",
+      "title": "Personal funcionario: planificación, selección, provisión y situaciones",
+      "publicPreview": false
+    },
+    {
+      "id": "T14",
+      "number": 14,
+      "code": "I-14",
+      "title": "Derechos, carrera, retribuciones y régimen disciplinario",
+      "publicPreview": false
+    },
+    {
+      "id": "T15",
+      "number": 15,
+      "code": "I-15",
+      "title": "El presupuesto del Estado y su ciclo",
+      "publicPreview": false
+    },
+    {
+      "id": "T16",
+      "number": 16,
+      "code": "I-16",
+      "title": "Igualdad, violencia, LGTBI, discapacidad y dependencia",
+      "publicPreview": false
+    },
+    {
+      "id": "T17",
+      "number": 17,
+      "code": "II-1",
+      "title": "Atención al público y a personas con discapacidad",
+      "publicPreview": false
+    },
+    {
+      "id": "T18",
+      "number": 18,
+      "code": "II-2",
+      "title": "Información, iniciativas, reclamaciones, quejas y peticiones",
+      "publicPreview": false
+    },
+    {
+      "id": "T19",
+      "number": 19,
+      "code": "II-3",
+      "title": "Documento, registro y archivo",
+      "publicPreview": false
+    },
+    {
+      "id": "T20",
+      "number": 20,
+      "code": "II-4",
+      "title": "Administración electrónica y Punto de Acceso General",
+      "publicPreview": false
+    },
+    {
+      "id": "T21",
+      "number": 21,
+      "code": "II-5",
+      "title": "Informática básica: hardware, software, almacenamiento, sistemas operativos y seguridad",
+      "publicPreview": false
+    },
+    {
+      "id": "T22",
+      "number": 22,
+      "code": "II-6",
+      "title": "Windows 11: entorno gráfico, escritorio, menú Inicio y Copilot",
+      "publicPreview": false
+    },
+    {
+      "id": "T23",
+      "number": 23,
+      "code": "II-7",
+      "title": "Explorador de Windows: carpetas, archivos, búsquedas y herramientas del sistema",
+      "publicPreview": false
+    },
+    {
+      "id": "T24",
+      "number": 24,
+      "code": "II-8",
+      "title": "Word 365: creación, estructuración, gestión e impresión de documentos",
+      "publicPreview": false
+    },
+    {
+      "id": "T25",
+      "number": 25,
+      "code": "II-9",
+      "title": "Excel 365: libros, hojas, celdas, fórmulas, funciones, gráficos y gestión de datos",
+      "publicPreview": false
+    },
+    {
+      "id": "T26",
+      "number": 26,
+      "code": "II-10",
+      "title": "Access 365: bases de datos, tablas, consultas, formularios e informes",
+      "publicPreview": false
+    },
+    {
+      "id": "T27",
+      "number": 27,
+      "code": "II-11",
+      "title": "Outlook 365: correo, calendario, contactos y reglas",
+      "publicPreview": false
+    },
+    {
+      "id": "T28",
+      "number": 28,
+      "code": "II-12",
+      "title": "Internet y navegadores: protocolos, búsqueda, privacidad y seguridad",
+      "publicPreview": false
+    }
+  ]
+}

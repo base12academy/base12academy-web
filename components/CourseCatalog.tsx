@@ -31,6 +31,7 @@ const COURSE_ACCESS: Record<string,{slug:string;href:string}> = {
   "Competencias y Productividad Digital, Ofimática e IA": { slug:"ofimatica", href:"/dashboard/ofimatica" },
   "Administrativo de la Junta de Andalucía": { slug:"administrativo-ja", href:"/dashboard/administrativo-ja" },
   "Auxiliar Administrativo de la Junta de Andalucía": { slug:"auxiliar-administrativo-ja", href:"/dashboard/auxiliar-administrativo-ja" },
+  "Auxiliar Administrativo del Estado": { slug:"auxiliar-administrativo-estado", href:"/dashboard/auxiliar-administrativo-estado" },
   "Tropa y Marinería": { slug:"tropa-y-marineria", href:"/dashboard/tropa-y-marineria" },
 };
 
@@ -498,6 +499,7 @@ export default function CourseCatalog() {
     const requestedNames: Record<string, string> = {
       "administrativo-ja": "Administrativo de la Junta de Andalucía",
       "auxiliar-administrativo-ja": "Auxiliar Administrativo de la Junta de Andalucía",
+      "auxiliar-administrativo-estado": "Auxiliar Administrativo del Estado",
       "clases-online-eso-bach": "Historia y Filosofía · ESO y Bachillerato",
       "clases-online-universidad": "Historia · Universidad",
       "clases-online-solicitud": "Solicitud de clases · Otras asignaturas",
@@ -596,7 +598,7 @@ export default function CourseCatalog() {
   async function checkout() {
     if (!course || !plan) return;
 
-    const purchasableOpposition = course.name === "Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo de la Junta de Andalucía";
+    const purchasableOpposition = course.name === "Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo del Estado";
     const purchasableClasses =
       course.family === "Clases Online" &&
       course.name !== "Solicitud de clases · Otras asignaturas";
@@ -621,7 +623,7 @@ export default function CourseCatalog() {
       "Productividad Digital e IA": "ofimatica-premium",
     };
 
-    const oppositionPrefix = course.name === "Administrativo de la Junta de Andalucía" ? "administrativo-ja" : course.name === "Auxiliar Administrativo de la Junta de Andalucía" ? "auxiliar-administrativo-ja" : "";
+    const oppositionPrefix = course.name === "Administrativo de la Junta de Andalucía" ? "administrativo-ja" : course.name === "Auxiliar Administrativo de la Junta de Andalucía" ? "auxiliar-administrativo-ja" : course.name === "Auxiliar Administrativo del Estado" ? "auxiliar-administrativo-estado" : "";
     const oppositionPlan = ({ Esencial: "esencial", "Estándar": "estandar", Premium: "premium" } as Record<string, string>)[plan.name];
 
     const bachilleratoPrefix = course.name === "Historia de España"
@@ -937,6 +939,7 @@ export default function CourseCatalog() {
                 <p>Selecciona una modalidad y revisa la información antes de continuar.</p>
               </>
             )}
+            {course.name === "Auxiliar Administrativo del Estado" && <p><Link href="/dashboard/auxiliar-administrativo-estado?tema=T01">Probar gratis el tema 1</Link></p>}
             {course.name === "Administrativo de la Junta de Andalucía" && (
               <p><a href="/dashboard/administrativo-ja?tema=T01" style={{ display: "inline-block", padding: "10px 14px", borderRadius: 999, background: "#e5f0e1", color: "#285b35", textDecoration: "none", fontWeight: 800 }}>Probar gratis el Tema 1</a></p>
             )}
@@ -1209,7 +1212,7 @@ export default function CourseCatalog() {
                     ? <b>Precio tras confirmar disponibilidad</b>
                     : <>Total <b>{plan.price}</b></>}
                 </span>
-                {(course.name === "Competencias y Productividad Digital, Ofimática e IA" || course.name === "Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo de la Junta de Andalucía" || purchasableBachillerato || (course.family === "Clases Online" && course.name !== "Solicitud de clases · Otras asignaturas")) ? (
+                {(course.name === "Competencias y Productividad Digital, Ofimática e IA" || course.name === "Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo del Estado" || purchasableBachillerato || (course.family === "Clases Online" && course.name !== "Solicitud de clases · Otras asignaturas")) ? (
                   <button
                     type="button"
                     onClick={checkout}
@@ -1384,4 +1387,5 @@ export default function CourseCatalog() {
     </section>
   );
 }
+
 

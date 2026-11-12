@@ -21,6 +21,7 @@ const COURSES: Record<string,{title:string;href:string;description:string}> = {
   "matematicas-aplicadas-ccss": { title:"Matemáticas Aplicadas a las Ciencias Sociales II", href:"/dashboard/matematicas-aplicadas-ccss", description:"Explicaciones, entrenamiento y PAU" },
   "ofimatica": { title:"Competencias y Productividad Digital, Ofimática e IA", href:"/dashboard/ofimatica", description:"Competencias digitales y productividad" },
   "tropa-y-marineria": { title:"Tropa y Marinería", href:"/dashboard/tropa-y-marineria", description:"Entrenamiento psicotécnico" },
+  "auxiliar-administrativo-estado": { title:"Auxiliar Administrativo del Estado", href:"/dashboard/auxiliar-administrativo-estado", description:"28 temas · test, simulacros y acompañamiento" },
   "administrativo-ja": { title:"Administrativo de la Junta de Andalucía", href:"/dashboard/administrativo-ja", description:"Preparación de oposiciones" },
   "auxiliar-administrativo-ja": { title:"Auxiliar Administrativo de la Junta de Andalucía", href:"/dashboard/auxiliar-administrativo-ja", description:"Preparación de oposiciones" },
 };
@@ -92,3 +93,4 @@ export default function MisCursosPage(){
 const panel={background:"#fff",border:"1px solid #dbe5f1",borderRadius:18,padding:24,boxShadow:"0 10px 30px rgba(24,55,96,.06)"} as const;
 const primaryButton={display:"inline-block",background:"#1457c7",color:"#fff",textDecoration:"none",fontWeight:800,padding:"11px 16px",borderRadius:10} as const;
 const linkButton={display:"inline-block",background:"#fff",color:"#173b69",textDecoration:"none",fontWeight:700,padding:"10px 14px",border:"1px solid #dbe5f1",borderRadius:10} as const;
+
