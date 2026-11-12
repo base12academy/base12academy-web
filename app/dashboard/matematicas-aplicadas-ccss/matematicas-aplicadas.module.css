@@ -144,3 +144,8 @@
   .courseVideos{border-left:0;border-top:1px solid #d5e2ee}
   .videoModalHeader h2{font-size:17px}
 }
+
+
+/* Shared Base12 reference palette and responsive topic layout. */
+.page{background:linear-gradient(120deg,#fff,#f3faff);color:#102650}.hero{border-radius:10px;border-color:#dae7f8;box-shadow:none}.heroCopy h2{color:#101c67;letter-spacing:-.035em}.primaryResources{gap:12px}.primaryResources>button{border-radius:9px}.assistant{border-color:#dae7f8;border-radius:10px;background:white}.assistant h3{color:#123c9a}.main{min-width:0}.heroCopy{min-width:0}.heroCopy h2{overflow-wrap:anywhere}.trainingCards{gap:10px}.trainingCards button{border-radius:8px}.sidebar{background:#f7fbff}.unitList button{color:#24539a}.rightbar{background:transparent}
+@media(max-width:600px){.heroVisual{display:none}.hero{grid-template-columns:1fr}.heroCopy{padding:20px}.heroCopy h2{font-size:30px}.primaryResources{grid-template-columns:repeat(2,minmax(0,1fr))}.trainingCards{grid-template-columns:repeat(2,minmax(0,1fr))}}

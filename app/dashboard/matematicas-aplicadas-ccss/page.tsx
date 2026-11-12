@@ -118,8 +118,7 @@ export default function MatematicasAplicadasPage(){
         <div className={styles.courseIdentity}>
           <h1>Matemáticas Aplicadas a las CCSS II</h1>
           <p>2.º Bachillerato · PAU</p>
-          <div className={styles.progressHeader}><span>Explicaciones</span><b>{selected.order} / 44</b></div>
-          <div className={styles.progressTrack}><span style={{width:`${Math.max(3,(selected.order/44)*100)}%`}}/></div>
+          <div className={styles.progressHeader}><span>Explicación seleccionada</span><b>{selected.order} / 44</b></div>
         </div>
 
         <nav className={styles.sideNav}>
@@ -176,9 +175,9 @@ export default function MatematicasAplicadasPage(){
           <button onClick={()=>scrollTo("inicio")} className={styles.primaryCard}>
             <span className={styles.cardIcon}>▤</span><strong>1. EXPLICACIÓN</strong><small>Desarrollo completo de la explicación</small><b>Leer explicación →</b>
           </button>
-          <button onClick={openVideo} className={styles.videoCard} disabled={!canOpen}>
+          {video.url && <button onClick={openVideo} className={styles.videoCard} disabled={!canOpen}>
             <span className={styles.cardIcon}>▶</span><strong>2. VÍDEO DE APOYO</strong><small>Reproduce el vídeo sin salir de Base12</small><b>{videoLoading?"Cargando…":"Ver vídeo →"}</b>
-          </button>
+          </button>}
           <button onClick={()=>openResource("glossary")} className={styles.glossaryCard}>
             <span className={styles.cardIcon}>Aᶻ</span><strong>3. GLOSARIO</strong><small>Términos y conceptos clave</small><b>Abrir glosario →</b>
           </button>
@@ -283,3 +282,4 @@ function ProblemsPanel({items}:{items:ProblemItem[]}){const [filter,setFilter]=u
 function ProfilesPanel({items,onSimulation}:{items:ProfileItem[];onSimulation:(code:string)=>void}){return <div className={styles.panelGrid}>{items.map(item=><article key={item.code} className={styles.panelItem}><strong>{item.code} · {item.community}</strong><p className={styles.profileStatus}>{item.status}</p><p>{item.format}</p><button type="button" onClick={()=>onSimulation(item.code)}>Abrir simulacro</button></article>)}</div>}
 function SimulationPanel({simulation}:{simulation:SimulationItem}){return <div><div className={styles.simulationIntro}><strong>{simulation.code} · {simulation.community}</strong><p>{simulation.profile}</p><small>{simulation.status}</small></div><div className={styles.panelGrid}>{simulation.groups.map(group=><section key={group.label} className={styles.panelItem}><div className={styles.itemTop}><strong>{group.label}</strong><span>{group.points} puntos</span></div>{group.problems.length>1?<p>Elige {group.choose} de {group.problems.length}</p>:null}{group.problems.map(problem=><article key={problem.id} className={styles.innerProblem}><b>{problem.id}</b><p>{problem.statement}</p><details><summary>Ver solución y rúbrica</summary><p>{problem.solution}</p><p>{problem.rubric}</p></details></article>)}</section>)}</div></div>}
 function GlossaryPanel({count,sections}:{count:number;sections:GlossarySection[]}){return <div><p className={styles.glossaryCount}>{count} términos de apoyo</p><div className={styles.panelGrid}>{sections.map(section=><section key={section.section} className={styles.panelItem}><h4>{section.title}</h4>{section.terms.map(term=><details key={term.term} className={styles.glossaryTerm}><summary>{term.term}</summary><p>{term.definition}</p><small><b>Para qué sirve:</b> {term.utility}</small><small><b>Error frecuente:</b> {term.error}</small><small><b>Ejemplo:</b> {term.example}</small></details>)}</section>)}</div></div>}
+

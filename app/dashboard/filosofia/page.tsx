@@ -57,7 +57,7 @@ export default function FilosofiaPage() {
           <input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Buscar en Historia de la Filosofía…" />
         </label>
         <nav className={styles.topActions} aria-label="Navegación general">
-          <button type="button">⌕ Buscar</button>
+          
           <Link href="/dashboard">▣ Plan de estudio</Link>
           <Link href="/dashboard">◯ Mi cuenta</Link>
         </nav>
@@ -66,8 +66,7 @@ export default function FilosofiaPage() {
       <div className={styles.layout}>
         <aside className={styles.leftRail}>
           <h2 className={styles.courseTitle}><span>▤</span> Historia de la Filosofía</h2>
-          <div className={styles.progressLabel}><span>Progreso del curso</span><strong>62%</strong></div>
-          <div className={styles.progress} aria-label="Progreso del curso: 62%"><span style={{ width: "62%" }} /></div>
+          <p className={styles.progressLabel}>Selecciona un tema y consulta sus recursos.</p>
           <div className={styles.railRule} />
           <nav className={styles.railNav} aria-label="Temario">
             {periods.map((item, index) => <button key={item} type="button" className={section === "autores" && period === item ? styles.activeRail : ""} onClick={() => openPeriod(item)}><span className={styles.navIcon}>{["♜", "†", "✎", "♟"][index]}</span><span>{item}</span></button>)}
@@ -144,3 +143,4 @@ function youtubeId(url?: string | null) {
   if (!url) return "";
   try { const parsed = new URL(url); if (parsed.hostname === "youtu.be") return parsed.pathname.slice(1).split("/")[0]; return parsed.searchParams.get("v") ?? ""; } catch { return ""; }
 }
+

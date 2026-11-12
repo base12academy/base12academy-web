@@ -39,13 +39,13 @@ export default function HistoriaEspanaPage() {
     <header className={styles.topbar}>
       <Link href="/" className={styles.brand}><Image src="/images/base12-logo.png" alt="Base12 Academy" width={1024} height={1024} priority /><strong>Historia de España</strong></Link>
       <label className={styles.topSearch}><span className={styles.srOnly}>Buscar en Historia de España</span><input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Buscar en Historia de España…" /></label>
-      <nav className={styles.topActions} aria-label="Navegación general"><Link href="/dashboard">▣ Plan de estudio</Link><button type="button">♢ Avisos</button><Link href="/dashboard">◯ Mi cuenta</Link></nav>
+      <nav className={styles.topActions} aria-label="Navegación general"><Link href="/dashboard">▣ Plan de estudio</Link><Link href="/dashboard">◯ Mi cuenta</Link></nav>
     </header>
 
     <div className={styles.layout}>
       <aside className={styles.leftRail}>
         <h2 className={styles.courseTitle}><span>▤</span><span>Historia de España<br /><small>2.º Bachillerato · PAU</small></span></h2>
-        <div className={styles.progressLabel}><span>Progreso del curso</span><strong>58%</strong></div><div className={styles.progress} aria-label="Progreso del curso: 58%"><span style={{ width: "58%" }} /></div><div className={styles.railRule} />
+        <p className={styles.progressLabel}>Selecciona un tema y consulta sus recursos.</p><div className={styles.railRule} />
         <nav className={styles.railNav} aria-label="Recursos de Historia de España">
           {sections.map((item) => <button type="button" key={item.id} className={section === item.id ? styles.activeRail : ""} onClick={() => { setSection(item.id); setSearch(""); }}><span className={styles.navIcon}>{item.icon}</span><span>{item.label}</span></button>)}
           <Link href="/dashboard/historia-espana/entrenamiento"><span className={styles.navIcon}>✓</span><span>Entrenamiento</span></Link>
@@ -97,3 +97,4 @@ function HistoryRightRail() { return <aside className={styles.rightRail}>
 
 function Term({ name, text }: { name: string; text: string }) { return <div><dt>{name}</dt><dd>{text}</dd></div>; }
 function youtubeId(url?: string | null) { if (!url) return ""; try { const parsed = new URL(url); if (parsed.hostname === "youtu.be") return parsed.pathname.slice(1).split("/")[0]; return parsed.searchParams.get("v") ?? ""; } catch { return ""; } }
+

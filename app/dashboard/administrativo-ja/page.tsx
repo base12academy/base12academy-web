@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import TopicOverview from "@/components/TopicOverview";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import data from "@/lib/administrativo-ja-index.json";
@@ -9,7 +10,7 @@ import styles from "./administrativo-ja.module.css";
 import layout from "./course-layout.module.css";
 import { OpenQuestion, OppositionTest, TutoringCalendar } from "@/components/OppositionTools";
 
-type Tab = "explicacion" | "glosario" | "rocio" | "fernando" | "test" | "tutoria";
+type Tab = "inicio" | "explicacion" | "glosario" | "rocio" | "fernando" | "test" | "tutoria";
 type TestQuestion = { question: string; options: string[]; answer: number; explanation: string };
 type ThemeContent = { id: string; number: number; title: string; videoUrl: string; explanation: string; studyHeadings?: string[]; studyEdition?: string; glossary: { term: string; definition: string }[]; rocio: { question: string; answer: string }[]; tests: TestQuestion[]; publicPreview: boolean };
 
@@ -21,7 +22,7 @@ function Course() {
   const params = useSearchParams();
   const requested = (params.get("tema") || "T01").toUpperCase();
   const theme = data.themes.find((item) => item.id === requested) || data.themes[0];
-  const [tab, setTab] = useState<Tab>("explicacion");
+  const [tab, setTab] = useState<Tab>("inicio");
   const [allowed, setAllowed] = useState(false);
   const [access, setAccess] = useState("checking");
   const [content, setContent] = useState<ThemeContent | null>(null);
@@ -31,7 +32,7 @@ function Course() {
 
   useEffect(() => {
     let active = true;
-    setTab("explicacion");
+    setTab("inicio");
     setChecking(true);
     setContent(null);
     const check = async () => {
@@ -53,7 +54,7 @@ function Course() {
     return () => { active = false; };
   }, [theme.id]);
 
-  const progress = Math.round((theme.number / data.themes.length) * 100);
+  // The selected topic is a location in the syllabus, not completion progress.
 
   return (
     <div className={styles.shell}>
@@ -61,10 +62,9 @@ function Course() {
         <Link href="/" className={styles.brand}><img className={layout.brandLogo} src="/images/base12-logo.png" alt="Base12 Academy" /></Link>
         <p className={styles.eyebrow}>OPOSICIONES · JUNTA DE ANDALUCÍA</p>
         <h2>Administrativo/a</h2>
-        <div className={styles.progressText}><span>Progreso del temario</span><b>{progress}%</b></div>
-        <div className={styles.progress}><span style={{ width: `${progress}%` }} /></div>
+        <div className={styles.progressText}><span>Tema seleccionado</span><b>{theme.number} / {data.themes.length}</b></div>
         <p className={styles.indexTitle}>ÍNDICE DEL TEMARIO · 42 TEMAS</p>
-        <nav className={styles.index}>
+        <nav className={styles.index} aria-label="Temario del curso">
           {data.themes.map((item) => item.publicPreview || canNavigateAll ? <Link key={item.id} href={`/dashboard/administrativo-ja?tema=${item.id}`} className={item.id === theme.id ? styles.active : ""}><span>{item.number}</span><span>{item.title}</span>{item.publicPreview && <small>ABIERTO</small>}</Link> : <span key={item.id} className={layout.lockedTheme}><span>{item.number}</span><span>{item.title}</span><small>🔒</small></span>)}
         </nav>
       </aside>
@@ -87,27 +87,36 @@ function Course() {
         ) : (
           <div className={layout.learningGrid}>
             <div className={layout.lessonColumn}>
-            <details className={styles.videoSummary}><summary>Vídeo · síntesis del tema</summary><p>El vídeo ofrece una explicación resumida. El material principal de estudio es el temario desarrollado que aparece debajo.</p><section className={styles.videoCard}>
+            {tab === "inicio" && <TopicOverview number={theme.number} title={theme.title} available={Boolean(content)} headings={content.studyHeadings} glossaryCount={content.glossary.length} questionCount={content.tests.length} videoUrl={content.videoUrl} onRead={()=>setTab("explicacion")} onIndex={()=>document.querySelector('nav[aria-label="Temario del curso"]')?.scrollIntoView({behavior:"smooth"})} resources={[
+              {id:"temario",label:"Explicación",description:"Temario desarrollado del libro.",onOpen:()=>setTab("explicacion")},
+              {id:"glosario",label:"Glosario",description:"Conceptos del tema.",onOpen:()=>setTab("glosario")},
+              {id:"rocio",label:"Rocío",description:"Preguntas de repaso y dudas abiertas.",icon:"chat",onOpen:()=>setTab("rocio")},
+              {id:"test",label:"Test del tema",description:"Comprobación y práctica según tu modalidad.",icon:"test",onOpen:()=>setTab("test")},
+              {id:"fernando",label:"Fernando",description:"Organiza el estudio y los repasos.",icon:"calendar",onOpen:()=>setTab("fernando")},
+              ...(planSlug==="premium"?[{id:"tutoria",label:"Tutoría humana",description:"Reserva tu sesión individual.",icon:"calendar",onOpen:()=>setTab("tutoria")}]:[])
+            ]}/>}
+
+            {tab!=="inicio" && content.videoUrl && <details className={styles.videoSummary}><summary>Vídeo · síntesis del tema</summary><p>El vídeo ofrece una explicación resumida. El material principal de estudio es el temario desarrollado que aparece debajo.</p><section className={styles.videoCard}>
               <iframe src={`${content.videoUrl}?rel=0`} title={`Vídeo del tema ${theme.number}: ${theme.title}`} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
-            </section></details>
+            </section></details>}
 
             <div className={styles.tabs} role="tablist" aria-label="Recursos del tema">
-              {(["explicacion", "glosario", "rocio", "fernando", "test", ...(planSlug === "premium" ? ["tutoria" as Tab] : [])] as Tab[]).map((name) => (
+              {(["inicio", "explicacion", "glosario", "rocio", "fernando", "test", ...(planSlug === "premium" ? ["tutoria" as Tab] : [])] as Tab[]).map((name) => (
                 <button key={name} onClick={() => setTab(name)} className={tab === name ? styles.selectedTab : ""}>
-                  {name !== "rocio" && name !== "fernando" && <span>{name === "explicacion" ? "▤" : name === "glosario" ? "◫" : "✓"}</span>}
-                  {name === "explicacion" ? "Temario de estudio" : name === "glosario" ? "Glosario" : name === "rocio" ? "Rocío · Profesora IA" : name === "fernando" ? "Fernando · Tutor IA" : name === "tutoria" ? "Tutoría humana" : planSlug === "esencial" ? "Comprobación" : "Simulacro"}
+                  {name !== "inicio" && name !== "rocio" && name !== "fernando" && <span>{name === "explicacion" ? "▤" : name === "glosario" ? "◫" : "✓"}</span>}
+                  {name === "inicio" ? "Inicio del tema" : name === "explicacion" ? "Temario de estudio" : name === "glosario" ? "Glosario" : name === "rocio" ? "Rocío · Profesora IA" : name === "fernando" ? "Fernando · Tutor IA" : name === "tutoria" ? "Tutoría humana" : planSlug === "esencial" ? "Comprobación" : "Simulacro"}
                 </button>
               ))}
             </div>
 
-            <section className={styles.contentCard}>
+            {tab!=="inicio" && <section className={styles.contentCard}>
               {tab === "explicacion" && <><p className={styles.sectionLabel}>TEMARIO DESARROLLADO · MATERIAL PRINCIPAL DE ESTUDIO</p><h2>{theme.title}</h2><p className={styles.edition}>{content.studyEdition}</p><StudyMaterial text={content.explanation} headings={content.studyHeadings} /></>}
               {tab === "glosario" && <Glossary items={content.glossary} />}
               {tab === "rocio" && <><Rocio items={content.rocio} /><OpenQuestion courseSlug="administrativo-ja" themeId={theme.id} /></>}
               {tab === "fernando" && <Assistant name="Fernando" role="Tutor IA" text={`Te ayuda a organizar el estudio del Tema ${theme.number}, comprobar tu avance y retomar el itinerario cuando lo necesites.`} />}
               {tab === "test" && <OppositionTest questions={content.tests} courseSlug="administrativo-ja" themeId={theme.id} planSlug={planSlug} />}
               {tab === "tutoria" && planSlug === "premium" && <TutoringCalendar courseSlug="administrativo-ja" courseName="Administrativo de la Junta de Andalucía" themeId={theme.id} themeName={theme.title} />}
-            </section>
+            </section>}
             </div>
             <RightRail theme={content} onSelect={setTab} />
           </div>
@@ -180,3 +189,4 @@ function StudyMaterial({ text, headings = [] }: { text: string; headings?: strin
     return <p key={index}>{paragraph.split(/(https?:\/\/[^\s]+)/g).map((part, partIndex) => /^https?:\/\//.test(part) ? <a key={partIndex} href={part} target="_blank" rel="noopener noreferrer">Consultar fuente oficial ↗</a> : part)}</p>;
   })}</div>;
 }
+
