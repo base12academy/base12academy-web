@@ -598,7 +598,7 @@ export default function CourseCatalog() {
   async function checkout() {
     if (!course || !plan) return;
 
-    const purchasableOpposition = course.name === "Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo del Estado";
+    const purchasableOpposition = course.name === "Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo de la Junta de Andalucía";
     const purchasableClasses =
       course.family === "Clases Online" &&
       course.name !== "Solicitud de clases · Otras asignaturas";
@@ -939,7 +939,7 @@ export default function CourseCatalog() {
                 <p>Selecciona una modalidad y revisa la información antes de continuar.</p>
               </>
             )}
-            {course.name === "Auxiliar Administrativo del Estado" && <p><Link href="/dashboard/auxiliar-administrativo-estado?tema=T01">Probar gratis el tema 1</Link></p>}
+            {course.name === "Auxiliar Administrativo del Estado" && <p role="status"><strong>Matrícula cerrada · Curso en preparación.</strong> Estamos completando y comprobando el aula antes de abrir las inscripciones. <Link href="/dashboard/auxiliar-administrativo-estado?tema=T01">Probar gratis el tema 1</Link></p>}
             {course.name === "Administrativo de la Junta de Andalucía" && (
               <p><a href="/dashboard/administrativo-ja?tema=T01" style={{ display: "inline-block", padding: "10px 14px", borderRadius: 999, background: "#e5f0e1", color: "#285b35", textDecoration: "none", fontWeight: 800 }}>Probar gratis el Tema 1</a></p>
             )}
@@ -1041,7 +1041,7 @@ export default function CourseCatalog() {
               </div>
             )}
 
-            {course.family !== "Tropa y Marinería" && course.family !== "Clases Online" && (<>
+            {course.family !== "Tropa y Marinería" && course.family !== "Clases Online" && course.name !== "Auxiliar Administrativo del Estado" && (<>
             <div className="original-legal">
               <h3>Información contractual</h3>
               <details>
@@ -1212,7 +1212,7 @@ export default function CourseCatalog() {
                     ? <b>Precio tras confirmar disponibilidad</b>
                     : <>Total <b>{plan.price}</b></>}
                 </span>
-                {(course.name === "Competencias y Productividad Digital, Ofimática e IA" || course.name === "Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo del Estado" || purchasableBachillerato || (course.family === "Clases Online" && course.name !== "Solicitud de clases · Otras asignaturas")) ? (
+                {(course.name === "Competencias y Productividad Digital, Ofimática e IA" || course.name === "Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo de la Junta de Andalucía" || purchasableBachillerato || (course.family === "Clases Online" && course.name !== "Solicitud de clases · Otras asignaturas")) ? (
                   <button
                     type="button"
                     onClick={checkout}
@@ -1242,7 +1242,9 @@ export default function CourseCatalog() {
                   </button>
                 ) : (
                   <button disabled>
-                    {course.family === "Tropa y Marinería"
+                    {course.name === "Auxiliar Administrativo del Estado"
+                      ? "Matrícula cerrada · En preparación"
+                      : course.family === "Tropa y Marinería"
                       ? "Contratación disponible próximamente"
                       : course.family === "Clases Online"
                         ? course.name === "Solicitud de clases · Otras asignaturas"
