@@ -22,6 +22,7 @@ const COURSES: Record<string,{title:string;href:string;description:string}> = {
   "ofimatica": { title:"Competencias y Productividad Digital, Ofimática e IA", href:"/dashboard/ofimatica", description:"Competencias digitales y productividad" },
   "tropa-y-marineria": { title:"Tropa y Marinería", href:"/dashboard/tropa-y-marineria", description:"Entrenamiento psicotécnico" },
   "auxiliar-administrativo-estado": { title:"Auxiliar Administrativo del Estado", href:"/dashboard/auxiliar-administrativo-estado", description:"28 temas · test, simulacros y acompañamiento" },
+  "administrativo-estado": { title:"Administrativo del Estado", href:"/dashboard/administrativo-estado", description:"45 temas · test, simulacros y supuestos prácticos" },
   "administrativo-ja": { title:"Administrativo de la Junta de Andalucía", href:"/dashboard/administrativo-ja", description:"Preparación de oposiciones" },
   "auxiliar-administrativo-ja": { title:"Auxiliar Administrativo de la Junta de Andalucía", href:"/dashboard/auxiliar-administrativo-ja", description:"Preparación de oposiciones" },
 };

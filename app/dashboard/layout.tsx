@@ -22,7 +22,7 @@ export default function DashboardLayout({
   const isMatematicasAplicadas = pathname.startsWith("/dashboard/matematicas-aplicadas-ccss");
   const isMisCursos = pathname.startsWith("/dashboard/mis-cursos");
   const isAuxiliarEstado = pathname.startsWith("/dashboard/auxiliar-administrativo-estado");
-  const fullWidthCourse = isAuxiliarEstado || isOfimatica || isTropa || isTraining || isFilosofia || isHistoria || isMatematicasII || isMatematicasAplicadas || isMisCursos;
+  const fullWidthCourse = pathname.startsWith("/dashboard/administrativo-estado") || isAuxiliarEstado || isOfimatica || isTropa || isTraining || isFilosofia || isHistoria || isMatematicasII || isMatematicasAplicadas || isMisCursos;
 
   const linkStyle = (path: string) => ({
     color: pathname === path ? "white" : "#9ca3af",
