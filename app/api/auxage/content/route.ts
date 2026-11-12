@@ -11,7 +11,7 @@ export async function GET(req:NextRequest){
   const plan=ctx.allowed?ctx.plan:"esencial";const advanced=plan!=="esencial";
   if(mode==="theme"){
    const t=await resource<Theme>(id);if(!t)return json({error:"theme_not_found"},404);
-   return json({theme:{...t,tests:t.tests.slice(0,advanced?50:10)},plan,access:ctx.administrator?"administrator":ctx.allowed?"enrollment":"public_preview",allowed:ctx.allowed});
+   return json({theme:{...t,tests:t.tests.slice(0,advanced||id==="T01"?50:10)},plan,access:ctx.administrator?"administrator":ctx.allowed?"enrollment":"public_preview",allowed:ctx.allowed});
   }
   if(mode==="history"){
    const {data,error}=await ctx.db.from("course_learning_events").select("id,content_id,event_type,progress_percent,metadata,occurred_at").eq("user_id",ctx.user!.id).eq("course_slug",COURSE).order("occurred_at",{ascending:false}).limit(120);

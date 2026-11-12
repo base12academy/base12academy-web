@@ -7,11 +7,11 @@ export async function POST(req:NextRequest){
   if(!body||!Array.isArray(body.answers)||body.answers.length<1||body.answers.length>50)return NextResponse.json({error:"invalid_attempt"},{status:400});
   const mode=String(body.mode||"theme");const theme=String(body.theme||"T01");
   if(!["theme","simulation","psychometric"].includes(mode))return NextResponse.json({error:"invalid_mode"},{status:400});
-  if(ctx.plan==="esencial"&&(mode!=="theme"||body.answers.length>10))return NextResponse.json({error:"standard_required"},{status:403});
+  if(ctx.plan==="esencial"&&(mode!=="theme"||(theme!=="T01"&&body.answers.length>10)))return NextResponse.json({error:"standard_required"},{status:403});
   let questions:Question[]=[];
   if(mode==="theme"){
    if(!/^T(?:0[1-9]|1[0-9]|2[0-8])$/.test(theme))return NextResponse.json({error:"invalid_theme"},{status:400});
-   const t=await resource<Theme>(theme);questions=t?.tests.slice(0,ctx.plan==="esencial"?10:50)||[];
+   const t=await resource<Theme>(theme);questions=t?.tests.slice(0,ctx.plan==="esencial"&&theme!=="T01"?10:50)||[];
   }else{
    const r=await resource<Resources>("resources");questions=mode==="psychometric"?r?.psychometric||[]:r?.simulations.flat()||[];
    if(mode==="simulation"){
