@@ -211,6 +211,6 @@
       "count": 50
     }
   ],
-  "enrollmentOpen": false,
+  "enrollmentOpen": true,
   "editorialStatus": "contenido_revisado_pruebas_web_pendientes"
 }
