@@ -1250,7 +1250,7 @@ export default function CourseCatalog() {
                     ? <b>Precio tras confirmar disponibilidad</b>
                     : <>Total <b>{plan.price}</b></>}
                 </span>
-                {(course.name === "Competencias y Productividad Digital, Ofimática e IA" || purchasableOpposition || purchasableBachillerato || (course.family === "Clases Online" && course.name !== "Solicitud de clases · Otras asignaturas")) ? (
+                {(course.name === "Competencias y Productividad Digital, Ofimática e IA" || (course.family === "Oposiciones" && PURCHASABLE_OPPOSITION_NAMES.has(course.name)) || purchasableBachillerato || (course.family === "Clases Online" && course.name !== "Solicitud de clases · Otras asignaturas")) ? (
                   <button
                     type="button"
                     onClick={checkout}
