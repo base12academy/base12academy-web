@@ -43,6 +43,20 @@ const COURSE_ACCESS: Record<string,{slug:string;href:string}> = {
   "Tropa y Marinería": { slug:"tropa-y-marineria", href:"/dashboard/tropa-y-marineria" },
 };
 
+const PURCHASABLE_OPPOSITION_NAMES = new Set([
+  "Administrativo de la Junta de Andalucía",
+  "Auxiliar Administrativo de la Junta de Andalucía",
+  "Administrativo del Estado",
+  "Auxiliar Administrativo del Estado",
+  "Administrativo de la Comunidad de Madrid",
+  "Auxiliar Administrativo de la Comunidad de Madrid",
+  "Administrativo de la Seguridad Social",
+  "Auxiliar Administrativo de la Seguridad Social",
+  "Administrativo del Servicio Andaluz de Salud",
+  "Auxiliar Administrativo del Servicio Andaluz de Salud",
+  "Celador del Servicio Andaluz de Salud",
+]);
+
 const officePresentationMedia: Record<string, { videoUrl: string; videoPoster: string }> = {
   "Competencias digitales": {
     videoUrl: "/videos/competencias-digitales-presentacion.mp4",
@@ -614,7 +628,7 @@ export default function CourseCatalog() {
   async function checkout() {
     if (!course || !plan) return;
 
-    const purchasableOpposition = course.name === "Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo del Estado" || course.name === "Celador del Servicio Andaluz de Salud";
+    const purchasableOpposition = course.family === "Oposiciones" && PURCHASABLE_OPPOSITION_NAMES.has(course.name);
     const purchasableClasses =
       course.family === "Clases Online" &&
       course.name !== "Solicitud de clases · Otras asignaturas";
@@ -639,7 +653,7 @@ export default function CourseCatalog() {
       "Productividad Digital e IA": "ofimatica-premium",
     };
 
-    const oppositionPrefix = course.name === "Administrativo del Estado" ? "administrativo-estado" : course.name === "Administrativo de la Junta de Andalucía" ? "administrativo-ja" : course.name === "Auxiliar Administrativo de la Junta de Andalucía" ? "auxiliar-administrativo-ja" : course.name === "Auxiliar Administrativo del Estado" ? "auxiliar-administrativo-estado" : course.name === "Celador del Servicio Andaluz de Salud" ? "celador-sas" : "";
+    const oppositionPrefix = purchasableOpposition ? (COURSE_ACCESS[course.name]?.slug ?? "") : "";
     const oppositionPlan = ({ Esencial: "esencial", "Estándar": "estandar", Premium: "premium" } as Record<string, string>)[plan.name];
 
     const bachilleratoPrefix = course.name === "Historia de España"
@@ -1236,7 +1250,7 @@ export default function CourseCatalog() {
                     ? <b>Precio tras confirmar disponibilidad</b>
                     : <>Total <b>{plan.price}</b></>}
                 </span>
-                {(course.name === "Competencias y Productividad Digital, Ofimática e IA" || course.name === "Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo del Estado" || course.name === "Celador del Servicio Andaluz de Salud" || purchasableBachillerato || (course.family === "Clases Online" && course.name !== "Solicitud de clases · Otras asignaturas")) ? (
+                {(course.name === "Competencias y Productividad Digital, Ofimática e IA" || purchasableOpposition || purchasableBachillerato || (course.family === "Clases Online" && course.name !== "Solicitud de clases · Otras asignaturas")) ? (
                   <button
                     type="button"
                     onClick={checkout}
