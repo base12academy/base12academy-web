@@ -22,7 +22,7 @@ export default function DashboardLayout({
   const isMatematicasAplicadas = pathname.startsWith("/dashboard/matematicas-aplicadas-ccss");
   const isMisCursos = pathname.startsWith("/dashboard/mis-cursos");
   const isAuxiliarEstado = pathname.startsWith("/dashboard/auxiliar-administrativo-estado");
-  const fullWidthCourse = ["administrativo-sas", "auxiliar-administrativo-sas", "administrativo-ja", "auxiliar-administrativo-ja", "administrativo-seguridad-social", "auxiliar-administrativo-seguridad-social", "administrativo-comunidad-madrid", "auxiliar-administrativo-comunidad-madrid"].some(slug=>pathname.startsWith("/dashboard/"+slug)) || pathname.startsWith("/dashboard/administrativo-estado") || isAuxiliarEstado || isOfimatica || isTropa || isTraining || isFilosofia || isHistoria || isMatematicasII || isMatematicasAplicadas || isMisCursos;
+  const fullWidthCourse = ["celador-sas", "administrativo-sas", "auxiliar-administrativo-sas", "administrativo-ja", "auxiliar-administrativo-ja", "administrativo-seguridad-social", "auxiliar-administrativo-seguridad-social", "administrativo-comunidad-madrid", "auxiliar-administrativo-comunidad-madrid"].some(slug=>pathname.startsWith("/dashboard/"+slug)) || pathname.startsWith("/dashboard/administrativo-estado") || isAuxiliarEstado || isOfimatica || isTropa || isTraining || isFilosofia || isHistoria || isMatematicasII || isMatematicasAplicadas || isMisCursos;
 
   const linkStyle = (path: string) => ({
     color: pathname === path ? "white" : "#9ca3af",
@@ -103,4 +103,5 @@ export default function DashboardLayout({
     </div>
   );
 }
+
 

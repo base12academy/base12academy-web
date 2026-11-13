@@ -23,6 +23,7 @@ const COURSES: Record<string,{title:string;href:string;description:string}> = {
   "tropa-y-marineria": { title:"Tropa y Marinería", href:"/dashboard/tropa-y-marineria", description:"Entrenamiento psicotécnico" },
   "auxiliar-administrativo-estado": { title:"Auxiliar Administrativo del Estado", href:"/dashboard/auxiliar-administrativo-estado", description:"28 temas · test, simulacros y acompañamiento" },
   "administrativo-estado": { title:"Administrativo del Estado", href:"/dashboard/administrativo-estado", description:"45 temas · test, simulacros y supuestos prácticos" },
+  "celador-sas": { title:"Celador del Servicio Andaluz de Salud", href:"/dashboard/celador-sas", description:"19 temas · explicaciones, test y acompañamiento" },
   "administrativo-sas": { title:"Administrativo del Servicio Andaluz de Salud", href:"/dashboard/administrativo-sas", description:"48 temas · explicaciones, test y acompañamiento" },
   "auxiliar-administrativo-sas": { title:"Auxiliar Administrativo del Servicio Andaluz de Salud", href:"/dashboard/auxiliar-administrativo-sas", description:"29 temas · explicaciones, test y acompañamiento" },
   "administrativo-seguridad-social": { title:"Administrativo de la Seguridad Social", href:"/dashboard/administrativo-seguridad-social", description:"36 temas · test y acompañamiento" },
@@ -100,4 +101,5 @@ export default function MisCursosPage(){
 const panel={background:"#fff",border:"1px solid #dbe5f1",borderRadius:18,padding:24,boxShadow:"0 10px 30px rgba(24,55,96,.06)"} as const;
 const primaryButton={display:"inline-block",background:"#1457c7",color:"#fff",textDecoration:"none",fontWeight:800,padding:"11px 16px",borderRadius:10} as const;
 const linkButton={display:"inline-block",background:"#fff",color:"#173b69",textDecoration:"none",fontWeight:700,padding:"10px 14px",border:"1px solid #dbe5f1",borderRadius:10} as const;
+
 

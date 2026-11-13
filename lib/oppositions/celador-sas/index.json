@@ -1,0 +1,216 @@
+{
+  "course": "Celador del Servicio Andaluz de Salud",
+  "courseSlug": "celador-sas",
+  "level": "Celador",
+  "themes": [
+    {
+      "id": "T01",
+      "number": 1,
+      "code": "1",
+      "title": "La Constitución Española de 1978",
+      "publicPreview": true
+    },
+    {
+      "id": "T02",
+      "number": 2,
+      "code": "2",
+      "title": "Estatuto de Autonomía para Andalucía",
+      "publicPreview": false
+    },
+    {
+      "id": "T03",
+      "number": 3,
+      "code": "3",
+      "title": "Organización sanitaria (I)",
+      "publicPreview": false
+    },
+    {
+      "id": "T04",
+      "number": 4,
+      "code": "4",
+      "title": "Organización sanitaria (II)",
+      "publicPreview": false
+    },
+    {
+      "id": "T05",
+      "number": 5,
+      "code": "5",
+      "title": "Protección de datos personales y transparencia pública",
+      "publicPreview": false
+    },
+    {
+      "id": "T06",
+      "number": 6,
+      "code": "6",
+      "title": "Prevención de riesgos laborales",
+      "publicPreview": false
+    },
+    {
+      "id": "T07",
+      "number": 7,
+      "code": "7",
+      "title": "Igualdad de género, violencia de género y Plan de Igualdad de la Junta de Andalucía",
+      "publicPreview": false
+    },
+    {
+      "id": "T08",
+      "number": 8,
+      "code": "8",
+      "title": "Estatuto Marco del personal estatutario",
+      "publicPreview": false
+    },
+    {
+      "id": "T09",
+      "number": 9,
+      "code": "9",
+      "title": "Autonomía del paciente, documentación clínica y tarjeta sanitaria de Andalucía",
+      "publicPreview": false
+    },
+    {
+      "id": "T10",
+      "number": 10,
+      "code": "10",
+      "title": "Tecnologías de la información y las comunicaciones",
+      "publicPreview": false
+    },
+    {
+      "id": "T11",
+      "number": 11,
+      "code": "11",
+      "title": "El celador como profesional del sistema sanitario y el trabajo en equipo",
+      "publicPreview": false
+    },
+    {
+      "id": "T12",
+      "number": 12,
+      "code": "12",
+      "title": "Habilidades sociales y comunicación",
+      "publicPreview": false
+    },
+    {
+      "id": "T13",
+      "number": 13,
+      "code": "13",
+      "title": "El celador en su puesto de trabajo (I)",
+      "publicPreview": false
+    },
+    {
+      "id": "T14",
+      "number": 14,
+      "code": "14",
+      "title": "El celador en su puesto de trabajo (II)",
+      "publicPreview": false
+    },
+    {
+      "id": "T15",
+      "number": 15,
+      "code": "15",
+      "title": "El celador en su relación con los enfermos",
+      "publicPreview": false
+    },
+    {
+      "id": "T16",
+      "number": 16,
+      "code": "16",
+      "title": "Manual de Estilo del Servicio Andaluz de Salud",
+      "publicPreview": false
+    },
+    {
+      "id": "T17",
+      "number": 17,
+      "code": "17",
+      "title": "Prevención de riesgos laborales en los celadores",
+      "publicPreview": false
+    },
+    {
+      "id": "T18",
+      "number": 18,
+      "code": "18",
+      "title": "Plan de autoprotección, emergencias y evacuación",
+      "publicPreview": false
+    },
+    {
+      "id": "T19",
+      "number": 19,
+      "code": "19",
+      "title": "Política ambiental del SAS y gestión de residuos",
+      "publicPreview": false
+    }
+  ],
+  "counts": {
+    "themes": 19,
+    "questions": 950,
+    "glossary": 419,
+    "closedRocio": 644,
+    "simulations": 13
+  },
+  "simulations": [
+    {
+      "id": "SASCEL-REPASO-01",
+      "title": "Repaso global 1 de 20 preguntas",
+      "count": 20
+    },
+    {
+      "id": "SASCEL-REPASO-02",
+      "title": "Repaso global 2 de 20 preguntas",
+      "count": 20
+    },
+    {
+      "id": "SASCEL-REPASO-03",
+      "title": "Repaso global 3 de 20 preguntas",
+      "count": 20
+    },
+    {
+      "id": "SASCEL-REPASO-04",
+      "title": "Repaso global 4 de 20 preguntas",
+      "count": 20
+    },
+    {
+      "id": "SASCEL-REPASO-05",
+      "title": "Repaso global 5 de 20 preguntas",
+      "count": 20
+    },
+    {
+      "id": "SASCEL-REPASO-06",
+      "title": "Repaso global 6 de 20 preguntas",
+      "count": 20
+    },
+    {
+      "id": "SASCEL-REPASO-07",
+      "title": "Repaso global 7 de 20 preguntas",
+      "count": 20
+    },
+    {
+      "id": "SASCEL-REPASO-08",
+      "title": "Repaso global 8 de 20 preguntas",
+      "count": 20
+    },
+    {
+      "id": "SASCEL-REPASO-09",
+      "title": "Repaso global 9 de 20 preguntas",
+      "count": 20
+    },
+    {
+      "id": "SASCEL-REPASO-10",
+      "title": "Repaso global 10 de 20 preguntas",
+      "count": 20
+    },
+    {
+      "id": "SASCEL-GLOBAL-01",
+      "title": "Repaso global ampliado 1 de 50 preguntas",
+      "count": 50
+    },
+    {
+      "id": "SASCEL-GLOBAL-02",
+      "title": "Repaso global ampliado 2 de 50 preguntas",
+      "count": 50
+    },
+    {
+      "id": "SASCEL-GLOBAL-03",
+      "title": "Repaso global ampliado 3 de 50 preguntas",
+      "count": 50
+    }
+  ],
+  "enrollmentOpen": false,
+  "editorialStatus": "contenido_revisado_pruebas_web_pendientes"
+}
