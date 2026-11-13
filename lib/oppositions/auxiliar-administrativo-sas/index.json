@@ -266,6 +266,6 @@
       "count": 50
     }
   ],
-  "enrollmentOpen": false,
+  "enrollmentOpen": true,
   "editorialStatus": "review_in_progress"
 }
