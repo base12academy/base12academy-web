@@ -614,7 +614,7 @@ export default function CourseCatalog() {
   async function checkout() {
     if (!course || !plan) return;
 
-    const purchasableOpposition = course.name === "Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo del Estado";
+    const purchasableOpposition = course.name === "Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo del Estado" || course.name === "Celador del Servicio Andaluz de Salud";
     const purchasableClasses =
       course.family === "Clases Online" &&
       course.name !== "Solicitud de clases · Otras asignaturas";
@@ -639,7 +639,7 @@ export default function CourseCatalog() {
       "Productividad Digital e IA": "ofimatica-premium",
     };
 
-    const oppositionPrefix = course.name === "Administrativo del Estado" ? "administrativo-estado" : course.name === "Administrativo de la Junta de Andalucía" ? "administrativo-ja" : course.name === "Auxiliar Administrativo de la Junta de Andalucía" ? "auxiliar-administrativo-ja" : course.name === "Auxiliar Administrativo del Estado" ? "auxiliar-administrativo-estado" : "";
+    const oppositionPrefix = course.name === "Administrativo del Estado" ? "administrativo-estado" : course.name === "Administrativo de la Junta de Andalucía" ? "administrativo-ja" : course.name === "Auxiliar Administrativo de la Junta de Andalucía" ? "auxiliar-administrativo-ja" : course.name === "Auxiliar Administrativo del Estado" ? "auxiliar-administrativo-estado" : course.name === "Celador del Servicio Andaluz de Salud" ? "celador-sas" : "";
     const oppositionPlan = ({ Esencial: "esencial", "Estándar": "estandar", Premium: "premium" } as Record<string, string>)[plan.name];
 
     const bachilleratoPrefix = course.name === "Historia de España"
@@ -1236,7 +1236,7 @@ export default function CourseCatalog() {
                     ? <b>Precio tras confirmar disponibilidad</b>
                     : <>Total <b>{plan.price}</b></>}
                 </span>
-                {(course.name === "Competencias y Productividad Digital, Ofimática e IA" || course.name === "Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo del Estado" || purchasableBachillerato || (course.family === "Clases Online" && course.name !== "Solicitud de clases · Otras asignaturas")) ? (
+                {(course.name === "Competencias y Productividad Digital, Ofimática e IA" || course.name === "Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo de la Junta de Andalucía" || course.name === "Auxiliar Administrativo del Estado" || course.name === "Celador del Servicio Andaluz de Salud" || purchasableBachillerato || (course.family === "Clases Online" && course.name !== "Solicitud de clases · Otras asignaturas")) ? (
                   <button
                     type="button"
                     onClick={checkout}
