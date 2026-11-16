@@ -42,6 +42,8 @@
 .formationCard:hover { border-color: #7094d4; background: #f6f9ff; }
 .cardNumber { color: var(--blue); font-size: 14px; font-weight: 700; margin-bottom: 18px; }
 .formationCard h3 { min-height: 44px; }
+.opo12Card { border-color: #8ccfc7; background: #f1fffc; }
+.opo12Card img { width: 48px; height: 48px; border-radius: 10px; margin-bottom: 12px; }
 .formationCard p { color: #52627b; font-size: 13px; line-height: 1.6; margin-top: 10px; margin-bottom: 24px; }
 .cardAction { display: block; color: var(--blue); font-size: 12px; font-weight: 750; margin-top: auto; }
 .cardAction span { margin-left: 5px; }
@@ -57,6 +59,12 @@
 .installRow { border-top: 1px solid var(--line); padding-top: 18px; margin-top: 22px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
 .installRow p { color: #52627b; font-size: 12px; }
 .method { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; padding: 64px 0; }
+.opo12Feature { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 26px; padding: 30px; margin: 18px 0 42px; border-radius: 16px; background: #082b5c; color: #fff; }
+.opo12Feature > img { border-radius: 22px; }
+.opo12Feature h2 { color: #fff; }
+.opo12Feature p:not(.eyebrow) { color: #cbd9e9; font-size: 14px; margin-top: 8px; }
+.opo12Feature .eyebrow { color: #57d7ca; }
+.opo12Feature .primary { background: #00afa0; border-color: #00afa0; color: #052d29; white-space: nowrap; }
 .sample { padding: 34px; background: #edf4ff; border: 1px solid #d5e2f5; border-radius: 15px; }
 .sample h3 { font-size: 26px; line-height: 1.25; }
 .sample p:not(.eyebrow) { font-size: 14px; color: #52627b; margin-top: 15px; }
@@ -116,6 +124,7 @@
   .hero { padding-top: 36px; }.hero h1 { font-size: 2.5rem; }.heroText { font-size: 16px; }
   .formationGrid { grid-template-columns: repeat(2,minmax(0,1fr)); }.page :global(.original-course-grid) { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .footerTop { grid-template-columns: repeat(2,minmax(0,1fr)); }.footerBottom { flex-direction: column; }.sectionHeading { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .opo12Feature { grid-template-columns: auto 1fr; }.opo12Feature .primary { grid-column: 1 / -1; justify-self: start; }
 }
 @media (max-width: 600px) {
   .main { width: calc(100% - 36px); }.headerInner { padding-inline: 18px; gap: 10px; }.headerActions { gap: 8px; }.login { font-size: 11px; padding: 10px; }
@@ -127,5 +136,6 @@
   .page :global(.original-course-grid) { grid-template-columns: 1fr; }.page :global(.original-tabs) { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 5px; }.page :global(.original-tabs button) { text-align: center; padding: 9px 6px; font-size: 12px; }
   .videoGrid { grid-template-columns: 1fr; gap: 18px; }.about { padding: 32px 0; }.contact { padding: 26px 22px; flex-direction: column; align-items: flex-start; gap: 24px; }.contactActions { align-items: flex-start; }
   .footer { padding-inline: 18px; }.footerTop { gap: 24px 16px; }.footerTop > div:first-child { grid-column: 1 / -1; }.footer h3 { margin-top: 0; }.footerLogo { width: 110px; height: 110px; }
+  .opo12Feature { grid-template-columns: 1fr; padding: 24px; }.opo12Feature > img { width: 74px; height: 74px; }.opo12Feature .primary { grid-column: auto; }
 }
 @media (prefers-reduced-motion: reduce) { .page { scroll-behavior: auto; }.formationCard { transition: none; } }

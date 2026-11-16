@@ -15,7 +15,9 @@
     "test:training": "node --experimental-strip-types --test tests/training-config.test.mjs tests/training-gift.test.mjs tests/training-license.test.mjs",
     "test:text": "node --test tests/text-encoding.test.mjs && npm run text:validate",
     "text:validate": "node scripts/validate-text-encoding.mjs",
-    "test:ads": "node --test tests/google-ads.test.mjs"
+    "test:ads": "node --test tests/google-ads.test.mjs",
+    "test:opo12": "node --experimental-strip-types --test tests/opo12-*.test.mjs",
+    "opo12:audit": "node scripts/opo12/audit-bank.mjs"
   },
   "dependencies": {
     "@react-pdf/renderer": "^4.3.2",

@@ -17,6 +17,7 @@ export default function HomeMobileMenu() {
       {open && <nav id="home-mobile-menu" aria-label="Navegación móvil" onClick={(event) => {
         if ((event.target as HTMLElement).closest("a")) setOpen(false);
       }}>
+        <a href="/opo12">Opo12 · Simulacros</a>
         <HomeCatalogLink family="oposiciones">Oposiciones</HomeCatalogLink>
         <HomeCatalogLink family="bachillerato">Bachillerato y PAU</HomeCatalogLink>
         <HomeCatalogLink family="clases">Clases online</HomeCatalogLink>

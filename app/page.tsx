@@ -17,6 +17,7 @@ const formation = [
 ];
 
 const apps = [
+  { name: "Opo12", text: "Realiza simulacros con el formato de tu convocatoria y consulta tu evolución.", href: "/opo12", image: "/icons/opo12.svg", action: "Entrar en Opo12" },
   { name: "Banco de Opositores", text: "Consulta convocatorias oficiales y configura tus alertas.", href: "/banco-opositores", image: "/images/banco-opositores/logo-banco-opositores.png", action: "Buscar convocatorias" },
   { name: "Base12 App", text: "Accede a tu formación y continúa donde lo dejaste.", href: "/login", image: "/images/base12-logo.png", action: "Entrar al campus" },
   { name: "Base12 Training", text: "Conoce la aplicación de preparación física para Tropa y Marinería.", href: "/tropa-y-marineria/base12-training", image: "/images/banco-opositores/logo-base12-training.png", action: "Conocer Training" },
@@ -48,6 +49,7 @@ export default function HomePage() {
             <Image src="/images/base12-logo.png" alt="Base12 Academy · Construye · Comprende · Domina" width={1024} height={1024} priority />
           </Link>
           <nav className={styles.desktopNav} aria-label="Navegación principal">
+            <Link href="/opo12">Opo12</Link>
             <a href="#formacion">Formación</a>
             <a href="#aplicaciones">Aplicaciones</a>
             <a href="#metodo">Cómo funciona</a>
@@ -84,6 +86,11 @@ export default function HomePage() {
           <h2 id="formation-title">¿Qué quieres preparar?</h2>
           <p className={styles.intro}>Elige una línea y descubre los cursos y modalidades disponibles.</p>
           <div className={styles.formationGrid}>
+            <Link href="/opo12" className={`${styles.formationCard} ${styles.opo12Card}`}>
+              <Image src="/icons/opo12.svg" width={48} height={48} alt="" />
+              <h3>Opo12</h3><p>Simulacros de oposición por suscripción, sin contratar un curso completo.</p>
+              <span className={styles.cardAction}>Ver Opo12 <span aria-hidden="true">→</span></span>
+            </Link>
             {formation.map((item) => (
               <HomeCatalogLink family={item.family} key={item.family} className={styles.formationCard}>
                 <span className={styles.cardNumber} aria-hidden="true">{item.icon}</span>
@@ -132,6 +139,12 @@ export default function HomePage() {
         </section>
 
         <section id="catalogo-contenedor" className={styles.section} aria-label="Catálogo completo de formación"><CourseCatalog /></section>
+
+        <section className={styles.opo12Feature} aria-labelledby="opo12-title">
+          <Image src="/icons/opo12.svg" width={104} height={104} alt="" />
+          <div><p className={styles.eyebrow}>Solo simulacros · Sin curso completo</p><h2 id="opo12-title">Practica tu oposición con Opo12</h2><p>Simulacros ilimitados, el tiempo y la corrección de la convocatoria, solucionarios revisados e histórico personal.</p></div>
+          <Link href="/opo12" className={styles.primary}>Conocer Opo12 <span aria-hidden="true">→</span></Link>
+        </section>
 
         <section id="videos-presentacion" className={styles.section} aria-labelledby="videos-title">
           <p className={styles.eyebrow}>Mira cómo trabajamos</p><h2 id="videos-title">Descubre Base12 por dentro</h2>
