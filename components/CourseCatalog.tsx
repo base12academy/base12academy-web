@@ -42,6 +42,8 @@ const COURSE_ACCESS: Record<string,{slug:string;href:string}> = {
   "Auxiliar Administrativo de la Comunidad de Madrid": { slug:"auxiliar-administrativo-comunidad-madrid", href:"/dashboard/auxiliar-administrativo-comunidad-madrid" },
   "Administrativo del SERMAS": { slug:"administrativo-sermas", href:"/dashboard/administrativo-sermas" },
   "Auxiliar Administrativo del SERMAS": { slug:"auxiliar-administrativo-sermas", href:"/dashboard/auxiliar-administrativo-sermas" },
+  "Administrativo de la Generalitat Valenciana": { slug:"administrativo-generalitat-valenciana", href:"/dashboard/administrativo-generalitat-valenciana" },
+  "Auxiliar Administrativo de la Generalitat Valenciana": { slug:"auxiliar-administrativo-generalitat-valenciana", href:"/dashboard/auxiliar-administrativo-generalitat-valenciana" },
   "Técnico Auxiliar de Informática del Estado": { slug:"tecnico-auxiliar-informatica-estado", href:"/dashboard/tecnico-auxiliar-informatica-estado" },
   "Tropa y Marinería": { slug:"tropa-y-marineria", href:"/dashboard/tropa-y-marineria" },
 };
@@ -58,6 +60,9 @@ const PURCHASABLE_OPPOSITION_NAMES = new Set([
   "Administrativo del Servicio Andaluz de Salud",
   "Auxiliar Administrativo del Servicio Andaluz de Salud",
   "Celador del Servicio Andaluz de Salud",
+  "Administrativo del SERMAS",
+  "Auxiliar Administrativo del SERMAS",
+  "Auxiliar Administrativo de la Generalitat Valenciana",
 ]);
 
 const officePresentationMedia: Record<string, { videoUrl: string; videoPoster: string }> = {
@@ -973,6 +978,11 @@ export default function CourseCatalog() {
                 <p>Selecciona una modalidad y revisa la información antes de continuar.</p>
               </>
             )}
+            {course.name === "Administrativo del SERMAS" && <p><Link href="/dashboard/administrativo-sermas?tema=T01">Probar gratis el tema 1</Link></p>}
+            {course.name === "Auxiliar Administrativo del SERMAS" && <p><Link href="/dashboard/auxiliar-administrativo-sermas?tema=T01">Probar gratis el tema 1</Link></p>}
+            {course.name === "Administrativo de la Generalitat Valenciana" && <p><Link href="/dashboard/administrativo-generalitat-valenciana?tema=T01">Probar gratis el tema 1</Link></p>}
+            {course.name === "Auxiliar Administrativo de la Generalitat Valenciana" && <p><Link href="/dashboard/auxiliar-administrativo-generalitat-valenciana?tema=T01">Probar gratis el tema 1</Link></p>}
+            {course.name === "Técnico Auxiliar de Informática del Estado" && <p><Link href="/dashboard/tecnico-auxiliar-informatica-estado?tema=T01">Probar gratis el tema 1</Link></p>}
             {course.name === "Celador del Servicio Andaluz de Salud" && <p><Link href="/dashboard/celador-sas?tema=T01">Probar gratis el tema 1</Link></p>}
             {course.name === "Administrativo del Servicio Andaluz de Salud" && <p><Link href="/dashboard/administrativo-sas?tema=T01">Probar gratis el tema 1</Link></p>}
             {course.name === "Auxiliar Administrativo del Servicio Andaluz de Salud" && <p><Link href="/dashboard/auxiliar-administrativo-sas?tema=T01">Probar gratis el tema 1</Link></p>}
