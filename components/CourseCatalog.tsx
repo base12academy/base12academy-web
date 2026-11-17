@@ -40,6 +40,9 @@ const COURSE_ACCESS: Record<string,{slug:string;href:string}> = {
   "Auxiliar Administrativo de la Seguridad Social": { slug:"auxiliar-administrativo-seguridad-social", href:"/dashboard/auxiliar-administrativo-seguridad-social" },
   "Administrativo de la Comunidad de Madrid": { slug:"administrativo-comunidad-madrid", href:"/dashboard/administrativo-comunidad-madrid" },
   "Auxiliar Administrativo de la Comunidad de Madrid": { slug:"auxiliar-administrativo-comunidad-madrid", href:"/dashboard/auxiliar-administrativo-comunidad-madrid" },
+  "Administrativo del SERMAS": { slug:"administrativo-sermas", href:"/dashboard/administrativo-sermas" },
+  "Auxiliar Administrativo del SERMAS": { slug:"auxiliar-administrativo-sermas", href:"/dashboard/auxiliar-administrativo-sermas" },
+  "Técnico Auxiliar de Informática del Estado": { slug:"tecnico-auxiliar-informatica-estado", href:"/dashboard/tecnico-auxiliar-informatica-estado" },
   "Tropa y Marinería": { slug:"tropa-y-marineria", href:"/dashboard/tropa-y-marineria" },
 };
 
@@ -134,6 +137,7 @@ const oposiciones = [
   ["Estado", "Auxiliar Administrativo del Estado"],
   ["Estado", "Administrativo de la Seguridad Social"],
   ["Estado", "Auxiliar Administrativo de la Seguridad Social"],
+  ["Estado", "Técnico Auxiliar de Informática del Estado"],
 ] as const;
 
 const allCourses: Course[] = [
