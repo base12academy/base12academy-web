@@ -15,6 +15,7 @@ type Enrollment = {
 };
 
 const COURSES: Record<string,{title:string;href:string;description:string}> = {
+  "administrativo-sanidad-valenciana": { title:"Administrativo del Sistema Valenciano de Salud", href:"/dashboard/administrativo-sanidad-valenciana", description:"48 temas · glosario, test, simulacros y acompañamiento" },
   "historia-espana": { title:"Historia de España", href:"/dashboard/historia-espana", description:"Bachillerato y preparación PAU" },
   "historia-filosofia": { title:"Historia de la Filosofía", href:"/dashboard/filosofia", description:"Bachillerato y preparación PAU" },
   "matematicas-ii": { title:"Matemáticas II", href:"/dashboard/matematicas-ii", description:"Explicaciones, entrenamiento y PAU" },

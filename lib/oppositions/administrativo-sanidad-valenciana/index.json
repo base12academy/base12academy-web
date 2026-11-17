@@ -1,0 +1,414 @@
+{
+  "courseSlug": "administrativo-sanidad-valenciana",
+  "title": "Administrativo del Sistema Valenciano de Salud",
+  "shortTitle": "Administrativo Sanidad Valenciana",
+  "level": "C1",
+  "region": "Comunitat Valenciana",
+  "durationMonths": 12,
+  "prices": {
+    "esencial": 149,
+    "estandar": 299,
+    "premium": 499
+  },
+  "enrollmentOpen": true,
+  "themes": [
+    {
+      "id": "T01",
+      "code": "T01",
+      "number": 1,
+      "title": "Constitución Española de 1978 (I)",
+      "publicPreview": true
+    },
+    {
+      "id": "T02",
+      "code": "T02",
+      "number": 2,
+      "title": "La Constitución Española de 1978 (II)",
+      "publicPreview": false
+    },
+    {
+      "id": "T03",
+      "code": "T03",
+      "number": 3,
+      "title": "Estatuto de Autonomía de la Comunitat Valenciana (I)",
+      "publicPreview": false
+    },
+    {
+      "id": "T04",
+      "code": "T04",
+      "number": 4,
+      "title": "Estatuto de Autonomía de la Comunitat Valenciana (II)",
+      "publicPreview": false
+    },
+    {
+      "id": "T05",
+      "code": "T05",
+      "number": 5,
+      "title": "Instituciones de la Generalitat Valenciana",
+      "publicPreview": false
+    },
+    {
+      "id": "T06",
+      "code": "T06",
+      "number": 6,
+      "title": "La Unión Europea: instituciones, fuentes y competencias",
+      "publicPreview": false
+    },
+    {
+      "id": "T07",
+      "code": "T07",
+      "number": 7,
+      "title": "Empleo público: EBEP y función pública valenciana",
+      "publicPreview": false
+    },
+    {
+      "id": "T08",
+      "code": "T08",
+      "number": 8,
+      "title": "Igualdad y violencia de género en el sector público sanitario",
+      "publicPreview": false
+    },
+    {
+      "id": "T09",
+      "code": "T09",
+      "number": 9,
+      "title": "Transparencia, acceso a la información pública y buen gobierno",
+      "publicPreview": false
+    },
+    {
+      "id": "T10",
+      "code": "T10",
+      "number": 10,
+      "title": "Protección de datos personales en la Administración sanitaria",
+      "publicPreview": false
+    },
+    {
+      "id": "T11",
+      "code": "T11",
+      "number": 11,
+      "title": "Prevención de riesgos laborales en el ámbito sanitario",
+      "publicPreview": false
+    },
+    {
+      "id": "T12",
+      "code": "T12",
+      "number": 12,
+      "title": "Sistema Nacional de Salud y Ley General de Sanidad",
+      "publicPreview": false
+    },
+    {
+      "id": "T13",
+      "code": "T13",
+      "number": 13,
+      "title": "Ordenación de las profesiones sanitarias",
+      "publicPreview": false
+    },
+    {
+      "id": "T14",
+      "code": "T14",
+      "number": 14,
+      "title": "Cartera de servicios y prestaciones del Sistema Nacional de Salud",
+      "publicPreview": false
+    },
+    {
+      "id": "T15",
+      "code": "T15",
+      "number": 15,
+      "title": "Salud pública: principios, derechos y actuaciones",
+      "publicPreview": false
+    },
+    {
+      "id": "T16",
+      "code": "T16",
+      "number": 16,
+      "title": "Ley de Salud de la Comunitat Valenciana",
+      "publicPreview": false
+    },
+    {
+      "id": "T17",
+      "code": "T17",
+      "number": 17,
+      "title": "Organización territorial y funcional de la asistencia sanitaria valenciana",
+      "publicPreview": false
+    },
+    {
+      "id": "T18",
+      "code": "T18",
+      "number": 18,
+      "title": "Organización de la Conselleria competente en sanidad",
+      "publicPreview": false
+    },
+    {
+      "id": "T19",
+      "code": "T19",
+      "number": 19,
+      "title": "Consorcios sanitarios valencianos y CHGUV",
+      "publicPreview": false
+    },
+    {
+      "id": "T20",
+      "code": "T20",
+      "number": 20,
+      "title": "Estatuto Marco del personal estatutario (I)",
+      "publicPreview": false
+    },
+    {
+      "id": "T21",
+      "code": "T21",
+      "number": 21,
+      "title": "Estatuto Marco del personal estatutario (II)",
+      "publicPreview": false
+    },
+    {
+      "id": "T22",
+      "code": "T22",
+      "number": 22,
+      "title": "Situaciones administrativas, jubilación y prolongación en servicio activo",
+      "publicPreview": false
+    },
+    {
+      "id": "T23",
+      "code": "T23",
+      "number": 23,
+      "title": "Retribuciones del personal de los servicios de salud",
+      "publicPreview": false
+    },
+    {
+      "id": "T24",
+      "code": "T24",
+      "number": 24,
+      "title": "Carrera y desarrollo profesional en instituciones sanitarias valencianas",
+      "publicPreview": false
+    },
+    {
+      "id": "T25",
+      "code": "T25",
+      "number": 25,
+      "title": "Incompatibilidades del personal al servicio de las Administraciones Públicas",
+      "publicPreview": false
+    },
+    {
+      "id": "T26",
+      "code": "T26",
+      "number": 26,
+      "title": "Personal laboral y Estatuto de los Trabajadores",
+      "publicPreview": false
+    },
+    {
+      "id": "T27",
+      "code": "T27",
+      "number": 27,
+      "title": "Seguridad Social: encuadramiento y gestión del personal",
+      "publicPreview": false
+    },
+    {
+      "id": "T28",
+      "code": "T28",
+      "number": 28,
+      "title": "Régimen laboral y convenio colectivo de los consorcios sanitarios",
+      "publicPreview": false
+    },
+    {
+      "id": "T29",
+      "code": "T29",
+      "number": 29,
+      "title": "Procedimiento administrativo común (I): interesados, actividad y actos",
+      "publicPreview": false
+    },
+    {
+      "id": "T30",
+      "code": "T30",
+      "number": 30,
+      "title": "Procedimiento administrativo común (II): tramitación",
+      "publicPreview": false
+    },
+    {
+      "id": "T31",
+      "code": "T31",
+      "number": 31,
+      "title": "Procedimiento administrativo común (III): revisión y recursos",
+      "publicPreview": false
+    },
+    {
+      "id": "T32",
+      "code": "T32",
+      "number": 32,
+      "title": "Régimen jurídico del sector público",
+      "publicPreview": false
+    },
+    {
+      "id": "T33",
+      "code": "T33",
+      "number": 33,
+      "title": "Responsabilidad patrimonial de las Administraciones Públicas",
+      "publicPreview": false
+    },
+    {
+      "id": "T34",
+      "code": "T34",
+      "number": 34,
+      "title": "Potestad sancionadora administrativa",
+      "publicPreview": false
+    },
+    {
+      "id": "T35",
+      "code": "T35",
+      "number": 35,
+      "title": "Contratos del sector público (I)",
+      "publicPreview": false
+    },
+    {
+      "id": "T36",
+      "code": "T36",
+      "number": 36,
+      "title": "Contratos del sector público (II)",
+      "publicPreview": false
+    },
+    {
+      "id": "T37",
+      "code": "T37",
+      "number": 37,
+      "title": "Hacienda Pública y Presupuestos de la Generalitat",
+      "publicPreview": false
+    },
+    {
+      "id": "T38",
+      "code": "T38",
+      "number": 38,
+      "title": "Ejecución presupuestaria y gestión económica",
+      "publicPreview": false
+    },
+    {
+      "id": "T39",
+      "code": "T39",
+      "number": 39,
+      "title": "Administración electrónica",
+      "publicPreview": false
+    },
+    {
+      "id": "T40",
+      "code": "T40",
+      "number": 40,
+      "title": "Autonomía del paciente e información sanitaria",
+      "publicPreview": false
+    },
+    {
+      "id": "T41",
+      "code": "T41",
+      "number": 41,
+      "title": "Historia clínica y documentación sanitaria",
+      "publicPreview": false
+    },
+    {
+      "id": "T42",
+      "code": "T42",
+      "number": 42,
+      "title": "Derechos de los usuarios y SAIP",
+      "publicPreview": false
+    },
+    {
+      "id": "T43",
+      "code": "T43",
+      "number": 43,
+      "title": "Sistema de Información Poblacional (SIP) y derecho a la asistencia sanitaria",
+      "publicPreview": false
+    },
+    {
+      "id": "T44",
+      "code": "T44",
+      "number": 44,
+      "title": "Informática básica",
+      "publicPreview": false
+    },
+    {
+      "id": "T45",
+      "code": "T45",
+      "number": 45,
+      "title": "Internet, correo electrónico y comunicaciones",
+      "publicPreview": false
+    },
+    {
+      "id": "T46",
+      "code": "T46",
+      "number": 46,
+      "title": "Procesadores de texto",
+      "publicPreview": false
+    },
+    {
+      "id": "T47",
+      "code": "T47",
+      "number": 47,
+      "title": "Hojas de cálculo",
+      "publicPreview": false
+    },
+    {
+      "id": "T48",
+      "code": "T48",
+      "number": 48,
+      "title": "Presentaciones y colaboración digital",
+      "publicPreview": false
+    }
+  ],
+  "simulations": [
+    {
+      "id": "SIM01",
+      "title": "Simulacro de entrenamiento 01",
+      "count": 20
+    },
+    {
+      "id": "SIM02",
+      "title": "Simulacro de entrenamiento 02",
+      "count": 20
+    },
+    {
+      "id": "SIM03",
+      "title": "Simulacro de entrenamiento 03",
+      "count": 20
+    },
+    {
+      "id": "SIM04",
+      "title": "Simulacro de entrenamiento 04",
+      "count": 20
+    },
+    {
+      "id": "SIM05",
+      "title": "Simulacro de entrenamiento 05",
+      "count": 20
+    },
+    {
+      "id": "SIM06",
+      "title": "Simulacro de entrenamiento 06",
+      "count": 20
+    },
+    {
+      "id": "SIM07",
+      "title": "Simulacro de entrenamiento 07",
+      "count": 20
+    },
+    {
+      "id": "SIM08",
+      "title": "Simulacro de entrenamiento 08",
+      "count": 20
+    },
+    {
+      "id": "SIM09",
+      "title": "Simulacro de entrenamiento 09",
+      "count": 20
+    },
+    {
+      "id": "SIM10",
+      "title": "Simulacro de entrenamiento 10",
+      "count": 20
+    }
+  ],
+  "counts": {
+    "themes": 48,
+    "questions": 2400,
+    "glossary": 240,
+    "closedRocio": 480,
+    "openRocio": 144,
+    "simulations": 10
+  },
+  "simulationNote": "Ejercicios de entrenamiento de 20 preguntas. No reproducen la estructura ni la nota oficial de una convocatoria.",
+  "scopeNote": "48 unidades didácticas de preparación general. Los contenidos específicos del CHGUV se identifican en sus temas; la numeración no equivale al programa oficial de una convocatoria."
+}
