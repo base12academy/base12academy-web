@@ -33,6 +33,8 @@ async function resource<T>(course:string,id:string):Promise<T|null>{
  if(error)throw new Error("course_material_unavailable");return data?.payload as T||null;
 }
 function sample<T>(values:T[],n:number){const copy=[...values];for(let i=copy.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[copy[i],copy[j]]=[copy[j],copy[i]];}return copy.slice(0,n)}
+function publicQuestions(questions:Question[]){return questions.map(({id,question,options})=>({id,question,options}))}
+function sameIds(answers:{id:string}[],questions:Question[]){return answers.length===questions.length&&answers.every(a=>questions.some(q=>q.id===a.id))}
 
 export async function contentGET(req:NextRequest,index:Index){
  try{
@@ -43,7 +45,7 @@ export async function contentGET(req:NextRequest,index:Index){
   if(mode==="theme"){
    const theme=await resource<Theme>(course,id);if(!theme)return json({error:"theme_not_found"},404);
    const limit=!ctx.allowed&&id==="T01"?50:advanced?50:10;
-   return json({theme:{...theme,tests:theme.tests.slice(0,limit)},plan:ctx.plan,access:ctx.administrator?"administrator":ctx.allowed?"enrollment":"public_preview",allowed:ctx.allowed});
+   return json({theme:{...theme,tests:publicQuestions(theme.tests.slice(0,limit))},plan:ctx.plan,access:ctx.administrator?"administrator":ctx.allowed?"enrollment":"public_preview",allowed:ctx.allowed});
   }
   if(!ctx.allowed)return json({error:"subscription_required"},403);
   if(mode==="history"){
@@ -59,18 +61,20 @@ export async function contentGET(req:NextRequest,index:Index){
    const metadata=list.find(item=>item.resourceId===requested);
    if(!metadata)return json({error:"invalid_resource"},400);
    const practical=await resource<Record<string,unknown>>(course,requested);
-   return practical?json({resource:practical}):json({error:"practical_unavailable"},503);
+   if(!practical)return json({error:"practical_unavailable"},503);
+   const questions=(practical as {questions?:Question[]}).questions;
+   return json({resource:questions?{...practical,questions:publicQuestions(questions)}:practical});
   }
   if(mode==="simulation"){
    const fixed=Number(req.nextUrl.searchParams.get("fixed")||0);
    if(Number.isInteger(fixed)&&fixed>=1&&fixed<=index.simulations.length){
     const sim=await resource<{id:string;title:string;questions:Question[]}>(course,`SIM${String(fixed).padStart(2,"0")}`);
-    return sim?json({questions:sim.questions,title:sim.title}):json({error:"simulation_unavailable"},503);
+    return sim?json({questions:publicQuestions(sim.questions),title:sim.title}):json({error:"simulation_unavailable"},503);
    }
    const {data,error}=await ctx.db.from("opposition_materials").select("payload").eq("course_slug",course).like("resource_id","T%");
    if(error)return json({error:"question_bank_unavailable"},503);
    const themes=sample((data||[]).map(v=>v.payload as Theme),20);
-   return json({questions:sample(themes.map(t=>sample(t.tests,1)[0]).filter(Boolean),20),title:"Simulacro aleatorio · 20 preguntas · temario completo"});
+   return json({questions:publicQuestions(sample(themes.map(t=>sample(t.tests,1)[0]).filter(Boolean),20)),title:"Simulacro aleatorio · 20 preguntas · temario completo"});
   }
   return json({error:"invalid_mode"},400);
  }catch{return json({error:"course_unavailable"},503)}
@@ -90,8 +94,8 @@ export async function attemptPOST(req:NextRequest,index:Index){
    questions=(await resource<Theme>(course,theme))?.tests||[];
   }else if(mode==="simulation"){
    if(!ctx.allowed||ctx.plan==="esencial")return json({error:"standard_required"},403);
-   const fixed=String(body.simulation||"");
-   if(fixed){questions=(await resource<{questions:Question[]}>(course,fixed))?.questions||[]}
+   const fixed=String(body.simulation||"").toUpperCase();
+   if(fixed){if(!/^SIM\d{2}$/.test(fixed)||!index.simulations.some(s=>s.id===fixed))return json({error:"invalid_resource"},400);questions=(await resource<{questions:Question[]}>(course,fixed))?.questions||[]}
    else{const {data}=await ctx.db.from("opposition_materials").select("payload").eq("course_slug",course).like("resource_id","T%");questions=(data||[]).flatMap(v=>(v.payload as Theme).tests)}
   }else{
    if(!ctx.allowed||ctx.plan==="esencial")return json({error:"standard_required"},403);
@@ -102,6 +106,9 @@ export async function attemptPOST(req:NextRequest,index:Index){
    questions=(await resource<{questions:Question[]}>(course,requested))?.questions||[];
    if(!questions.length)return json({error:"practical_unavailable"},503);
   }
+  const expected=mode==="theme"?(ctx.allowed&&ctx.plan==="esencial"?[questions.slice(0,10)]:[questions.slice(0,10),questions]):mode==="simulation"&&!body.simulation?[]:[questions];
+  if(mode==="simulation"&&!body.simulation&&body.answers.length!==20)return json({error:"invalid_attempt"},400);
+  if(expected.length&&!expected.some(group=>sameIds(body.answers,group)))return json({error:"invalid_attempt"},400);
   const keys=new Map(questions.map(q=>[q.id,q])),seen=new Set<string>();let correct=0,incorrect=0,blank=0;
   const review:{id:string;selected:number|null;correct:number;explanation:string}[]=[];
   for(const a of body.answers){
