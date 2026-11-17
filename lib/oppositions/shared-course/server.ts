@@ -7,8 +7,9 @@ import {reservePublicRocioTurn} from "@/lib/opposition-public-preview";
 
 export type Question={id:string;question:string;options:string[];answer:number;explanation:string;topicCode?:string};
 export type Theme={id:string;code:string;number:number;title:string;blocks:{type:string;text:string;rows?:string[][]}[];glossary:{term:string;definition:string}[];rocio:{question:string;answer:string}[];tests:Question[];publicPreview:boolean;studyEdition?:string};
-export type Index={courseSlug:string;title:string;shortTitle:string;level:string;region:string;durationMonths:number;enrollmentOpen:boolean;themes:{id:string;code:string;number:number;title:string;publicPreview:boolean}[];simulations:{id:string;title:string;count:number}[];counts:Record<string,number>};
-type Resources={glossary:{term:string;definition:string;topics?:number[]}[];simulations:{id:string;title:string;count?:number}[]};
+type PracticalMeta={id:string;title:string;type:"quiz"|"office";durationMinutes:number;count:number;resourceId:string;reserveCount?:number;block?:string};
+export type Index={courseSlug:string;title:string;shortTitle:string;level:string;region:string;durationMonths:number;enrollmentOpen:boolean;themes:{id:string;code:string;number:number;title:string;publicPreview:boolean}[];simulations:{id:string;title:string;count:number}[];cases?:PracticalMeta[];exams?:PracticalMeta[];counts:Record<string,number>};
+type Resources={glossary:{term:string;definition:string;topics?:number[]}[];simulations:{id:string;title:string;count?:number}[];cases?:PracticalMeta[];exams?:PracticalMeta[]};
 
 const json=(body:unknown,status=200)=>NextResponse.json(body,{status,headers:{"Cache-Control":"private, no-store"}});
 
@@ -51,6 +52,15 @@ export async function contentGET(req:NextRequest,index:Index){
   }
   if(mode==="glossary")return json({glossary:(await resource<Resources>(course,"resources"))?.glossary||[]});
   if(!advanced)return json({error:"standard_required"},403);
+  if(mode==="case"||mode==="exam"){
+   const requested=String(req.nextUrl.searchParams.get("resource")||"").toUpperCase();
+   if(!/^(CASE|EXAM)\d{2}[AB]?$/.test(requested))return json({error:"invalid_resource"},400);
+   const list=mode==="case"?(index.cases||[]):(index.exams||[]);
+   const metadata=list.find(item=>item.resourceId===requested);
+   if(!metadata)return json({error:"invalid_resource"},400);
+   const practical=await resource<Record<string,unknown>>(course,requested);
+   return practical?json({resource:practical}):json({error:"practical_unavailable"},503);
+  }
   if(mode==="simulation"){
    const fixed=Number(req.nextUrl.searchParams.get("fixed")||0);
    if(Number.isInteger(fixed)&&fixed>=1&&fixed<=index.simulations.length){
@@ -71,18 +81,26 @@ export async function attemptPOST(req:NextRequest,index:Index){
   const course=index.courseSlug,ctx=await access(req,course),body=await req.json().catch(()=>null);
   if(!body||!Array.isArray(body.answers)||body.answers.length<1||body.answers.length>120)return json({error:"invalid_attempt"},400);
   const mode=String(body.mode||"theme"),theme=String(body.theme||"T01").toUpperCase(),publicTrial=!ctx.allowed;
-  if(!["theme","simulation"].includes(mode))return json({error:"invalid_mode"},400);
+  if(!["theme","simulation","case","exam"].includes(mode))return json({error:"invalid_mode"},400);
   if(publicTrial&&(mode!=="theme"||theme!=="T01"))return json({error:"subscription_required"},403);
   if(ctx.allowed&&ctx.plan==="esencial"&&(mode!=="theme"||body.answers.length>10))return json({error:"standard_required"},403);
   let questions:Question[]=[];
   if(mode==="theme"){
    if(!index.themes.some(t=>t.id===theme))return json({error:"invalid_theme"},400);
    questions=(await resource<Theme>(course,theme))?.tests||[];
-  }else{
+  }else if(mode==="simulation"){
    if(!ctx.allowed||ctx.plan==="esencial")return json({error:"standard_required"},403);
    const fixed=String(body.simulation||"");
    if(fixed){questions=(await resource<{questions:Question[]}>(course,fixed))?.questions||[]}
    else{const {data}=await ctx.db.from("opposition_materials").select("payload").eq("course_slug",course).like("resource_id","T%");questions=(data||[]).flatMap(v=>(v.payload as Theme).tests)}
+  }else{
+   if(!ctx.allowed||ctx.plan==="esencial")return json({error:"standard_required"},403);
+   const requested=String(body.resource||"").toUpperCase();
+   if(!/^(CASE|EXAM)\d{2}[AB]?$/.test(requested))return json({error:"invalid_resource"},400);
+   const list=mode==="case"?(index.cases||[]):(index.exams||[]);
+   if(!list.some(item=>item.resourceId===requested))return json({error:"invalid_resource"},400);
+   questions=(await resource<{questions:Question[]}>(course,requested))?.questions||[];
+   if(!questions.length)return json({error:"practical_unavailable"},503);
   }
   const keys=new Map(questions.map(q=>[q.id,q])),seen=new Set<string>();let correct=0,incorrect=0,blank=0;
   const review:{id:string;selected:number|null;correct:number;explanation:string}[]=[];
@@ -91,8 +109,8 @@ export async function attemptPOST(req:NextRequest,index:Index){
    seen.add(a.id);const q=keys.get(a.id)!;if(a.selected===null)blank++;else if(q.answer===a.selected)correct++;else incorrect++;
    review.push({id:a.id,selected:a.selected,correct:q.answer,explanation:q.explanation});
   }
-  const total=body.answers.length,metadata={correct,incorrect,blank,total,score:Math.round((correct-incorrect/3)*100)/100,type:mode,plan:ctx.plan,questionIds:[...seen]};
-  if(ctx.enrollment){const {error}=await ctx.db.from("course_learning_events").insert({user_id:ctx.user!.id,enrollment_id:ctx.enrollment.id,course_slug:course,content_id:mode==="theme"?theme:mode,event_type:"assessment_submitted",progress_percent:Math.round(correct/total*100),metadata,occurred_at:new Date().toISOString()});if(error)return json({error:"attempt_not_saved"},503)}
+  const total=body.answers.length,metadata={correct,incorrect,blank,total,score:Math.round((correct-incorrect/3)*100)/100,type:mode,plan:ctx.plan,resource:body.resource||null,questionIds:[...seen]};
+  if(ctx.enrollment){const {error}=await ctx.db.from("course_learning_events").insert({user_id:ctx.user!.id,enrollment_id:ctx.enrollment.id,course_slug:course,content_id:mode==="theme"?theme:mode==="simulation"?String(body.simulation||"simulation"):String(body.resource),event_type:"assessment_submitted",progress_percent:Math.round(correct/total*100),metadata,occurred_at:new Date().toISOString()});if(error)return json({error:"attempt_not_saved"},503)}
   return json({ok:true,...metadata,review,saved:!!ctx.enrollment});
  }catch{return json({error:"attempt_unavailable"},503)}
 }
@@ -129,3 +147,4 @@ export async function assistantPOST(req:NextRequest,index:Index){
   const answer=result.output_text||"No he podido elaborar una respuesta. Inténtalo de nuevo.";if(reservedId)await ctx.db.from("opposition_assistant_turns").update({answer}).eq("id",reservedId);return json({answer});
  }catch(error){console.error("OPPOSITION_ASSISTANT_FAILURE",{course:index.courseSlug,error:error instanceof Error?error.name:"unknown"});return json({error:"assistant_unavailable"},503)}
 }
+

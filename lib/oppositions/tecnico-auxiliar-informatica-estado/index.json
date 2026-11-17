@@ -1,1 +1,363 @@
-{"courseSlug":"tecnico-auxiliar-informatica-estado","title":"Técnico Auxiliar de Informática del Estado","shortTitle":"Técnico Auxiliar de Informática","level":"C1","region":"Estado","durationMonths":12,"prices":{"esencial":149,"estandar":299,"premium":499},"enrollmentOpen":false,"themes":[{"id":"T01","code":"T01","number":1,"title":"Constitución, derechos y Corona","publicPreview":true},{"id":"T02","code":"T02","number":2,"title":"Cortes Generales, Tribunal Constitucional y Defensor del Pueblo","publicPreview":false},{"id":"T03","code":"T03","number":3,"title":"Gobierno y relaciones con las Cortes","publicPreview":false},{"id":"T04","code":"T04","number":4,"title":"Empleo público, transparencia y Agenda 2030","publicPreview":false},{"id":"T05","code":"T05","number":5,"title":"Igualdad, no discriminación, discapacidad y dependencia","publicPreview":false},{"id":"T06","code":"T06","number":6,"title":"Sociedad de la información, identidad y firma electrónica","publicPreview":false},{"id":"T07","code":"T07","number":7,"title":"Protección de datos y derechos digitales","publicPreview":false},{"id":"T08","code":"T08","number":8,"title":"Procedimiento electrónico, interoperabilidad y servicios de acceso","publicPreview":false},{"id":"T09","code":"T09","number":9,"title":"Información, arquitectura y periféricos","publicPreview":false},{"id":"T10","code":"T10","number":10,"title":"Estructuras de datos, algoritmos, ficheros y formatos","publicPreview":false},{"id":"T11","code":"T11","number":11,"title":"Sistemas operativos Windows, Unix, Linux y móviles","publicPreview":false},{"id":"T12","code":"T12","number":12,"title":"Gestores relacionales, orientados a objetos y NoSQL","publicPreview":false},{"id":"T13","code":"T13","number":13,"title":"Modelado, diseño de bases de datos y normalización","publicPreview":false},{"id":"T14","code":"T14","number":14,"title":"Programación, control, recursión y estructuras","publicPreview":false},{"id":"T15","code":"T15","number":15,"title":"Consultas SQL, rutinas, eventos y disparadores","publicPreview":false},{"id":"T16","code":"T16","number":16,"title":"Orientación a objetos, UML y patrones","publicPreview":false},{"id":"T17","code":"T17","number":17,"title":"Java EE, Jakarta EE y .NET","publicPreview":false},{"id":"T18","code":"T18","number":18,"title":"Cliente servidor, arquitectura por capas y servicios web","publicPreview":false},{"id":"T19","code":"T19","number":19,"title":"Aplicaciones web, navegador, HTML, XML y lenguajes de script","publicPreview":false},{"id":"T20","code":"T20","number":20,"title":"Accesibilidad, usabilidad y seguridad en desarrollo","publicPreview":false},{"id":"T21","code":"T21","number":21,"title":"Repositorios, metodologías, pruebas y control de versiones","publicPreview":false},{"id":"T22","code":"T22","number":22,"title":"Administración y recuperación de sistemas operativos","publicPreview":false},{"id":"T23","code":"T23","number":23,"title":"Administración de bases, almacenamiento, copias y virtualización","publicPreview":false},{"id":"T24","code":"T24","number":24,"title":"Correo electrónico, contenedores y microservicios","publicPreview":false},{"id":"T25","code":"T25","number":25,"title":"Redes locales, usuarios, dispositivos y monitorización","publicPreview":false},{"id":"T26","code":"T26","number":26,"title":"Seguridad de sistemas, criptografía e incidencias","publicPreview":false},{"id":"T27","code":"T27","number":27,"title":"Comunicaciones, transmisión y redes inalámbricas","publicPreview":false},{"id":"T28","code":"T28","number":28,"title":"Modelos OSI y TCP/IP y direccionamiento","publicPreview":false},{"id":"T29","code":"T29","number":29,"title":"Internet, DNS, HTTP, HTTPS y TLS","publicPreview":false},{"id":"T30","code":"T30","number":30,"title":"Seguridad perimetral, VPN y protección del puesto","publicPreview":false}],"simulations":[{"id":"SIM01","title":"Simulacro teórico completo 01","count":100},{"id":"SIM02","title":"Simulacro teórico completo 02","count":100},{"id":"SIM03","title":"Simulacro teórico completo 03","count":100},{"id":"SIM04","title":"Simulacro teórico completo 04","count":100},{"id":"SIM05","title":"Simulacro teórico completo 05","count":100},{"id":"SIM06","title":"Simulacro teórico completo 06","count":100},{"id":"SIM07","title":"Simulacro teórico completo 07","count":100},{"id":"SIM08","title":"Simulacro teórico completo 08","count":100},{"id":"SIM09","title":"Simulacro teórico completo 09","count":100},{"id":"SIM10","title":"Simulacro teórico completo 10","count":100}],"counts":{"themes":30,"questions":1500,"glossary":181,"closedRocio":300,"simulations":10}}
+{
+  "courseSlug": "tecnico-auxiliar-informatica-estado",
+  "title": "Técnico Auxiliar de Informática del Estado",
+  "shortTitle": "Técnico Auxiliar de Informática",
+  "level": "C1",
+  "region": "Estado",
+  "durationMonths": 12,
+  "prices": {
+    "esencial": 149,
+    "estandar": 299,
+    "premium": 499
+  },
+  "enrollmentOpen": false,
+  "themes": [
+    {
+      "id": "T01",
+      "code": "T01",
+      "number": 1,
+      "title": "Constitución, derechos y Corona",
+      "publicPreview": true
+    },
+    {
+      "id": "T02",
+      "code": "T02",
+      "number": 2,
+      "title": "Cortes Generales, Tribunal Constitucional y Defensor del Pueblo",
+      "publicPreview": false
+    },
+    {
+      "id": "T03",
+      "code": "T03",
+      "number": 3,
+      "title": "Gobierno y relaciones con las Cortes",
+      "publicPreview": false
+    },
+    {
+      "id": "T04",
+      "code": "T04",
+      "number": 4,
+      "title": "Empleo público, transparencia y Agenda 2030",
+      "publicPreview": false
+    },
+    {
+      "id": "T05",
+      "code": "T05",
+      "number": 5,
+      "title": "Igualdad, no discriminación, discapacidad y dependencia",
+      "publicPreview": false
+    },
+    {
+      "id": "T06",
+      "code": "T06",
+      "number": 6,
+      "title": "Sociedad de la información, identidad y firma electrónica",
+      "publicPreview": false
+    },
+    {
+      "id": "T07",
+      "code": "T07",
+      "number": 7,
+      "title": "Protección de datos y derechos digitales",
+      "publicPreview": false
+    },
+    {
+      "id": "T08",
+      "code": "T08",
+      "number": 8,
+      "title": "Procedimiento electrónico, interoperabilidad y servicios de acceso",
+      "publicPreview": false
+    },
+    {
+      "id": "T09",
+      "code": "T09",
+      "number": 9,
+      "title": "Información, arquitectura y periféricos",
+      "publicPreview": false
+    },
+    {
+      "id": "T10",
+      "code": "T10",
+      "number": 10,
+      "title": "Estructuras de datos, algoritmos, ficheros y formatos",
+      "publicPreview": false
+    },
+    {
+      "id": "T11",
+      "code": "T11",
+      "number": 11,
+      "title": "Sistemas operativos Windows, Unix, Linux y móviles",
+      "publicPreview": false
+    },
+    {
+      "id": "T12",
+      "code": "T12",
+      "number": 12,
+      "title": "Gestores relacionales, orientados a objetos y NoSQL",
+      "publicPreview": false
+    },
+    {
+      "id": "T13",
+      "code": "T13",
+      "number": 13,
+      "title": "Modelado, diseño de bases de datos y normalización",
+      "publicPreview": false
+    },
+    {
+      "id": "T14",
+      "code": "T14",
+      "number": 14,
+      "title": "Programación, control, recursión y estructuras",
+      "publicPreview": false
+    },
+    {
+      "id": "T15",
+      "code": "T15",
+      "number": 15,
+      "title": "Consultas SQL, rutinas, eventos y disparadores",
+      "publicPreview": false
+    },
+    {
+      "id": "T16",
+      "code": "T16",
+      "number": 16,
+      "title": "Orientación a objetos, UML y patrones",
+      "publicPreview": false
+    },
+    {
+      "id": "T17",
+      "code": "T17",
+      "number": 17,
+      "title": "Java EE, Jakarta EE y .NET",
+      "publicPreview": false
+    },
+    {
+      "id": "T18",
+      "code": "T18",
+      "number": 18,
+      "title": "Cliente servidor, arquitectura por capas y servicios web",
+      "publicPreview": false
+    },
+    {
+      "id": "T19",
+      "code": "T19",
+      "number": 19,
+      "title": "Aplicaciones web, navegador, HTML, XML y lenguajes de script",
+      "publicPreview": false
+    },
+    {
+      "id": "T20",
+      "code": "T20",
+      "number": 20,
+      "title": "Accesibilidad, usabilidad y seguridad en desarrollo",
+      "publicPreview": false
+    },
+    {
+      "id": "T21",
+      "code": "T21",
+      "number": 21,
+      "title": "Repositorios, metodologías, pruebas y control de versiones",
+      "publicPreview": false
+    },
+    {
+      "id": "T22",
+      "code": "T22",
+      "number": 22,
+      "title": "Administración y recuperación de sistemas operativos",
+      "publicPreview": false
+    },
+    {
+      "id": "T23",
+      "code": "T23",
+      "number": 23,
+      "title": "Administración de bases, almacenamiento, copias y virtualización",
+      "publicPreview": false
+    },
+    {
+      "id": "T24",
+      "code": "T24",
+      "number": 24,
+      "title": "Correo electrónico, contenedores y microservicios",
+      "publicPreview": false
+    },
+    {
+      "id": "T25",
+      "code": "T25",
+      "number": 25,
+      "title": "Redes locales, usuarios, dispositivos y monitorización",
+      "publicPreview": false
+    },
+    {
+      "id": "T26",
+      "code": "T26",
+      "number": 26,
+      "title": "Seguridad de sistemas, criptografía e incidencias",
+      "publicPreview": false
+    },
+    {
+      "id": "T27",
+      "code": "T27",
+      "number": 27,
+      "title": "Comunicaciones, transmisión y redes inalámbricas",
+      "publicPreview": false
+    },
+    {
+      "id": "T28",
+      "code": "T28",
+      "number": 28,
+      "title": "Modelos OSI y TCP/IP y direccionamiento",
+      "publicPreview": false
+    },
+    {
+      "id": "T29",
+      "code": "T29",
+      "number": 29,
+      "title": "Internet, DNS, HTTP, HTTPS y TLS",
+      "publicPreview": false
+    },
+    {
+      "id": "T30",
+      "code": "T30",
+      "number": 30,
+      "title": "Seguridad perimetral, VPN y protección del puesto",
+      "publicPreview": false
+    }
+  ],
+  "simulations": [
+    {
+      "id": "SIM01",
+      "title": "Simulacro teórico completo 01",
+      "count": 100
+    },
+    {
+      "id": "SIM02",
+      "title": "Simulacro teórico completo 02",
+      "count": 100
+    },
+    {
+      "id": "SIM03",
+      "title": "Simulacro teórico completo 03",
+      "count": 100
+    },
+    {
+      "id": "SIM04",
+      "title": "Simulacro teórico completo 04",
+      "count": 100
+    },
+    {
+      "id": "SIM05",
+      "title": "Simulacro teórico completo 05",
+      "count": 100
+    },
+    {
+      "id": "SIM06",
+      "title": "Simulacro teórico completo 06",
+      "count": 100
+    },
+    {
+      "id": "SIM07",
+      "title": "Simulacro teórico completo 07",
+      "count": 100
+    },
+    {
+      "id": "SIM08",
+      "title": "Simulacro teórico completo 08",
+      "count": 100
+    },
+    {
+      "id": "SIM09",
+      "title": "Simulacro teórico completo 09",
+      "count": 100
+    },
+    {
+      "id": "SIM10",
+      "title": "Simulacro teórico completo 10",
+      "count": 100
+    }
+  ],
+  "counts": {
+    "themes": 30,
+    "questions": 1500,
+    "glossary": 181,
+    "closedRocio": 300,
+    "simulations": 10,
+    "cases": 4,
+    "exams": 4
+  },
+  "cases": [
+    {
+      "id": "CASE01A",
+      "title": "Supuesto práctico 1 A · Desarrollo de sistemas",
+      "type": "quiz",
+      "durationMinutes": 40,
+      "count": 20,
+      "resourceId": "CASE01A",
+      "block": "III"
+    },
+    {
+      "id": "CASE01B",
+      "title": "Supuesto práctico 1 B · Sistemas y comunicaciones",
+      "type": "quiz",
+      "durationMinutes": 40,
+      "count": 20,
+      "resourceId": "CASE01B",
+      "block": "IV"
+    },
+    {
+      "id": "CASE02A",
+      "title": "Supuesto práctico 2 A · Desarrollo de sistemas",
+      "type": "quiz",
+      "durationMinutes": 40,
+      "count": 20,
+      "resourceId": "CASE02A",
+      "block": "III"
+    },
+    {
+      "id": "CASE02B",
+      "title": "Supuesto práctico 2 B · Sistemas y comunicaciones",
+      "type": "quiz",
+      "durationMinutes": 40,
+      "count": 20,
+      "resourceId": "CASE02B",
+      "block": "IV"
+    }
+  ],
+  "exams": [
+    {
+      "id": "EXAM01A",
+      "title": "Modelo completo 1 · opción práctica A",
+      "type": "quiz",
+      "durationMinutes": 120,
+      "count": 100,
+      "resourceId": "EXAM01A",
+      "reserveCount": 10
+    },
+    {
+      "id": "EXAM01B",
+      "title": "Modelo completo 1 · opción práctica B",
+      "type": "quiz",
+      "durationMinutes": 120,
+      "count": 100,
+      "resourceId": "EXAM01B",
+      "reserveCount": 10
+    },
+    {
+      "id": "EXAM02A",
+      "title": "Modelo completo 2 · opción práctica A",
+      "type": "quiz",
+      "durationMinutes": 120,
+      "count": 100,
+      "resourceId": "EXAM02A",
+      "reserveCount": 10
+    },
+    {
+      "id": "EXAM02B",
+      "title": "Modelo completo 2 · opción práctica B",
+      "type": "quiz",
+      "durationMinutes": 120,
+      "count": 100,
+      "resourceId": "EXAM02B",
+      "reserveCount": 10
+    }
+  ]
+}
