@@ -62,7 +62,9 @@ const PURCHASABLE_OPPOSITION_NAMES = new Set([
   "Celador del Servicio Andaluz de Salud",
   "Administrativo del SERMAS",
   "Auxiliar Administrativo del SERMAS",
+  "Administrativo de la Generalitat Valenciana",
   "Auxiliar Administrativo de la Generalitat Valenciana",
+  "Técnico Auxiliar de Informática del Estado",
 ]);
 
 const officePresentationMedia: Record<string, { videoUrl: string; videoPoster: string }> = {
@@ -1439,6 +1441,8 @@ export default function CourseCatalog() {
     </section>
   );
 }
+
+
 
 
 
