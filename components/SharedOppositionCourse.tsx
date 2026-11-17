@@ -9,7 +9,7 @@ import s from "@/components/OppositionCourse.module.css";
 
 type Q={id:string;question:string;options:string[];answer:number;explanation:string};
 type Theme={id:string;code:string;number:number;title:string;blocks:{type:string;text:string;rows?:string[][]}[];glossary:{term:string;definition:string}[];rocio:{question:string;answer:string}[];tests:Q[]};
-type PracticalMeta={id:string;title:string;type:"quiz"|"office";durationMinutes:number;count:number;resourceId:string;reserveCount?:number;block?:string};
+type PracticalMeta={id:string;title:string;type:string;durationMinutes:number;count:number;resourceId:string;reserveCount?:number;block?:string};
 type OfficeCase={id:string;title:string;type:"office";durationMinutes:number;officialFormat:string;word:{title:string;purpose:string;text:string;tasks:string[];check:string[]};excel:{headers:string[];rows:Record<string,unknown>[];tasks:string[];solutionGuide:string[]};source:string};
 type Meta={courseSlug:string;title:string;shortTitle:string;level:string;region:string;durationMonths:number;enrollmentOpen:boolean;themes:{id:string;code:string;number:number;title:string;publicPreview:boolean}[];simulations:{id:string;title:string;count:number}[];cases?:PracticalMeta[];exams?:PracticalMeta[];counts:Record<string,number>};
 type Event={id:string;content_id:string;event_type:string;progress_percent:number;occurred_at:string;metadata:Record<string,unknown>};
