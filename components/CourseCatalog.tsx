@@ -46,6 +46,7 @@ const COURSE_ACCESS: Record<string,{slug:string;href:string}> = {
   "Auxiliar Administrativo de la Generalitat Valenciana": { slug:"auxiliar-administrativo-generalitat-valenciana", href:"/dashboard/auxiliar-administrativo-generalitat-valenciana" },
   "Administrativo del Sistema Valenciano de Salud": { slug:"administrativo-sanidad-valenciana", href:"/dashboard/administrativo-sanidad-valenciana" },
   "Técnico Auxiliar de Informática del Estado": { slug:"tecnico-auxiliar-informatica-estado", href:"/dashboard/tecnico-auxiliar-informatica-estado" },
+  "Ayudantes de Instituciones Penitenciarias": { slug:"ayudantes-instituciones-penitenciarias", href:"/dashboard/ayudantes-instituciones-penitenciarias" },
   "Tropa y Marinería": { slug:"tropa-y-marineria", href:"/dashboard/tropa-y-marineria" },
 };
 
@@ -67,6 +68,7 @@ const PURCHASABLE_OPPOSITION_NAMES = new Set([
   "Auxiliar Administrativo de la Generalitat Valenciana",
   "Administrativo del Sistema Valenciano de Salud",
   "Técnico Auxiliar de Informática del Estado",
+  "Ayudantes de Instituciones Penitenciarias",
 ]);
 
 const officePresentationMedia: Record<string, { videoUrl: string; videoPoster: string }> = {
@@ -147,6 +149,7 @@ const oposiciones = [
   ["Estado", "Administrativo de la Seguridad Social"],
   ["Estado", "Auxiliar Administrativo de la Seguridad Social"],
   ["Estado", "Técnico Auxiliar de Informática del Estado"],
+  ["Estado", "Ayudantes de Instituciones Penitenciarias"],
 ] as const;
 
 const allCourses: Course[] = [
@@ -158,6 +161,11 @@ const allCourses: Course[] = [
 ];
 
 function plansFor(course: Course): Plan[] {
+  if (course.name === "Ayudantes de Instituciones Penitenciarias") return [
+    { name: "Esencial", price: "149 €", detail: "Preparación a tu ritmo · 12 meses", includes: ["Temario de 50 temas con explicaciones", "Glosario de 157 términos", "10 preguntas de comprobación por tema", "Preguntas cerradas y abiertas a Rocío"] },
+    { name: "Estándar", price: "299 €", detail: "Estudio y entrenamiento · 12 meses", includes: ["Todo lo incluido en Esencial", "10 simulacros completos de 120 preguntas", "80 supuestos prácticos de 5 preguntas", "Simulacros aleatorios de 20 preguntas", "Historial y progresión de resultados", "Acompañamiento de Rocío y Fernando"] },
+    { name: "Premium", price: "499 €", detail: "Seguimiento humano semanal · 12 meses", includes: ["Todo lo incluido en Estándar", "Plan de estudio personalizado", "Revisión prioritaria del progreso", "Tutoría humana individual de 30 minutos cada semana", "Calendario de reserva modificable"] },
+  ];
   if (course.name === "Matemáticas Aplicadas a las CCSS") {
     return [
       {
@@ -988,6 +996,7 @@ export default function CourseCatalog() {
             {course.name === "Administrativo de la Generalitat Valenciana" && <p><Link href="/dashboard/administrativo-generalitat-valenciana?tema=T01">Probar gratis el tema 1</Link></p>}
             {course.name === "Auxiliar Administrativo de la Generalitat Valenciana" && <p><Link href="/dashboard/auxiliar-administrativo-generalitat-valenciana?tema=T01">Probar gratis el tema 1</Link></p>}
             {course.name === "Técnico Auxiliar de Informática del Estado" && <p><Link href="/dashboard/tecnico-auxiliar-informatica-estado?tema=T01">Probar gratis el tema 1</Link></p>}
+            {course.name === "Ayudantes de Instituciones Penitenciarias" && <p><Link href="/dashboard/ayudantes-instituciones-penitenciarias?tema=T01">Probar gratis el tema 1</Link></p>}
             {course.name === "Celador del Servicio Andaluz de Salud" && <p><Link href="/dashboard/celador-sas?tema=T01">Probar gratis el tema 1</Link></p>}
             {course.name === "Administrativo del Servicio Andaluz de Salud" && <p><Link href="/dashboard/administrativo-sas?tema=T01">Probar gratis el tema 1</Link></p>}
             {course.name === "Auxiliar Administrativo del Servicio Andaluz de Salud" && <p><Link href="/dashboard/auxiliar-administrativo-sas?tema=T01">Probar gratis el tema 1</Link></p>}
