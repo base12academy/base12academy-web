@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import { packageCourse } from "@/lib/haciendas-universidades";
 
 type Enrollment = {
   id: string;
@@ -82,7 +83,12 @@ export default function MisCursosPage(){
       {loading?<div style={panel}>Cargando tus matrículas…</div>:error?<div style={{...panel,color:"#9a3412"}}>{error}</div>:courses.length===0?<div style={panel}><h2 style={{marginTop:0}}>Todavía no tienes cursos activos</h2><p>Cuando contrates o actives una matrícula, aparecerá aquí.</p><Link href="/cursos" style={primaryButton}>Ver cursos</Link></div>:
       <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(280px,1fr))",gap:18}}>
         {courses.map(enrollment=>{
-          const course=COURSES[enrollment.course_slug];
+          const materials = packageCourse(enrollment.course_slug);
+          const course=materials ? {
+            title: materials.title,
+            href: `/dashboard/haciendas-universidades/${enrollment.course_slug}`,
+            description: "Materiales del curso y módulo autonómico",
+          } : COURSES[enrollment.course_slug];
           const starts=Date.parse(enrollment.starts_at);
           const available=starts<=Date.now();
           const title=course?.title||enrollment.course_slug;

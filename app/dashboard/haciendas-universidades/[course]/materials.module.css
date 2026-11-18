@@ -1,0 +1,63 @@
+.page {
+  min-height: 100vh;
+  padding: clamp(1.25rem, 4vw, 3rem);
+  background: #f5f8fc;
+  color: #11284d;
+}
+
+.content {
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+.content h1 {
+  margin: 1rem 0 1.5rem;
+  font-size: clamp(1.65rem, 5vw, 2.5rem);
+}
+
+.card {
+  margin: 0 0 1rem;
+  padding: 1.25rem;
+  background: #fff;
+  border: 1px solid #dbe5f1;
+  border-radius: 1rem;
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.card p {
+  margin: 0.5rem 0 1rem;
+}
+
+.card button,
+.action {
+  display: inline-block;
+  padding: 0.65rem 1rem;
+  background: #1457c7;
+  color: #fff;
+  border: 0;
+  border-radius: 0.55rem;
+  text-decoration: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.card button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.card select {
+  display: block;
+  width: 100%;
+  max-width: 26rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid #9dafc5;
+  border-radius: 0.4rem;
+  background: #fff;
+  color: inherit;
+}

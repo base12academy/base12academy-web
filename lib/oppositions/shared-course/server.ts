@@ -4,6 +4,7 @@ import {NextRequest,NextResponse} from "next/server";
 import {getSupabase} from "@/lib/supabase/server";
 import {isCourseAdministrator} from "@/lib/course-access";
 import {reservePublicRocioTurn} from "@/lib/opposition-public-preview";
+import {getIncludedModuleEnrollment} from "@/lib/haciendas-universidades-access";
 
 export type Question={id:string;question:string;options:string[];answer:number;explanation:string;topicCode?:string};
 export type Theme={id:string;code:string;number:number;title:string;blocks:{type:string;text:string;rows?:string[][]}[];glossary:{term:string;definition:string}[];rocio:{question:string;answer:string}[];tests:Question[];publicPreview:boolean;studyEdition?:string};
@@ -26,6 +27,10 @@ async function access(req:NextRequest,course:string){
   .or(`expires_at.is.null,expires_at.gte.${now}`);
  const rank:Record<string,number>={esencial:1,estandar:2,standard:2,premium:3};
  const enrollment=(rows||[]).sort((a,b)=>(rank[b.plan_slug]||0)-(rank[a.plan_slug]||0))[0]||null;
+ const bundled = !enrollmentError && !enrollment
+  ? await getIncludedModuleEnrollment(db, data.user.id, course)
+  : null;
+ if (bundled) return {db,user:data.user,enrollment:bundled,administrator:false,plan:bundled.plan_slug,allowed:true};
  return {db,user:data.user,enrollment,administrator:false,plan:enrollment?.plan_slug||"esencial",allowed:!enrollmentError&&!!enrollment};
 }
 async function resource<T>(course:string,id:string):Promise<T|null>{

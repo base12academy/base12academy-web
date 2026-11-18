@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabase } from "@/lib/supabase/server";
+import { getIncludedModuleEnrollment } from "@/lib/haciendas-universidades-access";
 
 const allowedEvents = new Set([
   "opened", "video_started", "video_completed", "activity_started",
@@ -35,7 +36,15 @@ export async function POST(req: NextRequest) {
     .eq("status", "active")
     .maybeSingle();
 
-  if (enrollmentError || !enrollment) {
+  let enrollmentId = enrollment?.id;
+  if (!enrollmentError && !enrollmentId) {
+    try {
+      enrollmentId = (await getIncludedModuleEnrollment(supabase, authData.user.id, courseSlug))?.id;
+    } catch {
+      return NextResponse.json({ error: "progress_unavailable" }, { status: 503 });
+    }
+  }
+  if (enrollmentError || !enrollmentId) {
     return NextResponse.json({ error: "no_active_enrollment" }, { status: 403 });
   }
 
@@ -45,7 +54,7 @@ export async function POST(req: NextRequest) {
     : null;
   const { error: eventError } = await supabase.from("course_learning_events").insert({
     user_id: authData.user.id,
-    enrollment_id: enrollment.id,
+    enrollment_id: enrollmentId,
     course_slug: courseSlug,
     content_id: contentId,
     event_type: eventType,
@@ -62,7 +71,7 @@ export async function POST(req: NextRequest) {
   if (eventType === "opened") {
     await supabase.from("course_enrollments")
       .update({ first_content_accessed_at: now, updated_at: now })
-      .eq("id", enrollment.id).is("first_content_accessed_at", null);
+      .eq("id", enrollmentId).is("first_content_accessed_at", null);
   }
 
   return NextResponse.json({ ok: true });
