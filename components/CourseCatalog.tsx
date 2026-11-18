@@ -437,11 +437,16 @@ function plansFor(course: Course): Plan[] {
       { name: "Premium", price: "249,90 €", detail: "Aplicar con revisión y acompañamiento", includes: ["Todo lo incluido en Estándar", "Revisión humana completa del proyecto", "Comprobación posterior de los ajustes", "Una mentoría individual de 45 minutos", "Hasta 3 consultas breves sobre el proyecto", "Informe de fortalezas y prioridades de mejora", "Certificado Premium"] },
     ];
   }
-  return [
+  const oppositionPlans = [
     { name: "Esencial", price: "149 €", detail: "Preparación completa a tu ritmo · 12 meses", includes: ["Temario estructurado de la oposición", "Glosarios y cuadros de apoyo", "Fuentes oficiales vinculadas", "Un test de comprobación por tema", "Preguntas cerradas y abiertas a Rocío"] },
     { name: "Estándar", price: "299 €", detail: "Más práctica y entrenamiento · 12 meses", includes: ["Todo lo incluido en Esencial", "Banco de 50 preguntas por tema", "Simulacros de 20 preguntas aleatorias", "Historial y progresión de resultados", "Acompañamiento de Rocío y Fernando"] },
     { name: "Premium", price: "499 €", detail: "Seguimiento humano semanal · 12 meses", includes: ["Todo lo incluido en Estándar", "Plan de estudio personalizado", "Revisión prioritaria del progreso", "Tutoría humana individual de 30 minutos cada semana", "Calendario de reserva modificable"] },
   ];
+  if (!Object.hasOwn(BUNDLED_OPPOSITION_SLUGS, course.name)) return oppositionPlans;
+  return oppositionPlans.map(plan => ({
+    ...plan,
+    includes: [...plan.includes, "Un módulo autonómico de la comunidad que elijas, con normativa, instituciones, competencias y ejercicios."],
+  }));
 }
 
 function isRecommendedPlan(course: Course, plan: Plan) {
