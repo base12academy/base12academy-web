@@ -1,0 +1,403 @@
+{
+  "courseSlug": "administrativos-haciendas-locales",
+  "title": "Administrativos de Haciendas Locales",
+  "shortTitle": "Administrativos de Haciendas Locales",
+  "level": "C1",
+  "region": "Haciendas Locales",
+  "durationMonths": 12,
+  "enrollmentOpen": false,
+  "themes": [
+    {
+      "id": "T01",
+      "code": "T01",
+      "number": 1,
+      "title": "Constitución Española I",
+      "publicPreview": true
+    },
+    {
+      "id": "T02",
+      "code": "T02",
+      "number": 2,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T03",
+      "code": "T03",
+      "number": 3,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T04",
+      "code": "T04",
+      "number": 4,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T05",
+      "code": "T05",
+      "number": 5,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T06",
+      "code": "T06",
+      "number": 6,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T07",
+      "code": "T07",
+      "number": 7,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T08",
+      "code": "T08",
+      "number": 8,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T09",
+      "code": "T09",
+      "number": 9,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T10",
+      "code": "T10",
+      "number": 10,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T11",
+      "code": "T11",
+      "number": 11,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T12",
+      "code": "T12",
+      "number": 12,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T13",
+      "code": "T13",
+      "number": 13,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T14",
+      "code": "T14",
+      "number": 14,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T15",
+      "code": "T15",
+      "number": 15,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T16",
+      "code": "T16",
+      "number": 16,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T17",
+      "code": "T17",
+      "number": 17,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T18",
+      "code": "T18",
+      "number": 18,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T19",
+      "code": "T19",
+      "number": 19,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T20",
+      "code": "T20",
+      "number": 20,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T21",
+      "code": "T21",
+      "number": 21,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T22",
+      "code": "T22",
+      "number": 22,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T23",
+      "code": "T23",
+      "number": 23,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T24",
+      "code": "T24",
+      "number": 24,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T25",
+      "code": "T25",
+      "number": 25,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T26",
+      "code": "T26",
+      "number": 26,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T27",
+      "code": "T27",
+      "number": 27,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T28",
+      "code": "T28",
+      "number": 28,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T29",
+      "code": "T29",
+      "number": 29,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T30",
+      "code": "T30",
+      "number": 30,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T31",
+      "code": "T31",
+      "number": 31,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T32",
+      "code": "T32",
+      "number": 32,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T33",
+      "code": "T33",
+      "number": 33,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T34",
+      "code": "T34",
+      "number": 34,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T35",
+      "code": "T35",
+      "number": 35,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T36",
+      "code": "T36",
+      "number": 36,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T37",
+      "code": "T37",
+      "number": 37,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T38",
+      "code": "T38",
+      "number": 38,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T39",
+      "code": "T39",
+      "number": 39,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T40",
+      "code": "T40",
+      "number": 40,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T41",
+      "code": "T41",
+      "number": 41,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T42",
+      "code": "T42",
+      "number": 42,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T43",
+      "code": "T43",
+      "number": 43,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T44",
+      "code": "T44",
+      "number": 44,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T45",
+      "code": "T45",
+      "number": 45,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T46",
+      "code": "T46",
+      "number": 46,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T47",
+      "code": "T47",
+      "number": 47,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T48",
+      "code": "T48",
+      "number": 48,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T49",
+      "code": "T49",
+      "number": 49,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T50",
+      "code": "T50",
+      "number": 50,
+      "title": "Temario",
+      "publicPreview": false
+    },
+    {
+      "id": "T51",
+      "code": "T51",
+      "number": 51,
+      "title": "Temario",
+      "publicPreview": false
+    }
+  ],
+  "simulations": [
+    {
+      "id": "SIM01",
+      "title": "Simulacro 01",
+      "count": 20
+    },
+    {
+      "id": "SIM02",
+      "title": "Simulacro 02",
+      "count": 20
+    },
+    {
+      "id": "SIM03",
+      "title": "Simulacro 03",
+      "count": 20
+    },
+    {
+      "id": "SIM04",
+      "title": "Simulacro 04",
+      "count": 20
+    },
+    {
+      "id": "SIM05",
+      "title": "Simulacro 05",
+      "count": 20
+    }
+  ],
+  "simulationNote": "Practica con un modelo aleatorio de 20 preguntas o con los cinco simulacros completos del curso.",
+  "counts": {
+    "themes": 51,
+    "questions": 2550,
+    "glossary": 405,
+    "closedRocio": 306,
+    "simulations": 5
+  }
+}

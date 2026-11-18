@@ -32,7 +32,7 @@ async function requestMaterials(slug: string, options: { kind?: PackageKind; reg
   return response.json();
 }
 
-export default function Materials({ slug, title }: { slug: string; title: string }) {
+export default function Materials({ slug, title, classroomHref }: { slug: string; title: string; classroomHref?: string }) {
   const [access, setAccess] = useState<MaterialsAccess | null>(null);
   const [loadError, setLoadError] = useState("");
   const [downloadError, setDownloadError] = useState("");
@@ -81,7 +81,7 @@ export default function Materials({ slug, title }: { slug: string; title: string
   return (
     <section className={styles.page}>
       <div className={styles.content}>
-        <Link href="/dashboard/mis-cursos">Volver a Mis cursos</Link>
+        <Link href={classroomHref ?? "/dashboard/mis-cursos"}>{classroomHref ? "Volver al aula" : "Volver a Mis cursos"}</Link>
         <h1>{title}</h1>
         {loadError ? <p role="alert">{loadError}</p> : !access ? <p role="status">Cargando materiales…</p> : (
           <>

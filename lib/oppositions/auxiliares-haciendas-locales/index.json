@@ -1,0 +1,256 @@
+{
+  "courseSlug": "auxiliares-haciendas-locales",
+  "title": "Auxiliares Administrativos de Haciendas Locales",
+  "shortTitle": "Auxiliares Administrativos de Haciendas Locales",
+  "level": "C2",
+  "region": "Haciendas Locales",
+  "durationMonths": 12,
+  "enrollmentOpen": false,
+  "themes": [
+    {
+      "id": "T01",
+      "code": "T01",
+      "number": 1,
+      "title": "Constitución Española: principios, derechos y garantías",
+      "publicPreview": true
+    },
+    {
+      "id": "T02",
+      "code": "T02",
+      "number": 2,
+      "title": "Instituciones del Estado y organización territorial",
+      "publicPreview": false
+    },
+    {
+      "id": "T03",
+      "code": "T03",
+      "number": 3,
+      "title": "Fuentes del Derecho y Unión Europea",
+      "publicPreview": false
+    },
+    {
+      "id": "T04",
+      "code": "T04",
+      "number": 4,
+      "title": "Administración local y clases de entidades",
+      "publicPreview": false
+    },
+    {
+      "id": "T05",
+      "code": "T05",
+      "number": 5,
+      "title": "El municipio y el padrón",
+      "publicPreview": false
+    },
+    {
+      "id": "T06",
+      "code": "T06",
+      "number": 6,
+      "title": "Órganos municipales y atribuciones",
+      "publicPreview": false
+    },
+    {
+      "id": "T07",
+      "code": "T07",
+      "number": 7,
+      "title": "Competencias, servicios, acuerdos y ordenanzas municipales",
+      "publicPreview": false
+    },
+    {
+      "id": "T08",
+      "code": "T08",
+      "number": 8,
+      "title": "Personas interesadas, representación, identificación y firma",
+      "publicPreview": false
+    },
+    {
+      "id": "T09",
+      "code": "T09",
+      "number": 9,
+      "title": "Derechos, registros, plazos, obligación de resolver y silencio",
+      "publicPreview": false
+    },
+    {
+      "id": "T10",
+      "code": "T10",
+      "number": 10,
+      "title": "Actos administrativos, notificaciones e invalidez",
+      "publicPreview": false
+    },
+    {
+      "id": "T11",
+      "code": "T11",
+      "number": 11,
+      "title": "Fases del procedimiento administrativo común",
+      "publicPreview": false
+    },
+    {
+      "id": "T12",
+      "code": "T12",
+      "number": 12,
+      "title": "Ejecución, revisión y recursos administrativos",
+      "publicPreview": false
+    },
+    {
+      "id": "T13",
+      "code": "T13",
+      "number": 13,
+      "title": "Régimen jurídico del sector público",
+      "publicPreview": false
+    },
+    {
+      "id": "T14",
+      "code": "T14",
+      "number": 14,
+      "title": "Administración electrónica y comunicaciones con la ciudadanía",
+      "publicPreview": false
+    },
+    {
+      "id": "T15",
+      "code": "T15",
+      "number": 15,
+      "title": "Transparencia, acceso a la información y protección de datos",
+      "publicPreview": false
+    },
+    {
+      "id": "T16",
+      "code": "T16",
+      "number": 16,
+      "title": "Igualdad de trato y prevención de la discriminación",
+      "publicPreview": false
+    },
+    {
+      "id": "T17",
+      "code": "T17",
+      "number": 17,
+      "title": "Empleo público: clases, acceso y pérdida de la condición",
+      "publicPreview": false
+    },
+    {
+      "id": "T18",
+      "code": "T18",
+      "number": 18,
+      "title": "Derechos, deberes, incompatibilidades y disciplina",
+      "publicPreview": false
+    },
+    {
+      "id": "T19",
+      "code": "T19",
+      "number": 19,
+      "title": "Prevención de riesgos laborales en oficinas públicas",
+      "publicPreview": false
+    },
+    {
+      "id": "T20",
+      "code": "T20",
+      "number": 20,
+      "title": "Hacienda local: recursos, tributos y recaudación",
+      "publicPreview": false
+    },
+    {
+      "id": "T21",
+      "code": "T21",
+      "number": 21,
+      "title": "Presupuesto local y fases del gasto",
+      "publicPreview": false
+    },
+    {
+      "id": "T22",
+      "code": "T22",
+      "number": 22,
+      "title": "Contratos, subvenciones, actividad y bienes locales: nociones básicas",
+      "publicPreview": false
+    },
+    {
+      "id": "T23",
+      "code": "T23",
+      "number": 23,
+      "title": "Atención a la ciudadanía, información, quejas y accesibilidad",
+      "publicPreview": false
+    },
+    {
+      "id": "T24",
+      "code": "T24",
+      "number": 24,
+      "title": "Documentos administrativos, registro, expediente y archivo",
+      "publicPreview": false
+    },
+    {
+      "id": "T25",
+      "code": "T25",
+      "number": 25,
+      "title": "Informática básica y seguridad en el puesto de trabajo",
+      "publicPreview": false
+    },
+    {
+      "id": "T26",
+      "code": "T26",
+      "number": 26,
+      "title": "Windows y gestión de archivos y carpetas",
+      "publicPreview": false
+    },
+    {
+      "id": "T27",
+      "code": "T27",
+      "number": 27,
+      "title": "Microsoft Word y documentos administrativos",
+      "publicPreview": false
+    },
+    {
+      "id": "T28",
+      "code": "T28",
+      "number": 28,
+      "title": "Microsoft Excel y tratamiento de datos",
+      "publicPreview": false
+    },
+    {
+      "id": "T29",
+      "code": "T29",
+      "number": 29,
+      "title": "Bases de datos y Microsoft Access",
+      "publicPreview": false
+    },
+    {
+      "id": "T30",
+      "code": "T30",
+      "number": 30,
+      "title": "Internet, navegación y correo electrónico",
+      "publicPreview": false
+    }
+  ],
+  "simulations": [
+    {
+      "id": "SIM01",
+      "title": "Simulacro mixto 01",
+      "count": 20
+    },
+    {
+      "id": "SIM02",
+      "title": "Simulacro mixto 02",
+      "count": 20
+    },
+    {
+      "id": "SIM03",
+      "title": "Simulacro mixto 03",
+      "count": 20
+    },
+    {
+      "id": "SIM04",
+      "title": "Simulacro mixto 04",
+      "count": 20
+    },
+    {
+      "id": "SIM05",
+      "title": "Simulacro mixto 05",
+      "count": 20
+    }
+  ],
+  "simulationNote": "Practica con un modelo aleatorio de 20 preguntas o con los cinco simulacros completos del curso.",
+  "counts": {
+    "themes": 30,
+    "questions": 1500,
+    "glossary": 180,
+    "closedRocio": 180,
+    "simulations": 5
+  }
+}

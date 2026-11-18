@@ -7,7 +7,7 @@ import {reservePublicRocioTurn} from "@/lib/opposition-public-preview";
 import {getIncludedModuleEnrollment} from "@/lib/haciendas-universidades-access";
 
 export type Question={id:string;question:string;options:string[];answer:number;explanation:string;topicCode?:string};
-export type Theme={id:string;code:string;number:number;title:string;blocks:{type:string;text:string;rows?:string[][]}[];glossary:{term:string;definition:string}[];rocio:{question:string;answer:string}[];tests:Question[];publicPreview:boolean;studyEdition?:string};
+export type Theme={id:string;code:string;number:number;title:string;blocks:{type:string;text:string;rows?:string[][]}[];glossary:{term:string;definition:string}[];rocio:{question:string;answer:string}[];tests:Question[];checkTests?:Question[];publicPreview:boolean;studyEdition?:string};
 type PracticalMeta={id:string;title:string;type:string;durationMinutes:number;count:number;resourceId:string;reserveCount?:number;block?:string};
 export type Index={courseSlug:string;title:string;shortTitle:string;level:string;region:string;durationMonths:number;enrollmentOpen:boolean;themes:{id:string;code:string;number:number;title:string;publicPreview:boolean}[];simulations:{id:string;title:string;count:number}[];cases?:PracticalMeta[];exams?:PracticalMeta[];counts:Record<string,number>};
 type Resources={glossary:{term:string;definition:string;topics?:number[]}[];simulations:{id:string;title:string;count?:number}[];cases?:PracticalMeta[];exams?:PracticalMeta[]};
@@ -50,7 +50,9 @@ export async function contentGET(req:NextRequest,index:Index){
   if(mode==="theme"){
    const theme=await resource<Theme>(course,id);if(!theme)return json({error:"theme_not_found"},404);
    const limit=!ctx.allowed&&id==="T01"?50:advanced?50:10;
-   return json({theme:{...theme,tests:publicQuestions(theme.tests.slice(0,limit))},plan:ctx.plan,access:ctx.administrator?"administrator":ctx.allowed?"enrollment":"public_preview",allowed:ctx.allowed});
+   const { checkTests, ...material } = theme;
+   const tests = checkTests && !advanced ? checkTests : material.tests.slice(0, limit);
+   return json({theme:{...material,tests:publicQuestions(tests),...(checkTests && advanced ? {checkTests:publicQuestions(checkTests)} : {})},plan:ctx.plan,access:ctx.administrator?"administrator":ctx.allowed?"enrollment":"public_preview",allowed:ctx.allowed});
   }
   if(!ctx.allowed)return json({error:"subscription_required"},403);
   if(mode==="history"){
@@ -94,9 +96,12 @@ export async function attemptPOST(req:NextRequest,index:Index){
   if(publicTrial&&(mode!=="theme"||theme!=="T01"))return json({error:"subscription_required"},403);
   if(ctx.allowed&&ctx.plan==="esencial"&&(mode!=="theme"||body.answers.length>10))return json({error:"standard_required"},403);
   let questions:Question[]=[];
+  let checkTests:Question[] | undefined;
   if(mode==="theme"){
    if(!index.themes.some(t=>t.id===theme))return json({error:"invalid_theme"},400);
-   questions=(await resource<Theme>(course,theme))?.tests||[];
+   const material = await resource<Theme>(course, theme);
+   checkTests = material?.checkTests;
+   questions = checkTests && (publicTrial || ctx.plan === "esencial") ? checkTests : (material?.tests || []);
   }else if(mode==="simulation"){
    if(!ctx.allowed||ctx.plan==="esencial")return json({error:"standard_required"},403);
    const fixed=String(body.simulation||"").toUpperCase();
@@ -111,10 +116,10 @@ export async function attemptPOST(req:NextRequest,index:Index){
    questions=(await resource<{questions:Question[]}>(course,requested))?.questions||[];
    if(!questions.length)return json({error:"practical_unavailable"},503);
   }
-  const expected=mode==="theme"?(ctx.allowed&&ctx.plan==="esencial"?[questions.slice(0,10)]:[questions.slice(0,10),questions]):mode==="simulation"&&!body.simulation?[]:[questions];
+  const expected=mode==="theme"?(ctx.allowed&&ctx.plan==="esencial"?[questions.slice(0,10)]:[checkTests ?? questions.slice(0,10),questions]):mode==="simulation"&&!body.simulation?[]:[questions];
   if(mode==="simulation"&&!body.simulation&&body.answers.length!==20)return json({error:"invalid_attempt"},400);
   if(expected.length&&!expected.some(group=>sameIds(body.answers,group)))return json({error:"invalid_attempt"},400);
-  const keys=new Map(questions.map(q=>[q.id,q])),seen=new Set<string>();let correct=0,incorrect=0,blank=0;
+  const keys=new Map([...questions,...(checkTests||[])].map(q=>[q.id,q])),seen=new Set<string>();let correct=0,incorrect=0,blank=0;
   const review:{id:string;selected:number|null;correct:number;explanation:string}[]=[];
   for(const a of body.answers){
    if(!a||typeof a.id!=="string"||seen.has(a.id)||!keys.has(a.id)||(a.selected!==null&&(!Number.isInteger(a.selected)||a.selected<0||a.selected>3)))return json({error:"invalid_answer"},400);
