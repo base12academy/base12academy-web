@@ -10,6 +10,7 @@ from zipfile import ZipFile
 
 NS = {"w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main"}
 VAL = "{" + NS["w"] + "}val"
+REL_ID = "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id"
 COURSES = {
     "administrativos-haciendas-locales": (
         "Base12_Haciendas_Locales", "Administrativos de Haciendas Locales", "C1", 51,
@@ -27,6 +28,13 @@ def paragraph_text(node):
 def document(archive, filename):
     with ZipFile(io.BytesIO(archive.read(filename))) as source:
         root = ET.fromstring(source.read("word/document.xml"))
+        relationships = ET.fromstring(source.read("word/_rels/document.xml.rels"))
+    links = {
+        item.attrib["Id"]: item.attrib["Target"]
+        for item in relationships
+        if item.attrib.get("TargetMode") == "External"
+        and item.attrib.get("Type", "").endswith("/hyperlink")
+    }
     blocks = []
     for element in root.find("w:body", NS):
         kind = element.tag.rsplit("}", 1)[-1]
@@ -35,6 +43,10 @@ def document(archive, filename):
             text = paragraph_text(element)
             if text:
                 blocks.append((style.get(VAL) if style is not None else "", text))
+                for hyperlink in element.iterfind(".//w:hyperlink", NS):
+                    url = links.get(hyperlink.get(REL_ID))
+                    if url and url.startswith("https://") and url != text:
+                        blocks.append(("source", url))
         if kind == "tbl":
             rows = [["\n".join(filter(None, map(paragraph_text, cell.findall("w:p", NS))))
                      for cell in row.findall("w:tc", NS)] for row in element.findall("w:tr", NS)]
@@ -138,7 +150,7 @@ def course_data(directory, slug, config):
             prefix = f"Tema_{number:02}_"
             content = material(essential, "01_Temario", prefix)
             name = re.sub(r"^Tema\s+0*\d+\s*[.·:\-]?\s*", "", content[0][1], flags=re.I)
-            if not name or name.lower() == "temario y explicaciones":
+            if not name or name.lower() in {"temario", "temario y explicaciones"}:
                 name = re.sub(r"^Tema\s+0*\d+\s*[.·:\-]?\s*", "", content[1][1], flags=re.I)
             basics = questions(material(essential, "02_Comprobacion", prefix),
                                material(essential, "02_Comprobacion", prefix, True), code + "C", 10)

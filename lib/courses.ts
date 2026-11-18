@@ -1,6 +1,37 @@
 import { PERIODIC_TABLE_LICENSE_PRICE_CENTS } from "@/lib/chemistry/periodic-table-product";
+import { bundledOppositionEnrollment } from "@/lib/haciendas-universidades";
+
+function bundledOppositionPlan(courseSlug: keyof typeof bundledOppositionEnrollment, title: string, planSlug: "esencial" | "estandar" | "premium", label: string, price: number) {
+  return {
+    slug: `${courseSlug}-${planSlug}`,
+    courseSlug,
+    planSlug,
+    title: `${title} · ${label}`,
+    shortTitle: `${title} · ${label}`,
+    price,
+    priceInCents: price * 100,
+    mode: "one_time",
+    active: bundledOppositionEnrollment[courseSlug],
+    accessType: "fixed_term",
+    accessMonths: 12,
+    comingSoon: !bundledOppositionEnrollment[courseSlug],
+  } as const;
+}
 
 export const courses = {
+  "administrativos-haciendas-locales-esencial": bundledOppositionPlan("administrativos-haciendas-locales", "Administrativos de Haciendas Locales", "esencial", "Esencial", 149),
+  "administrativos-haciendas-locales-estandar": bundledOppositionPlan("administrativos-haciendas-locales", "Administrativos de Haciendas Locales", "estandar", "Estándar", 299),
+  "administrativos-haciendas-locales-premium": bundledOppositionPlan("administrativos-haciendas-locales", "Administrativos de Haciendas Locales", "premium", "Premium", 499),
+  "auxiliares-haciendas-locales-esencial": bundledOppositionPlan("auxiliares-haciendas-locales", "Auxiliares Administrativos de Haciendas Locales", "esencial", "Esencial", 149),
+  "auxiliares-haciendas-locales-estandar": bundledOppositionPlan("auxiliares-haciendas-locales", "Auxiliares Administrativos de Haciendas Locales", "estandar", "Estándar", 299),
+  "auxiliares-haciendas-locales-premium": bundledOppositionPlan("auxiliares-haciendas-locales", "Auxiliares Administrativos de Haciendas Locales", "premium", "Premium", 499),
+  "administrativos-universidades-esencial": bundledOppositionPlan("administrativos-universidades", "Administrativos de Universidades", "esencial", "Esencial", 149),
+  "administrativos-universidades-estandar": bundledOppositionPlan("administrativos-universidades", "Administrativos de Universidades", "estandar", "Estándar", 299),
+  "administrativos-universidades-premium": bundledOppositionPlan("administrativos-universidades", "Administrativos de Universidades", "premium", "Premium", 499),
+  "auxiliares-universidades-esencial": bundledOppositionPlan("auxiliares-universidades", "Auxiliares Administrativos de Universidades", "esencial", "Esencial", 149),
+  "auxiliares-universidades-estandar": bundledOppositionPlan("auxiliares-universidades", "Auxiliares Administrativos de Universidades", "estandar", "Estándar", 299),
+  "auxiliares-universidades-premium": bundledOppositionPlan("auxiliares-universidades", "Auxiliares Administrativos de Universidades", "premium", "Premium", 499),
+
   "historia-espana-esencial": { slug: "historia-espana-esencial", courseSlug: "historia-espana", planSlug: "esencial", title: "Historia de España · Esencial", shortTitle: "Historia de España · Esencial", price: 249, priceInCents: 24900, mode: "one_time", active: true, accessType: "lifetime", comingSoon: false },
   "historia-espana-estandar": { slug: "historia-espana-estandar", courseSlug: "historia-espana", planSlug: "estandar", title: "Historia de España · Estándar", shortTitle: "Historia de España · Estándar", price: 299, priceInCents: 29900, mode: "one_time", active: true, accessType: "lifetime", comingSoon: false },
   "historia-espana-premium": { slug: "historia-espana-premium", courseSlug: "historia-espana", planSlug: "premium", title: "Historia de España · Premium", shortTitle: "Historia de España · Premium", price: 399, priceInCents: 39900, mode: "one_time", active: true, accessType: "lifetime", comingSoon: false },

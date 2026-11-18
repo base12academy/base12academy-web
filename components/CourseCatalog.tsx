@@ -9,6 +9,7 @@ import ClassBookingCalendar from "./ClassBookingCalendar";
 import RecommendedBadge from "./RecommendedBadge";
 import { isPeriodicTableIncludedPlan } from "@/lib/chemistry/periodic-table-product";
 import { supabase } from "@/lib/supabaseClient";
+import { bundledOppositionEnrollment } from "@/lib/haciendas-universidades";
 import tehaloStyles from "./TehaloOppositionCard.module.css";
 import TehaloConfigurator from "./tehalo-opositores/TehaloConfigurator";
 
@@ -23,7 +24,16 @@ type EnrollmentAccess = {
   expires_at: string | null;
 };
 
+const BUNDLED_OPPOSITION_SLUGS = {
+  "Administrativos Haciendas Locales": "administrativos-haciendas-locales",
+  "Auxiliares Administrativos Haciendas Locales": "auxiliares-haciendas-locales",
+  "Administrativos de Universidades": "administrativos-universidades",
+  "Auxiliares Administrativos de Universidades": "auxiliares-universidades",
+} as const;
+
 const COURSE_ACCESS: Record<string,{slug:string;href:string}> = {
+  ...Object.fromEntries(Object.entries(BUNDLED_OPPOSITION_SLUGS)
+    .map(([name, slug]) => [name, { slug, href: `/dashboard/haciendas-universidades/${slug}` }])),
   "Historia de España": { slug:"historia-espana", href:"/dashboard/historia-espana" },
   "Historia de la Filosofía": { slug:"historia-filosofia", href:"/dashboard/filosofia" },
   "Matemáticas II": { slug:"matematicas-ii", href:"/dashboard/matematicas-ii" },
@@ -51,6 +61,9 @@ const COURSE_ACCESS: Record<string,{slug:string;href:string}> = {
 };
 
 const PURCHASABLE_OPPOSITION_NAMES = new Set([
+  ...Object.entries(BUNDLED_OPPOSITION_SLUGS)
+    .filter(([, slug]) => bundledOppositionEnrollment[slug])
+    .map(([name]) => name),
   "Administrativo de la Junta de Andalucía",
   "Auxiliar Administrativo de la Junta de Andalucía",
   "Administrativo del Estado",
@@ -988,6 +1001,12 @@ export default function CourseCatalog() {
                 </small>
                 <h2 id="modal-course-title">{course.name}</h2>
                 <p>Selecciona una modalidad y revisa la información antes de continuar.</p>
+                {(course.region === "Haciendas Locales" || course.region === "Universidades") && (
+                  <p>La matrícula incluye el bloque común y un módulo autonómico. Elige la comunidad al entrar en el aula.</p>
+                )}
+                {course.region === "Haciendas Locales" && plan.name === "Premium" && (
+                  <p>La tutoría se reserva desde el aula. El calendario está pendiente de publicar nuevas franjas.</p>
+                )}
               </>
             )}
             {course.name === "Administrativo del Sistema Valenciano de Salud" && <p><Link href="/dashboard/administrativo-sanidad-valenciana?tema=T01">Probar gratis el tema 1</Link></p>}

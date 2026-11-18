@@ -1,3 +1,10 @@
+export const bundledOppositionEnrollment = {
+  "administrativos-haciendas-locales": true,
+  "auxiliares-haciendas-locales": true,
+  "administrativos-universidades": false,
+  "auxiliares-universidades": false,
+} as const;
+
 export const plans = { esencial: "Esencial", estandar: "Estándar", premium: "Premium" } as const;
 export type PackagePlan = keyof typeof plans;
 
