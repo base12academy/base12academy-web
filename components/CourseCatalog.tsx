@@ -163,7 +163,7 @@ const allCourses: Course[] = [
 function plansFor(course: Course): Plan[] {
   if (course.name === "Ayudantes de Instituciones Penitenciarias") return [
     { name: "Esencial", price: "149 €", detail: "Preparación a tu ritmo · 12 meses", includes: ["Temario de 50 temas con explicaciones", "Glosario de 157 términos", "10 preguntas de comprobación por tema", "Preguntas cerradas y abiertas a Rocío"] },
-    { name: "Estándar", price: "299 €", detail: "Estudio y entrenamiento · 12 meses", includes: ["Todo lo incluido en Esencial", "10 simulacros completos de 120 preguntas", "80 supuestos prácticos de 5 preguntas", "Simulacros aleatorios de 20 preguntas", "Historial y progresión de resultados", "Acompañamiento de Rocío y Fernando"] },
+    { name: "Estándar", price: "299 €", detail: "Estudio y entrenamiento · 12 meses", includes: ["Todo lo incluido en Esencial", "Banco de 50 preguntas por tema (2.500 preguntas)", "10 simulacros completos de 120 preguntas", "80 supuestos prácticos de 5 preguntas", "Simulacros aleatorios de 20 preguntas", "Historial y progresión de resultados", "Acompañamiento de Rocío y Fernando"] },
     { name: "Premium", price: "499 €", detail: "Seguimiento humano semanal · 12 meses", includes: ["Todo lo incluido en Estándar", "Plan de estudio personalizado", "Revisión prioritaria del progreso", "Tutoría humana individual de 30 minutos cada semana", "Calendario de reserva modificable"] },
   ];
   if (course.name === "Matemáticas Aplicadas a las CCSS") {
