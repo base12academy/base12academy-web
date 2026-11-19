@@ -52,19 +52,6 @@ export default function Materials({ slug, title, classroomHref }: { slug: string
     return () => { active = false; };
   }, [slug]);
 
-  async function download(kind: PackageKind) {
-    setLoading(true);
-    setDownloadError("");
-    try {
-      const { url } = await requestMaterials(slug, { kind });
-      window.location.assign(url);
-    } catch (error) {
-      setDownloadError(error instanceof Error ? error.message : "No se ha podido iniciar la descarga.");
-    } finally {
-      setLoading(false);
-    }
-  }
-
   async function selectRegion() {
     setLoading(true);
     setDownloadError("");
@@ -88,15 +75,14 @@ export default function Materials({ slug, title, classroomHref }: { slug: string
             <div className={styles.card}>
               <h2>Paquete {access.plan}</h2>
               <p>Materiales del bloque común del curso.</p>
-              <button type="button" disabled={loading} onClick={() => download("core")}>Descargar paquete ZIP</button>
+              <Link className={styles.action} href={classroomHref ?? `/dashboard/haciendas-universidades/${slug}`}>Estudiar dentro del aula</Link>
             </div>
             <div className={styles.card}>
               <h2>Módulo autonómico</h2>
               {access.region ? (
                 <>
                   <p>{access.region.label}</p>
-                  {access.region.href ? <Link className={styles.action} href={access.region.href}>Abrir módulo</Link>
-                    : <button type="button" disabled={loading} onClick={() => download("region")}>Descargar módulo ZIP</button>}
+                  {access.region.href ? <Link className={styles.action} href={access.region.href}>Abrir módulo</Link> : <p>Módulo en preparación.</p>}
                 </>
               ) : (
                 <form onSubmit={event => { event.preventDefault(); void selectRegion(); }}>

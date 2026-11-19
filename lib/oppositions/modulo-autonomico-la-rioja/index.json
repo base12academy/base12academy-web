@@ -1,0 +1,71 @@
+{
+  "courseSlug": "modulo-autonomico-la-rioja",
+  "title": "Módulo autonómico · La Rioja",
+  "shortTitle": "La Rioja",
+  "level": "C1/C2",
+  "region": "La Rioja",
+  "durationMonths": 12,
+  "enrollmentOpen": true,
+  "themes": [
+    {
+      "id": "T01",
+      "code": "T01",
+      "number": 1,
+      "title": "Identidad, territorio y competencias",
+      "publicPreview": true
+    },
+    {
+      "id": "T02",
+      "code": "T02",
+      "number": 2,
+      "title": "Parlamento, Presidencia y Gobierno",
+      "publicPreview": false
+    },
+    {
+      "id": "T03",
+      "code": "T03",
+      "number": 3,
+      "title": "Administración, régimen local y Justicia",
+      "publicPreview": false
+    },
+    {
+      "id": "T04",
+      "code": "T04",
+      "number": 4,
+      "title": "Hacienda, reforma y disposiciones",
+      "publicPreview": false
+    }
+  ],
+  "simulations": [
+    {
+      "id": "SIM01",
+      "title": "Simulacro autonómico 1",
+      "count": 20
+    },
+    {
+      "id": "SIM02",
+      "title": "Simulacro autonómico 2",
+      "count": 20
+    },
+    {
+      "id": "SIM03",
+      "title": "Simulacro autonómico 3",
+      "count": 20
+    },
+    {
+      "id": "SIM04",
+      "title": "Simulacro autonómico 4",
+      "count": 20
+    },
+    {
+      "id": "SIM05",
+      "title": "Simulacro autonómico 5",
+      "count": 20
+    }
+  ],
+  "counts": {
+    "themes": 4,
+    "questions": 200,
+    "glossaryTerms": 62
+  }
+}

@@ -31,7 +31,7 @@ export async function getIncludedModuleEnrollment(db: Database, userId: string, 
   if (!courseSlug.startsWith(prefix)) return null;
   const slug = courseSlug.slice(prefix.length);
   const region = packageRegion(slug);
-  if (!region || region.files) return null;
+  if (!region) return null;
   const access = await getPackageEnrollment(db, userId, undefined, slug);
   return access?.enrollment ?? null;
 }

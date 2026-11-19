@@ -3,8 +3,6 @@ import { packageCourse, packageRegion, packageRegions, plans } from "@/lib/hacie
 import { getPackageEnrollment, getPackageRegion } from "@/lib/haciendas-universidades-access";
 import { getSupabase } from "@/lib/supabase/server";
 
-const bucket = "haciendas-universidades-2026";
-const universityPackageDirectory = "universidades-revision-2026-11-19";
 const reply = (body: object, status = 200) =>
   NextResponse.json(body, { status, headers: { "Cache-Control": "private, no-store" } });
 
@@ -35,35 +33,31 @@ async function authorize(request: NextRequest, { params }: Context) {
 export async function GET(request: NextRequest, context: Context) {
   const authorized = await authorize(request, context);
   if (authorized instanceof NextResponse) return authorized;
-  const { db, course, slug, access, userId } = authorized;
+  const { db, slug, access, userId } = authorized;
 
   try {
     const moduleSlug = access.enrollment.metadata?.autonomousModule;
     const region = typeof moduleSlug === "string" ? packageRegion(moduleSlug) : undefined;
     const packageKind = request.nextUrl.searchParams.get("package");
+    if (packageKind !== null) return reply({error:"downloads_disabled"},410);
     if (packageKind === null) {
+      const {data: extra, error: extraError} = await db.from("opposition_materials").select("payload").eq("course_slug",slug).eq("resource_id","documents").maybeSingle();
+      if (extraError) return reply({error:"materials_unavailable"},503);
+      const rank: Record<string,number> = {esencial:1,estandar:2,premium:3};
+      const documents = region ? (extra?.payload?.documents || []).filter((doc:{minimumPlan:string}) => (rank[doc.minimumPlan] || 99) <= rank[access.plan]) : [];
+
       return reply({
         plan: plans[access.plan],
+        documents,
         region: region ? {
           label: region.label,
-          href: region.files ? null : `/dashboard/modulo-autonomico-${moduleSlug}`,
+          href: `/dashboard/modulo-autonomico-${moduleSlug}`,
         } : null,
         regions: !region ? Object.entries(packageRegions).map(([slug, item]) => ({ slug, label: item.label })) : [],
         suggestedRegion: !region ? (await getPackageRegion(db, userId))?.[0] ?? null : null,
       });
     }
 
-    const filename = packageKind === "core" ? course.files[access.plan]
-      : packageKind === "region" ? region?.files?.[access.plan]
-      : undefined;
-    if (!filename) return reply({ error: "package_not_found" }, 404);
-
-    const isUniversity = slug === "administrativos-universidades" || slug === "auxiliares-universidades";
-    const path = packageKind === "core" && isUniversity ? `${universityPackageDirectory}/${filename}` : filename;
-    const { data: download, error: storageError } = await db.storage.from(bucket)
-      .createSignedUrl(path, 60, { download: filename });
-    if (storageError || !download) return reply({ error: "package_unavailable" }, 503);
-    return reply({ url: download.signedUrl });
   } catch {
     return reply({ error: "materials_unavailable" }, 503);
   }
