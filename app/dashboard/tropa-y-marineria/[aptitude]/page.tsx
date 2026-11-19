@@ -95,6 +95,11 @@ export default function TropaAptitudePage() {
   const startedAt = useRef(0);
 
   useEffect(() => {
+    const assistant = new URLSearchParams(window.location.search).get("assistant");
+    if (assistant === "rocio" || assistant === "fernando") { setTutorRole(assistant); setTab("tutors"); }
+  }, []);
+
+  useEffect(() => {
     let active = true;
     void (async () => {
       if (!aptitude) {
@@ -224,7 +229,7 @@ export default function TropaAptitudePage() {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <Link href="/"><Image src="/images/base12-logo.png" alt="Base12 Academy" width={126} height={58} /></Link>
+        <Link href="/"><Image src="/images/base12-logo.png" alt="Base12 Academy" width={78} height={78} /></Link>
         <nav><Link href="/dashboard/tropa-y-marineria">Centro de operaciones</Link><Link href="/dashboard/facturas">Mis facturas</Link></nav>
       </header>
       <main className={styles.main}>
@@ -287,7 +292,7 @@ export default function TropaAptitudePage() {
 
         {tab === "tutors" && (
           <section className={styles.tutors}>
-            <div className={styles.tutorPicker}><button type="button" className={tutorRole === "rocio" ? styles.activeTutor : ""} onClick={() => setTutorRole("rocio")}>Rocío · Profesora IA</button><button type="button" className={tutorRole === "fernando" ? styles.activeTutor : ""} onClick={() => setTutorRole("fernando")}>Fernando · Tutor IA</button></div>
+            <div className={styles.tutorPicker}><button type="button" className={tutorRole === "rocio" ? styles.activeTutor : ""} onClick={() => setTutorRole("rocio")}><Image src="/images/rocio-profesora-ia.png?v=oficial-20261119" alt="Rocío" width={84} height={56} style={{objectFit:"contain"}}/>Rocío · Profesora IA</button><button type="button" className={tutorRole === "fernando" ? styles.activeTutor : ""} onClick={() => setTutorRole("fernando")}><Image src="/images/fernando-tutor-ia.png?v=oficial-20261119" alt="Fernando" width={84} height={56} style={{objectFit:"contain"}}/>Fernando · Tutor IA</button></div>
             <textarea value={tutorMessage} onChange={(event) => setTutorMessage(event.target.value)} placeholder={tutorRole === "rocio" ? "Pide una explicación del procedimiento…" : "Pregunta qué deberías entrenar ahora…"} />
             <button type="button" disabled={tutorBusy || !tutorMessage.trim()} onClick={() => void askTutor()}>{tutorBusy ? "Consultando…" : "Enviar consulta"}</button>
             {tutorAnswer && <div className={styles.tutorAnswer}>{tutorAnswer}</div>}
