@@ -67,7 +67,7 @@ export default function TropaDashboardPage() {
   }, []);
 
   return (
-    <div className={styles.page}>
+    <div className={`${classroom.app} ${styles.page}`}>
       <header className={styles.header}>
         <Link href="/" className={styles.brand}><Image src="/images/base12-logo.png" alt="Base12 Academy" width={90} height={90} priority /></Link>
         <nav><Link href="/tropa-y-marineria">Modalidades</Link><Link href="/dashboard/facturas">Mis facturas</Link></nav>
