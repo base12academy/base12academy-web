@@ -16,7 +16,7 @@ function harness(){
  return {api:ctx.exports,req,themes,saved};
 }
 test('Sanidad valenciana define 48 temas, diez simulacros de 20 y tres modalidades de doce meses',()=>{
- assert.equal(index.themes.length,48);assert.equal(index.simulations.length,10);assert.ok(index.simulations.every(s=>s.count===20));assert.equal(index.durationMonths,12);assert.deepEqual(index.prices,{esencial:149,estandar:299,premium:499});assert.equal(index.enrollmentOpen,true);
+ assert.equal(index.themes.length,48);assert.equal(index.simulations.length,10);assert.ok(index.simulations.every(s=>s.count===20));assert.equal(index.durationMonths,12);assert.deepEqual(index.prices,{esencial:149,estandar:299,premium:599});assert.equal(index.enrollmentOpen,true);
 });
 test('la muestra entrega el tema 1 sin claves de corrección y bloquea el tema 2',async()=>{
  const h=harness();const publicTheme=await h.api.contentGET(h.req('theme=T01'),index);assert.equal(publicTheme.status,200);assert.equal(publicTheme.body.theme.tests.length,50);assert.ok(publicTheme.body.theme.tests.every(q=>!('answer'in q)&&!('explanation'in q)));const blocked=await h.api.contentGET(h.req('theme=T02'),index);assert.equal(blocked.status,401);
