@@ -8,9 +8,13 @@ const index=JSON.parse(fs.readFileSync(new URL('../lib/oppositions/'+slug+'/inde
 function harness(){
  const saved=[];
  const themes=index.themes.map(meta=>({...meta,blocks:[{type:'paragraph',text:'Contenido de estudio'}],glossary:[],rocio:[],rocioOpen:[{question:'Caso abierto',answer:'Respuesta orientativa'}],tests:Array.from({length:50},(_,i)=>({id:meta.id+'-Q'+i,question:'Pregunta '+i,options:['A','B','C','D'],answer:i%4,explanation:'Fundamento '+i}))}));
+ const universityModules = {
+  '@/lib/haciendas-universidades': {packageRegion: () => null},
+  '@/lib/haciendas-universidades-access': {getIncludedModuleEnrollment: async () => null},
+ };
  function query(table){const filters={};const q={select(){return q},eq(k,v){filters[k]=v;return q},lte(){return q},or(){return q},like(){return q},order(){return q},limit(){return q},insert(value){saved.push(value);return q},maybeSingle(){return Promise.resolve({data:themes.some(t=>t.id===filters.resource_id)?{payload:themes.find(t=>t.id===filters.resource_id)}:null,error:null})},then(ok,bad){let data=[];if(table==='course_enrollments')data=[{id:'enrollment-'+filters.user_id,plan_slug:filters.user_id}];if(table==='opposition_materials')data=themes.map(payload=>({payload}));return Promise.resolve({data,error:null}).then(ok,bad)}};return q;}
  const db={auth:{getUser:async token=>({data:{user:{id:token,email:token+'@example.test'}},error:null})},from:query};
- const ctx={exports:{},require:id=>id==='server-only'?{}:id==='openai'?{default:class{}}:id==='next/server'?{NextResponse:{json:(body,opts={})=>({body,status:opts.status||200})}}:id==='@/lib/supabase/server'?{getSupabase:()=>db}:id==='@/lib/course-access'?{isCourseAdministrator:()=>false}:id==='@/lib/opposition-public-preview'?{}:(()=>{throw Error(id)})(),console,process:{env:{}}};
+ const ctx={exports:{},require:id=>id==='server-only'?{}:id==='openai'?{default:class{}}:id==='next/server'?{NextResponse:{json:(body,opts={})=>({body,status:opts.status||200})}}:id==='@/lib/supabase/server'?{getSupabase:()=>db}:id==='@/lib/course-access'?{isCourseAdministrator:()=>false}:id==='@/lib/opposition-public-preview'?{}:universityModules[id]??(()=>{throw Error(id)})(),console,process:{env:{}}};
  vm.createContext(ctx);const source=fs.readFileSync(new URL('../lib/oppositions/shared-course/server.ts',import.meta.url),'utf8');vm.runInContext(ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText,ctx);
  const req=(query='',plan=null,body=null)=>({headers:{get:()=>plan?'Bearer '+plan:null},nextUrl:new URL('https://base12academy.es/?'+query),json:async()=>body});
  return {api:ctx.exports,req,themes,saved};
