@@ -35,3 +35,5 @@
 
 /* Keep the supplied avatar intact, including its original proportions. */
 .miniAvatar{object-fit:contain;object-position:center;background:transparent;border-radius:0}.assistant img{object-fit:contain;object-position:center}
+
+.headerBrand img{width:110px;height:78px;object-fit:contain}
