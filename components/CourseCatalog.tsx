@@ -136,6 +136,8 @@ const clasesOnline = [
   "Solicitud de clases · Otras asignaturas",
 ];
 
+const celadorChguv = "Celador del Consorcio Hospital General Universitario de Valencia (CHGUV) · CO/32/24";
+
 const oposiciones = [
   ["Haciendas Locales", "Administrativos Haciendas Locales"],
   ["Haciendas Locales", "Auxiliares Administrativos Haciendas Locales"],
@@ -156,7 +158,7 @@ const oposiciones = [
   ["Comunidad Valenciana", "Auxiliar Administrativo de la Generalitat Valenciana"],
   ["Comunidad Valenciana", "Administrativo del Sistema Valenciano de Salud"],
   ["Comunidad Valenciana", "Auxiliar Administrativo del Sistema Valenciano de Salud"],
-  ["Comunidad Valenciana", "Celador del Sistema Valenciano de Salud"],
+  ["Comunidad Valenciana", celadorChguv],
   ["Estado", "Administrativo del Estado"],
   ["Estado", "Auxiliar Administrativo del Estado"],
   ["Estado", "Administrativo de la Seguridad Social"],
@@ -558,6 +560,7 @@ export default function CourseCatalog() {
     const requested = params.get("curso") ?? "";
     const requestedBono = params.get("bono") ?? "";
     const requestedNames: Record<string, string> = {
+      "celador-chguv-co32-24": celadorChguv,
       "administrativos-universidades": "Administrativos de Universidades",
       "auxiliares-universidades": "Auxiliares Administrativos de Universidades",
       "administrativo-ja": "Administrativo de la Junta de Andalucía",
@@ -1007,7 +1010,9 @@ export default function CourseCatalog() {
                   {bachilleratoUpdating.has(course.name) && " · En actualización"}
                 </small>
                 <h2 id="modal-course-title">{course.name}</h2>
-                <p>Selecciona una modalidad y revisa la información antes de continuar.</p>
+                <p>{course.name === celadorChguv
+                  ? "Curso en preparación para la convocatoria CO/32/24 del Consorcio. El programa consta de 28 temas. El ejercicio consta de 40 preguntas en 50 minutos."
+                  : "Selecciona una modalidad y revisa la información antes de continuar."}</p>
                 {(course.region === "Haciendas Locales" || course.region === "Universidades") && (
                   <p>La matrícula incluye el bloque común y un módulo autonómico. Elige la comunidad al entrar en el aula.</p>
                 )}
