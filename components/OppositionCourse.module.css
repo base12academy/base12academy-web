@@ -28,3 +28,8 @@
 /* Official uploaded identity: preserve original proportions and never recreate the logo. */
 .brand{width:150px;flex-shrink:0}.logo{width:110px;height:72px;object-fit:contain}.mentor img{object-fit:contain;object-position:center;background:transparent}.eyebrow{color:#bf6916}
 @media(max-width:780px){.brand{width:94px}.logo{width:94px;height:70px}.header{min-height:86px}}
+
+
+/* Quiz alternatives remain readable at every viewport width. */
+.question{border:1px solid #d9e5f5;border-radius:10px;padding:18px;margin:18px 0;font-size:16px!important;min-width:0}.question legend{font-size:17px;font-weight:650;line-height:1.55;padding:0 6px;color:#18346c}.question label{display:flex;align-items:flex-start;gap:10px;margin:8px 0;padding:11px 12px;background:#f6f9ff;border-radius:7px;font-size:15px;line-height:1.6;cursor:pointer}.question input[type=radio]{flex:0 0 auto;margin-top:5px}.question label:has(input:checked){background:#e5efff;outline:1px solid #8eb1ed}.question .note{padding:12px;background:#f5f9ff;border-radius:7px}.question .note p{margin:6px 0}.mentor{grid-template-columns:100px minmax(0,1fr)}.mentor img{width:100px;height:125px;object-fit:cover;object-position:center}.mentor a{grid-column:1/-1;text-align:center}
+@media(max-width:780px){.mentor{grid-template-columns:90px minmax(0,1fr)}.mentor img{width:90px;height:110px}}
