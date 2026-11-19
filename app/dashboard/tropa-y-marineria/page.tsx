@@ -11,6 +11,7 @@ import {
   type TropaPlanSlug,
 } from "@/lib/tropa-config";
 import styles from "./tropa.module.css";
+import classroom from "@/components/OppositionCourse.module.css";
 
 type AccessState =
   | { state: "loading" }
@@ -66,11 +67,13 @@ export default function TropaDashboardPage() {
   }, []);
 
   return (
-    <div className={styles.page}>
+    <div className={`${classroom.app} ${styles.page}`}>
       <header className={styles.header}>
-        <Link href="/" className={styles.brand}><Image src="/images/base12-logo.png" alt="Base12 Academy" width={142} height={64} priority /></Link>
+        <Link href="/" className={styles.brand}><Image src="/images/base12-logo.png" alt="Base12 Academy" width={90} height={90} priority /></Link>
         <nav><Link href="/tropa-y-marineria">Modalidades</Link><Link href="/dashboard/facturas">Mis facturas</Link></nav>
       </header>
+      <div className={classroom.columns}>
+      <aside className={classroom.sidebar}><Link className={classroom.back} href="/dashboard/mis-cursos">← Volver a Mis cursos</Link><h2>Aptitudes del curso</h2><div className={classroom.themes}>{tropaAptitudes.map((aptitude,index)=><Link key={aptitude.slug} href={`/dashboard/tropa-y-marineria/${aptitude.slug}`}><span>{index+1}</span><span>{aptitude.name}</span></Link>)}</div><h2>Recursos del curso</h2><Link className={classroom.sideLink} href="/dashboard/tropa-y-marineria/simulacros">Simulacros</Link><Link className={classroom.sideLink} href="/dashboard/tropa-y-marineria/operaciones#hoja">Mi progreso</Link></aside>
       <main className={styles.main}>
         <section className={styles.hero}>
           <div>
@@ -120,6 +123,8 @@ export default function TropaDashboardPage() {
 
         <p className={styles.notice}><b>Contenido protegido.</b> El aula aplica los permisos de tu compra en cada consulta; las respuestas y explicaciones nunca se entregan antes de responder.</p>
       </main>
+      <aside className={classroom.rail}><section className={classroom.help}><div><h2>¿Necesitas ayuda?</h2><p>Consulta tus dudas y organiza tu preparación.</p></div></section>{([['rocio','Rocío','Profesora IA','Comprende los procedimientos de los ejercicios.'],['fernando','Fernando','Tutor IA','Organiza tu entrenamiento y decide qué reforzar.']] as const).map(([role,name,label,description])=><section className={classroom.mentor} key={role}><Image src={`/images/${role==='rocio'?'rocio-profesora-ia':'fernando-tutor-ia'}.oficial-20261119.png`} alt={name} width={1536} height={1024}/><div><h3>{name} · {label}</h3><p>{description}</p></div><Link className={classroom.secondary} href={access.state==='ready'&&access.aptitudeSlugs.length?`/dashboard/tropa-y-marineria/${access.aptitudeSlugs[0]}?assistant=${role}`:'/login'}>Hablar con {name}</Link></section>)}</aside>
+      </div>
     </div>
   );
 }

@@ -1,8 +1,8 @@
 export const bundledOppositionEnrollment = {
   "administrativos-haciendas-locales": true,
   "auxiliares-haciendas-locales": true,
-  "administrativos-universidades": false,
-  "auxiliares-universidades": false,
+  "administrativos-universidades": true,
+  "auxiliares-universidades": true,
 } as const;
 
 export const plans = { esencial: "Esencial", estandar: "Estándar", premium: "Premium" } as const;

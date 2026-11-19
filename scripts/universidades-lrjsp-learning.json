@@ -1,0 +1,58 @@
+{
+ "concepts":[
+  ["Técnica","Qué permite","Qué debe distinguirse"],
+  ["Delegación de competencias","Que otro órgano ejerza una competencia dentro de los límites legales.","El delegante conserva la titularidad. El acuerdo y su revocación se publican; la resolución indica la delegación."],
+  ["Avocación","Que el superior asuma uno o varios asuntos en los supuestos legales.","Necesita motivación y notificación. No equivale a apropiarse permanentemente de la competencia."],
+  ["Encomienda de gestión","Encargar actividades materiales o técnicas por las razones y con los requisitos legales.","El encomendante conserva titularidad y elementos sustantivos; dicta los actos jurídicos de soporte. No sirve para eludir contratos."],
+  ["Delegación de firma","Que un titular dependiente firme actos o resoluciones de la competencia del delegante.","No altera la competencia ni exige publicación para su validez. En el acto constan la delegación y la autoridad de procedencia."],
+  ["Suplencia","Sustituir temporalmente al titular en los supuestos legales.","No cambia la competencia ni exige publicación para su validez. Se identifica a quién se suple y quién actúa."]
+ ],
+ "workedCases":[
+  {
+   "title":"Digitalizar expedientes no equivale a resolverlos",
+   "situation":"Una universidad pública necesita digitalizar expedientes. Plantea una encomienda de gestión a una entidad de Derecho Público con medios adecuados y competencias para esa actividad. Después propone que la entidad firme también las resoluciones jurídicas. El supuesto se examina con la Ley 40/2015, sin perjuicio de la normativa universitaria específica.",
+   "steps":["Separa dos actividades: digitalizar documentos es una tarea material; dictar una resolución jurídica exige competencia para decidir.","Comprueba primero que la operación no encubre prestaciones que deban tramitarse como contrato del sector público.","Si procede la encomienda, identifica al encomendante y al encomendado y verifica su formalización y publicación.","Conserva en el encomendante los actos jurídicos que dan soporte a la actividad material; la encomienda no cede titularidad ni elementos sustantivos."],
+   "answer":"No puede atribuirse a la entidad la decisión jurídica por el mero hecho de encomendarle la digitalización. La tramitación material y la competencia resolutoria son planos distintos.",
+   "commonError":"Confundir contar con medios técnicos para realizar una tarea con tener competencia para resolver el expediente.",
+   "reference":"Ley 40/2015, artículos 2.2.c y 11."
+  },
+  {
+   "title":"Delegar la firma no es delegar la competencia",
+   "situation":"Un titular delega válidamente la firma de sus resoluciones en un titular dependiente. La unidad considera que este último se ha convertido en titular de la competencia y que la delegación de firma es inválida si no se publica.",
+   "steps":["Identifica el instrumento utilizado: el supuesto dice delegación de firma, no delegación de competencias.","Aplica el régimen específico del artículo 12: no cambia la competencia del delegante y no requiere publicación para su validez.","Al preparar el documento, haz constar que se firma por delegación y la autoridad de procedencia.","No traslades automáticamente a la firma los requisitos de publicación previstos para delegar competencias."],
+   "answer":"Las dos conclusiones de la unidad son incorrectas: no cambia la competencia y la publicación no es un requisito de validez de la delegación de firma.",
+   "commonError":"Resolver por la palabra delegación sin identificar qué se delega.",
+   "reference":"Ley 40/2015, artículos 9.3 y 12."
+  },
+  {
+   "title":"Constituir la sesión y ampliar el orden del día son decisiones diferentes",
+   "situation":"Una comisión tiene ocho miembros, entre ellos presidencia y secretaría. No hay regla especial de constitución. Asisten ambos titulares y dos vocalías. Se propone debatir un asunto que no figuraba en el orden del día.",
+   "steps":["Cuenta personas, no cargos separados: en el supuesto asisten cuatro de los ocho miembros, incluida presidencia y secretaría.","La regla general de constitución exige esos titulares o sus suplentes y al menos la mitad de los miembros: aquí se cumple.","Examina después el asunto no incluido en el orden del día. Para tratarlo, el artículo 17.4 exige asistencia de todos los miembros y declaración de urgencia por mayoría.","No confundas el quórum que permite celebrar la sesión con el requisito reforzado para introducir ese asunto."],
+   "answer":"La sesión puede estar válidamente constituida, pero no cabe tratar el asunto añadido en esas condiciones: no asisten los ocho miembros.",
+   "commonError":"Pensar que cualquier sesión válidamente constituida puede incorporar asuntos urgentes por simple mayoría de quienes asisten.",
+   "reference":"Ley 40/2015, artículo 17.2 y 17.4."
+  },
+  {
+   "title":"Interés personal y abstención",
+   "situation":"Una empleada que interviene en un procedimiento tiene interés personal en su resultado. Considera que puede continuar hasta que una persona interesada solicite su recusación.",
+   "steps":["Comprueba la causa: el interés personal está previsto en el artículo 23.2.a.","Aplica el deber propio de abstención: debe dejar de intervenir y comunicarlo a su superior inmediato.","Distingue ese deber de la recusación que puede promover una persona interesada.","Si ya ha intervenido, separa el análisis de la validez de los actos de la posible responsabilidad por no haberse abstenido."],
+   "answer":"No debe esperar a una recusación. La existencia de la causa activa su deber de abstenerse y comunicarlo al superior.",
+   "commonError":"Tratar la abstención como una decisión voluntaria o confundir no invalidez automática con ausencia de responsabilidad.",
+   "reference":"Ley 40/2015, artículo 23.1, 23.2.a, 23.4 y 23.5."
+  },
+  {
+   "title":"Tramitar una recusación sin resolver todavía el fondo",
+   "situation":"Una persona interesada presenta por escrito una recusación y expresa una causa legal. El empleado recusado niega que concurra. La oficina propone dejar el escrito sin decisión hasta que concluya el procedimiento principal.",
+   "steps":["Separa el incidente sobre imparcialidad del pronunciamiento sobre el fondo del expediente.","El recusado debe manifestarse ante su superior inmediato en el día siguiente.","Si niega la causa, el superior resuelve en tres días, previos los informes y comprobaciones que estime oportunos.","La resolución del incidente no tiene recurso autónomo, pero la recusación puede alegarse al recurrir el acto final."],
+   "answer":"No procede aplazar sin más el incidente hasta el final. Debe tramitarse conforme al artículo 24 y resolverse por el superior en el supuesto descrito.",
+   "commonError":"Interpretar la ausencia de recurso autónomo como autorización para no resolver la recusación.",
+   "reference":"Ley 40/2015, artículo 24."
+  }
+ ],
+ "checkpoints":[
+  {"question":"Un órgano recibe la firma de una resolución. ¿Qué dato debes comprobar antes de afirmar que ha recibido también el ejercicio de la competencia?","answer":"Hay que identificar el instrumento y su alcance: delegación de firma y delegación de competencias tienen regímenes distintos. La firma por sí sola no acredita una transferencia del ejercicio competencial.","reference":"Ley 40/2015, artículos 8, 9 y 12."},
+  {"question":"¿Por qué una comisión puede reunir el quórum de constitución y no poder tratar un asunto fuera del orden del día?","answer":"Son requisitos distintos. La regla general de constitución del artículo 17.2 no sustituye la asistencia de todos y la declaración de urgencia exigidas por el artículo 17.4.","reference":"Ley 40/2015, artículo 17."},
+  {"question":"Explica con tus palabras por qué una causa de abstención no equivale automáticamente a la nulidad de todo el expediente.","answer":"El artículo 23.4 excluye que la intervención determine necesariamente y en todo caso la invalidez de los actos. Deben examinarse el defecto y sus efectos. Esto no elimina el deber de abstenerse ni la responsabilidad que pueda proceder.","reference":"Ley 40/2015, artículo 23.4 y 23.5."}
+ ],
+ "reviewAdvice":"Antes de pasar al test, resuelve un caso indicando hechos relevantes, técnica aplicable, artículo, actuación y error que debe evitarse. Si puedes citar el artículo pero no explicar por qué descartas otra técnica, repasa el cuadro comparativo."
+}

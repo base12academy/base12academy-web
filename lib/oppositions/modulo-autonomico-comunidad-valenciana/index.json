@@ -1,0 +1,85 @@
+{
+  "courseSlug": "modulo-autonomico-comunidad-valenciana",
+  "title": "Módulo autonómico · Comunitat Valenciana",
+  "shortTitle": "Comunitat Valenciana",
+  "level": "C1/C2",
+  "region": "Comunitat Valenciana",
+  "durationMonths": 12,
+  "enrollmentOpen": true,
+  "themes": [
+    {
+      "id": "T01",
+      "code": "T01",
+      "number": 1,
+      "title": "Comunitat Valenciana derechos y lenguas",
+      "publicPreview": true
+    },
+    {
+      "id": "T02",
+      "code": "T02",
+      "number": 2,
+      "title": "Les Corts Presidencia y Consell",
+      "publicPreview": false
+    },
+    {
+      "id": "T03",
+      "code": "T03",
+      "number": 3,
+      "title": "Justicia órganos estatutarios y normas",
+      "publicPreview": false
+    },
+    {
+      "id": "T04",
+      "code": "T04",
+      "number": 4,
+      "title": "Competencias de la Generalitat",
+      "publicPreview": false
+    },
+    {
+      "id": "T05",
+      "code": "T05",
+      "number": 5,
+      "title": "Cooperación régimen local y reforma",
+      "publicPreview": false
+    },
+    {
+      "id": "T06",
+      "code": "T06",
+      "number": 6,
+      "title": "Hacienda financiación y presupuesto",
+      "publicPreview": false
+    }
+  ],
+  "simulations": [
+    {
+      "id": "SIM01",
+      "title": "Simulacro autonómico 1",
+      "count": 20
+    },
+    {
+      "id": "SIM02",
+      "title": "Simulacro autonómico 2",
+      "count": 20
+    },
+    {
+      "id": "SIM03",
+      "title": "Simulacro autonómico 3",
+      "count": 20
+    },
+    {
+      "id": "SIM04",
+      "title": "Simulacro autonómico 4",
+      "count": 20
+    },
+    {
+      "id": "SIM05",
+      "title": "Simulacro autonómico 5",
+      "count": 20
+    }
+  ],
+  "counts": {
+    "themes": 6,
+    "questions": 300,
+    "glossaryTerms": 62
+  }
+}

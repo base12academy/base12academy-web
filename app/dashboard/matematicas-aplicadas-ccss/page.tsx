@@ -182,7 +182,7 @@ export default function MatematicasAplicadasPage(){
             <span className={styles.cardIcon}>Aᶻ</span><strong>3. GLOSARIO</strong><small>Términos y conceptos clave</small><b>Abrir glosario →</b>
           </button>
           <button onClick={()=>openResource("rocio")} className={styles.rocioCard}>
-            <Image className={styles.miniAvatar} src="/images/rocio-profesora-ia.png" alt="" width={90} height={90}/>
+            <Image className={styles.miniAvatar} src="/images/rocio-profesora-ia.oficial-20261119.png" alt="" width={90} height={90}/>
             <strong>4. ROCÍO</strong><small>Comprueba que has entendido antes de entrenar</small><b>Practicar con Rocío →</b>
           </button>
         </section>:<section className={styles.lockNotice}><strong>Vista previa</strong><p>La primera explicación está abierta. El resto requiere una modalidad con curso completo.</p><Link href="/bachillerato-pau/matematicas-aplicadas-ccss#modalidades">Ver modalidades</Link></section>}
@@ -258,13 +258,13 @@ export default function MatematicasAplicadasPage(){
 
       <aside className={styles.rightbar}>
         <section className={styles.assistant}>
-          <Image src="/images/rocio-profesora-ia.png" alt="Rocío, profesora IA" width={1536} height={1024}/>
+          <Image src="/images/rocio-profesora-ia.oficial-20261119.png" alt="Rocío, profesora IA" width={1536} height={1024}/>
           <h3>Rocío</h3><strong>Profesora IA</strong>
           <p>Te explica los conceptos y procedimientos de forma clara y te ayuda a localizar el primer paso que falla.</p>
           <button type="button" onClick={()=>openResource("rocio")}>Preguntar a Rocío</button>
         </section>
         <section className={styles.assistant}>
-          <Image src="/images/fernando-tutor-ia.png" alt="Fernando, tutor IA" width={1536} height={1024}/>
+          <Image src="/images/fernando-tutor-ia.oficial-20261119.png" alt="Fernando, tutor IA" width={1536} height={1024}/>
           <h3>Fernando</h3><strong>Tutor IA</strong>
           <p>Te ayuda a planificar, mantener el ritmo y organizar repasos hasta la PAU.</p>
           <Link href="/dashboard/plan-estudio?course=matematicas-aplicadas-ccss">Hablar con Fernando</Link>

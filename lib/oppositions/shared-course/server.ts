@@ -4,6 +4,7 @@ import {NextRequest,NextResponse} from "next/server";
 import {getSupabase} from "@/lib/supabase/server";
 import {isCourseAdministrator} from "@/lib/course-access";
 import {reservePublicRocioTurn} from "@/lib/opposition-public-preview";
+import {packageRegion} from "@/lib/haciendas-universidades";
 import {getIncludedModuleEnrollment} from "@/lib/haciendas-universidades-access";
 
 export type Question={id:string;question:string;options:string[];answer:number;explanation:string;topicCode?:string};
@@ -33,6 +34,14 @@ async function access(req:NextRequest,course:string){
  if (bundled) return {db,user:data.user,enrollment:bundled,administrator:false,plan:bundled.plan_slug,allowed:true};
  return {db,user:data.user,enrollment,administrator:false,plan:enrollment?.plan_slug||"esencial",allowed:!enrollmentError&&!!enrollment};
 }
+
+async function regionRequired(course:string,ctx:Awaited<ReturnType<typeof access>>) {
+ if(!["administrativos-universidades","auxiliares-universidades"].includes(course)||!ctx.enrollment)return false;
+ const {data,error}=await ctx.db.from("course_enrollments").select("metadata").eq("id",ctx.enrollment.id).maybeSingle();
+ if(error)throw error;
+ return !packageRegion(data?.metadata?.autonomousModule || "");
+}
+
 async function resource<T>(course:string,id:string):Promise<T|null>{
  const {data,error}=await getSupabase().from("opposition_materials").select("payload").eq("course_slug",course).eq("resource_id",id).maybeSingle();
  if(error)throw new Error("course_material_unavailable");return data?.payload as T||null;
@@ -44,6 +53,8 @@ function sameIds(answers:{id:string}[],questions:Question[]){return answers.leng
 export async function contentGET(req:NextRequest,index:Index){
  try{
   const course=index.courseSlug,ctx=await access(req,course),id=(req.nextUrl.searchParams.get("theme")||"T01").toUpperCase(),mode=req.nextUrl.searchParams.get("mode")||"theme";
+  if(await regionRequired(course,ctx))return json({error:"region_required"},403);
+  if(course.startsWith("modulo-autonomico-")&&!ctx.allowed)return json({error:"subscription_required"},403);
   if(!index.themes.some(t=>t.id===id))return json({error:"invalid_theme"},400);
   if(!ctx.allowed&&(mode!=="theme"||id!=="T01"))return json({error:ctx.user?"subscription_required":"login_required"},ctx.user?403:401);
   const advanced=ctx.allowed&&ctx.plan!=="esencial";
@@ -90,6 +101,7 @@ export async function contentGET(req:NextRequest,index:Index){
 export async function attemptPOST(req:NextRequest,index:Index){
  try{
   const course=index.courseSlug,ctx=await access(req,course),body=await req.json().catch(()=>null);
+  if(await regionRequired(course,ctx)||course.startsWith("modulo-autonomico-")&&!ctx.allowed)return json({error:"subscription_required"},403);
   if(!body||!Array.isArray(body.answers)||body.answers.length<1||body.answers.length>120)return json({error:"invalid_attempt"},400);
   const mode=String(body.mode||"theme"),theme=String(body.theme||"T01").toUpperCase(),publicTrial=!ctx.allowed;
   if(!["theme","simulation","case","exam"].includes(mode))return json({error:"invalid_mode"},400);
@@ -135,6 +147,7 @@ export async function attemptPOST(req:NextRequest,index:Index){
 export async function assistantPOST(req:NextRequest,index:Index){
  try{
   const course=index.courseSlug,ctx=await access(req,course),body=await req.json().catch(()=>null),assistant=body?.assistant==="fernando"?"fernando":"rocio",message=String(body?.message||"").trim();
+  if(await regionRequired(course,ctx)||course.startsWith("modulo-autonomico-")&&!ctx.allowed)return json({error:"subscription_required"},403);
   if(message.length<4||message.length>1800)return json({error:"invalid_message"},400);
   const publicTrial=!ctx.allowed;
   if(publicTrial&&(assistant!=="rocio"||body?.theme!=="T01"))return json({error:"subscription_required"},403);

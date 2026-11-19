@@ -47,3 +47,7 @@
 /* Base12 reference visual language. */
 .main{min-width:0}.hero,.contentCard,.videoCard{border-radius:10px;box-shadow:none}.hero h1,.main h1{color:#101c67;overflow-wrap:anywhere}.sidebar{background:#fbfdff;border-color:#dae7f8}.subtitle{color:#3154a1}.hero{background:linear-gradient(120deg,#fff,#edf7ff);border-color:#dae7f8}.header{border-color:#dae7f8}.main h2{color:#102c78}
 @media(max-width:600px){.main h1,.hero h1{font-size:30px}.hero{padding:20px}.main{padding-left:14px;padding-right:14px}}
+
+/* Common classroom framing around the specialist Tropa training. */
+.main{width:100%;max-width:none;margin:0;padding:0;min-width:0}.hero{padding:22px}.hero h1{font-family:Georgia,serif;color:#101c67;font-size:clamp(28px,2.6vw,42px)}.aptitudes{grid-template-columns:repeat(2,minmax(0,1fr))}.header .brand img{width:90px;height:90px;object-fit:contain}.header{min-height:94px}
+@media(max-width:650px){.aptitudes{grid-template-columns:1fr}.hero{padding:16px}}

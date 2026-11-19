@@ -1,0 +1,401 @@
+{
+  "courseSlug": "administrativos-universidades",
+  "title": "Administrativos de Universidades",
+  "shortTitle": "Administrativos de Universidades",
+  "level": "C1",
+  "region": "Universidades",
+  "durationMonths": 12,
+  "enrollmentOpen": false,
+  "themes": [
+    {
+      "id": "T01",
+      "code": "T01",
+      "number": 1,
+      "title": "Constitución Española I. Principios constitucionales, estructura, derechos y libertades.",
+      "publicPreview": true
+    },
+    {
+      "id": "T02",
+      "code": "T02",
+      "number": 2,
+      "title": "Constitución Española II. Cortes Generales, Gobierno, Poder Judicial y organización territorial del Estado.",
+      "publicPreview": false
+    },
+    {
+      "id": "T03",
+      "code": "T03",
+      "number": 3,
+      "title": "Unión Europea y fuentes del Derecho Administrativo. Jerarquía, ley, normas con rango de ley y reglamento.",
+      "publicPreview": false
+    },
+    {
+      "id": "T04",
+      "code": "T04",
+      "number": 4,
+      "title": "Ley 39/2015 I. Ámbito, interesados, capacidad, representación, identificación y firma.",
+      "publicPreview": false
+    },
+    {
+      "id": "T05",
+      "code": "T05",
+      "number": 5,
+      "title": "Ley 39/2015 II. Derechos, registros, términos y plazos, obligación de resolver y silencio administrativo.",
+      "publicPreview": false
+    },
+    {
+      "id": "T06",
+      "code": "T06",
+      "number": 6,
+      "title": "Ley 39/2015 III. Acto administrativo: requisitos, eficacia, notificación, publicación, nulidad y anulabilidad.",
+      "publicPreview": false
+    },
+    {
+      "id": "T07",
+      "code": "T07",
+      "number": 7,
+      "title": "Ley 39/2015 IV. Procedimiento administrativo común: iniciación, ordenación, instrucción y terminación.",
+      "publicPreview": false
+    },
+    {
+      "id": "T08",
+      "code": "T08",
+      "number": 8,
+      "title": "Ley 39/2015 V. Ejecución, revisión de oficio y recursos administrativos.",
+      "publicPreview": false
+    },
+    {
+      "id": "T09",
+      "code": "T09",
+      "number": 9,
+      "title": "Ley 40/2015 I. Principios generales, órganos administrativos, competencia y órganos colegiados.",
+      "publicPreview": false
+    },
+    {
+      "id": "T10",
+      "code": "T10",
+      "number": 10,
+      "title": "Ley 40/2015 II. Potestad sancionadora, responsabilidad patrimonial, convenios y relaciones interadministrativas.",
+      "publicPreview": false
+    },
+    {
+      "id": "T11",
+      "code": "T11",
+      "number": 11,
+      "title": "Transparencia, acceso a la información pública y buen gobierno.",
+      "publicPreview": false
+    },
+    {
+      "id": "T12",
+      "code": "T12",
+      "number": 12,
+      "title": "Protección de datos personales y garantía de los derechos digitales.",
+      "publicPreview": false
+    },
+    {
+      "id": "T13",
+      "code": "T13",
+      "number": 13,
+      "title": "Igualdad efectiva, no discriminación, diversidad y prevención del acoso.",
+      "publicPreview": false
+    },
+    {
+      "id": "T14",
+      "code": "T14",
+      "number": 14,
+      "title": "Administración electrónica. Sede, registro, expediente, documentos y notificaciones electrónicas.",
+      "publicPreview": false
+    },
+    {
+      "id": "T15",
+      "code": "T15",
+      "number": 15,
+      "title": "Atención al usuario universitario, documentos administrativos, registro y archivo.",
+      "publicPreview": false
+    },
+    {
+      "id": "T16",
+      "code": "T16",
+      "number": 16,
+      "title": "TREBEP I. Clases de empleados públicos, acceso, adquisición y pérdida de la relación de servicio.",
+      "publicPreview": false
+    },
+    {
+      "id": "T17",
+      "code": "T17",
+      "number": 17,
+      "title": "TREBEP II. Derechos, deberes, código de conducta, jornada, permisos y vacaciones.",
+      "publicPreview": false
+    },
+    {
+      "id": "T18",
+      "code": "T18",
+      "number": 18,
+      "title": "TREBEP III. Carrera profesional, provisión, movilidad y situaciones administrativas.",
+      "publicPreview": false
+    },
+    {
+      "id": "T19",
+      "code": "T19",
+      "number": 19,
+      "title": "TREBEP IV. Régimen disciplinario, incompatibilidades, negociación y representación.",
+      "publicPreview": false
+    },
+    {
+      "id": "T20",
+      "code": "T20",
+      "number": 20,
+      "title": "Prevención de riesgos laborales en las universidades públicas.",
+      "publicPreview": false
+    },
+    {
+      "id": "T21",
+      "code": "T21",
+      "number": 21,
+      "title": "LOSU I. Funciones del sistema universitario, autonomía y principios generales.",
+      "publicPreview": false
+    },
+    {
+      "id": "T22",
+      "code": "T22",
+      "number": 22,
+      "title": "LOSU II. Creación y reconocimiento de universidades y calidad del sistema universitario.",
+      "publicPreview": false
+    },
+    {
+      "id": "T23",
+      "code": "T23",
+      "number": 23,
+      "title": "LOSU III. Gobierno y representación en las universidades públicas: marco común estatal.",
+      "publicPreview": false
+    },
+    {
+      "id": "T24",
+      "code": "T24",
+      "number": 24,
+      "title": "LOSU IV. Estructuras universitarias: facultades, escuelas, departamentos, institutos y otras unidades.",
+      "publicPreview": false
+    },
+    {
+      "id": "T25",
+      "code": "T25",
+      "number": 25,
+      "title": "Personal docente e investigador universitario: régimen general, categorías y carrera.",
+      "publicPreview": false
+    },
+    {
+      "id": "T26",
+      "code": "T26",
+      "number": 26,
+      "title": "PTGAS universitario: régimen jurídico, funciones, selección y organización.",
+      "publicPreview": false
+    },
+    {
+      "id": "T27",
+      "code": "T27",
+      "number": 27,
+      "title": "Estudiantado universitario: derechos, deberes, participación y representación.",
+      "publicPreview": false
+    },
+    {
+      "id": "T28",
+      "code": "T28",
+      "number": 28,
+      "title": "Convivencia universitaria, mediación y régimen disciplinario del estudiantado.",
+      "publicPreview": false
+    },
+    {
+      "id": "T29",
+      "code": "T29",
+      "number": 29,
+      "title": "Ordenación de las enseñanzas universitarias: principios generales y aseguramiento de la calidad.",
+      "publicPreview": false
+    },
+    {
+      "id": "T30",
+      "code": "T30",
+      "number": 30,
+      "title": "Enseñanzas oficiales de Grado.",
+      "publicPreview": false
+    },
+    {
+      "id": "T31",
+      "code": "T31",
+      "number": 31,
+      "title": "Enseñanzas oficiales de Máster Universitario.",
+      "publicPreview": false
+    },
+    {
+      "id": "T32",
+      "code": "T32",
+      "number": 32,
+      "title": "Doctorado y escuelas de doctorado.",
+      "publicPreview": false
+    },
+    {
+      "id": "T33",
+      "code": "T33",
+      "number": 33,
+      "title": "Enseñanzas propias, formación permanente y microcredenciales universitarias.",
+      "publicPreview": false
+    },
+    {
+      "id": "T34",
+      "code": "T34",
+      "number": 34,
+      "title": "Acceso y admisión a enseñanzas universitarias oficiales de Grado.",
+      "publicPreview": false
+    },
+    {
+      "id": "T35",
+      "code": "T35",
+      "number": 35,
+      "title": "Sistema europeo de créditos y sistema de calificaciones.",
+      "publicPreview": false
+    },
+    {
+      "id": "T36",
+      "code": "T36",
+      "number": 36,
+      "title": "Reconocimiento y transferencia de créditos. Continuación de estudios.",
+      "publicPreview": false
+    },
+    {
+      "id": "T37",
+      "code": "T37",
+      "number": 37,
+      "title": "Expedición de títulos universitarios oficiales y Suplemento Europeo al Título.",
+      "publicPreview": false
+    },
+    {
+      "id": "T38",
+      "code": "T38",
+      "number": 38,
+      "title": "Becas y ayudas al estudio en el sistema universitario.",
+      "publicPreview": false
+    },
+    {
+      "id": "T39",
+      "code": "T39",
+      "number": 39,
+      "title": "Prácticas académicas externas.",
+      "publicPreview": false
+    },
+    {
+      "id": "T40",
+      "code": "T40",
+      "number": 40,
+      "title": "Internacionalización y movilidad universitaria.",
+      "publicPreview": false
+    },
+    {
+      "id": "T41",
+      "code": "T41",
+      "number": 41,
+      "title": "Sistema Español de Ciencia, Tecnología e Innovación.",
+      "publicPreview": false
+    },
+    {
+      "id": "T42",
+      "code": "T42",
+      "number": 42,
+      "title": "Investigación universitaria, personal investigador, transferencia e innovación.",
+      "publicPreview": false
+    },
+    {
+      "id": "T43",
+      "code": "T43",
+      "number": 43,
+      "title": "Régimen económico-financiero de las universidades públicas y presupuesto: principios y elaboración.",
+      "publicPreview": false
+    },
+    {
+      "id": "T44",
+      "code": "T44",
+      "number": 44,
+      "title": "Créditos presupuestarios y modificaciones.",
+      "publicPreview": false
+    },
+    {
+      "id": "T45",
+      "code": "T45",
+      "number": 45,
+      "title": "Ejecución del gasto y del ingreso, tesorería, liquidación y control.",
+      "publicPreview": false
+    },
+    {
+      "id": "T46",
+      "code": "T46",
+      "number": 46,
+      "title": "Contratación pública I. Ámbito, tipos de contratos, partes, capacidad y preparación.",
+      "publicPreview": false
+    },
+    {
+      "id": "T47",
+      "code": "T47",
+      "number": 47,
+      "title": "Contratación pública II. Procedimientos, adjudicación, ejecución, modificación y extinción.",
+      "publicPreview": false
+    },
+    {
+      "id": "T48",
+      "code": "T48",
+      "number": 48,
+      "title": "Subvenciones públicas I. Concepto, principios, beneficiarios y procedimientos de concesión.",
+      "publicPreview": false
+    },
+    {
+      "id": "T49",
+      "code": "T49",
+      "number": 49,
+      "title": "Subvenciones públicas II. Justificación, reintegro, infracciones y control.",
+      "publicPreview": false
+    },
+    {
+      "id": "T50",
+      "code": "T50",
+      "number": 50,
+      "title": "Microsoft Word. Edición avanzada de documentos administrativos.",
+      "publicPreview": false
+    },
+    {
+      "id": "T51",
+      "code": "T51",
+      "number": 51,
+      "title": "Microsoft Excel. Libros, fórmulas, funciones, tablas, filtros y gráficos.",
+      "publicPreview": false
+    },
+    {
+      "id": "T52",
+      "code": "T52",
+      "number": 52,
+      "title": "Bases de datos y Microsoft Access. Tablas, relaciones, consultas, formularios e informes.",
+      "publicPreview": false
+    },
+    {
+      "id": "T53",
+      "code": "T53",
+      "number": 53,
+      "title": "Microsoft 365, Teams y SharePoint. Trabajo colaborativo y gestión documental.",
+      "publicPreview": false
+    },
+    {
+      "id": "T54",
+      "code": "T54",
+      "number": 54,
+      "title": "Internet, navegadores, correo electrónico y seguridad de la información.",
+      "publicPreview": false
+    }
+  ],
+  "simulations": [],
+  "simulationNote": "Practica con test aleatorios de 20 preguntas. Los cinco simulacros de respuesta breve y sus solucionarios están en Recursos del paquete. El módulo autonómico tiene su propio entrenamiento.",
+  "counts": {
+    "themes": 54,
+    "essentialQuestions": 540,
+    "bankQuestions": 2700,
+    "glossaryTerms": 391,
+    "bankAutomaticUnvalidated": 0,
+    "themesWith50Candidates": 54,
+    "themesPending50": 0,
+    "newQuestionsPendingReview": 1247
+  }
+}

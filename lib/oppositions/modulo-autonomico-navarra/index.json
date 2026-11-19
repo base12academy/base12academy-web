@@ -1,0 +1,78 @@
+{
+  "courseSlug": "modulo-autonomico-navarra",
+  "title": "Módulo autonómico · Navarra",
+  "shortTitle": "Navarra",
+  "level": "C1/C2",
+  "region": "Navarra",
+  "durationMonths": 12,
+  "enrollmentOpen": true,
+  "themes": [
+    {
+      "id": "T01",
+      "code": "T01",
+      "number": 1,
+      "title": "Identidad foral y Parlamento",
+      "publicPreview": true
+    },
+    {
+      "id": "T02",
+      "code": "T02",
+      "number": 2,
+      "title": "Gobierno, Presidencia y control",
+      "publicPreview": false
+    },
+    {
+      "id": "T03",
+      "code": "T03",
+      "number": 3,
+      "title": "Competencias propias, Convenio y régimen local",
+      "publicPreview": false
+    },
+    {
+      "id": "T04",
+      "code": "T04",
+      "number": 4,
+      "title": "Servicios públicos y Administración de Justicia",
+      "publicPreview": false
+    },
+    {
+      "id": "T05",
+      "code": "T05",
+      "number": 5,
+      "title": "Cooperación, reforma y disposiciones",
+      "publicPreview": false
+    }
+  ],
+  "simulations": [
+    {
+      "id": "SIM01",
+      "title": "Simulacro autonómico 1",
+      "count": 20
+    },
+    {
+      "id": "SIM02",
+      "title": "Simulacro autonómico 2",
+      "count": 20
+    },
+    {
+      "id": "SIM03",
+      "title": "Simulacro autonómico 3",
+      "count": 20
+    },
+    {
+      "id": "SIM04",
+      "title": "Simulacro autonómico 4",
+      "count": 20
+    },
+    {
+      "id": "SIM05",
+      "title": "Simulacro autonómico 5",
+      "count": 20
+    }
+  ],
+  "counts": {
+    "themes": 5,
+    "questions": 250,
+    "glossaryTerms": 62
+  }
+}

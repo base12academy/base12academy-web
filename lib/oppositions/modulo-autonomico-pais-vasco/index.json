@@ -1,0 +1,71 @@
+{
+  "courseSlug": "modulo-autonomico-pais-vasco",
+  "title": "Módulo autonómico · País Vasco",
+  "shortTitle": "País Vasco",
+  "level": "C1/C2",
+  "region": "País Vasco",
+  "durationMonths": 12,
+  "enrollmentOpen": true,
+  "themes": [
+    {
+      "id": "T01",
+      "code": "T01",
+      "number": 1,
+      "title": "Identidad, territorio, lenguas y relaciones institucionales",
+      "publicPreview": true
+    },
+    {
+      "id": "T02",
+      "code": "T02",
+      "number": 2,
+      "title": "Competencias, servicios públicos y justicia",
+      "publicPreview": false
+    },
+    {
+      "id": "T03",
+      "code": "T03",
+      "number": 3,
+      "title": "Instituciones comunes y forales y reforma del Estatuto",
+      "publicPreview": false
+    },
+    {
+      "id": "T04",
+      "code": "T04",
+      "number": 4,
+      "title": "Hacienda, Concierto, patrimonio y traspasos",
+      "publicPreview": false
+    }
+  ],
+  "simulations": [
+    {
+      "id": "SIM01",
+      "title": "Simulacro autonómico 1",
+      "count": 20
+    },
+    {
+      "id": "SIM02",
+      "title": "Simulacro autonómico 2",
+      "count": 20
+    },
+    {
+      "id": "SIM03",
+      "title": "Simulacro autonómico 3",
+      "count": 20
+    },
+    {
+      "id": "SIM04",
+      "title": "Simulacro autonómico 4",
+      "count": 20
+    },
+    {
+      "id": "SIM05",
+      "title": "Simulacro autonómico 5",
+      "count": 20
+    }
+  ],
+  "counts": {
+    "themes": 4,
+    "questions": 200,
+    "glossaryTerms": 62
+  }
+}
