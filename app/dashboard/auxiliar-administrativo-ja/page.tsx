@@ -136,15 +136,15 @@ function Rocio({ items }: { items: { question: string; answer: string }[] }) {
 }
 
 function Assistant({ name, role, text }: { name: string; role: string; text: string }) {
-  const avatar = name === "Rocío" ? "/images/rocio-profesora-ia.png?v=oficial-20261119" : "/images/fernando-tutor-ia.png?v=oficial-20261119";
+  const avatar = name === "Rocío" ? "/images/rocio-profesora-ia.oficial-20261119.png" : "/images/fernando-tutor-ia.oficial-20261119.png";
   return <div className={layout.assistant}><img className={layout.avatar} src={avatar} alt={`Avatar de ${name}`} /><div><p className={styles.sectionLabel}>{role}</p><h2>{name}</h2><p>{text}</p></div></div>;
 }
 
 function RightRail({ theme, onSelect }: { theme: ThemeContent; onSelect: (tab: Tab) => void }) {
   return <aside className={layout.rightRail}>
     <section><div className={layout.railTitle}><span>◫</span><h3>Glosario</h3><button onClick={() => onSelect("glosario")}>Ver todo</button></div>{theme.glossary.slice(0, 3).map((item) => <div className={layout.railEntry} key={item.term}><b>{item.term}</b><p>{item.definition}</p></div>)}</section>
-    <section><div className={layout.railTitle}><img className={layout.miniAvatar} src="/images/rocio-profesora-ia.png?v=oficial-20261119" alt="Rocío" /><h3>Rocío</h3><small>Profesora IA</small></div><p>Pregunta tus dudas sobre este tema y repasa sus ideas esenciales.</p><button className={layout.railAction} onClick={() => onSelect("rocio")}>Hablar con Rocío</button></section>
-    <section><div className={layout.railTitle}><img className={layout.miniAvatar} src="/images/fernando-tutor-ia.png?v=oficial-20261119" alt="Fernando" /><h3>Fernando</h3><small>Tutor IA</small></div><p>Consulta la orientación para organizar tu estudio y retomar el itinerario.</p><button className={layout.railAction} onClick={() => onSelect("fernando")}>Ver orientación de Fernando</button></section>
+    <section><div className={layout.railTitle}><img className={layout.miniAvatar} src="/images/rocio-profesora-ia.oficial-20261119.png" alt="Rocío" /><h3>Rocío</h3><small>Profesora IA</small></div><p>Pregunta tus dudas sobre este tema y repasa sus ideas esenciales.</p><button className={layout.railAction} onClick={() => onSelect("rocio")}>Hablar con Rocío</button></section>
+    <section><div className={layout.railTitle}><img className={layout.miniAvatar} src="/images/fernando-tutor-ia.oficial-20261119.png" alt="Fernando" /><h3>Fernando</h3><small>Tutor IA</small></div><p>Consulta la orientación para organizar tu estudio y retomar el itinerario.</p><button className={layout.railAction} onClick={() => onSelect("fernando")}>Ver orientación de Fernando</button></section>
     <section><div className={layout.railTitle}><span>✓</span><h3>Test del tema</h3><small>{theme.tests.length} preguntas</small></div><p>Comprueba lo aprendido con las preguntas disponibles para este tema.</p><button className={layout.railAction} onClick={() => onSelect("test")}>Abrir test</button></section>
   </aside>;
 }

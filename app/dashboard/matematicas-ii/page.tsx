@@ -258,8 +258,8 @@ export default function MatematicasIIPage() {
         </main>
 
         <aside className={styles.rightbar}>
-          <AssistantCard image="/images/rocio-profesora-ia.png?v=oficial-20261119" name="Rocío" role="Profesora IA" text="Te ayuda a entender conceptos, procedimientos y errores de Matemáticas II." action="Practicar con Rocío" onAction={() => openResource("rocio")} />
-          <AssistantCard image="/images/fernando-tutor-ia.png?v=oficial-20261119" name="Fernando" role="Tutor IA" text="Organiza tus sesiones, repasos y progresión hasta la PAU." action="Plan de estudio" />
+          <AssistantCard image="/images/rocio-profesora-ia.oficial-20261119.png" name="Rocío" role="Profesora IA" text="Te ayuda a entender conceptos, procedimientos y errores de Matemáticas II." action="Practicar con Rocío" onAction={() => openResource("rocio")} />
+          <AssistantCard image="/images/fernando-tutor-ia.oficial-20261119.png" name="Fernando" role="Tutor IA" text="Organiza tus sesiones, repasos y progresión hasta la PAU." action="Plan de estudio" />
           <section className={styles.sideInfo}><strong>Tu objetivo</strong><p>Dominar los procedimientos y ser capaz de elegirlos correctamente cuando cambia el ejercicio.</p></section>
           {checkingAccess ? <p className={styles.accessNote}>Comprobando acceso…</p> : <p className={styles.accessNote}>{access.administrator ? "Acceso administrador" : access.plans.length ? `Modalidad: ${access.plans.join(" · ")}` : "Vista previa de la primera unidad"}</p>}
         </aside>
