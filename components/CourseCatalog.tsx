@@ -558,6 +558,8 @@ export default function CourseCatalog() {
     const requested = params.get("curso") ?? "";
     const requestedBono = params.get("bono") ?? "";
     const requestedNames: Record<string, string> = {
+      "administrativos-universidades": "Administrativos de Universidades",
+      "auxiliares-universidades": "Auxiliares Administrativos de Universidades",
       "administrativo-ja": "Administrativo de la Junta de Andalucía",
       "auxiliar-administrativo-ja": "Auxiliar Administrativo de la Junta de Andalucía",
       "auxiliar-administrativo-estado": "Auxiliar Administrativo del Estado",
