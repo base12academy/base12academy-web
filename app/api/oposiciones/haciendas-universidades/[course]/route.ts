@@ -4,6 +4,7 @@ import { getPackageEnrollment, getPackageRegion } from "@/lib/haciendas-universi
 import { getSupabase } from "@/lib/supabase/server";
 
 const bucket = "haciendas-universidades-2026";
+const universityPackageDirectory = "universidades-revision-2026-11-19";
 const reply = (body: object, status = 200) =>
   NextResponse.json(body, { status, headers: { "Cache-Control": "private, no-store" } });
 
@@ -25,7 +26,7 @@ async function authorize(request: NextRequest, { params }: Context) {
     const access = await getPackageEnrollment(db, data.user.id, [slug]);
     if (!access) return reply({ error: "enrollment_required" }, 403);
 
-    return { db, course, access, userId: data.user.id };
+    return { db, course, slug, access, userId: data.user.id };
   } catch {
     return reply({ error: "materials_unavailable" }, 503);
   }
@@ -34,7 +35,7 @@ async function authorize(request: NextRequest, { params }: Context) {
 export async function GET(request: NextRequest, context: Context) {
   const authorized = await authorize(request, context);
   if (authorized instanceof NextResponse) return authorized;
-  const { db, course, access, userId } = authorized;
+  const { db, course, slug, access, userId } = authorized;
 
   try {
     const moduleSlug = access.enrollment.metadata?.autonomousModule;
@@ -57,8 +58,10 @@ export async function GET(request: NextRequest, context: Context) {
       : undefined;
     if (!filename) return reply({ error: "package_not_found" }, 404);
 
+    const isUniversity = slug === "administrativos-universidades" || slug === "auxiliares-universidades";
+    const path = packageKind === "core" && isUniversity ? `${universityPackageDirectory}/${filename}` : filename;
     const { data: download, error: storageError } = await db.storage.from(bucket)
-      .createSignedUrl(filename, 60, { download: filename });
+      .createSignedUrl(path, 60, { download: filename });
     if (storageError || !download) return reply({ error: "package_unavailable" }, 503);
     return reply({ url: download.signedUrl });
   } catch {
