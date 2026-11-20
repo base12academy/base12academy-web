@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import { healthOppositions } from "@/lib/oppositions/health-catalog";
 import { packageCourse } from "@/lib/haciendas-universidades";
 
 type Enrollment = {
@@ -16,6 +17,7 @@ type Enrollment = {
 };
 
 const COURSES: Record<string,{title:string;href:string;description:string}> = {
+  ...Object.fromEntries(Object.entries(healthOppositions).map(([slug, course]) => [slug, { title: course.title, href: `/dashboard/${slug}`, description: `${course.themes} temas · glosario, test y simulacros` }])),
   "administrativo-sanidad-valenciana": { title:"Administrativo del Sistema Valenciano de Salud", href:"/dashboard/administrativo-sanidad-valenciana", description:"48 temas · glosario, test, simulacros y acompañamiento" },
   "historia-espana": { title:"Historia de España", href:"/dashboard/historia-espana", description:"Bachillerato y preparación PAU" },
   "historia-filosofia": { title:"Historia de la Filosofía", href:"/dashboard/filosofia", description:"Bachillerato y preparación PAU" },

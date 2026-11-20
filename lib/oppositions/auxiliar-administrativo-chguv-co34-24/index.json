@@ -1,0 +1,328 @@
+{
+  "courseSlug": "auxiliar-administrativo-chguv-co34-24",
+  "title": "Auxiliar Administrativo del Consorcio Hospital General Universitario de Valencia (CHGUV) · CO/34/24",
+  "shortTitle": "Auxiliar Administrativo CHGUV",
+  "level": "C2",
+  "region": "Comunidad Valenciana",
+  "durationMonths": 12,
+  "enrollmentOpen": true,
+  "themes": [
+    {
+      "id": "T01",
+      "code": "T01",
+      "number": 1,
+      "title": "La Constitución Española de 1978 (I): Título preliminar; derechos y deberes fundamentales; La Corona; Las Cortes Generales.",
+      "publicPreview": true
+    },
+    {
+      "id": "T02",
+      "code": "T02",
+      "number": 2,
+      "title": "La Constitución Española de 1978 (II): Gobierno y Administración; relaciones entre Gobierno y Cortes Generales, Poder Judicial; Economía y Hacienda; Organización Territorial del Estado; Tribunal Constitucional y Reforma de la Constitución.",
+      "publicPreview": false
+    },
+    {
+      "id": "T03",
+      "code": "T03",
+      "number": 3,
+      "title": "El Estatuto de Autonomía de la Comunitat Valenciana (I): la Comunitat Valenciana; los derechos de los valencianos y valencianas; la Generalitat.",
+      "publicPreview": false
+    },
+    {
+      "id": "T04",
+      "code": "T04",
+      "number": 4,
+      "title": "El Estatuto de Autonomía de la Comunitat Valenciana (II): las competencias; relaciones con el Estado y otras Comunidades Autónomas; relaciones con la Unión Europea; Acción exterior; Administración Local; Reforma del Estatuto.",
+      "publicPreview": false
+    },
+    {
+      "id": "T05",
+      "code": "T05",
+      "number": 5,
+      "title": "La ley del Gobierno Valenciano. El Reglamento de les Corts Valencianes: Título Preliminar; Título I, De la Sesión Constitutiva; Título II, De los Diputados y las Diputadas; Título III, De la Organización de les Corts Valencianes.",
+      "publicPreview": false
+    },
+    {
+      "id": "T06",
+      "code": "T06",
+      "number": 6,
+      "title": "II Plan de igualdad del CHGUV. Ley orgánica 1/2004, de 28 de diciembre, de medidas de protección integral contra la violencia de género.",
+      "publicPreview": false
+    },
+    {
+      "id": "T07",
+      "code": "T07",
+      "number": 7,
+      "title": "Real decreto legislativo 5/2015, de 30 de octubre, por el que se aprueba el texto refundido de la Ley del Estatuto Básico del Empleado Público. La Ley de la función pública valenciana.",
+      "publicPreview": false
+    },
+    {
+      "id": "T08",
+      "code": "T08",
+      "number": 8,
+      "title": "El Consorcio Hospital General Universitario de Valencia (CHGUV): breve historia. Estatutos. Organización, estructura y funcionamiento. Integración con el Departamento de Salud Valencia-Hospital General. El Convenio Colectivo del CHGUV: planificación, ordenación y gestión del empleo público. Situaciones del personal laboral.",
+      "publicPreview": false
+    },
+    {
+      "id": "T09",
+      "code": "T09",
+      "number": 9,
+      "title": "Organización sanitaria del Sistema Nacional de Salud. Ley general de Sanidad: El sistema de salud. Competencias de las Administraciones Públicas. Estructura del sistema sanitario público.",
+      "publicPreview": false
+    },
+    {
+      "id": "T10",
+      "code": "T10",
+      "number": 10,
+      "title": "La Ley 44/2003, de 21 de noviembre, de Ordenación de Profesiones Sanitarias. Normas generales. Ejercicio de profesiones sanitarias. Desarrollo profesional y su reconocimiento. Cartera de servicios comunes del Sistema Nacional de Salud.",
+      "publicPreview": false
+    },
+    {
+      "id": "T11",
+      "code": "T11",
+      "number": 11,
+      "title": "Ley 33/2011, de 4 de octubre, General de Salud Pública: la política de Salud Pública; Derechos, deberes y obligaciones en Salud Pública; Actuaciones en Salud Pública.",
+      "publicPreview": false
+    },
+    {
+      "id": "T12",
+      "code": "T12",
+      "number": 12,
+      "title": "Estructura, organización y funcionamiento de la asistencia sanitaria en la Comunidad Valenciana. Marco general. Prestaciones asistenciales y estructuras directivas.",
+      "publicPreview": false
+    },
+    {
+      "id": "T13",
+      "code": "T13",
+      "number": 13,
+      "title": "El Reglamento orgánico y funcional de la Conselleria de Sanidad.",
+      "publicPreview": false
+    },
+    {
+      "id": "T14",
+      "code": "T14",
+      "number": 14,
+      "title": "Ley 55/2003, del Estatuto Marco del personal estatutario. Normas generales; clasificación del personal estatutario; planificación y ordenación del personal; Derechos y deberes.",
+      "publicPreview": false
+    },
+    {
+      "id": "T15",
+      "code": "T15",
+      "number": 15,
+      "title": "Ley 39/2015, de 1 de octubre, del procedimiento administrativo común de las administraciones públicas.",
+      "publicPreview": false
+    },
+    {
+      "id": "T16",
+      "code": "T16",
+      "number": 16,
+      "title": "Ley 40/2015, de 1 de octubre, de régimen jurídico del sector público: Título Preliminar: Disposiciones generales, principios de actuación y funcionamiento del sector público; La responsabilidad patrimonial de la Administración Pública; La potestad sancionadora de la Administración.",
+      "publicPreview": false
+    },
+    {
+      "id": "T17",
+      "code": "T17",
+      "number": 17,
+      "title": "Los contratos del sector público: Objeto; Los tipos contractuales; Perfección y forma del contrato; Partes del contrato; Objeto, presupuesto base de licitación, valor estimado, precio del contrato; Formalización, contenido y efectos, cumplimiento y extinción de los contratos administrativos.",
+      "publicPreview": false
+    },
+    {
+      "id": "T18",
+      "code": "T18",
+      "number": 18,
+      "title": "La Administración electrónica. Decreto 220/2014, de 12 de diciembre, del Consell, por el que se aprueba el Reglamento de Administración Electrónica de la Comunitat Valenciana. Ley orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales: disposiciones generales; principios de protección de datos y derechos de las personas.",
+      "publicPreview": false
+    },
+    {
+      "id": "T19",
+      "code": "T19",
+      "number": 19,
+      "title": "Transparencia, acceso a la información pública y buen gobierno: Transparencia de la actividad pública. Ley orgánica 3/2007, de 22 de marzo, para la igualdad efectiva de mujeres y hombres. La Ley 9/2003, de 2 de abril, de la Generalitat, para la igualdad de mujeres y hombres. Ley orgánica 1/2004, de 28 de diciembre, de medidas de protección integral contra la violencia de género.",
+      "publicPreview": false
+    },
+    {
+      "id": "T20",
+      "code": "T20",
+      "number": 20,
+      "title": "Ley 55/2003, de 16 de diciembre, del Estatuto Marco del personal estatutario de los servicios de salud: Selección y provisión del personal estatutario; Adquisición y pérdida de la condición de personal estatutario fijo; Situaciones administrativas del personal estatutario; Jubilación.",
+      "publicPreview": false
+    },
+    {
+      "id": "T21",
+      "code": "T21",
+      "number": 21,
+      "title": "Sistema retributivo del personal estatutario al servicio de la Conselleria de Sanidad Universal y Salud Pública.",
+      "publicPreview": false
+    },
+    {
+      "id": "T22",
+      "code": "T22",
+      "number": 22,
+      "title": "Real decreto legislativo 2/2015, de 23 de octubre, por el que se aprueba el texto refundido de la Ley del Estatuto de los Trabajadores: Clases de contratos. Real decreto legislativo 8/2015, de 30 de octubre, por el que se aprueba el texto refundido de la Ley General de la Seguridad Social: La seguridad social del personal al servicio de la Administración de la Generalitat; Afiliación, Altas y Bajas.",
+      "publicPreview": false
+    },
+    {
+      "id": "T23",
+      "code": "T23",
+      "number": 23,
+      "title": "El Convenio Colectivo del Consorcio Hospital General Universitario de Valencia.",
+      "publicPreview": false
+    },
+    {
+      "id": "T24",
+      "code": "T24",
+      "number": 24,
+      "title": "Ley 1/2015, de 6 de febrero, de Hacienda Pública, del Sector Público Instrumental y de Subvenciones: Los presupuestos de la Generalitat. Las fases de ejecución y documentos contables del estado de gastos. La gestión de los gastos en materia de personal en la Generalitat.",
+      "publicPreview": false
+    },
+    {
+      "id": "T25",
+      "code": "T25",
+      "number": 25,
+      "title": "Ley 31/1995, de 8 de noviembre, de prevención de Riesgos Laborales.",
+      "publicPreview": false
+    },
+    {
+      "id": "T26",
+      "code": "T26",
+      "number": 26,
+      "title": "Ley 41/2002, de 14 de noviembre, básica reguladora de la autonomía del paciente y de derechos y obligaciones en materia de información y documentación clínica: Contenido y principios generales. Ley 10/2014, de 29 de diciembre, de Salud de la Comunitat Valenciana. La Libre elección en el ámbito de la Atención Primaria y Especializada del Sistema Valenciano de Salud. El Servicio de Atención e Información al Paciente (SAIP).",
+      "publicPreview": false
+    },
+    {
+      "id": "T27",
+      "code": "T27",
+      "number": 27,
+      "title": "El sistema de Información Poblacional de la Conselleria con competencias en materia de Sanidad. El derecho a la asistencia sanitaria a ciudadanos extranjeros en la Comunidad Valenciana y a las personas que no tengan la condición de aseguradas ni de beneficiarias del SNS.",
+      "publicPreview": false
+    },
+    {
+      "id": "T28",
+      "code": "T28",
+      "number": 28,
+      "title": "Introducción a la Informática: Conceptos básicos. Hardware, estructura funcional de un ordenador, componentes físicos, periféricos de entrada y salida, conexiones. Software, soporte lógico de un ordenador: conceptos básicos, sistemas operativos actuales (Windows, Unix). internet, Correo Electrónico: Conceptos básicos, navegadores. Videoconferencia.",
+      "publicPreview": false
+    },
+    {
+      "id": "T29",
+      "code": "T29",
+      "number": 29,
+      "title": "Los Sistemas Ofimáticos: Procesadores de Texto: concepto, funcionalidades principales, plantillas combinación de correspondencia.",
+      "publicPreview": false
+    },
+    {
+      "id": "T30",
+      "code": "T30",
+      "number": 30,
+      "title": "Los Sistemas Ofimáticos: Hojas de Cálculo: concepto, funcionalidades, tablas dinámicas, funciones, gráficos.",
+      "publicPreview": false
+    },
+    {
+      "id": "T31",
+      "code": "T31",
+      "number": 31,
+      "title": "Los Sistemas Ofimáticos: Presentaciones: concepto y funcionalidades principales.",
+      "publicPreview": false
+    }
+  ],
+  "simulations": [
+    {
+      "id": "SIM01",
+      "title": "Simulacro de entrenamiento 1",
+      "count": 50,
+      "durationMinutes": 63,
+      "reserveCount": 0,
+      "penalty": 0.3333333333333333,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM02",
+      "title": "Simulacro de entrenamiento 2",
+      "count": 50,
+      "durationMinutes": 63,
+      "reserveCount": 0,
+      "penalty": 0.3333333333333333,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM03",
+      "title": "Simulacro de entrenamiento 3",
+      "count": 50,
+      "durationMinutes": 63,
+      "reserveCount": 0,
+      "penalty": 0.3333333333333333,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM04",
+      "title": "Simulacro de entrenamiento 4",
+      "count": 50,
+      "durationMinutes": 63,
+      "reserveCount": 0,
+      "penalty": 0.3333333333333333,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM05",
+      "title": "Simulacro de entrenamiento 5",
+      "count": 50,
+      "durationMinutes": 63,
+      "reserveCount": 0,
+      "penalty": 0.3333333333333333,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM06",
+      "title": "Simulacro de entrenamiento 6",
+      "count": 50,
+      "durationMinutes": 63,
+      "reserveCount": 0,
+      "penalty": 0.3333333333333333,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM07",
+      "title": "Simulacro de entrenamiento 7",
+      "count": 50,
+      "durationMinutes": 63,
+      "reserveCount": 0,
+      "penalty": 0.3333333333333333,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM08",
+      "title": "Simulacro de entrenamiento 8",
+      "count": 50,
+      "durationMinutes": 63,
+      "reserveCount": 0,
+      "penalty": 0.3333333333333333,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM09",
+      "title": "Simulacro de entrenamiento 9",
+      "count": 50,
+      "durationMinutes": 63,
+      "reserveCount": 0,
+      "penalty": 0.3333333333333333,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM10",
+      "title": "Simulacro de entrenamiento 10",
+      "count": 50,
+      "durationMinutes": 63,
+      "reserveCount": 0,
+      "penalty": 0.3333333333333333,
+      "minPlan": "estandar"
+    }
+  ],
+  "simulationNote": "Escoge un modelo de entrenamiento o practica con 20 preguntas aleatorias del temario.",
+  "counts": {
+    "themes": 31,
+    "questions": 1550,
+    "glossary": 155,
+    "closedRocio": 285,
+    "simulations": 10
+  }
+}

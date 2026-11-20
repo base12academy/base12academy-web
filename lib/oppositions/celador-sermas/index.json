@@ -1,0 +1,223 @@
+{
+  "courseSlug": "celador-sermas",
+  "title": "Celador del SERMAS",
+  "shortTitle": "Celador SERMAS",
+  "level": "AP",
+  "region": "Madrid",
+  "durationMonths": 12,
+  "enrollmentOpen": true,
+  "themes": [
+    {
+      "id": "T01",
+      "code": "T01",
+      "number": 1,
+      "title": "El derecho a la protección de la salud en la Constitución española de 1978. El Estatuto de Autonomía de la Comunidad de Madrid. La Asamblea, el Presidente y el Gobierno. La Administración autonómica: Organización y estructura básica de las Consejerías.",
+      "publicPreview": true
+    },
+    {
+      "id": "T02",
+      "code": "T02",
+      "number": 2,
+      "title": "La Ley 14/1986, de 25 de abril, General de Sanidad. El Sistema Nacional de Salud y los Servicios de Salud de las Comunidades Autónomas. El Área de Salud.",
+      "publicPreview": false
+    },
+    {
+      "id": "T03",
+      "code": "T03",
+      "number": 3,
+      "title": "La Ley 14/1986, de 25 de abril, General de Sanidad. Las modalidades de la asistencia sanitaria. La atención primaria de la salud, equipos de atención primaria, el centro de salud. La asistencia hospitalaria. El área sanitaria. Los hospitales y los centros de especialidades.",
+      "publicPreview": false
+    },
+    {
+      "id": "T04",
+      "code": "T04",
+      "number": 4,
+      "title": "Ley 12/2001, de 21 de diciembre de Ordenación Sanitaria de la Comunidad de Madrid. Derechos y deberes de los ciudadanos.",
+      "publicPreview": false
+    },
+    {
+      "id": "T05",
+      "code": "T05",
+      "number": 5,
+      "title": "La ley 1/2004, de Medidas de Protección Integral contra la Violencia de Género: Principios rectores, medidas de sensibilización, prevención y detección en el ámbito sanitario. Derechos de las funcionarias públicas. Ley 5/2005, de 20 de diciembre, integral contra la violencia de género de la Comunidad de Madrid. Ley Orgánica 3/2007, para la igualdad efectiva de mujeres y hombres: Objeto y ámbito de la ley. Integración del principio de igualdad en la política de salud. Modificaciones de la Ley General de Sanidad. Ley 3/2016, de 22 de julio, de protección integral contra la LGTBfobia y la discriminación por razón de orientación en identidad sexual en la Comunidad de Madrid.",
+      "publicPreview": false
+    },
+    {
+      "id": "T06",
+      "code": "T06",
+      "number": 6,
+      "title": "Ley 11/2017, de 22 de diciembre, de Buen gobierno y Profesionalización de la gestión de los centros y organizaciones sanitarias del Servicio Madrileño de Salud.",
+      "publicPreview": false
+    },
+    {
+      "id": "T07",
+      "code": "T07",
+      "number": 7,
+      "title": "Ley 41/2002, de 14 de noviembre, básica reguladora de la autonomía del paciente y de derechos y obligaciones en materia de información y documentación clínica. El derecho de información sanitaria. El derecho a la intimidad. El respeto a la autonomía del paciente. La historia clínica. El consentimiento informado. La tarjeta sanitaria.",
+      "publicPreview": false
+    },
+    {
+      "id": "T08",
+      "code": "T08",
+      "number": 8,
+      "title": "Ley 55/2003, de 16 de diciembre del Estatuto Marco del personal estatutario de los servicios de salud: Clasificación del personal. Derechos y deberes. Adquisición y pérdida de la condición de personal estatutario. Régimen disciplinario.",
+      "publicPreview": false
+    },
+    {
+      "id": "T09",
+      "code": "T09",
+      "number": 9,
+      "title": "Prevención de riesgos laborales. La Ley 31/1995, de 8 de noviembre, de Prevención de Riesgos laborales: derechos y obligaciones; consulta y participación de los trabajadores. Prevención de riesgos laborales específicos de la categoría. Especial referencia a la manipulación manual de cargas y al riesgo biológico, medidas de prevención. Ergonomía: métodos de movilización de enfermos e incapacitados.",
+      "publicPreview": false
+    },
+    {
+      "id": "T10",
+      "code": "T10",
+      "number": 10,
+      "title": "Funciones del Celador y del Jefe de Personal Subalterno. Funciones de vigilancia. Su relación con los familiares de los enfermos. Funciones de asistencia al personal sanitario facultativo y no facultativo.",
+      "publicPreview": false
+    },
+    {
+      "id": "T11",
+      "code": "T11",
+      "number": 11,
+      "title": "Unidades de competencia previstas en el Real Decreto 1790/2011, de 16 de diciembre: El celador en las Unidades de Hospitalización, en el Bloque Quirúrgico, en Cuidados Intensivos, en Urgencias, en Unidades Psiquiátricas.",
+      "publicPreview": false
+    },
+    {
+      "id": "T12",
+      "code": "T12",
+      "number": 12,
+      "title": "El celador en su puesto de trabajo, funciones y relación con el paciente y usuarios: El celador en Atención Primaria, en el área de consultas externas y Servicios Centrales.",
+      "publicPreview": false
+    },
+    {
+      "id": "T13",
+      "code": "T13",
+      "number": 13,
+      "title": "El trabajo en equipo. El celador como integrante de los equipos de trabajo del Sistema Sanitario. Habilidades sociales y comunicación. La comunicación como herramienta de trabajo. Estilos de comunicación. Posiciones anatómicas básicas.",
+      "publicPreview": false
+    },
+    {
+      "id": "T14",
+      "code": "T14",
+      "number": 14,
+      "title": "Unidades de competencia previstas en el Real Decreto 1790/2011, de 16 de diciembre: El celador en la recepción y almacenamiento de mercancía. Organización del almacén y distribución de pedidos. El celador en Farmacia, Mortuorio y sala de autopsias y en el resto de puestos de trabajo.",
+      "publicPreview": false
+    },
+    {
+      "id": "T15",
+      "code": "T15",
+      "number": 15,
+      "title": "Unidades de competencia previstas en el Real Decreto 1790/2011, de 16 de diciembre: Movilización y traslado de pacientes. Técnicas de movilización. Traslado del paciente encamado, en camilla y en silla de ruedas.",
+      "publicPreview": false
+    },
+    {
+      "id": "T16",
+      "code": "T16",
+      "number": 16,
+      "title": "Manejo y traslado de la documentación clínica. La confidencialidad de la historia clínica. Unidades de competencia previstas en el Real Decreto 1790/2011, de 16 de diciembre: El traslado de documentos y objetos.",
+      "publicPreview": false
+    }
+  ],
+  "simulations": [
+    {
+      "id": "SIM01",
+      "title": "Simulacro de entrenamiento 1",
+      "count": 70,
+      "durationMinutes": 90,
+      "reserveCount": 10,
+      "penalty": 0.25,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM02",
+      "title": "Simulacro de entrenamiento 2",
+      "count": 70,
+      "durationMinutes": 90,
+      "reserveCount": 10,
+      "penalty": 0.25,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM03",
+      "title": "Simulacro de entrenamiento 3",
+      "count": 70,
+      "durationMinutes": 90,
+      "reserveCount": 10,
+      "penalty": 0.25,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM04",
+      "title": "Simulacro de entrenamiento 4",
+      "count": 70,
+      "durationMinutes": 90,
+      "reserveCount": 10,
+      "penalty": 0.25,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM05",
+      "title": "Simulacro de entrenamiento 5",
+      "count": 70,
+      "durationMinutes": 90,
+      "reserveCount": 10,
+      "penalty": 0.25,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM06",
+      "title": "Simulacro de entrenamiento 6",
+      "count": 70,
+      "durationMinutes": 90,
+      "reserveCount": 10,
+      "penalty": 0.25,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM07",
+      "title": "Simulacro de entrenamiento 7",
+      "count": 70,
+      "durationMinutes": 90,
+      "reserveCount": 10,
+      "penalty": 0.25,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM08",
+      "title": "Simulacro de entrenamiento 8",
+      "count": 70,
+      "durationMinutes": 90,
+      "reserveCount": 10,
+      "penalty": 0.25,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM09",
+      "title": "Simulacro de entrenamiento 9",
+      "count": 70,
+      "durationMinutes": 90,
+      "reserveCount": 10,
+      "penalty": 0.25,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM10",
+      "title": "Simulacro de entrenamiento 10",
+      "count": 70,
+      "durationMinutes": 90,
+      "reserveCount": 10,
+      "penalty": 0.25,
+      "minPlan": "estandar"
+    }
+  ],
+  "simulationNote": "Escoge un modelo de entrenamiento o practica con 20 preguntas aleatorias del temario.",
+  "counts": {
+    "themes": 16,
+    "questions": 800,
+    "glossary": 80,
+    "closedRocio": 96,
+    "simulations": 10
+  }
+}
