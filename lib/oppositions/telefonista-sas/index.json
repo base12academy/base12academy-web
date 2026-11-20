@@ -1,0 +1,332 @@
+{
+  "courseSlug": "telefonista-sas",
+  "title": "Telefonista del Servicio Andaluz de Salud",
+  "shortTitle": "Telefonista SAS",
+  "level": "C2",
+  "region": "Andalucía",
+  "durationMonths": 12,
+  "enrollmentOpen": true,
+  "themes": [
+    {
+      "id": "T01",
+      "code": "T01",
+      "number": 1,
+      "title": "Constitución Española y protección de la salud",
+      "publicPreview": true
+    },
+    {
+      "id": "T02",
+      "code": "T02",
+      "number": 2,
+      "title": "Estatuto de Autonomía para Andalucía",
+      "publicPreview": false
+    },
+    {
+      "id": "T03",
+      "code": "T03",
+      "number": 3,
+      "title": "Organización sanitaria de Andalucía (I)",
+      "publicPreview": false
+    },
+    {
+      "id": "T04",
+      "code": "T04",
+      "number": 4,
+      "title": "Organización sanitaria de Andalucía (II)",
+      "publicPreview": false
+    },
+    {
+      "id": "T05",
+      "code": "T05",
+      "number": 5,
+      "title": "Protección de datos y transparencia",
+      "publicPreview": false
+    },
+    {
+      "id": "T06",
+      "code": "T06",
+      "number": 6,
+      "title": "Prevención de riesgos laborales",
+      "publicPreview": false
+    },
+    {
+      "id": "T07",
+      "code": "T07",
+      "number": 7,
+      "title": "Igualdad de género y violencia de género",
+      "publicPreview": false
+    },
+    {
+      "id": "T08",
+      "code": "T08",
+      "number": 8,
+      "title": "Estatuto Marco del personal estatutario",
+      "publicPreview": false
+    },
+    {
+      "id": "T09",
+      "code": "T09",
+      "number": 9,
+      "title": "Autonomía del paciente y tarjeta sanitaria",
+      "publicPreview": false
+    },
+    {
+      "id": "T10",
+      "code": "T10",
+      "number": 10,
+      "title": "Tecnologías de la información y comunicaciones en el SAS",
+      "publicPreview": false
+    },
+    {
+      "id": "T11",
+      "code": "T11",
+      "number": 11,
+      "title": "Administración electrónica y sus utilidades",
+      "publicPreview": false
+    },
+    {
+      "id": "T12",
+      "code": "T12",
+      "number": 12,
+      "title": "Gestión medioambiental",
+      "publicPreview": false
+    },
+    {
+      "id": "T13",
+      "code": "T13",
+      "number": 13,
+      "title": "Autoprotección, emergencias y evacuación",
+      "publicPreview": false
+    },
+    {
+      "id": "T14",
+      "code": "T14",
+      "number": 14,
+      "title": "Comunicación y atención telefónica",
+      "publicPreview": false
+    },
+    {
+      "id": "T15",
+      "code": "T15",
+      "number": 15,
+      "title": "Comunicación como atención al ciudadano",
+      "publicPreview": false
+    },
+    {
+      "id": "T16",
+      "code": "T16",
+      "number": 16,
+      "title": "Atención a la ciudadanía, derechos y garantías",
+      "publicPreview": false
+    },
+    {
+      "id": "T17",
+      "code": "T17",
+      "number": 17,
+      "title": "Sistemas informáticos y seguridad de la información",
+      "publicPreview": false
+    },
+    {
+      "id": "T18",
+      "code": "T18",
+      "number": 18,
+      "title": "Sistemas ofimáticos, internet, intranet y correo",
+      "publicPreview": false
+    },
+    {
+      "id": "T19",
+      "code": "T19",
+      "number": 19,
+      "title": "Trabajo en equipo y gestión de conflictos",
+      "publicPreview": false
+    },
+    {
+      "id": "T20",
+      "code": "T20",
+      "number": 20,
+      "title": "Productividad personal y gestión del tiempo",
+      "publicPreview": false
+    },
+    {
+      "id": "T21",
+      "code": "T21",
+      "number": 21,
+      "title": "Redes de telecomunicación, telefonía IP y centrales",
+      "publicPreview": false
+    },
+    {
+      "id": "T22",
+      "code": "T22",
+      "number": 22,
+      "title": "Servicios de operador y terminales de telefonía",
+      "publicPreview": false
+    },
+    {
+      "id": "T23",
+      "code": "T23",
+      "number": 23,
+      "title": "Red Corporativa de la Junta de Andalucía: telefonía móvil",
+      "publicPreview": false
+    },
+    {
+      "id": "T24",
+      "code": "T24",
+      "number": 24,
+      "title": "Red Corporativa: telefonía fija y puesto de operadora",
+      "publicPreview": false
+    },
+    {
+      "id": "T25",
+      "code": "T25",
+      "number": 25,
+      "title": "La voz como herramienta de trabajo",
+      "publicPreview": false
+    },
+    {
+      "id": "T26",
+      "code": "T26",
+      "number": 26,
+      "title": "Riesgos laborales específicos del telefonista",
+      "publicPreview": false
+    },
+    {
+      "id": "T27",
+      "code": "T27",
+      "number": 27,
+      "title": "Sistemas de comunicación y mantenimiento en centros sanitarios",
+      "publicPreview": false
+    },
+    {
+      "id": "T28",
+      "code": "T28",
+      "number": 28,
+      "title": "Sistema de Gestión de la Calidad e ISO 9001",
+      "publicPreview": false
+    },
+    {
+      "id": "T29",
+      "code": "T29",
+      "number": 29,
+      "title": "Soporte TIC y formación en el SSPA",
+      "publicPreview": false
+    }
+  ],
+  "simulations": [
+    {
+      "id": "SIM01",
+      "title": "Simulacro de entrenamiento 1",
+      "count": 78,
+      "durationMinutes": 120,
+      "reserveCount": 3,
+      "penalty": 0.25,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM02",
+      "title": "Simulacro de entrenamiento 2",
+      "count": 78,
+      "durationMinutes": 120,
+      "reserveCount": 3,
+      "penalty": 0.25,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM03",
+      "title": "Simulacro de entrenamiento 3",
+      "count": 78,
+      "durationMinutes": 120,
+      "reserveCount": 3,
+      "penalty": 0.25,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM04",
+      "title": "Simulacro de entrenamiento 4",
+      "count": 78,
+      "durationMinutes": 120,
+      "reserveCount": 3,
+      "penalty": 0.25,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM05",
+      "title": "Simulacro de entrenamiento 5",
+      "count": 78,
+      "durationMinutes": 120,
+      "reserveCount": 3,
+      "penalty": 0.25,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM06",
+      "title": "Simulacro de entrenamiento 6",
+      "count": 78,
+      "durationMinutes": 120,
+      "reserveCount": 3,
+      "penalty": 0.25,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM07",
+      "title": "Simulacro de entrenamiento 7",
+      "count": 78,
+      "durationMinutes": 120,
+      "reserveCount": 3,
+      "penalty": 0.25,
+      "minPlan": "premium"
+    },
+    {
+      "id": "SIM08",
+      "title": "Simulacro de entrenamiento 8",
+      "count": 78,
+      "durationMinutes": 120,
+      "reserveCount": 3,
+      "penalty": 0.25,
+      "minPlan": "premium"
+    },
+    {
+      "id": "SIM09",
+      "title": "Simulacro de entrenamiento 9",
+      "count": 78,
+      "durationMinutes": 120,
+      "reserveCount": 3,
+      "penalty": 0.25,
+      "minPlan": "premium"
+    },
+    {
+      "id": "SIM10",
+      "title": "Simulacro de entrenamiento 10",
+      "count": 78,
+      "durationMinutes": 120,
+      "reserveCount": 3,
+      "penalty": 0.25,
+      "minPlan": "premium"
+    },
+    {
+      "id": "SIM11",
+      "title": "Simulacro de entrenamiento 11",
+      "count": 78,
+      "durationMinutes": 120,
+      "reserveCount": 3,
+      "penalty": 0.25,
+      "minPlan": "premium"
+    },
+    {
+      "id": "SIM12",
+      "title": "Simulacro de entrenamiento 12",
+      "count": 78,
+      "durationMinutes": 120,
+      "reserveCount": 3,
+      "penalty": 0.25,
+      "minPlan": "premium"
+    }
+  ],
+  "simulationNote": "Escoge un modelo de entrenamiento o practica con 20 preguntas aleatorias del temario.",
+  "counts": {
+    "themes": 29,
+    "questions": 1450,
+    "glossary": 435,
+    "closedRocio": 435,
+    "simulations": 12
+  }
+}

@@ -1,0 +1,289 @@
+{
+  "courseSlug": "celador-chguv-co32-24",
+  "title": "Celador del Consorcio Hospital General Universitario de Valencia (CHGUV) · CO/32/24",
+  "shortTitle": "Celador CHGUV",
+  "level": "AP",
+  "region": "Comunidad Valenciana",
+  "durationMonths": 12,
+  "enrollmentOpen": true,
+  "themes": [
+    {
+      "id": "T01",
+      "code": "T01",
+      "number": 1,
+      "title": "La Constitución Española de 1978: estructura y contenido. Derechos y deberes fundamentales, su garantía y suspensión. El Tribunal Constitucional. El defensor del pueblo. Reforma de la Constitución. El Estatuto de Autonomía de la Comunidad Valenciana: La Generalitat. Competencias. Relaciones con el Estado y otras Comunidades Autónomas. Relaciones con la Unión Europea. Acción Exterior. Administración local. Economía y Hacienda. Reforma del Estatuto. Otras instituciones de la Generalitat Valenciana.",
+      "publicPreview": true
+    },
+    {
+      "id": "T02",
+      "code": "T02",
+      "number": 2,
+      "title": "La Ley de Gobierno Valenciano: El Consell. Relaciones del Consell y Cortes. Administración pública de la Generalitat Valenciana. Responsabilidad de los miembros del Consell y de la Administración pública de la Generalitat Valenciana.",
+      "publicPreview": false
+    },
+    {
+      "id": "T03",
+      "code": "T03",
+      "number": 3,
+      "title": "II Plan de igualdad del CHGUV. Ley Orgánica 1/2004, de 28 de diciembre, de medidas de protección integral contra la violencia de género. Políticas públicas: modelos de decisión. Evaluación de las políticas públicas: indicadores. Ética pública y buen gobierno. La aplicación del principio de transparencia en la Administración valenciana y su régimen jurídico. Normativa aplicable en la Comunitat Valenciana en materia de dependencia y personas con diversidad funcional.",
+      "publicPreview": false
+    },
+    {
+      "id": "T04",
+      "code": "T04",
+      "number": 4,
+      "title": "Principios básicos de seguridad de la información. Protección de datos de carácter personal. Certificados electrónicos y firma electrónica. Uso seguro de medios tecnológicos.",
+      "publicPreview": false
+    },
+    {
+      "id": "T05",
+      "code": "T05",
+      "number": 5,
+      "title": "Puesto de trabajo: conceptos básicos del ordenador, sistema operativo y periféricos. Dispositivos móviles.",
+      "publicPreview": false
+    },
+    {
+      "id": "T06",
+      "code": "T06",
+      "number": 6,
+      "title": "Herramientas ofimáticas del puesto de trabajo. Tratamientos de texto. Hojas de cálculo. Internet y herramientas de colaboración.",
+      "publicPreview": false
+    },
+    {
+      "id": "T07",
+      "code": "T07",
+      "number": 7,
+      "title": "El Consorcio Hospital General Universitario de Valencia (CHGUV): breve historia. Estatutos. Organización, estructura y funcionamiento. Integración con el Departamento de Salud Valencia-Hospital General. El Convenio Colectivo del CHGUV: planificación, ordenación y gestión del empleo público. Situaciones del personal laboral.",
+      "publicPreview": false
+    },
+    {
+      "id": "T08",
+      "code": "T08",
+      "number": 8,
+      "title": "La Ley General de Sanidad. La organización del sistema sanitario público. El Sistema Nacional de Salud y los servicios de salud.",
+      "publicPreview": false
+    },
+    {
+      "id": "T09",
+      "code": "T09",
+      "number": 9,
+      "title": "Derechos y obligaciones de los usuarios de servicios del sistema sanitario público. El derecho a la información y a la confidencialidad. Consentimiento informado.",
+      "publicPreview": false
+    },
+    {
+      "id": "T10",
+      "code": "T10",
+      "number": 10,
+      "title": "La historia clínica. Contenido. Acceso y uso. La protección de datos de carácter personal.",
+      "publicPreview": false
+    },
+    {
+      "id": "T11",
+      "code": "T11",
+      "number": 11,
+      "title": "El Servicio de Atención e Información al Paciente. La tarjeta individual sanitaria. SIP. Código identificación personal.",
+      "publicPreview": false
+    },
+    {
+      "id": "T12",
+      "code": "T12",
+      "number": 12,
+      "title": "El personal subalterno: funciones del celador y del jefe de personal subalterno. Funciones de asistencia al personal estatutario sanitario.",
+      "publicPreview": false
+    },
+    {
+      "id": "T13",
+      "code": "T13",
+      "number": 13,
+      "title": "La actuación del celador en unidades de urgencias. Sistemas de clasificación de pacientes. El transporte de enfermos en ambulancias. Dispositivos de urgencias.",
+      "publicPreview": false
+    },
+    {
+      "id": "T14",
+      "code": "T14",
+      "number": 14,
+      "title": "Traslado y movilidad de pacientes. Posiciones anatómicas básicas. Técnicas de movilización de pacientes. Medios auxiliares.",
+      "publicPreview": false
+    },
+    {
+      "id": "T15",
+      "code": "T15",
+      "number": 15,
+      "title": "Higiene y aseo del paciente. Precauciones de aislamiento. Tipología. Medidas de prevención y control de las infecciones relacionadas con la asistencia sanitaria.",
+      "publicPreview": false
+    },
+    {
+      "id": "T16",
+      "code": "T16",
+      "number": 16,
+      "title": "La higiene personal del celador. El lavado de manos. Equipos de protección individual (EPIs). Criterios generales de indicación.",
+      "publicPreview": false
+    },
+    {
+      "id": "T17",
+      "code": "T17",
+      "number": 17,
+      "title": "Actuación en las habitaciones de los enfermos y las estancias comunes.",
+      "publicPreview": false
+    },
+    {
+      "id": "T18",
+      "code": "T18",
+      "number": 18,
+      "title": "La actuación del celador en su relación con los familiares de los enfermos. Elementos de la comunicación paciente-celador-familia. La indumentaria y los signos identificativos.",
+      "publicPreview": false
+    },
+    {
+      "id": "T19",
+      "code": "T19",
+      "number": 19,
+      "title": "La actuación del celador en los quirófanos. Posicionamiento y prevención de lesiones. Normas de higiene. La esterilización.",
+      "publicPreview": false
+    },
+    {
+      "id": "T20",
+      "code": "T20",
+      "number": 20,
+      "title": "La actuación del celador en los Servicios de Medicina Intensiva y Reanimación.",
+      "publicPreview": false
+    },
+    {
+      "id": "T21",
+      "code": "T21",
+      "number": 21,
+      "title": "La actuación del celador en relación con los pacientes fallecidos. Actuación en las salas de autopsias y los mortuorios.",
+      "publicPreview": false
+    },
+    {
+      "id": "T22",
+      "code": "T22",
+      "number": 22,
+      "title": "La actuación del celador en los Servicios de Psiquiatría en relación con el enfermo mental. Procedimientos de sujeción.",
+      "publicPreview": false
+    },
+    {
+      "id": "T23",
+      "code": "T23",
+      "number": 23,
+      "title": "La actuación del celador en el Almacén y el Servicio de Farmacia.",
+      "publicPreview": false
+    },
+    {
+      "id": "T24",
+      "code": "T24",
+      "number": 24,
+      "title": "Protección radiológica. Fundamentos, clasificación de zonas, señalizaciones y normas generales. Detectores, tipos y aplicaciones. Barreras y prendas de protección. Medidas de la radiación. Dosimetría.",
+      "publicPreview": false
+    },
+    {
+      "id": "T25",
+      "code": "T25",
+      "number": 25,
+      "title": "Gestión de residuos sanitarios. Clasificación, gestión, transporte, eliminación y tratamiento de los residuos.",
+      "publicPreview": false
+    },
+    {
+      "id": "T26",
+      "code": "T26",
+      "number": 26,
+      "title": "Planes de Autoprotección, planes de emergencia y medidas de emergencia. Definiciones. Clasificación de centros. Normativa. Mantenimiento y actualización. Realización de simulacros. Evacuación en casos de incendio y alarma. Medios de extinción.",
+      "publicPreview": false
+    },
+    {
+      "id": "T27",
+      "code": "T27",
+      "number": 27,
+      "title": "Conceptos básicos de Seguridad y Salud en el trabajo. Riesgos laborales y medidas preventivas de la categoría de celador. Origen del riesgo.",
+      "publicPreview": false
+    },
+    {
+      "id": "T28",
+      "code": "T28",
+      "number": 28,
+      "title": "Prevención de agresiones en el entorno sanitario. Recomendaciones generales ante una situación de conflicto.",
+      "publicPreview": false
+    }
+  ],
+  "simulations": [
+    {
+      "id": "SIM01",
+      "title": "Simulacro de entrenamiento 1",
+      "count": 40,
+      "durationMinutes": 50,
+      "reserveCount": 0,
+      "penalty": 0.3333333333333333,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM02",
+      "title": "Simulacro de entrenamiento 2",
+      "count": 40,
+      "durationMinutes": 50,
+      "reserveCount": 0,
+      "penalty": 0.3333333333333333,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM03",
+      "title": "Simulacro de entrenamiento 3",
+      "count": 40,
+      "durationMinutes": 50,
+      "reserveCount": 0,
+      "penalty": 0.3333333333333333,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM04",
+      "title": "Simulacro de entrenamiento 4",
+      "count": 40,
+      "durationMinutes": 50,
+      "reserveCount": 0,
+      "penalty": 0.3333333333333333,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM05",
+      "title": "Simulacro de entrenamiento 5",
+      "count": 40,
+      "durationMinutes": 50,
+      "reserveCount": 0,
+      "penalty": 0.3333333333333333,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM06",
+      "title": "Simulacro de entrenamiento 6",
+      "count": 40,
+      "durationMinutes": 50,
+      "reserveCount": 0,
+      "penalty": 0.3333333333333333,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM07",
+      "title": "Simulacro de entrenamiento 7",
+      "count": 40,
+      "durationMinutes": 50,
+      "reserveCount": 0,
+      "penalty": 0.3333333333333333,
+      "minPlan": "estandar"
+    },
+    {
+      "id": "SIM08",
+      "title": "Simulacro de entrenamiento 8",
+      "count": 40,
+      "durationMinutes": 50,
+      "reserveCount": 0,
+      "penalty": 0.3333333333333333,
+      "minPlan": "estandar"
+    }
+  ],
+  "simulationNote": "Escoge un modelo de entrenamiento o practica con 20 preguntas aleatorias del temario.",
+  "counts": {
+    "themes": 28,
+    "questions": 1400,
+    "glossary": 138,
+    "closedRocio": 238,
+    "simulations": 8
+  }
+}

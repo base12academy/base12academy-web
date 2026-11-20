@@ -1,3 +1,4 @@
+import { healthOppositions, type HealthCourseSlug } from "@/lib/oppositions/health-catalog";
 import { PERIODIC_TABLE_LICENSE_PRICE_CENTS } from "@/lib/chemistry/periodic-table-product";
 import { bundledOppositionEnrollment } from "@/lib/haciendas-universidades";
 
@@ -18,7 +19,34 @@ function bundledOppositionPlan(courseSlug: keyof typeof bundledOppositionEnrollm
   } as const;
 }
 
+function healthCoursePlan(courseSlug: HealthCourseSlug, planSlug: "esencial" | "estandar" | "premium") {
+  const { title, shortTitle } = healthOppositions[courseSlug];
+  const { label, price } = {
+    esencial: { label: "Esencial", price: 149 },
+    estandar: { label: "Estándar", price: 299 },
+    premium: { label: "Premium", price: 599 },
+  }[planSlug];
+  return {
+    slug: `${courseSlug}-${planSlug}`, courseSlug, planSlug,
+    title: `${title} · ${label}`, shortTitle: `${shortTitle} · ${label}`,
+    price, priceInCents: price * 100, mode: "one_time", active: true,
+    accessType: "fixed_term", accessMonths: 12, comingSoon: false,
+  } as const;
+}
+
 export const courses = {
+  "telefonista-sas-esencial": healthCoursePlan("telefonista-sas", "esencial"),
+  "telefonista-sas-estandar": healthCoursePlan("telefonista-sas", "estandar"),
+  "telefonista-sas-premium": healthCoursePlan("telefonista-sas", "premium"),
+  "celador-sermas-esencial": healthCoursePlan("celador-sermas", "esencial"),
+  "celador-sermas-estandar": healthCoursePlan("celador-sermas", "estandar"),
+  "celador-sermas-premium": healthCoursePlan("celador-sermas", "premium"),
+  "celador-chguv-co32-24-esencial": healthCoursePlan("celador-chguv-co32-24", "esencial"),
+  "celador-chguv-co32-24-estandar": healthCoursePlan("celador-chguv-co32-24", "estandar"),
+  "celador-chguv-co32-24-premium": healthCoursePlan("celador-chguv-co32-24", "premium"),
+  "auxiliar-administrativo-chguv-co34-24-esencial": healthCoursePlan("auxiliar-administrativo-chguv-co34-24", "esencial"),
+  "auxiliar-administrativo-chguv-co34-24-estandar": healthCoursePlan("auxiliar-administrativo-chguv-co34-24", "estandar"),
+  "auxiliar-administrativo-chguv-co34-24-premium": healthCoursePlan("auxiliar-administrativo-chguv-co34-24", "premium"),
   "administrativos-haciendas-locales-esencial": bundledOppositionPlan("administrativos-haciendas-locales", "Administrativos de Haciendas Locales", "esencial", "Esencial", 149),
   "administrativos-haciendas-locales-estandar": bundledOppositionPlan("administrativos-haciendas-locales", "Administrativos de Haciendas Locales", "estandar", "Estándar", 299),
   "administrativos-haciendas-locales-premium": bundledOppositionPlan("administrativos-haciendas-locales", "Administrativos de Haciendas Locales", "premium", "Premium", 599),

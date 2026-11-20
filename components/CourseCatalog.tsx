@@ -1,5 +1,6 @@
 "use client";
 
+import { healthOppositions } from "@/lib/oppositions/health-catalog";
 import ClassAvailabilityRequestForm from "@/components/ClassAvailabilityRequestForm";
 import Image from "next/image";
 import Link from "next/link";
@@ -31,7 +32,10 @@ const BUNDLED_OPPOSITION_SLUGS = {
   "Auxiliares Administrativos de Universidades": "auxiliares-universidades",
 } as const;
 
+const healthCourses = Object.entries(healthOppositions);
+
 const COURSE_ACCESS: Record<string,{slug:string;href:string}> = {
+  ...Object.fromEntries(healthCourses.map(([slug, course]) => [course.title, { slug, href: `/dashboard/${slug}` }])),
   ...Object.fromEntries(Object.entries(BUNDLED_OPPOSITION_SLUGS)
     .map(([name, slug]) => [name, { slug, href: `/dashboard/haciendas-universidades/${slug}` }])),
   "Historia de España": { slug:"historia-espana", href:"/dashboard/historia-espana" },
@@ -60,7 +64,8 @@ const COURSE_ACCESS: Record<string,{slug:string;href:string}> = {
   "Tropa y Marinería": { slug:"tropa-y-marineria", href:"/dashboard/tropa-y-marineria" },
 };
 
-const PURCHASABLE_OPPOSITION_NAMES = new Set([
+const PURCHASABLE_OPPOSITION_NAMES = new Set<string>([
+  ...healthCourses.map(([, course]) => course.title),
   ...Object.entries(BUNDLED_OPPOSITION_SLUGS)
     .filter(([, slug]) => bundledOppositionEnrollment[slug])
     .map(([name]) => name),
@@ -136,7 +141,7 @@ const clasesOnline = [
   "Solicitud de clases · Otras asignaturas",
 ];
 
-const celadorChguv = "Celador del Consorcio Hospital General Universitario de Valencia (CHGUV) · CO/32/24";
+const celadorChguv = healthOppositions["celador-chguv-co32-24"].title;
 
 const oposiciones = [
   ["Haciendas Locales", "Administrativos Haciendas Locales"],
@@ -157,7 +162,7 @@ const oposiciones = [
   ["Comunidad Valenciana", "Administrativo de la Generalitat Valenciana"],
   ["Comunidad Valenciana", "Auxiliar Administrativo de la Generalitat Valenciana"],
   ["Comunidad Valenciana", "Administrativo del Sistema Valenciano de Salud"],
-  ["Comunidad Valenciana", "Auxiliar Administrativo del Sistema Valenciano de Salud"],
+  ["Comunidad Valenciana", healthOppositions["auxiliar-administrativo-chguv-co34-24"].title],
   ["Comunidad Valenciana", celadorChguv],
   ["Estado", "Administrativo del Estado"],
   ["Estado", "Auxiliar Administrativo del Estado"],
@@ -444,6 +449,15 @@ function plansFor(course: Course): Plan[] {
     { name: "Estándar", price: "299 €", detail: "Más práctica y entrenamiento · 12 meses", includes: ["Todo lo incluido en Esencial", "Banco de 50 preguntas por tema", "Simulacros de 20 preguntas aleatorias", "Historial y progresión de resultados", "Acompañamiento de Rocío y Fernando"] },
     { name: "Premium", price: "599 €", detail: "Seguimiento humano semanal · 12 meses", includes: ["Todo lo incluido en Estándar", "Plan de estudio personalizado", "Revisión prioritaria del progreso", "Tutoría humana individual de 30 minutos cada semana", "Calendario de reserva modificable"] },
   ];
+  const health = healthCourses.find(([, item]) => item.title === course.name)?.[1];
+  if (health) {
+    return oppositionPlans.map(plan => {
+      if (plan.name === "Esencial") return { ...plan, includes: [`Temario de ${health.themes} temas con explicaciones`, "Glosario y preguntas de Rocío", "Comprobación de 10 preguntas por tema"] };
+      if (plan.name === "Estándar") return { ...plan, includes: [...plan.includes, `${health.standardModels} simulacros de entrenamiento con corrección`] };
+      const extraModels = health.premiumModels - health.standardModels;
+      return { ...plan, includes: [...plan.includes, ...(extraModels ? [`${extraModels} simulacros adicionales (${health.premiumModels} en total)`] : [])] };
+    });
+  }
   if (!Object.hasOwn(BUNDLED_OPPOSITION_SLUGS, course.name)) return oppositionPlans;
   return oppositionPlans.map(plan => ({
     ...plan,
@@ -560,7 +574,7 @@ export default function CourseCatalog() {
     const requested = params.get("curso") ?? "";
     const requestedBono = params.get("bono") ?? "";
     const requestedNames: Record<string, string> = {
-      "celador-chguv-co32-24": celadorChguv,
+      ...Object.fromEntries(healthCourses.map(([slug, item]) => [slug, item.title])),
       "administrativos-universidades": "Administrativos de Universidades",
       "auxiliares-universidades": "Auxiliares Administrativos de Universidades",
       "administrativo-ja": "Administrativo de la Junta de Andalucía",
@@ -1011,7 +1025,7 @@ export default function CourseCatalog() {
                 </small>
                 <h2 id="modal-course-title">{course.name}</h2>
                 <p>{course.name === celadorChguv
-                  ? "Curso en preparación para la convocatoria CO/32/24 del Consorcio. El programa consta de 28 temas. El ejercicio consta de 40 preguntas en 50 minutos."
+                  ? "Preparación para la convocatoria CO/32/24 del Consorcio. El programa consta de 28 temas. El ejercicio consta de 40 preguntas en 50 minutos."
                   : "Selecciona una modalidad y revisa la información antes de continuar."}</p>
                 {(course.region === "Haciendas Locales" || course.region === "Universidades") && (
                   <p>La matrícula incluye el bloque común y un módulo autonómico. Elige la comunidad al entrar en el aula.</p>
@@ -1021,6 +1035,7 @@ export default function CourseCatalog() {
                 )}
               </>
             )}
+            {healthCourses.some(([, item]) => item.title === course.name) && <p><Link href={COURSE_ACCESS[course.name].href + "?tema=T01"}>Probar gratis el tema 1</Link></p>}
             {course.name === "Administrativo del Sistema Valenciano de Salud" && <p><Link href="/dashboard/administrativo-sanidad-valenciana?tema=T01">Probar gratis el tema 1</Link></p>}
             {course.name === "Administrativo del SERMAS" && <p><Link href="/dashboard/administrativo-sermas?tema=T01">Probar gratis el tema 1</Link></p>}
             {course.name === "Auxiliar Administrativo del SERMAS" && <p><Link href="/dashboard/auxiliar-administrativo-sermas?tema=T01">Probar gratis el tema 1</Link></p>}
