@@ -4,10 +4,6 @@
     {
       "path": "/api/cron/class-reminders",
       "schedule": "17 3 * * *"
-    },
-    {
-      "path": "/api/cron/test-opo12",
-      "schedule": "27 4 * * *"
     }
   ]
 }
