@@ -27,7 +27,6 @@ export async function POST(req:Request,ctx:Args){
  const {db,user,curso,valid}=await context(req,ctx);if(!valid)return json({},404);if(!user)return json({error:"login_required"},401);
  const body=await req.json().catch(()=>null);if(!body)return json({error:"invalid_request"},400);
  if(body.action==="checkout")return initialPayment(user.id,curso,body);
- if(body.action==="cancel"){const r=await db.rpc("test_opo12_cancel",{p_student:user.id,p_course:curso});return r.error?json({error:"service_unavailable"},503):json({ok:r.data});}
  const id=String(body.id||"");if(!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id))return json({error:"invalid_request"},400);
  if(body.action==="start"){
   const r=await db.rpc("test_opo12_start",{p_student:user.id,p_course:curso,p_kind:body.kind,p_set:body.set,p_request:id});
