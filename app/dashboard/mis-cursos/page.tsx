@@ -1,4 +1,5 @@
 "use client";
+import {testPrograms,testProduct,testCoursePath} from "@/lib/test-opo12/catalog";
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
@@ -17,6 +18,7 @@ type Enrollment = {
 };
 
 const COURSES: Record<string,{title:string;href:string;description:string}> = {
+  ...Object.fromEntries(testPrograms.map(c=>[testProduct(c.slug),{title:"TEST OPO12 · "+c.title,href:testCoursePath(c.slug),description:"Test, simulacros e historial personal"}])),
   ...Object.fromEntries(Object.entries(healthOppositions).map(([slug, course]) => [slug, { title: course.title, href: `/dashboard/${slug}`, description: `${course.themes} temas · glosario, test y simulacros` }])),
   "administrativo-sanidad-valenciana": { title:"Administrativo del Sistema Valenciano de Salud", href:"/dashboard/administrativo-sanidad-valenciana", description:"48 temas · glosario, test, simulacros y acompañamiento" },
   "historia-espana": { title:"Historia de España", href:"/dashboard/historia-espana", description:"Bachillerato y preparación PAU" },
@@ -39,7 +41,7 @@ const COURSES: Record<string,{title:string;href:string;description:string}> = {
 };
 
 const PLAN_LABELS: Record<string,string> = {
-  esencial:"Esencial", estandar:"Estándar", standard:"Estándar", premium:"Premium", pau:"PAU", operativa:"Operativa", integral:"Integral"
+  mensual:"Mensual", esencial:"Esencial", estandar:"Estándar", standard:"Estándar", premium:"Premium", pau:"PAU", operativa:"Operativa", integral:"Integral"
 };
 
 export default function MisCursosPage(){
@@ -110,5 +112,3 @@ export default function MisCursosPage(){
 const panel={background:"#fff",border:"1px solid #dbe5f1",borderRadius:18,padding:24,boxShadow:"0 10px 30px rgba(24,55,96,.06)"} as const;
 const primaryButton={display:"inline-block",background:"#1457c7",color:"#fff",textDecoration:"none",fontWeight:800,padding:"11px 16px",borderRadius:10} as const;
 const linkButton={display:"inline-block",background:"#fff",color:"#173b69",textDecoration:"none",fontWeight:700,padding:"10px 14px",border:"1px solid #dbe5f1",borderRadius:10} as const;
-
-
