@@ -1,0 +1,137 @@
+[
+  {
+    "slug": "administrativos-haciendas-locales",
+    "title": "Administrativos Haciendas Locales",
+    "region": "Haciendas Locales"
+  },
+  {
+    "slug": "auxiliares-haciendas-locales",
+    "title": "Auxiliares Administrativos Haciendas Locales",
+    "region": "Haciendas Locales"
+  },
+  {
+    "slug": "administrativos-universidades",
+    "title": "Administrativos de Universidades",
+    "region": "Universidades"
+  },
+  {
+    "slug": "auxiliares-universidades",
+    "title": "Auxiliares Administrativos de Universidades",
+    "region": "Universidades"
+  },
+  {
+    "slug": "administrativo-ja",
+    "title": "Administrativo de la Junta de Andalucía",
+    "region": "Andalucía"
+  },
+  {
+    "slug": "auxiliar-administrativo-ja",
+    "title": "Auxiliar Administrativo de la Junta de Andalucía",
+    "region": "Andalucía"
+  },
+  {
+    "slug": "administrativo-sas",
+    "title": "Administrativo del Servicio Andaluz de Salud",
+    "region": "Andalucía"
+  },
+  {
+    "slug": "auxiliar-administrativo-sas",
+    "title": "Auxiliar Administrativo del Servicio Andaluz de Salud",
+    "region": "Andalucía"
+  },
+  {
+    "slug": "celador-sas",
+    "title": "Celador del Servicio Andaluz de Salud",
+    "region": "Andalucía"
+  },
+  {
+    "slug": "telefonista-sas",
+    "title": "Telefonista del Servicio Andaluz de Salud",
+    "region": "Andalucía"
+  },
+  {
+    "slug": "administrativo-comunidad-madrid",
+    "title": "Administrativo de la Comunidad de Madrid",
+    "region": "Madrid"
+  },
+  {
+    "slug": "auxiliar-administrativo-comunidad-madrid",
+    "title": "Auxiliar Administrativo de la Comunidad de Madrid",
+    "region": "Madrid"
+  },
+  {
+    "slug": "administrativo-sermas",
+    "title": "Administrativo del SERMAS",
+    "region": "Madrid"
+  },
+  {
+    "slug": "auxiliar-administrativo-sermas",
+    "title": "Auxiliar Administrativo del SERMAS",
+    "region": "Madrid"
+  },
+  {
+    "slug": "celador-sermas",
+    "title": "Celador del SERMAS",
+    "region": "Madrid"
+  },
+  {
+    "slug": "administrativo-generalitat-valenciana",
+    "title": "Administrativo de la Generalitat Valenciana",
+    "region": "Comunidad Valenciana"
+  },
+  {
+    "slug": "auxiliar-administrativo-generalitat-valenciana",
+    "title": "Auxiliar Administrativo de la Generalitat Valenciana",
+    "region": "Comunidad Valenciana"
+  },
+  {
+    "slug": "administrativo-sanidad-valenciana",
+    "title": "Administrativo del Sistema Valenciano de Salud",
+    "region": "Comunidad Valenciana"
+  },
+  {
+    "slug": "auxiliar-administrativo-chguv-co34-24",
+    "title": "Auxiliar Administrativo del Consorcio Hospital General Universitario de Valencia (CHGUV) · CO/34/24",
+    "region": "Comunidad Valenciana"
+  },
+  {
+    "slug": "celador-chguv-co32-24",
+    "title": "Celador del Consorcio Hospital General Universitario de Valencia (CHGUV) · CO/32/24",
+    "region": "Comunidad Valenciana"
+  },
+  {
+    "slug": "administrativo-estado",
+    "title": "Administrativo del Estado",
+    "region": "Estado"
+  },
+  {
+    "slug": "auxiliar-administrativo-estado",
+    "title": "Auxiliar Administrativo del Estado",
+    "region": "Estado"
+  },
+  {
+    "slug": "administrativo-seguridad-social",
+    "title": "Administrativo de la Seguridad Social",
+    "region": "Estado"
+  },
+  {
+    "slug": "auxiliar-administrativo-seguridad-social",
+    "title": "Auxiliar Administrativo de la Seguridad Social",
+    "region": "Estado"
+  },
+  {
+    "slug": "tecnico-auxiliar-informatica-estado",
+    "title": "Técnico Auxiliar de Informática del Estado",
+    "region": "Estado"
+  },
+  {
+    "slug": "ayudantes-instituciones-penitenciarias",
+    "title": "Ayudantes de Instituciones Penitenciarias",
+    "region": "Estado"
+  },
+  {
+    "slug": "tropa-y-marineria",
+    "title": "Tropa y Marinería",
+    "region": "Fuerzas Armadas"
+  }
+]
