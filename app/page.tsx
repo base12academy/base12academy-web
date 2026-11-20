@@ -9,11 +9,10 @@ import HomeMobileMenu from "@/components/HomeMobileMenu";
 import styles from "./home.module.css";
 
 const formation = [
-  { family: "oposiciones", title: "Oposiciones", text: "Preparación organizada por oposición y convocatoria.", action: "Ver oposiciones", icon: "01" },
-  { family: "bachillerato", title: "Bachillerato y PAU", text: "Comprende tu asignatura y prepara la prueba.", action: "Ver asignaturas", icon: "02" },
-  { family: "clases", title: "Clases online", text: "Historia y Filosofía con profesor. Otras materias según disponibilidad.", action: "Consultar clases", icon: "03" },
-  { family: "tropa", title: "Tropa y Marinería", text: "Entrenamiento psicotécnico y preparación física.", action: "Ver preparación", icon: "04" },
-  { family: "cursos", title: "Cursos online", text: "Competencias digitales, protocolo y desarrollo profesional.", action: "Explorar cursos", icon: "05" },
+  { family: "oposiciones", title: "Oposiciones - Test", text: "Cursos de oposición, test, simulacros y preparación de Tropa y Marinería.", action: "Ver oposiciones", icon: "01" },
+  { family: "bachillerato", title: "Bachillerato - PAU", text: "Comprende tu asignatura y prepara la prueba.", action: "Ver asignaturas", icon: "02" },
+  { family: "clases", title: "Clases de apoyo", text: "Historia y Filosofía con profesor. Otras materias según disponibilidad.", action: "Consultar clases", icon: "03" },
+  { family: "cursos", title: "Cursos", text: "Competencias digitales, protocolo y desarrollo profesional.", action: "Explorar cursos", icon: "04" },
 ];
 
 const apps = [
@@ -30,9 +29,9 @@ const videos = [
 ];
 
 const faqs = [
-  ["¿Qué puedo estudiar en Base12?", "Puedes preparar oposiciones y Tropa y Marinería, trabajar asignaturas de Bachillerato y PAU, recibir clases online y realizar cursos de competencias profesionales. Consulta el catálogo para conocer la oferta de cada línea."],
-  ["¿En qué se diferencian un curso y las clases online?", "Los cursos organizan contenidos y recursos para estudiar según la modalidad elegida. Las clases online son sesiones con profesor, con reserva de horario y disponibilidad. Revisa la información de la opción que te interese antes de contratar."],
-  ["¿El acompañamiento es humano o de inteligencia artificial?", "Depende del servicio y de la modalidad. Los asistentes de IA ofrecen apoyo académico y de organización. Las clases online son con profesor y algunas modalidades incluyen seguimiento humano. Comprueba qué incluye tu elección."],
+  ["¿Qué puedo estudiar en Base12?", "Puedes preparar oposiciones y Tropa y Marinería, trabajar asignaturas de Bachillerato y PAU, recibir clases de apoyo y realizar cursos de competencias profesionales. Consulta el catálogo para conocer la oferta de cada línea."],
+  ["¿En qué se diferencian un curso y las clases de apoyo?", "Los cursos organizan contenidos y recursos para estudiar según la modalidad elegida. Las clases de apoyo son sesiones con profesor, con reserva de horario y disponibilidad. Revisa la información de la opción que te interese antes de contratar."],
+  ["¿El acompañamiento es humano o de inteligencia artificial?", "Depende del servicio y de la modalidad. Los asistentes de IA ofrecen apoyo académico y de organización. Las clases de apoyo son con profesor y algunas modalidades incluyen seguimiento humano. Comprueba qué incluye tu elección."],
   ["¿Puedo conocer el aula antes de matricularme?", "Sí. Puedes ver los vídeos de presentación y acceder al Tema 1 abierto de Administrativo de la Junta de Andalucía desde esta página. Es una muestra de esa formación; los recursos de otros cursos pueden variar."],
   ["¿Cómo accedo si ya soy alumno?", "Utiliza el botón Acceso alumnos de la cabecera o la tarjeta Base12 App para entrar con tu cuenta. Desde la pantalla de acceso también puedes recuperar tu contraseña."],
   ["¿Cómo elijo mi formación?", "Empieza por tu objetivo, consulta los cursos de esa línea y revisa sus contenidos y modalidades. Si necesitas orientación antes de matricularte, escríbenos indicando la asignatura, oposición o competencia que quieres preparar."],
@@ -66,7 +65,7 @@ export default function HomePage() {
         <section className={styles.hero} aria-labelledby="hero-title">
           <div>
             <p className={styles.eyebrow}>Formación online · Base12 Academy</p>
-            <h1 id="hero-title">Oposiciones, Bachillerato y <span>clases online.</span></h1>
+            <h1 id="hero-title">Oposiciones, Bachillerato y <span>clases de apoyo.</span></h1>
             <p className={styles.heroText}>Elige tu objetivo. Descubre cómo estudiar con estructura, práctica y acompañamiento.</p>
             <div className={styles.actions}>
               <a className={styles.primary} href="#formacion">Explorar formación <span aria-hidden="true">→</span></a>

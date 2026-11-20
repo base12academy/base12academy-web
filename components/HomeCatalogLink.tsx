@@ -6,7 +6,7 @@ const families: Record<string, string> = {
   oposiciones: "Oposiciones",
   bachillerato: "Bachillerato y PAU",
   clases: "Clases Online",
-  tropa: "Tropa y Marinería",
+  tropa: "Oposiciones",
   cursos: "Cursos Online",
 };
 

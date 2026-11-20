@@ -135,6 +135,7 @@ export function TropaLanding() {
             {completePlans.map((plan) => (
               <ProductCard key={plan.slug} plan={plan} />
             ))}
+            <article className={styles.card}><h3>TEST OPO12</h3><p>Test y simulacros de Tropa y Marinería.</p><p><strong>9,90 €/mes</strong></p><Link className={styles.link} href="/test-opo12/tropa-y-marineria">Ver TEST OPO12</Link></article>
           </div>
 
           <div className={styles.aptitudePrompt}>

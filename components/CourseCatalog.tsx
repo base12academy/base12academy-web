@@ -11,6 +11,8 @@ import RecommendedBadge from "./RecommendedBadge";
 import { isPeriodicTableIncludedPlan } from "@/lib/chemistry/periodic-table-product";
 import { supabase } from "@/lib/supabaseClient";
 import { bundledOppositionEnrollment } from "@/lib/haciendas-universidades";
+import testStyles from "./TestOpo12.module.css";
+import { TEST_PRICE, testCoursePath } from "@/lib/test-opo12/catalog";
 import tehaloStyles from "./TehaloOppositionCard.module.css";
 import TehaloConfigurator from "./tehalo-opositores/TehaloConfigurator";
 
@@ -32,6 +34,7 @@ const BUNDLED_OPPOSITION_SLUGS = {
   "Auxiliares Administrativos de Universidades": "auxiliares-universidades",
 } as const;
 
+const familyLabels: Record<Family, string> = {"Oposiciones":"Oposiciones - Test","Bachillerato y PAU":"Bachillerato - PAU","Clases Online":"Clases de apoyo","Cursos Online":"Cursos","Tropa y Marinería":"Tropa y Marinería"};
 const healthCourses = Object.entries(healthOppositions);
 
 const COURSE_ACCESS: Record<string,{slug:string;href:string}> = {
@@ -489,7 +492,7 @@ function isRecommendedPlan(course: Course, plan: Plan) {
 }
 
 export default function CourseCatalog() {
-  const [family, setFamily] = useState<Family>("Tropa y Marinería");
+  const [family, setFamily] = useState<Family>("Oposiciones");
   const [search, setSearch] = useState("");
   const [course, setCourse] = useState<Course | null>(null);
   const [plan, setPlan] = useState<Plan | null>(null);
@@ -507,7 +510,7 @@ export default function CourseCatalog() {
   const [tehaloStage, setTehaloStage] = useState<1 | 2>(1);
 
   const filtered = useMemo(
-    () => allCourses.filter((item) => item.family === family && item.name.toLowerCase().includes(search.toLowerCase())),
+    () => allCourses.filter((item) => (item.family === family || (family === "Oposiciones" && item.family === "Tropa y Marinería")) && item.name.toLowerCase().includes(search.toLowerCase())),
     [family, search],
   );
 
@@ -533,7 +536,7 @@ export default function CourseCatalog() {
     const selectFamily = (event: Event) => {
       const selected = (event as CustomEvent<Family>).detail;
       if (!["Oposiciones", "Bachillerato y PAU", "Clases Online", "Tropa y Marinería", "Cursos Online"].includes(selected)) return;
-      setFamily(selected);
+      setFamily(selected === "Tropa y Marinería" ? "Oposiciones" : selected);
       setSearch("");
     };
     window.addEventListener("b12:select-family", selectFamily);
@@ -566,7 +569,7 @@ export default function CourseCatalog() {
       oposiciones: "Oposiciones",
       bachillerato: "Bachillerato y PAU",
       clases: "Clases Online",
-      tropa: "Tropa y Marinería",
+      tropa: "Oposiciones",
       cursos: "Cursos Online",
     };
     const requestedFamily = families[params.get("familia") ?? ""];
@@ -601,7 +604,7 @@ export default function CourseCatalog() {
     if (!requestedName) return;
     const requestedCourse = allCourses.find((item) => item.name === requestedName);
     if (requestedCourse) {
-      setFamily(requestedCourse.family);
+      setFamily(requestedCourse.family === "Tropa y Marinería" ? "Oposiciones" : requestedCourse.family);
       open(requestedCourse, requestedBono);
     }
   }, []);
@@ -889,9 +892,9 @@ export default function CourseCatalog() {
       </div>
 
       <div className="original-tabs" role="tablist" aria-label="Tipos de cursos">
-        {(["Tropa y Marinería", "Clases Online", "Oposiciones", "Cursos Online", "Bachillerato y PAU"] as Family[]).map((item) => (
+        {(["Oposiciones", "Bachillerato y PAU", "Clases Online", "Cursos Online"] as Family[]).map((item) => (
           <button key={item} role="tab" aria-selected={family === item} className={family === item ? "active" : ""} onClick={() => { setFamily(item); setSearch(""); }}>
-            {item}
+            {familyLabels[item]}
           </button>
         ))}
       </div>
@@ -953,11 +956,17 @@ export default function CourseCatalog() {
           </article>
         )}
 
+        {family === "Oposiciones" && (
+          <article className={testStyles.banner}>
+            <div><h3>TEST OPO12</h3><p>Practica test por temas y simulacros de tu oposición.</p></div>
+            <div><strong>{TEST_PRICE}</strong><Link href="/test-opo12">Ver cursos de TEST OPO12</Link></div>
+          </article>
+        )}
         {filtered.map((item) => (
           <article key={item.name}>
             <div>
               <small>
-                {item.region || item.family}
+                {item.region || familyLabels[item.family]}
                 {bachilleratoUpdating.has(item.name) && " · En actualización"}
               </small>
               <h3>{item.name}</h3>
@@ -991,7 +1000,7 @@ export default function CourseCatalog() {
             {course.name === "Competencias y Productividad Digital, Ofimática e IA" ? (
               <div className="commercial-course-hero">
                 <div className="commercial-course-copy">
-                  <small>{course.family}</small>
+                  <small>{familyLabels[course.family]}</small>
                   <h2 id="modal-course-title">{plan.name}</h2>
                   <p>{plan.detail}</p>
                   <div className="commercial-course-value">
@@ -1020,7 +1029,7 @@ export default function CourseCatalog() {
             ) : (
               <>
                 <small>
-                  {course.family}
+                  {familyLabels[course.family]}
                   {bachilleratoUpdating.has(course.name) && " · En actualización"}
                 </small>
                 <h2 id="modal-course-title">{course.name}</h2>
@@ -1056,7 +1065,7 @@ export default function CourseCatalog() {
               <p><a href="/dashboard/administrativo-ja?tema=T01" style={{ display: "inline-block", padding: "10px 14px", borderRadius: 999, background: "#e5f0e1", color: "#285b35", textDecoration: "none", fontWeight: 800 }}>Probar gratis el Tema 1</a></p>
             )}
 
-            <div className="original-plan-grid">
+            <div className={"original-plan-grid" + (course.family === "Oposiciones" ? " " + testStyles.fourPlans : "")}>
               {plansFor(course).map((item) => {
                 const recommended = isRecommendedPlan(course, item);
 
@@ -1072,6 +1081,11 @@ export default function CourseCatalog() {
                   </div>
                 );
               })}
+              {course.family === "Oposiciones" && COURSE_ACCESS[course.name] && (
+                <Link className={testStyles.plan} href={testCoursePath(COURSE_ACCESS[course.name].slug)}>
+                  <b>TEST OPO12</b><small>Test por temas y simulacros</small><strong>{TEST_PRICE}</strong>
+                </Link>
+              )}
             </div>
 
             {course.name === "Química" && (
@@ -1499,8 +1513,3 @@ export default function CourseCatalog() {
     </section>
   );
 }
-
-
-
-
-

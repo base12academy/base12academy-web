@@ -37,7 +37,7 @@
 .heroMedia figcaption { font-size: 12px; color: #52627b; padding: 10px 5px 0; }
 .section { padding: 44px 0; border-top: 1px solid var(--line); }
 .intro { color: #52627b; font-size: 15px; line-height: 1.65; margin-top: 12px !important; }
-.formationGrid { margin-top: 26px; display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 12px; }
+.formationGrid { margin-top: 26px; display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; }
 .formationCard { display: flex; flex-direction: column; min-width: 0; padding: 22px 17px; border: 1px solid var(--line); border-radius: 12px; color: var(--ink); background: #fff; transition: border-color .18s, background .18s; }
 .formationCard:hover { border-color: #7094d4; background: #f6f9ff; }
 .cardNumber { color: var(--blue); font-size: 14px; font-weight: 700; margin-bottom: 18px; }
@@ -103,7 +103,7 @@
 .footerBottom nav { flex-direction: row; flex-wrap: wrap; gap: 10px 20px; }
 @media (max-width: 1050px) {
   .desktopNav { gap: 14px; }.desktopNav a { font-size: 12px; }.headerInner { gap: 16px; }
-  .formationGrid { grid-template-columns: repeat(3,minmax(0,1fr)); }.formationCard h3 { min-height: auto; }
+  .formationGrid { grid-template-columns: repeat(2,minmax(0,1fr)); }.formationCard h3 { min-height: auto; }
   .appsGrid { grid-template-columns: repeat(2,minmax(0,1fr)); }.appCard { display: grid; grid-template-columns: 70px 1fr; gap: 15px; }.appCard h3 { min-height: auto; }
   .method { gap: 28px; }.hero { gap: 26px; }.adminLink { display: none; }
 }
@@ -122,7 +122,7 @@
   .hero { grid-template-columns: 1fr; gap: 26px; padding: 28px 0 34px; }.hero h1 { font-size: clamp(2.05rem,8.8vw,2.7rem); }.heroText { margin-top: 16px !important; }
   .actions { gap: 16px; margin-top: 22px; }.primary,.secondary { padding: 12px 15px; font-size: 13px; }.heroMedia { padding: 8px; }
   .section { padding: 32px 0; }.formationGrid { gap: 10px; margin-top: 20px; }.formationCard { padding: 16px 13px; }.formationCard h3 { font-size: 15px; }.formationCard p { font-size: 12px; margin-bottom: 18px; }.cardAction { font-size: 11px; }.cardNumber { margin-bottom: 12px; }
-  .formationCard:last-child { grid-column: 1 / -1; }.appsSection { margin: 10px 0 0; padding: 24px 18px; }.appsGrid { grid-template-columns: 1fr; gap: 6px; margin-top: 18px; }.appCard + .appCard { border-top: 1px solid var(--line); padding-top: 18px; }.appCard { grid-template-columns: 58px 1fr; gap: 12px; }.appCard img { width: 58px; height: 58px; }.installRow { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .appsSection { margin: 10px 0 0; padding: 24px 18px; }.appsGrid { grid-template-columns: 1fr; gap: 6px; margin-top: 18px; }.appCard + .appCard { border-top: 1px solid var(--line); padding-top: 18px; }.appCard { grid-template-columns: 58px 1fr; gap: 12px; }.appCard img { width: 58px; height: 58px; }.installRow { align-items: flex-start; flex-direction: column; gap: 12px; }
   .method { grid-template-columns: 1fr; padding: 36px 0; gap: 28px; }.sample { padding: 24px; }.sample h3 { font-size: 23px; }
   .page :global(.original-course-grid) { grid-template-columns: 1fr; }.page :global(.original-tabs) { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 5px; }.page :global(.original-tabs button) { text-align: center; padding: 9px 6px; font-size: 12px; }
   .videoGrid { grid-template-columns: 1fr; gap: 18px; }.about { padding: 32px 0; }.contact { padding: 26px 22px; flex-direction: column; align-items: flex-start; gap: 24px; }.contactActions { align-items: flex-start; }
