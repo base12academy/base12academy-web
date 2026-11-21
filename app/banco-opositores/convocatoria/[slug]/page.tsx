@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import OppositionDetailActions from "@/components/banco-opositores/OppositionDetailActions";
+import { boeOrganisation } from "@/lib/boe-details";
 import {
   applicationStatus,
   formatOfficialDate,
@@ -19,12 +20,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const result = await getOppositionCall(slug);
   if (!result) return { title: "Convocatoria no encontrada | Banco de Opositores" };
-  const description = `${result.call.title}. Consulta los datos disponibles, el historial y la fuente oficial.`;
+  const organisation = boeOrganisation(result.call.title, result.call.organisation);
+  const title = `${result.officialDetails?.headline ? `${result.officialDetails.headline} · ${organisation || ""}` : result.call.title} · ${result.call.source_external_id}`;
+  const description = `${result.call.source_external_id}: ${organisation || ""}. ${result.officialDetails?.summary || result.call.title}`;
   return {
-    title: `${result.call.title} | Banco de Opositores`,
+    title: `${title} | Banco de Opositores`,
     description: description.slice(0, 158),
     alternates: { canonical: `/banco-opositores/convocatoria/${slug}` },
-    openGraph: { title: result.call.title, description: description.slice(0, 158), type: "article" },
+    openGraph: { title, description: description.slice(0, 158), type: "article" },
   };
 }
 
@@ -32,21 +35,25 @@ export default async function OppositionDetailPage({ params }: Props) {
   const { slug } = await params;
   const result = await getOppositionCall(slug);
   if (!result) notFound();
-  const { call, publications } = result;
+  const { call, publications, officialDetails } = result;
+  const organisation = boeOrganisation(call.title, call.organisation);
   const registration = applicationStatus(call);
   const courseHref = call.base12_course_slug === "tropa-y-marineria" ? "/tropa-y-marineria" : "/cursos";
 
   const facts = [
+    ["Referencia oficial", call.source_external_id],
     ["Plazas", call.vacancies],
-    ["Grupo / categoría", call.group_category],
-    ["Especialidad", call.specialty],
+    ["Grupo / categoría", call.group_category || officialDetails?.category],
+    ["Especialidad", officialDetails?.specialty || call.specialty],
+    ["Identificador de la plaza", officialDetails?.positionId],
     ["Titulación requerida", null],
     ["Sistema de acceso", call.access_system],
     ["Fecha de publicación", formatOfficialDate(call.publication_date)],
     ["Inicio del plazo", call.application_start ? formatOfficialDate(call.application_start) : null],
     ["Fin del plazo", call.application_end ? formatOfficialDate(call.application_end) : null],
+    ["Plazo según la publicación", officialDetails?.applicationPeriod],
     ["Fecha de examen", call.exam_date ? formatOfficialDate(call.exam_date) : null],
-    ["Órgano convocante", call.organisation],
+    ["Órgano convocante", organisation],
     ["Administración", call.administration],
     ["Territorio", [call.territory, call.province, call.locality].filter(Boolean).join(" · ")],
   ] as const;
@@ -70,12 +77,13 @@ export default async function OppositionDetailPage({ params }: Props) {
 
         <section className={styles.detailHeader}>
           <div>
-            <h1>{call.title}</h1>
-            <h2>{call.organisation || "Organismo no indicado en la publicación oficial"}</h2>
+            <h1>{officialDetails?.headline || call.title}</h1>
+            {officialDetails?.headline && <p>{call.title}</p>}
+            <h2>{organisation || "Consulta el organismo en la publicación oficial"}</h2>
             <div className={styles.detailMeta}><span>▣ {call.group_category || "Grupo no indicado"}</span><span>⌖ {call.territory}</span><span>◷ {call.status}</span><span>Fuente: {call.bulletin_name}</span></div>
           </div>
           <div>
-            <div className={styles.statusBox}>{registration.label}<small>{call.application_end ? `Hasta el ${formatOfficialDate(call.application_end)}` : "Consulta la publicación oficial"}</small></div>
+            <div className={styles.statusBox}>{officialDetails?.applicationPeriod && !call.application_end ? "Plazo indicado en el anuncio" : registration.label}<small>{call.application_end ? `Hasta el ${formatOfficialDate(call.application_end)}` : "Consulta el plazo literal y las actualizaciones oficiales"}</small></div>
             <div className={styles.detailActions}><OppositionDetailActions callId={call.id} callTitle={call.title} territory={call.territory} /></div>
           </div>
         </section>
@@ -83,9 +91,15 @@ export default async function OppositionDetailPage({ params }: Props) {
         <div className={styles.detailGrid}>
           <div className={styles.detailContent}>
             <section className={styles.detailCard}>
-              <h2>Resumen oficial disponible</h2>
+              <h2>Datos de la convocatoria</h2>
               <dl className={styles.factGrid}>{facts.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{missingOfficialValue(value)}</dd></div>)}</dl>
             </section>
+
+            {officialDetails && <section className={styles.detailCard}>
+              <h2>Detalle de esta publicación oficial</h2>
+              <p>Extractos del anuncio {call.source_external_id}, publicado el {formatOfficialDate(call.publication_date)}. Consulta las bases y las modificaciones posteriores antes de presentar la solicitud.</p>
+              {officialDetails.paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+            </section>}
 
             <section className={styles.detailCard}>
               <h2>Fuente y enlaces oficiales</h2>
@@ -102,7 +116,7 @@ export default async function OppositionDetailPage({ params }: Props) {
                 ? "Esta convocatoria incluye temario oficial. Consúltalo en la publicación oficial enlazada; Banco de Opositores no reproduce el temario."
                 : call.official_syllabus_included === false
                   ? "La publicación oficial indica que no incorpora temario."
-                  : "No indicado en la publicación oficial. Banco de Opositores no reproduce ni completa temarios por inferencia."}</p>
+                  : "El temario no está incorporado a esta ficha. Consulta el anuncio y las bases oficiales enlazadas."}</p>
             </section>
 
             <section className={styles.detailCard}>
@@ -118,7 +132,7 @@ export default async function OppositionDetailPage({ params }: Props) {
               <p>Puede comparar esta convocatoria con otras publicadas según territorio, nivel y coincidencias reales. No inventará requisitos ni compatibilidades.</p>
             </section>
             {call.base12_course_slug && <section className={styles.courseCard}><p className={styles.eyebrow}>Preparación relacionada</p><h2>Base12 dispone de preparación relacionada</h2><p>Esta información es contextual y no limita el acceso a convocatorias para las que Base12 no tenga curso.</p><Link className={styles.primaryButton} href={courseHref}>Ver preparación Base12</Link></section>}
-            <section className={styles.officialNotice}><span aria-hidden="true">i</span><div><b>Comprueba siempre la fuente oficial</b><p>Si un dato no figura en la publicación, se muestra como no indicado. La publicación oficial posterior prevalece y queda añadida al historial.</p></div></section>
+            <section className={styles.officialNotice}><span aria-hidden="true">i</span><div><b>Comprueba siempre la fuente oficial</b><p>Un dato no disponible en esta ficha puede figurar en las bases oficiales. Los plazos relativos se reproducen literalmente, sin calcular una fecha de cierre que pueda depender de festivos. La publicación oficial posterior prevalece.</p></div></section>
           </aside>
         </div>
       </main>

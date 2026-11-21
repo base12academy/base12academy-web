@@ -20,17 +20,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   try {
     const supabase = getSupabase();
-    const { data } = await supabase
-      .from("opposition_calls")
-      .select("slug,last_official_update")
-      .eq("active", true)
-      .order("last_official_update", { ascending: false })
-      .limit(20_000);
+    // The API caps each response at 1,000 rows; .limit(20_000) alone silently
+    // drops the remaining calls. Read bounded pages with a stable ordering.
+    const calls: Array<{ slug: string; last_official_update: string; updated_at: string }> = [];
+    for (let offset = 0; offset < 20_000; offset += 1000) {
+      const { data, error } = await supabase
+        .from("opposition_calls")
+        .select("slug,last_official_update,updated_at")
+        .eq("active", true)
+        .order("id", { ascending: true })
+        .range(offset, offset + 999);
+      if (error) throw error;
+      calls.push(...(data ?? []));
+      if (!data || data.length < 1000) break;
+    }
     return [
       ...staticRoutes,
-      ...(data ?? []).map((call) => ({
+      ...calls.map((call) => ({
         url: `${base}/banco-opositores/convocatoria/${call.slug}`,
-        lastModified: call.last_official_update,
+        lastModified: call.updated_at || call.last_official_update,
         changeFrequency: "daily" as const,
         priority: 0.72,
       })),

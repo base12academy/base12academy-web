@@ -1,4 +1,7 @@
 import { getSupabase } from "@/lib/supabase/server";
+import { cache } from "react";
+import { detailsFromParagraphs } from "./boe-details";
+import { getBoeOfficialDetails } from "./boe-official";
 
 export type OppositionCall = {
   id: string;
@@ -149,7 +152,7 @@ export async function getTerritoryOppositionCalls(values: readonly string[], lim
   }
 }
 
-export async function getOppositionCall(slug: string) {
+export const getOppositionCall = cache(async (slug: string) => {
   try {
     const supabase = getSupabase();
     const { data, error } = await supabase
@@ -161,6 +164,11 @@ export async function getOppositionCall(slug: string) {
 
     if (error) throw error;
     if (!data) return null;
+
+    const call = data as unknown as OppositionCall;
+    const officialDetails = call.summary
+      ? detailsFromParagraphs(call.summary.split(/\n\s*\n/))
+      : await getBoeOfficialDetails(call.source_external_id).catch(() => null);
 
     const { data: publications, error: publicationsError } = await supabase
       .from("opposition_publications")
@@ -174,17 +182,18 @@ export async function getOppositionCall(slug: string) {
     if (publicationsError) throw publicationsError;
 
     return {
-      call: data as unknown as OppositionCall,
+      call,
+      officialDetails,
       publications: (publications ?? []) as OppositionPublication[],
     };
   } catch (error) {
     console.warn("No se pudo consultar la convocatoria", error);
     return null;
   }
-}
+});
 
 export function missingOfficialValue(value: string | number | null | undefined) {
   return value === null || value === undefined || value === ""
-    ? "No indicado en la publicación oficial"
+    ? "No disponible en esta ficha; consulta la publicación oficial"
     : String(value);
 }

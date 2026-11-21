@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabase } from "@/lib/supabase/server";
+import { getBoeOfficialDetails } from "@/lib/boe-official";
+import { boeOrganisation } from "@/lib/boe-details";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -371,16 +373,18 @@ async function ingestBoe(request: NextRequest) {
       const isNewCall = !call;
       if (!call) {
         const slug = `${slugify(publication.title)}-${publication.externalId.toLowerCase()}`;
+        const details = await getBoeOfficialDetails(publication.externalId).catch(() => null);
         const { data, error } = await supabase.from("opposition_calls").insert({
           source_id: source.id,
           source_external_id: publication.externalId,
           related_external_ids: relatedIds,
           slug,
           title: publication.title,
-          organisation: publication.organisation,
+          summary: details?.summary || null,
+          organisation: boeOrganisation(publication.title, publication.organisation),
           administration: publication.organisation,
           territory: "España",
-          specialty: publication.epigraph,
+          specialty: details?.specialty || publication.epigraph,
           status: kind.status,
           publication_date: publication.publicationDate,
           official_url: publication.officialUrl,
