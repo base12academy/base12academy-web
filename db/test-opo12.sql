@@ -23,11 +23,14 @@ alter table public.test_opo12_attempts enable row level security;
 revoke all on public.test_opo12_courses,public.test_opo12_questions,public.test_opo12_sets,public.test_opo12_attempts from public,anon,authenticated;
 grant select,insert,update on public.test_opo12_courses,public.test_opo12_questions,public.test_opo12_sets,public.test_opo12_attempts to service_role;
 create or replace function public.test_opo12_start(p_student uuid,p_course text,p_kind text,p_set text,p_request uuid)
-returns uuid language plpgsql security invoker set search_path='' as $$
+returns uuid language plpgsql security invoker set search_path='' as $
 declare chosen public.test_opo12_sets; prior public.test_opo12_attempts; chosen_items jsonb; entitled boolean; draw integer; randomize boolean;
 begin
  perform pg_advisory_xact_lock(hashtextextended(p_student::text,341));
- select exists(select 1 from public.course_enrollments e where e.user_id=p_student and e.course_slug='test-opo12-'||p_course and e.plan_slug='mensual' and e.status='active' and e.starts_at<=now() and e.expires_at>now()) into entitled;
+ select
+  exists(select 1 from public.course_enrollments e where e.user_id=p_student and e.course_slug='test-opo12-'||p_course and e.plan_slug='mensual' and e.status='active' and e.starts_at<=now() and e.expires_at>now())
+  or exists(select 1 from public.course_enrollments e where e.user_id=p_student and e.course_slug=p_course and e.plan_slug='premium' and e.status='active' and e.starts_at<=now() and (e.expires_at is null or e.expires_at>now()))
+ into entitled;
  if not entitled then raise exception 'subscription_required'; end if;
  select * into prior from public.test_opo12_attempts where id=p_request;
  if found then
@@ -48,6 +51,6 @@ begin
  if coalesce(jsonb_array_length(chosen_items),0)<>draw then raise exception 'incomplete_set'; end if;
  insert into public.test_opo12_attempts(id,student,course,kind,set_id,title,settings,items) values(p_request,p_student,p_course,p_kind,p_set,chosen.title,chosen.settings,chosen_items);
  return p_request;
-end $$;
+end $;
 revoke all on function public.test_opo12_start(uuid,text,text,text,uuid) from public,anon,authenticated;
 grant execute on function public.test_opo12_start(uuid,text,text,text,uuid) to service_role;
