@@ -16,12 +16,13 @@ export async function GET(req:Request,ctx:Args){
  const {db,user,curso,valid}=await context(req,ctx);if(!valid)return json({},404);if(!user)return json({signedIn:false});
  const url=new URL(req.url),page=Math.max(0,Number(url.searchParams.get("page"))||0);
  const now=new Date().toISOString();
- const [en,sub,at]=await Promise.all([
+ const [en,premium,sub,at]=await Promise.all([
   db.from("course_enrollments").select("starts_at,expires_at").eq("user_id",user.id).eq("course_slug",testProduct(curso)).eq("plan_slug","mensual").eq("status","active").gt("expires_at",now).maybeSingle(),
+  db.from("course_enrollments").select("starts_at,expires_at").eq("user_id",user.id).eq("course_slug",curso).eq("plan_slug","premium").eq("status","active").lte("starts_at",now).or(`expires_at.is.null,expires_at.gt.${now}`).limit(1).maybeSingle(),
   db.from("test_opo12_subscriptions").select("state,renew,period_end").eq("student",user.id).eq("course",curso).maybeSingle(),
   db.from("test_opo12_attempts").select("id,title,kind,started_at,finished_at").eq("student",user.id).eq("course",curso).order("started_at",{ascending:false}).range(page*15,page*15+15)]);
- if(en.error||sub.error||at.error)return json({error:"service_unavailable"},503);
- return json({signedIn:true,access:!!en.data&&en.data.starts_at<=now,enrollment:en.data,subscription:sub.data,events:at.data.slice(0,15),more:at.data.length>15});
+ if(en.error||premium.error||sub.error||at.error)return json({error:"service_unavailable"},503);
+ return json({signedIn:true,access:(!!en.data&&en.data.starts_at<=now)||!!premium.data,enrollment:en.data,subscription:sub.data,events:at.data.slice(0,15),more:at.data.length>15});
 }
 export async function POST(req:Request,ctx:Args){
  const {db,user,curso,valid}=await context(req,ctx);if(!valid)return json({},404);if(!user)return json({error:"login_required"},401);
@@ -38,9 +39,12 @@ export async function POST(req:Request,ctx:Args){
  if(row.finished_at)return json({task,result:row.result});
  if(body.action!=="start"){
   const now=new Date().toISOString();
-  const en=await db.from("course_enrollments").select("id").eq("user_id",user.id).eq("course_slug",testProduct(curso)).eq("plan_slug","mensual").eq("status","active").lte("starts_at",now).gt("expires_at",now).maybeSingle();
-  if(en.error)return json({error:"service_unavailable"},503);
-  if(!en.data)return json({error:"subscription_required"},403);
+  const [en,premium]=await Promise.all([
+   db.from("course_enrollments").select("id").eq("user_id",user.id).eq("course_slug",testProduct(curso)).eq("plan_slug","mensual").eq("status","active").lte("starts_at",now).gt("expires_at",now).maybeSingle(),
+   db.from("course_enrollments").select("id").eq("user_id",user.id).eq("course_slug",curso).eq("plan_slug","premium").eq("status","active").lte("starts_at",now).or(`expires_at.is.null,expires_at.gt.${now}`).limit(1).maybeSingle(),
+  ]);
+  if(en.error||premium.error)return json({error:"service_unavailable"},503);
+  if(!en.data&&!premium.data)return json({error:"subscription_required"},403);
  }
  if(body.action==="start"||body.action==="resume")return json({task});
  if(body.action!=="finish")return json({error:"invalid_request"},400);

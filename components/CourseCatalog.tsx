@@ -452,6 +452,15 @@ function plansFor(course: Course): Plan[] {
     { name: "Estándar", price: "299 €", detail: "Más práctica y entrenamiento · 12 meses", includes: ["Todo lo incluido en Esencial", "Banco de 50 preguntas por tema", "Simulacros de 20 preguntas aleatorias", "Historial y progresión de resultados", "Acompañamiento de Rocío y Fernando"] },
     { name: "Premium", price: "599 €", detail: "Seguimiento humano semanal · 12 meses", includes: ["Todo lo incluido en Estándar", "Plan de estudio personalizado", "Revisión prioritaria del progreso", "Tutoría humana individual de 30 minutos cada semana", "Calendario de reserva modificable"] },
   ];
+  const jaPremiumSimulationCourses = new Set([
+    "Administrativo de la Junta de Andalucía",
+    "Auxiliar Administrativo de la Junta de Andalucía",
+  ]);
+  if (jaPremiumSimulationCourses.has(course.name)) {
+    return oppositionPlans.map((plan) => plan.name === "Premium"
+      ? { ...plan, includes: [...plan.includes, "10 simulacros completos del curso, con corrección y explicaciones"] }
+      : plan);
+  }
   const health = healthCourses.find(([, item]) => item.title === course.name)?.[1];
   if (health) {
     return oppositionPlans.map(plan => {
