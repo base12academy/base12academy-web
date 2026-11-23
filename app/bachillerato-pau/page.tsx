@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import LeadChatBot from "@/components/LeadChatBot";
+
+export const metadata: Metadata = {
+  title: "Bachillerato y PAU online: Historia y Filosofía",
+  description:
+    "Prepara Historia de España e Historia de la Filosofía para Bachillerato y PAU. Estudia contenidos, practica comentarios de texto y trabaja con recursos de examen.",
+};
 
 const subjects = [
   {
