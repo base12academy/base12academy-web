@@ -18,10 +18,10 @@ const ROLES: Array<{ id: Role; label: string }> = [
 
 type Props = {
   className?: string;
-  onOpen?: () => void;
+  onOpen?: () => void;\n  onClose?: () => void;
 };
 
-export default function WorkWithUsModal({ className, onOpen }: Props) {
+export default function WorkWithUsModal({ className, onOpen, onClose }: Props) {
   const [open, setOpen] = useState(false);
   const [role, setRole] = useState<Role | null>(null);
   const [token, setToken] = useState("");
@@ -120,7 +120,7 @@ export default function WorkWithUsModal({ className, onOpen }: Props) {
         ref={dialogRef}
         className={styles.dialog}
         aria-labelledby="work-with-us-title"
-        onClose={() => setOpen(false)}
+        onClose={() => {\n          setOpen(false);\n          setRole(null);\n          setToken(\"\");\n          setError(\"\");\n          setSubmitted(false);\n          onClose?.();\n        }}
         onClick={(event) => {
           if (event.target === dialogRef.current) closeDialog();
         }}
