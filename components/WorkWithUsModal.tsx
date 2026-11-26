@@ -18,7 +18,8 @@ const ROLES: Array<{ id: Role; label: string }> = [
 
 type Props = {
   className?: string;
-  onOpen?: () => void;\n  onClose?: () => void;
+  onOpen?: () => void;
+  onClose?: () => void;
 };
 
 export default function WorkWithUsModal({ className, onOpen, onClose }: Props) {
