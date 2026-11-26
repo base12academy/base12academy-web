@@ -120,7 +120,14 @@ export default function WorkWithUsModal({ className, onOpen, onClose }: Props) {
         ref={dialogRef}
         className={styles.dialog}
         aria-labelledby="work-with-us-title"
-        onClose={() => {\n          setOpen(false);\n          setRole(null);\n          setToken(\"\");\n          setError(\"\");\n          setSubmitted(false);\n          onClose?.();\n        }}
+        onClose={() => {
+          setOpen(false);
+          setRole(null);
+          setToken("");
+          setError("");
+          setSubmitted(false);
+          onClose?.();
+        }}
         onClick={(event) => {
           if (event.target === dialogRef.current) closeDialog();
         }}
