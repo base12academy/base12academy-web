@@ -6,6 +6,7 @@ import PwaInstallButton from "@/components/PwaInstallButton";
 import AdminHeaderLink from "@/components/AdminHeaderLink";
 import HomeCatalogLink from "@/components/HomeCatalogLink";
 import HomeMobileMenu from "@/components/HomeMobileMenu";
+import WorkWithUsModal from "@/components/WorkWithUsModal";
 import styles from "./home.module.css";
 
 const formation = [
@@ -52,6 +53,7 @@ export default function HomePage() {
             <a href="#metodo">Cómo funciona</a>
             <a href="#equipo">Sobre Base12</a>
             <a href="#contacto">Contacto</a>
+            <WorkWithUsModal className={styles.desktopWorkLink} />
           </nav>
           <div className={styles.headerActions}>
             <AdminHeaderLink className={styles.adminLink} />
