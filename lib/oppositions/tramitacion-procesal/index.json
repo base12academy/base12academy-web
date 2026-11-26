@@ -1,0 +1,274 @@
+{
+  "courseSlug": "tramitacion-procesal",
+  "title": "Tramitación Procesal y Administrativa",
+  "shortTitle": "Tramitación Procesal y Administrativa",
+  "level": "C1",
+  "region": "Estado",
+  "durationMonths": 12,
+  "enrollmentOpen": false,
+  "themes": [
+    {
+      "id": "T01",
+      "code": "1",
+      "number": 1,
+      "title": "La Constitución Española de 1978",
+      "publicPreview": true
+    },
+    {
+      "id": "T02",
+      "code": "2",
+      "number": 2,
+      "title": "Igualdad y no discriminación",
+      "publicPreview": false
+    },
+    {
+      "id": "T03",
+      "code": "3",
+      "number": 3,
+      "title": "El Gobierno y la Administración",
+      "publicPreview": false
+    },
+    {
+      "id": "T04",
+      "code": "4",
+      "number": 4,
+      "title": "Organización territorial del Estado",
+      "publicPreview": false
+    },
+    {
+      "id": "T05",
+      "code": "5",
+      "number": 5,
+      "title": "La Unión Europea",
+      "publicPreview": false
+    },
+    {
+      "id": "T06",
+      "code": "6",
+      "number": 6,
+      "title": "El Poder Judicial y el Ministerio Fiscal",
+      "publicPreview": false
+    },
+    {
+      "id": "T07",
+      "code": "7",
+      "number": 7,
+      "title": "Organización y competencia de los tribunales",
+      "publicPreview": false
+    },
+    {
+      "id": "T08",
+      "code": "8",
+      "number": 8,
+      "title": "Tribunales de Instancia y Justicia en el municipio",
+      "publicPreview": false
+    },
+    {
+      "id": "T09",
+      "code": "9",
+      "number": 9,
+      "title": "Carta de Derechos de los Ciudadanos ante la Justicia",
+      "publicPreview": false
+    },
+    {
+      "id": "T10",
+      "code": "10",
+      "number": 10,
+      "title": "Oficina judicial y nuevas tecnologías",
+      "publicPreview": false
+    },
+    {
+      "id": "T11",
+      "code": "11",
+      "number": 11,
+      "title": "El Letrado de la Administración de Justicia",
+      "publicPreview": false
+    },
+    {
+      "id": "T12",
+      "code": "12",
+      "number": 12,
+      "title": "Cuerpos generales y especiales de Justicia",
+      "publicPreview": false
+    },
+    {
+      "id": "T13",
+      "code": "13",
+      "number": 13,
+      "title": "Los Cuerpos Generales (I)",
+      "publicPreview": false
+    },
+    {
+      "id": "T14",
+      "code": "14",
+      "number": 14,
+      "title": "Los Cuerpos Generales (II)",
+      "publicPreview": false
+    },
+    {
+      "id": "T15",
+      "code": "15",
+      "number": 15,
+      "title": "Libertad sindical, huelga y prevención de riesgos",
+      "publicPreview": false
+    },
+    {
+      "id": "T16",
+      "code": "16",
+      "number": 16,
+      "title": "MASC y procedimientos declarativos civiles",
+      "publicPreview": false
+    },
+    {
+      "id": "T17",
+      "code": "17",
+      "number": 17,
+      "title": "Ejecución civil y medidas cautelares",
+      "publicPreview": false
+    },
+    {
+      "id": "T18",
+      "code": "18",
+      "number": 18,
+      "title": "Procesos civiles especiales",
+      "publicPreview": false
+    },
+    {
+      "id": "T19",
+      "code": "19",
+      "number": 19,
+      "title": "Jurisdicción voluntaria y conciliación",
+      "publicPreview": false
+    },
+    {
+      "id": "T20",
+      "code": "20",
+      "number": 20,
+      "title": "Procedimientos penales ordinario, abreviado, de jurado y restaurativo",
+      "publicPreview": false
+    },
+    {
+      "id": "T21",
+      "code": "21",
+      "number": 21,
+      "title": "Delitos leves, juicios rápidos y ejecución penal",
+      "publicPreview": false
+    },
+    {
+      "id": "T22",
+      "code": "22",
+      "number": 22,
+      "title": "Procedimientos contencioso-administrativos",
+      "publicPreview": false
+    },
+    {
+      "id": "T23",
+      "code": "23",
+      "number": 23,
+      "title": "El proceso laboral",
+      "publicPreview": false
+    },
+    {
+      "id": "T24",
+      "code": "24",
+      "number": 24,
+      "title": "Recursos civiles y penales",
+      "publicPreview": false
+    },
+    {
+      "id": "T25",
+      "code": "25",
+      "number": 25,
+      "title": "Los actos procesales",
+      "publicPreview": false
+    },
+    {
+      "id": "T26",
+      "code": "26",
+      "number": 26,
+      "title": "Resoluciones judiciales",
+      "publicPreview": false
+    },
+    {
+      "id": "T27",
+      "code": "27",
+      "number": 27,
+      "title": "Actos de comunicación con otros tribunales y autoridades",
+      "publicPreview": false
+    },
+    {
+      "id": "T28",
+      "code": "28",
+      "number": 28,
+      "title": "Actos de comunicación a las partes y otros intervinientes",
+      "publicPreview": false
+    },
+    {
+      "id": "T29",
+      "code": "29",
+      "number": 29,
+      "title": "Estructura y hechos inscribibles del Registro Civil",
+      "publicPreview": false
+    },
+    {
+      "id": "T30",
+      "code": "30",
+      "number": 30,
+      "title": "Inscripciones, certificaciones y expedientes del Registro Civil",
+      "publicPreview": false
+    },
+    {
+      "id": "T31",
+      "code": "31",
+      "number": 31,
+      "title": "Archivo y documentación judicial",
+      "publicPreview": false
+    },
+    {
+      "id": "T32",
+      "code": "32",
+      "number": 32,
+      "title": "Informática básica",
+      "publicPreview": false
+    },
+    {
+      "id": "T33",
+      "code": "33",
+      "number": 33,
+      "title": "El entorno Windows 10 y 11",
+      "publicPreview": false
+    },
+    {
+      "id": "T34",
+      "code": "34",
+      "number": 34,
+      "title": "El Explorador de archivos de Windows",
+      "publicPreview": false
+    },
+    {
+      "id": "T35",
+      "code": "35",
+      "number": 35,
+      "title": "Word 365 de escritorio",
+      "publicPreview": false
+    },
+    {
+      "id": "T36",
+      "code": "36",
+      "number": 36,
+      "title": "Outlook 365 de escritorio",
+      "publicPreview": false
+    },
+    {
+      "id": "T37",
+      "code": "37",
+      "number": 37,
+      "title": "Internet y navegadores",
+      "publicPreview": false
+    }
+  ],
+  "simulations": [],
+  "counts": {
+    "themes": 37
+  }
+}

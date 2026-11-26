@@ -1,0 +1,176 @@
+{
+  "courseSlug": "guardia-civil-cabos-guardias",
+  "title": "Guardia Civil · Cabos y Guardias",
+  "shortTitle": "Guardia Civil · Cabos y Guardias",
+  "level": "Escala de Cabos y Guardias",
+  "region": "Estado",
+  "durationMonths": 12,
+  "enrollmentOpen": false,
+  "themes": [
+    {
+      "id": "T01",
+      "code": "1",
+      "number": 1,
+      "title": "Derechos Humanos Guardia Civil",
+      "publicPreview": true
+    },
+    {
+      "id": "T02",
+      "code": "2",
+      "number": 2,
+      "title": "Igualdad Guardia Civil",
+      "publicPreview": false
+    },
+    {
+      "id": "T03",
+      "code": "3",
+      "number": 3,
+      "title": "Prevencion Riesgos Guardia Civil",
+      "publicPreview": false
+    },
+    {
+      "id": "T04",
+      "code": "4",
+      "number": 4,
+      "title": "Derecho Constitucional Guardia Civil",
+      "publicPreview": false
+    },
+    {
+      "id": "T05",
+      "code": "5",
+      "number": 5,
+      "title": "Derecho UE Guardia Civil",
+      "publicPreview": false
+    },
+    {
+      "id": "T06",
+      "code": "6",
+      "number": 6,
+      "title": "Instituciones Internacionales Guardia Civil",
+      "publicPreview": false
+    },
+    {
+      "id": "T07",
+      "code": "7",
+      "number": 7,
+      "title": "Derecho Civil Guardia Civil",
+      "publicPreview": false
+    },
+    {
+      "id": "T08",
+      "code": "8",
+      "number": 8,
+      "title": "Derecho Penal Guardia Civil",
+      "publicPreview": false
+    },
+    {
+      "id": "T09",
+      "code": "9",
+      "number": 9,
+      "title": "Derecho Procesal Penal Guardia Civil",
+      "publicPreview": false
+    },
+    {
+      "id": "T10",
+      "code": "10",
+      "number": 10,
+      "title": "Derecho Administrativo Guardia Civil",
+      "publicPreview": false
+    },
+    {
+      "id": "T11",
+      "code": "11",
+      "number": 11,
+      "title": "Proteccion Datos Guardia Civil",
+      "publicPreview": false
+    },
+    {
+      "id": "T12",
+      "code": "12",
+      "number": 12,
+      "title": "Extranjeria Guardia Civil",
+      "publicPreview": false
+    },
+    {
+      "id": "T13",
+      "code": "13",
+      "number": 13,
+      "title": "Seguridad Publica Privada Guardia Civil",
+      "publicPreview": false
+    },
+    {
+      "id": "T14",
+      "code": "14",
+      "number": 14,
+      "title": "Ministerios Interior Defensa Guardia Civil",
+      "publicPreview": false
+    },
+    {
+      "id": "T15",
+      "code": "15",
+      "number": 15,
+      "title": "Fuerzas Cuerpos Guardia Civil",
+      "publicPreview": false
+    },
+    {
+      "id": "T16",
+      "code": "16",
+      "number": 16,
+      "title": "Proteccion Civil Biodiversidad Guardia Civil",
+      "publicPreview": false
+    },
+    {
+      "id": "T17",
+      "code": "17",
+      "number": 17,
+      "title": "TIC Guardia Civil",
+      "publicPreview": false
+    },
+    {
+      "id": "T18",
+      "code": "18",
+      "number": 18,
+      "title": "Topografia Guardia Civil",
+      "publicPreview": false
+    },
+    {
+      "id": "T19",
+      "code": "19",
+      "number": 19,
+      "title": "Deontologia Guardia Civil",
+      "publicPreview": false
+    },
+    {
+      "id": "T20",
+      "code": "20",
+      "number": 20,
+      "title": "Menores Guardia Civil",
+      "publicPreview": false
+    },
+    {
+      "id": "T21",
+      "code": "21",
+      "number": 21,
+      "title": "Violencia Genero Guardia Civil",
+      "publicPreview": false
+    },
+    {
+      "id": "T22",
+      "code": "22",
+      "number": 22,
+      "title": "Armas Explosivos Guardia Civil",
+      "publicPreview": false
+    },
+    {
+      "id": "T23",
+      "code": "23",
+      "number": 23,
+      "title": "Derecho Fiscal Guardia Civil",
+      "publicPreview": false
+    }
+  ],
+  "simulations": [],
+  "counts": {
+    "themes": 23
+  }
+}

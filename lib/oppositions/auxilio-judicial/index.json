@@ -1,0 +1,197 @@
+{
+  "courseSlug": "auxilio-judicial",
+  "title": "Auxilio Judicial",
+  "shortTitle": "Auxilio Judicial",
+  "level": "C2",
+  "region": "Estado",
+  "durationMonths": 12,
+  "enrollmentOpen": false,
+  "themes": [
+    {
+      "id": "T01",
+      "code": "1",
+      "number": 1,
+      "title": "La Constitución Española de 1978",
+      "publicPreview": true
+    },
+    {
+      "id": "T02",
+      "code": "2",
+      "number": 2,
+      "title": "Igualdad y no discriminación",
+      "publicPreview": false
+    },
+    {
+      "id": "T03",
+      "code": "3",
+      "number": 3,
+      "title": "El Gobierno y la Administración",
+      "publicPreview": false
+    },
+    {
+      "id": "T04",
+      "code": "4",
+      "number": 4,
+      "title": "Organización territorial del Estado",
+      "publicPreview": false
+    },
+    {
+      "id": "T05",
+      "code": "5",
+      "number": 5,
+      "title": "La Unión Europea",
+      "publicPreview": false
+    },
+    {
+      "id": "T06",
+      "code": "6",
+      "number": 6,
+      "title": "El Poder Judicial",
+      "publicPreview": false
+    },
+    {
+      "id": "T07",
+      "code": "7",
+      "number": 7,
+      "title": "Tribunal Supremo, Audiencia Nacional, Tribunales Superiores de Justicia y Audiencias Provinciales",
+      "publicPreview": false
+    },
+    {
+      "id": "T08",
+      "code": "8",
+      "number": 8,
+      "title": "Tribunales de Instancia y Tribunal Central de Instancia",
+      "publicPreview": false
+    },
+    {
+      "id": "T09",
+      "code": "9",
+      "number": 9,
+      "title": "La Carta de Derechos de los Ciudadanos ante la Justicia",
+      "publicPreview": false
+    },
+    {
+      "id": "T10",
+      "code": "10",
+      "number": 10,
+      "title": "Modernización de la oficina judicial y nuevas tecnologías",
+      "publicPreview": false
+    },
+    {
+      "id": "T11",
+      "code": "11",
+      "number": 11,
+      "title": "El Letrado de la Administración de Justicia",
+      "publicPreview": false
+    },
+    {
+      "id": "T12",
+      "code": "12",
+      "number": 12,
+      "title": "Cuerpos de funcionarios al servicio de la Administración de Justicia",
+      "publicPreview": false
+    },
+    {
+      "id": "T13",
+      "code": "13",
+      "number": 13,
+      "title": "Los Cuerpos Generales (I)",
+      "publicPreview": false
+    },
+    {
+      "id": "T14",
+      "code": "14",
+      "number": 14,
+      "title": "Los Cuerpos Generales (II)",
+      "publicPreview": false
+    },
+    {
+      "id": "T15",
+      "code": "15",
+      "number": 15,
+      "title": "Libertad sindical, representación, huelga y prevención de riesgos",
+      "publicPreview": false
+    },
+    {
+      "id": "T16",
+      "code": "16",
+      "number": 16,
+      "title": "Procedimientos declarativos civiles, procesos especiales y jurisdicción voluntaria",
+      "publicPreview": false
+    },
+    {
+      "id": "T17",
+      "code": "17",
+      "number": 17,
+      "title": "Procedimientos de ejecución civil y medidas cautelares",
+      "publicPreview": false
+    },
+    {
+      "id": "T18",
+      "code": "18",
+      "number": 18,
+      "title": "Procedimientos penales en la Ley de Enjuiciamiento Criminal",
+      "publicPreview": false
+    },
+    {
+      "id": "T19",
+      "code": "19",
+      "number": 19,
+      "title": "Procedimientos contencioso-administrativos",
+      "publicPreview": false
+    },
+    {
+      "id": "T20",
+      "code": "20",
+      "number": 20,
+      "title": "El proceso laboral",
+      "publicPreview": false
+    },
+    {
+      "id": "T21",
+      "code": "21",
+      "number": 21,
+      "title": "Los actos procesales",
+      "publicPreview": false
+    },
+    {
+      "id": "T22",
+      "code": "22",
+      "number": 22,
+      "title": "Las resoluciones de los órganos judiciales",
+      "publicPreview": false
+    },
+    {
+      "id": "T23",
+      "code": "23",
+      "number": 23,
+      "title": "Actos de comunicación con otros tribunales y autoridades",
+      "publicPreview": false
+    },
+    {
+      "id": "T24",
+      "code": "24",
+      "number": 24,
+      "title": "Actos de comunicación a las partes y otros intervinientes",
+      "publicPreview": false
+    },
+    {
+      "id": "T25",
+      "code": "25",
+      "number": 25,
+      "title": "El Registro Civil",
+      "publicPreview": false
+    },
+    {
+      "id": "T26",
+      "code": "26",
+      "number": 26,
+      "title": "Archivo judicial y documentación judicial",
+      "publicPreview": false
+    }
+  ],
+  "simulations": [],
+  "counts": {
+    "themes": 26
+  }
+}

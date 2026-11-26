@@ -1,0 +1,330 @@
+{
+  "courseSlug": "policia-nacional-escala-basica",
+  "title": "Policía Nacional · Escala Básica",
+  "shortTitle": "Policía Nacional · Escala Básica",
+  "level": "C1",
+  "region": "Estado",
+  "durationMonths": 12,
+  "enrollmentOpen": false,
+  "themes": [
+    {
+      "id": "T01",
+      "code": "1",
+      "number": 1,
+      "title": "Tema 01 El Derecho",
+      "publicPreview": true
+    },
+    {
+      "id": "T02",
+      "code": "2",
+      "number": 2,
+      "title": "Tema 02 Constitucion I",
+      "publicPreview": false
+    },
+    {
+      "id": "T03",
+      "code": "3",
+      "number": 3,
+      "title": "Tema 03 Constitucion II",
+      "publicPreview": false
+    },
+    {
+      "id": "T04",
+      "code": "4",
+      "number": 4,
+      "title": "Tema 04 Union Europea",
+      "publicPreview": false
+    },
+    {
+      "id": "T05",
+      "code": "5",
+      "number": 5,
+      "title": "Tema 05 Administracion General Estado",
+      "publicPreview": false
+    },
+    {
+      "id": "T06",
+      "code": "6",
+      "number": 6,
+      "title": "Tema 06 Funcionarios Publicos",
+      "publicPreview": false
+    },
+    {
+      "id": "T07",
+      "code": "7",
+      "number": 7,
+      "title": "Tema 07 Ministerio Interior",
+      "publicPreview": false
+    },
+    {
+      "id": "T08",
+      "code": "8",
+      "number": 8,
+      "title": "Tema 08 Direccion General Policia",
+      "publicPreview": false
+    },
+    {
+      "id": "T09",
+      "code": "9",
+      "number": 9,
+      "title": "Tema 09 Fuerzas Cuerpos Seguridad",
+      "publicPreview": false
+    },
+    {
+      "id": "T10",
+      "code": "10",
+      "number": 10,
+      "title": "Tema 10 Extranjeria Entrada Residencia",
+      "publicPreview": false
+    },
+    {
+      "id": "T11",
+      "code": "11",
+      "number": 11,
+      "title": "Tema 11 Infracciones Extranjeria",
+      "publicPreview": false
+    },
+    {
+      "id": "T12",
+      "code": "12",
+      "number": 12,
+      "title": "Tema 12 Proteccion Internacional",
+      "publicPreview": false
+    },
+    {
+      "id": "T13",
+      "code": "13",
+      "number": 13,
+      "title": "Tema 13 Seguridad Privada",
+      "publicPreview": false
+    },
+    {
+      "id": "T14",
+      "code": "14",
+      "number": 14,
+      "title": "Tema 14 Seguridad Ciudadana",
+      "publicPreview": false
+    },
+    {
+      "id": "T15",
+      "code": "15",
+      "number": 15,
+      "title": "Tema 15 Infraestructuras Criticas",
+      "publicPreview": false
+    },
+    {
+      "id": "T16",
+      "code": "16",
+      "number": 16,
+      "title": "Tema 16 Derecho Penal Parte General",
+      "publicPreview": false
+    },
+    {
+      "id": "T17",
+      "code": "17",
+      "number": 17,
+      "title": "Tema 17 Delitos Personas Libertad",
+      "publicPreview": false
+    },
+    {
+      "id": "T18",
+      "code": "18",
+      "number": 18,
+      "title": "Tema 18 Delitos Patrimonio",
+      "publicPreview": false
+    },
+    {
+      "id": "T19",
+      "code": "19",
+      "number": 19,
+      "title": "Tema 19 Orden Publico",
+      "publicPreview": false
+    },
+    {
+      "id": "T20",
+      "code": "20",
+      "number": 20,
+      "title": "Tema 20 Delitos Informaticos",
+      "publicPreview": false
+    },
+    {
+      "id": "T21",
+      "code": "21",
+      "number": 21,
+      "title": "Tema 21 Procesal Penal Detencion",
+      "publicPreview": false
+    },
+    {
+      "id": "T22",
+      "code": "22",
+      "number": 22,
+      "title": "Tema 22 Estatuto Victima",
+      "publicPreview": false
+    },
+    {
+      "id": "T23",
+      "code": "23",
+      "number": 23,
+      "title": "Tema 23 Igualdad No Discriminacion",
+      "publicPreview": false
+    },
+    {
+      "id": "T24",
+      "code": "24",
+      "number": 24,
+      "title": "Tema 24 Prevencion Riesgos Laborales",
+      "publicPreview": false
+    },
+    {
+      "id": "T25",
+      "code": "25",
+      "number": 25,
+      "title": "Tema 25 PRL Policia",
+      "publicPreview": false
+    },
+    {
+      "id": "T26",
+      "code": "26",
+      "number": 26,
+      "title": "Tema 26 Proteccion Datos",
+      "publicPreview": false
+    },
+    {
+      "id": "T27",
+      "code": "27",
+      "number": 27,
+      "title": "Tema 27 Derechos Humanos",
+      "publicPreview": false
+    },
+    {
+      "id": "T28",
+      "code": "28",
+      "number": 28,
+      "title": "Tema 28 Globalizacion Antiglobalizacion",
+      "publicPreview": false
+    },
+    {
+      "id": "T29",
+      "code": "29",
+      "number": 29,
+      "title": "Tema 29 Actitudes Valores Grupos",
+      "publicPreview": false
+    },
+    {
+      "id": "T30",
+      "code": "30",
+      "number": 30,
+      "title": "Tema 30 Etica Valores Delitos Odio",
+      "publicPreview": false
+    },
+    {
+      "id": "T31",
+      "code": "31",
+      "number": 31,
+      "title": "Tema 31 Inmigracion Migraciones",
+      "publicPreview": false
+    },
+    {
+      "id": "T32",
+      "code": "32",
+      "number": 32,
+      "title": "Tema 32 Geografia Humana Demografia",
+      "publicPreview": false
+    },
+    {
+      "id": "T33",
+      "code": "33",
+      "number": 33,
+      "title": "Tema 33 Seguridad Delincuencia",
+      "publicPreview": false
+    },
+    {
+      "id": "T34",
+      "code": "34",
+      "number": 34,
+      "title": "Tema 34 Drogodependencias",
+      "publicPreview": false
+    },
+    {
+      "id": "T35",
+      "code": "35",
+      "number": 35,
+      "title": "Tema 35 Desarrollo Sostenible",
+      "publicPreview": false
+    },
+    {
+      "id": "T36",
+      "code": "36",
+      "number": 36,
+      "title": "Tema 36 Gramatica",
+      "publicPreview": false
+    },
+    {
+      "id": "T37",
+      "code": "37",
+      "number": 37,
+      "title": "Tema 37 Ortografia",
+      "publicPreview": false
+    },
+    {
+      "id": "T38",
+      "code": "38",
+      "number": 38,
+      "title": "Tema 38 Sistemas Operativos",
+      "publicPreview": false
+    },
+    {
+      "id": "T39",
+      "code": "39",
+      "number": 39,
+      "title": "Tema 39 Redes Informaticas",
+      "publicPreview": false
+    },
+    {
+      "id": "T40",
+      "code": "40",
+      "number": 40,
+      "title": "Tema 40 Inteligencia OSINT",
+      "publicPreview": false
+    },
+    {
+      "id": "T41",
+      "code": "41",
+      "number": 41,
+      "title": "Tema 41 Ciberdelincuencia",
+      "publicPreview": false
+    },
+    {
+      "id": "T42",
+      "code": "42",
+      "number": 42,
+      "title": "Tema 42 Armas Balistica",
+      "publicPreview": false
+    },
+    {
+      "id": "T43",
+      "code": "43",
+      "number": 43,
+      "title": "Tema 43 Vehiculo Prioritario",
+      "publicPreview": false
+    },
+    {
+      "id": "T44",
+      "code": "44",
+      "number": 44,
+      "title": "Tema 44 Seguridad Conduccion",
+      "publicPreview": false
+    },
+    {
+      "id": "T45",
+      "code": "45",
+      "number": 45,
+      "title": "Tema 45 PRL Seguridad Vial",
+      "publicPreview": false
+    }
+  ],
+  "simulations": [],
+  "counts": {
+    "themes": 45
+  }
+}

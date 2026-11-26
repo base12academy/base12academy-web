@@ -1,0 +1,239 @@
+{
+  "courseSlug": "agentes-hacienda-publica",
+  "title": "Agentes de la Hacienda Pública",
+  "shortTitle": "Agentes de la Hacienda Pública",
+  "level": "C1",
+  "region": "Estado",
+  "durationMonths": 12,
+  "enrollmentOpen": false,
+  "themes": [
+    {
+      "id": "T01",
+      "code": "1",
+      "number": 1,
+      "title": "La Constitución Española de 1978",
+      "publicPreview": true
+    },
+    {
+      "id": "T02",
+      "code": "2",
+      "number": 2,
+      "title": "Las Cortes Generales y el Poder Judicial",
+      "publicPreview": false
+    },
+    {
+      "id": "T03",
+      "code": "3",
+      "number": 3,
+      "title": "El Gobierno y la Administración Pública",
+      "publicPreview": false
+    },
+    {
+      "id": "T04",
+      "code": "4",
+      "number": 4,
+      "title": "Organización territorial del Estado e instituciones de la Unión Europea",
+      "publicPreview": false
+    },
+    {
+      "id": "T05",
+      "code": "5",
+      "number": 5,
+      "title": "Funcionamiento electrónico, transparencia y protección de datos",
+      "publicPreview": false
+    },
+    {
+      "id": "T06",
+      "code": "6",
+      "number": 6,
+      "title": "Igualdad, no discriminación, violencia de género, discapacidad y dependencia",
+      "publicPreview": false
+    },
+    {
+      "id": "T07",
+      "code": "7",
+      "number": 7,
+      "title": "Personal al servicio de las Administraciones Públicas",
+      "publicPreview": false
+    },
+    {
+      "id": "T08",
+      "code": "8",
+      "number": 8,
+      "title": "Las fuentes del Derecho Administrativo",
+      "publicPreview": false
+    },
+    {
+      "id": "T09",
+      "code": "9",
+      "number": 9,
+      "title": "Los actos administrativos",
+      "publicPreview": false
+    },
+    {
+      "id": "T10",
+      "code": "10",
+      "number": 10,
+      "title": "Procedimiento administrativo común",
+      "publicPreview": false
+    },
+    {
+      "id": "T11",
+      "code": "11",
+      "number": 11,
+      "title": "Fases del procedimiento y ejecución",
+      "publicPreview": false
+    },
+    {
+      "id": "T12",
+      "code": "12",
+      "number": 12,
+      "title": "Recursos administrativos y jurisdicción contencioso-administrativa",
+      "publicPreview": false
+    },
+    {
+      "id": "T13",
+      "code": "13",
+      "number": 13,
+      "title": "Sistema fiscal español y Haciendas públicas",
+      "publicPreview": false
+    },
+    {
+      "id": "T14",
+      "code": "14",
+      "number": 14,
+      "title": "La Agencia Estatal de Administración Tributaria",
+      "publicPreview": false
+    },
+    {
+      "id": "T15",
+      "code": "15",
+      "number": 15,
+      "title": "Derecho Tributario y obligación tributaria",
+      "publicPreview": false
+    },
+    {
+      "id": "T16",
+      "code": "16",
+      "number": 16,
+      "title": "Obligaciones formales y derechos de los obligados",
+      "publicPreview": false
+    },
+    {
+      "id": "T17",
+      "code": "17",
+      "number": 17,
+      "title": "Información, asistencia y normas comunes de procedimientos tributarios",
+      "publicPreview": false
+    },
+    {
+      "id": "T18",
+      "code": "18",
+      "number": 18,
+      "title": "Declaraciones, autoliquidaciones, comunicaciones y pagos a cuenta",
+      "publicPreview": false
+    },
+    {
+      "id": "T19",
+      "code": "19",
+      "number": 19,
+      "title": "Gestión tributaria",
+      "publicPreview": false
+    },
+    {
+      "id": "T20",
+      "code": "20",
+      "number": 20,
+      "title": "Inspección tributaria",
+      "publicPreview": false
+    },
+    {
+      "id": "T21",
+      "code": "21",
+      "number": 21,
+      "title": "Extinción de la deuda tributaria I",
+      "publicPreview": false
+    },
+    {
+      "id": "T22",
+      "code": "22",
+      "number": 22,
+      "title": "Extinción de la deuda tributaria II",
+      "publicPreview": false
+    },
+    {
+      "id": "T23",
+      "code": "23",
+      "number": 23,
+      "title": "Recaudación en período ejecutivo",
+      "publicPreview": false
+    },
+    {
+      "id": "T24",
+      "code": "24",
+      "number": 24,
+      "title": "Embargo, responsables y sucesores",
+      "publicPreview": false
+    },
+    {
+      "id": "T25",
+      "code": "25",
+      "number": 25,
+      "title": "Potestad sancionadora tributaria",
+      "publicPreview": false
+    },
+    {
+      "id": "T26",
+      "code": "26",
+      "number": 26,
+      "title": "Revisión en vía administrativa",
+      "publicPreview": false
+    },
+    {
+      "id": "T27",
+      "code": "27",
+      "number": 27,
+      "title": "IRPF I",
+      "publicPreview": false
+    },
+    {
+      "id": "T28",
+      "code": "28",
+      "number": 28,
+      "title": "IRPF II",
+      "publicPreview": false
+    },
+    {
+      "id": "T29",
+      "code": "29",
+      "number": 29,
+      "title": "Impuesto sobre Sociedades",
+      "publicPreview": false
+    },
+    {
+      "id": "T30",
+      "code": "30",
+      "number": 30,
+      "title": "IVA I",
+      "publicPreview": false
+    },
+    {
+      "id": "T31",
+      "code": "31",
+      "number": 31,
+      "title": "IVA II",
+      "publicPreview": false
+    },
+    {
+      "id": "T32",
+      "code": "32",
+      "number": 32,
+      "title": "Aduana",
+      "publicPreview": false
+    }
+  ],
+  "simulations": [],
+  "counts": {
+    "themes": 32
+  }
+}
