@@ -37,6 +37,14 @@ const BUNDLED_OPPOSITION_SLUGS = {
 const familyLabels: Record<Family, string> = {"Oposiciones":"Oposiciones - Test","Bachillerato y PAU":"Bachillerato - PAU","Clases Online":"Clases de apoyo","Cursos Online":"Cursos","Tropa y Marinería":"Tropa y Marinería"};
 const healthCourses = Object.entries(healthOppositions);
 
+const recentOppositionSlugs: Record<string, string> = {
+  "Agentes de la Hacienda Pública": "agentes-hacienda-publica",
+  "Auxilio Judicial": "auxilio-judicial",
+  "Tramitación Procesal y Administrativa": "tramitacion-procesal",
+  "Policía Nacional · Escala Básica": "policia-nacional-escala-basica",
+  "Guardia Civil · Cabos y Guardias": "guardia-civil-cabos-guardias"
+};
+
 const COURSE_ACCESS: Record<string,{slug:string;href:string}> = {
   ...Object.fromEntries(healthCourses.map(([slug, course]) => [course.title, { slug, href: `/dashboard/${slug}` }])),
   ...Object.fromEntries(Object.entries(BUNDLED_OPPOSITION_SLUGS)
@@ -1063,6 +1071,7 @@ export default function CourseCatalog() {
                 )}
               </>
             )}
+            {recentOppositionSlugs[course.name] && <p><Link href={`/dashboard/${recentOppositionSlugs[course.name]}?tema=T01`}>Probar gratis el tema 1</Link></p>}
             {healthCourses.some(([, item]) => item.title === course.name) && <p><Link href={COURSE_ACCESS[course.name].href + "?tema=T01"}>Probar gratis el tema 1</Link></p>}
             {course.name === "Administrativo del Sistema Valenciano de Salud" && <p><Link href="/dashboard/administrativo-sanidad-valenciana?tema=T01">Probar gratis el tema 1</Link></p>}
             {course.name === "Administrativo del SERMAS" && <p><Link href="/dashboard/administrativo-sermas?tema=T01">Probar gratis el tema 1</Link></p>}
