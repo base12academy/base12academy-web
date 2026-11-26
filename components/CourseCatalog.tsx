@@ -147,6 +147,11 @@ const clasesOnline = [
 const celadorChguv = healthOppositions["celador-chguv-co32-24"].title;
 
 const oposiciones = [
+  ["Hacienda", "Agentes de la Hacienda Pública"],
+  ["Justicia", "Auxilio Judicial"],
+  ["Justicia", "Tramitación Procesal y Administrativa"],
+  ["Fuerzas y Cuerpos de Seguridad", "Policía Nacional · Escala Básica"],
+  ["Fuerzas y Cuerpos de Seguridad", "Guardia Civil · Cabos y Guardias"],
   ["Haciendas Locales", "Administrativos Haciendas Locales"],
   ["Haciendas Locales", "Auxiliares Administrativos Haciendas Locales"],
   ["Universidades", "Administrativos de Universidades"],
@@ -452,6 +457,11 @@ function plansFor(course: Course): Plan[] {
     { name: "Estándar", price: "299 €", detail: "Más práctica y entrenamiento · 12 meses", includes: ["Todo lo incluido en Esencial", "Banco de 50 preguntas por tema", "Simulacros de 20 preguntas aleatorias", "Historial y progresión de resultados", "Acompañamiento de Rocío y Fernando"] },
     { name: "Premium", price: "599 €", detail: "Seguimiento humano semanal · 12 meses", includes: ["Todo lo incluido en Estándar", "Plan de estudio personalizado", "Revisión prioritaria del progreso", "Tutoría humana individual de 30 minutos cada semana", "Calendario de reserva modificable"] },
   ];
+  if (course.name === "Agentes de la Hacienda Pública") {
+    return oppositionPlans.map(plan => plan.name === "Estándar"
+      ? { ...plan, includes: plan.includes.map(item => item === "Banco de 50 preguntas por tema" ? "Banco de preguntas organizado en 32 temas" : item) }
+      : plan);
+  }
   const jaPremiumSimulationCourses = new Set([
     "Administrativo de la Junta de Andalucía",
     "Auxiliar Administrativo de la Junta de Andalucía",
