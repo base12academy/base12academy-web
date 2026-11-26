@@ -26,7 +26,7 @@ export default function HomeMobileMenu() {
         <a href="#aplicaciones">Aplicaciones y recursos</a>
         <a href="#metodo">Cómo funciona</a>
         <a href="#equipo">Sobre Base12</a>
-        <WorkWithUsModal className={styles.mobileWorkLink} onOpen={() => setOpen(false)} />
+        <WorkWithUsModal className={styles.mobileWorkLink} onClose={() => setOpen(false)} />
         <a href="#contacto">Contacto</a>
       </nav>}
     </div>
