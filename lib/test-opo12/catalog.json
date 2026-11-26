@@ -133,5 +133,30 @@
     "slug": "tropa-y-marineria",
     "title": "Tropa y Marinería",
     "region": "Fuerzas Armadas"
+  },
+  {
+    "slug": "agentes-hacienda-publica",
+    "title": "Agentes de la Hacienda Pública",
+    "region": "Hacienda"
+  },
+  {
+    "slug": "auxilio-judicial",
+    "title": "Auxilio Judicial",
+    "region": "Justicia"
+  },
+  {
+    "slug": "tramitacion-procesal",
+    "title": "Tramitación Procesal y Administrativa",
+    "region": "Justicia"
+  },
+  {
+    "slug": "policia-nacional-escala-basica",
+    "title": "Policía Nacional · Escala Básica",
+    "region": "Fuerzas y Cuerpos de Seguridad"
+  },
+  {
+    "slug": "guardia-civil-cabos-guardias",
+    "title": "Guardia Civil · Cabos y Guardias",
+    "region": "Fuerzas y Cuerpos de Seguridad"
   }
 ]
