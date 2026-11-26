@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import HomeCatalogLink from "./HomeCatalogLink";
+import WorkWithUsModal from "./WorkWithUsModal";
 import styles from "@/app/home.module.css";
 
 export default function HomeMobileMenu() {
@@ -25,6 +26,7 @@ export default function HomeMobileMenu() {
         <a href="#aplicaciones">Aplicaciones y recursos</a>
         <a href="#metodo">Cómo funciona</a>
         <a href="#equipo">Sobre Base12</a>
+        <WorkWithUsModal className={styles.mobileWorkLink} onOpen={() => setOpen(false)} />
         <a href="#contacto">Contacto</a>
       </nav>}
     </div>
