@@ -46,6 +46,7 @@ const recentOppositionSlugs: Record<string, string> = {
 };
 
 const COURSE_ACCESS: Record<string,{slug:string;href:string}> = {
+  ...Object.fromEntries(Object.entries(recentOppositionSlugs).map(([name, slug]) => [name, {slug, href: `/dashboard/${slug}`}])),
   ...Object.fromEntries(healthCourses.map(([slug, course]) => [course.title, { slug, href: `/dashboard/${slug}` }])),
   ...Object.fromEntries(Object.entries(BUNDLED_OPPOSITION_SLUGS)
     .map(([name, slug]) => [name, { slug, href: `/dashboard/haciendas-universidades/${slug}` }])),
