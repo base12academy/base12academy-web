@@ -16,11 +16,14 @@ const formation = [
   { family: "cursos", title: "Cursos", text: "Competencias digitales, protocolo y desarrollo profesional.", action: "Explorar cursos", icon: "04" },
 ];
 
-const apps = [
+const freeApps = [
   { name: "Banco de Opositores", text: "Consulta convocatorias oficiales y configura tus alertas.", href: "/banco-opositores", image: "/images/banco-opositores/logo-banco-opositores.png", action: "Buscar convocatorias" },
   { name: "Base12 App", text: "Accede a tu formación y continúa donde lo dejaste.", href: "/login", image: "/images/base12-logo.png", action: "Entrar al campus" },
-  { name: "Base12 Training", text: "Conoce la aplicación de preparación física para Tropa y Marinería.", href: "/tropa-y-marineria/base12-training", image: "/images/banco-opositores/logo-base12-training.png", action: "Conocer Training" },
   { name: "Tabla Periódica Interactiva", text: "Explora los elementos y conoce las opciones de acceso a la aplicación.", href: "/apps/tabla-periodica", image: "/images/tabla-periodica-icon.png", action: "Ver la aplicación" },
+];
+
+const complementaryApps = [
+  { name: "Base12 Training", text: "Aplicación complementaria de preparación física para Tropa y Marinería.", href: "/tropa-y-marineria/base12-training", image: "/images/banco-opositores/logo-base12-training.png", action: "Conocer Training" },
 ];
 
 const videos = [
@@ -97,16 +100,29 @@ export default function HomePage() {
 
         <section id="aplicaciones" className={`${styles.section} ${styles.appsSection}`} aria-labelledby="apps-title">
           <div className={styles.sectionHeading}>
-            <div><p className={styles.eyebrow}>Herramientas para avanzar</p><h2 id="apps-title">Aplicaciones y recursos</h2></div>
-            <p>Encuentra tu convocatoria, entra al campus o descubre nuestras aplicaciones.</p>
+            <div><p className={styles.eyebrow}>Herramientas para avanzar</p><h2 id="apps-title">Aplicaciones</h2></div>
+            <p>Utilidades gratuitas y aplicaciones complementarias para acompañar tu formación.</p>
           </div>
+          <h3 className={styles.appsGroupTitle}>Aplicaciones gratuitas</h3>
           <div className={styles.appsGrid}>
-            {apps.map((app) => (
+            {freeApps.map((app) => (
               <Link href={app.href} key={app.name} className={styles.appCard}>
                 <Image src={app.image} width={76} height={76} alt="" />
                 <div><h3>{app.name}</h3><p>{app.text}</p><span className={styles.cardAction}>{app.action} <span aria-hidden="true">→</span></span></div>
               </Link>
             ))}
+          </div>
+          <h3 className={styles.appsGroupTitle}>Aplicaciones complementarias</h3>
+          <div className={styles.appsGrid}>
+            {complementaryApps.map((app) => (
+              <Link href={app.href} key={app.name} className={styles.appCard}>
+                <Image src={app.image} width={76} height={76} alt="" />
+                <div><h3>{app.name}</h3><p>{app.text}</p><span className={styles.cardAction}>{app.action} <span aria-hidden="true">→</span></span></div>
+              </Link>
+            ))}
+            <article className={styles.appCard}>
+              <div className={styles.urbiUniSpace}><span>Próximamente</span><h3>UrbiUni</h3><p>Espacio reservado para la aplicación universitaria de Base12.</p></div>
+            </article>
           </div>
           <div className={styles.installRow}><p>¿Quieres tener Base12 a mano? Instala el acceso en tu dispositivo.</p><PwaInstallButton /></div>
         </section>
