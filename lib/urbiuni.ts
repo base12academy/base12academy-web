@@ -37,11 +37,11 @@ export type TituloLite = {
   precio_primer_curso_privada: number | null;
   precio_etiqueta: Etiqueta | null;
   campus_ids: string | null;
+  centro: string | null;
+  centro_adscrito: string | null;
 };
 
 export type Titulo = TituloLite & {
-  centro: string | null;
-  centro_adscrito: string | null;
   habilitante: string | null;
   codigo_ruct: string | null;
   fuente_url: string | null;
@@ -149,7 +149,7 @@ async function readAll<T>(table: string, select: string): Promise<T[]> {
 }
 
 const LITE =
-  "id,slug,denominacion,universidad_id,tipo,rama,modalidad,ects,precio_credito,precio_credito_max,precio_primer_curso_privada,precio_etiqueta,campus_ids";
+  "id,slug,denominacion,universidad_id,tipo,rama,modalidad,ects,precio_credito,precio_credito_max,precio_primer_curso_privada,precio_etiqueta,campus_ids,centro,centro_adscrito";
 
 export type UrbiIndex = {
   titulos: TituloLite[];
@@ -289,6 +289,12 @@ export const SIN_NOTA_CORTE: Record<string, { texto: string; url: string }> = {
     url: "https://www.uned.es/universidad/inicio/estudios/grados/admision-grados.html",
   },
 };
+
+// Centro adscrito: centro (a menudo privado) que imparte el título de una universidad con su propia nota y precio.
+export function centroAdscrito(t: { centro: string | null; centro_adscrito: string | null }): string | null {
+  if (t.centro_adscrito !== "Sí") return null;
+  return (t.centro || "Centro adscrito").replace(/\s*\(centro adscrito\)\s*/i, "").trim() || "Centro adscrito";
+}
 
 export type Alcance = { label: string; tone: "ok" | "tight" | "hard" };
 

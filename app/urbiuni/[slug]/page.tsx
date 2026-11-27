@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SaveWideButton } from "@/components/urbiuni/UrbiList";
 import { Tag, UrbiShell } from "@/components/urbiuni/UrbiShell";
-import { NIVEL_TEXTO, SIN_NOTA_CORTE, fmt, getFicha, getTitulo, normalize, precioCurso, precioLabel, shortName, type Empleabilidad, type Indicadores } from "@/lib/urbiuni";
+import { NIVEL_TEXTO, SIN_NOTA_CORTE, centroAdscrito, fmt, getFicha, getTitulo, normalize, precioCurso, precioLabel, shortName, type Empleabilidad, type Indicadores } from "@/lib/urbiuni";
 import styles from "../urbiuni.module.css";
 
 export const revalidate = 86400;
@@ -83,6 +83,7 @@ export default async function FichaPage({ params }: Props) {
   const precio = precioCurso(titulo);
   const nombre = shortName(titulo.denominacion);
   const libre = SIN_NOTA_CORTE[titulo.universidad_id] ?? null;
+  const adscrito = centroAdscrito(titulo);
 
   const base = normalize(titulo.denominacion);
   const otras = index.titulos
@@ -109,12 +110,13 @@ export default async function FichaPage({ params }: Props) {
 
       <header className={styles.fichaHead}>
         <div className={styles.badges}>
-          {universidad?.tipo && <span className={styles.badge}>Universidad {universidad.tipo.toLowerCase()}</span>}
+          {adscrito ? <span className={styles.badge}>Centro adscrito a universidad {universidad?.tipo?.toLowerCase() ?? ""}</span> : universidad?.tipo && <span className={styles.badge}>Universidad {universidad.tipo.toLowerCase()}</span>}
           {titulo.rama && <span className={styles.badge}>{titulo.rama}</span>}
           {titulo.modalidad && <span className={styles.badge}>{titulo.modalidad}</span>}
           {profesion && <span className={styles.badge}>Profesión regulada</span>}
         </div>
         <h1>{titulo.denominacion}</h1>
+        {adscrito && <p><strong>{adscrito}</strong>, centro adscrito: imparte el título de la universidad con su propia nota de corte, plazas y precio.</p>}
         <p>{universidad?.nombre}{ciudad ? ` · ${ciudad}` : ""}{universidad?.ccaa && universidad.ccaa !== "Estado" ? ` (${universidad.ccaa})` : universidad?.ccaa === "Estado" ? " · Ámbito estatal" : ""}</p>
         <div><SaveWideButton slug={titulo.slug} /></div>
       </header>
@@ -179,7 +181,7 @@ export default async function FichaPage({ params }: Props) {
             </div>
             {precio.texto && !precio.texto.startsWith("Sin fuente") && <p className={styles.note}>{universidad?.tipo === "Pública" && /^[\d.,]+ €( \(|$)/.test(precio.texto) || (universidad?.tipo === "Pública" && precio.texto.includes("según grupo")) ? `Precio del crédito: ${precio.texto.replace(/^([\d.,]+ €) \(\1\)$/, "$1")}` : precio.texto}</p>}
             {precio.valor == null && precio.texto?.startsWith("Sin fuente") && <p className={styles.note}>{precio.texto}.</p>}
-            {universidad?.tipo === "Pública" && precio.valor != null && <p className={styles.note}>Precio de 60 créditos en primera matrícula según los precios públicos oficiales del curso. Con beca del Ministerio la matrícula puede ser gratuita.</p>}
+            {universidad?.tipo === "Pública" && !adscrito && precio.valor != null && <p className={styles.note}>Precio de 60 créditos en primera matrícula según los precios públicos oficiales del curso. Con beca del Ministerio la matrícula puede ser gratuita.</p>}
           </section>
 
           <section className={styles.box}>
@@ -199,7 +201,7 @@ export default async function FichaPage({ params }: Props) {
               <h2>{nombre} en otras universidades</h2>
               <div className={styles.linkList}>
                 {otras.map(({ t, uni, acc }) => (
-                  <Link key={t.id} href={`/urbiuni/${t.slug}`}>{uni?.siglas || uni?.nombre}<span>{fmt.nota(acc?.nota_corte)}</span></Link>
+                  <Link key={t.id} href={`/urbiuni/${t.slug}`}>{uni?.siglas || uni?.nombre}{centroAdscrito(t) ? ` · ${centroAdscrito(t)}` : ""}<span>{fmt.nota(acc?.nota_corte)}</span></Link>
                 ))}
               </div>
               <Link href={`/urbiuni/buscar?q=${encodeURIComponent(nombre)}`} className={styles.more}>Ver todas →</Link>
@@ -211,7 +213,7 @@ export default async function FichaPage({ params }: Props) {
               <h2>Grados parecidos en {universidad?.siglas || "esta universidad"}</h2>
               <div className={styles.linkList}>
                 {parecidos.map((t) => (
-                  <Link key={t.id} href={`/urbiuni/${t.slug}`}>{shortName(t.denominacion)}<span>{fmt.nota(index.acceso.get(t.id)?.nota_corte)}</span></Link>
+                  <Link key={t.id} href={`/urbiuni/${t.slug}`}>{shortName(t.denominacion)}{centroAdscrito(t) ? ` · ${centroAdscrito(t)}` : ""}<span>{fmt.nota(index.acceso.get(t.id)?.nota_corte)}</span></Link>
                 ))}
               </div>
             </section>

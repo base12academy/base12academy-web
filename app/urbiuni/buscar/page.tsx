@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SaveButton } from "@/components/urbiuni/UrbiList";
 import { Tag, UrbiShell } from "@/components/urbiuni/UrbiShell";
-import { CCAA, RAMAS, SIN_NOTA_CORTE, alcance, esOnline, fmt, getUrbiIndex, normalize, parseNota, precioCurso, precioLabel, shortName } from "@/lib/urbiuni";
+import { CCAA, RAMAS, SIN_NOTA_CORTE, alcance, centroAdscrito, esOnline, fmt, getUrbiIndex, normalize, parseNota, precioCurso, precioLabel, shortName } from "@/lib/urbiuni";
 import styles from "../urbiuni.module.css";
 
 export const metadata: Metadata = {
@@ -33,7 +33,7 @@ export default async function BuscarPage({ searchParams }: Props) {
     .map((t) => ({ t, uni: index.universidades.get(t.universidad_id), acc: index.acceso.get(t.id) }))
     .filter(({ t, uni }) => {
       if (tokens.length) {
-        const hay = normalize(`${t.denominacion} ${uni?.nombre ?? ""} ${uni?.siglas ?? ""} ${uni?.municipio ?? ""}`);
+        const hay = normalize(`${t.denominacion} ${t.centro ?? ""} ${uni?.nombre ?? ""} ${uni?.siglas ?? ""} ${uni?.municipio ?? ""}`);
         if (!tokens.every((tok) => hay.includes(tok))) return false;
       }
       if (rama && !(t.rama || "").includes(rama)) return false;
@@ -157,6 +157,7 @@ export default async function BuscarPage({ searchParams }: Props) {
                     {reach && <span className={`${styles.tag} ${styles[`reach_${reach.tone}`]}`} style={{ justifySelf: "start" }}>{reach.label}</span>}
                     <Link href={`/urbiuni/${t.slug}`}>{shortName(t.denominacion)}</Link>
                     <span>{uni?.nombre ?? ""}{uni?.municipio ? ` · ${uni.municipio}` : ""}{uni?.tipo ? ` · ${uni.tipo}` : ""}</span>
+                    {centroAdscrito(t) && <span><strong>Centro adscrito:</strong> {centroAdscrito(t)} (nota y precio propios)</span>}
                   </div>
                   <SaveButton slug={t.slug} name={shortName(t.denominacion)} />
                 </div>
