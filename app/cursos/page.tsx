@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import type { CSSProperties } from "react";
+
+export const metadata: Metadata = {
+  title: "Cursos online de protocolo y competencias profesionales",
+  description:
+    "Próximamente: formación online en protocolo institucional, protocolo social y empresarial y gestión eficaz del tiempo en Base12 Academy.",
+};
 
 const courses = [
   {

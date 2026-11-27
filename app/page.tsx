@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import LeadChatBot from "@/components/LeadChatBot";
@@ -8,6 +9,12 @@ import HomeCatalogLink from "@/components/HomeCatalogLink";
 import HomeMobileMenu from "@/components/HomeMobileMenu";
 import WorkWithUsModal from "@/components/WorkWithUsModal";
 import styles from "./home.module.css";
+
+export const metadata: Metadata = {
+  title: "Academia online de oposiciones y PAU en Málaga",
+  description:
+    "Prepara oposiciones y Tropa y Marinería; estudia Bachillerato y PAU o recibe clases online de Historia y Filosofía. Materiales, práctica y acompañamiento en Base12 Academy.",
+};
 
 const formation = [
   { family: "oposiciones", title: "Oposiciones - Test", text: "Cursos de oposición, test, simulacros y preparación de Tropa y Marinería.", action: "Ver oposiciones", icon: "01" },
@@ -67,11 +74,11 @@ export default function HomePage() {
         <section className={styles.hero} aria-labelledby="hero-title">
           <div>
             <p className={styles.eyebrow}>Formación online · Base12 Academy</p>
-            <h1 id="hero-title">Oposiciones, Bachillerato y <span>clases de apoyo.</span></h1>
-            <p className={styles.heroText}>Elige tu objetivo. Descubre cómo estudiar con estructura, práctica y acompañamiento.</p>
+            <h1 id="hero-title">Prepara Tropa y Marinería o la PAU con Base12.</h1>
+            <p className={styles.heroText}>Formación online para oposiciones y Bachillerato, con materiales, práctica y acompañamiento para avanzar con un objetivo claro.</p>
             <div className={styles.actions}>
-              <a className={styles.primary} href="#formacion">Explorar formación <span aria-hidden="true">→</span></a>
-              <a className={styles.textAction} href="#metodo">Ver cómo funciona <span aria-hidden="true">↗</span></a>
+              <a className={styles.primary} href="/tropa-y-marineria">Preparar Tropa y Marinería <span aria-hidden="true">→</span></a>
+              <a className={styles.secondary} href="/bachillerato-pau">Preparar la PAU <span aria-hidden="true">→</span></a>
             </div>
           </div>
           <figure className={styles.heroMedia}>
@@ -80,10 +87,45 @@ export default function HomePage() {
           </figure>
         </section>
 
+        <section className={styles.featuredSection} aria-labelledby="featured-title">
+          <div className={styles.sectionHeading}>
+            <div>
+              <p className={styles.eyebrow}>Preparaciones destacadas</p>
+              <h2 id="featured-title">Empieza por tu próximo objetivo</h2>
+            </div>
+            <p>Dos formas de avanzar con una preparación online organizada y orientada a la práctica.</p>
+          </div>
+          <div className={styles.featuredGrid}>
+            <article className={styles.featuredCard}>
+              <div className={styles.featuredImageWrap}>
+                <Image src="/images/landings/tropa-hero.png" alt="" width={720} height={520} sizes="(max-width: 820px) 100vw, 45vw" className={styles.featuredImage} />
+              </div>
+              <div className={styles.featuredCopy}>
+                <p className={styles.featuredKicker}>Tropa y Marinería</p>
+                <h3>Prepara las pruebas teóricas y físicas</h3>
+                <p>Practica los test y conoce Base12 Training, la aplicación de preparación física.</p>
+                <a className={styles.primary} href="/tropa-y-marineria">Ver preparación <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+            <article className={styles.featuredCard}>
+              <div className={styles.featuredImageWrap}>
+                <Image src="/images/landings/pau-hero.png" alt="" width={720} height={520} sizes="(max-width: 820px) 100vw, 45vw" className={styles.featuredImage} />
+              </div>
+              <div className={styles.featuredCopy}>
+                <p className={styles.featuredKicker}>Bachillerato · PAU</p>
+                <h3>Historia y Filosofía con práctica guiada</h3>
+                <p>Trabaja los contenidos y practica comentarios de texto para preparar la prueba.</p>
+                <a className={styles.primary} href="/bachillerato-pau">Ver preparación PAU <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+          </div>
+          <p className={styles.featuredSecondary}>¿Buscas otra oposición, clases de apoyo o un curso profesional? <a href="#formacion">Explora todas las opciones</a>.</p>
+        </section>
+
         <section id="formacion" className={styles.section} aria-labelledby="formation-title">
-          <p className={styles.eyebrow}>Tu objetivo, tu formación</p>
-          <h2 id="formation-title">¿Qué quieres preparar?</h2>
-          <p className={styles.intro}>Elige una línea y descubre los cursos y modalidades disponibles.</p>
+          <p className={styles.eyebrow}>Otras líneas de formación</p>
+          <h2 id="formation-title">Más opciones para tu objetivo</h2>
+          <p className={styles.intro}>Consulta las demás oposiciones, asignaturas de Bachillerato, clases de apoyo y cursos.</p>
           <div className={styles.formationGrid}>
             {formation.map((item) => (
               <HomeCatalogLink family={item.family} key={item.family} className={styles.formationCard}>

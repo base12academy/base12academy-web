@@ -98,6 +98,14 @@ export default async function ClassesAdsLanding({
           </div>
         </section>
 
+        <section className={`${styles.section} ${styles.sectionTint}`} aria-labelledby="reviews-title">
+          <div className={styles.sectionHeader}>
+            <h2 id="reviews-title">La experiencia de Eduardo dando clases particulares</h2>
+            <p><strong>5/5 en Tusclasesparticulares (5 valoraciones).</strong> Son opiniones sobre clases particulares impartidas por Eduardo; no corresponden a alumnos de los cursos online de Base12 Academy.</p>
+            <p><a className={styles.secondaryCta} href="https://www.tusclasesparticulares.com/profesores/eduardo-caro.htm" target="_blank" rel="noopener noreferrer">Ver las valoraciones originales</a></p>
+          </div>
+        </section>
+
         <section className={styles.section}>
           <div className={styles.sectionHeader}><h2>Cómo funciona</h2></div>
           <div className={styles.grid4}>

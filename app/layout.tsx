@@ -17,10 +17,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://base12academy.es"),
   title: {
-    default: "Base12 Academy",
+    default: "Oposiciones y Bachillerato online | Base12 Academy",
     template: "%s | Base12 Academy",
   },
-  description: "Formación online de Base12 Academy. Construye · Comprende · Domina.",
+  description:
+    "Academia online para preparar oposiciones, Tropa y Marinería y Bachillerato y PAU. Clases de Historia y Filosofía, materiales, test y acompañamiento.",
   applicationName: "Base12 Academy",
   manifest: "/manifest.webmanifest",
   alternates: {
@@ -31,8 +32,9 @@ export const metadata: Metadata = {
     locale: "es_ES",
     url: "/",
     siteName: "Base12 Academy",
-    title: "Base12 Academy",
-    description: "Construye · Comprende · Domina",
+    title: "Oposiciones, Tropa y Marinería y PAU online · Base12 Academy",
+    description:
+      "Formación online para preparar oposiciones, Tropa y Marinería y Bachillerato y PAU.",
     images: [
       {
         url: "/opengraph-image",
@@ -44,8 +46,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Base12 Academy",
-    description: "Construye · Comprende · Domina",
+    title: "Oposiciones, Tropa y Marinería y PAU online · Base12 Academy",
+    description:
+      "Formación online para preparar oposiciones, Tropa y Marinería y Bachillerato y PAU.",
     images: ["/twitter-image"],
   },
   appleWebApp: {
