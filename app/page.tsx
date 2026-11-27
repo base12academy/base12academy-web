@@ -126,7 +126,7 @@ export default function HomePage() {
             ))}
             <article className={styles.appCard}>
               <Image src="/images/urbiuni/logo-urbiuni.png" width={76} height={76} alt="" />
-              <div><h3>UrbiUni</h3><p>Grados, notas de corte y universidades de toda España para elegir carrera.</p><span className={styles.comingSoon}>Próximamente</span></div>
+              <div><h3>UrbiUni</h3><p>Grados, notas de corte y universidades de toda España para elegir carrera.</p></div>
             </article>
           </div>
           <h3 className={styles.appsGroupTitle}>Aplicaciones complementarias</h3>
