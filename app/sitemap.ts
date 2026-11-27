@@ -16,6 +16,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/tropa-y-marineria/base12-training`, changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/cursos`, changeFrequency: "weekly", priority: 0.8 },
     { url: `${base}/bachillerato-pau`, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${base}/urbiuni`, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${base}/urbiuni/buscar`, changeFrequency: "weekly", priority: 0.7 },
   ];
 
   try {

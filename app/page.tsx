@@ -124,10 +124,10 @@ export default function HomePage() {
                 <div><h3>{app.name}</h3><p>{app.text}</p><span className={styles.cardAction}>{app.action} <span aria-hidden="true">→</span></span></div>
               </Link>
             ))}
-            <article className={styles.appCard}>
+            <Link href="/urbiuni" className={styles.appCard}>
               <Image src="/images/urbiuni/logo-urbiuni.png" width={76} height={76} alt="" />
-              <div><h3>UrbiUni</h3><p>Grados, notas de corte y universidades de toda España para elegir carrera.</p></div>
-            </article>
+              <div><h3>UrbiUni</h3><p>Grados, notas de corte y universidades de toda España para elegir carrera.</p><span className={styles.cardAction}>Abrir UrbiUni <span aria-hidden="true">→</span></span></div>
+            </Link>
           </div>
           <h3 className={styles.appsGroupTitle}>Aplicaciones complementarias</h3>
           <div className={styles.appsGrid}>
