@@ -115,7 +115,7 @@ export default async function FichaPage({ params }: Props) {
           {profesion && <span className={styles.badge}>Profesión regulada</span>}
         </div>
         <h1>{titulo.denominacion}</h1>
-        <p>{universidad?.nombre}{ciudad ? ` · ${ciudad}` : ""}{universidad?.ccaa ? ` (${universidad.ccaa})` : ""}</p>
+        <p>{universidad?.nombre}{ciudad ? ` · ${ciudad}` : ""}{universidad?.ccaa && universidad.ccaa !== "Estado" ? ` (${universidad.ccaa})` : universidad?.ccaa === "Estado" ? " · Ámbito estatal" : ""}</p>
         <div><SaveWideButton slug={titulo.slug} /></div>
       </header>
 
@@ -177,9 +177,9 @@ export default async function FichaPage({ params }: Props) {
               <span>Precio: <Tag value={precio.valor != null ? precio.etiqueta : "sin_fuente"} /></span>
               {titulo.fuente_url && <a href={titulo.fuente_url} target="_blank" rel="noopener noreferrer">Fuente del título →</a>}
             </div>
-            {precio.texto && !precio.texto.startsWith("Sin fuente") && <p className={styles.note}>{universidad?.tipo === "Pública" && /^[\d.,]+ €( \(|$)/.test(precio.texto) || (universidad?.tipo === "Pública" && precio.texto.includes("según grupo")) ? `Precio del crédito: ${precio.texto}` : precio.texto}</p>}
+            {precio.texto && !precio.texto.startsWith("Sin fuente") && <p className={styles.note}>{universidad?.tipo === "Pública" && /^[\d.,]+ €( \(|$)/.test(precio.texto) || (universidad?.tipo === "Pública" && precio.texto.includes("según grupo")) ? `Precio del crédito: ${precio.texto.replace(/^([\d.,]+ €) \(\1\)$/, "$1")}` : precio.texto}</p>}
             {precio.valor == null && precio.texto?.startsWith("Sin fuente") && <p className={styles.note}>{precio.texto}.</p>}
-            {universidad?.tipo === "Pública" && precio.valor != null && <p className={styles.note}>Precio de 60 créditos en primera matrícula según el decreto de precios públicos de la comunidad. Con beca del Ministerio la matrícula puede ser gratuita.</p>}
+            {universidad?.tipo === "Pública" && precio.valor != null && <p className={styles.note}>Precio de 60 créditos en primera matrícula según los precios públicos oficiales del curso. Con beca del Ministerio la matrícula puede ser gratuita.</p>}
           </section>
 
           <section className={styles.box}>
