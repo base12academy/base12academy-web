@@ -282,6 +282,14 @@ export function precioLabel(p: Precio): string {
   return p.maximo ? `${euro.format(p.valor)}–${euro.format(p.maximo)} €` : `${euro.format(p.valor)} €`;
 }
 
+// Universidades sin límite de plazas (fuente oficial de la propia universidad).
+export const SIN_NOTA_CORTE: Record<string, { texto: string; url: string }> = {
+  "ESTADO-001": {
+    texto: "La UNED no tiene límite de plazas, así que sus grados no tienen nota de corte: basta con tener el acceso a la universidad (Bachillerato y PAU aprobados, o equivalente).",
+    url: "https://www.uned.es/universidad/inicio/estudios/grados/admision-grados.html",
+  },
+};
+
 export type Alcance = { label: string; tone: "ok" | "tight" | "hard" };
 
 // Compara la nota del alumno con la última nota de corte publicada (sobre 14).

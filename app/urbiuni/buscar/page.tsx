@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SaveButton } from "@/components/urbiuni/UrbiList";
 import { Tag, UrbiShell } from "@/components/urbiuni/UrbiShell";
-import { CCAA, RAMAS, alcance, esOnline, fmt, getUrbiIndex, normalize, parseNota, precioCurso, precioLabel, shortName } from "@/lib/urbiuni";
+import { CCAA, RAMAS, SIN_NOTA_CORTE, alcance, esOnline, fmt, getUrbiIndex, normalize, parseNota, precioCurso, precioLabel, shortName } from "@/lib/urbiuni";
 import styles from "../urbiuni.module.css";
 
 export const metadata: Metadata = {
@@ -43,7 +43,11 @@ export default async function BuscarPage({ searchParams }: Props) {
       if (modalidad === "presencial" && esOnline(t.modalidad)) return false;
       return true;
     })
-    .map((r) => ({ ...r, reach: alcance(nota, r.acc?.nota_corte ?? null) }));
+    .map((r) => {
+      const libre = Boolean(SIN_NOTA_CORTE[r.t.universidad_id]);
+      const reach = libre ? ({ label: "Sin nota de corte", tone: "ok" } as const) : alcance(nota, r.acc?.nota_corte ?? null);
+      return { ...r, libre, reach };
+    });
 
   const order = { ok: 0, tight: 1, hard: 2 } as const;
   results.sort((a, b) => {
@@ -61,6 +65,14 @@ export default async function BuscarPage({ searchParams }: Props) {
   const current = Math.min(page, pages);
   const shown = results.slice((current - 1) * PAGE, current * PAGE);
   const reachable = nota != null ? results.filter((r) => r.reach?.tone === "ok").length : 0;
+  const libres = results.filter((r) => r.libre).length;
+  const libresLink = (() => {
+    const params = new URLSearchParams();
+    if (q) params.set("q", q);
+    if (rama) params.set("rama", rama);
+    params.set("ccaa", "Estado");
+    return `/urbiuni/buscar?${params.toString()}`;
+  })();
 
   const link = (p: number) => {
     const params = new URLSearchParams();
@@ -121,6 +133,14 @@ export default async function BuscarPage({ searchParams }: Props) {
         {nota != null && <span>Comparado con la última nota de corte publicada; la de este curso puede cambiar.</span>}
       </div>
 
+      {nota != null && libres > 0 && ccaa !== "Estado" && (
+        <div className={styles.bridge} style={{ marginBottom: 16 }}>
+          <h2>¿No te llega la nota? En la UNED no hay nota de corte</h2>
+          <p>{libres === 1 ? "1 grado" : `${fmt.num(libres)} grados`} de tu búsqueda {libres === 1 ? "se imparte" : "se imparten"} en la UNED, que no limita plazas: solo necesitas tener el acceso a la universidad. Se estudia a distancia, con centros asociados en toda España.</p>
+          <Link href={libresLink}>Ver los grados de la UNED →</Link>
+        </div>
+      )}
+
       {shown.length === 0 ? (
         <div className={styles.empty}>
           <p>No hay grados que coincidan con tu búsqueda.</p>
@@ -128,7 +148,7 @@ export default async function BuscarPage({ searchParams }: Props) {
         </div>
       ) : (
         <div className={styles.cards}>
-          {shown.map(({ t, uni, acc, reach }) => {
+          {shown.map(({ t, uni, acc, reach, libre }) => {
             const precio = precioCurso(t);
             return (
               <article key={t.id} className={styles.card}>
@@ -143,13 +163,13 @@ export default async function BuscarPage({ searchParams }: Props) {
                 <div className={styles.stats}>
                   <div className={styles.stat}>
                     <small>Nota de corte</small>
-                    <b>{fmt.nota(acc?.nota_corte)}</b>
-                    <Tag value={acc?.nota_corte != null ? acc.fuente_etiqueta : "sin_fuente"} />
+                    <b>{libre ? "No tiene" : fmt.nota(acc?.nota_corte)}</b>
+                    <Tag value={libre ? "oficial" : acc?.nota_corte != null ? acc.fuente_etiqueta : "sin_fuente"} />
                   </div>
                   <div className={styles.stat}>
                     <small>Plazas</small>
-                    <b>{fmt.num(acc?.plazas)}</b>
-                    <Tag value={acc?.plazas != null ? acc.fuente_etiqueta : "sin_fuente"} />
+                    <b>{libre ? "Sin límite" : fmt.num(acc?.plazas)}</b>
+                    <Tag value={libre ? "oficial" : acc?.plazas != null ? acc.fuente_etiqueta : "sin_fuente"} />
                   </div>
                   <div className={styles.stat}>
                     <small>Primer curso</small>

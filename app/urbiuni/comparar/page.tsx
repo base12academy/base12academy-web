@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { ClearListButton, ListRedirect } from "@/components/urbiuni/UrbiList";
 import { Tag, UrbiShell } from "@/components/urbiuni/UrbiShell";
-import { fmt, getFicha, precioCurso, precioLabel, shortName } from "@/lib/urbiuni";
+import { SIN_NOTA_CORTE, fmt, getFicha, precioCurso, precioLabel, shortName } from "@/lib/urbiuni";
 import styles from "../urbiuni.module.css";
 
 export const metadata: Metadata = {
@@ -34,8 +34,8 @@ export default async function CompararPage({ searchParams }: Props) {
     ["Universidad", (f) => <>{f.universidad?.nombre}<br /><small>{f.universidad?.tipo}</small></>],
     ["Ciudad", (f) => f.campus[0]?.municipio || f.universidad?.municipio || "Sin dato"],
     ["Campus", (f) => (f.campus.length ? f.campus.map((c) => c.nombre || c.municipio).join(", ") : "Sin dato")],
-    ["Nota de corte", (f) => <div className={styles.cell}><b>{fmt.nota(f.acceso?.nota_corte)}</b>{f.acceso?.curso && <small>{f.acceso.curso}</small>}<Tag value={f.acceso?.nota_corte != null ? f.acceso.fuente_etiqueta : "sin_fuente"} /></div>],
-    ["Plazas", (f) => fmt.num(f.acceso?.plazas)],
+    ["Nota de corte", (f) => SIN_NOTA_CORTE[f.titulo.universidad_id] ? <div className={styles.cell}><b>No tiene</b><small>Sin límite de plazas</small><Tag value="oficial" /></div> : <div className={styles.cell}><b>{fmt.nota(f.acceso?.nota_corte)}</b>{f.acceso?.curso && <small>{f.acceso.curso}</small>}<Tag value={f.acceso?.nota_corte != null ? f.acceso.fuente_etiqueta : "sin_fuente"} /></div>],
+    ["Plazas", (f) => (SIN_NOTA_CORTE[f.titulo.universidad_id] ? "Sin límite" : fmt.num(f.acceso?.plazas))],
     ["Primer curso", (f) => { const p = precioCurso(f.titulo); return <div className={styles.cell}><b>{precioLabel(p)}</b><Tag value={p.valor != null ? p.etiqueta : "sin_fuente"} /></div>; }],
     ["Modalidad", (f) => f.titulo.modalidad || "Sin dato"],
     ["Trabajan a los 4 años*", (f) => fmt.pct(first(f.empleo)?.afiliacion)],

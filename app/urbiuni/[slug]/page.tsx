@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SaveWideButton } from "@/components/urbiuni/UrbiList";
 import { Tag, UrbiShell } from "@/components/urbiuni/UrbiShell";
-import { NIVEL_TEXTO, fmt, getFicha, getTitulo, normalize, precioCurso, precioLabel, shortName, type Empleabilidad, type Indicadores } from "@/lib/urbiuni";
+import { NIVEL_TEXTO, SIN_NOTA_CORTE, fmt, getFicha, getTitulo, normalize, precioCurso, precioLabel, shortName, type Empleabilidad, type Indicadores } from "@/lib/urbiuni";
 import styles from "../urbiuni.module.css";
 
 export const revalidate = 86400;
@@ -82,6 +82,7 @@ export default async function FichaPage({ params }: Props) {
   const { titulo, universidad, acceso, empleo, indicadores, campus, alojamiento, comedores, index } = ficha;
   const precio = precioCurso(titulo);
   const nombre = shortName(titulo.denominacion);
+  const libre = SIN_NOTA_CORTE[titulo.universidad_id] ?? null;
 
   const base = normalize(titulo.denominacion);
   const otras = index.titulos
@@ -120,6 +121,17 @@ export default async function FichaPage({ params }: Props) {
 
       <div className={styles.layout}>
         <div className={styles.col}>
+          {libre ? (
+            <section className={styles.box}>
+              <h2>Nota de corte</h2>
+              <div className={styles.big}><b>No tiene</b><span>Sin límite de plazas</span></div>
+              <p className={styles.note}>{libre.texto}</p>
+              <div className={styles.sourceRow}>
+                <Tag value="oficial" />
+                <a href={libre.url} target="_blank" rel="noopener noreferrer">Ver fuente →</a>
+              </div>
+            </section>
+          ) : (
           <section className={styles.box}>
             <h2>Nota de corte</h2>
             <div className={styles.big}>
@@ -137,6 +149,7 @@ export default async function FichaPage({ params }: Props) {
             </div>
             <p className={styles.note}>Es la última nota publicada. La de este curso se conoce tras la adjudicación de plazas y puede subir o bajar.</p>
           </section>
+          )}
 
           <EmpleoBox rows={empleo} />
           <RendimientoBox rows={indicadores} />
