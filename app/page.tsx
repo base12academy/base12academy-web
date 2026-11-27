@@ -83,6 +83,19 @@ export default function HomePage() {
           </figure>
         </section>
 
+        <section id="equipo" className={styles.about} aria-labelledby="about-title">
+          <p className={styles.eyebrow}>Quién dirige Base12</p>
+          <div className={styles.founderGrid}>
+            <Image src="/images/eduardo-base12.png" alt="Eduardo, director académico de Base12 Academy" width={507} height={356} className={styles.founderPortrait} />
+            <div>
+              <h2 id="about-title">Una experiencia docente convertida en método.</h2>
+              <p><strong>Eduardo · Doctor en Historia y docente</strong></p>
+              <p>Dirige el proyecto académico de Base12 Academy y trabaja para que cada curso reúna contenido organizado, práctica y orientación clara para el opositor.</p>
+              <p>Las características de cada preparación, incluida la participación de profesorado, se indican en la ficha del curso y en sus modalidades.</p>
+            </div>
+          </div>
+        </section>
+
         <section id="formacion" className={styles.section} aria-labelledby="formation-title">
           <p className={styles.eyebrow}>Tu objetivo, tu formación</p>
           <h2 id="formation-title">¿Qué quieres preparar?</h2>
@@ -158,19 +171,6 @@ export default function HomePage() {
               <div><h3>{video.title}</h3><p>{video.text}</p></div>
             </article>
           ))}</div>
-        </section>
-
-        <section id="equipo" className={styles.about} aria-labelledby="about-title">
-          <p className={styles.eyebrow}>Quién dirige Base12</p>
-          <div className={styles.founderGrid}>
-            <Image src="/images/eduardo-base12.png" alt="Eduardo, director académico de Base12 Academy" width={507} height={356} className={styles.founderPortrait} />
-            <div>
-              <h2 id="about-title">Una experiencia docente convertida en método.</h2>
-              <p><strong>Eduardo · Doctor en Historia y docente</strong></p>
-              <p>Dirige el proyecto académico de Base12 Academy y trabaja para que cada curso reúna contenido organizado, práctica y orientación clara para el opositor.</p>
-              <p>Las características de cada preparación, incluida la participación de profesorado, se indican en la ficha del curso y en sus modalidades.</p>
-            </div>
-          </div>
         </section>
 
         <section className={`${styles.section} ${styles.faq}`} aria-labelledby="faq-title">

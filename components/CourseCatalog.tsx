@@ -519,7 +519,11 @@ function isRecommendedPlan(course: Course, plan: Plan) {
   return false;
 }
 
-export default function CourseCatalog() {
+type CourseCatalogProps = { purchaseOnlySlug?: string; autoOpenPurchase?: boolean; purchasePlanSlug?: string };
+function publicSlugFor(course: Course) {
+  return COURSE_ACCESS[course.name]?.slug ?? course.name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+export default function CourseCatalog({ purchaseOnlySlug, autoOpenPurchase = false, purchasePlanSlug }: CourseCatalogProps = {}) {
   const [family, setFamily] = useState<Family>("Oposiciones");
   const [search, setSearch] = useState("");
   const [course, setCourse] = useState<Course | null>(null);
@@ -636,6 +640,19 @@ export default function CourseCatalog() {
       open(requestedCourse, requestedBono);
     }
   }, []);
+
+  useEffect(() => {
+    if (!purchaseOnlySlug || !autoOpenPurchase) return;
+    const selectedCourse = allCourses.find((item) =>
+      (item.family === "Oposiciones" || item.family === "Tropa y Marinería") && publicSlugFor(item) === purchaseOnlySlug
+    );
+    if (!selectedCourse) return;
+    const selectedPlan = purchasePlanSlug
+      ? plansFor(selectedCourse).find((item) => item.name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") === purchasePlanSlug)
+      : undefined;
+    open(selectedCourse);
+    if (selectedPlan) setPlan(selectedPlan);
+  }, [purchaseOnlySlug, autoOpenPurchase, purchasePlanSlug]);
 
   useEffect(() => {
     const purchasableClasses =
@@ -912,7 +929,8 @@ export default function CourseCatalog() {
     }
   }
   return (
-    <section id="catalogo" className="original-catalog" tabIndex={-1}>
+    <section id={purchaseOnlySlug ? "matricula" : "catalogo"} className={purchaseOnlySlug ? "original-purchase-shell" : "original-catalog"} tabIndex={-1}>
+      {!purchaseOnlySlug && <>
       <div className="original-catalog-heading">
         <p>Tipos de cursos, paquetes y precios</p>
         <h2>Elige el aula que corresponde a tu objetivo</h2>
@@ -1012,14 +1030,16 @@ export default function CourseCatalog() {
                   : <>Desde <b>{plansFor(item)[0].price}</b></>}
               </p>
             </div>
-            {item.family === "Tropa y Marinería" ? (
-              <Link href="/tropa-y-marineria">Ver modalidades</Link>
+            {(item.family === "Oposiciones" || item.family === "Tropa y Marinería") ? (
+              <Link href={`/oposiciones/${publicSlugFor(item)}`}>Ver ficha y modalidades</Link>
             ) : (
               <button onClick={() => open(item)}>Ver modalidades</button>
             )}
           </article>
         ))}
       </div>
+
+      </>}
 
       {course && plan && (
         <div className="original-modal-backdrop" onMouseDown={(event) => event.target === event.currentTarget && setCourse(null)}>
