@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabase } from "@/lib/supabase/server";
 import { getBoeOfficialDetails } from "@/lib/boe-official";
-import { boeOrganisation } from "@/lib/boe-details";
+import { boeOrganisation, detailsFromParagraphs } from "@/lib/boe-details";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -58,6 +58,11 @@ type StoredCall = {
   status?: string | null;
   publication_date?: string | null;
   related_external_ids?: string[] | null;
+  summary?: string | null;
+  application_start?: string | null;
+  application_end?: string | null;
+  official_url?: string | null;
+  vacancies?: number | null;
 };
 
 type AlertRow = {
@@ -205,15 +210,31 @@ async function sendAlertEmail(input: {
   to: string;
   call: StoredCall;
   change: string;
+  isNewCall: boolean;
+  publicationUrl: string;
+  publicationId: string;
+  alertId: string;
 }) {
   const apiKey = process.env.RESEND_API_KEY?.trim();
   const from = process.env.RESEND_FROM_EMAIL?.trim();
   if (!apiKey || !from) throw new Error("Falta la configuración de correo");
   const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://base12academy.es").replace(/\/$/, "");
   const callUrl = `${siteUrl}/banco-opositores/convocatoria/${input.call.slug}`;
+  const details = input.isNewCall && input.call.summary ? detailsFromParagraphs(input.call.summary.split(/\n\s*\n/)) : null;
+  const facts = input.isNewCall ? [
+    ["Plazas", input.call.vacancies],
+    ["Inicio del plazo", input.call.application_start],
+    ["Fin del plazo", input.call.application_end],
+    ["Plazo literal", details?.applicationPeriod],
+    ["Titulación", details?.education],
+    ["Tasas", details?.fees],
+    ["Exenciones", details?.exemptions],
+    ["Documentación", details?.documentation],
+    ["Pago", details?.payment],
+  ].map(([label, value]) => `<dt><strong>${escapeHtml(String(label))}</strong></dt><dd>${escapeHtml(value == null ? "Consultar bases oficiales" : String(value))}</dd>`).join("") : "";
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
-    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json", "Idempotency-Key": `opposition-${input.alertId}-${input.publicationId}` },
     body: JSON.stringify({
       from,
       to: [input.to],
@@ -222,6 +243,9 @@ async function sendAlertEmail(input: {
         <h1 style="color:#6f0718;font-size:23px">Novedad oficial</h1>
         <h2 style="font-size:18px">${escapeHtml(input.call.title)}</h2>
         <p>${escapeHtml(input.change)}</p>
+        ${facts ? `<dl>${facts}</dl>` : ""}
+        <p><a href="${escapeHtml(input.publicationUrl)}">Consultar publicación oficial</a></p>
+        <p>Base12 Academy informa y orienta. El interesado realiza los trámites directamente ante la Administración.</p>
         <p><a href="${escapeHtml(callUrl)}" style="display:inline-block;background:#6f0718;color:#fff;text-decoration:none;padding:12px 18px;border-radius:8px">Ver ficha e historial</a></p>
         <p style="font-size:13px;color:#666">Contrasta siempre la información con la fuente oficial enlazada en la ficha.</p>
       </div>`,
@@ -236,6 +260,7 @@ async function sendAlertEmail(input: {
 async function notifyAlerts(input: {
   call: StoredCall;
   publicationId: string;
+  publicationUrl: string;
   change: string;
   isNewCall: boolean;
   relevance: "informativa" | "relevante" | "critica";
@@ -260,7 +285,7 @@ async function notifyAlerts(input: {
       let providerId: string | null = null;
       let errorMessage: string | null = null;
       try {
-        providerId = await sendAlertEmail({ to: alert.subscriber.email, call: input.call, change: input.change });
+        providerId = await sendAlertEmail({ to: alert.subscriber.email, call: input.call, change: input.change, isNewCall: input.isNewCall, publicationUrl: input.publicationUrl, publicationId: input.publicationId, alertId: alert.id });
         queued++;
       } catch (error) {
         status = "failed";
@@ -432,6 +457,7 @@ async function ingestBoe(request: NextRequest) {
       alertsQueued += await notifyAlerts({
         call,
         publicationId: history.id,
+        publicationUrl: publication.officialUrl,
         change: changeSummary,
         isNewCall,
         relevance: kind.relevance,
