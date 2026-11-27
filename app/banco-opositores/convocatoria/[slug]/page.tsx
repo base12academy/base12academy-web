@@ -46,7 +46,7 @@ export default async function OppositionDetailPage({ params }: Props) {
     ["Grupo / categoría", call.group_category || officialDetails?.category],
     ["Especialidad", officialDetails?.specialty || call.specialty],
     ["Identificador de la plaza", officialDetails?.positionId],
-    ["Titulación requerida", null],
+    ["Titulación requerida", officialDetails?.education],
     ["Sistema de acceso", call.access_system],
     ["Fecha de publicación", formatOfficialDate(call.publication_date)],
     ["Inicio del plazo", call.application_start ? formatOfficialDate(call.application_start) : null],
@@ -93,6 +93,21 @@ export default async function OppositionDetailPage({ params }: Props) {
             <section className={styles.detailCard}>
               <h2>Datos de la convocatoria</h2>
               <dl className={styles.factGrid}>{facts.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{missingOfficialValue(value)}</dd></div>)}</dl>
+            </section>
+
+            <section className={styles.detailCard}>
+              <h2>Orientación para la inscripción</h2>
+              <p>Realiza los trámites personalmente ante el organismo convocante. Base12 Academy informa y orienta; no presenta solicitudes ni gestiona pagos.</p>
+              <dl className={styles.factGrid}>{[
+                ["Tasas de examen", officialDetails?.fees],
+                ["Exenciones y bonificaciones", officialDetails?.exemptions],
+                ["Documentación", officialDetails?.documentation],
+                ["Procedimiento de pago", officialDetails?.payment],
+              ].map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{missingOfficialValue(value)}</dd></div>)}</dl>
+              <ol><li>Consulta las bases completas y sus rectificaciones.</li><li>Comprueba los requisitos, el plazo y la documentación.</li><li>Accede al procedimiento oficial y abona las tasas si corresponde.</li><li>Firma y registra la solicitud según las bases. Conserva el justificante.</li><li>Consulta las listas de admisión y los plazos de subsanación.</li></ol>
+              <p>Los extractos pueden ser incompletos. No sustituyen las bases oficiales.</p>
+              <a href={call.official_url} target="_blank" rel="noopener noreferrer">Consultar publicación oficial ↗</a>
+              {call.application_url && <p><a href={call.application_url} target="_blank" rel="noopener noreferrer">Acceder a la inscripción oficial ↗</a></p>}
             </section>
 
             {officialDetails && <section className={styles.detailCard}>
