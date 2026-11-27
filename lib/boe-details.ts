@@ -8,6 +8,11 @@ export type BoeDetails = {
   positionId: string | null;
   applicationPeriod: string | null;
   headline: string | null;
+  education: string | null;
+  fees: string | null;
+  exemptions: string | null;
+  documentation: string | null;
+  payment: string | null;
 };
 
 export function boeOrganisation(title: string, fallback: string | null) {
@@ -38,7 +43,13 @@ export function detailsFromParagraphs(input: string[]): BoeDetails | null {
   ) || null;
   const headline = specialty ? [category, specialty].filter(Boolean).join(" · ")
     : position || localPosition?.split(/,\s*(?:perteneciente|de la plantilla|por el sistema)/i)[0].replace(/\.$/, "") || null;
-  return { paragraphs, summary: paragraphs.join("\n\n"), specialty, category, positionId, applicationPeriod, headline };
+  const excerpt = (pattern: RegExp) => paragraphs.find(p => pattern.test(p)) || null;
+  const education = excerpt(/(?:titulaci[oó]n (?:exigida|requerida|acad[eé]mica)|estar en posesi[oó]n del t[ií]tulo)/i);
+  const fees = excerpt(/(?:tasa|derechos de examen).{0,180}(?:euros|€|importe)|(?:importe|euros|€).{0,180}(?:tasa|derechos de examen)/i);
+  const exemptions = excerpt(/(?:exent[oa]s?|exenci[oó]n|bonificaci[oó]n).{0,180}(?:tasa|pago|derechos de examen)|(?:tasa|derechos de examen).{0,180}(?:exent|exenci[oó]n|bonificaci[oó]n)/i);
+  const documentation = excerpt(/(?:deber[aá]n? (?:adjuntar|acompañar|aportar)|documentaci[oó]n (?:que debe|exigida|necesaria))/i);
+  const payment = excerpt(/(?:pago|abono|ingreso) (?:de la tasa|de los derechos|electr[oó]nico|telem[aá]tico)/i);
+  return { education, fees, exemptions, documentation, payment, paragraphs, summary: paragraphs.join("\n\n"), specialty, category, positionId, applicationPeriod, headline };
 }
 
 export function parseBoeDetails(xml: string, externalId: string): BoeDetails | null {
@@ -54,9 +65,9 @@ export function parseBoeDetails(xml: string, externalId: string): BoeDetails | n
   const all = [...withoutTables.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/gi)].map(m => plainText(m[1]));
   const relevant = all.filter(p => p.length > 25 &&
     !/^(?:De conformidad|Visto|Contra |Los sucesivos anuncios|Nombrar a los miembros|La documentaci[oó]n se presentar[aá]|La presente resoluci[oó]n se publicar[aá])/i.test(p) &&
-    /plaza|puesto|bases|solicitud|instancias|convocatoria|departamento:|[aá]rea de conocimiento:|perfil |asignatura |adscripci[oó]n:|localizaci[oó]n:|titulaci[oó]n|podr[aá]n tomar parte|requisito/i.test(p));
+    /plaza|puesto|bases|solicitud|instancias|convocatoria|departamento:|[aá]rea de conocimiento:|perfil |asignatura |adscripci[oó]n:|localizaci[oó]n:|titulaci[oó]n|podr[aá]n tomar parte|requisito|tasa|derechos de examen|exenci[oó]n|bonificaci[oó]n|documentaci[oó]n|abono|pago/i.test(p));
   // Keep the differentiating facts even when a long notice has much boilerplate.
-  const priority = relevant.filter(p => /^(?:Categoría|Identificador|Código|Área de conocimiento|Perfil |Departamento:|Denominación|Número de puestos|Adscripción:|Localización:)/i.test(p));
+  const priority = relevant.filter(p => /^(?:Categoría|Identificador|Código|Área de conocimiento|Perfil |Departamento:|Denominación|Número de puestos|Adscripción:|Localización:)/i.test(p) || /titulaci[oó]n exigida|derechos de examen|tasa|exenci[oó]n|bonificaci[oó]n|documentaci[oó]n|pago/i.test(p));
   const selected = new Set([...priority, ...relevant].slice(0, 24));
   return detailsFromParagraphs(relevant.filter(p => selected.has(p)).map(p => p.slice(0, 3000)));
 }
