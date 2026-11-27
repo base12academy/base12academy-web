@@ -96,8 +96,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section c
-
         <section id="formacion" className={styles.section} aria-labelledby="formation-title">
           <p className={styles.eyebrow}>Tu objetivo, tu formación</p>
           <h2 id="formation-title">¿Qué quieres preparar?</h2>
@@ -175,7 +173,7 @@ export default function HomePage() {
           ))}</div>
         </section>
 
-ssName={`${styles.section} ${styles.faq}`} aria-labelledby="faq-title">
+        <section className={`${styles.section} ${styles.faq}`} aria-labelledby="faq-title">
           <p className={styles.eyebrow}>Antes de empezar</p><h2 id="faq-title">Resolvemos tus primeras dudas</h2>
           {faqs.map(([question, answer]) => <details key={question}><summary>{question}</summary><p>{answer}</p></details>)}
         </section>
