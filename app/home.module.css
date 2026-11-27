@@ -55,6 +55,7 @@
 .appsGroupTitle { margin-top: 18px !important; font-size: 1rem !important; letter-spacing: -.01em !important; }
 .appsGrid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; margin-top: 12px; }
 .appCard { color: var(--ink); min-width: 0; padding: 8px 0; }
+.comingSoon { display: inline-block; color: var(--blue); font-size: 11px; font-weight: 750; text-transform: uppercase; letter-spacing: .08em; }
 .urbiUniSpace { min-height: 110px; padding: 14px 16px; border: 1px dashed #9aacc4; border-radius: 10px; background: #fff; }
 .urbiUniSpace span { color: var(--blue); font-size: 11px; font-weight: 750; text-transform: uppercase; letter-spacing: .08em; }
 .urbiUniSpace h3 { margin-top: 5px !important; }

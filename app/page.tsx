@@ -125,7 +125,8 @@ export default function HomePage() {
               </Link>
             ))}
             <article className={styles.appCard}>
-              <div className={styles.urbiUniSpace}><span>Próximamente</span><h3>UrbiUni</h3><p>Espacio reservado para la aplicación universitaria de Base12.</p></div>
+              <Image src="/images/urbiuni/logo-urbiuni.png" width={76} height={76} alt="" />
+              <div><h3>UrbiUni</h3><p>Grados, notas de corte y universidades de toda España para elegir carrera.</p><span className={styles.comingSoon}>Próximamente</span></div>
             </article>
           </div>
           <h3 className={styles.appsGroupTitle}>Aplicaciones complementarias</h3>
