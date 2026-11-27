@@ -161,10 +161,16 @@ export default function HomePage() {
         </section>
 
         <section id="equipo" className={styles.about} aria-labelledby="about-title">
-          <p className={styles.eyebrow}>Sobre Base12</p><h2 id="about-title">Una experiencia docente convertida en método.</h2>
-          <p>Base12 Academy nace de la enseñanza y del acompañamiento académico. Reúne formación, práctica y herramientas digitales para ayudarte a trabajar con un objetivo definido.</p>
-          <p>En cada servicio se explica cómo estudiarás y qué apoyo incluye tu modalidad: clases con profesor, seguimiento humano o asistentes de inteligencia artificial.</p>
-          <a href="#contacto" className={styles.textAction}>Habla con Base12 <span aria-hidden="true">→</span></a>
+          <p className={styles.eyebrow}>Quién dirige Base12</p>
+          <div className={styles.founderGrid}>
+            <Image src="/images/eduardo-base12.png" alt="Eduardo, director académico de Base12 Academy" width={507} height={356} className={styles.founderPortrait} />
+            <div>
+              <h2 id="about-title">Una experiencia docente convertida en método.</h2>
+              <p><strong>Eduardo · Doctor en Historia y docente</strong></p>
+              <p>Dirige el proyecto académico de Base12 Academy y trabaja para que cada curso reúna contenido organizado, práctica y orientación clara para el opositor.</p>
+              <p>Las características de cada preparación, incluida la participación de profesorado, se indican en la ficha del curso y en sus modalidades.</p>
+            </div>
+          </div>
         </section>
 
         <section className={`${styles.section} ${styles.faq}`} aria-labelledby="faq-title">
