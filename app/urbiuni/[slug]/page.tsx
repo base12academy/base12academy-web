@@ -164,7 +164,8 @@ export default async function FichaPage({ params }: Props) {
               <span>Precio: <Tag value={precio.valor != null ? precio.etiqueta : "sin_fuente"} /></span>
               {titulo.fuente_url && <a href={titulo.fuente_url} target="_blank" rel="noopener noreferrer">Fuente del título →</a>}
             </div>
-            {precio.texto && <p className={styles.note}>{precio.texto}</p>}
+            {precio.texto && !precio.texto.startsWith("Sin fuente") && <p className={styles.note}>{/^[\d.,]+ €( \(|$)/.test(precio.texto) || precio.texto.includes("según grupo") ? `Precio del crédito: ${precio.texto}` : precio.texto}</p>}
+            {precio.valor == null && precio.texto?.startsWith("Sin fuente") && <p className={styles.note}>{precio.texto}.</p>}
             {universidad?.tipo === "Pública" && precio.valor != null && <p className={styles.note}>Precio de 60 créditos en primera matrícula según el decreto de precios públicos de la comunidad. Con beca del Ministerio la matrícula puede ser gratuita.</p>}
           </section>
 

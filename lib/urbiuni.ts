@@ -157,6 +157,23 @@ export type UrbiIndex = {
   acceso: Map<string, Acceso>;
 };
 
+// Portales privados de orientación: aunque copien datos oficiales, no son la fuente oficial.
+const NO_OFICIALES = /(^|\.)(educaweb\.com|elorienta\.com|la7tv\.es)$/i;
+
+export function etiquetaFuente(url: string | null | undefined, etiqueta: Etiqueta | null | undefined): Etiqueta | null {
+  if (!url) return etiqueta ?? null;
+  try {
+    if (NO_OFICIALES.test(new URL(url).hostname) && etiqueta === "oficial") return "no_oficial";
+  } catch {
+    return etiqueta ?? null;
+  }
+  return etiqueta ?? null;
+}
+
+function fixAcceso<T extends { fuente_url: string | null; fuente_etiqueta: Etiqueta | null }>(row: T): T {
+  return { ...row, fuente_etiqueta: etiquetaFuente(row.fuente_url, row.fuente_etiqueta) };
+}
+
 export const getUrbiIndex = cache(async (): Promise<UrbiIndex> => {
   const [titulos, universidades, accesos] = await Promise.all([
     readAll<TituloLite>("urbiuni_titulos", LITE),
@@ -164,7 +181,8 @@ export const getUrbiIndex = cache(async (): Promise<UrbiIndex> => {
     readAll<Acceso>("urbiuni_acceso", "id,titulo_id,curso,nota_corte,plazas,solicitudes_1a,via,fuente_url,fuente_etiqueta,centro"),
   ]);
   const acceso = new Map<string, Acceso>();
-  for (const row of accesos) {
+  for (const raw of accesos) {
+    const row = fixAcceso(raw);
     const current = acceso.get(row.titulo_id);
     if (!current || betterAcceso(row, current)) acceso.set(row.titulo_id, row);
   }
@@ -178,7 +196,7 @@ function betterAcceso(a: Acceso, b: Acceso): boolean {
 
 export const getTitulo = cache(async (slug: string) => {
   const rows = await rest<Titulo[]>(`urbiuni_titulos?slug=eq.${encodeURIComponent(slug)}&select=*&limit=1`);
-  return rows[0] ?? null;
+  return rows[0] ? fixAcceso(rows[0]) : null;
 });
 
 export const getFicha = cache(async (slug: string) => {
@@ -199,7 +217,7 @@ export const getFicha = cache(async (slug: string) => {
     rest<Comedor[]>(`urbiuni_comedores?universidad_id=eq.${uni}&select=id,universidad_id,campus,nombre,precio_menu,url,curso&order=precio_menu.asc.nullslast`),
   ]);
   const universidad = index.universidades.get(titulo.universidad_id) ?? null;
-  const acceso = accesos.reduce<Acceso | null>((best, row) => (!best || betterAcceso(row, best) ? row : best), null);
+  const acceso = accesos.map(fixAcceso).reduce<Acceso | null>((best, row) => (!best || betterAcceso(row, best) ? row : best), null);
   return { titulo, universidad, acceso, empleo, indicadores, campus, alojamiento, comedores, index };
 });
 
