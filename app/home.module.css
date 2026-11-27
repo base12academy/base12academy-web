@@ -52,8 +52,13 @@
 .appsSection { background: #f5f8fc; margin: 20px -24px 0; padding: 38px 24px; border: 1px solid var(--line); border-radius: 16px; }
 .sectionHeading { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; }
 .sectionHeading > p { max-width: 330px; font-size: 14px; color: #52627b; }
-.appsGroupTitle { margin-top: 18px !important; font-size: 1rem !important; letter-spacing: -.01em !important; }\n.appsGrid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; margin-top: 12px; }
-.appCard { color: var(--ink); min-width: 0; padding: 8px 0; }\n.urbiUniSpace { min-height: 110px; padding: 14px 16px; border: 1px dashed #9aacc4; border-radius: 10px; background: #fff; }\n.urbiUniSpace span { color: var(--blue); font-size: 11px; font-weight: 750; text-transform: uppercase; letter-spacing: .08em; }\n.urbiUniSpace h3 { margin-top: 5px !important; }\n.urbiUniSpace p { margin: 5px 0 0 !important; }
+.appsGroupTitle { margin-top: 18px !important; font-size: 1rem !important; letter-spacing: -.01em !important; }
+.appsGrid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; margin-top: 12px; }
+.appCard { color: var(--ink); min-width: 0; padding: 8px 0; }
+.urbiUniSpace { min-height: 110px; padding: 14px 16px; border: 1px dashed #9aacc4; border-radius: 10px; background: #fff; }
+.urbiUniSpace span { color: var(--blue); font-size: 11px; font-weight: 750; text-transform: uppercase; letter-spacing: .08em; }
+.urbiUniSpace h3 { margin-top: 5px !important; }
+.urbiUniSpace p { margin: 5px 0 0 !important; }
 .appCard img { object-fit: contain; width: 68px; height: 68px; margin-bottom: 12px; }
 .appCard h3 { min-height: 44px; }
 .appCard p { font-size: 13px; color: #52627b; line-height: 1.6; margin: 8px 0 14px; }
