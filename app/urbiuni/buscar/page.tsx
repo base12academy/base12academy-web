@@ -33,7 +33,7 @@ export default async function BuscarPage({ searchParams }: Props) {
     .map((t) => ({ t, uni: index.universidades.get(t.universidad_id), acc: index.acceso.get(t.id) }))
     .filter(({ t, uni }) => {
       if (tokens.length) {
-        const hay = normalize(`${t.denominacion} ${t.centro ?? ""} ${uni?.nombre ?? ""} ${uni?.siglas ?? ""} ${uni?.municipio ?? ""}`);
+        const hay = normalize(`${t.denominacion} ${centroAdscrito(t) ?? ""} ${uni?.nombre ?? ""} ${uni?.siglas ?? ""} ${uni?.municipio ?? ""}`);
         if (!tokens.every((tok) => hay.includes(tok))) return false;
       }
       if (rama && !(t.rama || "").includes(rama)) return false;
