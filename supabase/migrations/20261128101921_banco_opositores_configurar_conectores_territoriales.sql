@@ -1,6 +1,6 @@
 update public.opposition_sources s
 set consultation_method=v.method
-from (values 
+from (values
   ('Boletín Oficial de la Junta de Andalucía','Andalucía','boja_atom'),
   ('Boletín Oficial de la Comunidad de Madrid','Madrid','bocm_rss'),
   ('Boletín Oficial de la Ciudad Autónoma de Melilla (BOME)','Melilla','bome_sumario'),
