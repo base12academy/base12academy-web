@@ -35,7 +35,7 @@ export async function GET(request: NextRequest) {
 
     if (q) {
       query = query.or(
-        `title.ilike.%${q}%,organisation.ilike.%${q}%,specialty.ilike.%${q}%,province.ilike.%${q}%,locality.ilike.%${q}%`
+        `title.ilike.%${q}%,organisation.ilike.%${q}%,specialty.ilike.%${q}%,province.ilike.%${q}%,locality.ilike.%${q}%,official_call_identifier.ilike.%${q}%,source_external_id.ilike.%${q}%`
       );
     }
     if (territory) query = query.ilike("territory", `%${territory}%`);
