@@ -41,7 +41,9 @@ export default async function OppositionDetailPage({ params }: Props) {
   const courseHref = call.base12_course_slug === "tropa-y-marineria" ? "/tropa-y-marineria" : "/cursos";
 
   const facts = [
-    ["Referencia oficial", call.source_external_id],
+    ["Identificador oficial de la convocatoria", call.official_call_identifier],
+    ["Autoridad de referencia", call.official_call_identifier_authority],
+    ["Referencia de la publicación", call.source_external_id],
     ["Plazas", call.vacancies],
     ["Grupo / categoría", call.group_category || officialDetails?.category],
     ["Especialidad", officialDetails?.specialty || call.specialty],
