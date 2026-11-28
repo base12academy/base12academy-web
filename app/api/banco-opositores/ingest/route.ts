@@ -3,7 +3,7 @@ import { getSupabase } from "@/lib/supabase/server";
 import { getBoeOfficialDetails } from "@/lib/boe-official";
 import { boeOrganisation, detailsFromParagraphs, isBoeCall } from "@/lib/boe-details";
 
-import { bomeIssues, readBocmFeed, readBojaFeed, readBomeIssue, type BulletinPublication } from "@/lib/opposition-bulletins";
+import { bomeIssues, readAvilaFeed, readBocFeed, readBocmFeed, readDogFeed, readBojaFeed, readBomeIssue, type BulletinPublication } from "@/lib/opposition-bulletins";
 import { boeGeography, madridDate } from "@/lib/opposition-geography";
 
 export const dynamic = "force-dynamic";
@@ -209,6 +209,12 @@ function alertMatches(criteria: Record<string, string>, call: StoredCall) {
   const textMatches = comparisons.every(([expected, actual]) => !expected || actual.includes(normalize(expected)));
   if (!textMatches) return false;
   if (criteria.date && String(call.publication_date ?? "") < criteria.date) return false;
+  const today = madridDate();
+  const start = call.application_start;
+  const end = call.application_end;
+  if (criteria.deadline === "abierto") return Boolean(start && end && start <= today && end >= today);
+  if (criteria.deadline === "proximo") return Boolean(start && start > today);
+  if (criteria.deadline === "cerrado") return Boolean(end && end < today);
   return true;
 }
 
@@ -530,6 +536,9 @@ const regionalSources = {
   boja: { method: "boja_atom", territory: "Andalucía", authority: "BOJA" },
   bocm: { method: "bocm_rss", territory: "Madrid", authority: "BOCM" },
   bome: { method: "bome_sumario", territory: "Melilla", authority: "BOME" },
+  boc: { method: "boc_rss", territory: "Canarias", authority: "BOC Canarias" },
+  dog: { method: "dog_rss", territory: "Galicia", authority: "DOG" },
+  "bop-avila": { method: "bop_avila_rss", territory: "Castilla y León", authority: "BOP Ávila" },
 } as const;
 
 async function readOfficialFeed(url: string) {
@@ -544,6 +553,15 @@ async function regionalPublications(name: keyof typeof regionalSources): Promise
   }
   if (name === "bocm") {
     return readBocmFeed(await readOfficialFeed("https://www.bocm.es/ultimo-boletin.xml"));
+  }
+  if (name === "boc") {
+    return readBocFeed(await readOfficialFeed("https://www.gobiernodecanarias.org/boc/feeds/capitulo/autoridades_personal_oposiciones.rss"));
+  }
+  if (name === "dog") {
+    return readDogFeed(await readOfficialFeed("https://www.xunta.gal/diario-oficial-galicia/rss/Seccion7_gl.rss"));
+  }
+  if (name === "bop-avila") {
+    return readAvilaFeed(await readOfficialFeed("https://www.diputacionavila.es/bop/rss.xml"));
   }
   const base = "https://bomemelilla.es";
   const issues = bomeIssues(await readOfficialFeed(base)).slice(0, 8);
@@ -571,7 +589,8 @@ async function ingestRegional(name: keyof typeof regionalSources) {
       const isCall = isBoeCall(record.title);
       const written = await supabase.from("opposition_calls").upsert({
         source_id: source.data.id, source_external_id: record.reference, slug, title: record.title,
-        organisation: record.organisation, territory: config.territory, status: kind.status,
+        organisation: record.organisation, territory: config.territory,
+        province: name === "bop-avila" ? "Ávila" : null, status: kind.status,
         official_url: record.url, publication_date: record.date, bulletin_name: source.data.name,
         bulletin_identifier: record.bulletin, official_call_identifier: isCall ? record.reference : null,
         official_call_identifier_authority: isCall ? config.authority : null,
@@ -611,7 +630,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: false, error: "No autorizado" }, { status: 401 });
   }
   const source = request.nextUrl.searchParams.get("source") ?? "boe";
-  if (source !== "boe" && source !== "boja" && source !== "bocm" && source !== "bome") {
+  const regionalName = Object.prototype.hasOwnProperty.call(regionalSources, source)
+    ? source as keyof typeof regionalSources : null;
+  if (source !== "boe" && !regionalName) {
     return NextResponse.json({ ok: false, error: "Fuente no reconocida." }, { status: 400 });
   }
   const date = requestedDate(request);
@@ -621,7 +642,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: false, error: "Fecha del BOE no válida." }, { status: 400 });
   }
   try {
-    const result = source === "boe" ? await ingestBoe(request) : await ingestRegional(source);
+    const result = regionalName ? await ingestRegional(regionalName) : await ingestBoe(request);
     return NextResponse.json({ ok: true, results: [result] });
   } catch (error) {
     console.error("Error de ingestión del Banco de Opositores", error);

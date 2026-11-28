@@ -64,6 +64,10 @@ export default function OppositionExplorer({
   const [comparison, setComparison] = useState<OppositionCall[]>([]);
   const [calendarOpen, setCalendarOpen] = useState(false);
   const [calls, setCalls] = useState(initialCalls);
+  const [page, setPage] = useState(1);
+  const [total, setTotal] = useState(initialCalls.length);
+  const pageSize = 30;
+  const pages = Math.max(1, Math.ceil(total / pageSize));
   const [loading, setLoading] = useState(false);
   const [searchError, setSearchError] = useState("");
   const [alertOpen, setAlertOpen] = useState(false);
@@ -84,15 +88,16 @@ export default function OppositionExplorer({
       setLoading(true);
       setSearchError("");
       try {
-        const params = new URLSearchParams();
+        const params = new URLSearchParams({ page: String(page), limit: String(pageSize) });
         if (q.trim()) params.set("q", q.trim());
         Object.entries(filters).forEach(([key, value]) => {
           if (value) params.set(key, value);
         });
         const response = await fetch(`/api/banco-opositores/convocatorias?${params.toString()}`, { signal: controller.signal });
-        const result = (await response.json()) as { calls?: OppositionCall[]; error?: string };
+        const result = (await response.json()) as { calls?: OppositionCall[]; total?: number; error?: string };
         if (!response.ok) throw new Error(result.error || "No se pudo completar la búsqueda.");
         setCalls(result.calls ?? []);
+        setTotal(result.total ?? 0);
       } catch (error) {
         if (!controller.signal.aborted) setSearchError(error instanceof Error ? error.message : "No se pudo completar la búsqueda.");
       } finally {
@@ -100,9 +105,10 @@ export default function OppositionExplorer({
       }
     }, 320);
     return () => { window.clearTimeout(timer); controller.abort(); };
-  }, [q, filters]);
+  }, [q, filters, page]);
 
   function updateFilter(key: keyof typeof filters, value: string) {
+    setPage(1);
     setFilters((current) => ({ ...current, [key]: value }));
   }
 
@@ -144,7 +150,7 @@ export default function OppositionExplorer({
             id="opposition-search"
             type="search"
             value={q}
-            onChange={(event) => setQ(event.target.value)}
+            onChange={(event) => { setPage(1); setQ(event.target.value); }}
             placeholder="¿Qué oposición, plaza u organismo buscas?"
           />
 
@@ -224,6 +230,13 @@ export default function OppositionExplorer({
             </article>
           ))}
         </div>
+        {pages > 1 && (
+          <nav aria-label="Páginas de convocatorias" className={styles.cardActions}>
+            <button type="button" className={styles.outlineButton} disabled={page === 1 || loading} onClick={() => setPage(page - 1)}>Anterior</button>
+            <span>Página {page} de {pages} · {total.toLocaleString("es-ES")} resultados</span>
+            <button type="button" className={styles.outlineButton} disabled={page >= pages || loading} onClick={() => setPage(page + 1)}>Siguiente</button>
+          </nav>
+        )}
       </section>
 
       <section className={styles.categorySection}>

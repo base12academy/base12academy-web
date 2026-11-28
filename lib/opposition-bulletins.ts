@@ -16,6 +16,10 @@ function text(html: string) {
     .replace(/&(?:nbsp|#160);/g, " ")
     .replace(/&(?:apos|#39);/g, "'")
     .replace(/&quot;/g, '"')
+    .replace(/&#(\d{1,7});/g, (full, value) => {
+      const point = Number(value);
+      return point > 0 && point <= 0x10ffff ? String.fromCodePoint(point) : full;
+    })
     .replace(/\s+/g, " ").trim();
 }
 
@@ -85,5 +89,70 @@ export function readBomeIssue(html: string, path: string): BulletinPublication[]
     const url = entry.match(/href=["'](\/bome\/BOME-BX?-\d{4}-\d+\/articulo\/\d+)["']/)?.[1];
     if (!url || !pdf || !pdf.endsWith(`/${reference}.pdf`)) throw new Error("Faltan referencias oficiales en un artículo del BOME");
     return [{ reference, bulletin, date, title, organisation: null, url: base + url, pdf: base + pdf }];
+  });
+}
+
+function rssItems(xml: string, token: string) {
+  if (!/<rss\b/.test(xml) || !xml.includes(token)) throw new Error("No se reconoció el RSS oficial");
+  return [...xml.matchAll(/<item\b[^>]*>([\s\S]*?)<\/item>/g)].map(match => match[1]);
+}
+
+function rssField(item: string, field: "title" | "link" | "description" | "pubDate" | "guid") {
+  return text(item.match(new RegExp(`<${field}(?:\\s[^>]*)?>([\\s\\S]*?)</${field}>`))?.[1] ?? "");
+}
+
+function rssDate(value: string) {
+  const match = value.match(/(\d{1,2}) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\d{4})/);
+  if (!match) return null;
+  const month = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split(" ").indexOf(match[2]) + 1;
+  return `${match[3]}-${String(month).padStart(2, "0")}-${match[1].padStart(2, "0")}`;
+}
+
+export function readBocFeed(xml: string): BulletinPublication[] {
+  return rssItems(xml, "autoridades_personal_oposiciones.rss").map(item => {
+    const title = rssField(item, "title");
+    const url = rssField(item, "link");
+    const reference = rssField(item, "guid");
+    const date = rssDate(rssField(item, "pubDate"));
+    const bulletin = reference.match(/^BOC-A-(\d{4})-(\d+)-\d+$/);
+    const organisation = rssField(item, "description").match(/Oposiciones y concursos - (.+?) \d+ /)?.[1] ?? null;
+    if (!bulletin || !date || !title || !/^https:\/\/www\.gobiernodecanarias\.org\/boc\/\d{4}\/\d+\/\d+\.html$/.test(url)) {
+      throw new Error("Faltan referencias oficiales del BOC");
+    }
+    return { reference, bulletin: `BOC ${bulletin[1]}/${bulletin[2]}`, date, title, organisation, url, pdf: null };
+  });
+}
+
+export function readDogFeed(xml: string): BulletinPublication[] {
+  const items = rssItems(xml, "Diario Oficial de Galicia");
+  const index = items.find(item => /^Sumario$/i.test(rssField(item, "title")));
+  const bulletin = index && rssField(index, "link").match(/\/Indice(\d+)_[a-z]{2}\.pdf$/)?.[1];
+  return items.flatMap(item => {
+    const title = rssField(item, "title");
+    if (/^Sumario$/i.test(title)) return [];
+    const url = rssField(item, "link");
+    const document = url.match(/^https:\/\/www\.xunta\.gal\/dog\/Publicados\/(\d{4})\/(\d{4})(\d{2})(\d{2})\/(Anuncio[A-Z0-9-]+)_[a-z]{2}\.html$/i);
+    if (!bulletin || !document || !title) throw new Error("Faltan referencias oficiales del DOG");
+    return [{ reference: document[5], bulletin: `DOG ${document[1]}/${bulletin}`,
+      date: `${document[2]}-${document[3]}-${document[4]}`, title,
+      organisation: null, url, pdf: null }];
+  });
+}
+
+export function readAvilaFeed(xml: string): BulletinPublication[] {
+  const heading = text(xml.match(/<description>([\s\S]*?)<\/description>/)?.[1] ?? "");
+  const issue = heading.match(/Número (\d+) \((\d{2})-(\d{2})-(\d{4})\)/i);
+  if (!issue) throw new Error("Falta el número de boletín del BOP de Ávila");
+  return rssItems(xml, "diputacionavila.es").flatMap(item => {
+    const title = rssField(item, "description");
+    if (!isSelectionNotice(title)) return [];
+    const label = rssField(item, "title").match(/^(.*) - (\d+\/\d{2})$/);
+    const url = rssField(item, "link");
+    if (!label || !/^https:\/\/www\.diputacionavila\.es\/bops\/[0-9/_-]+\.pdf$/.test(url)) {
+      throw new Error("Faltan referencias oficiales del BOP de Ávila");
+    }
+    return [{ reference: label[2], bulletin: `BOP Ávila ${issue[4]}/${issue[1]}`,
+      date: `${issue[4]}-${issue[3]}-${issue[2]}`, title,
+      organisation: label[1], url, pdf: url }];
   });
 }

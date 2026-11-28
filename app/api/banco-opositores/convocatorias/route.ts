@@ -25,14 +25,16 @@ export async function GET(request: NextRequest) {
     const deadline = clean(params.get("deadline"), 30);
     const date = clean(params.get("date"), 10);
     const limit = Math.min(Math.max(Math.trunc(Number(params.get("limit"))) || 60, 1), 100);
+    const page = Math.min(Math.max(Math.trunc(Number(params.get("page"))) || 1, 1), 500);
     const supabase = getSupabase();
 
     let query = supabase
       .from("opposition_calls")
-      .select(publicCallFields)
+      .select(publicCallFields, { count: "exact" })
       .eq("active", true)
       .order("publication_date", { ascending: false })
-      .limit(limit);
+      .order("id")
+      .range((page - 1) * limit, page * limit - 1);
 
     if (q) {
       query = query.or(
@@ -55,10 +57,10 @@ export async function GET(request: NextRequest) {
       query = query.lt("application_end", today);
     }
 
-    const { data, error } = await query;
+    const { data, count, error } = await query;
     if (error) throw error;
 
-    return NextResponse.json({ calls: data ?? [] });
+    return NextResponse.json({ calls: data ?? [], total: count ?? 0, page, limit });
   } catch (error) {
     console.error("Error consultando Banco de Opositores", error);
     const message = error instanceof Error
