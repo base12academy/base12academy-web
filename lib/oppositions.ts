@@ -7,6 +7,8 @@ export type OppositionCall = {
   id: string;
   source_id: string;
   source_external_id: string;
+  official_call_identifier: string | null;
+  official_call_identifier_authority: string | null;
   slug: string;
   title: string;
   summary: string | null;
@@ -62,6 +64,8 @@ export const publicCallFields = [
   "id",
   "source_id",
   "source_external_id",
+  "official_call_identifier",
+  "official_call_identifier_authority",
   "slug",
   "title",
   "summary",
