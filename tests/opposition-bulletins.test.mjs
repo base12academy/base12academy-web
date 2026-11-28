@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { ceutaIssueLinks, readCeutaSummary, verifyBojaArticle } from "../lib/opposition-bulletins.ts";
+import { ceutaIssueLinks, readBocFeed, readCeutaSummary, verifyBojaArticle } from "../lib/opposition-bulletins.ts";
 
 test("distinguishes ordinary and extraordinary newspaper notices, even when PDF hyphens are omitted", () => {
   const date = "2026-11-27";
@@ -21,4 +21,18 @@ test("deduplicates links to the same official edition and verifies the BOJA's is
   const record = { pdf: "https://www.juntadeandalucia.es/official.pdf", date: "2026-11-20" };
   assert.equal(verifyBojaArticle(record, article).date, "2026-11-27");
   assert.throws(() => verifyBojaArticle(record, article.replace("official.pdf", "another.pdf")));
+});
+
+test("Canary announcement links use the article number from their official CVE", () => {
+  const rss = `<rss><channel>
+    <atom:link href="autoridades_personal_oposiciones.rss"/>
+    <item><title>Convocatoria de acceso</title>
+      <link>https://www.gobiernodecanarias.org/boc/2026/221/008.html</link>
+      <pubDate>Thu, 5 Nov 2026 00:00:00 +0100</pubDate>
+      <guid>BOC-A-2026-221-3799</guid>
+    </item>
+  </channel></rss>`;
+  const [publication] = readBocFeed(rss);
+  assert.equal(publication.url, "https://www.gobiernodecanarias.org/boc/2026/221/3799.html");
+  assert.equal(publication.pdf, "https://sede.gobiernodecanarias.org/boc/boc-a-2026-221-3799.pdf");
 });

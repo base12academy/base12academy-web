@@ -119,7 +119,12 @@ export function readBocFeed(xml: string): BulletinPublication[] {
     if (!bulletin || !date || !title || !/^https:\/\/www\.gobiernodecanarias\.org\/boc\/\d{4}\/\d+\/\d+\.html$/.test(url)) {
       throw new Error("Faltan referencias oficiales del BOC");
     }
-    return { reference, bulletin: `BOC ${bulletin[1]}/${bulletin[2]}`, date, title, organisation, url, pdf: null };
+    const article = reference.split("-").at(-1);
+    // The RSS link can end with an ordinal within the issue instead of
+    // the stable announcement number printed in the official CVE.
+    const officialUrl = `https://www.gobiernodecanarias.org/boc/${bulletin[1]}/${bulletin[2]}/${article}.html`;
+    const pdf = `https://sede.gobiernodecanarias.org/boc/${reference.toLowerCase()}.pdf`;
+    return { reference, bulletin: `BOC ${bulletin[1]}/${bulletin[2]}`, date, title, organisation, url: officialUrl, pdf };
   });
 }
 
