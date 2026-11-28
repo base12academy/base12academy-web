@@ -404,7 +404,9 @@ async function ingestBoe(request: NextRequest) {
         return { publication, relatedIds, details };
       }));
       for (const { publication, relatedIds, details } of prepared) {
-        const kind = publicationKind(publication.title);
+        const kind = details?.examDate && /lista.*admitid|fecha.*celebraci[oó]n/i.test(publication.title)
+          ? { type: "fecha_examen", relevance: "critica" as const, status: "examen convocado" }
+          : publicationKind(publication.title);
         let call: StoredCall | null = null;
         if (relatedIds.length) {
           const { data, error } = await supabase
@@ -463,6 +465,7 @@ async function ingestBoe(request: NextRequest) {
           const { data, error } = await supabase.from("opposition_calls").update({
             related_external_ids: mergedRelated,
             status: kind.status,
+            ...(kind.type === "fecha_examen" && details?.examDate && !historical ? { exam_date: details.examDate } : {}),
             last_official_update: new Date().toISOString(),
           }).eq("id", call.id).select("*").single();
           if (error) throw error;

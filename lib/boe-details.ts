@@ -105,7 +105,14 @@ export function detailsFromParagraphs(input: string[]): BoeDetails | null {
   const accessSystem = systems.size === 1 ? labels[[...systems][0]] ?? null : null;
   const applicationStart = explicitDate(paragraphs, /(?:plazo de (?:presentaci[oó]n de (?:solicitudes|instancias)|inscripci[oó]n))[^.;]{0,70}?(?:desde el|comenzar[aá] el|se iniciar[aá] el) (?:d[ií]a )?(\d{1,2}) de ([a-z]+) de (20\d{2})/i);
   const applicationEnd = explicitDate(paragraphs, /(?:plazo de (?:presentaci[oó]n de (?:solicitudes|instancias)|inscripci[oó]n))[^.;]{0,110}?(?:hasta el|finalizar[aá] el|terminar[aá] el) (?:d[ií]a )?(\d{1,2}) de ([a-z]+) de (20\d{2})/i);
-  const examDate = explicitDate(paragraphs, /(?:primer ejercicio|prueba [uú]nica|examen) (?:se celebrar[aá]|tendr[aá] lugar) el (?:d[ií]a )?(\d{1,2}) de ([a-z]+) de (20\d{2})/i);
+  const examAnnouncements = paragraphs.filter(p =>
+    /convocar a .{0,220}celebraci[oó]n del (?:primer |ejercicio [uú]nico)/i.test(p)
+  );
+  const examDay = /\bd[ií]a (\d{1,2}) de ([a-z]+) de (20\d{2})\b/gi;
+  const completeAnnouncements = examAnnouncements.length && examAnnouncements.every(p => Array.from(p.matchAll(examDay)).length === 1);
+  const examDate = examAnnouncements.length
+    ? completeAnnouncements ? explicitDate(examAnnouncements, /\bd[ií]a (\d{1,2}) de ([a-z]+) de (20\d{2})\b/i) : null
+    : explicitDate(paragraphs, /(?:primer ejercicio|prueba [uú]nica|examen) (?:se celebrar[aá]|tendr[aá] lugar) el (?:d[ií]a )?(\d{1,2}) de ([a-z]+) de (20\d{2})/i);
   return { education, fees, exemptions, documentation, payment, vacancies, group, accessSystem, applicationStart, applicationEnd, examDate, paragraphs, summary: paragraphs.join("\n\n"), specialty, category, positionId, applicationPeriod, headline };
 }
 

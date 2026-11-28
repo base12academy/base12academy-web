@@ -65,3 +65,11 @@ test("reads explicit selection dates and avoids deriving deadlines from relative
   assert.equal(parse("19810").applicationEnd, null);
   assert.equal(detailsFromParagraphs(["El primer ejercicio se celebrará el 31 de noviembre de 2026."]).examDate, null);
 });
+
+test("keeps a selection announcement's date only when it gives one full date", () => {
+  const first = "Convocar a los aspirantes admitidos para la celebración del primer ejercicio en Madrid el día 14 de diciembre de 2026.";
+  const second = "Convocar a las personas aspirantes admitidas para la celebración del ejercicio único en Madrid el día 31 de enero de 2027.";
+  assert.equal(detailsFromParagraphs([first]).examDate, "2026-12-14");
+  assert.equal(detailsFromParagraphs([first, second]).examDate, null);
+  assert.equal(detailsFromParagraphs([first, second.replace(" de 2027", "")]).examDate, null);
+});
