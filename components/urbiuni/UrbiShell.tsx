@@ -11,8 +11,8 @@ export function UrbiShell({ children }: { children: ReactNode }) {
       <header className={styles.header}>
         <div className={styles.headerInner}>
           <Link href="/urbiuni" className={styles.brand}>
-            <Image src="/images/urbiuni/logo-urbiuni.png" alt="UrbiUni" width={52} height={52} priority />
-            <span><b>UrbiUni</b><small>de Base12 Academy</small></span>
+            <Image src="/images/urbiuni/logo-urbiuni-horizontal.png" alt="UrbiUni" width={81} height={44} priority />
+            <span><small>de Base12 Academy</small></span>
           </Link>
           <nav className={styles.nav} aria-label="UrbiUni">
             <Link href="/urbiuni/buscar" className={styles.hideMobile}>Buscar grados</Link>
