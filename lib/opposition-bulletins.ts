@@ -72,6 +72,57 @@ export function bomeIssues(html: string) {
 
 const months = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
 
+const doeBase = "https://doe.juntaex.es";
+
+export function doeIssues(html: string) {
+  const issues = new Map<string, string>();
+  for (const [, path, date, edition] of html.matchAll(
+    /href="(?:\.\.)?(\/ultimosdoe\/mostrardoe\.php\?fecha=(\d{8})(?:&amp;|&)t=([a-z0-9]+))"/gi,
+  )) {
+    issues.set(date + edition, doeBase + path.replace("&amp;", "&"));
+  }
+  if (!issues.size) throw new Error("No se reconoció el calendario de ediciones del DOE");
+  return [...issues.entries()].sort(([a], [b]) => b.localeCompare(a)).map(([, url]) => url);
+}
+
+export function readDoeIssue(html: string, issueUrl: string): BulletinPublication[] {
+  const issue = new URL(issueUrl);
+  const compactDate = issue.searchParams.get("fecha") ?? "";
+  const dateParts = compactDate.match(/^(\d{4})(\d{2})(\d{2})$/);
+  const number = text(html.match(/class="numeracionrojo">([^<]+)/)?.[1] ?? "").match(/\d+/)?.[0];
+  const published = text(html.match(/class="numeracionnegro">([^<]+)/)?.[1] ?? "");
+  const dateLabel = dateParts && `${Number(dateParts[3])} de ${months[Number(dateParts[2]) - 1]} de ${dateParts[1]}`;
+  if (issue.origin !== doeBase || !dateParts || !number || !published.toLowerCase().includes(dateLabel ?? "") || !html.includes("Contenido_DOE")) {
+    throw new Error("El sumario del DOE no corresponde a la edición solicitada");
+  }
+  const personnel = html.match(/class="d2">[^<]+<\/span>[\s\S]*?(?=class="d[3-9]"|class="lineablanco")/)?.[0] ?? "";
+  let organisation: string | null = null;
+  const records: BulletinPublication[] = [];
+  for (const [, department, paragraph] of personnel.matchAll(
+    /<p><span class="DOE2">([^<]+)<\/span><\/p>|<div class="justificado">([\s\S]*?)<\/div>/g,
+  )) {
+    if (department) {
+      organisation = text(department);
+      continue;
+    }
+    const title = text(paragraph.match(/class="DOE4">([\s\S]*?)<\/span>/)?.[1] ?? "");
+    if (!isSelectionNotice(title)) continue;
+    const pdf = paragraph.match(/href="(\/pdfs\/doe\/\d{4}\/\w+\/\d+\.pdf)"/)?.[1];
+    const article = paragraph.match(/href="\.\.\/(otrosFormatos\/html\.php\?xml=(\d{10})(?:&amp;|&)anio=\d{4}(?:&amp;|&)doe=\w+)"/);
+    if (!pdf || !article || title.includes("\uFFFD")) throw new Error("No se pudo verificar una disposición del DOE");
+    records.push({
+      reference: article[2],
+      bulletin: `DOE ${dateParts[1]}/${number}`,
+      date: `${dateParts[1]}-${dateParts[2]}-${dateParts[3]}`,
+      title,
+      organisation,
+      url: `${doeBase}/${article[1].replace(/&amp;/g, "&")}`,
+      pdf: doeBase + pdf,
+    });
+  }
+  return records;
+}
+
 export function readBomeIssue(html: string, path: string): BulletinPublication[] {
   const base = "https://bomemelilla.es";
   const bulletin = path.split("/").at(-1) ?? "";

@@ -1,6 +1,25 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { ceutaIssueLinks, readBocFeed, readCeutaSummary, verifyBojaArticle } from "../lib/opposition-bulletins.ts";
+import { ceutaIssueLinks, doeIssues, readBocFeed, readCeutaSummary, readDoeIssue, verifyBojaArticle } from "../lib/opposition-bulletins.ts";
+
+test("reads the DOE identifier from the application link in the requested edition", () => {
+  const [url] = doeIssues('<a href="../ultimosdoe/mostrardoe.php?fecha=20261127&amp;t=o">Ordinario</a>');
+  const edition = `
+    <span class="numeracionrojo">Núm.: 229</span>
+    <span class="numeracionnegro">Viernes, 27 de noviembre de 2026</span>
+    <div class="Contenido_DOE">
+    <span class="d2">II. AUTORIDADES Y PERSONAL</span>
+    <p><span class="DOE2">SERVICIO EXTREMEÑO DE SALUD</span></p>
+    <div class="justificado"><p><span class="DOE4">Resolución por la que se convoca proceso selectivo.</span>
+    <a href="/pdfs/doe/2026/2290o/26063028.pdf">PDF</a>
+    <a href="../otrosFormatos/html.php?xml=2026063028&amp;anio=2026&amp;doe=2290o">HTML</a></p></div>
+    <span class="d3">III. OTRAS RESOLUCIONES</span>`;
+  const [notice] = readDoeIssue(edition, url);
+  assert.equal(notice.reference, "2026063028");
+  assert.equal(notice.date, "2026-11-27");
+  assert.equal(notice.organisation, "SERVICIO EXTREMEÑO DE SALUD");
+  assert.throws(() => readDoeIssue(edition, url.replace("20261127", "20261126")));
+});
 
 test("distinguishes ordinary and extraordinary newspaper notices, even when PDF hyphens are omitted", () => {
   const date = "2026-11-27";

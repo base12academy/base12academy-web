@@ -1,6 +1,6 @@
 import {
   bomeIssues, readAvilaFeed, readBocFeed, readBocmFeed, readBocylFeed, readBojaFeed, readBomeIssue,
-  readDogFeed, verifyBojaArticle, ceutaIssueLinks, ceutaPdfPath, readCeutaSummary,
+  readDogFeed, verifyBojaArticle, ceutaIssueLinks, ceutaPdfPath, readCeutaSummary, doeIssues, readDoeIssue,
 } from "../../../lib/opposition-bulletins.ts";
 
 async function fetchOfficialResponse(url) {
@@ -40,6 +40,11 @@ const collectors = {
   },
   boc_rss: async () => readBocFeed(await fetchOfficial("https://www.gobiernodecanarias.org/boc/feeds/capitulo/autoridades_personal_oposiciones.rss")),
   dog_rss: async () => readDogFeed(await fetchOfficial("https://www.xunta.gal/diario-oficial-galicia/rss/Seccion7_gl.rss")),
+  doe_sumario: async () => {
+    const issues = doeIssues(await fetchOfficial("https://doe.juntaex.es/")).slice(0, 5);
+    const batches = await Promise.all(issues.map(async issue => readDoeIssue(await fetchOfficial(issue), issue)));
+    return batches.flat();
+  },
   bop_avila_rss: async () => readAvilaFeed(await fetchOfficial("https://www.diputacionavila.es/bop/rss.xml")),
   bocce_sumario_pdf: async () => {
     const base = "https://www.ceuta.es";
