@@ -101,30 +101,17 @@
 .searchRow {
   max-width: 960px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr auto;
 }
 .searchRow input {
-  min-width: 0;
+  width: 100%;
   min-height: 56px;
   padding: 0 20px;
   border: 1px solid #cfc7bd;
-  border-right: 0;
-  border-radius: 10px 0 0 10px;
+  border-radius: 10px;
   background: #fff;
   color: var(--ink);
   font: inherit;
   font-size: 16px;
-}
-.searchRow button {
-  min-width: 150px;
-  border: 0;
-  border-radius: 0 10px 10px 0;
-  background: var(--wine);
-  color: #fff;
-  font: inherit;
-  font-weight: 850;
-  cursor: pointer;
 }
 .searchExamples { max-width: 960px; margin: 9px auto 24px; color: #79746f; font-size: 12px; text-align: left; }
 
@@ -343,9 +330,6 @@
   .headerButton { padding: 9px 11px; font-size: 12px !important; }
   .main, .detailMain { width: min(100% - 24px, 1480px); padding-top: 16px; }
   .searchPanel { padding: 22px 14px; }
-  .searchRow { grid-template-columns: 1fr auto; }
-  .searchRow button { min-width: 54px; }
-  .searchRow button span { display: none; }
   .searchExamples { line-height: 1.5; }
   .filterGrid { grid-template-columns: 1fr 1fr; }
   .fernandoBanner { grid-template-columns: 76px 1fr; padding: 15px; gap: 14px; }
@@ -372,4 +356,38 @@
   .categorySection > div { grid-template-columns: 1fr 1fr; }
   .modal { padding: 24px 17px; }
   .brand span { display: none; }
+}
+
+.tableScroll {
+  overflow-x: auto;
+}
+
+.comparison {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.comparison th,
+.comparison td {
+  padding: .75rem;
+  border-bottom: 1px solid #ded5d4;
+  vertical-align: top;
+}
+
+.comparison thead button {
+  display: block;
+  margin-top: .5rem;
+}
+
+.calendarEvents {
+  display: grid;
+  gap: .75rem;
+  padding-left: 1.5rem;
+}
+
+.calendarEvents time,
+.calendarEvents span {
+  display: inline-block;
+  margin-right: .75rem;
 }

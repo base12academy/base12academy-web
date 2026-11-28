@@ -6,6 +6,7 @@ import styles from "../banco.module.css";
 
 export const metadata: Metadata = {
   title: "Mis alertas | Banco de Opositores",
+  referrer: "no-referrer",
   robots: { index: false, follow: false },
 };
 

@@ -4,6 +4,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import type { OppositionCall } from "@/lib/oppositions";
+import { madridDate, oppositionTerritories } from "@/lib/opposition-geography";
+import OppositionCalendar from "./OppositionCalendar";
+import OppositionComparison from "./OppositionComparison";
 import OppositionAlertDialog from "./OppositionAlertDialog";
 import styles from "@/app/banco-opositores/banco.module.css";
 
@@ -14,7 +17,6 @@ type FernandoRecommendation = {
   organisation: string | null;
   territory: string;
   group: string | null;
-  compatibility: number;
   reasons: string[];
   base12CourseSlug: string | null;
 };
@@ -39,8 +41,10 @@ function formatDate(value: string) {
 }
 
 function deadlineLabel(call: OppositionCall) {
-  if (!call.application_start || !call.application_end) return "Plazo no indicado oficialmente";
-  const today = new Date().toISOString().slice(0, 10);
+  if (!call.application_end) return call.application_start
+    ? `Inicio: ${formatDate(call.application_start)}` : "Fechas del plazo sin confirmar";
+  if (!call.application_start) return `Cierre: ${formatDate(call.application_end)}`;
+  const today = madridDate();
   if (today < call.application_start) return `Abre el ${formatDate(call.application_start)}`;
   if (today > call.application_end) return "Plazo cerrado";
   return `Hasta el ${formatDate(call.application_end)}`;
@@ -49,13 +53,21 @@ function deadlineLabel(call: OppositionCall) {
 export default function OppositionExplorer({
   initialCalls,
   initialTerritory = "",
+  initialAdministration = "",
 }: {
   initialCalls: OppositionCall[];
   initialTerritory?: string;
+  initialAdministration?: string;
 }) {
   const [q, setQ] = useState("");
-  const [filters, setFilters] = useState({ ...initialFilters, territory: initialTerritory });
+  const [filters, setFilters] = useState({ ...initialFilters, territory: initialTerritory, administration: initialAdministration });
+  const [comparison, setComparison] = useState<OppositionCall[]>([]);
+  const [calendarOpen, setCalendarOpen] = useState(false);
   const [calls, setCalls] = useState(initialCalls);
+  const [page, setPage] = useState(1);
+  const [total, setTotal] = useState(initialCalls.length);
+  const pageSize = 30;
+  const pages = Math.max(1, Math.ceil(total / pageSize));
   const [loading, setLoading] = useState(false);
   const [searchError, setSearchError] = useState("");
   const [alertOpen, setAlertOpen] = useState(false);
@@ -71,29 +83,32 @@ export default function OppositionExplorer({
   const activeCriteria = useMemo(() => ({ q, ...filters }), [q, filters]);
 
   useEffect(() => {
+    const controller = new AbortController();
     const timer = window.setTimeout(async () => {
       setLoading(true);
       setSearchError("");
       try {
-        const params = new URLSearchParams();
+        const params = new URLSearchParams({ page: String(page), limit: String(pageSize) });
         if (q.trim()) params.set("q", q.trim());
         Object.entries(filters).forEach(([key, value]) => {
           if (value) params.set(key, value);
         });
-        const response = await fetch(`/api/banco-opositores/convocatorias?${params.toString()}`);
-        const result = (await response.json()) as { calls?: OppositionCall[]; error?: string };
+        const response = await fetch(`/api/banco-opositores/convocatorias?${params.toString()}`, { signal: controller.signal });
+        const result = (await response.json()) as { calls?: OppositionCall[]; total?: number; error?: string };
         if (!response.ok) throw new Error(result.error || "No se pudo completar la búsqueda.");
         setCalls(result.calls ?? []);
+        setTotal(result.total ?? 0);
       } catch (error) {
-        setSearchError(error instanceof Error ? error.message : "No se pudo completar la búsqueda.");
+        if (!controller.signal.aborted) setSearchError(error instanceof Error ? error.message : "No se pudo completar la búsqueda.");
       } finally {
-        setLoading(false);
+        if (!controller.signal.aborted) setLoading(false);
       }
     }, 320);
-    return () => window.clearTimeout(timer);
-  }, [q, filters]);
+    return () => { window.clearTimeout(timer); controller.abort(); };
+  }, [q, filters, page]);
 
   function updateFilter(key: keyof typeof filters, value: string) {
+    setPage(1);
     setFilters((current) => ({ ...current, [key]: value }));
   }
 
@@ -135,15 +150,15 @@ export default function OppositionExplorer({
             id="opposition-search"
             type="search"
             value={q}
-            onChange={(event) => setQ(event.target.value)}
+            onChange={(event) => { setPage(1); setQ(event.target.value); }}
             placeholder="¿Qué oposición, plaza u organismo buscas?"
           />
-          <button type="button" onClick={() => undefined}>⌕ <span>Buscar</span></button>
+
         </div>
         <p className={styles.searchExamples}>Ejemplos: Administrativo del Estado · Auxiliar administrativo · Tropa y Marinería · Policía Local · Jardinero · Electricista · Celador · Bombero</p>
 
         <div className={styles.filterGrid}>
-          <label>Territorio<select value={filters.territory} onChange={(e) => updateFilter("territory", e.target.value)}><option value="">Todos</option><option>España</option><option>Andalucía</option><option>Madrid</option><option>Comunitat Valenciana</option></select></label>
+          <label>Territorio<select value={filters.territory} onChange={(e) => updateFilter("territory", e.target.value)}><option value="">Todos</option><option>España</option>{oppositionTerritories.map(([name]) => <option key={name}>{name}</option>)}</select></label>
           <label>Administración<select value={filters.administration} onChange={(e) => updateFilter("administration", e.target.value)}><option value="">Todas</option><option value="Administración Local">Administración local</option><option value="Ministerio">Estado / Ministerios</option><option value="Universidad">Universidades</option></select></label>
           <label>Tipo de plaza<input value={filters.category} onChange={(e) => updateFilter("category", e.target.value)} placeholder="Cualquiera" /></label>
           <label>Grupo<select value={filters.group} onChange={(e) => updateFilter("group", e.target.value)}><option value="">Todos</option><option>C1</option><option>C2</option><option>A1</option><option>A2</option><option>AP</option></select></label>
@@ -155,7 +170,7 @@ export default function OppositionExplorer({
 
       <section className={styles.fernandoBanner}>
         <Image src="/images/fernando-tutor-ia.png" alt="Fernando, asesor de oposiciones Base12" width={104} height={112} />
-        <div><p className={styles.eyebrow}>Asesor estratégico</p><h2>Fernando · Asesor de oposiciones</h2><p>Dime qué estás preparando, dónde buscas y qué titulación tienes. Solo te mostrará compatibilidades respaldadas por convocatorias existentes.</p></div>
+        <div><p className={styles.eyebrow}>Asesor estratégico</p><h2>Fernando · Asesor de oposiciones</h2><p>Dime qué estás preparando, dónde buscas y qué titulación tienes. Verás convocatorias con coincidencias en tu búsqueda. Comprueba en cada ficha la titulación exigida.</p></div>
         <button className={styles.primaryButton} type="button" onClick={() => setFernandoOpen((value) => !value)}>{fernandoOpen ? "Cerrar consulta" : "Consultar a Fernando"}</button>
       </section>
 
@@ -165,17 +180,23 @@ export default function OppositionExplorer({
             <label>¿Qué estás preparando?<input required value={preparation} onChange={(e) => setPreparation(e.target.value)} placeholder="Ej.: Administrativo del Estado C1" /></label>
             <label>¿Dónde buscas?<input value={fernandoTerritory} onChange={(e) => setFernandoTerritory(e.target.value)} placeholder="Ej.: Madrid" /></label>
             <label>¿Qué titulación tienes?<input value={qualification} onChange={(e) => setQualification(e.target.value)} placeholder="Ej.: Bachillerato" /></label>
-            <button className={styles.primaryButton} type="submit" disabled={fernandoLoading}>{fernandoLoading ? "Comparando…" : "Buscar opciones compatibles"}</button>
+            <button className={styles.primaryButton} type="submit" disabled={fernandoLoading}>{fernandoLoading ? "Comparando…" : "Buscar convocatorias relacionadas"}</button>
           </form>
           {fernandoAnswer && <div className={styles.fernandoAnswer}><p>{fernandoAnswer}</p>{recommendations.map((item) => (
             <article key={item.id}>
               <div><b>{item.title}</b><span>{item.organisation || item.territory}</span>{item.reasons.map((reason) => <small key={reason}>{reason}</small>)}</div>
-              <strong>{item.compatibility}%</strong>
+
               <Link href={`/banco-opositores/convocatoria/${item.slug}`}>Ver ficha</Link>
             </article>
           ))}</div>}
         </section>
       )}
+
+      <OppositionComparison calls={comparison} remove={id => setComparison(current => current.filter(call => call.id !== id))} />
+      <button className={styles.outlineButton} type="button" aria-expanded={calendarOpen} onClick={() => setCalendarOpen(value => !value)}>
+        {calendarOpen ? "Cerrar calendario" : "Ver calendario oficial"}
+      </button>
+      {calendarOpen && <OppositionCalendar key={filters.territory} territory={filters.territory} />}
 
       <section id="crear-alerta" className={styles.resultsSection} aria-live="polite">
         <div className={styles.sectionHeading}>
@@ -197,11 +218,25 @@ export default function OppositionExplorer({
               <p className={styles.deadline}>◷ {deadlineLabel(call)}</p>
               <div className={styles.cardActions}>
                 <Link className={styles.primaryButton} href={`/banco-opositores/convocatoria/${call.slug}`}>Ver convocatoria</Link>
+                <button className={styles.outlineButton} type="button"
+                  aria-pressed={comparison.some(item => item.id === call.id)}
+                  disabled={comparison.length === 3 && !comparison.some(item => item.id === call.id)}
+                  onClick={() => setComparison(current => current.some(item => item.id === call.id)
+                    ? current.filter(item => item.id !== call.id) : [...current, call])}>
+                  {comparison.some(item => item.id === call.id) ? "Quitar del comparador" : "Comparar"}
+                </button>
                 <button className={styles.outlineButton} type="button" onClick={() => { setSelectedCall(call); setAlertOpen(true); }}>Avísame</button>
               </div>
             </article>
           ))}
         </div>
+        {pages > 1 && (
+          <nav aria-label="Páginas de convocatorias" className={styles.cardActions}>
+            <button type="button" className={styles.outlineButton} disabled={page === 1 || loading} onClick={() => setPage(page - 1)}>Anterior</button>
+            <span>Página {page} de {pages} · {total.toLocaleString("es-ES")} resultados</span>
+            <button type="button" className={styles.outlineButton} disabled={page >= pages || loading} onClick={() => setPage(page + 1)}>Siguiente</button>
+          </nav>
+        )}
       </section>
 
       <section className={styles.categorySection}>
