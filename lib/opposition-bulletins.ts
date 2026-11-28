@@ -156,3 +156,89 @@ export function readAvilaFeed(xml: string): BulletinPublication[] {
       organisation: label[1], url, pdf: url }];
   });
 }
+
+export function readBocylFeed(xml: string): BulletinPublication[] {
+  const items = rssItems(xml, "COMUNIDAD DE CASTILLA Y LEÓN");
+  return items.flatMap(item => {
+    const issue = rssField(item, "title").match(/^Boletín del día (\d{2})\/(\d{2})\/(\d{4}) edición (\d+)$/);
+    if (!issue) throw new Error("No se reconoció la edición oficial del BOCYL");
+    const [, day, month, year, number] = issue;
+    const html = (item.match(/<description>([\s\S]*?)<\/description>/)?.[1] ?? "")
+      .replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"');
+    if (!/<ul\b/.test(html)) throw new Error("Falta el sumario del BOCYL");
+    return [...html.matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/g)].flatMap(([, announcement]) => {
+      const [heading, headline] = [...announcement.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/g)].map(match => match[1]);
+      const title = text(headline ?? "");
+      if (!isSelectionNotice(title)) return [];
+      const link = heading?.match(/href=["'](https:\/\/bocyl\.jcyl\.es\/boletines\/\d{4}\/\d{2}\/\d{2}\/pdf\/(BOCYL-D-\d{8}-\d+-\d+)\.pdf)["']/i);
+      if (!link || !link[2].startsWith(`BOCYL-D-${day}${month}${year}-${number}-`)) {
+        throw new Error("Falta la referencia de una disposición del BOCYL");
+      }
+      return [{ reference: link[2], bulletin: `BOCYL ${year}/${number}`, date: `${year}-${month}-${day}`,
+        title, organisation: text(heading).split(" - ").at(-1) ?? null, url: link[1], pdf: link[1] }];
+    });
+  });
+}
+
+export function verifyBojaArticle(record: BulletinPublication, html: string): BulletinPublication {
+  const heading = html.match(/<h1\b[^>]*>[\s\S]*?<span\s+class="nota">([\s\S]*?)<\/span>[\s\S]*?<\/h1>/i);
+  const issue = text(heading?.[1] ?? "");
+  const published = issue.match(/(\d{2})\/(\d{2})\/(\d{4})$/);
+  const pdfName = record.pdf?.split("/").at(-1);
+  if (!published || !pdfName || !html.includes(pdfName)) {
+    throw new Error("No se pudo cotejar la fecha y la referencia con la edición oficial del BOJA");
+  }
+  return { ...record, bulletin: issue, date: `${published[3]}-${published[2]}-${published[1]}` };
+}
+
+export function ceutaIssueLinks(html: string) {
+  const endpoints = new Map<string, { path: string; issue: string; date: string }>();
+  for (const [, path, issue, day, month, year] of html.matchAll(
+    /href="(\/ceuta\/component\/jdownloads\/viewdownload\/\d+\/\d+)\?Itemid=">\s*BOCCE_(Extra\d+|\d+)_(\d{2})-(\d{2})-(\d{4})/gi,
+  )) {
+    endpoints.set(path, { path, issue, date: `${year}-${month}-${day}` });
+  }
+  if (!endpoints.size) throw new Error("No se reconocieron las ediciones del BOCCE");
+  return [...endpoints.values()].sort((a, b) => b.date.localeCompare(a.date));
+}
+
+export function ceutaPdfPath(html: string, issue: string, date: string) {
+  const [year, month, day] = date.split("-");
+  const suffix = `-bocce-${issue.toLowerCase()}-${day}-${month}-${year}?Itemid=0`;
+  const paths = [...html.matchAll(/href="(\/ceuta\/component\/jdownloads\/finish\/[^"<>]+)"/g)];
+  const linked = paths.map(match => match[1]).filter(path => path.toLowerCase().endsWith(suffix.toLowerCase()));
+  if (new Set(linked).size !== 1) throw new Error("No se pudo identificar el PDF oficial del BOCCE");
+  return linked[0];
+}
+
+export function readCeutaSummary(pages: string[], artifact: { issue: string; date: string; pdf: string }): BulletinPublication[] {
+  const [year, month, day] = artifact.date.split("-");
+  const dateLabel = `${Number(day)} de ${months[Number(month) - 1]} de ${year}`;
+  const first = text(pages[0] ?? "");
+  const marker = first.search(/\bSUMARIO\b/i);
+  const label = first.slice(0, Math.max(0, marker) + 125).toLowerCase();
+  if (marker < 0 || !label.includes(dateLabel) || !label.includes("bocce")) {
+    throw new Error("El PDF del BOCCE no contiene el sumario fechado esperado");
+  }
+  const numericIssue = artifact.issue.replace(/^Extra/i, "");
+  const issueLabel = label.replace(/[.\s]/g, "");
+  if (!issueLabel.includes(numericIssue) || (/^extra/i.test(artifact.issue) && !issueLabel.includes("extraordinario"))) {
+    throw new Error("El número de edición del BOCCE no coincide");
+  }
+  const sumario = text([first.slice(marker), ...pages.slice(1)].join(" ")).replace(/[\u00ad\u2010\u2011]/g, "-");
+  const articles = [...sumario.matchAll(/\b(\d{1,5})\s*\.(?:\s*[-–]\s*|\s+)([A-ZÁÉÍÓÚÑ].{5,3499}?)\s+P[aá]g\.?\s*([\d.]+)/g)];
+  if (!articles.length) throw new Error("El sumario del BOCCE no contiene anuncios identificables");
+  return articles.flatMap(([, number, title]) => {
+    if (!isSelectionNotice(title) && !/sistema selectivo de promoci[oó]n|convocatoria de \d+ puestos?/i.test(title)) return [];
+    if (/subvenciones|de ayudas públicas/i.test(title)) return [];
+    return [{
+      reference: `${year}/${artifact.issue}/${number}`,
+      bulletin: `BOCCE ${year}/${artifact.issue}`,
+      date: artifact.date,
+      title,
+      organisation: null,
+      url: artifact.pdf,
+      pdf: artifact.pdf,
+    }];
+  });
+}

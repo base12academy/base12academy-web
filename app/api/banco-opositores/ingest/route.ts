@@ -3,7 +3,6 @@ import { getSupabase } from "@/lib/supabase/server";
 import { getBoeOfficialDetails } from "@/lib/boe-official";
 import { boeOrganisation, detailsFromParagraphs, isBoeCall } from "@/lib/boe-details";
 
-import { bomeIssues, readAvilaFeed, readBocFeed, readBocmFeed, readDogFeed, readBojaFeed, readBomeIssue, type BulletinPublication } from "@/lib/opposition-bulletins";
 import { boeGeography, madridDate } from "@/lib/opposition-geography";
 
 export const dynamic = "force-dynamic";
@@ -535,107 +534,13 @@ async function ingestBoe(request: NextRequest) {
   }
 }
 
-const regionalSources = {
-  boja: { method: "boja_atom", territory: "Andalucía", authority: "BOJA" },
-  bocm: { method: "bocm_rss", territory: "Madrid", authority: "BOCM" },
-  bome: { method: "bome_sumario", territory: "Melilla", authority: "BOME" },
-  boc: { method: "boc_rss", territory: "Canarias", authority: "BOC Canarias" },
-  dog: { method: "dog_rss", territory: "Galicia", authority: "DOG" },
-  "bop-avila": { method: "bop_avila_rss", territory: "Castilla y León", authority: "BOP Ávila" },
-} as const;
-
-async function readOfficialFeed(url: string) {
-  const response = await fetch(url, { cache: "no-store", signal: AbortSignal.timeout(12_000) });
-  if (!response.ok) throw new Error(`Fuente oficial: HTTP ${response.status}`);
-  return response.text();
-}
-
-async function regionalPublications(name: keyof typeof regionalSources): Promise<BulletinPublication[]> {
-  if (name === "boja") {
-    return readBojaFeed(await readOfficialFeed("https://www.juntadeandalucia.es/boja/distribucion/s53.xml"));
-  }
-  if (name === "bocm") {
-    return readBocmFeed(await readOfficialFeed("https://www.bocm.es/ultimo-boletin.xml"));
-  }
-  if (name === "boc") {
-    return readBocFeed(await readOfficialFeed("https://www.gobiernodecanarias.org/boc/feeds/capitulo/autoridades_personal_oposiciones.rss"));
-  }
-  if (name === "dog") {
-    return readDogFeed(await readOfficialFeed("https://www.xunta.gal/diario-oficial-galicia/rss/Seccion7_gl.rss"));
-  }
-  if (name === "bop-avila") {
-    return readAvilaFeed(await readOfficialFeed("https://www.diputacionavila.es/bop/rss.xml"));
-  }
-  const base = "https://bomemelilla.es";
-  const issues = bomeIssues(await readOfficialFeed(base)).slice(0, 8);
-  const records = await Promise.all(issues.map(async path => readBomeIssue(await readOfficialFeed(base + path), path)));
-  return records.flat();
-}
-
-async function ingestRegional(name: keyof typeof regionalSources) {
-  const config = regionalSources[name];
-  const supabase = getSupabase();
-  const source = await supabase.from("opposition_sources").select("id,name")
-    .eq("consultation_method", config.method).eq("active", true).single();
-  if (source.error) throw source.error;
-  const run = await supabase.from("opposition_ingestion_runs").insert({ source_id: source.data.id }).select("id").single();
-  if (run.error) throw run.error;
-
-  let detected = 0;
-  let added = 0;
-  try {
-    const records = await regionalPublications(name);
-    detected = records.length;
-    for (const record of records) {
-      const kind = publicationKind(record.title);
-      const slug = `${slugify(record.title)}-${name}-${record.reference.toLowerCase()}`;
-      const isCall = isBoeCall(record.title);
-      const written = await supabase.from("opposition_calls").upsert({
-        source_id: source.data.id, source_external_id: record.reference, slug, title: record.title,
-        organisation: record.organisation, territory: config.territory,
-        province: name === "bop-avila" ? "Ávila" : null, status: kind.status,
-        official_url: record.url, publication_date: record.date, bulletin_name: source.data.name,
-        bulletin_identifier: record.bulletin, official_call_identifier: isCall ? record.reference : null,
-        official_call_identifier_authority: isCall ? config.authority : null,
-      }, { onConflict: "source_id,source_external_id", ignoreDuplicates: true }).select("id").maybeSingle();
-      if (written.error) throw written.error;
-      const call = written.data ?? (await supabase.from("opposition_calls").select("id")
-        .eq("source_id", source.data.id).eq("source_external_id", record.reference).single()).data;
-      if (!call) throw new Error("No se pudo resolver la ficha de la publicación");
-      const publication = await supabase.from("opposition_publications").upsert({
-        call_id: call.id, source_id: source.data.id, external_id: record.reference, publication_type: kind.type,
-        publication_date: record.date, bulletin_name: source.data.name, bulletin_identifier: record.bulletin,
-        official_url: record.url, official_pdf_url: record.pdf, change_summary: record.title, relevance: kind.relevance,
-      }, { onConflict: "source_id,external_id", ignoreDuplicates: true });
-      if (publication.error) throw publication.error;
-      if (written.data) added++;
-    }
-    const finished = new Date().toISOString();
-    await supabase.from("opposition_sources").update({ last_checked_at: finished, last_success_at: finished, last_error: null }).eq("id", source.data.id);
-    await supabase.from("opposition_ingestion_runs").update({
-      finished_at: finished, status: "success", publications_detected: detected, calls_created: added, alerts_queued: 0,
-    }).eq("id", run.data.id);
-    return { source: config.authority, detected, added, alertsQueued: 0 };
-  } catch (error) {
-    const finished = new Date().toISOString();
-    const message = error instanceof Error ? error.message : "No pudo consultarse la fuente oficial.";
-    await supabase.from("opposition_sources").update({ last_checked_at: finished, last_error: message }).eq("id", source.data.id);
-    await supabase.from("opposition_ingestion_runs").update({
-      finished_at: finished, status: "failed", error_message: message, publications_detected: detected, calls_created: added, alerts_queued: 0,
-    }).eq("id", run.data.id);
-    throw error;
-  }
-}
-
 export async function POST(request: NextRequest) {
   const expected = process.env.CRON_SECRET;
   if (!expected || request.headers.get("authorization") !== `Bearer ${expected}`) {
     return NextResponse.json({ ok: false, error: "No autorizado" }, { status: 401 });
   }
   const source = request.nextUrl.searchParams.get("source") ?? "boe";
-  const regionalName = Object.prototype.hasOwnProperty.call(regionalSources, source)
-    ? source as keyof typeof regionalSources : null;
-  if (source !== "boe" && !regionalName) {
+  if (source !== "boe") {
     return NextResponse.json({ ok: false, error: "Fuente no reconocida." }, { status: 400 });
   }
   const date = requestedDate(request);
@@ -645,7 +550,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: false, error: "Fecha del BOE no válida." }, { status: 400 });
   }
   try {
-    const result = regionalName ? await ingestRegional(regionalName) : await ingestBoe(request);
+    const result = await ingestBoe(request);
     return NextResponse.json({ ok: true, results: [result] });
   } catch (error) {
     console.error("Error de ingestión del Banco de Opositores", error);
