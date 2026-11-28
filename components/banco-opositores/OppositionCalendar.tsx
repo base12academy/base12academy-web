@@ -25,6 +25,18 @@ export default function OppositionCalendar({ territory }: { territory: string })
   const [calls, setCalls] = useState<CalendarCall[] | null>(null);
   const [error, setError] = useState("");
 
+  function chooseMonth(value: string) {
+    if (!/^20\d\d-(?:0[1-9]|1[012])$/.test(value) || value === month) return;
+    setCalls(null);
+    setError("");
+    setMonth(value);
+  }
+
+  function moveMonth(step: number) {
+    const [year, index] = month.split("-").map(Number);
+    chooseMonth(new Date(Date.UTC(year, index - 1 + step, 1)).toISOString().slice(0, 7));
+  }
+
   useEffect(() => {
     const controller = new AbortController();
     const params = new URLSearchParams({ month, territory });
@@ -46,12 +58,11 @@ export default function OppositionCalendar({ territory }: { territory: string })
   return (
     <section className={styles.searchPanel} aria-labelledby="calendar-heading">
       <h2 id="calendar-heading">Calendario oficial</h2>
-      <label>Mes <input type="month" value={month} onChange={event => {
-        if (!event.target.value) return;
-        setCalls(null);
-        setError("");
-        setMonth(event.target.value);
-      }} /></label>
+      <div className={styles.calendarNavigation}>
+        <button className={styles.outlineButton} type="button" onClick={() => moveMonth(-1)}>Mes anterior</button>
+        <label>Mes <input type="month" value={month} onChange={event => chooseMonth(event.target.value)} /></label>
+        <button className={styles.outlineButton} type="button" onClick={() => moveMonth(1)}>Mes siguiente</button>
+      </div>
       {error && <p role="alert">{error}</p>}
       {!error && !calls && <p role="status">Cargando fechas oficiales…</p>}
       {calls && (events.length ? (

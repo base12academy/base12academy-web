@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { publicCallFields, type OppositionCall } from "@/lib/oppositions";
+import { type OppositionCall } from "@/lib/oppositions";
 import { getSupabase } from "@/lib/supabase/server";
 
 export const dynamic = "force-dynamic";
@@ -51,20 +51,16 @@ export async function POST(request: Request) {
       );
     }
 
-    const supabase = getSupabase();
-    const { data, error } = await supabase
-      .from("opposition_calls")
-      .select(publicCallFields)
-      .eq("active", true)
-      .order("publication_date", { ascending: false })
-      .limit(120);
-    if (error) throw error;
-
     const goalTokens = tokens(preparation);
+    const supabase = getSupabase();
+    const { data, error } = goalTokens.size
+      ? await supabase.rpc("opposition_orientation_candidates", { search_terms: [...goalTokens].slice(0, 12) })
+      : { data: [], error: null };
+    if (error) throw error;
     const normalizedTerritory = normalize(territory);
     const normalizedGroup = normalize(group);
 
-    const recommendations = ((data ?? []) as unknown as OppositionCall[])
+    const ranked = ((data ?? []) as unknown as OppositionCall[])
       .map((call) => {
         const callTokens = tokens(
           [call.title, call.specialty, call.organisation, call.administration].filter(Boolean).join(" ")
@@ -76,16 +72,21 @@ export async function POST(request: Request) {
         const sameGroup = Boolean(
           normalizedGroup && normalize(call.group_category ?? "") === normalizedGroup
         );
-        const score = shared.length * 3 + (sameTerritory ? 4 : 0) + (sameGroup ? 3 : 0);
+        const score = shared.length * 8 + (sameTerritory ? 4 : 0) + (sameGroup ? 3 : 0);
         const reasons = [
           shared.length ? `Coincide en: ${shared.slice(0, 4).join(", ")}` : null,
           sameTerritory ? `Coincide con el territorio ${territory}` : null,
           sameGroup ? `Coincide con el grupo ${group}` : null,
+          shared.length ? null : "Coincide con términos relacionados con la preparación",
         ].filter(Boolean) as string[];
 
-        return { call, score, reasons };
-      })
-      .filter((item) => item.score > 0)
+        return { call, score, reasons, termMatches: shared.length };
+      });
+
+    const completeMatches = goalTokens.size > 1
+      ? ranked.filter((item) => item.termMatches === goalTokens.size)
+      : [];
+    const recommendations = (completeMatches.length ? completeMatches : ranked)
       .sort((a, b) => b.score - a.score || b.call.publication_date.localeCompare(a.call.publication_date))
       .slice(0, 5)
       .map(({ call, score, reasons }) => ({

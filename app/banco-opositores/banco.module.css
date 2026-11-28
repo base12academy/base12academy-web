@@ -380,6 +380,13 @@
   margin-top: .5rem;
 }
 
+.calendarNavigation {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .75rem;
+}
+
 .calendarEvents {
   display: grid;
   gap: .75rem;
