@@ -49,3 +49,19 @@ test("uses the named organisation, preserving the bulletin department as a fallb
   assert.equal(boeOrganisation("Resolución de 17 de septiembre de 2026, de la Universidad Autónoma de Barcelona, por la que se convoca", "UNIVERSIDADES"), "Universidad Autónoma de Barcelona");
   assert.equal(boeOrganisation("Acuerdo de la Comisión Permanente", "CONSEJO GENERAL DEL PODER JUDICIAL"), "CONSEJO GENERAL DEL PODER JUDICIAL");
 });
+
+test("reads explicit selection dates and avoids deriving deadlines from relative periods", () => {
+  const result = detailsFromParagraphs([
+    "Se convocan un total de 24 plazas del subgrupo C1 mediante el sistema de concurso-oposición.",
+    "El plazo de presentación de solicitudes será desde el 2 de noviembre de 2026 hasta el 23 de noviembre de 2026.",
+    "El primer ejercicio se celebrará el 3 de diciembre de 2026.",
+  ]);
+  assert.equal(result.accessSystem, "Concurso-oposición");
+  assert.equal(result.vacancies, 24);
+  assert.equal(result.group, "C1");
+  assert.equal(result.applicationStart, "2026-11-02");
+  assert.equal(result.applicationEnd, "2026-11-23");
+  assert.equal(result.examDate, "2026-12-03");
+  assert.equal(parse("19810").applicationEnd, null);
+  assert.equal(detailsFromParagraphs(["El primer ejercicio se celebrará el 31 de noviembre de 2026."]).examDate, null);
+});

@@ -5,7 +5,7 @@ import { useState } from "react";
 import OppositionAlertDialog from "./OppositionAlertDialog";
 import styles from "@/app/banco-opositores/banco.module.css";
 
-type Recommendation = { id: string; slug: string; title: string; compatibility: number; reasons: string[] };
+type Recommendation = { id: string; slug: string; title: string; reasons: string[] };
 
 export default function OppositionDetailActions({
   callId,
@@ -47,7 +47,7 @@ export default function OppositionDetailActions({
       <button className={styles.primaryButton} type="button" onClick={askFernando} disabled={loading}>
         {loading ? "Comparando…" : "Consultar a Fernando"}
       </button>
-      {answer && <div className={styles.fernandoAnswer}><p>{answer}</p>{recommendations.map((item) => <article key={item.id}><div><b>{item.title}</b>{item.reasons.map((reason) => <small key={reason}>{reason}</small>)}</div><strong>{item.compatibility}%</strong><Link href={`/banco-opositores/convocatoria/${item.slug}`}>Ver ficha</Link></article>)}</div>}
+      {answer && <div className={styles.fernandoAnswer}><p>{answer}</p>{recommendations.map((item) => <article key={item.id}><div><b>{item.title}</b>{item.reasons.map((reason) => <small key={reason}>{reason}</small>)}</div><Link href={`/banco-opositores/convocatoria/${item.slug}`}>Ver ficha</Link></article>)}</div>}
       <OppositionAlertDialog open={alertOpen} onClose={() => setAlertOpen(false)} callId={callId} callTitle={callTitle} />
     </>
   );

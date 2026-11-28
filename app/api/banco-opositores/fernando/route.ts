@@ -40,9 +40,9 @@ export async function POST(request: Request) {
       group?: string;
       qualification?: string;
     };
-    const preparation = (body.preparation ?? "").trim().slice(0, 180);
-    const territory = (body.territory ?? "").trim().slice(0, 80);
-    const group = (body.group ?? "").trim().slice(0, 30);
+    const preparation = typeof body?.preparation === "string" ? body.preparation.trim().slice(0, 180) : "";
+    const territory = typeof body?.territory === "string" ? body.territory.trim().slice(0, 80) : "";
+    const group = typeof body?.group === "string" ? body.group.trim().slice(0, 30) : "";
 
     if (preparation.length < 3) {
       return NextResponse.json(
@@ -96,7 +96,7 @@ export async function POST(request: Request) {
         territory: call.territory,
         group: call.group_category,
         publicationDate: call.publication_date,
-        compatibility: Math.min(95, 45 + score * 5),
+        matchedTerms: score,
         reasons,
         officialUrl: call.official_url,
         base12CourseSlug: call.base12_course_slug,
@@ -108,7 +108,7 @@ export async function POST(request: Request) {
         : "No encuentro ahora una coincidencia suficientemente respaldada por las convocatorias oficiales cargadas. Puedes ampliar el territorio o describir la plaza de otra forma; no voy a inventar una compatibilidad.",
       recommendations,
       qualificationNote: body.qualification
-        ? "La titulación solo se ha considerado cuando la publicación oficial la indica expresamente."
+        ? "Comprueba la titulación exigida en las bases de cada convocatoria."
         : null,
     });
   } catch (error) {

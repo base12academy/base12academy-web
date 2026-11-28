@@ -20,7 +20,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function BancoOpositoresPage() {
+export default async function BancoOpositoresPage({ searchParams }: {
+  searchParams: Promise<{ administration?: string }>;
+}) {
+  const { administration } = await searchParams;
   const calls = await getLatestOppositionCalls();
 
   return (
@@ -40,7 +43,7 @@ export default async function BancoOpositoresPage() {
       </header>
 
       <main className={styles.main}>
-        <OppositionExplorer initialCalls={calls} />
+        <OppositionExplorer initialCalls={calls} initialAdministration={administration === "Universidad" || administration === "Local" ? administration : ""} />
       </main>
 
       <footer className={styles.footer}>

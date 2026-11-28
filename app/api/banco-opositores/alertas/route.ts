@@ -117,7 +117,7 @@ export async function POST(request: NextRequest) {
     if (!emailPattern.test(email)) {
       return NextResponse.json({ error: "Indica un correo electrónico válido." }, { status: 400 });
     }
-    if (!body.serviceConsent) {
+    if (body.serviceConsent !== true) {
       return NextResponse.json(
         { error: "Debes aceptar el aviso de servicio para crear la alerta." },
         { status: 400 }
@@ -126,26 +126,20 @@ export async function POST(request: NextRequest) {
     if (!emailEnabled && !telegramEnabled) {
       return NextResponse.json({ error: "Elige al menos un canal de aviso." }, { status: 400 });
     }
-    if (type === "convocatoria" && !body.callId) {
+    if (type === "convocatoria" && !/^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i.test(body.callId ?? "")) {
       return NextResponse.json({ error: "Falta la convocatoria que deseas seguir." }, { status: 400 });
     }
 
     const supabase = getSupabase();
-    let userId: string | null = null;
     const accessToken = bearer(request);
-    if (accessToken) {
-      const { data } = await supabase.auth.getUser(accessToken);
-      userId = data.user?.id ?? null;
+    const user = accessToken ? (await supabase.auth.getUser(accessToken)).data.user : null;
+    if (!user?.email_confirmed_at || user.email?.toLowerCase() !== email) {
+      return NextResponse.json({
+        error: "Accede con una cuenta Base12 y utiliza el correo verificado de esa cuenta.",
+        requiresLogin: true,
+      }, { status: 401 });
     }
-    if (telegramEnabled && !userId) {
-      return NextResponse.json(
-        {
-          error: "Para recibir avisos por Telegram debes acceder a tu cuenta Base12 y vincular Telegram voluntariamente.",
-          requiresLogin: true,
-        },
-        { status: 401 }
-      );
-    }
+    const userId = user.id;
 
     let callTitle = "nuevas convocatorias que coincidan con tus criterios";
     if (type === "convocatoria") {
@@ -164,11 +158,16 @@ export async function POST(request: NextRequest) {
     const managementToken = randomBytes(32).toString("base64url");
     const tokenHash = hashToken(managementToken);
     const now = new Date().toISOString();
-    const { data: existingSubscriber } = await supabase
+    const { data: existingSubscriber, error: subscriberError } = await supabase
       .from("opposition_subscribers")
-      .select("id")
-      .ilike("email", email)
+      .select("id,user_id")
+      .eq("email", email)
       .maybeSingle();
+
+    if (subscriberError) throw subscriberError;
+    if (existingSubscriber?.user_id && existingSubscriber.user_id !== userId) {
+      return NextResponse.json({ error: "No se pudo vincular ese correo." }, { status: 409 });
+    }
 
     let subscriberId: string;
     if (existingSubscriber) {
@@ -179,6 +178,7 @@ export async function POST(request: NextRequest) {
           user_id: userId,
           full_name: fullName,
           management_token_hash: tokenHash,
+          email_verified_at: user.email_confirmed_at,
           active: true,
         })
         .eq("id", subscriberId);
@@ -191,6 +191,7 @@ export async function POST(request: NextRequest) {
           email,
           full_name: fullName,
           management_token_hash: tokenHash,
+          email_verified_at: user.email_confirmed_at,
           active: true,
         })
         .select("id")
@@ -214,12 +215,11 @@ export async function POST(request: NextRequest) {
 
     const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://base12academy.es").replace(/\/$/, "");
     const managementUrl = `${siteUrl}/banco-opositores/alertas?token=${encodeURIComponent(managementToken)}`;
-    const emailSent = await sendConfirmation({ email, title: callTitle, managementUrl });
+    const emailSent = await sendConfirmation({ email, title: callTitle, managementUrl }).catch(() => false);
 
     return NextResponse.json({
       ok: true,
       emailSent,
-      managementUrl,
       telegramLinked: telegramEnabled,
     });
   } catch (error) {

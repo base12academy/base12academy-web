@@ -28,6 +28,7 @@ export default function OppositionAlertDialog({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const [emailSent, setEmailSent] = useState(false);
 
   if (!open) return null;
 
@@ -57,13 +58,14 @@ export default function OppositionAlertDialog({
           commercialConsent,
         }),
       });
-      const result = (await response.json()) as { error?: string; requiresLogin?: boolean };
+      const result = (await response.json()) as { error?: string; requiresLogin?: boolean; emailSent?: boolean };
       if (!response.ok) {
         if (result.requiresLogin) {
           throw new Error(`${result.error} Puedes acceder y volver después a esta ficha.`);
         }
         throw new Error(result.error || "No se pudo crear la alerta.");
       }
+      setEmailSent(result.emailSent === true);
       setSuccess(true);
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : "No se pudo crear la alerta.");
@@ -82,7 +84,7 @@ export default function OppositionAlertDialog({
           <div className={styles.successBox}>
             <span aria-hidden="true">✓</span>
             <h2 id="alert-title">Alerta activada</h2>
-            <p>Te hemos enviado el enlace privado para gestionar, pausar o eliminar tus alertas.</p>
+            <p>{emailSent ? "Te hemos enviado el enlace privado para gestionar tus alertas." : "La alerta se ha guardado. El correo de confirmación no ha podido enviarse."}</p>
             <button type="button" className={styles.primaryButton} onClick={onClose}>Cerrar</button>
           </div>
         ) : (
@@ -97,7 +99,7 @@ export default function OppositionAlertDialog({
 
             <div className={styles.formGrid}>
               <label>Nombre <span>Opcional</span><input value={fullName} onChange={(e) => setFullName(e.target.value)} autoComplete="name" /></label>
-              <label>Correo electrónico<input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="email" /></label>
+              <label>Correo verificado de tu cuenta Base12<input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="email" /></label>
             </div>
 
             <fieldset className={styles.channelFieldset}>
@@ -125,7 +127,7 @@ export default function OppositionAlertDialog({
             <button className={styles.primaryButton} type="submit" disabled={loading}>
               {loading ? "Activando…" : "Guardar y activar alerta"}
             </button>
-            <p className={styles.microcopy}>Sin compromiso. Podrás pausar o eliminar la alerta desde el enlace privado enviado por correo.</p>
+            <p className={styles.microcopy}>Sin compromiso. Podrás pausar o reactivar la alerta desde el enlace privado enviado por correo.</p>
           </form>
         )}
       </section>

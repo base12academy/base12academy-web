@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabase } from "@/lib/supabase/server";
 import { getBoeOfficialDetails } from "@/lib/boe-official";
-import { boeOrganisation, detailsFromParagraphs } from "@/lib/boe-details";
+import { boeOrganisation, detailsFromParagraphs, isBoeCall } from "@/lib/boe-details";
+
+import { bomeIssues, readBocmFeed, readBojaFeed, readBomeIssue, type BulletinPublication } from "@/lib/opposition-bulletins";
+import { boeGeography, madridDate } from "@/lib/opposition-geography";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -76,6 +79,7 @@ type AlertRow = {
     email: string;
     user_id: string | null;
     active: boolean;
+    email_verified_at: string | null;
   } | null;
 };
 
@@ -178,7 +182,9 @@ async function relatedBoeIds(publication: NormalizedPublication) {
     });
     if (!response.ok) return [];
     const xml = await response.text();
-    return [...new Set(xml.match(/BOE-A-\d{4}-\d+/g) ?? [])].filter(
+    const text = [...xml.matchAll(/<texto(?:\s[^>]*)?>([\s\S]*?)<\/texto>/g)]
+      .find(match => /<p\b/i.test(match[1]))?.[1] ?? "";
+    return [...new Set(text.match(/BOE-A-\d{4}-\d+/g) ?? [])].filter(
       (id) => id !== publication.externalId
     );
   } catch {
@@ -268,14 +274,14 @@ async function notifyAlerts(input: {
   const supabase = getSupabase();
   const { data, error } = await supabase
     .from("opposition_alerts")
-    .select("id,alert_type,call_id,criteria,email_enabled,telegram_enabled,subscriber:opposition_subscribers(email,user_id,active)")
+    .select("id,alert_type,call_id,criteria,email_enabled,telegram_enabled,subscriber:opposition_subscribers(email,user_id,active,email_verified_at)")
     .eq("active", true);
   if (error) throw error;
 
   const candidates = (data ?? []) as unknown as AlertRow[];
   let queued = 0;
   for (const alert of candidates) {
-    if (!alert.subscriber?.active) continue;
+    if (!alert.subscriber?.active || !alert.subscriber.email_verified_at) continue;
     const followsCall = alert.alert_type === "convocatoria" && alert.call_id === input.call.id;
     const isGeneralMatch = alert.alert_type === "general" && input.isNewCall && alertMatches(alert.criteria ?? {}, input.call);
     if (!isGeneralMatch && !(followsCall && input.relevance !== "informativa")) continue;
@@ -331,11 +337,8 @@ async function notifyAlerts(input: {
 }
 
 function requestedDate(request: NextRequest) {
-  const raw = request.nextUrl.searchParams.get("date")?.replace(/\D/g, "") ?? "";
-  if (raw.length === 8) return raw;
-  return new Intl.DateTimeFormat("en-CA", {
-    year: "numeric", month: "2-digit", day: "2-digit", timeZone: "Europe/Madrid",
-  }).format(new Date()).replace(/-/g, "");
+  const raw = request.nextUrl.searchParams.get("date");
+  return raw === null ? madridDate().replace(/-/g, "") : raw.replace(/-/g, "");
 }
 
 async function ingestBoe(request: NextRequest) {
@@ -351,6 +354,7 @@ async function ingestBoe(request: NextRequest) {
   const run = await supabase.from("opposition_ingestion_runs").insert({ source_id: source.id }).select("id").single();
   if (run.error) throw run.error;
   const date = requestedDate(request);
+  const historical = request.nextUrl.searchParams.has("date");
   let detected = 0;
   let created = 0;
   let updated = 0;
@@ -369,99 +373,129 @@ async function ingestBoe(request: NextRequest) {
       return { source: "BOE", date, detected: 0, created: 0, updated: 0, alertsQueued: 0 };
     }
     if (!response.ok) throw new Error(`BOE API devolvió ${response.status}`);
-    const publications = flattenBoe((await response.json()) as BoePayload);
+    const payload = (await response.json()) as BoePayload;
+    if (payload.data?.sumario?.metadatos?.fecha_publicacion !== date || !payload.data.sumario.diario) {
+      throw new Error("El sumario del BOE no corresponde a la fecha solicitada");
+    }
+    const publications = flattenBoe(payload);
     detected = publications.length;
 
-    for (const publication of publications) {
-      const { data: existingPublication } = await supabase
-        .from("opposition_publications")
-        .select("id")
-        .eq("source_id", source.id)
-        .eq("external_id", publication.externalId)
-        .maybeSingle();
-      if (existingPublication) continue;
+    const alreadyStored = new Set<string>();
+    for (let offset = 0; offset < publications.length; offset += 75) {
+      const batch = publications.slice(offset, offset + 75);
+      const { data, error } = await supabase.from("opposition_publications").select("external_id")
+        .eq("source_id", source.id).in("external_id", batch.map(publication => publication.externalId));
+      if (error) throw error;
+      for (const row of data) alreadyStored.add(row.external_id);
+    }
+    const missing = publications.filter(publication => !alreadyStored.has(publication.externalId));
+    for (let offset = 0; offset < missing.length; offset += 8) {
+      const prepared = await Promise.all(missing.slice(offset, offset + 8).map(async publication => {
+        const [relatedIds, details] = await Promise.all([
+          relatedBoeIds(publication),
+          getBoeOfficialDetails(publication.externalId).catch(() => null),
+        ]);
+        return { publication, relatedIds, details };
+      }));
+      for (const { publication, relatedIds, details } of prepared) {
+        const kind = publicationKind(publication.title);
+        let call: StoredCall | null = null;
+        if (relatedIds.length) {
+          const { data, error } = await supabase
+            .from("opposition_calls")
+            .select("*")
+            .eq("source_id", source.id)
+            .in("source_external_id", relatedIds)
+            .not("official_call_identifier", "is", null)
+            .lte("publication_date", publication.publicationDate)
+            .limit(2);
+          if (error) throw error;
+          if (data?.length === 1) call = data[0] as unknown as StoredCall;
+        }
 
-      const kind = publicationKind(publication.title);
-      const relatedIds = await relatedBoeIds(publication);
-      let call: StoredCall | null = null;
-      if (relatedIds.length) {
-        const { data } = await supabase
-          .from("opposition_calls")
-          .select("*")
-          .eq("source_id", source.id)
-          .in("source_external_id", relatedIds)
-          .limit(1)
-          .maybeSingle();
-        call = data as unknown as StoredCall | null;
-      }
+        const isNewCall = !call;
+        if (!call) {
+          const slug = `${slugify(publication.title)}-${publication.externalId.toLowerCase()}`;
+          const { data, error } = await supabase.from("opposition_calls").insert({
+            source_id: source.id,
+            source_external_id: publication.externalId,
+            related_external_ids: relatedIds,
+            slug,
+            title: publication.title,
+            summary: details?.summary || null,
+            vacancies: details?.vacancies ?? null,
+            group_category: details?.group ?? null,
+            access_system: details?.accessSystem ?? null,
+            application_start: details?.applicationStart ?? null,
+            application_end: details?.applicationEnd ?? null,
+            exam_date: details?.examDate ?? null,
+            official_call_identifier: isBoeCall(publication.title) ? publication.externalId : null,
+            official_call_identifier_authority: isBoeCall(publication.title) ? "BOE" : null,
+            organisation: boeOrganisation(publication.title, publication.organisation),
+            administration: publication.organisation,
+            ...boeGeography(publication.title, publication.organisation),
+            specialty: details?.specialty || publication.epigraph,
+            status: kind.status,
+            publication_date: publication.publicationDate,
+            official_url: publication.officialUrl,
+            bulletin_name: "Boletín Oficial del Estado",
+            bulletin_identifier: publication.bulletinIdentifier,
+            base12_course_slug: normalize(publication.title).includes("tropa y marineria") ? "tropa-y-marineria" : null,
+          }).select("*").single();
+          if (error?.code === "23505") {
+            const existing = await supabase.from("opposition_calls").select("*")
+              .eq("source_id", source.id).eq("source_external_id", publication.externalId).single();
+            if (existing.error) throw existing.error;
+            call = existing.data as unknown as StoredCall;
+          } else {
+            if (error) throw error;
+            call = data as unknown as StoredCall;
+            created++;
+          }
+        } else {
+          const mergedRelated = [...new Set([...(call.related_external_ids ?? []), publication.externalId, ...relatedIds])];
+          const { data, error } = await supabase.from("opposition_calls").update({
+            related_external_ids: mergedRelated,
+            status: kind.status,
+            last_official_update: new Date().toISOString(),
+          }).eq("id", call.id).select("*").single();
+          if (error) throw error;
+          call = data as unknown as StoredCall;
+          updated++;
+        }
 
-      const isNewCall = !call;
-      if (!call) {
-        const slug = `${slugify(publication.title)}-${publication.externalId.toLowerCase()}`;
-        const details = await getBoeOfficialDetails(publication.externalId).catch(() => null);
-        const { data, error } = await supabase.from("opposition_calls").insert({
+        if (!call) {
+          throw new Error(`No se pudo resolver la convocatoria ${publication.externalId}`);
+        }
+
+        const changeSummary = kind.type === "convocatoria"
+          ? `Publicación inicial detectada en ${publication.bulletinIdentifier}.`
+          : `La fuente oficial publica una ${kind.type.replace(/_/g, " ")}: ${publication.title}`;
+        const { data: history, error: historyError } = await supabase.from("opposition_publications").insert({
+          call_id: call.id,
           source_id: source.id,
-          source_external_id: publication.externalId,
-          related_external_ids: relatedIds,
-          slug,
-          title: publication.title,
-          summary: details?.summary || null,
-          organisation: boeOrganisation(publication.title, publication.organisation),
-          administration: publication.organisation,
-          territory: "España",
-          specialty: details?.specialty || publication.epigraph,
-          status: kind.status,
+          external_id: publication.externalId,
+          publication_type: kind.type,
           publication_date: publication.publicationDate,
-          official_url: publication.officialUrl,
           bulletin_name: "Boletín Oficial del Estado",
           bulletin_identifier: publication.bulletinIdentifier,
-          base12_course_slug: normalize(publication.title).includes("tropa y marineria") ? "tropa-y-marineria" : null,
-        }).select("*").single();
-        if (error) throw error;
-        call = data as unknown as StoredCall;
-        created++;
-      } else {
-        const mergedRelated = [...new Set([...(call.related_external_ids ?? []), publication.externalId, ...relatedIds])];
-        const { data, error } = await supabase.from("opposition_calls").update({
-          related_external_ids: mergedRelated,
-          status: kind.status,
-          last_official_update: new Date().toISOString(),
-        }).eq("id", call.id).select("*").single();
-        if (error) throw error;
-        call = data as unknown as StoredCall;
-        updated++;
+          official_url: publication.officialUrl,
+          official_pdf_url: publication.pdfUrl,
+          change_summary: changeSummary,
+          relevance: kind.relevance,
+        }).select("id").single();
+        if (historyError?.code === "23505") continue;
+        if (historyError) throw historyError;
+
+        if (!historical) alertsQueued += await notifyAlerts({
+          call,
+          publicationId: history.id,
+          publicationUrl: publication.officialUrl,
+          change: changeSummary,
+          isNewCall,
+          relevance: kind.relevance,
+        });
       }
-
-      if (!call) {
-        throw new Error(`No se pudo resolver la convocatoria ${publication.externalId}`);
-      }
-
-      const changeSummary = kind.type === "convocatoria"
-        ? `Publicación inicial detectada en ${publication.bulletinIdentifier}.`
-        : `La fuente oficial publica una ${kind.type.replace(/_/g, " ")}: ${publication.title}`;
-      const { data: history, error: historyError } = await supabase.from("opposition_publications").insert({
-        call_id: call.id,
-        source_id: source.id,
-        external_id: publication.externalId,
-        publication_type: kind.type,
-        publication_date: publication.publicationDate,
-        bulletin_name: "Boletín Oficial del Estado",
-        bulletin_identifier: publication.bulletinIdentifier,
-        official_url: publication.officialUrl,
-        official_pdf_url: publication.pdfUrl,
-        change_summary: changeSummary,
-        relevance: kind.relevance,
-      }).select("id").single();
-      if (historyError) throw historyError;
-
-      alertsQueued += await notifyAlerts({
-        call,
-        publicationId: history.id,
-        publicationUrl: publication.officialUrl,
-        change: changeSummary,
-        isNewCall,
-        relevance: kind.relevance,
-      });
     }
 
     const finishedAt = new Date().toISOString();
@@ -492,13 +526,102 @@ async function ingestBoe(request: NextRequest) {
   }
 }
 
+const regionalSources = {
+  boja: { method: "boja_atom", territory: "Andalucía", authority: "BOJA" },
+  bocm: { method: "bocm_rss", territory: "Madrid", authority: "BOCM" },
+  bome: { method: "bome_sumario", territory: "Melilla", authority: "BOME" },
+} as const;
+
+async function readOfficialFeed(url: string) {
+  const response = await fetch(url, { cache: "no-store", signal: AbortSignal.timeout(12_000) });
+  if (!response.ok) throw new Error(`Fuente oficial: HTTP ${response.status}`);
+  return response.text();
+}
+
+async function regionalPublications(name: keyof typeof regionalSources): Promise<BulletinPublication[]> {
+  if (name === "boja") {
+    return readBojaFeed(await readOfficialFeed("https://www.juntadeandalucia.es/boja/distribucion/s53.xml"));
+  }
+  if (name === "bocm") {
+    return readBocmFeed(await readOfficialFeed("https://www.bocm.es/ultimo-boletin.xml"));
+  }
+  const base = "https://bomemelilla.es";
+  const issues = bomeIssues(await readOfficialFeed(base)).slice(0, 8);
+  const records = await Promise.all(issues.map(async path => readBomeIssue(await readOfficialFeed(base + path), path)));
+  return records.flat();
+}
+
+async function ingestRegional(name: keyof typeof regionalSources) {
+  const config = regionalSources[name];
+  const supabase = getSupabase();
+  const source = await supabase.from("opposition_sources").select("id,name")
+    .eq("consultation_method", config.method).eq("active", true).single();
+  if (source.error) throw source.error;
+  const run = await supabase.from("opposition_ingestion_runs").insert({ source_id: source.data.id }).select("id").single();
+  if (run.error) throw run.error;
+
+  let detected = 0;
+  let added = 0;
+  try {
+    const records = await regionalPublications(name);
+    detected = records.length;
+    for (const record of records) {
+      const kind = publicationKind(record.title);
+      const slug = `${slugify(record.title)}-${name}-${record.reference.toLowerCase()}`;
+      const isCall = isBoeCall(record.title);
+      const written = await supabase.from("opposition_calls").upsert({
+        source_id: source.data.id, source_external_id: record.reference, slug, title: record.title,
+        organisation: record.organisation, territory: config.territory, status: kind.status,
+        official_url: record.url, publication_date: record.date, bulletin_name: source.data.name,
+        bulletin_identifier: record.bulletin, official_call_identifier: isCall ? record.reference : null,
+        official_call_identifier_authority: isCall ? config.authority : null,
+      }, { onConflict: "source_id,source_external_id", ignoreDuplicates: true }).select("id").maybeSingle();
+      if (written.error) throw written.error;
+      const call = written.data ?? (await supabase.from("opposition_calls").select("id")
+        .eq("source_id", source.data.id).eq("source_external_id", record.reference).single()).data;
+      if (!call) throw new Error("No se pudo resolver la ficha de la publicación");
+      const publication = await supabase.from("opposition_publications").upsert({
+        call_id: call.id, source_id: source.data.id, external_id: record.reference, publication_type: kind.type,
+        publication_date: record.date, bulletin_name: source.data.name, bulletin_identifier: record.bulletin,
+        official_url: record.url, official_pdf_url: record.pdf, change_summary: record.title, relevance: kind.relevance,
+      }, { onConflict: "source_id,external_id", ignoreDuplicates: true });
+      if (publication.error) throw publication.error;
+      if (written.data) added++;
+    }
+    const finished = new Date().toISOString();
+    await supabase.from("opposition_sources").update({ last_checked_at: finished, last_success_at: finished, last_error: null }).eq("id", source.data.id);
+    await supabase.from("opposition_ingestion_runs").update({
+      finished_at: finished, status: "success", publications_detected: detected, calls_created: added, alerts_queued: 0,
+    }).eq("id", run.data.id);
+    return { source: config.authority, detected, added, alertsQueued: 0 };
+  } catch (error) {
+    const finished = new Date().toISOString();
+    const message = error instanceof Error ? error.message : "No pudo consultarse la fuente oficial.";
+    await supabase.from("opposition_sources").update({ last_checked_at: finished, last_error: message }).eq("id", source.data.id);
+    await supabase.from("opposition_ingestion_runs").update({
+      finished_at: finished, status: "failed", error_message: message, publications_detected: detected, calls_created: added, alerts_queued: 0,
+    }).eq("id", run.data.id);
+    throw error;
+  }
+}
+
 export async function POST(request: NextRequest) {
   const expected = process.env.CRON_SECRET;
   if (!expected || request.headers.get("authorization") !== `Bearer ${expected}`) {
     return NextResponse.json({ ok: false, error: "No autorizado" }, { status: 401 });
   }
+  const source = request.nextUrl.searchParams.get("source") ?? "boe";
+  if (source !== "boe" && source !== "boja" && source !== "bocm" && source !== "bome") {
+    return NextResponse.json({ ok: false, error: "Fuente no reconocida." }, { status: 400 });
+  }
+  const date = requestedDate(request);
+  const iso = date.replace(/^(\d{4})(\d{2})(\d{2})$/, "$1-$2-$3");
+  const parsed = new Date(iso);
+  if (!/^\d{8}$/.test(date) || Number.isNaN(parsed.getTime()) || parsed.toISOString().slice(0, 10) !== iso || iso > madridDate()) {
+    return NextResponse.json({ ok: false, error: "Fecha del BOE no válida." }, { status: 400 });
+  }
   try {
-    const result = await ingestBoe(request);
+    const result = source === "boe" ? await ingestBoe(request) : await ingestRegional(source);
     return NextResponse.json({ ok: true, results: [result] });
   } catch (error) {
     console.error("Error de ingestión del Banco de Opositores", error);

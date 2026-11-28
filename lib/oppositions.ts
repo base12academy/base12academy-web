@@ -1,5 +1,6 @@
 import { getSupabase } from "@/lib/supabase/server";
 import { cache } from "react";
+import { madridDate } from "./opposition-geography";
 import { detailsFromParagraphs } from "./boe-details";
 import { getBoeOfficialDetails } from "./boe-official";
 
@@ -111,12 +112,9 @@ export function applicationStatus(call: OppositionCall) {
     };
   }
 
-  const now = new Date();
-  const start = new Date(`${call.application_start}T00:00:00+01:00`);
-  const end = new Date(`${call.application_end}T23:59:59+01:00`);
-
-  if (now < start) return { label: "Próxima apertura", tone: "next" as const };
-  if (now > end) return { label: "Inscripción cerrada", tone: "closed" as const };
+  const today = madridDate();
+  if (today < call.application_start) return { label: "Próxima apertura", tone: "next" as const };
+  if (today > call.application_end) return { label: "Inscripción cerrada", tone: "closed" as const };
   return { label: "Inscripción abierta", tone: "open" as const };
 }
 

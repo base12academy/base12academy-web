@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { madridDate } from "@/lib/opposition-geography";
 import { publicCallFields } from "@/lib/oppositions";
 import { getSupabase } from "@/lib/supabase/server";
 
@@ -6,7 +7,7 @@ export const dynamic = "force-dynamic";
 
 function clean(value: string | null, max = 100) {
   return (value ?? "")
-    .replace(/[%_,().]/g, " ")
+    .replace(/[%_,()."\\]/g, " ")
     .replace(/\s+/g, " ")
     .trim()
     .slice(0, max);
@@ -23,7 +24,7 @@ export async function GET(request: NextRequest) {
     const status = clean(params.get("status"), 40);
     const deadline = clean(params.get("deadline"), 30);
     const date = clean(params.get("date"), 10);
-    const limit = Math.min(Math.max(Number(params.get("limit")) || 60, 1), 100);
+    const limit = Math.min(Math.max(Math.trunc(Number(params.get("limit"))) || 60, 1), 100);
     const supabase = getSupabase();
 
     let query = supabase
@@ -45,7 +46,7 @@ export async function GET(request: NextRequest) {
     if (status) query = query.ilike("status", `%${status}%`);
     if (/^\d{4}-\d{2}-\d{2}$/.test(date)) query = query.gte("publication_date", date);
 
-    const today = new Date().toISOString().slice(0, 10);
+    const today = madridDate();
     if (deadline === "abierto") {
       query = query.lte("application_start", today).gte("application_end", today);
     } else if (deadline === "proximo") {

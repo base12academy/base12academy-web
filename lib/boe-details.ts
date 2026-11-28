@@ -13,6 +13,12 @@ export type BoeDetails = {
   exemptions: string | null;
   documentation: string | null;
   payment: string | null;
+  vacancies: number | null;
+  group: string | null;
+  accessSystem: string | null;
+  applicationStart: string | null;
+  applicationEnd: string | null;
+  examDate: string | null;
 };
 
 export function boeOrganisation(title: string, fallback: string | null) {
@@ -27,6 +33,43 @@ function plainText(value: string) {
     .replace(/&quot;/g, '"').replace(/&apos;/g, "'")
     .replace(/&nbsp;/g, " ").replace(/&amp;/g, "&")
     .replace(/\s+/g, " ").trim();
+}
+
+export function isBoeCall(title: string) {
+  const text = title.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  return /referente a la convocatoria para proveer|se publica la convocatoria del procedimiento selectivo|se convocan? (?:un |una |el |los |las )?(?:proceso|pruebas|concurso)|se convocan? (?:para proveer|la provision)/.test(text)
+    && !/correccion|modifica|anula|deja sin efecto|recursos?/.test(text);
+}
+
+function explicitVacancies(paragraphs: string[]) {
+  const total = paragraphs.map(p => p.match(/\bse convocan? (?:un total de )?(\d{1,7}) plazas?\b/i)?.[1]).filter(Boolean);
+  const byPosition = paragraphs.map(p => p.match(/^n[uú]mero de (?:puestos|plazas)\s*:\s*(\d{1,7})[.]?$/i)?.[1]).filter(Boolean);
+  if (new Set(total).size === 1) return Number(total[0]);
+  if (byPosition.length === 1) return Number(byPosition[0]);
+  const spelled = ["", "una", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez", "once", "doce", "trece", "catorce", "quince", "dieciséis", "diecisiete", "dieciocho", "diecinueve", "veinte"];
+  const local = paragraphs.flatMap(paragraph => {
+    const value = paragraph.match(/^(\d{1,7}|[a-záéíóú]+) plazas? de\b/i)?.[1]?.toLowerCase();
+    if (!value) return [];
+    const count = /^\d+$/.test(value) ? Number(value) : spelled.indexOf(value);
+    return count > 0 ? [count] : [];
+  });
+  return local.length === 1 ? local[0] : null;
+}
+
+const months = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+
+function explicitDate(paragraphs: string[], marker: RegExp) {
+  const dates = new Set(paragraphs.flatMap(paragraph => {
+    const match = paragraph.match(marker);
+    if (!match) return [];
+    const [, day, month, year] = match;
+    const monthNumber = months.indexOf(month.toLowerCase()) + 1;
+    const result = `${year}-${String(monthNumber).padStart(2, "0")}-${day.padStart(2, "0")}`;
+    const date = new Date(result);
+    return monthNumber && !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === result
+      ? [result] : [];
+  }));
+  return dates.size === 1 ? [...dates][0] : null;
 }
 
 export function detailsFromParagraphs(input: string[]): BoeDetails | null {
@@ -49,7 +92,21 @@ export function detailsFromParagraphs(input: string[]): BoeDetails | null {
   const exemptions = excerpt(/(?:exent[oa]s?|exenci[oó]n|bonificaci[oó]n).{0,180}(?:tasa|pago|derechos de examen)|(?:tasa|derechos de examen).{0,180}(?:exent|exenci[oó]n|bonificaci[oó]n)/i);
   const documentation = excerpt(/(?:deber[aá]n? (?:adjuntar|acompañar|aportar)|documentaci[oó]n (?:que debe|exigida|necesaria))/i);
   const payment = excerpt(/(?:pago|abono|ingreso) (?:de la tasa|de los derechos|electr[oó]nico|telem[aá]tico)/i);
-  return { education, fees, exemptions, documentation, payment, paragraphs, summary: paragraphs.join("\n\n"), specialty, category, positionId, applicationPeriod, headline };
+  const groups = [...new Set(paragraphs.flatMap(p =>
+    [...p.matchAll(/\bsubgrupo(?: de clasificaci[oó]n)?\s*[:(]?\s*(A[12]|C[12])\b/gi)].map(match => match[1].toUpperCase())
+  ))];
+  const vacancies = explicitVacancies(paragraphs);
+  const group = groups.length === 1 ? groups[0] : null;
+  const systems = new Set(paragraphs.flatMap(p =>
+    [...p.matchAll(/\bsistema (?:selectivo )?de (concurso\s*[-–]\s*oposici[oó]n|oposici[oó]n|concurso)\b/gi)]
+      .map(match => match[1].toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s*[-–]\s*/g, "-"))
+  ));
+  const labels: Record<string, string> = { "concurso-oposicion": "Concurso-oposición", oposicion: "Oposición", concurso: "Concurso" };
+  const accessSystem = systems.size === 1 ? labels[[...systems][0]] ?? null : null;
+  const applicationStart = explicitDate(paragraphs, /(?:plazo de (?:presentaci[oó]n de (?:solicitudes|instancias)|inscripci[oó]n))[^.;]{0,70}?(?:desde el|comenzar[aá] el|se iniciar[aá] el) (?:d[ií]a )?(\d{1,2}) de ([a-z]+) de (20\d{2})/i);
+  const applicationEnd = explicitDate(paragraphs, /(?:plazo de (?:presentaci[oó]n de (?:solicitudes|instancias)|inscripci[oó]n))[^.;]{0,110}?(?:hasta el|finalizar[aá] el|terminar[aá] el) (?:d[ií]a )?(\d{1,2}) de ([a-z]+) de (20\d{2})/i);
+  const examDate = explicitDate(paragraphs, /(?:primer ejercicio|prueba [uú]nica|examen) (?:se celebrar[aá]|tendr[aá] lugar) el (?:d[ií]a )?(\d{1,2}) de ([a-z]+) de (20\d{2})/i);
+  return { education, fees, exemptions, documentation, payment, vacancies, group, accessSystem, applicationStart, applicationEnd, examDate, paragraphs, summary: paragraphs.join("\n\n"), specialty, category, positionId, applicationPeriod, headline };
 }
 
 export function parseBoeDetails(xml: string, externalId: string): BoeDetails | null {
@@ -65,9 +122,12 @@ export function parseBoeDetails(xml: string, externalId: string): BoeDetails | n
   const all = [...withoutTables.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/gi)].map(m => plainText(m[1]));
   const relevant = all.filter(p => p.length > 25 &&
     !/^(?:De conformidad|Visto|Contra |Los sucesivos anuncios|Nombrar a los miembros|La documentaci[oó]n se presentar[aá]|La presente resoluci[oó]n se publicar[aá])/i.test(p) &&
-    /plaza|puesto|bases|solicitud|instancias|convocatoria|departamento:|[aá]rea de conocimiento:|perfil |asignatura |adscripci[oó]n:|localizaci[oó]n:|titulaci[oó]n|podr[aá]n tomar parte|requisito|tasa|derechos de examen|exenci[oó]n|bonificaci[oó]n|documentaci[oó]n|abono|pago/i.test(p));
+    /plaza|puesto|bases|solicitud|instancias|convocatoria|ejercicio|examen|departamento:|[aá]rea de conocimiento:|perfil |asignatura |adscripci[oó]n:|localizaci[oó]n:|titulaci[oó]n|podr[aá]n tomar parte|requisito|tasa|derechos de examen|exenci[oó]n|bonificaci[oó]n|documentaci[oó]n|abono|pago/i.test(p));
   // Keep the differentiating facts even when a long notice has much boilerplate.
   const priority = relevant.filter(p => /^(?:Categoría|Identificador|Código|Área de conocimiento|Perfil |Departamento:|Denominación|Número de puestos|Adscripción:|Localización:)/i.test(p) || /titulaci[oó]n exigida|derechos de examen|tasa|exenci[oó]n|bonificaci[oó]n|documentaci[oó]n|pago/i.test(p));
   const selected = new Set([...priority, ...relevant].slice(0, 24));
-  return detailsFromParagraphs(relevant.filter(p => selected.has(p)).map(p => p.slice(0, 3000)));
+  const details = detailsFromParagraphs(relevant);
+  if (!details) return null;
+  const paragraphs = relevant.filter(p => selected.has(p)).map(p => p.slice(0, 3000));
+  return { ...details, paragraphs, summary: paragraphs.join("\n\n") };
 }
